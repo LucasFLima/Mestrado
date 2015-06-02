@@ -1,6 +1,7 @@
 #!/bin/bash
 
-out=`cat parametros | grep "out_dir:" | cut -d":" -f2`
+utilPath="/home/lucas/workspace/utilLucasFLima"
+out=`cat $utilPath/parametros | grep "out_dir:" | cut -d":" -f2`
 
-rm  $out/*
+find $out/* -maxdepth 1 -exec echo "Removing " {} \; -exec rm {} \;
 echo $out" cleaned"
