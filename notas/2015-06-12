@@ -1,0 +1,15 @@
+* src/NeoIDL.cf
+
+	Onde está o core da NeoIDL. A alteraçaõ da capacidade afetará 
+
+	Capacidade. Capacidade ::= NeoDoc Metodo Tipo Ident "(" [Parametro] ")" ";";
+
+* src/NeoIDL/Lang/AbsNeoIDL.hs
+
+	Declaraçaõ dos tipos da NeoIDL. Parece ser um código gerado dinamicamente
+
+	data Capacidade = Capacidade NeoDoc Metodo Tipo Ident [Parametro]
+	deriving (Eq, Ord, Show, Read)
+
+
+

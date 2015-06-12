@@ -1,4 +1,4 @@
 out_dir:/home/lucas/workspace/out/
 neo_dir:/home/lucas/workspace/neoFrameworkBNFC
-module:Mensagens.neo
+module:MensagensDBC.neo
 target:Twisted
