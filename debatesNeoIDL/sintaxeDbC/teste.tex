@@ -1,0 +1,56 @@
+
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+ 
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lst@definelanguage[CR]{Basic}{%
+  basicstyle={\ttfamily\footnotesize},%
+  sensitive=false,%
+  upquote=true,%
+  string=[bd][\color{crbString}]{"},%
+  showstringspaces=false,%
+  morekeywords=[1]{Const, Public, <snip> ...},%
+  keywordstyle={[1]{\color{crbKeyword}}},%
+  otherkeywords={=, /, *, +, -, *=, /=, +=, -=, <<, >>, ^, <, >},%
+  morekeywords=[2]{=, /, *, +, -, *=, /=, +=, -=, <<, >>, ^, <, >},%
+  keywordstyle={[2]{\color{crbKeyword}}},%
+  morecomment={[l][\color{crbComment}\ttfamily\itshape]{'}}%
+}
+\endinput
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+ 
+\begin{document}
+The next code will be directly imported from a file
+ 
+\lstinputlisting[language=Octave]{teste.x}
+\end{document}
+
+
