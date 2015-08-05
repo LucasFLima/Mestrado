@@ -1,0 +1,14 @@
+module Catalogo {
+  path = "/catalogo";
+
+  struct ItemDoCatalogo {
+    string id;
+    string descricao;
+    float valor;         
+  };
+  service Catalogo {
+    path = "/catalogo";
+    @post Catalogo atualizarItem(string id, ItemCatalogo itemCatalogo);
+    @get Catalogo pesquisarItem(string id);
+  };
+}

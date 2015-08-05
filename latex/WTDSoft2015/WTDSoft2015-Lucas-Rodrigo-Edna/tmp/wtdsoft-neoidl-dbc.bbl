@@ -1,0 +1,93 @@
+\begin{thebibliography}{}
+
+\bibitem[Barnett et~al. 2005]{barnett2005spec}
+Barnett, M., Leino, K. R.~M., and Schulte, W. (2005).
+\newblock The \texttt{Spec\#} programming system: An overview.
+\newblock In {\em Construction and analysis of safe, secure, and interoperable
+  smart devices}, pages 49--69. Springer.
+
+\bibitem[Belhaouari et~al. 2012]{belhaouari2012design}
+Belhaouari, H., Konopacki, P., Laleau, R., and Frappier, M. (2012).
+\newblock A design by contract approach to verify access control policies.
+\newblock In {\em Engineering of Complex Computer Systems (ICECCS), 2012 17th
+  International Conference on}, pages 263--272. IEEE.
+
+\bibitem[Bonif{\'a}cio et~al. 2015]{bonifacio2015neoidl}
+Bonif{\'a}cio, R., de~Castro, T.~M., Fernandes, R., Palmeira, A., and Kulesza,
+  U. (2015).
+\newblock Neoidl: A domain-specific language for specifying rest services.
+\newblock {\em SEKE}, page~10.
+
+\bibitem[Chen 2008]{chen2008towards}
+Chen, H.-M. (2008).
+\newblock Towards service engineering: service orientation and business-it
+  alignment.
+\newblock In {\em Hawaii International Conference on System Sciences,
+  Proceedings of the 41st Annual}, pages 114--114. IEEE.
+
+\bibitem[Erl 2008]{erl2008soa}
+Erl, T. (2008).
+\newblock {\em Soa: principles of service design}, volume~1.
+\newblock Prentice Hall Upper Saddle River.
+
+\bibitem[Fielding 2000]{fielding2000fielding}
+Fielding, R. (2000).
+\newblock Fielding dissertation: Chapter 5: Representational state transfer
+  (rest).
+
+\bibitem[He 2003]{he2003service}
+He, H. (2003).
+\newblock What is service-oriented architecture.
+\newblock {\em Publica{\c{c}}{\~a}o eletr{\^o}nica em 30/09/2003}, 30:50.
+
+\bibitem[Heckel and Lohmann 2005]{heckel2005towards}
+Heckel, R. and Lohmann, M. (2005).
+\newblock Towards contract-based testing of web services.
+\newblock {\em Electronic Notes in Theoretical Computer Science}, 116:145--156.
+
+\bibitem[Leavens et~al. 2006]{leavens}
+Leavens, G.~T., Baker, A.~L., and Ruby, C. (2006).
+\newblock Preliminary design of jml: A behavioral interface specification
+  language for java.
+\newblock {\em ACM SIGSOFT Software Engineering Notes}, 31(3):1--38.
+
+\bibitem[Ling et~al. 2003]{ling2003describing}
+Ling, S., Poernomo, I., and Schmidt, H. (2003).
+\newblock Describing web service architectures through design-by-contract.
+\newblock In {\em Computer and Information Sciences-ISCIS 2003}, pages
+  1008--1018. Springer.
+
+\bibitem[Meyer 1991]{meyer1991eiffel}
+Meyer, B. (1991).
+\newblock {\em Eiffel: The Language}, volume~1.
+\newblock Prentice Hall.
+
+\bibitem[Meyer 1992]{meyer1992applying}
+Meyer, B. (1992).
+\newblock Applying'design by contract'.
+\newblock {\em Computer}, 25(10):40--51.
+
+\bibitem[Poyias 2014]{poyias2014design}
+Poyias, K. (2014).
+\newblock {\em Design-by-contract for software architectures}.
+\newblock PhD thesis, Department of Computer Science, University of Leicester.
+
+\bibitem[Rubio-Medrano et~al. 2013]{rubio2013verifying}
+Rubio-Medrano, C.~E., Ahn, G.-J., and Sohr, K. (2013).
+\newblock Verifying access control properties with design by contract:
+  Framework and lessons learned.
+\newblock In {\em Computer Software and Applications Conference (COMPSAC), 2013
+  IEEE 37th Annual}, pages 21--26. IEEE.
+
+\bibitem[Shull et~al. 2008]{shull2008guide}
+Shull, F., Singer, J., and Sj{\o}berg, D.~I. (2008).
+\newblock {\em Guide to advanced empirical software engineering}, volume~93.
+\newblock Springer.
+
+\bibitem[Zur~Muehlen et~al. 2005]{zur2005developing}
+Zur~Muehlen, M., Nickerson, J.~V., and Swenson, K.~D. (2005).
+\newblock Developing web services choreography standards—the case of rest vs.
+  soap.
+\newblock {\em Decision Support Systems}, 40:9--29.
+
+\end{thebibliography}

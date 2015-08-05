@@ -1,0 +1,10 @@
+module Catalogo {
+    (...)
+    service Catalogo {
+    path = "/catalogo";
+    /@require call Catalogo.pesquisarItem(old.id)==HTTP_OK
+    /@ensure call Catalogo.pesquisarItem(old.id)==HTTP_Not_Found
+    /@otherwise HTTP_Not_Found
+    @delete Atividade excluiItem(string id);
+    (...)
+}

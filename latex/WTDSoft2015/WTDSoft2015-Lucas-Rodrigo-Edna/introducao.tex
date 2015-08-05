@@ -1,0 +1,50 @@
+\section{Introdução e Caracterização do Problema}\label{sec:introducao}
+
+A computação orientada a serviços ( \emph{Service-oriented computing, SOC)} tem
+se mostrado uma solução de \textit{design} de \textit{software} que favorece o
+alinhamento às mudanças constantes e urgentes nas instituições
+\cite{chen2008towards}. Os benefícios de SOC estão diretamente relacionados ao
+baixo acoplamento dos serviços que compõem a solução, de forma que as partes
+(nesse caso serviços) possam ser substituídas e evoluídas facilmente, ou ainda
+rearranjadas em novas composições. Contudo, para que isso seja possível, é
+necessário que os serviços possuam contratos bem definidos e independentes da
+implementação.
+
+Por outro lado, as linguagens de especificação de contratos para SOA apresentam
+algumas limitações. Por exemplo, a linguagem WSDL (\emph{Web-services
+description language}) \cite{zur2005developing} é considerada uma solução
+verbosa que desestimu\-la a abordagem \textit{Contract First}. Por essa razão,
+especificações WSDL são usualmente derivadas a partir de anotações em código
+fonte.
+Além disso, os conceitos descritos em contratos na linguagem WSDL não são
+diretamente mapeados aos elementos que compõem as interfaces do estilo
+arquitetural REST (\emph{Representational State Transfer}).
+Outras alternativas para REST, como Swagger e
+RAML\footnote{http://raml.org/spec.html}, usam linguagens de propósito geral (em
+particular JSON) adaptadas para especificação de contratos. Ainda que façam uso
+de contratos mais sucintos que WSDL, essas linguagens não se
+beneficiam da clareza típica das linguagens específicas para esse fim (como IDLs CORBA) e não oferecem
+mecanismos semânticos de extensibilidade e modularidade.
+
+Com o objetivo de mitigar esses problemas, a linguagem \neoidl{} foi proposta
+para simplificar a especificação de serviços REST com mecanismos de modularização,
+suporte a anotações, herança em tipos de dados definidos pelo desenvolvedor, e
+uma sintaxe simples e concisa semelhante às \textit{Interface Description
+Languages} -- IDLs -- presentes em \textit{Apache Thrift}\texttrademark e
+CORBA\texttrademark. Por outro lado, a \neoidl, da mesma forma que WSDL, Swagger
+e RAML não oferece construções para especificação de contratos formais de
+comportamento como os presentes em linguagens que suportam DBC (\emph{Design by
+Contract})~\cite{meyer1992applying}, como JML, Spec\# e Eiffel.
+
+Dessa forma, os objetivos dessa pesquisa envolvem inicialmente investigar o uso
+de construções DBC no contexto da computação orientada a serviços e conduzir uma
+revisão sistemática da literatura para identificar os principais trabalhos que
+lidam com a relação entre DBC e SOC. Em seguida especificar e implementar novas
+construções para a linguagem \neoidl, de tal forma que seja possível especificar
+contratos mais precisos; além de definir regras de transformação das novas
+construções \neoidl{} para diferentes tecnologias (como Twisted) que suportam a
+implementação de serviços em REST.
+Por fim, conduzir uma validação empírica da proposta usando uma abordagem mais
+exploratória, possivelmente usando a estratégia \emph{pesquisa-ação}.
+
+

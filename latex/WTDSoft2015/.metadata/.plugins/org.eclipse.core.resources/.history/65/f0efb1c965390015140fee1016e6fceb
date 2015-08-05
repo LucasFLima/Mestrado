@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+\usepackage{color}
+\usepackage{listings,comment}
+
+%\usepackage[brazilian]{babel}   
+\usepackage[utf8]{inputenc}
+
+
+\lstdefinelanguage{NeoIDL}{
+  sensitive = true, 
+  keywords = {module, service, import, struct, path},
+ %basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    %backgroundcolor=\color{background}
+}
+
+\newcommand{\neoidl}{NeoIDL}
+
+
+\sloppy
+
+\title{Contratos REST robustos e leves:\\uma abordagem em Design-by-Contract
+com NeoIDL}
+
+\author{Lucas F. Lima\inst{1}\\Orientadores: Rodrigo Bonifácio de
+Almeida\inst{2}, Edna Dias Canedo\inst{1}} 
+
+\address{Departamento de Engenharia Elétrica -- Universidade de Brasília --
+ UnB\\CEP 70910-900 -- Campus Darcy Ribeiro -- Asa Norte -- Brasília -- DF --
+Brasil
+\nextinstitute 
+ Departamento de Ciência da Computação -- Universidade de Brasília -- UnB\\ CEP
+ 70910-900 -- Campus Darcy Ribeiro -- Asa Norte -- Brasília -- DF -- Brasil
+\email{lucas.lima@aluno.unb.br, rbonifacio@cic.unb.br,
+ ednacanedo@unb.br} 
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{center}
+
+\center{Nível: Mestrado\\
+Ano de Ingresso: 2014\\
+Previsão de conclusão: Dezembro/2015\\
+Aprovação da Proposta: Janeiro de 2014\\
+Eventos Relacionados: SBES
+}
+
+\end{center}
+
+\begin{resumo} 
+  O trabalho de pesquisa de mestrado, sumarizado neste artigo, objetiva
+  fortalecer a especificação de contratos para soluções concebidas sob o
+  paradigma de computação orientada a serviços. A robustez é buscada por meio de
+  construções que agregam \textit{Design-by-Contract} à linguagem \neoidl, de
+  modo que os serviços especificados assegurem as pós-condições, desde que
+  satisfeitas suas pré-condições.
+  A proposta será submetida a validação empírica, verificando regras de
+  transformações em um novo plugin para a \neoidl.
+\end{resumo}
+
+\newpage
+\input{introducao.tex}
+\input{fundamentacao.tex}
+\input{estadoAtual.tex}
+\input{trabalhosRelacionados.tex}
+
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
