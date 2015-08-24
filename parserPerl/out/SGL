@@ -1,0 +1,90 @@
+module sgl {
+
+	path = "xxx";
+
+	entity InstanciaMaterial {
+		double : longitude;   /*Required.*/
+		string : descricao;   /*Required.*/
+		double : latitude;   /*Required.*/
+		string : numeroSerial;   /*Required.*/
+	};
+
+	entity SituacaoLogisticaMaterialGetResponse {
+		[OrganizacaoMilitar] : organizacoesMilitares;
+		string : material;   /*Required.*/
+	};
+
+	entity TipoEquipamentoGetResponse {
+		string : partNumber;   /*Required.*/
+		string : descricao;   /*Required.*/
+	};
+
+	entity OrganizacaoMilitar {
+		integer : total;
+		string : codigo;   /*Required.*/
+		string : descricao;   /*Required.*/
+		integer : quantidadeDisponivel;
+	};
+
+	entity TipoMaterial {
+		string : id;   /*Required.*/
+		string : descricao;   /*Required.*/
+	};
+
+	entity InstanciaMaterialGetResponse {
+		[InstanciaMaterial] : instanciasMaterial;
+		TipoMaterial : tipoMaterial;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/hierarquiamilitar";
+
+		/**
+		* @ summary: Retorna uma lista de organização militar
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query uf: Sigla do estado (UF)
+		*	query codigoOrganizacao: Código da organização militar subordinadora
+		*/
+		@get array <NomeCapacidade> (string t, string uf, string codigoOrganizacao);
+	}
+
+	service <NomeServico> {
+		path = "/situacaologistica";
+
+		/**
+		* @ summary: Retorna a representação de material e organizações militares contendo o material e suas quantidades
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query partNumber(*): Código do tipo de material
+		*	query uf: Sigla do estado (UF)
+		*	query codigoOrganizacao: Código da organização militar subordinadora
+		*/
+		@get SituacaoLogisticaMaterialGetResponse <NomeCapacidade> (string t, string partNumber, string uf, string codigoOrganizacao);
+	}
+
+	service <NomeServico> {
+		path = "/instanciamaterial";
+
+		/**
+		* @ summary: Retorna a representação de uma instância de material
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query partNumber(*): Código do tipo de material
+		*	query codigoOrganizacao(*): Código da organização militar subordinadora
+		*/
+		@get InstanciaMaterialGetResponse <NomeCapacidade> (string t, string partNumber, string codigoOrganizacao);
+	}
+
+	service <NomeServico> {
+		path = "/tipoequipamento";
+
+		/**
+		* @ summary: Retorna a lista de tipos de equipamentos disponíveis para consulta
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get TipoEquipamentoGetResponse <NomeCapacidade> (string t);
+	}
+
+

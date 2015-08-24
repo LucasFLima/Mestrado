@@ -1,0 +1,93 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "CalungaNeuronSAD",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {    
+            "path": "/calunga/{idTipo}/{hostilidade}",
+            "description": "Operação com calungas",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "CalungaGetResponse",
+                    "summary": "Retorna o calungo referente ao tipo",
+                    "parameters": [
+                        {
+                            "name": "idTipo",
+                            "description": "Identificador de tipo",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        },
+                        {
+                            "name": "hostilidade",
+                            "description": "Codigo da hostilidade",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        },
+                        {
+                            "name": "isOrdemBatalha",
+                            "description": "Flag que indica se é calunga de ordem de batalha",
+                            "paramType": "query",
+                            "type": "boolean",
+                            "required": false
+                        },
+                        {
+                            "name": "designacao",
+                            "description": "A designação do calunga",
+                            "paramType": "query",
+                            "type": "number",
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+
+    {
+      "path": "/calunga/{idItem}",
+      "description": "Operação com calungas",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CalungaGetResponse",
+          "summary": "Retorna o calungo referente ao tipo",
+          "parameters": [
+            {
+              "name": "idItem",
+              "description": "Identificador de tipo",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/calunga/escalao/{hierarquia}",
+      "description": "Operação com calungas",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CalungaEscalaoGetResponse",
+          "summary": "Retorna o calunga referente ao escalão",
+          "parameters": [
+            {
+              "name": "hierarquia",
+              "description": "Hierarquia do escalão",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {}
+}

@@ -1,0 +1,230 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "ProvedorSeguranca",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+    	{
+            "path": "/seguranca/trocarsenha",
+            "description": "Recurso para troca de senha",
+            "operations": [
+                {
+                
+                    "method": "POST",
+			    	"type": "TrocarSenhaResponse",
+                    "summary": "Troca de senha",
+                    "parameters": [
+                    	{
+							"name": "t",
+							"paramType": "query",
+							"type": "string",
+							"required": true
+						},
+			            {
+			              "name": "trocarSenha",
+			              "paramType": "body",
+			              "type": "TrocarSenhaRequest",
+			              "required": true
+			            }
+					]
+                }
+            ]
+        },
+        {
+            "path": "/seguranca/token",
+            "description": "Gerenciamento de Token",
+            "operations": [
+                {
+                    "method": "GET",
+			    	"type": "TokenGetResponse",
+                    "summary": "Validação do token",
+                    "parameters": [
+						{
+							"name": "t",
+							"paramType": "query",
+							"type": "string",
+							"required": true
+						},
+						{
+							"name": "flag",
+							"paramType": "query",
+							"type": "boolean",
+				            "required": false,
+				            "enum": [
+					        	"true",
+					            "false"
+					        ]
+						}
+					]
+                }
+            ]
+        },
+        {
+            "path": "/seguranca/login",
+            "description": "Gerenciamento de login",
+            "operations": [
+                {
+                    "method": "POST",
+			    	"type": "LoginPostResponse",
+                    "summary": "Validação do token",
+                    "parameters": [
+						
+						{
+							"name": "auth",
+							"paramType": "query",
+							"type": "string",
+							"description": "Dados de autenticação",
+							"required": true
+						}
+                    ]
+                },
+                {
+                    "method": "DELETE",
+			    	"type": "LoginDeleteResponse",
+                    "summary": "Operação de logout",
+                    "parameters": [
+						
+						{
+							"name": "t",
+							"paramType": "query",
+							"type": "string",
+							"required": true
+						}
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/seguranca/login/usuarioaplicacao",
+            "description": "Operações do usuário de aplicação",
+            "operations": [
+                {
+                    "method": "POST",			    	
+                    "summary": "Solicita nova sessão usuário de aplicação",
+                    "parameters": [
+						
+                    ]
+                }
+            ]
+        }
+                
+	],
+	"models": {
+		"TokenGetResponse":{
+			"properties": {
+				"idUsuario":{
+					"type": "string",
+                    "description": "ID do usuário que foi validado",
+                    "required": true					
+				},
+				"identificador":{
+					"type": "number",
+                    "description": "Identificador",
+                    "required": true					
+				},
+				"nome":{
+					"type": "string",
+                    "description": "Nome do usuário",
+                    "required": true					
+				}				
+			}
+		},
+		"TokenGetRequest":{
+			"properties": {
+				"token":{
+					"type": "string",
+                    "description": "Token que deverá ser validado",
+                    "required": true					
+				}	
+			}
+		},
+		"LoginPostRequest":{
+			"properties": {
+				"Authentication":{
+					"type": "string",
+                    "description": "A informação de login deve vir codificada em base64, ou seja, a string de login seria <usuario>:<senha> e está seria encriptada em base64",
+                    "required": true										
+				}
+			}		
+		},
+		"LoginDeleteResponse":{
+			"properties": {
+				"idUsuario":{
+					"type": "string",
+                    "description": "ID do usuário"					
+				}
+			}		
+		},
+		"InfoUsuariosC2DeleteRequest":{
+			"properties": {
+				"token":{
+					"type": "string",
+                    "description": "Token de sessão do usuário",
+                    "required": true										
+				}
+			}		
+		},
+		"LoginPostResponse":{
+			"properties": {
+				"idUsuario":{
+					"type": "string",
+                    "description": "String identificadora do usuário"					
+				},
+				"identificador":{
+					"type": "number",
+                    "description": "Identificador do usuário"					
+				},
+				"nome":{
+					"type": "String",
+                    "description": "Nome do usuário"					
+				},
+				"token":{
+					"type": "String",
+                    "description": "Token da sessão para o usuário"					
+				},
+				"funcionalidades":{
+			          "type": "array",
+			          "funcionalidade": {
+			            "$ref": "String"
+			          },
+                	  "description": "Token da sessão para o usuário"					
+				}
+			}
+		},	
+		"RadarConfigPutRequest": {
+			"properties": {
+			    "ipRadar": {
+                    "type": "string",
+                    "description": "IP da Estação Remota para conexão relativa a dados ASTERIX de radares"
+                },
+                "portaRadar": {
+                    "type": "long",
+                    "description": "Porta da Estação Remota para conexão relativa a dados ASTERIX de radares"
+                },
+				"habilitado": {
+					"type": "boolean",
+					"required": true,
+					"description": "Indica se a funcionalidade de recebimento de dados de radares está habilitada no SAD"
+				}
+			}
+		},
+		"TrocarSenhaRequest": {
+			"properties": {
+				"senhaAtual": {
+			      "type": "string",
+			      "required": true
+			    },
+			    "senhaNova": {
+			      "type": "string",
+			      "required": true
+			    },
+			    "senhaNovaConfirmacao": {
+			      "type": "string",
+			      "required": true
+			    }
+			}
+		}
+    }
+}

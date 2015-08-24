@@ -1,0 +1,547 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "MapaNeuronSAD",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/mapas",
+            "description": "Gerenciamento de Mapas",
+            "operations": [
+                {
+                    "method": "GET",
+			    	"type": "array",
+          			"items": {"$ref":"MapaResponse"},
+                    "summary": "Lista de Mapas",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+                    ]
+                },
+                {
+                    "method": "POST",
+                    "type": "MapaResponse",
+                    "summary": "Criação de Mapa",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name": "nomeMapa",
+                            "description": "Nome do Mapa",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "tipoMapa",
+                            "description": "Tipo do Mapa",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "form",
+                            "allowableValues": {
+                                "valueType": "LIST",
+                                "values": [
+                                    "SHAPE",
+                                    "GTIFF",
+                                    "WMS"
+                                ]
+                            }
+                        },
+                        {
+                            "name": "arqShapeShp",
+                            "description": "Shapefile .shp",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapeDbf",
+                            "description": "Shapefile .dbf",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapeShx",
+                            "description": "Shapefile .shx",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapePrj",
+                            "description": "Shapefile .prj",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqGeotiffTif",
+                            "description": "Geotiff .tif",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqGeotiffTfw",
+                            "description": "Geotiff .tfw",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "urlWms",
+                            "description": "URL WMS",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "form"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+        	"path": "/mapas/{idMapa}",
+			"description": "Mapa",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "MapaResponse",
+					"summary": "Recupera um Mapa",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idMapa",
+							"description": "ID do Mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+                    	}
+					]
+				},	
+                {
+                    "method": "PUT",
+                    "type": "MapaResponse",
+                    "summary": "Alteração de Mapa",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                    	{
+                            "name": "idMapa",
+                            "description": "id do Mapa",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        },
+                        {
+                            "name": "nomeMapa",
+                            "description": "Nome do Mapa",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapeShp",
+                            "description": "Shapefile .shp",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapeDbf",
+                            "description": "Shapefile .dbf",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapeShx",
+                            "description": "Shapefile .shx",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqShapePrj",
+                            "description": "Shapefile .prj",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqGeotiffTif",
+                            "description": "Geotiff .tif",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "arqGeotiffTfw",
+                            "description": "Geotiff .tfw",
+                            "required": true,
+                            "type": "file",
+                            "paramType": "form"
+                        },
+                        {
+                            "name": "urlWms",
+                            "description": "URL WMS",
+                            "required": false,
+                            "type": "string",
+                            "paramType": "form"
+                        }
+                    ]
+                },
+				{
+					"method": "DELETE",
+					"type": "string",
+					"summary": "Exclusão de Mapa",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idMapa",
+							"description": "ID do Mapa a ser excluído",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+                    	},
+						{
+							"name": "flgExcluiAssoc",
+							"type": "string",
+							"paramType": "query"
+                    	}
+					]
+				}
+			]
+		},
+		{
+			"path": "/mapas/{idMapa}/geotiff/{tz}/{tx}/{ty}",
+			"description": "Recupera Ladrilho de Mapa Geotiff",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "string",
+					"summary": "Pega Ladrilho GeoTIFF",
+					"produces": [
+						"image/png"
+					],
+					"parameters": [
+						{
+							"name": "idMapa",
+							"description": "Identificador do Mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						},
+						{
+							"name": "tz",
+							"description": "Tipo de mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						},
+						{
+							"name": "tx",
+							"description": "Tipo de mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						},
+						{
+							"name": "ty",
+							"description": "Tipo de mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/mapas/{idMapa}/geojson",
+			"description": "Recupera um Geojson do Mapa",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "string",
+					"summary": "Recupera GeoJson",
+					"produces": [
+						"application/json"
+					],
+					"parameters": [
+						{
+							"name": "idMapa",
+							"description": "Identificador do Mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/mapas/{idMapa}/camadas",
+			"description": "Recupera camadas de Mapas WMS",
+			"operations": [
+				{
+					"method": "GET",
+			    	"type": "array",
+          			"items": {"$ref":"MapaCamadaResponse"},
+					"summary": "Recupera Camadas de Mapas WMS",
+					"produces": [
+						"application/json"
+					],
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idMapa",
+							"description": "Identificador do Mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/mapas/{idMapa}/camadas/{nomeCamada}",
+			"description": "Recupera a camada de Mapas WMS",
+			"operations": [
+				{
+					"method": "GET",
+			    	"type": "MapaCamadaResponse",
+					"summary": "Recupera Camadas de Mapas WMS",
+					"produces": [
+						"application/json"
+					],
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idMapa",
+							"description": "Identificador do Mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						},
+						{
+							"name": "nomeCamada",
+							"description": "Nome da Camada WMS",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/mapas/{idMapa}/wms/{nomeCamada}",
+			"description": "Recupera Ladrilho de camada WMS",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "string",
+					"summary": "Recupera Ladrilho de camada WMS",
+					"produces": [
+						"image/png"
+					],
+					"parameters": [
+						{
+							"name": "idMapa",
+							"description": "Identificador do Mapa",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						},
+						{
+							"name": "nomeCamada",
+							"description": "Nome da Camada a ser retornada",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/mapas/wms/camadas",
+			"description": "Lista as camadas de um Servidor WMS",
+			"operations": [
+				{
+					"method": "POST",
+					"summary": "Lista as camadas de um Servidor WMS",
+			    	"type": "array",
+          			"items": {"$ref":"MapaCamadaResponse"},
+					"produces": [
+						"application/json"
+					],
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "infoServidorWms",
+							"description": "Parametros do servidor WMS",
+							"required": true,
+							"type": "WmsCamadasServidorReq",
+							"paramType": "body"
+						}
+					]
+				}
+			]
+		}
+	],
+	"models": {
+		"MapaCamadaResponse": {
+			"properties": {
+				"wmsLayer": {
+					"type": "string",
+					"required": true
+				},
+				"wmsFormat": {
+					"type": "string",
+					"required": true
+				},
+				"wmsCrs": {
+					"type": "string",
+					"required": true
+				},
+				"wmsSubLayers": {
+					"type": "array",
+					"items": {
+						"$ref": "string"
+					},
+					"required": false
+				}
+			}
+		},
+		"MapaResponse": {
+			"properties": {
+				"idMapa": {
+					"type": "string",
+					"required": true
+				},
+				"nomeMapa": {
+					"type": "string",
+					"required": true
+				},
+				"tipoMapa": {
+					"type": "string",
+					"required": true,
+					"allowableValues": {
+						"valueType": "LIST",
+						"values": [
+							"SHAPE",
+							"GTIFF",
+							"WMS"
+						]
+					}
+				},
+				"idTipoMapa": {
+					"type": "string",
+					"required": true
+				},
+				"localMapa": {
+					"type": "string",
+					"required": true
+				},
+				"referenciaMapa": {
+					"type": "string",
+					"required": true
+				},
+				"nomeOriginalMapa": {
+					"type": "string",
+					"required": false
+				},
+				"idUsuario": {
+					"type": "string",
+					"required": true
+				},
+				"idOrganizacaoRelatora": {
+					"type": "string",
+					"required": true
+				},
+				"wmsQueryParams": {
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+		"MapaPostRequest": {
+			"properties": {
+				"nomeMapa": {
+					"type": "string",
+					"required": true
+				},
+               	"tipoMapa": {
+             		"type": "string",
+                  	"required": true,
+                  	"allowableValues": {
+                  		"valueType": "LIST",
+                      	"values": [
+                      		"SHAPE",
+                          	"GTIFF",
+                          	"WMS"
+                       	]
+                 	}
+            	}
+        	}
+        },
+		"WmsCamadasServidorReq": {
+			"properties": {
+				"referenciaMapa": {
+					"type": "string",
+					"required": true
+				}
+			}
+        }
+    }
+}

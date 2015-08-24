@@ -1,0 +1,307 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "OrdemBatalha",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [{
+  	"path": "/ordemBatalha/evento",
+  	"description": "Recebe um evento de movimentacao.",
+  	"operations": [
+  		{
+  			"method": "POST",
+  			"summary": "Recebe um evento de movimentação.",
+  			"consumes": [
+  				"application/json"
+  			],
+  			"parameters": [
+				{
+				    "name": "t",
+				    "description": "Token de autenticação",
+				    "required": true,
+				    "type": "string",
+				    "paramType": "query"
+				},
+  				{
+  					"name": "EventoMovimentacao",
+  					"paramType": "body",
+  					"type": "EventoMovimentacaoPostRequest",
+  					"required": true 
+  				}
+  			]
+  		}
+  	]
+  },
+  {
+  	"path": "/ordemBatalha/localizacao",
+  	"description": "Cria um evento de localização.",
+  	"operations": [
+  		{
+  			"method": "PUT",
+  			"summary": "Cria um evento de localização",
+  			"consumes": [
+  				"application/json"
+  			],
+  			"parameters": [
+				{
+				    "name": "t",
+				    "description": "Token de autenticação",
+				    "required": true,
+				    "type": "string",
+				    "paramType": "query"
+				},
+  				{
+  					"name": "localizacao",
+  					"paramType": "body",
+  					"type": "OrdemBatalhaPutRequest",
+  					"required": true
+  				}
+  			]
+  		}
+  	]		
+  },
+  {
+  	"path": "/ordemBatalha/{idOrdemBatalha}/localizacao",
+  	"description": "Operações relacionadas à localização de uma ordem de batalha.",
+  	"operations": [
+  		{
+  			"method": "GET",
+  			"type": "OrdemBatalhaLocalizacaoGetResponse",
+  			"summary": "Recupera a localização",
+  			"parameters": [
+				{
+				    "name": "t",
+				    "description": "Token de autenticação",
+				    "required": true,
+				    "type": "string",
+				    "paramType": "query"
+				},
+  				{
+  					"name": "idOrdemBatalha",
+  					"description": "ID da ordem de batalha",
+  					"paramType": "path",
+  					"type": "string",
+  					"required": true
+  				}
+  			]
+  		}
+  	]		
+  },
+  {
+  	"path": "/ordemBatalha/ordem",
+  	"description": "Gerencia organizacoes referenciadas pela Ordem de Batalha",
+  	"operations": [
+  		{
+  			"method": "POST",
+  			"summary": "Cria uma referência da ordem de batalha em um pio",
+  			"type": "OrdemBatalhaPostResponse",
+  			"consumes": [
+  				"application/json"
+  			],
+  			"parameters": [
+				{
+				    "name": "t",
+				    "description": "Token de autenticação",
+				    "required": true,
+				    "type": "string",
+				    "paramType": "query"
+				},
+  				{
+  					"name": "organizacao",
+  					"paramType": "body",
+  					"type": "OrdemBatalhaPostRequest",
+  					"required": true
+  				}
+  			]
+  		}
+  	]
+  }],
+  "events": {
+  	"Movimentacao": {
+  		"properties": {
+  			"idItem": {
+  				"type": "number",
+  				"format": "integer"
+  			},
+  			"latitude": {
+  				"type": "number",
+  				"format": "double"
+  			},
+  			"longitude": {
+  				"type": "number",
+  				"format": "double"
+  			}
+  		},
+  		"required": ["idItem", "latitude", "longitude"],
+  		"description": "evento de localizacao",
+  		"features": {
+  			"priority": "LOW",
+  			"reliability": "UNRELIABLE"
+  		}
+  	}
+  },
+  "models": {
+  	"EventoMovimentacao": {
+  		"properties": {
+  			"idItem": {
+  				"type": "number",
+  				"format": "integer",
+  				"required": true
+	  		},
+  			"latitude": {
+  				"type": "number",
+  				"format": "double",
+  				"required": true
+  			},
+  			"longitude": {
+  				"type": "number",
+  				"format": "double",
+  				"required": true
+  			}
+  		}
+  	},
+    "EventoMovimentacaoPostRequest": {
+    	"properties": {
+    		"movimentacao": {
+    			"type": "EventoMovimentacao",
+    			"required": true
+    		}
+    	}
+    },
+  	"OrdemBatalhaPutRequest": {
+  		"properties": {
+  			"idItem": {
+  					"type": "string",
+  					"required": true
+  			},
+  			"localizacao": {
+				"type": "Localizacao",
+				"required": true
+  			},
+  			"atualizaLocalizacaoAnterior": {
+				"type": "boolean"
+  			}
+  		}
+  	},
+  	"OrdemBatalhaPostRequest": {
+  		"properties": {
+  			"idOrdemBatalha": {
+  				"type": "string",
+  				"required": "true"
+  			},
+  			"idCalco": {
+  				"type": "string",
+  				"required": "true"
+  			},
+  			"idUsuario": {
+  				"type": "string",
+  				"required": "true"
+  			},
+  			"localizacao": {
+  				"type": "Localizacao",
+  				"required": false
+  			}
+  		}
+  	},
+  	"Localizacao": {
+  		"properties": {
+  			"ponto": {
+  				"type": "Ponto",
+  				"required": true
+  			},
+  			"classificacao": {
+  				"type": "Classificacao",
+  				"required": false
+  			}
+  		}
+  	},
+  	"Ponto": {
+  		"properties": {
+  			"latitude": {
+  				"type": "number",
+  				"required": "true",
+  				"format": "float"
+  			},
+  			"longitude": {
+  				"type": "number",
+  				"required": "true",
+  				"format": "float"
+  			}
+  		}
+  	},
+  	"Classificacao": {
+  		"properties": {
+  			"gdh": {
+  				"type": "number",
+  				"required": "true"
+  			},
+  			"fonte": {
+  				"type": "string",
+  				"required": true
+  			},
+  			"tipoFonte": {
+  				"type": "string",
+  				"required": true
+  			},
+  			"conteudo": {
+  				"type": "string",
+  				"required": true
+  			},
+  			"gdhInicial": {
+  				"type": "number",
+  				"format": "long",
+  				"required": false
+  			},
+  			"gdhFinal": {
+  				"type": "number",
+  				"format": "long",
+  				"required": false
+  			}
+  		}
+  	},
+  	"OrdemBatalhaPostResponse": {
+  		"properties": {
+  			"idCalco": {
+  				"type": "string",
+  				"required": true
+  			},
+  			"idOrganizacao": {
+  				"type": "string",
+  				"required": true
+  			}
+  		}
+  	},
+  	"OrdemBatalhaLocalizacaoGetResponse": {
+  		"properties": {
+  			"localizacao": {
+  				"type": "Localizacao",
+  				"required": "true"
+  			}
+  		}
+  	},
+    "TipoRamo": {
+      "properties": {
+        "idTipo": {
+          "type": "string"
+        },
+        "idItem": {
+          "type": "string",
+          "required": false
+        },
+        "nome": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "ramos": {
+          "type": "array",
+          "items": {
+            "$ref": "TipoRamo"
+          }
+        }
+      }
+    }
+  }
+}

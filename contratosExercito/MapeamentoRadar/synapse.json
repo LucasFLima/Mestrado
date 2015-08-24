@@ -1,0 +1,556 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "MapeamentoRadar",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/mapeamento/radar",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "MapeamentoPostResponse",
+          "summary": "Mapeia informação do radar para um item",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "mapeamento",
+              "description": "Request de mapeamento de informação de radar para item",
+              "required": true,
+              "type": "MapeamentoPostRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "MapeamentoPutResponse",
+          "summary": "Realiza atualização de rastreamento via radar",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "radar",
+              "description": "Request com informações de rastreamento via radar",
+              "required": true,
+              "type": "MapeamentoPutRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "RadarMapeado"
+          },
+          "summary": "Retorna as informações de radar mapeado",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idVista",
+              "description": "Identificador da vista de interesse",
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "rastreado",
+              "description": "Informa interesse por rastreado e não rastreado",
+              "type": "boolean",
+              "paramType": "query",
+              "enum": [
+                "true",
+                "false"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/mapeamento/radar/{sac}/{sic}/{trackId}",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Retira ratreamento de radar da memória",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "sac",
+              "description": "Identificador SAC do radar",
+              "type": "long",
+              "required": true,
+              "paramType": "path"
+            },
+            {
+              "name": "sic",
+              "description": "Identificador SIC do radar",
+              "type": "long",
+              "required": true,
+              "paramType": "path"
+            },
+            {
+              "name": "trackId",
+              "description": "Identificador do alvo do radar",
+              "type": "long",
+              "required": true,
+              "paramType": "path"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "type": "MapeamentoAlvoGetResponse",
+          "summary": "Consulta informações de um alvo mapeado",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "sac",
+              "description": "Identificador SAC do radar",
+              "type": "long",
+              "required": true,
+              "paramType": "path"
+            },
+            {
+              "name": "sic",
+              "description": "Identificador SIC do radar",
+              "type": "long",
+              "required": true,
+              "paramType": "path"
+            },
+            {
+              "name": "trackId",
+              "description": "Identificador do alvo do radar",
+              "type": "long",
+              "required": true,
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "MapeamentoAlvoGetResponse": {
+      "properties": {
+        "idRadar": {
+          "type": "string"
+        },
+        "nomeRadar": {
+          "type": "string"
+        },
+        "sac": {
+          "type": "long"
+        },
+        "sic": {
+          "type": "long"
+        },
+        "trackId": {
+          "type": "long"
+        },
+        "trackDou": {
+          "type": "number"
+        },
+        "trackTre": {
+          "type": "boolean"
+        },
+        "classificacao": {
+          "type": "integer"
+        },
+        "posicao": {
+          "type": "PosicaoRadarMapeado"
+        },
+        "rastreado": {
+          "type": "boolean"
+        },
+        "itens": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemMapeado"
+          }
+        }
+      }
+    },
+    "RadarMapeado": {
+      "properties": {
+        "sac": {
+          "type": "long"
+        },
+        "sic": {
+          "type": "long"
+        },
+        "posicao": {
+          "type": "PosicaoRadarMapeado"
+        },
+        "alvos": {
+          "type": "array",
+          "items": {
+            "$ref": "AlvoRadarMapeado"
+          }
+        }
+      }
+    },
+    "MapeamentoPostRequest": {
+      "properties": {
+        "sac": {
+          "type": "long",
+          "required": true
+        },
+        "sic": {
+          "type": "long",
+          "required": true
+        },
+        "trackId": {
+          "type": "long",
+          "required": true
+        },
+        "nomeItem": {
+          "type": "string",
+          "required": true
+        },
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "classificacao": {
+          "type": "Classificacao",
+          "required": true
+        }
+      }
+    },
+    "Localizacao": {
+      "properties": {
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        },
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "string"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "string"
+        },
+        "taxaVelocidade": {
+          "type": "string"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "string"
+        }
+      }
+    },
+    "Classificacao": {
+      "properties": {
+        "gdh": {
+          "type": "long",
+          "required": true
+        },
+        "gdhInicial": {
+          "type": "long"
+        }
+      }
+    },
+    "Ponto": {
+      "properties": {
+        "latitude": {
+          "type": "double",
+          "required": true
+        },
+        "longitude": {
+          "type": "double",
+          "required": true
+        },
+        "altura": {
+          "type": "double"
+        }
+      }
+    },
+    "MapeamentoPostResponse": {
+      "properties": {
+        "item": {
+          "type": "Item",
+          "required": true
+        }
+      }
+    },
+    "Item": {
+      "properties": {
+        "idItem": {
+          "type": "string",
+          "required": true
+        },
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ItemMapeado": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nomeItem": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "hostilidade": {
+          "type": "string"
+        },
+        "calco": {
+          "type": "CalcoMapeado"
+        }
+      }
+    },
+    "CalcoMapeado": {
+      "properties": {
+        "idCalco": {
+          "type": "string"
+        },
+        "nomeCalco": {
+          "type": "string"
+        }
+      }
+    },
+    "MapeamentoPutRequest": {
+      "properties": {
+        "sac": {
+          "type": "integer",
+          "required": true
+        },
+        "sic": {
+          "type": "integer",
+          "required": true
+        },
+        "alvos": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "AlvoRadar"
+          }
+        }
+      }
+    },
+    "AlvoRadar": {
+      "properties": {
+        "trackId": {
+          "type": "integer",
+          "required": true
+        },
+        "trackDou": {
+          "type": "number"
+        },
+        "trackTre": {
+          "type": "boolean"
+        },
+        "classificacao": {
+          "type": "integer",
+          "required": true
+        },
+        "posicoes": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "PosicaoRadar"
+          }
+        }
+      }
+    },
+    "MapeamentoPutResponse": {
+      "properties": {
+        "sac": {
+          "type": "integer",
+          "required": true
+        },
+        "sic": {
+          "type": "integer",
+          "required": true
+        },
+        "alvos": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "AlvoRadarPersistido"
+          }
+        }
+      }
+    },
+    "AlvoRadarPersistido": {
+      "properties": {
+        "trackId": {
+          "type": "integer",
+          "required": true
+        },
+        "itens": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "AlvoRadarMapeado": {
+      "properties": {
+        "trackId": {
+          "type": "long"
+        },
+        "trackDou": {
+          "type": "number"
+        },
+        "trackTre": {
+          "type": "boolean"
+        },
+        "classificacao": {
+          "type": "integer"
+        },
+        "posicao": {
+          "type": "PosicaoRadarMapeado"
+        },
+        "rastreado": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PosicaoRadar": {
+      "properties": {
+        "idPosicao": {
+          "type": "long",
+          "required": true
+        },
+        "latitude": {
+          "type": "number",
+          "required": true
+        },
+        "longitude": {
+          "type": "number",
+          "required": true
+        },
+        "velocidade": {
+          "type": "number",
+          "required": true
+        },
+        "velocidadeAng": {
+          "type": "number",
+          "required": true
+        },
+        "datahoraGmt": {
+          "type": "string",
+          "required": true
+        },
+        "datahoraMs": {
+          "type": "string"
+        },
+        "timeOfDay": {
+          "type": "number",
+          "required": true
+        },
+        "localPolarR": {
+          "type": "number"
+        },
+        "localPolarAng": {
+          "type": "number"
+        },
+        "relX": {
+          "type": "long",
+          "required": true
+        },
+        "relY": {
+          "type": "long",
+          "required": true
+        }
+      }
+    },
+    "PosicaoRadarMapeado": {
+      "properties": {
+        "idPosicao": {
+          "type": "long"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "velocidade": {
+          "type": "number"
+        },
+        "velocidadeAng": {
+          "type": "number"
+        },
+        "datahoraGmt": {
+          "type": "string"
+        },
+        "datahoraMs": {
+          "type": "long"
+        },
+        "timeOfDay": {
+          "type": "number"
+        },
+        "localPolarR": {
+          "type": "number"
+        },
+        "localPolarAng": {
+          "type": "number"
+        },
+        "relX": {
+          "type": "long"
+        },
+        "relY": {
+          "type": "long"
+        }
+      }
+    }
+  }
+}

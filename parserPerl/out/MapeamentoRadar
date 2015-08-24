@@ -1,0 +1,199 @@
+module mapeamentoradar {
+
+	path = "xxx";
+
+	entity MapeamentoPostRequest {
+		string : idPio;   /*Required.*/
+		string : idTipo;   /*Required.*/
+		string : nomeItem;   /*Required.*/
+		long : trackId;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		Classificacao : classificacao;   /*Required.*/
+		long : sic;   /*Required.*/
+		long : sac;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+	};
+
+	entity PosicaoRadar {
+		number : latitude;   /*Required.*/
+		long : relX;   /*Required.*/
+		string : datahoraMs;
+		string : datahoraGmt;   /*Required.*/
+		number : localPolarR;
+		number : velocidadeAng;   /*Required.*/
+		long : idPosicao;   /*Required.*/
+		number : timeOfDay;   /*Required.*/
+		long : relY;   /*Required.*/
+		number : longitude;   /*Required.*/
+		number : velocidade;   /*Required.*/
+		number : localPolarAng;
+	};
+
+	entity MapeamentoPostResponse {
+		Item : item;   /*Required.*/
+	};
+
+	entity AlvoRadarPersistido {
+		integer : trackId;   /*Required.*/
+		[string] : itens;   /*Required.*/
+	};
+
+	entity PosicaoRadarMapeado {
+		number : localPolarAng;
+		number : velocidade;
+		number : longitude;
+		long : relY;
+		number : timeOfDay;
+		number : velocidadeAng;
+		long : idPosicao;
+		string : datahoraGmt;
+		number : localPolarR;
+		long : datahoraMs;
+		long : relX;
+		number : latitude;
+	};
+
+	entity MapeamentoPutResponse {
+		[AlvoRadarPersistido] : alvos;   /*Required.*/
+		integer : sac;   /*Required.*/
+		integer : sic;   /*Required.*/
+	};
+
+	entity CalcoMapeado {
+		string : nomeCalco;
+		string : idCalco;
+	};
+
+	entity ItemMapeado {
+		CalcoMapeado : calco;
+		string : hostilidade;
+		string : idTipo;
+		string : nomeItem;
+		string : idItem;
+	};
+
+	entity Classificacao {
+		long : gdh;   /*Required.*/
+		long : gdhInicial;
+	};
+
+	entity MapeamentoAlvoGetResponse {
+		number : trackDou;
+		long : sac;
+		boolean : trackTre;
+		boolean : rastreado;
+		long : trackId;
+		PosicaoRadarMapeado : posicao;
+		string : idRadar;
+		string : nomeRadar;
+		[ItemMapeado] : itens;
+		long : sic;
+		integer : classificacao;
+	};
+
+	entity AlvoRadar {
+		integer : classificacao;   /*Required.*/
+		integer : trackId;   /*Required.*/
+		[PosicaoRadar] : posicoes;   /*Required.*/
+		number : trackDou;
+		boolean : trackTre;
+	};
+
+	entity Localizacao {
+		string : taxaVelocidade;
+		string : direcaoAngulo;
+		string : precisaoTaxaVelocidade;
+		string : precisaoDirecaoAngulo;
+		string : precisao;
+		Ponto : ponto;   /*Required.*/
+	};
+
+	entity AlvoRadarMapeado {
+		integer : classificacao;
+		boolean : rastreado;
+		boolean : trackTre;
+		number : trackDou;
+		PosicaoRadarMapeado : posicao;
+		long : trackId;
+	};
+
+	entity MapeamentoPutRequest {
+		[AlvoRadar] : alvos;   /*Required.*/
+		integer : sac;   /*Required.*/
+		integer : sic;   /*Required.*/
+	};
+
+	entity Ponto {
+		double : longitude;   /*Required.*/
+		double : latitude;   /*Required.*/
+		double : altura;
+	};
+
+	entity RadarMapeado {
+		[AlvoRadarMapeado] : alvos;
+		PosicaoRadarMapeado : posicao;
+		long : sac;
+		long : sic;
+	};
+
+	entity Item {
+		string : idTipo;   /*Required.*/
+		string : idItem;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/mapeamento/radar";
+
+		/**
+		* @ summary: Mapeia informação do radar para um item
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mapeamento(*): Request de mapeamento de informação de radar para item
+		*/
+		@post MapeamentoPostResponse <NomeCapacidade> (string t, MapeamentoPostRequest mapeamento);
+
+		/**
+		* @ summary: Realiza atualização de rastreamento via radar
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body radar(*): Request com informações de rastreamento via radar
+		*/
+		@put MapeamentoPutResponse <NomeCapacidade> (string t, MapeamentoPutRequest radar);
+
+		/**
+		* @ summary: Retorna as informações de radar mapeado
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idVista: Identificador da vista de interesse
+		*	query rastreado: Informa interesse por rastreado e não rastreado
+		*		\--> Valores possiveis: true false 
+		*/
+		@get array <NomeCapacidade> (string t, string idVista, boolean rastreado);
+	}
+
+	service <NomeServico> {
+		path = "/mapeamento/radar/{sac}/{sic}/{trackId}";
+
+		/**
+		* @ summary: Retira ratreamento de radar da memória
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path sac(*): Identificador SAC do radar
+		*	path sic(*): Identificador SIC do radar
+		*	path trackId(*): Identificador do alvo do radar
+		*/
+		@delete  <NomeCapacidade> (string t, long sac, long sic, long trackId);
+
+		/**
+		* @ summary: Consulta informações de um alvo mapeado
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path sac(*): Identificador SAC do radar
+		*	path sic(*): Identificador SIC do radar
+		*	path trackId(*): Identificador do alvo do radar
+		*/
+		@get MapeamentoAlvoGetResponse <NomeCapacidade> (string t, long sac, long sic, long trackId);
+	}
+
+

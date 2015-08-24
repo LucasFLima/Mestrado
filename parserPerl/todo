@@ -1,0 +1,5 @@
+1) Ver RedeRelacionamento -> allowableValues;
+2) Ver RedeRelacionamento -> "items":{ "$ref":"CampoEntidade"
+3) Comentarios para campos (models);
+4) Swagger não tem nome para servico e capacidade
+5) tratar o "enum": [ "SUBJ", " OBJ"]

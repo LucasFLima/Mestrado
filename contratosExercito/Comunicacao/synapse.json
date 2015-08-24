@@ -1,0 +1,300 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "Comunicacao",
+	"version": "1.0.4",
+	"produces": 
+	[
+		"application/json"
+	],
+
+	"apis": 
+	[
+		{
+			"path": "/enviar",
+			"description": "Adiciona um dado à fila de envio para um nó remoto",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"summary": "Coloca um dado na fila de envio",
+					"type": "EnviarResponse",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "message",
+							"description": "Mensagem para envio",
+							"required": true,
+							"type": "CommunicationMessage",
+							"paramType": "body"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/status",
+			"description": "Retorna o estado da comunicacao com os nos conectados",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"summary": "Obtém o estado da comunicacao com todos os nos conectados",
+					"type": "GeneralCommunicationStatus"
+				}
+			]
+		},
+
+		{
+			"path": "/status/{idNode}",
+			"description": "Retorna o estado da comunicacao com os nos conectados",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"summary": "Obtém o estado da comunicacao com todos os nos conectados",
+					"type": "CommunicationStatus",
+					"parameters": 
+					[
+						{
+							"name": "id_node",
+							"paramType": "path",
+							"required": true,
+							"summary": "Id global da instancia conectada",
+							"type": "string"
+						}
+					]
+				}
+			]
+		}
+	],
+
+	"models": 
+	{
+		"EnviarResponse": 
+		{
+			"properties": 
+			{
+				"Status": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"CommunicationMessage": 
+		{
+			"properties": 
+			{
+				"node": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"topic": 
+				{
+					"description": "Tópico da mensagem. Deve ser uma string de 8 caracteres ASCI sem diferenciação de maíusculas ou minúsculas.",
+					"type": "string",
+					"required": true
+				},
+
+				"encoded": 
+				{
+					"type": "boolean",
+					"required": false
+				},
+
+				"body": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"reliable": 
+				{
+					"type": "boolean",
+					"required": false
+				}
+			}
+		},
+
+		"CommunicationStatus": 
+		{
+			"properties": 
+			{
+				"transmitQueueByteSize": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"transmitTimeout": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"transmitWindowSize": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"lastAckReceived": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"timeOfLastAckReceived": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"lastPacketSent": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"timeOfLastPacketReceived": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"ipAddress": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"totalPacketsReceived": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"totalPacketsSent": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"totalPacketsRetransmitted": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"timeOfLastPacketSent": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"totalPacketsInQueue": 
+				{
+					"type": "numeric",
+					"required": true
+				}
+			}
+		},
+
+		"NodeCommunicationStatus": 
+		{
+			"properties": 
+			{
+				"node": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"ipAddress": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"status": 
+				{
+					"type": "CommunicationStatus",
+					"required": true
+				}
+			}
+		},
+
+		"GeneralCommunicationStatus": 
+		{
+			"properties": 
+			{
+				"ipAddress": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"totalPacketsReceived": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"totalPacketsSent": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"totalPacketsRetransmitted": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"totalPacketsInQueue": 
+				{
+					"type": "numeric",
+					"required": true
+				},
+
+				"timeOfLastPacketSent": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"timeOfLastPacketReceived": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"nodeStatistics": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "NodeCommunicationStatus"
+					}
+				}
+			}
+		}
+	}
+}

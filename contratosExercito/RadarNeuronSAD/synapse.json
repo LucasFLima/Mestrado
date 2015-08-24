@@ -1,0 +1,133 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "RadarNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/config",
+      "description": "Gerenciamento de Radares",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "RadarConfigResponse",
+          "summary": "Configurações de Radar",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "RadarConfigResponse",
+          "summary": "Alteração das Configurações de Radar",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "radarConfig",
+              "description": "Parametros a serem atualizados",
+              "paramType": "body",
+              "type": "RadarConfigPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/status",
+      "description": "Status da Comunicação com Radares",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "RadarStatusResponse",
+          "summary": "Status da Comunicação com Radares",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "RadarConfigResponse": {
+      "properties": {
+        "ipRadar": {
+          "type": "string",
+          "required": true,
+          "description": "IP da Estação Remota para conexão relativa a dados ASTERIX de radares"
+        },
+        "portaRadar": {
+          "type": "integer",
+          "required": true,
+          "description": "Porta da Estação Remota para conexão relativa a dados ASTERIX de radares"
+        },
+        "habilitado": {
+          "type": "boolean",
+          "required": true,
+          "description": "Indica se a funcionalidade de recebimento de dados de radares está habilitada no SAD"
+        },
+        "statusComunicacao": {
+          "type": "boolean",
+          "required": false,
+          "description": "Indica se a conexao TCP esta conectado ou não"
+        },
+        "estadoComunicacao": {
+          "type": "integer",
+          "required": false,
+          "description": "Estado atual da conexão TCP Socket ASTERIX com a Estação Remota do SVMR para recebimento dos dados de radares"
+        }
+      }
+    },
+    "RadarStatusResponse": {
+      "properties": {
+        "statusComunicacao": {
+          "type": "boolean",
+          "required": false,
+          "description": "Indica se a conexao TCP esta conectado ou não"
+        },
+        "estadoComunicacao": {
+          "type": "integer",
+          "required": false,
+          "description": "Estado atual da conexão TCP Socket ASTERIX com a Estação Remota do SVMR para recebimento dos dados de radares"
+        }
+      }
+    },
+    "RadarConfigPutRequest": {
+      "properties": {
+        "ipRadar": {
+          "type": "string",
+          "description": "IP da Estação Remota para conexão relativa a dados ASTERIX de radares"
+        },
+        "portaRadar": {
+          "type": "long",
+          "description": "Porta da Estação Remota para conexão relativa a dados ASTERIX de radares"
+        },
+        "conectar": {
+          "type": "boolean",
+          "required": true,
+          "description": "Indica se o SAD deve tentar conectar (true) ou desconectar (false) da Estação Remota"
+        }
+      }
+    }
+  }
+}

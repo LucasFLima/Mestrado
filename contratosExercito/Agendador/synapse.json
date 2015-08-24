@@ -1,0 +1,265 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Agendador",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/scheduler/{scheduleId}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "SchedulerGetResponse",
+          "summary": "Obtém um agendamento",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "scheduleId",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/scheduler/{scheduleId}",
+      "operations": [
+        {
+          "method": "PUT",
+          "type": "SchedulerPutOrDeleteResponse",
+          "summary": "Reagenda um agendamento",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "scheduleId",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "cancela_agendamento",
+              "paramType": "body",
+              "type": "SchedulerPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/scheduler/{scheduleId}",
+      "operations": [
+        {
+          "method": "DELETE",
+          "type": "SchedulerPutOrDeleteResponse",
+          "summary": "Cancela um agendamento",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "scheduleId",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/scheduler",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "SchedulerPostResponse",
+          "summary": "Cria um agendamento",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "novo_agendamento",
+              "paramType": "body",
+              "type": "SchedulerPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/scheduler/task",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "TaskPostResponse",
+          "summary": "Executar uma tarefa",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "executar_tarefa",
+              "paramType": "body",
+              "type": "TaskPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "SchedulerPutOrDeleteResponse": {
+      "properties": {
+          "executed": {
+              "type": "boolean",
+              "required": true
+          }
+       }
+    },
+    "TaskPostResponse": {
+      "properties": {
+          "executed": {
+              "type": "boolean",
+              "required": true
+          }
+       }
+    },
+    "TaskPostRequest": {
+      "properties": {
+          "taskClass": {
+              "type": "string",
+              "required": true
+          },
+          "errorRetries": {
+              "type": "number",
+              "required": true
+          },
+          "parameters": {
+              "type": "array",
+              "items": {
+                  "$ref": "TaskParameter"
+              }
+           }
+       }
+    },
+    "SchedulerPutRequest": {
+      "properties": {
+          "scheduleDate": {
+              "type": "number",
+              "required": true
+          }
+       }
+    },
+    "SchedulerGetResponse": {
+      "properties": {
+	      "id": {
+	          "type": "string",
+	          "required": true
+	      },
+	      "name": {
+	          "type": "string",
+	          "required": true
+	      },
+	      "status": {
+	          "type": "string",
+	          "required": true
+	      },
+	      "creationDate": {
+	          "type": "number",
+	          "required": true
+	      },
+	      "scheduleDate": {
+	          "type": "number",
+	          "required": true
+	      }
+      }
+    },
+    "SchedulerPostRequest": {
+      "properties": {
+          "scheduleName": {
+              "type": "string",
+              "required": true
+          },
+          "scheduleDate": {
+              "type": "number",
+              "required": true
+          },
+          "taskClass": {
+              "type": "string",
+              "required": true
+          },
+          "errorRetries": {
+              "type": "number",
+              "required": true
+          },
+          "parameters": {
+              "type": "array",
+              "items": {
+                  "$ref": "TaskParameter"
+              }
+           }
+       }
+    },
+    "TaskPostRequest": {
+      "properties": {
+          "taskClass": {
+              "type": "string",
+              "required": true
+          },
+          "parameters": {
+              "type": "array",
+              "items": {
+                  "$ref": "TaskParameter"
+              }
+           }
+       }
+    },
+    "TaskParameter": {
+      "properties": {
+          "key": {
+              "type": "string",
+              "required": true
+          },
+          "value": {
+              "type": "string",
+              "required": true
+          },
+          "object": {
+              "type": "boolean",
+              "required": true
+          }
+       }
+    }
+  }
+}

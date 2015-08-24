@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AsterixCategory cat="2">
+	<DataItem>
+		<Id>10</Id>
+		<Name>Data Source Identifier</Name>
+		<Type>0</Type>
+		<EncodingRule>1</EncodingRule>
+		<DataUnit>
+			<Name>SAC</Name>
+			<Bits>8</Bits>
+			<TypeFormat>0</TypeFormat>
+		</DataUnit>
+		<DataUnit>
+			<Name>SIC</Name>
+			<Bits>8</Bits>
+			<TypeFormat>0</TypeFormat>
+		</DataUnit>
+	</DataItem>
+	<DataItem>
+		<Id>0</Id>
+		<Name>Message Type</Name>
+		<Type>0</Type>
+		<EncodingRule>1</EncodingRule>
+		<DataUnit>
+			<Name>Message Type</Name>
+			<Bits>8</Bits>
+			<TypeFormat>0</TypeFormat>
+		</DataUnit>
+	</DataItem>
+	<DataItem>
+		<Id>30</Id>
+		<Name>Time Of Day</Name>
+		<Type>0</Type>
+		<EncodingRule>1</EncodingRule>
+		<DataUnit>
+			<Name>Time Of Day</Name>
+			<Bits>24</Bits>
+			<TypeFormat>0</TypeFormat>
+			<LSB>7.8125e-3</LSB>
+		</DataUnit>
+	</DataItem>
+	<DataItem>
+		<Id>20</Id>
+		<Name>Sector Number</Name>
+		<Type>0</Type>
+		<EncodingRule>0</EncodingRule>
+		<DataUnit>
+			<Name>Sector Number</Name>
+			<Bits>8</Bits>
+			<TypeFormat>0</TypeFormat>
+			<LSB>1.40625</LSB>
+		</DataUnit>
+	</DataItem>
+</AsterixCategory>

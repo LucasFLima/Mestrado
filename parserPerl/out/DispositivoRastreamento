@@ -1,0 +1,424 @@
+module dispositivorastreamento {
+
+	path = "xxx";
+
+	entity RedesGetResponse {
+		[Rede] : redes;
+	};
+
+	entity PosicaoRadar {
+		string : datahoraMs;
+		long : idPosicao;   /*Required.*/
+		number : longitude;   /*Required.*/
+		number : timeOfDay;   /*Required.*/
+		string : datahoraGmt;   /*Required.*/
+		long : relY;   /*Required.*/
+		number : velocidadeAng;   /*Required.*/
+		number : latitude;   /*Required.*/
+		long : relX;   /*Required.*/
+		number : velocidade;   /*Required.*/
+		number : localPolarR;
+		number : localPolarAng;
+	};
+
+	entity RadarAtualizacao {
+		long : sic;   /*Required.*/
+		string : nomeMaterial;   /*Required.*/
+		long : sac;   /*Required.*/
+		string : idMaterial;   /*Required.*/
+	};
+
+	entity MateriaisRadaresPutResponse {
+		[MaterialRadar] : radares;   /*Required.*/
+	};
+
+	entity MaterialRedePutResponse {
+		[MaterialRede] : material;   /*Required.*/
+	};
+
+	entity MaterialRedePostRequest {
+		[MaterialRede] : materialRede;   /*Required.*/
+	};
+
+	entity ServicoRede {
+		string : codCategoria;   /*Required.*/
+		number : idxRedeServico;   /*Required.*/
+		string : codIndicativoCifra;   /*Required.*/
+		number : classificacaoSegurancaID;   /*Required.*/
+		string : codSubCategoria;   /*Required.*/
+		boolean : indicadorAtivo;   /*Required.*/
+	};
+
+	entity MaterialRedeExclusao {
+		number : itemID;
+	};
+
+	entity VistasRadarGetResponse {
+		[VistaAssociada] : vistas;
+	};
+
+	entity MaterialPutRequest {
+		[MaterialRede] : materiaisNovos;
+		[MaterialRede] : materiaisExcluidos;
+		[MaterialRede] : materiaisAlterados;
+	};
+
+	entity Classificacao {
+		long : gdh;   /*Required.*/
+		long : gdhInicial;
+	};
+
+	entity MaterialRedePutRequest {
+		[MaterialRede] : materialRede;   /*Required.*/
+	};
+
+	entity ItemMapeado {
+		CalcoMapeado : calco;
+		string : hostilidade;
+		string : idItem;
+		string : nomeItem;
+		string : idTipo;
+	};
+
+	entity VistaAssociada {
+		boolean : associada;   /*Required.*/
+		string : idVista;   /*Required.*/
+		string : nomeVista;
+	};
+
+	entity AssociacaoRastreadorGetResponse {
+		[AssociacaoRastreador] : associados;
+		[AssociacaoRastreador] : naoAssociados;
+	};
+
+	entity MaterialRadar {
+		long : sic;
+		string : numeroSerial;
+		string : larguraBanda;
+		string : nomeTipoItem;
+		long : sac;
+		boolean : habilitado;   /*Required.*/
+		string : nomeItem;
+		string : itemID;
+		string : enderecoIP;   /*Required.*/
+	};
+
+	entity Radio {
+		string : idMaterial;
+		string : banda;
+		string : estado;
+		string : ip;
+		string : idRadio;
+		string : nomeMaterial;
+	};
+
+	entity CapacidadeRede {
+		string : codProtocolo;   /*Required.*/
+		number : idxCapacidadeRede;   /*Required.*/
+		string : codLarguraBanda;   /*Required.*/
+	};
+
+	entity RadarCadastramento {
+		long : sic;   /*Required.*/
+		string : nomeMaterial;   /*Required.*/
+		long : sac;   /*Required.*/
+	};
+
+	entity MaterialRede {
+		string : nomeTipoItem;
+		string : larguraBanda;
+		string : numeroSerial;
+		number : enderecoID;
+		string : enderecoIP;   /*Required.*/
+		number : itemID;
+		boolean : habilitado;   /*Required.*/
+		string : nomeItem;
+	};
+
+	entity Radar {
+		string : estado;
+		string : idMaterial;
+		string : sac;
+		string : ip;
+		string : nomeMaterial;
+		string : sic;
+	};
+
+	entity RadarExclusao {
+		string : idMaterial;   /*Required.*/
+	};
+
+	entity AssociacaoRastreador {
+		string : idMaterial;
+		string : estado;
+		string : idAssociacao;
+		string : nomeMaterial;
+	};
+
+	entity MaterialRedeDeleteResponse {
+		int : qtdExcluidos;
+	};
+
+	entity CalcoMapeado {
+		string : idCalco;
+		string : nomeCalco;
+	};
+
+	entity AlvoRadarMapeado {
+		boolean : trackTre;
+		long : trackId;
+		PosicaoRadarMapeado : posicao;
+		number : trackDou;
+		boolean : rastreado;
+		integer : classificacao;
+	};
+
+	entity Vista {
+		string : idVista;   /*Required.*/
+	};
+
+	entity RadarMapeado {
+		long : sac;
+		PosicaoRadarMapeado : posicao;
+		long : sic;
+		[AlvoRadarMapeado] : alvos;
+	};
+
+	entity MaterialPutResponse {
+		[MaterialRede] : materiais;   /*Required.*/
+	};
+
+	entity MaterialRedeDeleteRequest {
+		[MaterialRedeExclusao] : materialRede;   /*Required.*/
+	};
+
+	entity RastreadorGetResponse {
+		boolean : estadoConexaoSAD;
+		[Radio] : radios;
+	};
+
+	entity Item {
+		string : hostilidade;   /*Required.*/
+		string : idItem;   /*Required.*/
+		string : idTipo;   /*Required.*/
+	};
+
+	entity Rede {
+		[ServicoRede] : ServicosRede;
+		number : qtdCanais;   /*Required.*/
+		number : taxaCapacidadeMax;   /*Required.*/
+		string : codEnlace;   /*Required.*/
+		CapacidadeRede : capacidade;   /*Required.*/
+		string : codCategoria;   /*Required.*/
+		string : codArquitetura;   /*Required.*/
+		string : codSubcategoria;   /*Required.*/
+		number : redeID;
+	};
+
+	entity MateriaisRedeGetResponse {
+		[MaterialRede] : materiais;
+		number : idRede;   /*Required.*/
+	};
+
+	entity MaterialRedePostResponse {
+		[MaterialRede] : material;   /*Required.*/
+	};
+
+	entity MateriaisRadaresGetResponse {
+		boolean : estadoConexao;
+		[Radar] : radares;
+	};
+
+	entity Ponto {
+		double : altura;
+		double : latitude;   /*Required.*/
+		double : longitude;   /*Required.*/
+	};
+
+	entity VistasRadarPutResponse {
+		[VistaAssociada] : vistas;
+	};
+
+	entity MateriaisRadaresPutRequest {
+		[RadarExclusao] : radaresExcluidos;
+		[RadarCadastramento] : radaresNovos;
+		[RadarAtualizacao] : radaresAlterados;
+	};
+
+	entity Localizacao {
+		string : precisaoTaxaVelocidade;
+		string : precisao;
+		string : direcaoAngulo;
+		string : taxaVelocidade;
+		string : precisaoDirecaoAngulo;
+		Ponto : ponto;   /*Required.*/
+	};
+
+	entity VistasRadarPutRequest {
+		[Vista] : vistasAdd;
+		[Vista] : vistasRemove;
+	};
+
+	service <NomeServico> {
+		path = "/rastreamento/radios";
+
+		/**
+		* @ summary: Consulta os radios disponiveis para comunicação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get RastreadorGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/radios/{idMaterialRadio}";
+
+		/**
+		* @ summary: Consulta informacoes de um radio disponivel para comunicação
+		* @ params: 
+		*	path idMaterialRadio(*): ID do Material do Rádio
+		*	query t(*): Token de autenticação
+		*/
+		@get RastreadorRadioGetResponse <NomeCapacidade> (string idMaterialRadio, string t);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/associacao/{idItem}";
+
+		/**
+		* @ summary: Consulta associações de um item com os radios
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): Identificador do Item
+		*/
+		@get AssociacaoRastreadorGetResponse <NomeCapacidade> (string t, string idItem);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/redes";
+
+		/**
+		* @ summary: Retorna uma lista de redes
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get RedesGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/redes/{idRede}";
+
+		/**
+		* @ summary: Retorna uma lista de redes
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRede(*): Identificador da rede
+		*/
+		@get RedesGetResponse <NomeCapacidade> (string t, string idRede);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/redes/{idRede}/materiais";
+
+		/**
+		* @ summary: Retorna a lista de materiais associados a rede
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRede(*): Identificador da rede
+		*/
+		@get MateriaisRedeGetResponse <NomeCapacidade> (string t, string idRede);
+
+		/**
+		* @ summary: Cria o material e associa a rede
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRede: Identificador da rede, se não for definido o neuron decide a rede default
+		*	body materialRede(*): Informações do material
+		*/
+		@post MaterialRedePostResponse <NomeCapacidade> (string t, string idRede, MaterialRedePostRequest materialRede);
+
+		/**
+		* @ summary: Cria o material e associa a rede
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRede(*): Identificador da rede
+		*	body materialRede(*): Informações do material
+		*/
+		@put MaterialRedePutResponse <NomeCapacidade> (string t, string idRede, MaterialRedePutRequest materialRede);
+
+		/**
+		* @ summary: Deleta uma lista de materiais
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRede(*): Identificador da rede
+		*	body materialRede(*): Informações do material
+		*/
+		@delete MaterialRedeDeleteResponse <NomeCapacidade> (string t, string idRede, MaterialRedeDeleteRequest materialRede);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/redes/{idRede}/radares";
+
+		/**
+		* @ summary: Deleta uma lista de materiais
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRede(*): Identificador da rede
+		*	body materialRede(*): Informações do material
+		*/
+		@delete MaterialRedeDeleteResponse <NomeCapacidade> (string t, string idRede, MaterialRedeDeleteRequest materialRede);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/materiais";
+
+		/**
+		* @ summary: Realiza as operações de manter material
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body materiais(*): Informações de criação, alteração e exclusão de materiais
+		*/
+		@put MaterialPutResponse <NomeCapacidade> (string t, MaterialPutRequest materiais);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/materiais/radares";
+
+		/**
+		* @ summary: Realiza as operações de manter material para radares
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body radares(*): Informações de criação, alteração e exclusão de materiais radares
+		*/
+		@put MateriaisRadaresPutResponse <NomeCapacidade> (string t, MateriaisRadaresPutRequest radares);
+
+		/**
+		* @ summary: Consulta os radares disponiveis para comunicação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get MateriaisRadaresGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/rastreamento/radar/{idItemRadar}/vistas";
+
+		/**
+		* @ summary: Retorna as vistas associadas ao radar
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItemRadar(*): Identificador do radar
+		*/
+		@get VistasRadarGetResponse <NomeCapacidade> (string t, string idItemRadar);
+
+		/**
+		* @ summary: Realiza a atualização das associações entre radar e vistas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItemRadar(*): Identificador do radar
+		*	body vistas(*): Request com as informações para atualização
+		*/
+		@put void <NomeCapacidade> (string t, string idItemRadar, VistasRadarPutRequest vistas);
+	}
+
+

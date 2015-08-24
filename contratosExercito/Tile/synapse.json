@@ -1,0 +1,256 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "Tile",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/mapserver/proxy",
+            "operations": [
+				{
+                    "method": "GET",
+                    "type": "string",
+                    "summary": "Atua como Proxy para Mapserver WMS Requests",
+                    "produces": [
+                    ],
+                    "parameters": [
+                        {
+                            "name": "oms_request",
+                            "description": "HTTP Request desejado",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+				
+            ]
+        },
+        {
+            "path": "/tile/tms",
+            "operations": [
+				{
+                    "method": "POST",
+                    "type": "string",
+                    "summary": "Realiza Highlight de sintaxe XML",
+                    "produces": [
+                        "image/png"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "infoMapa ",
+                            "description": "Tile de Mapa",
+                            "required": true,
+                            "type": "GetMapaTileRequest",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+
+            ]
+        },
+        {
+            "path": "/tile/wms/camadas",
+            "operations": [
+				{
+                    "method": "POST",
+                    "type": "array",
+                    "items": {
+                        "$ref": "CamadaWmsResponse"
+                    },
+                    "summary": "Recupera as camadas WMS de um Mapa",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "camadas ",
+                            "description": "Camadas de Mapa WMS",
+                            "required": true,
+                            "type": "GetCamadasWmsRequest",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+				
+            ]
+        },
+        {
+            "path": "/perfilterreno/elevacoes",
+            "operations": [
+				{
+                    "method": "POST",
+                    "type": "string",
+                    "summary": "Obtenção de Perfil de Terreno (altitudes)",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "infoLinha",
+                            "description": "Linha para requisitar Elevações",
+                            "required": true,
+                            "type": "PostElevacoesRequest",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+
+            ]
+        },
+        {
+            "path": "/perfilterreno/config/recarregar",
+            "operations": [
+				{
+                    "method": "PUT",
+                    "type": "string",
+                    "summary": "Recarrega as configuracoes",
+                    "produces": [
+                    ],
+                    "parameters": [
+                    ]
+                }
+
+            ]
+        }
+    ],
+     "models": {
+    	"GetMapaTileRequest": {
+    		"properties": {
+    			"idMapa": {
+                 	"type": "string",
+                    "required": false
+    			},
+    			"tipoMapa": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"camadaMapa": {
+                 	"type": "string",
+                    "required": false
+    			},
+    			"tx": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"ty": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"tz": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"repoMapasDir": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"repoMapasCacheDir": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"referenciaMapa": {
+                 	"type": "string",
+                    "required": false
+    			}
+    		}
+    	},
+    	"GetCamadasWmsRequest": {
+    		"properties": {
+    			"idMapa": {
+                 	"type": "string",
+                    "required": false
+    			},
+    			"referenciaMapa": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"nomeCamada": {
+                 	"type": "string",
+                    "required": false
+    			},
+    			"Proxy": {
+                 	"type": "ProxyRequest",
+                    "required": false
+    			}
+    		}
+    	},
+    	"CamadaWmsResponse": {
+    		"properties": {
+    			"wmsCrs": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"wmsFormat": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"wmsLayer": {
+                 	"type": "string",
+                    "required": true
+    			},
+    			"wmsSubLayers":{
+    			    "type": "array",
+    			    "items": {
+    			        "$ref": "string"
+    			    }
+    			}
+    		}
+    	},
+    	"ProxyRequest": {
+    		"properties": {
+    			"proxyServer": {
+                 	"type": "string",
+                    "required": false
+    			},
+    			"proxyPort": {
+                 	"type": "integer",
+                    "required": false
+    			},
+    			"proxyUser": {
+                 	"type": "string",
+                    "required": false
+    			},
+    			"proxyPassword": {
+                 	"type": "string",
+                    "required": false
+    			}
+    		}
+    	},
+        "Ponto": {
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "required": true
+                },
+                "longitude": {
+                    "type": "number",
+                    "required": true
+                },
+                "altitude": {
+                    "type": "number"
+                }
+            }
+        },
+    	"PostElevacoesRequest": {
+    		"properties": {
+    		    "numMaxAmostras": {
+    		        "type": "string",
+    		        "required": false,
+    		        "description": "Número total máximo de pontos que a linha deve conter após o acréscimo dos pontos de amostragem"
+    		    },
+    			"pontos": {
+                 	"type": "array",
+                 	"items": {
+                 	    "$ref": "Ponto"
+                 	},
+                    "required": true,
+                    "description": "Lista de pontos da linha, no formato MCC Linha do SAD"
+    			}
+    		}
+    	}
+	}
+}
+

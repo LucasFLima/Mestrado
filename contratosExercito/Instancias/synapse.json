@@ -1,0 +1,394 @@
+{
+    "swaggerVersion":"1.2",
+    "id":"Instancias",
+    "version":"1.0.4",
+    "produces":[
+        "application/json"
+    ],
+    "apis":[
+
+        {
+            "path":"/instancias",
+            "description":"Recurso para gerenciar as instâncias do grafo de ligações",
+            "operations":[
+                {
+                    "method":"GET",
+                    "type":"InstanciasGetResponse",
+                    "summary":"Obtém as instâncias com as quais a instância local tem ligações",
+                    "parameters":[
+                        {
+                            "name":"t",
+                            "description":"Token de autenticação",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path":"/instancia_local",
+            "description":"Recurso para gerenciar a instância local",
+            "operations":[
+                {
+                    "method":"GET",
+                    "type":"InstanciaLocalGetResponse",
+                    "summary":"Obtém a instância local",
+                    "parameters":[
+                       
+                    ]
+                }
+            ]
+        },
+        
+         {
+            "path":"/om_local",
+            "description":"Recurso para gerenciar a OM local",
+            "operations":[
+                {
+                    "method":"GET",
+                    "type":"OrganizacaoMilitarLocalBuffer",
+                    "summary":"Obtém a om local",
+                    "parameters":[
+                        {
+                            "name":"t",
+                            "description":"Token de autenticação",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/instancia_local/usuario",
+            "description" : "Recurso para genrenciar os usuários locais no cache da instância local",
+            "operations": [
+                {
+                    "method": "PUT",
+                    "summary": "Atualiza um usuário local no cache de usuários da instância local",
+                    "parameters": [
+                        {
+                            "name": "usuario",
+                            "description": "Dados do usuário",
+                            "paramType": "body",
+                            "type": "UsuarioLocalPutRequest",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/usuario",
+            "operations": [
+                {
+                    "method": "PUT",
+                    "summary": "Atualiza um usuário remoto no cache de usuários da instância local",
+                    "parameters": [
+                        {
+                            "name": "usuario",
+                            "description": "Dados do usuário",
+                            "paramType": "body",
+                            "type": "UsuarioPutRequest",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "method": "GET",
+                    "summary": "Retorna a lista de usuários da instância local para a instância remota",
+                    "parameters": [
+                        {
+                            "name": "globalIdRequest",
+                            "description": "ID global da instância remota",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "method": "POST",
+                    "summary": "Recebe a lista de usuários da instância remota e atualiza no cache da instância local",
+                    "parameters": [
+                        {
+                            "name": "usuariosRemotos",
+                            "description": "Lista de usuários da instância remota",
+                            "paramType": "body",
+                            "type": "UsuariosRemotosPostRequest",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/obtemTaskResource",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Retorna as informações necessárias para executar a task diária de atualização de usuários",
+                    "type": "array",
+                    "items": {
+                        "$ref": "string"
+                    }
+                }
+            ]
+        },
+
+        {
+            "path":"/nos",
+            "description":"Recurso para gerenciar os nós do grafo de ligações",
+            "operations":[
+                {
+                    "method":"GET",
+                    "type":"NosGetResponse",
+                    "summary":"Obtém os nós (ordens de batalha) com as quais a instância local tem ligações",
+                    "parameters":[
+                        {
+                            "name":"t",
+                            "description":"Token de autenticação",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path":"/nos/{idOrdemDeBatalha}",
+            "description":"Recurso para retornar um nó a partir de seu idGlobal",
+            "operations":[
+                {
+                    "method":"GET",
+                    "type":"No",
+                    "summary":"Obtém o nó (ordem de batalha) que possuam o id global informado",
+                    "parameters":[
+                        {
+                            "name":"t",
+                            "description":"Token de autenticação",
+                            "required":true,
+                            "type":"string", 
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"idOrdemDeBatalha",
+                            "description":"Id da ordem de batalha",
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "models":{
+        "InstanciaLocalGetResponse":{
+            "properties":{
+                "instancia":{
+                    "type":"Instancia",
+                    "required":true
+                }
+            }
+        },
+
+        "InstanciasGetResponse":{
+            "properties":{
+                "instancias":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"Instancia"
+                    },
+                    "required":true
+                }
+            }
+        },
+
+        "UsuarioLocalPutRequest" : {
+            "properties": {
+                "usuario": {
+                    "type": "Usuario",
+                    "required": true
+                }
+            }
+        },
+
+        "UsuariosRemotosPostRequest": {
+            "properties": {
+                "listaUsuario": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "UsuarioRemoto"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "Instancia":{
+            "properties":{
+                "idInstancia":{
+                    "type":"string",
+                    "required":true
+                },
+                "idGlobalInstancia":{
+                    "type":"string",
+                    "required":true
+                },
+                "nome":{
+                    "type":"string",
+                    "required":true
+                },
+                "ip":{
+                    "type":"string",
+                    "required":true
+                },
+                "porta":{
+                    "type":"number",
+                    "required":true
+                },
+                "nomeOrdemBatalha": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "Usuario":{
+            "properties":{
+                "idUsuario":{
+                    "type":"string",
+                    "required":true
+                },
+                "identificador":{
+                    "type":"number",
+                    "required":true
+                },
+                "nome":{
+                    "type":"string",
+                    "required":true
+                },
+                "estado": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        },
+
+        "NosGetResponse":{
+            "properties":{
+                "nos":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"No"
+                    },
+                    "required":true
+                }
+            }
+        },
+
+        "No":{
+            "properties":{
+                "id":{
+                    "type":"string",
+                    "required":true
+                },
+                "idGlobalInstancia":{
+                    "type":"string",
+                    "required":true
+                },
+                "idGlobalOrdemBatalha":{
+                    "type":"string",
+                    "required":true
+                },
+                "nome":{
+                    "type":"string",
+                    "required":true
+                },
+                "nomeCompleto":{
+                    "type":"string",
+                    "required":true
+                },
+                "ip":{
+                    "type":"string",
+                    "required":true
+                },
+                "porta":{
+                    "type":"integer",
+                    "required":true
+                }
+            }
+        },
+
+        "NosGetRequest":{
+            "properties":{
+                "idUsuario":{
+                    "type":"string"
+                },
+                "idOrgRelatora":{
+                    "type":"string"
+                },
+                "ordemBatalhaIds":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"string"
+                    }
+                }
+            }
+        },
+
+        "UsuarioPutRequest": {
+            "properties": {
+                "idUsuario": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "identificador": {
+                    "type": "number",
+                    "required": true
+                },
+                "estado": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "instancia": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "UsuarioRemoto": {
+            "properties": {
+                "idUsuario": {
+                    "type": "string"
+                },
+                "nomeUsuario": {
+                    "type": "string"
+                },
+                "identificador": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "instancia": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,125 @@
+module associacao {
+
+	path = "xxx";
+
+	entity ClassificacaoConsulta {
+		long : gdhFinal;
+		string : conteudo;
+		string : tipoFonte;
+		long : gdhInicial;
+		string : fonte;
+		long : gdh;   /*Required.*/
+		string : idClassificacao;   /*Required.*/
+	};
+
+	entity CalcoItemPostResponse {
+		string : idItem;   /*Required.*/
+		string : idCalco;   /*Required.*/
+	};
+
+	entity ItemPutRequest {
+		string : idCalcoDestino;   /*Required.*/
+		string : idCalcoOrigem;
+	};
+
+	entity DetalheFault {
+		string : codigo;   /*Required.*/
+		string : mensagem;   /*Required.*/
+		string : causa;
+	};
+
+	entity AssociacaoItensGetResponse {
+		[AssociacaoItemConsulta] : associacoes;
+	};
+
+	entity Item {
+		string : idItem;   /*Required.*/
+	};
+
+	entity CalcoItemPostRequest {
+		string : idOrganizacaoRelatora;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+		Item : item;   /*Required.*/
+	};
+
+	entity AssociacaoItemConsulta {
+		string : idItemSubj;   /*Required.*/
+		ClassificacaoConsulta : classificacao;   /*Required.*/
+		string : idAssociacao;   /*Required.*/
+		string : codigoSubCategoria;   /*Required.*/
+		string : idItemObj;   /*Required.*/
+		string : codigoCategoria;   /*Required.*/
+	};
+
+	entity Fault {
+		string : mensagem;   /*Required.*/
+		DetalheFault : detalhe;
+		string : codigo;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/associacao/calco/{idCalco}/item";
+
+		/**
+		* @ summary: Associa um item pré-existente a um calco.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idCalco(*): Id do calco
+		*	body CalcoItemAssociacao(*): Dados para associação
+		*/
+		@post CalcoItemPostResponse <NomeCapacidade> (string t, string idCalco, CalcoItemPostRequest CalcoItemAssociacao);
+	}
+
+	service <NomeServico> {
+		path = "/associacao/calco/{idCalco}/item/{idItem}";
+
+		/**
+		* @ summary: Remove a associação entre um item e um calco.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idCalco(*): Id do calco
+		*	path idItem(*): Id do item
+		*/
+		@delete string <NomeCapacidade> (string t, string idCalco, string idItem);
+	}
+
+	service <NomeServico> {
+		path = "/associacao/item/{idItem}";
+
+		/**
+		* @ summary: Atualiza a associação de um item.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): Id do item
+		*	body ItemAssociacao(*): Dados para associação
+		*/
+		@put string <NomeCapacidade> (string t, string idItem, ItemPutRequest ItemAssociacao);
+	}
+
+	service <NomeServico> {
+		path = "/associacao/item/{idItem}/{field}";
+
+		/**
+		* @ summary: Consulta a dados da associação entre os itens.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): Identificador do item
+		*	path field(*): Informa se o item é um objeto ou um sujeito
+		*		\--> Valores possiveis: SUBJ  OBJ 
+		*	query idItemRelacionado: Identificador do item relacionado
+		*	query codigoCategoria: Código da categoria da associação
+		*	query codigoSubCategoria: Código da subcategoria da assoicação
+		*	query dataCorrente: Data corrente
+		*	query dataInicio: Data de inicio da classificação
+		*	query dataFim: Data de final da classificação
+		* @ responseCodes: 
+		*	200: Associações encontradas --Response Model: AssociacaoItensGetResponse
+		*	204: Nenhuma associação encontrada
+		*	500: Erro na execução do recurso --Response Model: Fault
+		*	401: Autenticação negada --Response Model: Fault
+		*	400: Request invalido --Response Model: Fault
+		*/
+		@get AssociacaoItensGetResponse <NomeCapacidade> (string t, string idItem, string field, string idItemRelacionado, string codigoCategoria, string codigoSubCategoria, long dataCorrente, long dataInicio, long dataFim);
+	}
+
+

@@ -1,0 +1,316 @@
+module alerta {
+
+	path = "xxx";
+
+	entity TipoAlertaResponse {
+		[TipoAlerta] : tipos;   /*Required.*/
+	};
+
+	entity Alerta {
+		Regiao : regiao;
+		string : categoria;   /*Required.*/
+		string : criticidade;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idPio;
+		[ApresentacaoAlerta] : apresentacao;   /*Required.*/
+		string : nomePio;
+		boolean : ativo;   /*Required.*/
+		string : tipoAlerta;   /*Required.*/
+		string : tipo;   /*Required.*/
+		[UnidadeAlerta] : unidades;
+		string : txtTipo;
+		string : txtTipoAlerta;
+		[ItemAlerta] : itens;
+		string : idAlerta;
+		string : difusao;   /*Required.*/
+	};
+
+	entity CategoriaDifusaoAlerta {
+		string : descDifusao;
+		string : codDifusao;
+		string : txtDifusao;
+	};
+
+	entity UnidadeAlerta {
+		string : descricao;
+		string : codigo;   /*Required.*/
+	};
+
+	entity Event {
+		string : idPio;   /*Required.*/
+		string : typeSourceItem;
+		string : codTipoEvento;   /*Required.*/
+		string : idSourceItem;   /*Required.*/
+	};
+
+	entity CategoriaTipoAlertaGetResponse {
+		[CategoriaTipoAlerta] : alertas;   /*Required.*/
+	};
+
+	entity UnidadeAlertaGetResponse {
+		[UnidadeAlerta] : unidades;   /*Required.*/
+	};
+
+	entity ItemAlerta {
+		string : codigo;   /*Required.*/
+	};
+
+	entity Area {
+		[Ponto] : pontos;   /*Required.*/
+	};
+
+	entity TipoAlerta {
+		string : descricaoTipoAlerta;   /*Required.*/
+		string : codTipoAlerta;   /*Required.*/
+	};
+
+	entity HistoricoAlertaGetResponse {
+		[HistoricoAlerta] : historico;   /*Required.*/
+	};
+
+	entity CategoriaDifusaoGetResponse {
+		[CategoriaDifusaoAlerta] : alertas;   /*Required.*/
+	};
+
+	entity AlertaDeleteResponse {
+		string : idAlerta;   /*Required.*/
+	};
+
+	entity CategoriaAlerta {
+		string : txtCategoria;
+		string : codCategoria;
+	};
+
+	entity NotifyEventPostRequest {
+		[Event] : events;
+	};
+
+	entity HistoricoAlerta {
+		string : entidadeUnidade;   /*Required.*/
+		string : idCriador;   /*Required.*/
+		string : nomeAlerta;   /*Required.*/
+		boolean : isUnidade;   /*Required.*/
+		string : idHistorico;   /*Required.*/
+		string : idxHistorico;   /*Required.*/
+		string : tipo;   /*Required.*/
+		string : dataHistorico;   /*Required.*/
+		string : criticidade;   /*Required.*/
+		string : txtTipo;   /*Required.*/
+	};
+
+	entity Circulo {
+		string : raio;   /*Required.*/
+		Ponto : centro;   /*Required.*/
+	};
+
+	entity AlertaResponse {
+		[Alerta] : alertas;   /*Required.*/
+	};
+
+	entity AlertaPostRequest {
+		Alerta : alerta;
+	};
+
+	entity HistoricoAlertaGetRequest {
+		string : dataFinal;
+		string : idAlerta;
+		string : dataInicial;
+	};
+
+	entity Regiao {
+		Area : area;
+		Circulo : circulo;
+	};
+
+	entity Ponto {
+		number : latitude;   /*Required.*/
+		number : altitude;
+		number : longitude;   /*Required.*/
+	};
+
+	entity AlertaPutRequest {
+		Alerta : alerta;   /*Required.*/
+	};
+
+	entity CategoriaTipoAlerta {
+		string : txtCategoriaTipoAlerta;
+		string : codCategoriaTipoAlerta;
+	};
+
+	entity CategoriaAlertaGetResponse {
+		[CategoriaAlerta] : alertas;   /*Required.*/
+	};
+
+	entity ApresentacaoAlerta {
+		string : codigo;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/alerta/{idAlerta}";
+
+		/**
+		* @ summary: Um array contendo o alerta consultado.
+		* @ params: 
+		*	query t(*): 
+		*	query idAlerta(*): 
+		*/
+		@get AlertaResponse <NomeCapacidade> (string t, number idAlerta);
+
+		/**
+		* @ summary: Atualiza as informações de um alerta no servidor
+		* @ params: 
+		*	query t(*): 
+		*	query idAlerta(*): 
+		*	body alerta(*): 
+		*/
+		@put AlertaResponse <NomeCapacidade> (string t, string idAlerta, Alerta alerta);
+
+		/**
+		* @ summary: Atualiza as informações de um alerta no servidor
+		* @ params: 
+		*	query t(*): 
+		*	query idAlerta(*): 
+		*/
+		@delete AlertaDeleteResponse <NomeCapacidade> (string t, string idAlerta);
+	}
+
+	service <NomeServico> {
+		path = "/alerta";
+
+		/**
+		* @ summary: Um array contendo todos os alertas
+		* @ params: 
+		*	query t(*): 
+		*/
+		@get AlertaResponse <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Cria um novo alerta
+		* @ params: 
+		*	query t(*): 
+		*	body alerta(*): 
+		*/
+		@post AlertaResponse <NomeCapacidade> (string t, AlertaPostRequest alerta);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/tipo/{tipoAlerta}";
+
+		/**
+		* @ summary: Um array contendo o alerta consultado.
+		* @ params: 
+		*	query t(*): 
+		*	query tipoAlerta(*): 
+		*		\--> Valores possiveis: N P T 
+		*/
+		@get AlertaResponse <NomeCapacidade> (string t, string tipoAlerta);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/{idAlerta}/enable/{ativar}";
+
+		/**
+		* @ summary: Retorna um array contendo as informações do alerta
+		* @ params: 
+		*	query t(*): Dados de autenticação
+		*	path idAlerta(*): Identificador do alerta
+		*	path ativar(*): Indica se o alerta será ativado ou desativado.
+		*		\--> Valores possiveis: true false 
+		*/
+		@put AlertaResponse <NomeCapacidade> (string t, string idAlerta, boolean ativar);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/tipo";
+
+		/**
+		* @ summary: Retorna um array contendo as informações dos tipos de alerta
+		* @ params: 
+		*	query t(*): Dados de autenticação
+		*/
+		@get TipoAlertaResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/notifyEvent";
+
+		/**
+		* @ summary: Envia uma notificação de que um  ou mais eventos de possível interesse para o neurôn de alertas.
+		* @ params: 
+		*	query t(*): 
+		*	body eventos: Informa quais eventos foram disparados
+		*/
+		@post NotifyEventResponse <NomeCapacidade> (string t, NotifyEventPostRequest eventos);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/fireAlert/{idAlerta}";
+
+		/**
+		* @ summary: Força o neurôn a disparar o alerta especificado.
+		* @ params: 
+		*	query t(*): 
+		*	query idAlerta(*): ID do alerta que deve ser disparado.
+		*/
+		@post AlertaResponse <NomeCapacidade> (string t, number idAlerta);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/dom/alerta";
+
+		/**
+		* @ summary: Retorna os valores possivéis para a categoria de alerta
+		* @ params: 
+		*	query t(*): 
+		*/
+		@get CategoriaAlertaGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/dom/difusao";
+
+		/**
+		* @ summary: Retorna os valores possivéis para a categoria de difusao
+		* @ params: 
+		*	query t(*): 
+		*/
+		@get CategoriaDifusaoGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/dom/tipo";
+
+		/**
+		* @ summary: Retorna as categorias de tipos de alertas existentes
+		* @ params: 
+		*	query t(*): 
+		*/
+		@get CategoriaTipoAlertaGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/dom/unidade";
+
+		/**
+		* @ summary: Retorna os valores possivéis para a categoria de alerta
+		* @ params: 
+		*	query t(*): 
+		*/
+		@get UnidadeAlertaGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/alerta/historico";
+
+		/**
+		* @ summary: Retorna uma lista de históricos. 
+		* @ params: 
+		*	query t(*): 
+		*	query idAlerta: ID do alerta dos históricos que devem ser retornados.
+		*	query dataInicial: A partir de que data o histórico deve ser retornado.
+		*	query dataFinal: Até que data o histórico deve ser retornado.
+		*/
+		@get HistoricoAlertaGetResponse <NomeCapacidade> (string t, string idAlerta, string dataInicial, string dataFinal);
+	}
+
+

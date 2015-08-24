@@ -1,0 +1,106 @@
+module chat {
+
+	path = "xxx";
+
+	entity MensagensPendentesGetResponse {
+		[Instancia] : instancias;
+	};
+
+	entity NumeroMensagens {
+		string : idUsuarioEnvio;   /*Required.*/
+		number : quantidadeMensagens;   /*Required.*/
+		string : idNoEnvio;   /*Required.*/
+	};
+
+	entity MensagemUsuariosGetResponse {
+		Instancia : instancia;
+	};
+
+	entity ChatReceiverPostRequest {
+		Mensagem : mensagem;   /*Required.*/
+	};
+
+	entity Instancia {
+		string : nome;
+		string : idInstancia;
+		number : usrMsgPendentes;
+		[Usuario] : usuarios;
+	};
+
+	entity ChatPostResponse {
+		number : datahora;   /*Required.*/
+	};
+
+	entity Usuario {
+		string : identificador;
+		number : msgPendentes;
+		string : nome;
+		[Mensagem] : mensagens;
+		string : status;
+		string : idUsuario;
+	};
+
+	entity Mensagem {
+		number : idMensagem;   /*Required.*/
+		string : nomeUsuarioOrigem;   /*Required.*/
+		string : nomeInstanciaDestino;   /*Required.*/
+		string : idUsuarioOrigem;   /*Required.*/
+		string : nomeInstanciaOrigem;   /*Required.*/
+		string : mensagem;   /*Required.*/
+		string : idUsuarioDestino;   /*Required.*/
+	};
+
+	entity NumeroMensagensGetResponse {
+		[NumeroMensagens] : usuarios;   /*Required.*/
+	};
+
+	entity ChatGetResponse {
+		string : idUsuarioEnvio;   /*Required.*/
+		[Mensagem] : mensagens;   /*Required.*/
+		string : idNoEnvio;   /*Required.*/
+	};
+
+	entity ChatPostRequest {
+		Mensagem : mensagem;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/chat/mensagens/{idUsuarioDestino}/{idUsuarioOrigem}";
+
+		/**
+		* @ summary: Obtém as mensagens de um usuário
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idUsuarioDestino(*): Identificador do usuário que recebeu as mensagens
+		*	path idUsuarioOrigem(*): Identificador do usuário que enviou as mensagens
+		*	query instanciaOrigem(*): Instancia do usuário que recebera a mensagem
+		*/
+		@get ChatGetResponse <NomeCapacidade> (string t, string idUsuarioDestino, string idUsuarioOrigem, string instanciaOrigem);
+	}
+
+	service <NomeServico> {
+		path = "/chat/mensagens/{idUsuarioDestino}";
+
+		/**
+		* @ summary: Obtém o número de mensagens não lidas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idUsuarioDestino(*): Identificador do usuário que recebeu as mensagens
+		*/
+		@get MensagensPendentesGetResponse <NomeCapacidade> (string t, string idUsuarioDestino);
+	}
+
+	service <NomeServico> {
+		path = "/chat/mensagem/recebimento";
+
+		/**
+		* @ summary: Envia uma mensagem para a caixa de entrada
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query gidInstanciaOrigem: ID global da instância que enviou a mensagem
+		*	body mensagem(*): Mensagem a ser enviada
+		*/
+		@post  <NomeCapacidade> (string t, string gidInstanciaOrigem, ChatReceiverPostRequest mensagem);
+	}
+
+

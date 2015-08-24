@@ -1,0 +1,64 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Radio",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/radio",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Insere uma nova localização vindo do rádio",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "nmea",
+              "paramType": "body",
+              "type": "PersisteLocalizacaoReq",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "PersisteLocalizacaoReq": {
+      "properties": {
+        "nmea": {
+          "type": "string",
+          "required": true
+        },
+        "idRadio": {
+          "type": "string",
+          "required": true
+        },
+        "dataRecebimento": {
+          "type": "long",
+          "required": true
+        }
+      }
+    },    
+    "Radio": {
+      "properties": {
+        "idMaterial": {
+          "type": "string",
+          "required": true
+        },
+        "idRadio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}

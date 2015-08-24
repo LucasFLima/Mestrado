@@ -1,0 +1,123 @@
+module mensagem {
+
+	path = "xxx";
+
+	entity MensagemFiltroRequest {
+		FiltroMensagem : filtro;
+	};
+
+	entity FiltroMensagem {
+		boolean : contador;
+		boolean : novas;
+		[string] : pastas;
+		string : assunto;
+	};
+
+	entity Mensagem {
+		string : textoMensagem;   /*Required.*/
+		[string] : anexos;
+		string : classificacao;   /*Required. Valores possiveis: ULTRASECRETO SECRETO CONFIDENCIAL RESERVADO SEM_SIGILO */
+		boolean : especial;   /*Required.*/
+		string : prioridade;   /* Valores possiveis: NORMAL URGENTE URGENTISSIMO */
+		string : dataDeExpiracao;
+		string : dataEnvio;
+		string : assunto;   /*Required.*/
+		string : dataRecebimento;
+		string : idMensagem;
+		[Destinatario] : destinatarios;
+		string : pasta;   /*Required. Valores possiveis: ENTRADA SAIDA ENVIADAS RASCUNHOS ARQUIVADAS */
+		string : origem;   /*Required.*/
+		boolean : lida;   /*Required.*/
+	};
+
+	entity MensagemListResponse {
+		[Mensagem] : mensagens;
+	};
+
+	entity MensagemRequest {
+		Mensagem : mensagem;   /*Required.*/
+	};
+
+	entity Destinatario {
+		string : nome;   /*Required.*/
+		string : idOrdemDeBatalha;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/mensagens/";
+
+		/**
+		* @ summary: Envia uma nova mensagem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post  <NomeCapacidade> (string t, MensagemRequest parametros);
+
+		/**
+		* @ summary: Retorna uma lista de mensagens dessa instância novas ou não
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query novas: Flag que indica se a busca retorna somente as mensagens novas
+		*	query pasta: Nome da pasta a ser buscada
+		*	query offset: Indica a posição inicial de mensagens que devem ser retornadas na busca
+		*	query limit: Indica o limite de mensagens que devem ser retornadas na busca
+		*/
+		@get MensagemListResponse <NomeCapacidade> (string t, boolean novas, string pasta, integer offset, integer limit);
+	}
+
+	service <NomeServico> {
+		path = "/mensagens/{idMensagem}";
+
+		/**
+		* @ summary: Atualiza uma mensagem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query marcarLida: 
+		*	query pasta: 
+		*	body parametros: 
+		*/
+		@put  <NomeCapacidade> (string t, boolean marcarLida, string pasta, MensagemRequest parametros);
+
+		/**
+		* @ summary: Deleta uma mensagem especifica
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idMensagem: id da mensagem que deve ser excluída
+		*/
+		@delete  <NomeCapacidade> (string t, String idMensagem);
+
+		/**
+		* @ summary: Retorna uma mensagem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idMensagem: Id da mensagem a ser buscada
+		*/
+		@get MensagemListResponse <NomeCapacidade> (string t, string idMensagem);
+	}
+
+	service <NomeServico> {
+		path = "/mensagens/receber";
+
+		/**
+		* @ summary: Atualiza uma mensagem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post  <NomeCapacidade> (string t, MensagemRequest parametros);
+	}
+
+	service <NomeServico> {
+		path = "/mensagens/filtro";
+
+		/**
+		* @ summary: Serviço de filtro de mensagem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post MensagemListResponse <NomeCapacidade> (string t, MensagemFiltroRequest parametros);
+	}
+
+

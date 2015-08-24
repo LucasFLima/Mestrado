@@ -1,0 +1,1102 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "DispositivoRastreamento",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/rastreamento/radios",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "RastreadorGetResponse",
+          "summary": "Consulta os radios disponiveis para comunicação",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			}
+			]
+        }
+      ]
+    },    {
+      "path": "/rastreamento/radios/{idMaterialRadio}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "RastreadorRadioGetResponse",
+          "summary": "Consulta informacoes de um radio disponivel para comunicação",
+          "parameters": [
+			{
+				"name": "idMaterialRadio",
+				"description": "ID do Material do Rádio",
+				"required": true,
+				"type": "string",
+				"paramType": "path"
+			},
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			}
+		  ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/associacao/{idItem}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AssociacaoRastreadorGetResponse",
+          "summary": "Consulta associações de um item com os radios",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idItem",
+              "description": "Identificador do Item",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/redes",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "RedesGetResponse",
+          "summary": "Retorna uma lista de redes",
+          "parameters": [
+	        {
+	          	"name": "t",
+	        	"description": "Token de autenticação",
+	        	"required": true,
+	        	"type": "string",
+	        	"paramType": "query"
+	        }
+        ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/redes/{idRede}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "RedesGetResponse",
+          "summary": "Retorna uma lista de redes",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idRede",
+              "description": "Identificador da rede",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/redes/{idRede}/materiais",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "MateriaisRedeGetResponse",
+          "summary": "Retorna a lista de materiais associados a rede",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idRede",
+              "description": "Identificador da rede",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "type": "MaterialRedePostResponse",
+          "summary": "Cria o material e associa a rede",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idRede",
+              "description": "Identificador da rede, se não for definido o neuron decide a rede default",
+              "required": false,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "materialRede",
+              "description": "Informações do material",
+              "required": true,
+              "type": "MaterialRedePostRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "MaterialRedePutResponse",
+          "summary": "Cria o material e associa a rede",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idRede",
+              "description": "Identificador da rede",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "materialRede",
+              "description": "Informações do material",
+              "required": true,
+              "type": "MaterialRedePutRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "type": "MaterialRedeDeleteResponse",
+          "summary": "Deleta uma lista de materiais",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idRede",
+              "description": "Identificador da rede",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "materialRede",
+              "description": "Informações do material",
+              "required": true,
+              "type": "MaterialRedeDeleteRequest",
+              "paramType": "body"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/redes/{idRede}/radares",
+      "operations": [
+        {
+          "method": "DELETE",
+          "type": "MaterialRedeDeleteResponse",
+          "summary": "Deleta uma lista de materiais",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idRede",
+              "description": "Identificador da rede",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "materialRede",
+              "description": "Informações do material",
+              "required": true,
+              "type": "MaterialRedeDeleteRequest",
+              "paramType": "body"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/materiais",
+      "operations": [
+        {
+          "method": "PUT",
+          "type": "MaterialPutResponse",
+          "summary": "Realiza as operações de manter material",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "materiais",
+              "description": "Informações de criação, alteração e exclusão de materiais",
+              "required": true,
+              "type": "MaterialPutRequest",
+              "paramType": "body"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/materiais/radares",
+      "operations": [
+        {
+          "method": "PUT",
+          "type": "MateriaisRadaresPutResponse",
+          "summary": "Realiza as operações de manter material para radares",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "radares",
+              "description": "Informações de criação, alteração e exclusão de materiais radares",
+              "required": true,
+              "type": "MateriaisRadaresPutRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "type": "MateriaisRadaresGetResponse",
+          "summary": "Consulta os radares disponiveis para comunicação",
+          "parameters": [
+				{
+					"name": "t",
+					"description": "Token de autenticação",
+					"required": true,
+					"type": "string",
+					"paramType": "query"
+				}
+			]
+        }
+      ]
+    },
+    {
+      "path": "/rastreamento/radar/{idItemRadar}/vistas",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "VistasRadarGetResponse",
+          "summary": "Retorna as vistas associadas ao radar",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idItemRadar",
+              "description": "Identificador do radar",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Realiza a atualização das associações entre radar e vistas",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idItemRadar",
+              "description": "Identificador do radar",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "vistas",
+              "description": "Request com as informações para atualização",
+              "required": true,
+              "type": "VistasRadarPutRequest",
+              "paramType": "body"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Radio": {
+      "properties": {
+        "idMaterial": {
+          "type": "string"
+        },
+        "nomeMaterial": {
+          "type": "string"
+        },
+        "idRadio": {
+          "type": "string"
+        },
+        "banda": {
+          "type": "string"
+        },
+        "estado": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        }
+      }
+    },
+    "AssociacaoRastreador": {
+      "properties": {
+        "idAssociacao": {
+          "type": "string"
+        },
+        "idMaterial": {
+          "type": "string"
+        },
+        "nomeMaterial": {
+          "type": "string"
+        },
+        "estado": {
+          "type": "string"
+        }
+      }
+    },
+    "RastreadorGetResponse": {
+      "properties": {
+        "estadoConexaoSAD": {
+          "type": "boolean"
+        },
+        "radios": {
+          "type": "array",
+          "items": {
+            "$ref": "Radio"
+          }
+        }
+      }
+    },
+    "AssociacaoRastreadorGetResponse": {
+      "properties": {
+        "associados": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoRastreador"
+          }
+        },
+        "naoAssociados": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoRastreador"
+          }
+        }
+      }
+    },
+    "MaterialRede": {
+      "properties": {
+        "itemID": {
+          "type": "number",
+          "required": false
+        },
+        "enderecoID": {
+          "type": "number",
+          "required": false
+        },
+        "nomeTipoItem": {
+          "type": "string",
+          "required": false
+        },
+        "nomeItem": {
+          "type": "string",
+          "required": false
+        },
+        "numeroSerial": {
+          "type": "string",
+          "required": false
+        },
+        "enderecoIP": {
+          "type": "string",
+          "required": true
+        },
+        "larguraBanda": {
+          "type": "string",
+          "required": false
+        },
+        "habilitado": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "MaterialRedeExclusao": {
+      "properties": {
+        "itemID": {
+          "type": "number",
+          "required": false
+        }
+      }
+    },
+    "MaterialRadar": {
+      "properties": {
+        "itemID": {
+          "type": "string",
+          "required": false
+        },
+        "sac": {
+          "type": "long",
+          "required": false
+        },
+        "sic": {
+          "type": "long",
+          "required": false
+        },
+        "nomeTipoItem": {
+          "type": "string",
+          "required": false
+        },
+        "nomeItem": {
+          "type": "string",
+          "required": false
+        },
+        "numeroSerial": {
+          "type": "string",
+          "required": false
+        },
+        "enderecoIP": {
+          "type": "string",
+          "required": true
+        },
+        "larguraBanda": {
+          "type": "string",
+          "required": false
+        },
+        "habilitado": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "Rede": {
+      "properties": {
+        "redeID": {
+          "type": "number",
+          "required": false
+        },
+        "codCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codSubcategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codArquitetura": {
+          "type": "string",
+          "required": true
+        },
+        "qtdCanais": {
+          "type": "number",
+          "required": true
+        },
+        "taxaCapacidadeMax": {
+          "type": "number",
+          "required": true
+        },
+        "codEnlace": {
+          "type": "string",
+          "required": true
+        },
+        "ServicosRede": {
+          "type": "array",
+          "items": {
+            "$ref": "ServicoRede"
+          }
+        },
+        "capacidade": {
+          "type": "CapacidadeRede",
+          "required": true
+        }
+      }
+    },
+    "RedesGetResponse": {
+      "properties": {
+        "redes": {
+          "type": "array",
+          "items": {
+            "$ref": "Rede"
+          }
+        }
+      }
+    },
+    "MateriaisRedeGetResponse": {
+      "properties": {
+        "idRede": {
+          "type": "number",
+          "required": true
+        },
+        "materiais": {
+          "type": "array",
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "CapacidadeRede": {
+      "properties": {
+        "idxCapacidadeRede": {
+          "type": "number",
+          "required": true
+        },
+        "codLarguraBanda": {
+          "type": "string",
+          "required": true
+        },
+        "codProtocolo": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ServicoRede": {
+      "properties": {
+        "idxRedeServico": {
+          "type": "number",
+          "required": true
+        },
+        "codCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codSubCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codIndicativoCifra": {
+          "type": "string",
+          "required": true
+        },
+        "classificacaoSegurancaID": {
+          "type": "number",
+          "required": true
+        },
+        "indicadorAtivo": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "MateriaisRadaresGetResponse": {
+      "properties": {
+        "estadoConexao": {
+          "type": "boolean"
+        },
+        "radares": {
+          "type": "array",
+          "items": {
+            "$ref": "Radar"
+          }
+        }
+      }
+    },
+    "MaterialPutRequest": {
+      "properties": {
+        "materiaisNovos": {
+          "type": "array",
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        },
+        "materiaisAlterados": {
+          "type": "array",
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        },
+        "materiaisExcluidos": {
+          "type": "array",
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "MaterialPutResponse": {
+      "properties": {
+        "materiais": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "MateriaisRadaresPutRequest": {
+      "properties": {
+        "radaresNovos": {
+          "type": "array",
+          "items": {
+            "$ref": "RadarCadastramento"
+          }
+        },
+        "radaresAlterados": {
+          "type": "array",
+          "items": {
+            "$ref": "RadarAtualizacao"
+          }
+        },
+        "radaresExcluidos": {
+          "type": "array",
+          "items": {
+            "$ref": "RadarExclusao"
+          }
+        }
+      }
+    },
+    "MateriaisRadaresPutResponse": {
+      "properties": {
+        "radares": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRadar"
+          }
+        }
+      }
+    },
+    "MaterialRedePostRequest": {
+      "properties": {
+        "materialRede": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "MaterialRedePostResponse": {
+      "properties": {
+        "material": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "MaterialRedePutRequest": {
+      "properties": {
+        "materialRede": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "MaterialRedePutResponse": {
+      "properties": {
+        "material": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRede"
+          }
+        }
+      }
+    },
+    "MaterialRedeDeleteRequest": {
+      "properties": {
+        "materialRede": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "MaterialRedeExclusao"
+          }
+        }
+      }
+    },
+    "MaterialRedeDeleteResponse": {
+      "properties": {
+        "qtdExcluidos": {
+          "type": "int"
+        }
+      }
+    },
+    "Radar": {
+      "properties": {
+        "idMaterial": {
+          "type": "string"
+        },
+        "nomeMaterial": {
+          "type": "string"
+        },
+        "sac": {
+          "type": "string"
+        },
+        "sic": {
+          "type": "string"
+        },
+        "estado": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        }
+      }
+    },
+    "RadarCadastramento": {
+      "properties": {
+        "nomeMaterial": {
+          "type": "string",
+          "required": true
+        },
+        "sac": {
+          "type": "long",
+          "required": true
+        },
+        "sic": {
+          "type": "long",
+          "required": true
+        }
+      }
+    },
+    "RadarAtualizacao": {
+      "properties": {
+        "idMaterial": {
+          "type": "string",
+          "required": true
+        },
+        "nomeMaterial": {
+          "type": "string",
+          "required": true
+        },
+        "sac": {
+          "type": "long",
+          "required": true
+        },
+        "sic": {
+          "type": "long",
+          "required": true
+        }
+      }
+    },
+    "RadarExclusao": {
+      "properties": {
+        "idMaterial": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "RadarMapeado": {
+      "properties": {
+        "sac": {
+          "type": "long"
+        },
+        "sic": {
+          "type": "long"
+        },
+        "posicao": {
+          "type": "PosicaoRadarMapeado"
+        },
+        "alvos": {
+          "type": "array",
+          "items": {
+            "$ref": "AlvoRadarMapeado"
+          }
+        }
+      }
+    },
+    "Localizacao": {
+      "properties": {
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        },
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "string"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "string"
+        },
+        "taxaVelocidade": {
+          "type": "string"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "string"
+        }
+      }
+    },
+    "Classificacao": {
+      "properties": {
+        "gdh": {
+          "type": "long",
+          "required": true
+        },
+        "gdhInicial": {
+          "type": "long"
+        }
+      }
+    },
+    "Ponto": {
+      "properties": {
+        "latitude": {
+          "type": "double",
+          "required": true
+        },
+        "longitude": {
+          "type": "double",
+          "required": true
+        },
+        "altura": {
+          "type": "double"
+        }
+      }
+    },
+    "Item": {
+      "properties": {
+        "idItem": {
+          "type": "string",
+          "required": true
+        },
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ItemMapeado": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nomeItem": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "hostilidade": {
+          "type": "string"
+        },
+        "calco": {
+          "type": "CalcoMapeado"
+        }
+      }
+    },
+    "CalcoMapeado": {
+      "properties": {
+        "idCalco": {
+          "type": "string"
+        },
+        "nomeCalco": {
+          "type": "string"
+        }
+      }
+    },
+    "AlvoRadarMapeado": {
+      "properties": {
+        "trackId": {
+          "type": "long"
+        },
+        "trackDou": {
+          "type": "number"
+        },
+        "trackTre": {
+          "type": "boolean"
+        },
+        "classificacao": {
+          "type": "integer"
+        },
+        "posicao": {
+          "type": "PosicaoRadarMapeado"
+        },
+        "rastreado": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PosicaoRadar": {
+      "properties": {
+        "idPosicao": {
+          "type": "long",
+          "required": true
+        },
+        "latitude": {
+          "type": "number",
+          "required": true
+        },
+        "longitude": {
+          "type": "number",
+          "required": true
+        },
+        "velocidade": {
+          "type": "number",
+          "required": true
+        },
+        "velocidadeAng": {
+          "type": "number",
+          "required": true
+        },
+        "datahoraGmt": {
+          "type": "string",
+          "required": true
+        },
+        "datahoraMs": {
+          "type": "string"
+        },
+        "timeOfDay": {
+          "type": "number",
+          "required": true
+        },
+        "localPolarR": {
+          "type": "number"
+        },
+        "localPolarAng": {
+          "type": "number"
+        },
+        "relX": {
+          "type": "long",
+          "required": true
+        },
+        "relY": {
+          "type": "long",
+          "required": true
+        }
+      }
+    },
+    "VistasRadarPutRequest": {
+      "properties": {
+        "vistasAdd": {
+          "type": "array",
+          "items": {
+            "$ref": "Vista"
+          }
+        },
+        "vistasRemove": {
+          "type": "array",
+          "items": {
+            "$ref": "Vista"
+          }
+        }
+      }
+    },
+    "Vista": {
+      "properties": {
+        "idVista": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "VistasRadarPutResponse": {
+      "properties": {
+        "vistas": {
+          "type": "array",
+          "items": {
+            "$ref": "VistaAssociada"
+          }
+        }
+      }
+    },
+    "VistaAssociada": {
+      "properties": {
+        "idVista": {
+          "type": "string",
+          "required": true
+        },
+        "nomeVista": {
+          "type": "string",
+          "required": false
+        },
+        "associada": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "VistasRadarGetResponse": {
+      "properties": {
+        "vistas": {
+          "type": "array",
+          "items": {
+            "$ref": "VistaAssociada"
+          }
+        }
+      }
+    }
+  }
+}

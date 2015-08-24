@@ -1,0 +1,131 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "UsuariosChat",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+
+    "apis": [
+        {
+            "path": "/usuariosChat/instancia/{nomeInstancia}/mensagem/{idUsuarioDestino}/usuarios",
+            "description": "Recurso para obter os usuários online",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "MensagemUsuariosGetResponse",
+                    "summary": "Obtém as mensagens de um usuário",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "nomeInstancia",
+                            "paramType": "path",
+                            "type": "string",
+                            "required": true,
+                            "description": "Nome da instância que será consultada"
+                        },
+                        {
+                            "name": "idUsuarioDestino",
+                            "paramType": "path",
+                            "type": "string",
+                            "required": true,
+                            "description": "Id do usuário que está mandando a requisição"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "models": {
+
+        "MensagemUsuariosGetResponse": {
+            "properties": {
+                "instancia": {
+                    "type": "Instancia"
+                }
+            }
+        },
+
+        "Instancia": {
+            "properties": {
+                "idInstancia": {
+                    "type": "string"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "usrMsgPendentes": {
+                    "type": "number"
+                },
+                "usuarios": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Usuario"
+                    }
+                }
+            }
+        },
+
+        "Usuario": {
+            "properties": {
+                "idUsuario": {
+                    "type": "string"
+                },
+                "identificador": {
+                    "type": "number"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "msgPendentes": {
+                    "type": "number"
+                },
+                "mensagens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Mensagem"
+                    }
+                }
+            }
+        },
+
+        "Mensagem": {
+            "properties": {
+                "mensagem": {
+                    "type": "string"
+                },
+                "idUsuarioOrigem": {
+                    "type": "string"
+                },
+                "nomeUsuarioOrigem": {
+                    "type": "string"
+                },
+                "nomeInstanciaOrigem": {
+                    "type": "string"
+                },
+                "nomeInstanciaDestino": {
+                    "type": "string"
+                },
+                "idUsuariosDestino": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "string"
+                    }
+                },
+                "horarioEnvio": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

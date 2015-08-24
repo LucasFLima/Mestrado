@@ -1,0 +1,163 @@
+module configuracao {
+
+	path = "xxx";
+
+	entity OrganizacaoMilitar {
+		string : idSuperior;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : id;   /*Required.*/
+	};
+
+	entity VersionamentoGetResponse {
+		long : data;
+		string : nomeVersao;
+	};
+
+	entity ProxyPadrao {
+		string : porta;   /*Required.*/
+		string : ip;   /*Required.*/
+	};
+
+	entity Autenticacao {
+		string : senha;   /*Required.*/
+		string : usuario;   /*Required.*/
+	};
+
+	entity ParametrosGetResponse {
+		[Parametro] : parametros;   /*Required.*/
+	};
+
+	entity ParametrosPutRequest {
+		[Parametro] : parametros;   /*Required.*/
+	};
+
+	entity Parametro {
+		string : valorTexto;
+		string : valorNumero;
+		string : nome;   /*Required.*/
+	};
+
+	entity ConexaoGet {
+		Autenticacao : autenticacao;
+		boolean : utilizaProxy;   /*Required.*/
+		Proxy : proxy;
+		Radio : radio;   /*Required.*/
+		boolean : usaAutenticacao;   /*Required.*/
+		boolean : utilizaProxyPadrao;   /*Required.*/
+		ProxyPadrao : proxyPadrao;   /*Required.*/
+	};
+
+	entity ConfiguracaoGetResponse {
+		[OrganizacaoMilitar] : organizacoesMilitares;   /*Required.*/
+		Visualizacao : visual;   /*Required.*/
+		ConexaoGet : conexao;   /*Required.*/
+	};
+
+	entity ConfiguracaoPutRequest {
+		ConexaoPut : conexao;
+		Visualizacao : visual;
+	};
+
+	entity Proxy {
+		boolean : usaEnderecosDiretos;   /*Required.*/
+		string : ip;   /*Required.*/
+		string : porta;   /*Required.*/
+		string : enderecosDiretos;
+	};
+
+	entity Visualizacao {
+		number : tamanhoCalunga;   /*Required.*/
+		number : espessuraContorno;   /*Required.*/
+		number : tamanhoIcone;   /*Required.*/
+	};
+
+	entity DataServidorGetResponse {
+		long : dataMilisegundos;
+	};
+
+	entity Radio {
+		string : porta;   /*Required.*/
+	};
+
+	entity ConexaoPut {
+		boolean : utilizaProxyPadrao;   /*Required.*/
+		Proxy : proxy;
+		boolean : usaAutenticacao;   /*Required.*/
+		boolean : utilizaProxy;   /*Required.*/
+		Autenticacao : autenticacao;
+	};
+
+	service <NomeServico> {
+		path = "/configuracoes/data";
+
+		/**
+		* @ summary: Retorna a data do servidor
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get DataServidorGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/configuracoes/versao";
+
+		/**
+		* @ summary: Retorna a versao do sistema
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get VersionamentoGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/config/parametros";
+
+		/**
+		* @ summary: Atualiza parametros do sistema
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@put  <NomeCapacidade> (string t, ParametrosPutRequest parametros);
+
+		/**
+		* @ summary: Consulta o valor de uma lista de parametros
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query param: 
+		*/
+		@get ParametrosGetResponse <NomeCapacidade> (string t, string param);
+	}
+
+	service <NomeServico> {
+		path = "/configuracoes/arquivo";
+
+		/**
+		* @ summary: Atualiza parametros do sistema arquivo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post  <NomeCapacidade> (string t, String parametros);
+	}
+
+	service <NomeServico> {
+		path = "/configuracoes";
+
+		/**
+		* @ summary: Obtém as configurações do sistema
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get ConfiguracaoGetResponse <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Atualiza as configurações do sistema.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body configuracoes(*): Configurações do sistema
+		*/
+		@put  <NomeCapacidade> (string t, ConfiguracaoPutRequest configuracoes);
+	}
+
+

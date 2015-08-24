@@ -1,0 +1,42 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "XMLHighlighter",
+    "version": "1.0.4",
+    "produces": [
+        "text/html"
+    ],
+    "apis": [
+        {
+            "path": "/util/highlight/xml",
+            "operations": [
+				{
+                    "method": "POST",
+                    "type": "string",
+                    "summary": "Realiza Highlight de sintaxe XML",
+                    "consumes": [
+                        "application/xml"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "highlightCodeInfo",
+                            "paramType": "body",
+                            "type": "string",
+                            "required": true                    
+                        }
+                    ]
+                }
+				
+            ]
+        }
+    ],
+    "models": {
+    	"HighlightPostRequest": {
+    		"properties": {
+    			"strCodigo": {
+                 	"type": "string",
+                    "required": true
+    			}
+    		}
+    	}
+	}
+}

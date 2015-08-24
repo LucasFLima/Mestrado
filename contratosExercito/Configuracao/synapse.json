@@ -1,0 +1,397 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "Configuracao",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+
+    "apis": [
+    	{
+            "path": "/configuracoes/data",
+            "description": "Disponibiliza as operações com datas do servidor",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "DataServidorGetResponse",
+                    "summary": "Retorna a data do servidor",
+                	"parameters": [
+           						{
+           							"name": "t",
+           							"description": "Token de autenticação",
+           							"required": true,
+           							"type": "string",
+           							"paramType": "query"
+           						}
+           					]
+                }
+            ]
+        },
+        {
+            "path": "/configuracoes/versao",
+            "description": "Disponibiliza as operações de versionamento do sistema",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "VersionamentoGetResponse",
+                    "summary": "Retorna a versao do sistema",
+                    "parameters": [
+              						{
+              							"name": "t",
+              							"description": "Token de autenticação",
+              							"required": true,
+              							"type": "string",
+              							"paramType": "query"
+              						}
+              					]
+                }
+            ]
+        },
+        {
+            "path": "/config/parametros",
+            "description": "Realiza operações em parametros do sistema",
+            "operations": [
+                {
+                    "method": "PUT",
+                    "summary": "Atualiza parametros do sistema",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name" : "parametros",
+                            "type" : "ParametrosPutRequest",
+                            "paramType": "body",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "method": "GET",
+                    "type": "ParametrosGetResponse",
+                    "summary": "Consulta o valor de uma lista de parametros",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name" : "param",
+                            "type" : "string",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ]
+        },
+         {
+            "path": "/configuracoes/arquivo",
+            "description": "Realiza operações em parametros do sistema",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Atualiza parametros do sistema arquivo",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name" : "parametros",
+                            "type" : "String",
+                            "paramType": "body",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/configuracoes",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Obtém as configurações do sistema",
+                    "type": "ConfiguracaoGetResponse",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        }
+                    ]
+                },
+
+                {
+                    "method": "PUT",
+                    "summary": "Atualiza as configurações do sistema.",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        },
+
+                        {
+                            "name": "configuracoes",
+                            "description": "Configurações do sistema",
+                            "paramType": "body",
+                            "type": "ConfiguracaoPutRequest",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "models": {
+    	"DataServidorGetResponse":{
+            "properties":{
+				"dataMilisegundos": {
+					"type": "long"
+				}
+			}
+    	},
+    	"VersionamentoGetResponse":{
+            "properties":{
+                "data": {
+                    "type": "long"                    
+                },
+                "nomeVersao": {
+                    "type": "string"                    
+                }
+            }
+        },
+        "ParametrosPutRequest":{
+            "properties": {
+                "parametros": {
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                        "$ref": "Parametro"
+                    }
+                }
+            }       
+        },
+        "ParametrosGetResponse":{
+            "properties": {
+                "parametros": {
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                        "$ref": "Parametro"
+                    }
+                }
+            }       
+        },
+        "Parametro":{
+            "properties": {
+                "nome":{
+                    "type" : "string",
+                    "required" : true           
+                },
+                "valorNumero":{
+                    "type" : "string"           
+                },
+                "valorTexto":{
+                    "type" : "string"           
+                }
+            }
+        },
+        "ConfiguracaoGetResponse": {
+            "properties": {
+                "visual": {
+                    "type": "Visualizacao",
+                    "required": true
+                },
+                "organizacoesMilitares": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "OrganizacaoMilitar"
+                    },
+                    "required": true
+                },
+                "conexao": {
+                    "type": "ConexaoGet",
+                    "required": true
+                }
+            }
+        },
+
+        "ConfiguracaoPutRequest": {
+            "properties": {
+                "visual": {
+                    "type": "Visualizacao",
+                    "required": false
+                },
+                "conexao": {
+                    "type": "ConexaoPut",
+                    "required": false
+                }
+            }
+        },
+
+        "Visualizacao": {
+            "properties": {
+                "tamanhoCalunga": {
+                    "type": "number",
+                    "required": true 
+                },
+                "tamanhoIcone": {
+                    "type": "number",
+                    "required": true
+                },
+                "espessuraContorno": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        },
+
+        "OrganizacaoMilitar": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "idSuperior": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "ConexaoGet": {
+            "properties": {
+                "radio": {
+                    "type": "Radio",
+                    "required": true
+                },
+                "utilizaProxy": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "utilizaProxyPadrao": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "proxy": {
+                    "type": "Proxy",
+                    "required": false
+                },
+                "proxyPadrao": {
+                    "type": "ProxyPadrao",
+                    "required": true
+                },
+                "usaAutenticacao": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "autenticacao": {
+                    "type": "Autenticacao",
+                    "required": false
+                }
+            }
+        },
+
+        "ConexaoPut": {
+            "properties": {
+                "utilizaProxy": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "utilizaProxyPadrao": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "proxy": {
+                    "type": "Proxy",
+                    "required": false
+                },
+                "usaAutenticacao": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "autenticacao": {
+                    "type": "Autenticacao",
+                    "required": false
+                }
+            }
+        },
+
+        "Radio": {
+            "properties": {
+                "porta": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "Proxy": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "required": true
+                },
+                "porta": {
+                    "type": "string",
+                    "required": true
+                },
+                "usaEnderecosDiretos": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "enderecosDiretos": {
+                    "type": "string",
+                    "required": false
+                }
+            }
+        },
+        
+        "ProxyPadrao": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "required": true
+                },
+                "porta": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+         "Autenticacao": {
+            "properties": {
+                "usuario": {
+                    "type": "string",
+                    "required": true
+                },
+                "senha": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+    }
+}

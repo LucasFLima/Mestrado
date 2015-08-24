@@ -1,0 +1,103 @@
+module tile {
+
+	path = "xxx";
+
+	entity PostElevacoesRequest {
+		[Ponto] : pontos;   /*Required.*/
+		string : numMaxAmostras;
+	};
+
+	entity ProxyRequest {
+		integer : proxyPort;
+		string : proxyPassword;
+		string : proxyServer;
+		string : proxyUser;
+	};
+
+	entity GetMapaTileRequest {
+		string : tz;   /*Required.*/
+		string : idMapa;
+		string : ty;   /*Required.*/
+		string : repoMapasDir;   /*Required.*/
+		string : tipoMapa;   /*Required.*/
+		string : referenciaMapa;
+		string : camadaMapa;
+		string : tx;   /*Required.*/
+		string : repoMapasCacheDir;   /*Required.*/
+	};
+
+	entity GetCamadasWmsRequest {
+		ProxyRequest : Proxy;
+		string : nomeCamada;
+		string : referenciaMapa;   /*Required.*/
+		string : idMapa;
+	};
+
+	entity Ponto {
+		number : altitude;
+		number : longitude;   /*Required.*/
+		number : latitude;   /*Required.*/
+	};
+
+	entity CamadaWmsResponse {
+		string : wmsFormat;   /*Required.*/
+		string : wmsCrs;   /*Required.*/
+		[string] : wmsSubLayers;
+		string : wmsLayer;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/mapserver/proxy";
+
+		/**
+		* @ summary: Atua como Proxy para Mapserver WMS Requests
+		* @ params: 
+		*	query oms_request(*): HTTP Request desejado
+		*/
+		@get string <NomeCapacidade> (string oms_request);
+	}
+
+	service <NomeServico> {
+		path = "/tile/tms";
+
+		/**
+		* @ summary: Realiza Highlight de sintaxe XML
+		* @ params: 
+		*	body infoMapa (*): Tile de Mapa
+		*/
+		@post string <NomeCapacidade> (GetMapaTileRequest infoMapa );
+	}
+
+	service <NomeServico> {
+		path = "/tile/wms/camadas";
+
+		/**
+		* @ summary: Recupera as camadas WMS de um Mapa
+		* @ params: 
+		*	body camadas (*): Camadas de Mapa WMS
+		*/
+		@post array <NomeCapacidade> (GetCamadasWmsRequest camadas );
+	}
+
+	service <NomeServico> {
+		path = "/perfilterreno/elevacoes";
+
+		/**
+		* @ summary: Obtenção de Perfil de Terreno (altitudes)
+		* @ params: 
+		*	body infoLinha(*): Linha para requisitar Elevações
+		*/
+		@post string <NomeCapacidade> (PostElevacoesRequest infoLinha);
+	}
+
+	service <NomeServico> {
+		path = "/perfilterreno/config/recarregar";
+
+		/**
+		* @ summary: Recarrega as configuracoes
+		* @ params: 
+		*/
+		@put string <NomeCapacidade> ();
+	}
+
+

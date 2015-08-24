@@ -1,0 +1,54 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "DominioNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/dominio/{tipo}",
+      "description": "Recuperar dominio",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+		  "items": {
+			"$ref": "DominioGetResponse"},
+          "summary": "Retorna o dominio referente ao tipo",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "tipo",
+              "description": "Tipo do dominio",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": 
+	{
+		"DominioGetResponse":{
+			"properties":{
+				"dominio": {
+					"type": "string",
+					"required": true
+				},
+				"codigo": {
+					"type": "string",
+					"required": true
+				}
+			}
+    	}
+	}
+}

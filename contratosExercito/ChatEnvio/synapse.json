@@ -1,0 +1,139 @@
+{
+
+    "swaggerVersion": "1.2",
+    "id": "ChatEnvio",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+
+    "apis": [
+        {
+            "path": "/chatEnvio/mensagem",
+            "description": "Recurso para colocar uma mensagem na caixa de saída de um usuário",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Coloca uma mensagem na caixa de saída",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "mensagem",
+                            "description": "Mensagem a ser enviada",
+                            "paramType": "body",
+                            "type": "ChatPostRequest",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/chatEnvio/acknowledge",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Recurso de reconhecimento de entrega de mensagem",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "acknowledge",
+                            "description": "Serviço de reconhecimento de entrega de mensagem",
+                            "paramType": "body",
+                            "type": "Acknowledge",
+                            "required": true
+                        }
+                    ]
+                    
+                }
+            ]
+        }
+    ],
+
+    "models": {
+
+        "ChatPostRequest": {
+            "properties": {
+                "gidInstanciaDestino": {
+                    "type": "string",
+                    "required": true
+                },
+                "mensagem": {
+                    "type": "Mensagem",
+                    "required": true
+                }
+            }
+        },
+
+        "Mensagem": {
+            "properties": {
+                "idMensagem": {
+                    "type": "number",
+                    "required": true
+                },
+                "mensagem": {
+                    "type": "string",
+                    "required": true
+                },
+                "idUsuarioOrigem": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeUsuarioOrigem": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeInstanciaOrigem": {
+                    "type": "string",
+                    "required": true
+                },
+                "idUsuarioDestino": {
+                    "type": "string",
+                    "required": true
+                },
+                "gidInstanciaDestino": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeInstanciaDestino": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "Acknowledge": {
+            "properties": {
+                "idMensagem": {
+                    "type": "number",
+                    "required": true
+                },
+                "idUsuarioOrigem" : {
+                    "type": "string",
+                    "required": true
+                },
+                "idUsuarioDestino": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeInstanciaDestino": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+    }
+}

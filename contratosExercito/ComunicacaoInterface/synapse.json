@@ -1,0 +1,66 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "ComunicacaoInterface",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/comunicacao/interface/websocket",
+            "operations": [
+				{
+                    "method": "POST",
+                    "summary": "Envia dados para a interface via WebSocket",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "webSocketPostRequest",
+                            "description": "Informações a serem atualizadas",
+                            "required":true,
+                            "type": "WebSocketPostRequest",
+                            "paramType": "body"
+                        },
+                        {
+                            "name": "destino",
+                            "description": "Identificador do usuário de destino",
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "ignoraToken",
+                            "description": "Não envia a informação para o token desta sessão",
+                            "type": "string",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+     "models": {
+    	"WebSocketPostRequest": {
+    		"properties": {
+    			"pios": {
+                 	"type": "array",
+                 	"items": {
+                 	    "$ref": "Pio"
+                 	}
+    			}
+    		}
+    	},
+    	"Pio": {
+    		"properties": {
+    			"idPio": {
+                    "type": "string",
+                    "required": true
+    			},
+    			"nomePio": {
+                    "type": "string"
+    			}
+    		}
+    	}
+	}
+}

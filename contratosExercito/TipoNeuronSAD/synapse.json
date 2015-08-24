@@ -1,0 +1,99 @@
+{
+  "apiVersion": "0.1.0",
+  "swaggerVersion": "1.2",
+  "id": "TipoNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/tipos/{codigoCategoria}",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retorna tipos de item pela categoria",
+          "notes": "",
+          "type": "array",
+          "items": {
+            "$ref": "TipoRamo"
+          },
+          "nickname": "getTipoItemPorCategoria",
+          "parameters": [
+            {
+            	"name": "t",
+            	"description": "Token de autenticação",
+            	"required": true,
+            	"type": "string",
+            	"paramType": "query"
+            },
+            {
+              "name": "codigoCategoria",
+              "description": "A categoria dos tipos de item desejados.",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/tipo/{id}",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retorna tipo de item por ID",
+          "notes": "",
+          "type": "TipoRamo",
+          "nickname": "getTipoItemPorId",
+          "parameters": [
+            {
+            	"name": "t",
+            	"description": "Token de autenticação",
+            	"required": true,
+            	"type": "string",
+            	"paramType": "query"
+            },
+            {
+              "name": "id",
+              "description": "O id do tipo de item desejado.",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "TipoRamo": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string",
+          "required": false
+        },
+        "idItem": {
+          "type": "string",
+          "required": false
+        },
+        "text": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "TipoRamo"
+          }
+        }
+      }
+    }
+  }
+}

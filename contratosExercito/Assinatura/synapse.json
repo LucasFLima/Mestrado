@@ -1,0 +1,275 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Assinatura",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/assinatura/publicarPios",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "PublicacaoResponse",
+          "summary": "Obtém todos os pios/nós",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+			{
+				"name": "idPio",
+				"description": "O id do pio",
+				"required": false,
+				"type": "string",
+				"paramType": "query"
+			},
+			{
+				"name": "tipoPio",
+				"description": "O tipo do pio local ou remoto",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			}
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/assinatura/publicarPios",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "PublicacaoResponse",
+          "summary": "Envia/recebe a publicação de pios locais e remotos",
+          "consumes": 
+					[
+						"application/json"
+					],
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "PublicacaoRequest",
+              "paramType": "body",
+              "type": "PublicacaoRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/assinatura/assinarPios",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AssinaturaResponse",
+          "summary": "Obtém todos os nós/pio",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+			{
+				"name": "idNo",
+				"description": "O id do nó",
+				"required": false,
+				"type": "string",
+				"paramType": "query"
+			}
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/assinatura/assinarPios",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "AssinaturaResponse",
+          "summary": "Envia/recebe assinatura",
+          "consumes": 
+					[
+						"application/json"
+					],
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "AssinaturaPostRequest",
+              "paramType": "body",
+              "type": "AssinaturaPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+      "PublicacaoRequest": {
+          "properties": {
+              "tipoPio": {
+                  "type": "string",
+                  "required": "true"
+           	  },
+              "tipoPublicacao": {
+                  "type": "string",
+                  "required": "true"
+           	  },
+              "pios": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "Pio"
+              	  }
+           	  },
+           	  "no": {
+				  "type": "Instancia",
+				  "required": "false"           	  
+           	  }
+          }
+      },
+      "AssinaturaPostRequest": {
+          "properties": {
+              "tipoAssinatura": {
+                  "type": "string",
+                  "required": "true"
+           	  },
+              "nos": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "Instancia"
+              	  }
+           	  }
+          }
+      },
+      "AssinaturaResponse": {
+          "properties": {
+              "pio": {
+                  "type": "Pio",
+                  "required": "false"
+           	  },
+              "nos": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "Instancia"
+              	  }
+           	  }
+          }
+      },
+      "PublicacaoResponse": {
+          "properties": {
+              "pios": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "Pio"
+              	  }
+           	  },
+              "nos": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "Instancia"
+              	  }
+           	  }
+          }
+      },
+      "Pio": {
+          "properties": {
+              "idPio": {
+                  "type": "string",
+                  "required": "true"
+              },
+              "idGlobalPio": {
+                  "type": "string",
+                  "required": "true"
+              },
+              "assinado": {
+                  "type": "boolean",
+                  "required": "false"
+              },
+              "estado": {
+                  "type": "string",
+                  "required": "false"
+              },
+              "nome": {
+                  "type": "string",
+                  "required": "false"
+              },
+              "nomeNoOrigem": {
+                  "type": "string",
+                  "required": "false"
+              },
+              "nos": {
+              	  "type": "array",
+              	  "items": {
+              	      "$ref": "Instancia"
+              	  }
+              }
+          }
+      },
+      "Instancia": {
+          "properties": {
+              "id": {
+                  "type": "string",
+                  "required": "true"
+              },
+              "idGlobalInstancia": {
+                  "type": "string",
+                  "required": "true"
+              },
+              "idOrdemBatalha": {
+              	  "type": "string",
+              	  "required": "false"
+              },
+              "idGlobalOrdemBatalha": {
+              	  "type": "string",
+              	  "required": "false"
+              },
+              "nome": {
+                  "type": "string",
+                  "required": "false"
+              },
+              "estado": {
+                  "type": "string",
+                  "required": "false"
+              },
+              "publicado": {
+                  "type": "boolean",
+                  "required": "true"
+              },
+              "idGlobalRemetente": {
+              	  "type": "string",
+              	  "required": "false"
+              },
+              "nomeOrigem": {
+              	  "type": "string",
+              	  "required": "false"
+              },
+              "pios": {
+               	  "type": "array",
+              	  "items": {
+              	      "$ref": "Pio"
+              	  }
+              }
+          }
+      }
+  }
+}

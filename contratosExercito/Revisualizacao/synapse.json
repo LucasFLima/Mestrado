@@ -1,0 +1,670 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "Revisualizacao",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/pios",
+            "description": "Recurso para gerenciar as revisualizações",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "PlanoRevisualizacaoPiosGetResponse",
+                    "summary": "Obtém os PIOs e os tipos de item a eles associados.",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/planos_revisualizacoes/{idPlanoRevisualizacao}/frames",
+            "description": "Recurso para gerenciar as revisualizações",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "RevisualizacaoGetResponse",
+                    "summary": "Obtém os frames de um plano de revisualização",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "idPlanoRevisualizacao",
+                            "description": "Identificador do plano de revisualização",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        },
+                        {
+                            "name": "frameIndice",
+                            "description": "Índice do frame a partir do qual os demais serão trazidos",
+                            "required": true,
+                            "type": "long",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "quantidadeFrames",
+                            "description": "Quantidade de frames a serem obtidos",
+                            "required": true,
+                            "type": "long",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/planos_revisualizacoes",
+            "description": "Recurso para gerenciar os planos de revisualizações",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "PlanosRevisualizacoesGetResponse",
+                    "summary": "Obtem lista de planos de revisualizações",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        }
+                    ]
+                },
+                {
+                    "method": "POST",
+                    "type": "PlanoRevisualizacaoPostResponse",
+                    "summary": "Cria um plano de revisualização",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "PlanoRevisualizacao",
+                            "description": "Dados do plano de revisualização",
+                            "required": true,
+                            "type": "PlanoRevisualizacaoPostRequest",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/planos_revisualizacoes/{idPlanoRevisualizacao}",
+            "description": "Operações relacionadas a um plano de revisualizacao",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "PlanoRevisualizacaoGetResponse",
+                    "summary": "Obtém os dados do plano de revisualização",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "idPlanoRevisualizacao",
+                            "description": "Identificador do plano de revisualização",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ]
+                },
+                {
+                    "method": "PUT",
+                    "type": "PlanoRevisualizacaoPutResponse",
+                    "summary": "Atualiza os dados do plano de revisualização",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "idPlanoRevisualizacao",
+                            "description": "Identificador do plano de revisualização",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        },
+                        {
+                            "name": "PlanoRevisualizacao",
+                            "description": "Dados do plano de revisualização",
+                            "required": true,
+                            "type": "PlanoRevisualizacaoPutRequest",
+                            "paramType": "body"
+                        }
+                    ]
+                },
+                {
+                    "method": "DELETE",
+                    "type": "PlanoRevisualizacaoDeleteResponse",
+                    "summary": "Remove um plano de revisualização",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "idPlanoRevisualizacao",
+                            "description": "Identificador do plano de revisualização",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "RevisualizacaoGetResponse": {
+            "properties": {
+                "revisualizacao": {
+                    "type": "Revisualizacao",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacoesGetResponse": {
+            "properties": {
+                "planosRevisualizacoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoRevisualizacao"
+                    },
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoPostRequest": {
+            "properties": {
+                "planoRevisualizacao": {
+                    "type": "PlanoRevisualizacaoAdicionar",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoPostResponse": {
+            "properties": {
+                "planoRevisualizacao": {
+                    "type": "PlanoRevisualizacao",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoGetResponse": {
+            "properties": {
+                "planoRevisualizacao": {
+                    "type": "PlanoRevisualizacao",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoPutRequest":{
+            "properties": {
+                "planoRevisualizacao": {
+                    "type": "PlanoRevisualizacaoAlterar",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoPutResponse": {
+            "properties": {
+                "planoRevisualizacao": {
+                    "type": "PlanoRevisualizacao",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoDeleteResponse": {
+            "properties": {
+                "idPlanoRevisualizacao": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "Revisualizacao": {
+            "properties": {
+                "metadado": {
+                    "type": "Metadado",
+                    "required": true
+                },
+                "frames": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Frame"
+                    },
+                    "required": true
+                }
+            }
+        },
+        "Metadado": {
+            "properties": {
+                "frameIndice": {
+                    "type": "int",
+                    "required": true
+                },
+                "quantidadeFrames": {
+                    "type": "int",
+                    "required": true
+                },
+                "totalFrames": {
+                    "type": "int",
+                    "required": true
+                },
+                "tempoExecucao": {
+                    "type": "long",
+                    "required": true
+                },
+                "deltaT": {
+                    "type": "long",
+                    "required": true
+                }
+            }
+        },
+        "Frame": {
+            "properties": {
+                "indice": {
+                    "type": "int",
+                    "required": true
+                },
+                "dataHora": {
+                    "type": "long",
+                    "required": true
+                },
+                "itens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Item"
+                    },
+                    "required": false
+                },
+                "eventos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Evento"
+                    },
+                    "required": false
+                }
+            }
+        },
+        "Item": {
+            "properties": {
+                "idItem": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoHostilidade": {
+                    "type": "string",
+                    "required": false
+                },
+                "corHostilidade": {
+                    "type": "string",
+                    "required": false
+                },
+                "idTipo": {
+                    "type": "string",
+                    "required": false
+                },
+                "nomeTipo": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoCategoriaTipo": {
+                    "type": "string",
+                    "required": false
+                },
+                "largura": {
+                    "type": "double",
+                    "required": false
+                },
+                "localizacao": {
+                    "type": "Localizacao",
+                    "required": false
+                },
+                "associacoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Unidade"
+                    },
+                    "required": false
+                },
+                "icone": {
+                    "type": "string",
+                    "required": false
+                },
+                "removido": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        },
+        "Evento": {
+            "properties": {
+                "idEvento": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": false
+                },
+                "evolucao": {
+                    "type": "double",
+                    "required": false
+                },
+                "localizacao": {
+                    "type": "Localizacao",
+                    "required": false
+                },
+                "removido": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        },
+        "Unidade": {
+            "properties": {
+                "idUnidade": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoCategoriaAssociacao": {
+                    "type": "string",
+                    "required": true
+                },
+                "hierarquia": {
+                    "type": "int",
+                    "required": true
+                },
+                "icone": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "Localizacao": {
+            "properties": {
+                "idLocalizacao": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": true
+                },
+                "ponto": {
+                    "type": "Ponto",
+                    "required": false
+                },
+                "linha": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Ponto"
+                    },
+                    "required": false
+                },
+                "area": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Ponto"
+                    },
+                    "required": false
+                }
+            }
+        },
+        "PlanoRevisualizacao": {
+            "properties": {
+                "idPlanoRevisualizacao": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "dataInicio": {
+                    "type": "long",
+                    "required": true
+                },
+                "dataFim": {
+                    "type": "long",
+                    "required": true
+                },
+                "tempoExecucao": {
+                    "type": "long",
+                    "required": true
+                },
+                "pios": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Pio"
+                    },
+                    "required": true
+                },
+                "tipos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "string"
+                    },
+                    "required": true
+                },
+                "area": {
+                    "type": "Area",
+                    "required": false
+                },
+                "totalFrames": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoAlterar": {
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "dataInicio": {
+                    "type": "long",
+                    "required": true
+                },
+                "dataFim": {
+                    "type": "long",
+                    "required": true
+                },
+                "tempoExecucao": {
+                    "type": "long",
+                    "required": true
+                },
+                "pios": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PioAlterar"
+                    },
+                    "required": true
+                },
+                "tipos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "string"
+                    },
+                    "required": true
+                },
+                "area": {
+                    "type": "Area",
+                    "required": false
+                }
+            }
+        },
+        "PlanoRevisualizacaoAdicionar": {
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "dataInicio": {
+                    "type": "long",
+                    "required": true
+                },
+                "dataFim": {
+                    "type": "long",
+                    "required": true
+                },
+                "tempoExecucao": {
+                    "type": "long",
+                    "required": true
+                },
+                "pios": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PioAdicionar"
+                    },
+                    "required": true
+                },
+                "tipos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "string"
+                    },
+                    "required": true
+                },
+                "area": {
+                    "type": "Area",
+                    "required": false
+                }
+            }
+        },
+        "PlanosRevisualizacoesGetResponse": {
+            "properties": {
+                "pios":{
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoRevisualizacao"
+                    },
+                    "required": true
+                }
+            }
+        },
+        "PlanoRevisualizacaoPiosGetResponse":{
+            "properties": {
+                "PlanosRevisualizacao":{
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoRevisualizacao"
+                    },
+                    "required": true
+                }
+            }
+        },
+        "PioAdicionar": {
+            "properties": {
+                "idPio": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "PioAlterar": {
+            "properties": {
+                "idPio": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "Pio": {
+            "properties": {
+                "idPio": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "Area": {
+            "properties": {
+                "pontos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Ponto"
+                    },
+                    "required": true
+                }
+            }
+        },
+        "Ponto": {
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "required": true
+                },
+                "longitude": {
+                    "type": "number",
+                    "required": true
+                },
+                "altitude": {
+                    "type": "number",
+                    "required": false
+                }
+            }
+        }
+	}
+}

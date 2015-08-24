@@ -1,0 +1,437 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "RadarBuffer",
+    "version": "1.0.4",
+    "produces": [
+        "application/xml"
+    ],
+
+    "apis": [
+        {
+            "path": "/radares",
+            "operations": [
+                {
+                    "method": "get",
+                    "type": "array",
+                    "items": {
+                        "$ref": "RadarResponse"
+                    },
+                    "summary": "Lista de Radares",
+                    "parameters": [
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/radares",
+            "operations": [
+                {
+                    "method": "post",
+                    "type": "AsterixCat34Sad",
+                    "summary": "Recebe informação de Radar ASTERIX",
+                    "parameters": [
+                        {
+                            "name": "radar",
+                            "description": "Dados do radar",
+                            "paramType": "body",
+                            "type": "AsterixCat34Sad",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/radares/{sac}/{sic}",
+            "operations": [
+                {
+                    "method": "get",
+                    "type": "RadarResponse",
+                    "summary": "Informações do Radar",
+                    "parameters": [
+                        {
+                            "name": "sac",
+                            "description": "SAC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "sic",
+                            "description": "SIC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/radares/{sac}/{sic}/alvos",
+            "operations": [
+                {
+                    "method": "get",
+                    "type": "array",
+                    "items": {
+                        "$ref": "AlvoResponse"
+                    },
+                    "summary": "Lista de Alvos Rastreados",
+                    "parameters": [
+                        {
+                            "name": "sac",
+                            "description": "SAC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "sic",
+                            "description": "SIC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "rastreado",
+                            "description": "Filtra pelo parametro rastreado",
+                            "paramType": "query",
+                            "type": "boolean"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/radares/{sac}/{sic}/alvos",
+            "operations": [
+                {
+                    "method": "post",
+                    "type": "string",
+                    "summary": "Recebe informação de Alvo do Radar ASTERIX",
+                    "parameters": [
+                        {
+                            "name": "sac",
+                            "description": "SAC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "sic",
+                            "description": "SIC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "cat10Asterix",
+                            "description": "Informações Asterix CAT-10",
+                            "paramType": "body",
+                            "type": "AsterixCat10Sad"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/radares/{sac}/{sic}/alvos/{trackId}",
+            "operations": [
+                {
+                    "method": "get",
+                    "type": "AlvoResponse",
+                    "summary": "Informacoes do Alvo",
+                    "parameters": [
+                        {
+                            "name": "sac",
+                            "description": "SAC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "sic",
+                            "description": "SIC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "trackId",
+                            "description": "TrackID do Alvo",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/radares/{sac}/{sic}/alvos/{trackId}/rastrear",
+            "operations": [
+                {
+                    "method": "post",
+                    "type": "AlvoResponse",
+                    "summary": "Inicia rastreamento do Alvo",
+                    "parameters": [
+                        {
+                            "name": "sac",
+                            "description": "SAC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "sic",
+                            "description": "SIC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "trackId",
+                            "description": "TrackID do Alvo",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        }
+                    ]
+                },
+
+                {
+                    "method": "delete",
+                    "type": "AlvoResponse",
+                    "summary": "Elimina o rastreamento do Alvo",
+                    "parameters": [
+                        {
+                            "name": "sac",
+                            "description": "SAC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "sic",
+                            "description": "SIC do Radar",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        },
+                        {
+                            "name": "trackId",
+                            "description": "TrackID do Alvo",
+                            "paramType": "path",
+                            "type": "integer",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "models": {
+        "RadarResponse": {
+            "properties": {
+                "sac": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sic": {
+                    "type": "integer",
+                    "required": true
+                },
+                "idSessaoRadar": {
+                    "type": "string",
+                    "required": true,
+                    "description": "Indicador de mudança significativa de posição do Radar, gerando necessidade de persistência"
+                },
+                "posicao": {
+                    "type": "PosicaoRadar",
+                    "required": true
+                }
+            }
+        },
+
+        "AlvoResponse": {
+            "properties": {
+                "sac": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sic": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sic": {
+                    "type": "integer",
+                    "required": true
+                },
+                "trackId": {
+                    "type": "integer",
+                    "required": true
+                },
+                "trackDou": {
+                    "type": "number"
+                },
+                "trackTre": {
+                    "type": "boolean"
+                },
+                "classificacao": {
+                    "type": "integer",
+                    "required": true
+                },
+                "posicoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PosicaoRadar"
+                    },
+                    "required": true
+                },
+                "rastreado": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        },
+
+        "PosicaoRadar": {
+            "properties": {
+                "idPosicao": {
+                    "type": "long"
+                },
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                },
+                "velocidade": {
+                    "type": "number"
+                },
+                "velocidadeAng": {
+                    "type": "number"
+                },
+                "datahoraGmt": {
+                    "type": "string"
+                },
+                "datahoraMs": {
+                    "type": "long"
+                },
+                "timeOfDay": {
+                    "type": "number",
+                    "required": true
+                },
+                "localPolarR": {
+                    "type": "number"
+                },
+                "localPolarAng": {
+                    "type": "number"
+                },
+                "relX" : {
+                    "type": "number"
+                },
+                "relY" : {
+                    "type": "number"
+                }
+            }
+        },
+
+        "AsterixCat10Sad": {
+            "properties": {
+                "messageType": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sac": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sic": {
+                    "type": "integer",
+                    "required": true
+                },
+                "measuredPosPolarRho": {
+                    "type": "number",
+                    "required": true
+                },
+                "measuredPosPolarTheta": {
+                    "type": "number",
+                    "required": true
+                },
+                "timeOfDay": {
+                    "type": "number",
+                    "required": true
+                },
+                "trackNumber": {
+                    "type": "integer",
+                    "required": true
+                },
+                "trackStatusDou": {
+                    "type": "number",
+                    "required": true
+                },
+                "trackVeloPolarGroundSpeed": {
+                    "type": "number",
+                    "required": true
+                },
+                "trackVeloPolarTrackAngle": {
+                    "type": "number",
+                    "required": true
+                },
+                "classificacao": {
+                    "type": "integer",
+                    "required": true
+                },
+                "ameaca": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        },
+
+        "AsterixCat34Sad": {
+            "properties": {
+                "messageType": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sac": {
+                    "type": "integer",
+                    "required": true
+                },
+                "sic": {
+                    "type": "integer",
+                    "required": true
+                },
+                "timeOfDay": {
+                    "type": "number",
+                    "required": true
+                },
+                "antennaRotationSpeed": {
+                    "type": "double",
+                    "required": true
+                },
+                "pos3dDataSrcHeight": {
+                    "type": "integer",
+                    "required": true
+                },
+                "pos3dDataSrcLatitude": {
+                    "type": "number",
+                    "required": true
+                },
+                "pos3dDataSrcLongitude": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,142 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "LocalizadorFiltro",
+    "version": "1.0.4",
+    "produces": [
+        "application/xml"
+	],
+
+	"apis": [
+        {
+            "path": "/localizador/filtro/posicoes",
+            "operations": [
+                {
+                    "method": "post",
+                    "summary": "Nova Posição",
+					"parameters": [
+                        {
+                            "name": "novaLocalizacao",
+                            "description": "Nova localização GPS",
+                            "paramType": "body",
+                            "type": "DadosGPSRecebido",
+                            "required": true
+                        }
+					]
+				}
+			]
+		},
+        {
+            "path": "/localizador/filtro/config",
+            "operations": [
+                {
+                    "method": "get",
+                    "summary": "Configurações do Filtro",
+					"parameters": [
+                        {
+                            "name": "filtroConfig",
+                            "description": "Configurações GPS",
+                            "paramType": "body",
+                            "type": "LocalizadorFiltroConfig",
+                            "required": true
+                        }
+					]
+				}
+			]
+		},
+        {
+            "path": "/localizador/filtro/radios",
+            "operations": [
+                {
+                    "method": "get",
+                    "summary": "Lista de Rádios",
+                    "type": "array",
+                    "items": {
+                        "$ref": "RadioResponse"
+                    },
+					"parameters": [
+					]
+				}
+			]
+		},
+        {
+            "path": "/localizador/filtro/radios/{idRadio}",
+            "operations": [
+                {
+                    "method": "get",
+                    "type": "RadioInfoResponse",
+                    "summary": "Informações do Rádio",
+                    "parameters": [
+                        {
+                            "name": "idRadio",
+                            "description": "ID do Rádio",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		}
+	],
+	"models": {
+        "DadosGPSRecebido": {
+            "properties": {
+                "idRadio": {
+                    "type": "string",
+					"required": true,
+					"description": "ID do Rádio"
+                },
+				"nmea": {
+					"type": "string",
+                    "required": true,
+                    "description": "Sentença NMEA GPRMC"
+				},
+				"dataRecebimento": {
+					"type": "string",
+					"required": true,
+					"description": "Data de recebimento da posição"
+				}
+			}
+		},
+		"RadioResponse": {
+            "properties": {
+                "idRadio": {
+                    "type": "string",
+					"required": true
+                }
+			}
+		},
+		"RadioInfoResponse": {
+            "properties": {
+                "idRadio": {
+                    "type": "string",
+					"required": true
+                }
+			}
+		},
+		"LocalizadorFiltroConfig": {
+            "properties": {
+                "enviaTodas": {
+                    "type": "boolean",
+					"required": true,
+					"description": "Ignora os critérios de filtro e salva todas as posições (desabilita o filtro)"
+                },
+                "tempoMaximo": {
+                    "type": "integer",
+					"required": true,
+					"description": "Tempo máximo (segundos) tolerado para filtragem de posição"
+                },
+                "distanciaMaxima": {
+                    "type": "integer",
+					"required": true,
+					"description": "Distância máxima (metros) tolerada para filtragem de posições"
+                },
+                "bufferTamanho": {
+                    "type": "integer",
+                    "required": true,
+                    "description": "Tamanho do buffer de posições de cada rádio"
+                }
+			}
+		}
+	}
+}

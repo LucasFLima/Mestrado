@@ -1,0 +1,386 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "Associacao",
+	"version": "1.0.4",
+	"produces": [
+		"application/json"
+	],
+
+	"apis": [
+		{
+			"path": "/associacao/calco/{idCalco}/item",
+			"description": "Gerencia as associações de Item a um calco.",
+			"operations": [
+				{
+					"method": "POST",
+					"summary": "Associa um item pré-existente a um calco.",
+					"type": "CalcoItemPostResponse",
+					"consumes": [
+						"application/json"
+					],
+
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idCalco",
+							"paramType": "path",
+							"type": "string",
+							"description": "Id do calco",
+							"required": true
+						},
+
+						{
+							"name": "CalcoItemAssociacao",
+							"paramType": "body",
+							"description": "Dados para associação",
+							"type": "CalcoItemPostRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/associacao/calco/{idCalco}/item/{idItem}",
+			"description": "Gerencia as associações de Item a um calco.",
+			"operations": [
+				{
+					"method": "DELETE",
+					"summary": "Remove a associação entre um item e um calco.",
+					"type": "string",
+					"consumes": [
+						"application/json"
+					],
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idCalco",
+							"paramType": "path",
+							"type": "string",
+							"description": "Id do calco",
+							"required": true
+						},
+						{
+							"name": "idItem",
+							"paramType": "path",
+							"type": "string",
+							"description": "Id do item",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"path": "/associacao/item/{idItem}",
+			"description": "Gerencia as associações de um item.",
+			"operations": [
+				{
+					"method": "PUT",
+					"summary": "Atualiza a associação de um item.",
+					"type": "string",
+					"consumes": [
+						"application/json"
+					],
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idItem",
+							"paramType": "path",
+							"type": "string",
+							"description": "Id do item",
+							"required": true
+						},
+						{
+							"name": "ItemAssociacao",
+							"paramType": "body",
+							"description": "Dados para associação",
+							"type": "ItemPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+    },
+    {
+      "path": "/associacao/item/{idItem}/{field}",
+      "description": "Gerencia as associação entre os itens.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Consulta a dados da associação entre os itens.",
+          "type": "AssociacaoItensGetResponse",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "description": "Identificador do item",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "field",
+              "paramType": "path",
+              "type": "string",
+              "enum": [
+                "SUBJ",
+                " OBJ"
+              ],
+              "description": "Informa se o item é um objeto ou um sujeito",
+              "required": true
+            },
+            {
+              "name": "idItemRelacionado",
+              "description": "Identificador do item relacionado",
+              "required": false,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "codigoCategoria",
+              "paramType": "query",
+              "type": "string",
+              "description": "Código da categoria da associação",
+              "required": false
+            },
+            {
+              "name": "codigoSubCategoria",
+              "paramType": "query",
+              "type": "string",
+              "description": "Código da subcategoria da assoicação",
+              "required": false
+            },
+            {
+              "name": "dataCorrente",
+              "paramType": "query",
+              "description": "Data corrente",
+              "type": "long",
+              "required": false
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "description": "Data de inicio da classificação",
+              "type": "long",
+              "required": false
+            },
+            {
+              "name": "dataFim",
+              "paramType": "query",
+              "description": "Data de final da classificação",
+              "type": "long",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Associações encontradas",
+              "responseModel": "AssociacaoItensGetResponse"
+            },
+            {
+              "code": 204,
+              "message": "Nenhuma associação encontrada"
+            },
+            {
+              "code": 500,
+              "message": "Erro na execução do recurso",
+              "responseModel": "Fault"
+            },
+            {
+              "code": 401,
+              "message": "Autenticação negada",
+              "responseModel": "Fault"
+            },
+            {
+              "code": 400,
+              "message": "Request invalido",
+              "responseModel": "Fault"
+            }
+          ]
+        }
+      ]
+		}
+	],
+
+	"models": {
+		"CalcoItemPostRequest": {
+			"properties": {
+				"item": {
+					"type": "Item",
+					"required": true
+				},
+
+				"idUsuario": {
+					"type": "string",
+					"required": true
+				},
+
+				"idOrganizacaoRelatora": {
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+		"CalcoItemPostResponse": {
+			"properties": {
+				"idCalco": {
+					"type": "string",
+					"required": true
+				},
+
+				"idItem": {
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+		"Item": {
+			"properties": {
+				"idItem": {
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+		
+		"ItemPutRequest": {
+			"properties": {
+				"idCalcoDestino": {
+					"type": "string",
+					"required": true
+				},
+				"idCalcoOrigem": {
+					"type": "string",
+					"required": false
+				}
+			}
+    },
+    "AssociacaoItensGetResponse": {
+      "properties": {
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoItemConsulta"
+          }
+        }
+      }
+    },
+    "AssociacaoItemConsulta": {
+      "properties": {
+        "idAssociacao": {
+          "type": "string",
+          "required": true
+        },
+        "idItemSubj": {
+          "type": "string",
+          "required": true
+        },
+        "idItemObj": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codigoSubCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta",
+          "required": true
+        }
+      }
+    },
+    "ClassificacaoConsulta": {
+      "properties": {
+        "idClassificacao": {
+          "type": "string",
+          "required": true
+        },
+        "gdh": {
+          "type": "long",
+          "required": true
+        },
+        "fonte": {
+          "type": "string"
+        },
+        "conteudo": {
+          "type": "string"
+        },
+        "tipoFonte": {
+          "type": "string"
+        },
+        "gdhInicial": {
+          "type": "long"
+        },
+        "gdhFinal": {
+          "type": "long"
+        }
+      }
+    },
+    "Fault": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "required": true
+        },
+        "mensagem": {
+          "type": "string",
+          "required": true
+        },
+        "detalhe": {
+          "type": "DetalheFault"
+        }
+      }
+    },
+    "DetalheFault": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "required": true
+        },
+        "mensagem": {
+          "type": "string",
+          "required": true
+        },
+        "causa": {
+          "type": "string"
+        }
+      }
+		}
+		
+	}
+}

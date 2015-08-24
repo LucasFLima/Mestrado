@@ -1,0 +1,49 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Backup",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/sistema/backup",
+      "description": "Solicita a execução do backup do banco de dados",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Um array contendo o alerta consultado.",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/sistema/restore",
+      "description": "Solicita a restauração do banco de dados",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Um array contendo todos os alertas",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }  
+
+  ],
+  "models": {
+  }
+}

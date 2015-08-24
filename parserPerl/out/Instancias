@@ -1,0 +1,174 @@
+module instancias {
+
+	path = "xxx";
+
+	entity Instancia {
+		string : ip;   /*Required.*/
+		string : idInstancia;   /*Required.*/
+		string : nomeOrdemBatalha;
+		number : porta;   /*Required.*/
+		string : idGlobalInstancia;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity UsuarioLocalPutRequest {
+		Usuario : usuario;   /*Required.*/
+	};
+
+	entity NosGetResponse {
+		[No] : nos;   /*Required.*/
+	};
+
+	entity UsuarioPutRequest {
+		string : nome;   /*Required.*/
+		string : instancia;   /*Required.*/
+		boolean : estado;   /*Required.*/
+		number : identificador;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+	};
+
+	entity No {
+		string : id;   /*Required.*/
+		string : ip;   /*Required.*/
+		string : idGlobalOrdemBatalha;   /*Required.*/
+		integer : porta;   /*Required.*/
+		string : nomeCompleto;   /*Required.*/
+		string : idGlobalInstancia;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity InstanciaLocalGetResponse {
+		Instancia : instancia;   /*Required.*/
+	};
+
+	entity UsuarioRemoto {
+		string : idUsuario;
+		number : identificador;
+		string : status;
+		string : instancia;
+		string : nomeUsuario;
+	};
+
+	entity NosGetRequest {
+		string : idOrgRelatora;
+		string : idUsuario;
+		[string] : ordemBatalhaIds;
+	};
+
+	entity UsuariosRemotosPostRequest {
+		[UsuarioRemoto] : listaUsuario;   /*Required.*/
+	};
+
+	entity Usuario {
+		boolean : estado;   /*Required.*/
+		number : identificador;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity InstanciasGetResponse {
+		[Instancia] : instancias;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/instancias";
+
+		/**
+		* @ summary: Obtém as instâncias com as quais a instância local tem ligações
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get InstanciasGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/instancia_local";
+
+		/**
+		* @ summary: Obtém a instância local
+		* @ params: 
+		*/
+		@get InstanciaLocalGetResponse <NomeCapacidade> ();
+	}
+
+	service <NomeServico> {
+		path = "/om_local";
+
+		/**
+		* @ summary: Obtém a om local
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get OrganizacaoMilitarLocalBuffer <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/instancia_local/usuario";
+
+		/**
+		* @ summary: Atualiza um usuário local no cache de usuários da instância local
+		* @ params: 
+		*	body usuario(*): Dados do usuário
+		*/
+		@put  <NomeCapacidade> (UsuarioLocalPutRequest usuario);
+	}
+
+	service <NomeServico> {
+		path = "/usuario";
+
+		/**
+		* @ summary: Atualiza um usuário remoto no cache de usuários da instância local
+		* @ params: 
+		*	body usuario(*): Dados do usuário
+		*/
+		@put  <NomeCapacidade> (UsuarioPutRequest usuario);
+
+		/**
+		* @ summary: Retorna a lista de usuários da instância local para a instância remota
+		* @ params: 
+		*	query globalIdRequest(*): ID global da instância remota
+		*/
+		@get  <NomeCapacidade> (string globalIdRequest);
+
+		/**
+		* @ summary: Recebe a lista de usuários da instância remota e atualiza no cache da instância local
+		* @ params: 
+		*	body usuariosRemotos(*): Lista de usuários da instância remota
+		*/
+		@post  <NomeCapacidade> (UsuariosRemotosPostRequest usuariosRemotos);
+	}
+
+	service <NomeServico> {
+		path = "/obtemTaskResource";
+
+		/**
+		* @ summary: Retorna as informações necessárias para executar a task diária de atualização de usuários
+		* @ params: 
+		*/
+		@get array <NomeCapacidade> ();
+	}
+
+	service <NomeServico> {
+		path = "/nos";
+
+		/**
+		* @ summary: Obtém os nós (ordens de batalha) com as quais a instância local tem ligações
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get NosGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/nos/{idOrdemDeBatalha}";
+
+		/**
+		* @ summary: Obtém o nó (ordem de batalha) que possuam o id global informado
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idOrdemDeBatalha: Id da ordem de batalha
+		*/
+		@get No <NomeCapacidade> (string t, string idOrdemDeBatalha);
+	}
+
+

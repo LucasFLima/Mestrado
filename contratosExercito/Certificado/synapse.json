@@ -1,0 +1,67 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "Certificado",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/certificado",
+            "description": "Envio de Certificados para o servidor",
+            "operations": [
+                {
+                    "method": "POST",
+                    "type": "CertificadoPostResponse",
+                    "summary": "Envio de um certificado para o servidor",
+                    "parameters": [
+                        {
+                            "name": "file",
+                            "paramType": "form",
+                            "description": "Certificado em anexo",
+                            "type": "file",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/certificadoRaiz",
+            "description": "Envio de Certificado Raiz para o servidor",
+            "operations": [
+                {
+                    "method": "POST",
+                    "type": "CertificadoPostResponse",
+                    "summary": "Envio de um certificado para o servidor",
+                    "parameters": [
+                        {
+                            "name": "file",
+                            "paramType": "form",
+                            "description": "Certificado em anexo",
+                            "type": "file",
+                            "required": true
+                        },
+                        {
+                        	"name": "senha",
+                            "paramType": "form",
+                            "description": "Senha de adm",
+                            "type": "string",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "CertificadoPostResponse":{
+            "properties": {
+                "ID": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+    }
+}

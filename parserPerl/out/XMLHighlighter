@@ -1,0 +1,20 @@
+module xmlhighlighter {
+
+	path = "xxx";
+
+	entity HighlightPostRequest {
+		string : strCodigo;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/util/highlight/xml";
+
+		/**
+		* @ summary: Realiza Highlight de sintaxe XML
+		* @ params: 
+		*	body highlightCodeInfo(*): 
+		*/
+		@post string <NomeCapacidade> (string highlightCodeInfo);
+	}
+
+

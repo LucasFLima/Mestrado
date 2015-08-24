@@ -1,0 +1,292 @@
+{
+
+    "swaggerVersion": "1.2",
+    "id": "Chat",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+
+    "apis": [
+        {
+            "path": "/chat/mensagens/{idUsuarioDestino}/{idUsuarioOrigem}",
+            "description": "Recurso para obter as mensagens que um usuário enviou para outro usuário",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "ChatGetResponse",
+                    "summary": "Obtém as mensagens de um usuário",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "idUsuarioDestino",
+                            "description": "Identificador do usuário que recebeu as mensagens",
+                            "paramType": "path",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "idUsuarioOrigem",
+                            "description": "Identificador do usuário que enviou as mensagens",
+                            "paramType": "path",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "instanciaOrigem",
+                            "description": "Instancia do usuário que recebera a mensagem",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/chat/mensagens/{idUsuarioDestino}",
+            "description": "Recurso para obter o número de mensagens não lidas por usuário",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "MensagensPendentesGetResponse",
+                    "summary": "Obtém o número de mensagens não lidas",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "idUsuarioDestino",
+                            "description": "Identificador do usuário que recebeu as mensagens",
+                            "paramType": "path",
+                            "type": "string",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "path": "/chat/mensagem/recebimento",
+            "description": "Recurso para enviar mensagens para a caixa de entrada de um usuário",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Envia uma mensagem para a caixa de entrada",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "name": "gidInstanciaOrigem",
+                            "description": "ID global da instância que enviou a mensagem",
+                            "paramType": "query",
+                            "type": "string",
+                            "required": false
+                        },
+                        {
+                            "name": "mensagem",
+                            "description": "Mensagem a ser enviada",
+                            "paramType": "body",
+                            "type": "ChatReceiverPostRequest",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "models": {
+    
+        "MensagensPendentesGetResponse": {
+            "properties": {
+                "instancias": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Instancia"
+                    }
+                }
+            }
+        },
+
+        "ChatGetResponse": {
+            "properties": {
+                "idNoEnvio": {
+                    "type": "string",
+                    "required": true
+                },
+                "idUsuarioEnvio": {
+                    "type": "string",
+                    "required": true
+                },
+                "mensagens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Mensagem"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "NumeroMensagensGetResponse": {
+            "properties": {
+                "usuarios" : {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NumeroMensagens"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "ChatPostResponse": {
+            "properties": {
+                "datahora": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        },
+
+        "ChatReceiverPostRequest": {
+            "properties": {
+                "mensagem": {
+                    "type": "Mensagem",
+                    "required": true
+                }
+            }
+        },
+
+        "ChatPostRequest": {
+            "properties": {
+                "mensagem": {
+                    "type": "Mensagem",
+                    "required": true
+                }
+            }
+        },
+
+        "Mensagem": {
+            "properties": {
+                "idMensagem": {
+                    "type": "number",
+                    "required": true
+                },
+                "mensagem": {
+                    "type": "string",
+                    "required": true
+                },
+                "idUsuarioOrigem": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeUsuarioOrigem": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeInstanciaOrigem": {
+                    "type": "string",
+                    "required": true
+                },
+                "idUsuarioDestino": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeInstanciaDestino": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "NumeroMensagens": {
+            "properties": {
+                "idUsuarioEnvio": {
+                    "type": "string",
+                    "required": true
+                },
+                "idNoEnvio": {
+                    "type": "string",
+                    "required": true
+                },
+                "quantidadeMensagens": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        },
+
+        "MensagemUsuariosGetResponse": {
+            "properties": {
+                "instancia": {
+                    "type": "Instancia"
+                }
+            }
+        },
+
+        "Instancia": {
+            "properties": {
+                "idInstancia": {
+                    "type": "string"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "usrMsgPendentes": {
+                    "type": "number"
+                },
+                "usuarios": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Usuario"
+                    }
+                }
+            }
+        },
+
+        "Usuario": {
+            "properties": {
+                "idUsuario": {
+                    "type": "string"
+                },
+                "identificador": {
+                    "type": "string"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "msgPendentes": {
+                    "type": "number"
+                },
+                "mensagens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Mensagem"
+                    }
+                }
+            }
+        }
+    }
+}

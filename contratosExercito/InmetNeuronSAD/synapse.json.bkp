@@ -1,0 +1,313 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "InmetNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/inmet/opcoes",
+      "description": "Consulta ao INMET que retorna a lista de cidades, estados e regiões",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "OpcoesINMETResponse",
+          "summary": "Listas cidades, estados e regioes.",
+          "parameters": [
+				{
+					"name": "t",
+					"description": "Token de autenticação",
+					"required": true,
+					"type": "string",
+					"paramType": "query"
+				}
+			]
+        }
+      ]
+    },
+    {
+      "path": "/inmet/cidade/{geocode}",
+      "description": "Obtem a previsão metereológica da cidade selecionada",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "PrevisaoCidadeGetResponse",
+          "summary": "Obtem a previsao metereológica da cidade selecionada.",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "geocode",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/inmet/estado/{uf}",
+      "description": "Obtem a previsão metereológica do estado selecionado",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "PrevisaoEstadoGetResponse",
+          "summary": "Obtem a previsao metereológica do estado selecionado.",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "uf",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/inmet/regiao/{uf}",
+      "description": "Obtem a previsão metereológica da região selecionada",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "PrevisaoRegiaoGetResponse",
+          "summary": "Obtem a previsão metereológica da região selecionada",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "uf",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/inmet/config",
+      "description": "Configurações INMET",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "InmetConfig",
+          "summary": "Recupera Configurações da Comunicação INMET",
+          "parameters": [
+				{
+					"name": "t",
+					"description": "Token de autenticação",
+					"required": true,
+					"type": "string",
+					"paramType": "query"
+				},
+          		{
+     				"name": "testaComunicacao",
+                 	"paramType": "query",
+					"type": "string",
+					"required": false,
+					"allowableValues":{
+						"valuesType":"LIST",
+						"values":[
+							"true",
+							"false"
+						]
+					}
+             	}             
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "InmetConfig",
+          "summary": "Alterar Configurações COMINT",
+          "parameters": [
+				{
+					"name": "t",
+					"description": "Token de autenticação",
+					"required": true,
+					"type": "string",
+					"paramType": "query"
+				},
+          		{
+     				"name": "alterarConfigInmet",
+                   	"paramType": "body",
+                   	"type": "InmetConfigPut",
+                	"required": true
+              	},
+         		{
+     				"name": "testaComunicacao",
+                 	"paramType": "query",
+					"type": "string",
+					"required": false,
+					"allowableValues":{
+						"valuesType":"LIST",
+						"values":[
+							"true",
+							"false"
+						]
+					}
+             	}             
+          	]
+    	}
+	  ]
+    }
+  ],
+  "models": {
+    "InmetConfig": {
+    	 "properties": {
+			            "urlPrevisao":       { "type": "string", "required": true},
+            			"statusComunicacao": { "type": "string", "required": true}
+    	 } 
+   	},
+    "InmetConfigPut": {
+    	 "properties": {
+			            "urlPrevisao":   { "type": "string", "required": true},
+			            "apenasStatus":  {"type": "boolean", "required": true}
+    	 } 
+   	},
+    "PrevisaoRegiaoGetResponse": {
+      "properties": {
+        "data": [
+          {
+            "resumo": {
+              "type": "string"
+            },
+            "temp_min": {
+              "type": "string"
+            },
+            "temp_max": {
+              "type": "string"
+            },
+            "dir_vento": {
+              "type": "string"
+            },
+            "umidade_min": {
+              "type": "string"
+            },
+            "umidade_max": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "PrevisaoEstadoGetResponse": {
+      "properties": {
+        "data": [
+          {
+            "resumo": {
+              "type": "string"
+            },
+            "temp_min": {
+              "type": "string"
+            },
+            "temp_max": {
+              "type": "string"
+            },
+            "dir_vento": {
+              "type": "string"
+            },
+            "umidade_min": {
+              "type": "string"
+            },
+            "umidade_max": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "PrevisaoCidadeGetResponse": {
+      "properties": {
+        "periodo": [
+          {
+            "data": [
+              {
+                "resumo": {
+                  "type": "string"
+                },
+                "temp_min": {
+                  "type": "string"
+                },
+                "temp_max": {
+                  "type": "string"
+                },
+                "dir_vento": {
+                  "type": "string"
+                },
+                "umidade_min": {
+                  "type": "string"
+                },
+                "umidade_max": {
+                  "type": "string"
+                },
+                "nascer": {
+                  "type": "string"
+                },
+                "ocaso": {
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "OpcoesINMETResponse": {
+      "properties": {
+        "regioes": [
+          {
+            "nomeRegiao": {
+              "type": "string"
+            },
+            "codRegiao": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "estados": [
+        {
+          "nomeEstado": {
+            "type": "string"
+          },
+          "uf": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "cidades": [
+      {
+        "nomeCidade": {
+          "type": "string"
+        },
+        "uf": {
+          "type": "string"
+        },
+        "geocode": {
+          "type": "string"
+        }
+      }
+    ]
+  }
+}

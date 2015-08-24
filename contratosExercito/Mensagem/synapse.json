@@ -1,0 +1,342 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Mensagem",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/mensagens/",
+      "description": "Serviços disponíveis para as mensagens",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Envia uma nova mensagem",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "parametros",
+              "type": "MensagemRequest",
+              "paramType": "body",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "type": "MensagemListResponse",
+          "summary": "Retorna uma lista de mensagens dessa instância novas ou não",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "novas",
+              "description": "Flag que indica se a busca retorna somente as mensagens novas",
+              "paramType": "query",
+              "type": "boolean"
+            },
+            {
+              "name": "pasta",
+              "description": "Nome da pasta a ser buscada",
+              "paramType": "query",
+              "type": "string"
+            },
+            {
+              "name": "offset",
+              "description": "Indica a posição inicial de mensagens que devem ser retornadas na busca",
+              "paramType": "query",
+              "type": "integer"
+            },
+            {
+              "name": "limit",
+              "description": "Indica o limite de mensagens que devem ser retornadas na busca",
+              "paramType": "query",
+              "type": "integer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/mensagens/{idMensagem}",
+      "description": "Serviços disponíveis para uma mensagem específica",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Atualiza uma mensagem",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "marcarLida",
+              "type": "boolean",
+              "paramType": "query"
+            },
+            {
+              "name": "pasta",
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "parametros",
+              "type": "MensagemRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "summary": "Deleta uma mensagem especifica",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idMensagem",
+              "description": "id da mensagem que deve ser excluída",
+              "paramType": "query",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "type": "MensagemListResponse",
+          "summary": "Retorna uma mensagem",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idMensagem",
+              "description": "Id da mensagem a ser buscada",
+              "paramType": "query",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/mensagens/receber",
+      "description": "Serviço de recebimento de mensagem",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Atualiza uma mensagem",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "parametros",
+              "type": "MensagemRequest",
+              "paramType": "body",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/mensagens/filtro",
+      "description": "Serviço de filtro de mensagem",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "MensagemListResponse",
+          "summary": "Serviço de filtro de mensagem",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "parametros",
+              "type": "MensagemFiltroRequest",
+              "paramType": "body",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "MensagemRequest": {
+      "properties": {
+        "mensagem": {
+          "type": "Mensagem",
+          "required": true
+        }
+      }
+    },
+    "Mensagem": {
+      "properties": {
+        "idMensagem": {
+          "type": "string"
+        },
+        "origem": {
+          "type": "string",
+          "required": true
+        },
+        "assunto": {
+          "type": "string",
+          "required": true
+        },
+        "textoMensagem": {
+          "type": "string",
+          "required": true
+        },
+        "dataEnvio": {
+          "type": "string"
+        },
+        "dataRecebimento": {
+          "type": "string"
+        },
+        "dataDeExpiracao": {
+          "type": "string"
+        },
+        "prioridade": {
+          "type": "string",
+          "allowableValues": {
+            "valueType": "list",
+            "values": [
+              "NORMAL",
+              "URGENTE",
+              "URGENTISSIMO"
+            ]
+          }
+        },
+        "classificacao": {
+          "type": "string",
+          "allowableValues": {
+            "valueType": "list",
+            "values": [
+              "ULTRASECRETO",
+              "SECRETO",
+              "CONFIDENCIAL",
+              "RESERVADO",
+              "SEM_SIGILO"
+            ]
+          },
+          "required": true
+        },
+        "especial": {
+          "type": "boolean",
+          "required": true
+        },
+        "lida": {
+          "type": "boolean",
+          "required": true
+        },
+        "pasta": {
+          "type": "string",
+          "required": true,
+          "allowableValues": {
+            "valueType": "list",
+            "values": [
+              "ENTRADA",
+              "SAIDA",
+              "ENVIADAS",
+              "RASCUNHOS",
+              "ARQUIVADAS"
+            ]
+          }
+        },
+        "destinatarios": {
+          "type": "array",
+          "items": {
+            "$ref": "Destinatario"
+          }
+        },
+        "anexos": {
+          "type": "array",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "Destinatario": {
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "idOrdemDeBatalha": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MensagemListResponse": {
+      "properties": {
+        "mensagens": {
+          "type": "array",
+          "items": {
+            "$ref": "Mensagem"
+          }
+        }
+      }
+    },
+    "MensagemFiltroRequest": {
+      "properties": {
+        "filtro": {
+          "type": "FiltroMensagem"
+        }
+      }
+    },
+    "FiltroMensagem": {
+      "properties": {
+        "assunto": {
+          "type": "string"
+        },
+        "novas": {
+          "type": "boolean"
+        },
+        "contador": {
+          "type": "boolean"
+        },
+        "pastas": {
+          "type": "array",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,262 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "SGL",
+	"version": "1.0.4",
+	"produces": [
+		"application/json"
+	],
+
+	"apis": [
+		{
+			"path": "/hierarquiamilitar",
+			"description": "Recuperar organizações militares por UF e/ou nível hierárquico",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "array",
+					"items": {
+						"$ref": "OrganizacaoMilitar"
+					},
+
+					"summary": "Retorna uma lista de organização militar",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "uf",
+							"description": "Sigla do estado (UF)",
+							"required": false,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "codigoOrganizacao",
+							"description": "Código da organização militar subordinadora",
+							"required": false,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/situacaologistica",
+			"description": "Recuperar a situação logística de um tipo de material específico",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "SituacaoLogisticaMaterialGetResponse",
+					"summary": "Retorna a representação de material e organizações militares contendo o material e suas quantidades",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "partNumber",
+							"description": "Código do tipo de material",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "uf",
+							"description": "Sigla do estado (UF)",
+							"required": false,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "codigoOrganizacao",
+							"description": "Código da organização militar subordinadora",
+							"required": false,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/instanciamaterial",
+			"description": "Recuperar a instância de um material",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "InstanciaMaterialGetResponse",
+					"summary": "Retorna a representação de uma instância de material",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "partNumber",
+							"description": "Código do tipo de material",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "codigoOrganizacao",
+							"description": "Código da organização militar subordinadora",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/tipoequipamento",
+			"description": "Recuperar a lista de tipos de equipamentos disponíveis para consulta",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "TipoEquipamentoGetResponse",
+					"summary": "Retorna a lista de tipos de equipamentos disponíveis para consulta",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		}
+	],
+
+	"models": {
+		"OrganizacaoMilitar": {
+			"properties": {
+				"codigo": {
+					"type": "string",
+					"required": true
+				},
+
+				"descricao": {
+					"type": "string",
+					"required": true
+				},
+
+				"quantidadeDisponivel": {
+					"type": "integer"
+				},
+
+				"total": {
+					"type": "integer"
+				}
+			}
+		},
+
+		"SituacaoLogisticaMaterialGetResponse": {
+			"properties": {
+				"material": {
+					"type": "string",
+					"required": true
+				},
+
+				"organizacoesMilitares": {
+					"type": "array",
+					"items": {
+						"$ref": "OrganizacaoMilitar"
+					}
+				}
+			}
+		},
+
+		"InstanciaMaterialGetResponse": {
+			"properties": {
+				"tipoMaterial": {
+					"type": "TipoMaterial",
+					"required": true
+				},
+
+				"instanciasMaterial": {
+					"type": "array",
+					"items": {
+						"$ref": "InstanciaMaterial"
+					}
+				}
+			}
+		},
+
+		"TipoMaterial": {
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true
+				},
+
+				"descricao": {
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+		"InstanciaMaterial": {
+			"properties": {
+				"numeroSerial": {
+					"type": "string",
+					"required": true
+				},
+
+				"descricao": {
+					"type": "string",
+					"required": true
+				},
+
+				"latitude": {
+					"type": "double",
+					"required": true
+				},
+
+				"longitude": {
+					"type": "double",
+					"required": true
+				}
+			}
+		},
+
+		"TipoEquipamentoGetResponse": {
+			"properties": {
+				"partNumber": {
+					"type": "string",
+					"required": true
+				},
+
+				"descricao": {
+					"type": "string",
+					"required": true
+				}
+			}
+		}
+	}
+}

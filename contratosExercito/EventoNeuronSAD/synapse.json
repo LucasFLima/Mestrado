@@ -1,0 +1,1892 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "EventoNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/listaAlvos",
+      "description": "inserir lista de alvo",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "ListaAlvosPostResponse",
+          "summary": "cria uma lista de alvo",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "DadosDaLista",
+              "paramType": "body",
+              "type": "DadosDaLista",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/listaAlvos/{idListaAlvos}/alvos",
+      "description": "altera os alvos de uma lista de alvo",
+      "operations": [
+        {
+          "method": "PUT",
+          "type": "ListaAlvosPutResponse",
+          "summary": "altera a lista de alvo",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idListaAlvos",
+              "description": "Identificador da lista do alvo",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "alvosPut",
+              "paramType": "body",
+              "type": "AlvosPut",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/listaAlvos/pio/{idPio}",
+      "description": "Recuperar listas de alvos de um pio.",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "ListasAlvosResponse",
+          "summary": "Retorna as listas de alvos do pio.",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idPio",
+              "description": "Identificador do pio",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/eventos/{idPio}",
+      "description": "Recuperar listas de eventos de um pio",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "EventosResponse",
+          "summary": "Retorna a lista de eventos do pio",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idPio",
+              "description": "Identificador do pio",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/listaAlvos/{idListaAlvos}",
+      "description": "Recuperar lista de alvos",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "ListaAlvosGetResponse",
+          "summary": "Retorna a lista de alvo",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idListaAlvos",
+              "description": "Identificador da lista do alvo",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "ListaAlvosPutResponse",
+          "summary": "altera a lista de alvo",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idListaAlvos",
+              "description": "Identificador da lista do alvo",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "nomeListaAlvos",
+              "paramType": "body",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "type": "AlvoDeleteResponse",
+          "summary": "deleta uma lista de um alvo",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idListaAlvos",
+              "description": "Identificação das listas",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/listaAlvos",
+      "description": "Obtencao e manipulacao de alvos",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AlvoGetResponse",
+          "summary": "Retorna o alvo com suas respectivas listas",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idItem",
+              "description": "Identificador do Item",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "summary": "Altera a situação do item em uma lista",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idItem",
+              "description": "Identificador do Item",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "listaAlvos",
+              "description": "Identificação das listas",
+              "required": true,
+              "type": "AlvoPutRequest",
+              "paramType": "body"
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "type": "AlvoDeleteResponse",
+          "summary": "Remove o item de uma lista",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "idItem",
+              "description": "Identificador do Item",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            },
+            {
+              "name": "idLista",
+              "description": "Identificador da Lista",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            }
+          ]
+        }
+      ]
+    },
+    
+    {
+        "path": "/eventos",
+        "description": "Eventos",
+        "operations": [
+            {
+                "method": "POST",
+                "type": "EventoPostResponse",
+                "summary": "Cria um novo evento",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "Evento",
+                        "description": "Dados do novo evento",
+                        "paramType": "body",
+                        "type": "EventoPostRequest",
+                        "required": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/eventos/{idEvento}",
+        "description": "Evento",
+        "operations": [
+            {
+                "method": "PUT",
+                "type": "EventoPutResponse",
+                "summary": "Altera os dados do evento",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "Evento",
+                        "description": "Dados do evento",
+                        "paramType": "body",
+                        "type": "EventoPutRequest",
+                        "required": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/evento/{idEvento}",
+        "description": "Eventos",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "EventoGetResponse",
+                "summary": "Consulta um evento",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+		            {
+		                "name": "limite",
+		                "description": "Limite de registros nas listas do evento",
+		                "paramType": "query",
+		                "type": "int"
+	              	}
+                ]
+            },
+	        {
+	          "method": "DELETE",
+	          "type": "EventoDeleteResponse",
+	          "summary": "Exclui um evento",
+	          "parameters": [
+				{
+					"name": "t",
+					"description": "Token de autenticação",
+					"required": true,
+					"type": "string",
+					"paramType": "query"
+				},
+	            {
+	                "name": "idEvento",
+	                "description": "ID do evento",
+	                "paramType": "path",
+	                "type": "string",
+	                "required": true
+	            },
+	            {
+	              "name": "idPio",
+	              "description": "Identificador do pio",
+	              "required": true,
+	              "type": "string",
+	              "paramType": "query"
+	            }
+	          ]
+	        }
+        ]
+    },
+    {
+        "path": "/evento/{idEvento}/efeito/classificacao",
+        "description": "Retorna a lista de efeitos de um evento por intervalo",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "ListaAcaoEfeitoGetResponse",
+                "summary": "Retorna a lista de efeitos de um evento por intervalo",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+		            {
+		                "name": "limite",
+		                "description": "Limite de registros",
+		                "paramType": "query",
+		                "type": "int",
+                        "required": false
+	              	},
+		            {
+		              "name": "dataInicio",
+		              "description": "Data de início para consulta",
+		              "paramType": "query",
+		              "type": "long",
+                      "required": false
+		            }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/evento/{idEvento}/evolucao/classificacao",
+        "description": "Retorna a lista de evoluções de um evento por intervalo",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "ListaAcaoEvolucaoGetResponse",
+                "summary": "Retorna a lista de evoluções de um evento por intervalo",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+		            {
+		                "name": "limite",
+		                "description": "Limite de registros",
+		                "paramType": "query",
+		                "type": "int",
+                        "required": false
+	              	},
+		            {
+		              "name": "dataInicio",
+		              "description": "Data de início para consulta",
+		              "paramType": "query",
+		              "type": "long",
+                      "required": false
+		            }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/evento/{idEvento}/localizacao/classificacao",
+        "description": "Retorna a lista de localizações de um evento por intervalo",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "ListaAcaoLocalizacaoGetResponse",
+                "summary": "Retorna a lista de localizações de um evento por intervalo",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+		            {
+		                "name": "limite",
+		                "description": "Limite de registros",
+		                "paramType": "query",
+		                "type": "int",
+                        "required": false
+	              	},
+		            {
+		              "name": "dataInicio",
+		              "description": "Data de início para consulta",
+		              "paramType": "query",
+		              "type": "long",
+                      "required": false
+		            }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/evento/{idEvento}/anexo/classificacao",
+        "description": "Retorna a lista de anexos de um evento por intervalo",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "ListaAnexo",
+                "summary": "Retorna a lista de anexos de um evento por intervalo",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+		            {
+		                "name": "limite",
+		                "description": "Limite de registros",
+		                "paramType": "query",
+		                "type": "int",
+                        "required": false
+	              	},
+		            {
+		              "name": "idAnexo",
+		              "description": "ID do último anexo consultado",
+		              "paramType": "query",
+		              "type": "string",
+                      "required": false
+		            }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/evento/{idEvento}/anotacao/classificacao",
+        "description": "Retorna a lista de anotações de um evento por intervalo",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "ListaAnotacaoGetResponse",
+                "summary": "Retorna a lista de anotações de um evento por intervalo",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idEvento",
+                        "description": "ID do evento",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+		            {
+		                "name": "limite",
+		                "description": "Limite de registros",
+		                "paramType": "query",
+		                "type": "int",
+                        "required": false
+	              	},
+		            {
+		              "name": "dataInicio",
+		              "description": "Data de início para consulta",
+		              "paramType": "query",
+		              "type": "long",
+                      "required": false
+		            }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/pio/{idCalco}/eventos",
+        "description": "Eventos",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "EventosCalcoGetResponse",
+                "summary": "Consulta os evento de um Calco",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idCalco",
+                        "description": "ID do calco",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/vistas/{idVista}/eventos",
+        "description": "Eventos dos PIOs associados a uma vista",
+        "operations": [
+            {
+                "method": "GET",
+                "type": "EventosVistaGetResponse",
+                "summary": "Lista todos os eventos dos PIOs associados a uma vista",
+                "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+                    {
+                        "name": "idVista",
+                        "description": "ID da vista",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+      "path": "/evento/itens/associacoes",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Associações dos itens de uma lista",
+          "type": "PiosEventosGetResponse",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "listaIds",
+              "paramType": "body",
+              "type": "array",
+              "items": {
+	            "$ref": "string"
+	          },
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/evento/pios",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Recupera lista de pios que contém evento",
+          "type": "array",
+          "items": {
+          	"$ref": "string"
+          },
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			}
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "DadosDaLista": {
+      "properties": {
+        "nomeListaAlvos": {
+          "type": "string",
+          "required": true
+        },
+        "idPio": {
+          "type": "number",
+          "required": true
+        }
+      }
+    },
+    "EventoPostResponse": {
+        "properties": {
+            "evento": {
+                "type": "EventoCriarResponse",
+                "required": true
+            }
+        }
+    },
+    "EventoCriarResponse": {
+        "properties": {
+            "idEvento": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "entidades": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeCriarResponse"
+                },
+                "required": false
+            },
+            "localizacao": {
+                "type": "Localizacao",
+                "required": false
+            }
+        }
+    },
+    "EntidadeCriarResponse": {
+        "properties": {
+            "idItem": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "EventoPostRequest": {
+        "properties": {
+            "evento": {
+                "type": "EventoCriarRequest",
+                "required": true
+            }
+        }
+    },
+    "EventoCriarRequest": {
+        "properties": {
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "aceitaNomeDuplicado": {
+                "type": "boolean",
+                "required": true
+            },
+            "idPio": {
+                "type": "string",
+                "required": true
+            },
+            "codCategoria": {
+                "type": "string",
+                "required": true
+            },
+            "porcentagemEvolucao": {
+                "type": "int",
+                "required": true
+            },
+            "entidades": {
+                "type": "array",
+                "items": {
+                    "$ref": "Entidade"
+                },
+                "required": false
+            },
+            "anexos": {
+                "type": "array",
+                "items": {
+                    "$ref": "Anexo"
+                },
+                "required": false
+            },
+            "localizacao": {
+                "type": "Localizacao",
+                "required": true
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": true
+            },
+            "descricao": {
+                "type": "string",
+                "required": false
+            }
+        }
+    },
+    "Entidade": {
+        "properties": {
+            "idItem": {
+                "type": "string",
+                "required": true
+            },
+            "envolvimento": {
+                "type": "string",
+                "allowableValues": {
+                    "valueType": "list",
+                    "values": [
+                        "RES",
+                        "OBJ"
+                    ]
+                },
+                "required": true
+            },
+            "qualificador": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "Anexo": {
+        "properties": {
+            "codTemp": {
+                "type": "string",
+                "required": true
+            },
+            "nomeAnexo": {
+                "type": "string",
+                "required": true
+            },
+            "tipoAnexo": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "Localizacao": {
+        "properties": {
+            "idLocalizacao": {
+                "type": "string",
+                "required": false
+            },
+            "codigoCategoria": {
+                "type": "string",
+                "required": true
+            },
+            "ponto": {
+                "type": "Ponto",
+                "required": false
+            },
+            "linha": {
+                "type": "Linha",
+                "required": false
+            },
+            "area": {
+                "type": "Area",
+                "required": false
+            }
+        }
+    },
+    "Ponto": {
+        "properties": {
+            "latitude": {
+                "type": "double",
+                "required": true
+            },
+            "longitude": {
+                "type": "double",
+                "required": true
+            },
+            "altitude": {
+                "type": "double",
+                "required": false
+            }
+        }
+    },
+    "Linha": {
+        "properties": {
+            "pontos": {
+                "type": "array",
+                "items": {
+                    "$ref": "Ponto"
+                },
+                "required": true
+            }
+        }
+    },
+    "Area": {
+        "properties": {
+            "pontos": {
+                "type": "array",
+                "items": {
+                    "$ref": "Ponto"
+                },
+                "required": true
+            }
+        }
+    },
+    "Classificacao": {
+        "properties": {
+            "gdh": {
+                "type": "long",
+                "required": true
+            },
+            "fonte": {
+                "type": "string",
+                "required": true
+            },
+            "conteudo": {
+                "type": "string",
+                "required": true
+            },
+            "tipoFonte": {
+                "type": "string",
+                "required": true
+            },
+            "gdhInicial": {
+                "type": "long",
+                "required": false
+            },
+            "gdhFinal": {
+                "type": "long",
+                "required": false
+            }
+        }
+    },
+    
+    "EventoGetResponse": {
+        "properties": {
+          "idEvento": {
+            "type": "string",
+            "required": true
+          },
+          "nome": {
+            "type": "string",
+            "required": true
+          },
+          "idPio": {
+            "type": "string",
+            "required": true
+          },
+          "codCategoria": {
+            "type": "string",
+            "required": true
+          },
+          "porcentagemEvolucao": {
+            "type": "int",
+            "required": true
+          },
+          "localizacao": {
+            "type": "Localizacao",
+            "required": false
+          },
+          "objetivos": {
+			"type": "ListaEntidadeGetResponse",
+		  	"required": false
+		  },
+          "recursos": {
+			"type": "ListaEntidadeGetResponse",
+		  	"required": false
+		  },
+          "efeitos": {
+			"type": "array",
+			  "items": {
+		        "$ref": "AcaoEfeitoGetResponse"
+			  },
+			  "required": false
+		  },
+		  "anexos": {
+			"type": "array",
+			  "items": {
+		        "$ref": "AnexoGetResponse"
+			  },
+			  "required": false
+		  },
+		  "anotacoes": {
+			"type": "array",
+			  "items": {
+		        "$ref": "AnotacaoGetResponse"
+			  },
+			  "required": false
+		  },
+		  "localizacoes": {
+			"type": "array",
+			  "items": {
+		        "$ref": "LocalizacaoGetResponse"
+			  },
+			  "required": false
+		  },
+		  "evolucoes": {
+			"type": "array",
+			  "items": {
+		        "$ref": "AcaoEventoEvolucaoGetResponse"
+			  },
+			  "required": false
+		  }
+        }
+    },
+    "ListaEntidadeGetResponse": {
+        "properties": {
+            "pessoas": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeGetResponse"
+                },
+                "required": false
+            },
+            "organizacoes": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeGetResponse"
+                },
+                "required": false
+            },
+            "instalacoes": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeGetResponse"
+                },
+                "required": false
+            },
+            "materiais": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeGetResponse"
+                },
+                "required": false
+            },
+            "mccs": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeGetResponse"
+                },
+                "required": false
+            }
+        }
+    },
+    "EntidadeGetResponse": {
+    	"properties": {
+        	"idEntidade": {
+                "type": "string",
+                "required": true
+            },
+        	"idItem": {
+                "type": "string",
+                "required": true
+            },
+            "codCategoria": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "qualificador": {
+                "type": "string",
+                "required": true
+            },
+            "sujeitos": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeAssociacaoGetResponse"
+                },
+                "required": false
+            },
+            "objetos": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeAssociacaoGetResponse"
+                },
+                "required": false
+            }
+            
+        }
+    },
+    "EntidadeAssociacaoGetResponse": {
+    	"properties": {
+        	"idItem": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "codCategoria": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "ListaAcaoEfeitoGetResponse": {
+        "properties": {
+            "efeitos": {
+                "type": "array",
+                "items": {
+                    "$ref": "AcaoEfeitoGetResponse"
+                },
+                "required": false
+            }
+        }
+    },
+    "AcaoEfeitoGetResponse": {
+    	"properties": {
+    		"idEfeito": {
+                "type": "string",
+                "required": true
+            },
+        	"idItem": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "descricao": {
+                "type": "string",
+                "required": true
+            },
+            "severidade": {
+                "type": "string",
+                "required": true
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": true
+            }
+        }
+    },
+    "ListaAnotacaoGetResponse": {
+        "properties": {
+            "anotacoes": {
+                "type": "array",
+                "items": {
+                    "$ref": "AnotacaoGetResponse"
+                },
+                "required": false
+            }
+        }
+    },
+    "AnotacaoGetResponse": {
+    	"properties": {
+        	"idAnotacao": {
+                "type": "string",
+                "required": true
+            },
+            "descricao": {
+                "type": "string",
+                "required": true
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": true
+            }
+        }
+    },
+    "ListaAcaoLocalizacaoGetResponse": {
+        "properties": {
+            "localizacoes": {
+                "type": "array",
+                "items": {
+                    "$ref": "LocalizacaoGetResponse"
+                },
+                "required": false
+            }
+        }
+    },
+    "LocalizacaoGetResponse": {
+        "properties": {
+            "idLocalizacao": {
+                "type": "string",
+                "required": false
+            },
+            "codigoCategoria": {
+                "type": "string",
+                "required": true
+            },
+            "ponto": {
+                "type": "Ponto",
+                "required": false
+            },
+            "linha": {
+                "type": "Linha",
+                "required": false
+            },
+            "area": {
+                "type": "Area",
+                "required": false
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": true
+            }
+        }
+    },
+    "ListaAcaoEvolucaoGetResponse": {
+        "properties": {
+            "evolucoes": {
+                "type": "array",
+                "items": {
+                    "$ref": "AcaoEventoEvolucaoGetResponse"
+                },
+                "required": false
+            }
+        }
+    },
+    "AcaoEventoEvolucaoGetResponse": {
+    	"properties": {
+        	"idEvolucao": {
+                "type": "string",
+                "required": true
+            },
+            "porcentagemEvolucao": {
+                "type": "int",
+                "required": true
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": true
+            }
+        }
+    },
+    "ListaAnexo": {
+        "properties": {
+            "anexos": {
+                "type": "array",
+                "items": {
+                    "$ref": "Anexo"
+                },
+                "required": false
+            }
+        }
+    },
+    "AnexoGetResponse": {
+        "properties": {
+            "idAnexo": {
+                "type": "string",
+                "required": true
+            },
+            "nomeAnexo": {
+                "type": "string",
+                "required": true
+            },
+            "tipoAnexo": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    
+    "EventosVistaGetResponse": {
+        "properties": {
+            "pios": {
+                "type": "array",
+                "items": {
+                    "$ref": "Pio"
+                },
+                "required": false
+            }
+        }
+    },
+    "Pio": {
+        "properties": {
+            "idPio": {
+                "type": "string",
+                "required": true
+            },
+            "nomePio": {
+                "type": "string",
+                "required": true
+            },
+            "transparencia": {
+                "type": "string",
+                "required": false
+            },
+            "eventos": {
+                "type": "array",
+                "items": {
+                    "$ref": "EventosVista"
+                },
+                "required": false
+            }
+        }
+    },
+    "EventosVista": {
+        "properties": {
+            "idEvento": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "porcentagemEvolucao": {
+                "type": "int",
+                "required": true
+            },
+            "localizacao": {
+                "type": "Localizacao",
+                "required": false
+            }
+        }
+    },
+    "EventoPutRequest": {
+        "properties": {
+            "evento": {
+                "type": "EventoAlterar",
+                "required": true
+            }
+        }
+    },
+    "EventoAlterar": {
+        "properties": {
+            "eventoNome": {
+                "type": "EventoNome",
+                "required": false            
+            },
+            "porcentagemEvolucao": {
+                "type": "int",
+                "required": false
+            },
+            "localizacao": {
+                "type": "Localizacao",
+                "required": false
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": false
+            },
+            "entidadesCriadas": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeCriar"
+                },
+                "required": false
+            },
+            "entidadesAlteradas": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeAlterar"
+                },
+                "required": false
+            },
+            "entidadesRemovidas": {
+                "type": "array",
+                "items": {
+                    "$ref": "EntidadeRemover"
+                },
+                "required": false
+            },
+            "efeitosCriados": {
+                "type": "array",
+                "items": {
+                    "$ref": "EfeitoCriar"
+                },
+                "required": false
+            },
+            "efeitosRemovidos": {
+                "type": "array",
+                "items": {
+                    "$ref": "EfeitoRemover"
+                },
+                "required": false
+            },
+            "anotacoesCriadas": {
+                "type": "array",
+                "items": {
+                    "$ref": "AnotacaoCriar"
+                },
+                "required": false
+            },
+            "anotacoesAlteradas": {
+                "type": "array",
+                "items": {
+                    "$ref": "AnotacaoAlterar"
+                },
+                "required": false
+            },
+            "anexosCriados": {
+                "type": "array",
+                "items": {
+                    "$ref": "AnexoCriar"
+                },
+                "required": false
+            }
+        }
+    },
+    "EventoNome": {
+        "properties": {
+            "idPio": {
+                "type": "string",
+                "required": true
+            },
+            "idCategoria": {
+                "type": "string",
+                "required": true
+            },
+            "nome": {
+                "type": "string",
+                "required": true
+            },
+            "aceitaNomeDuplicado": {
+                "type": "boolean",
+                "required": true
+            }
+        }
+    },
+    "EntidadeCriar": {
+        "properties": {
+            "idItem": {
+                "type": "string",
+                "required": true
+            },
+            "envolvimento": {
+                "type": "string",
+                "allowableValues": {
+                    "valueType": "list",
+                    "values": [
+                        "RES",
+                        "OBJ"
+                    ]
+                },
+                "required": true
+            },
+            "qualificador": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "EntidadeAlterar": {
+        "properties": {
+            "idEntidade": {
+                "type": "string",
+                "required": true
+            },
+            "envolvimento": {
+                "type": "string",
+                "allowableValues": {
+                    "valueType": "list",
+                    "values": [
+                        "RES",
+                        "OBJ"
+                    ]
+                },
+                "required": true
+            },
+            "qualificador": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "EntidadeRemover": {
+        "properties": {
+            "idEntidade": {
+                "type": "string",
+                "required": true
+            },
+            "envolvimento": {
+                "type": "string",
+                "allowableValues": {
+                    "valueType": "list",
+                    "values": [
+                        "RES",
+                        "OBJ"
+                    ]
+                },
+                "required": true
+            }
+        }
+    },
+    "EfeitoCriar": {
+        "properties": {
+            "idItem": {
+                "type": "string",
+                "required": true
+            },
+            "descricao": {
+                "type": "string",
+                "required": true
+            },
+            "severidade": {
+                "type": "string",
+                "required": true
+            },
+            "classificacao": {
+                "type": "Classificacao",
+                "required": true
+            }
+        }
+    },
+    "EfeitoRemover": {
+        "properties": {
+            "idEfeito": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "AnotacaoCriar": {
+        "properties": {
+            "descricao": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "AnotacaoAlterar": {
+        "properties": {
+            "idAnotacao": {
+                "type": "string",
+                "required": true
+            },
+            "descricao": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "AnexoCriar": {
+        "properties": {
+            "codTemp": {
+                "type": "string",
+                "required": true
+            },
+            "nomeAnexo": {
+                "type": "string",
+                "required": true
+            },
+            "tipoAnexo": {
+                "type": "string",
+                "required": true
+            }
+        }
+    },
+    "AlvoGetResponse": {
+      "properties": {
+        "PIO": {
+          "id": "number",
+          "nome": "String"
+        },
+        "listaAlvos": {
+          "type": "array",
+          "items": {
+            "$ref": "AlvoResponse"
+          }
+        }
+      }
+    },
+    "AlvoDeleteResponse": {
+      "properties": {
+        "idLista": {
+          "type": "number"
+        },
+        "idItem": {
+          "type": "string"
+        }
+      }
+    },
+    "ListasAlvosGetResponse": {
+      "properties": {
+        "idListaAlvo": {
+          "type": "number"
+        },
+        "nomeListaAlvo": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "number"
+        },
+        "listaAlvos": {
+          "type": "array",
+          "items": {
+            "$ref": "Alvo"
+          }
+        }
+      }
+    },
+	"EventosResponse":  {
+	  "properties": {
+		"eventos": {
+		  "type": "array",
+		  "items": {
+		  	"$ref": "EventoPolling"
+		  }
+		}
+	  }
+	},
+    "EventoPolling": {
+      "properties": {
+        "idEvento": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "evolucao": {
+          "type": "string"
+        },
+        "localizacao": {
+          "type": "Localizacao"
+        },
+        "recursos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          }
+        },
+        "objetivos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          }
+        }
+      }
+    },
+    "ListaAlvosGetResponse": {
+      "properties": {
+        "idListaAlvo": {
+          "type": "number"
+        },
+        "nomeListaAlvo": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "number"
+        },
+        "listaAlvos": {
+          "type": "array",
+          "alvos": {
+            "alvo": "Alvo"
+          }
+        }
+      }
+    },
+    "AlvosPut": {
+      "properties": {
+        "listaAlvos": {
+          "type": "array",
+          "items": {
+            "$ref": "AlvoPut"
+          }
+        }
+      }
+    },
+    "AlvoPut": {
+      "properties": {
+        "nomeAlvo": {
+          "type": "string"
+        },
+        "acao": {
+          "type": "string"
+        },
+        "prioridade": {
+          "type": "string"
+        },
+        "autorizacao": {
+          "type": "string"
+        },
+        "identificador": {
+          "type": "string"
+        },
+        "isExclusao": {
+          "type": "boolean"
+        },
+        "idAlvo": {
+          "type": "string"
+        }
+      },
+      "Alvo": {
+        "properties": {
+          "nomeAlvo": {
+            "type": "string"
+          },
+          "acao": {
+            "type": "string"
+          },
+          "prioridade": {
+            "type": "string"
+          },
+          "autorizacao": {
+            "type": "string"
+          },
+          "identificador": {
+            "type": "string"
+          },
+          "idAlvo": {
+            "type": "string"
+          }
+        }
+      },
+      "AlvoPutRequest": {
+        "properties": {
+          "listaAlvos": {
+            "type": "array",
+            "items": {
+              "$ref": "AlvoRequest"
+            }
+          }
+        }
+      },
+      "ListaAlvosPostResponse": {
+        "properties": {
+          "nomeListaAlvos": {
+            "type": "string",
+            "required": true
+          },
+          "idListaAlvos": {
+            "type": "number",
+            "required": true
+          }
+        }
+      },
+      
+      "AlvoRequest": {
+        "properties": {
+          "idLista": {
+            "type": "string",
+            "required": true
+          },
+          "situacaoAlvo": {
+            "type": "boolean",
+            "required": true
+          },
+          "descricao": {
+            "type": "string",
+            "required": true
+          },
+          "acao": {
+            "type": "string",
+            "required": false
+          },
+          "prioridade": {
+            "type": "string",
+            "required": false
+          },
+          "autorizacao": {
+            "type": "string",
+            "required": false
+          }
+        }
+      },
+      
+      "EventosCalcoGetResponse":{
+      	"properties": {
+      		"entidades": {
+                "type": "array",
+                "items": {
+                    "$ref": "EventoCalco"
+                },
+                "required": false
+            } 
+      	}
+      },
+      
+      "EventoCalco": {
+      	    "idEvento": {
+	            "type": "string",
+	            "required": true
+	          },
+	        "nomeEvento": {
+	            "type": "string",
+	            "required": true
+	          }
+      },
+
+      "ItemEvento": {
+      	"properties": {
+      	   "idItem": {
+      	     "type": "string",
+      	     "required": true
+      	   },
+      	   "nomeItem": {
+      	     "type": "string",
+      	     "required": true
+      	   },
+      	   "icon": {
+      	     "type": "string",
+      	     "required": true
+      	   }
+      	}
+      },
+
+	  "ListasAlvosResponse": {
+		"properties": {
+			"listaAlvos": {
+              "type": "array",
+              "items": {
+                  "$ref": "ListaAlvos"
+              }
+			}
+		}
+	  },
+
+	  "ListaAlvos": {
+		"properties": {
+		  "idListaAlvos": {
+		    "type": "string"
+		  },
+		  "nome": {
+			"type": "string"
+		  },
+		  "alvos": {
+			"type": "array",
+			"items": {
+			  "$ref": "ItemAlvo"
+			}
+		  }
+		}
+	  },
+
+	  "ItemAlvo": {
+        "properties": {
+	      "idItem": {
+	      	"type": "string"
+	      },
+	      "nome": {
+	      	"type": "string"
+	      },
+		  "icon": {
+		  	"type": "string"
+		  },
+		  "prioridade": {
+		    "type": "string"
+		  }
+		}
+	  },
+
+      "AlvoResponse": {
+        "properties": {
+          "idLista": {
+            "type": "string",
+            "required": true
+          },
+          "nomeLista": {
+            "type": "string",
+            "required": true
+          },
+          "situacaoAlvo": {
+            "type": "boolean",
+            "required": true
+          },
+          "descricao": {
+            "type": "string",
+            "required": false
+          },
+          "acao": {
+            "type": "string",
+            "required": false
+          },
+          "prioridade": {
+            "type": "number",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}

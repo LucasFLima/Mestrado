@@ -1,0 +1,48 @@
+module usuarioschat {
+
+	path = "xxx";
+
+	entity MensagemUsuariosGetResponse {
+		Instancia : instancia;
+	};
+
+	entity Mensagem {
+		string : mensagem;
+		string : nomeInstanciaOrigem;
+		string : idUsuarioOrigem;
+		[string] : idUsuariosDestino;
+		string : nomeInstanciaDestino;
+		number : horarioEnvio;
+		string : nomeUsuarioOrigem;
+	};
+
+	entity Instancia {
+		number : usrMsgPendentes;
+		[Usuario] : usuarios;
+		string : idInstancia;
+		string : nome;
+	};
+
+	entity Usuario {
+		number : identificador;
+		string : nome;
+		[Mensagem] : mensagens;
+		number : msgPendentes;
+		string : status;
+		string : idUsuario;
+	};
+
+	service <NomeServico> {
+		path = "/usuariosChat/instancia/{nomeInstancia}/mensagem/{idUsuarioDestino}/usuarios";
+
+		/**
+		* @ summary: Obtém as mensagens de um usuário
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path nomeInstancia(*): Nome da instância que será consultada
+		*	path idUsuarioDestino(*): Id do usuário que está mandando a requisição
+		*/
+		@get MensagemUsuariosGetResponse <NomeCapacidade> (string t, string nomeInstancia, string idUsuarioDestino);
+	}
+
+

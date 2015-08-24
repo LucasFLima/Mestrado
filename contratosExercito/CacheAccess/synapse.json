@@ -1,0 +1,96 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "CacheAccess",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/cache/token",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CacheTokenResponse",
+          "summary": "Obtém o token de autenticação do cache"
+        }
+      ]
+    },
+    {
+      "path": "/cache/{key}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CacheGetResponse",
+          "summary": "Obtém o json da objeto do cache pela chave",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "key",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/cache/flushall",
+      "operations": [
+        {
+          "method": "DELETE",
+          "type": "CacheDeleteResponse",
+          "summary": "Remove todos os objetos do cache",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "key",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CacheTokenResponse": {
+      "properties": {
+          "token": {
+              "type": "string",
+              "required": true
+          }
+       }
+    },
+    "CacheDeleteResponse": {
+      "properties": {
+          "executed": {
+              "type": "boolean",
+              "required": true
+          }
+       }
+    },
+    "CacheGetResponse": {
+      "properties": {
+	      "json": {
+	          "type": "string",
+	          "required": true
+	      }
+      }
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Movimentacao",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/item/movimentacoes",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Atualiza a localizações de uma lista de itens",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "movimentacoes",
+              "paramType": "body",
+              "type": "MovimentacoesPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/movimentacao/{id}",
+      "operations": [
+        {
+          "method": "PUT",
+          "type": "MovimentacaoItemPutResponse",
+          "summary": "Atualiza a localização de um item realizando a movimentação",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			},
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "movimentacao",
+              "paramType": "body",
+              "type": "MovimentacaoItemPutRequest",
+              "required": true
+            },
+            {
+              "name": "ignorarNotificacao",
+              "paramType": "query",
+              "type": "boolean",
+              "description": "Não notificar esse usuário (token) da nova/própria atualização",
+              "required": false,
+              "enum": [
+                "true",
+                "false"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "MovimentacaoItemPutRequest": {
+      "properties": {
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "atualizaLocalizacaoAnterior": {
+          "type": "boolean"
+        },
+        "async": {
+            "type": "boolean"
+        }
+      }
+    },
+    "MovimentacaoItemPutResponse": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        }
+      }
+    },
+    "MovimentacoesPutRequest": {
+      "properties": {
+        "itens": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemMovimentacoes"
+          },
+          "required": true
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoAlteracao"
+          },
+          "required": true
+        },
+        "atualizaLocalizacaoAnterior": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemMovimentacoes": {
+      "properties": {
+        "idItem": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "Localizacao": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "LocalizacaoAlteracao": {
+      "properties": {
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "Ponto": {
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "required": true
+        },
+        "longitude": {
+          "type": "number",
+          "required": true
+        },
+        "altitude": {
+          "type": "number"
+        }
+      }
+    },
+    "ClassificacaoConsulta": {
+      "properties": {
+        "idClassificacao": {
+          "type": "String"
+        },
+        "gdh": {
+          "type": "long"
+        },
+        "fonte": {
+          "type": "string"
+        },
+        "conteudo": {
+          "type": "string"
+        },
+        "tipoFonte": {
+          "type": "string"
+        },
+        "gdhInicial": {
+          "type": "long"
+        },
+        "gdhFinal": {
+          "type": "long"
+        }
+      }
+    },
+    "ClassificacaoCriacao": {
+      "properties": {
+        "gdh": {
+          "type": "long",
+          "required": true
+        },
+        "fonte": {
+          "type": "string",
+          "required": true
+        },
+        "conteudo": {
+          "type": "string",
+          "required": true
+        },
+        "tipoFonte": {
+          "type": "string",
+          "required": true
+        },
+        "gdhInicial": {
+          "type": "long"
+        },
+        "gdhFinal": {
+          "type": "long"
+        }
+      }
+    }
+  }
+}

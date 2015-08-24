@@ -1,0 +1,128 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "ComintNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/comint/relatorios",
+      "description": "Gerenciamento de Relatorios COMINT",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {"$ref":"ComintRelatorio"},
+          "summary": "Lista de Relatorios COMINT",
+          "parameters": [
+			{
+				"name": "t",
+				"description": "Token de autenticação",
+				"required": true,
+				"type": "string",
+				"paramType": "query"
+			}
+          ],
+          "responseMessages":[
+          		{"code":502, "message":"Repositorio COMINT inacessivel"}
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/comint/relatorios/{idRelatorio}",
+      "description": "Relatorio COMINT",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "ComintRelatorio",
+          "summary": "Relatorio COMINT",
+          "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+          		      {
+                             "name": "idRelatorio",
+                             "description": "Identificador do Relatorio",
+                             "required": true,
+                             "type": "string",
+                             "paramType": "path"
+                      }
+          ],
+          "responseMessages":[
+          		{"code":404, "message":"Relatorio COMINT nao encontrado"},
+          		{"code":502, "message":"Repositorio COMINT inacessivel"}
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/comint/config",
+      "description": "Configurações COMINT",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "ComintConfig",
+          "summary": "Recupera Status da Comunicação COMINT",
+          "parameters": [
+				{
+					"name": "t",
+					"description": "Token de autenticação",
+					"required": true,
+					"type": "string",
+					"paramType": "query"
+				}
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "ComintConfig",
+          "summary": "Alterar Configurações COMINT",
+          "parameters": [
+					{
+						"name": "t",
+						"description": "Token de autenticação",
+						"required": true,
+						"type": "string",
+						"paramType": "query"
+					},
+          			{
+     						"name": "alterarConfig",
+                            "paramType": "body",
+                            "type": "ComintConfigPut",
+                            "required": true
+                    }                    
+          ]
+        }
+      ]
+    }
+   
+   ],
+  "models": {
+    "ComintConfig": {
+    	 "properties": {
+			            "dirRepositorio":   { "type": "string", "required":true},
+            			"statusComunicacao": { "type": "string", "required":true}
+    	 } 
+   	},
+    "ComintConfigPut": {
+    	 "properties": {
+			            "dirRepositorio":   { "type": "string", "required":true},
+			            "apenasStatus": {"type": "boolean", "required":"true"}
+    	 } 
+   	},
+    "ComintRelatorio": {
+      	 "properties": {
+			            "idRelatorio":   { "type": "string", "required":true},
+            			"dataRelatorio": { "type": "string", "required":true},
+			            "refRelatorio":   { "type": "string", "required":true},
+			            "htmlRelatorio":   { "type": "string", "required":false}
+         } 
+   	}
+  }
+}

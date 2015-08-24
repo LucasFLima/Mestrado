@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AsterixUAP cat="2">
+	<DataField>
+		<Id>1</Id>
+		<DataItem>10</DataItem>
+	</DataField>
+	<DataField>
+		<Id>2</Id>
+		<DataItem>0</DataItem>
+	</DataField>
+	<DataField>
+		<Id>3</Id>
+		<DataItem>20</DataItem>
+	</DataField>
+	<DataField>
+		<Id>4</Id>
+		<DataItem>30</DataItem>
+	</DataField>
+</AsterixUAP>

@@ -1,0 +1,33 @@
+module inmetneuronsad {
+
+	path = "xxx";
+
+	entity PrevisaoRegiaoGetResponse {
+		string : umidade_min;
+		string : temp_max;
+		string : temp_min;
+		string : resumo;
+		string : dir_vento;
+		string : umidade_max;
+	};
+
+	entity PrevisaoEstadoGetResponse {
+		string : resumo;
+		string : temp_max;
+		string : umidade_min;
+		string : temp_min;
+		string : umidade_max;
+		string : dir_vento;
+	};
+
+	entity InmetConfigPut {
+		boolean : apenasStatus;   /*Required.*/
+		string : urlPrevisao;   /*Required.*/
+	};
+
+	entity InmetConfig {
+		string : urlPrevisao;   /*Required.*/
+		string : statusComunicacao;   /*Required.*/
+	};
+
+	entity PrevisaoCidadeGetResponse {

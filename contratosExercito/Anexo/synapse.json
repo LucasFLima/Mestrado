@@ -1,0 +1,371 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "Anexo",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/anexos",
+            "description": "Envio de Arquivos anexos para o servidor",
+            "operations": [
+                {
+                    "method": "POST",
+                    "type": "AnexoPostResponse",
+                    "summary": "Envio de um arquivo para o servidor",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name": "anexo",
+                            "paramType": "form",
+                            "description": "Arquivo em anexo",
+                            "type": "file",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "method": "DELETE",
+                    "type": "AnexoDeleteResponse",
+                    "summary": "Remove um anexo",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name": "anexos",
+                            "paramType": "body",
+                            "type": "AnexoExcluir",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "method": "GET",
+                    "type": "AnexoGetResponse",
+                    "summary": "Retorna a lista de anexos em memória",
+                    "parameters": [
+             						{
+             							"name": "t",
+             							"description": "Token de autenticação",
+             							"required": true,
+             							"type": "string",
+             							"paramType": "query"
+             						}
+             					]
+                },
+                {
+                    "method": "PUT",
+                    "type": "AnexoPutResponse",
+                    "summary": "Persiste o anexo no servidor",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name": "Anexos",
+                            "paramType": "body",
+                            "type": "AnexoPutRequest",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },        
+        {
+            "path": "/anexos/conteudo/{idItem}/{idAnexo}",
+            "description": "Consulta o conteúdo de um ou mais arquivos anexos",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "AnexoConteudoGetResponse",
+                    "summary": "Retorna o conteúdo de um arquivo",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+                        {
+                            "name" : "idItem",
+                            "type" : "string",
+                            "paramType": "path",
+                            "required": true
+                        },
+                        {
+                            "name" : "idAnexo",
+                            "type" : "string",
+                            "paramType": "path",
+                            "required": true
+                        },
+                        {
+                            "name": "categoria",
+                            "paramType": "query",
+                            "type": "string",
+                            "allowableValues": {
+                                "valueType": "list",
+                                "values": [
+                                    "ITEM",
+                                    "EVENTO"
+                                ]
+                            },
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        }
+    
+    ],
+    "models": {
+        "AnexoPostResponse":{
+            "properties": {
+                "ID": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "AnexoPutRequest": {
+            "properties": {
+                "idItem": {
+                    "type": "string",
+                    "required": true
+                },
+                "anexos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AnexoAtualizar"
+                    },
+                    "required": true
+                }
+            }
+        },
+        "AnexoPutResponse": {
+            "properties": {
+                "anexos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AnexoAtualizarResponse"
+                    }
+                }
+            }
+        },
+        "AnexoGetResponse":{
+            "properties": {
+                "anexos": {
+                    "id":{
+                        "type" : "string",
+                        "required" : true           
+                    },
+                    "type": "array",
+                    "required": true,
+                    "anexo": {
+                        "$ref": "Anexo"
+                    }
+                }
+            }
+        },
+        "Anexo":{
+            "name":{
+                "type" : "string",
+                "required" : true           
+            },
+            "type":{
+                "type" : "string",
+                "required" : true           
+            },
+            "size":{
+                "type" : "string",
+                "required" : true           
+            }
+        },
+        "AnexoAtualizar": {
+            "properties": {
+                "codTemp": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeAnexo": {
+                    "type": "string",
+                    "required": true
+                },
+                "tipoAnexo": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "AnexoAtualizarResponse": {
+            "properties": {
+                "idAnexo": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "AnexoConteudoGetResponse":{
+            "properties": {
+                "anexos": {
+                    "type": "array",
+                    "required": true,
+                    "anexo": {
+                        "$ref": "string"
+                    }
+                }
+            }       
+        },
+        "AnexoExcluir": {
+            "properties": {
+                "categoria": {
+                    "type": "string",
+                    "allowableValues": {
+                        "valueType": "list",
+                        "values": [
+                            "ITEM",
+                            "EVENTO"
+                        ]
+                    },
+                    "required": false
+                },
+                "anexos": {            
+                    "type" : "string",
+                    "required": true
+                }
+            }                
+        },
+
+        "Organizacao": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "idSuperior": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "ConexaoGet": {
+            "properties": {
+                "radio": {
+                    "type": "Radio",
+                    "required": true
+                },
+                "radar": {
+                    "type": "Radar",
+                    "required": true
+                },
+                "utilizaProxy": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "proxy": {
+                    "type": "Proxy",
+                    "required": false
+                }
+            }
+        },
+
+        "ConexaoPut": {
+            "properties": {
+                "utilizaProxy": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "proxy": {
+                    "type": "Proxy",
+                    "required": false
+                }
+            }
+        },
+
+        "Radio": {
+            "properties": {
+                "porta": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        },
+
+        "Radar": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "required": true
+                },
+                "porta": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        },
+
+        "Proxy": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "required": true
+                },
+                "porta": {
+                    "type": "number",
+                    "required": true
+                },
+                "naoUsaLocalmente": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "usaAutenticacao": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "usuario": {
+                    "type": "Usuario",
+                    "required": false
+                },
+                "enderecosDiretos": {
+                    "type": "string",
+                    "required": false
+                }
+            }
+        },
+
+        "Usuario": {
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "senha": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+
+    }
+}

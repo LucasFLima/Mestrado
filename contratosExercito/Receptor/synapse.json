@@ -1,0 +1,305 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "Receptor",
+	"version": "1.0.4",
+	"produces": 
+	[
+		"application/json"
+	],
+
+	"apis": 
+	[
+		{
+			"path": "/Receptor/assinaturas",
+			"description": "Retorna o estado de todas as assinaturas",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"summary": "Obtém o estado de todas as assinaturas.",
+					"type": "AssinaturasGetResponse",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/receber",
+			"description": "Recebe uma mensagem de um nó remoto",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"summary": "Recebe uma mensagem de um nó remoto",
+					"type": "ReceberResponse",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "message",
+							"description": "Mensagem recebida",
+							"required": true,
+							"type": "CommunicationMessage",
+							"paramType": "body"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/Receptor/assinatura/{id_node}/{id_pio}",
+			"description": "Gerencia o estado de assinatura de um pio específico",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"summary": "Obtém o estado da assinatura.",
+					"type": "Assinatura",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id_node",
+							"description": "Id do nó que publica o pio.",
+							"required": true,
+							"type": "numeric",
+							"paramType": "path"
+						},
+
+						{
+							"name": "id_pio",
+							"description": "Id do pio publicado.",
+							"required": true,
+							"type": "numeric",
+							"paramType": "path"
+						}
+					]
+				},
+
+				{
+					"method": "POST",
+					"summary": "Assina um pio.",
+					"type": "string",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id_node",
+							"description": "Id do nó que publica o pio.",
+							"required": true,
+							"type": "numeric",
+							"paramType": "path"
+						},
+
+						{
+							"name": "id_pio",
+							"description": "Id do pio publicado.",
+							"required": true,
+							"type": "numeric",
+							"paramType": "path"
+						}
+					]
+				},
+
+				{
+					"method": "DELETE",
+					"summary": "Cancela uma assinatura.",
+					"type": "string",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id_node",
+							"description": "Id do nó que publica o pio.",
+							"required": true,
+							"type": "numeric",
+							"paramType": "path"
+						},
+
+						{
+							"name": "id_pio",
+							"description": "Id do pio publicado.",
+							"required": true,
+							"type": "numeric",
+							"paramType": "path"
+						}
+					]
+				}
+			]
+		}
+	],
+
+	"models": 
+	{
+		"AssinaturasGetResponse": 
+		{
+			"properties": 
+			{
+				"nodes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Node"
+					}
+				}
+			}
+		},
+
+		"Node": 
+		{
+			"properties": 
+			{
+				"idNode": 
+				{
+					"type": "string",
+					"required": "true"
+				},
+
+				"assinaturas": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Assinatura"
+					}
+				}
+			}
+		},
+
+		"Assinatura": 
+		{
+			"properties": 
+			{
+				"idPlanoInformacoesOperacionais": 
+				{
+					"type": "string",
+					"required": "true"
+				},
+
+				"permissao": 
+				{
+					"type": "string",
+					"required": "true"
+				},
+
+				"assinado": 
+				{
+					"type": "boolean",
+					"required": "true"
+				}
+			}
+		},
+
+		"ReceberResponse": 
+		{
+			"properties": 
+			{
+				"Status": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"CommunicationMessage": 
+		{
+			"properties": 
+			{
+				"node": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"topic": 
+				{
+					"description": "Tópico da mensagem. Deve ser uma string de 8 caracteres ASCI sem diferenciação de maíusculas ou minúsculas.",
+					"type": "string",
+					"required": true
+				},
+
+				"encoded": 
+				{
+					"type": "boolean",
+					"required": false
+				},
+
+				"body": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"reliable": 
+				{
+					"type": "boolean",
+					"required": false
+				}
+			}
+		}
+	}
+}
