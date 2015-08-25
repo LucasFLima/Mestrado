@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+ 
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinelanguage{NeoIDL}
+{
+   morekeywords=[1]{resource, path, @get, @post, @put, @delete},
+   morekeywords=[2]{require, ensures, invariant, otherwise },
+   sensitive=false,
+   morecomment=[l]{//},
+   morecomment=[s]{/*}{*/},
+   morestring=[b]",
+}
+
+\lstdefinestyle{NeoIDLstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    keywordstyle={[2]\bfseries},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\begin{document}
+teste
+
+teste2
+\begin{lstlisting}[language=NeoIDL, style=NeoIDLstyle, caption=Basedo em Spec\#] 
+   resource store  {
+     /*...*/
+     @post int registerOrder (Order order)
+          require (),
+          ensures () ;
+
+     @delete int removeOrder (int orderId);
+
+%\lstinputlisting[language=NeoIDL]{teste.x}
+\end{lstlisting}
+\end{document}
+

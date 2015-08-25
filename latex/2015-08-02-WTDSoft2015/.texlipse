@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Jun 08 22:42:36 BRT 2015
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=wtdsoft-neoidl-dbc.tex
+outputFile=wtdsoft-neoidl-dbc.pdf
+langSpell=br
+markDer=true
+srcDir=

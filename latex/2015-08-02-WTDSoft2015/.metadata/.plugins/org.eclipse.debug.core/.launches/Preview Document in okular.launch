@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="net.sourceforge.texlipse.viewer.launchConfigurationType">
+<stringAttribute key="okular.arguments" value=" %file"/>
+<stringAttribute key="okular.command" value="/usr/bin/okular"/>
+<stringAttribute key="okular.ddeCloseCommand" value=""/>
+<stringAttribute key="okular.ddeCloseServer" value=""/>
+<stringAttribute key="okular.ddeCloseTopic" value=""/>
+<stringAttribute key="okular.ddeViewCommand" value=""/>
+<stringAttribute key="okular.ddeViewServer" value=""/>
+<stringAttribute key="okular.ddeViewTopic" value=""/>
+<stringAttribute key="viewerCurrent" value="okular"/>
+</launchConfiguration>

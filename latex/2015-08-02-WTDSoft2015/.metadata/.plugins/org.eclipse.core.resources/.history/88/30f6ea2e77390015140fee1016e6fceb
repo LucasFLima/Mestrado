@@ -1,0 +1,95 @@
+\section{Estado Atual do Trabalho}\label{sec:estadoAtual}
+
+As constru\c c\~{o}es para especificar pré-condições, pós-condições e
+invariantes\footnote{Não se identificou, até o
+estágio atual da pesquisa, aplicabilidade de invariantes em
+serviços REST.} na linguagem da NeoIDL est\~{a}o sendo definidas, de forma a
+agregar às especifica\c c\~{o}es mecanismos para estabelecer as condições de execução e as garantias dos serviços. Note que, além da validação dos parâmetros de entrada e valores de retorno típicos do DBC, a abordagem proposta nessa disserta\c c\~{a}o permitirá a inclusão de chamadas a serviços REST como pré e pós condições. 
+Para ilustrar algumas decis\~{o}es de projeto, a seguir s\~{a}o apresentados 
+dois exemplos do uso da abordagem que est\'{a} sendo proposta. 
+
+O trecho de módulo \neoidl{} constante da Figura~\ref{lst:DBCSimple} destaca a
+capacidade \texttt{incluirItem} (l. 7). Para que se tenha o item incluído no
+catálogo, é necessário fornecer um valor para o atributo descrição
+(obrigatório). A pré-condição (l. 5) se inicia com a notação
+\texttt{/@require} e possui validação sobre o atributo descrição. Note que o
+atributo é precedido da palavra \texttt{old}, que indica o valor do atributo antes do processamento do
+serviço. De forma an\'{a}loga, est\'{a} previsto o prefixo \texttt{new}, que
+indica o valor do atributo após a execução do serviço. Na
+Figura~\ref{lst:DBCSimple} ainda \'{e} estabelecida uma cláusula
+\texttt{/@otherwise} (l. 6), estabelecendo que a falha no atendimento da
+pré-condição deve levar a uma resposta com o código HTTP 412 (falha de
+pré-condição).
+
+\begin{figure}[htb]
+\begin{scriptsize}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCsimple.neo}
+\end{scriptsize}
+\caption{Exemplo da notação DBC na linguagem \neoidl}
+\label{lst:DBCSimple}
+\end{figure}
+
+A Figura~\ref{lst:DBCService} apresenta a capacidade \texttt{excluirItem} (l.
+8). Nesse caso são estabelecidas pré e pós condições, ambas com chamadas ao
+serviço \texttt{Catalogo.pesquisarItem}. Antes da execução da capacidade
+\texttt{excluirItem}, é verificado se o item exite. Caso exista, a pré-condição é
+satisfeita e o item é excluído. A pós-condição (l. 6) confirma que o item não
+consta mais do catálogo. Se a pré-condição não for satisfeita, a cláusula
+\texttt{/@otherwise} (l. 7) informa ao cliente do serviço que o item não foi
+localizado (código HTTP 404 - Objeto não encontrado).
+
+
+\begin{figure}[htb]
+\begin{scriptsize}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCservice.neo}
+\end{scriptsize}
+\caption{Exemplo da notação DBC na linguagem \neoidl{} com chamada a serviço}
+\label{lst:DBCService}
+\end{figure}
+
+Ou seja, a proposta envolve elementos concebidos na linguagem JML~\cite{leavens} 
+(como as constru\c c\~{o}es \texttt{old} e \texttt{new}) com elementos 
+t\'{i}picos do estilo arquitetural REST (chamadas 
+a servi\c cos sem estado utilizando m\'{e}todos HTTP, sem\^{a}ntica de retorno 
+das opera\c c\~{o}es observando os c\'{o}digos de retorno HTTP, etc.), os quais 
+habilitam n\~{a}o apenas o estabelecimento de contratos mas tamb\'{e}m uma 
+forma de guiar a composi\c c\~{a}o de servi\c cos. 
+Novos \textit{plugins} \neoidl{} devem ser implementados para permitir chamadas
+a serviços a partir de pré e pós condições. 
+
+%% --- uma vez que a transforma\c c\~{a}o de c\'{o}digo 
+%% com chamadas a servi\c c\os ainda não é possível com os plugins existentes. 
+%% Conforme mencionado, a ideia é que essas chamadas se assemelhem a composição de serviços.
+
+%% Há de se considerar, contudo, que está consolidado na indústria a implementação
+%% de composição de serviços com o produto \textit{Enterprise Service Bus} -- ESB
+%% \cite{schmidt2005enterprise}. Entretanto, o uso de ESB para
+%% \textit{microservices} não é conveniente, em razão da granularidade dos
+%% serviços.
+
+
+%% Um novo plugin, com suporte a DBC, está sendo implementado no \neoidl
+%% \textit{framework}. Uma vez que todos os serviços gerados seguirão o paradigma
+%% REST, adotamos a tecnologia \textit{Python Twisted}, projetada para tratar os
+%% protocolos de rede e flexível para permitir manipulação dos códigos
+%% padrão HTTP (Forbiden, Not Found, Ok, etc), informando, assim, sucesso ou
+%% insucesso nas pré e pós-condições.
+
+
+%% Em termos de estudo de caso, o presente trabalho aborda o cenário de catálogo de
+%% serviços. O uso de DBC será utilizado para verificação das controle de acesso na
+%% inclusão e alterações de itens no catálogo.
+
+
+\emph{Valida\c c\~{a}o.} Em paralelo \`{a} especifica\c c\~{a}o 
+das extens\~{o}es de linguagem \neoidl{} e implementa\c c\~{a}o de 
+plugins, est\'{a} sendo feito o planejamento da 
+valida\c c\~{a}o da proposta -- que deve seguir uma abordagem 
+de pesquisa-a\c c\~{a}o considerando cen\'{a}rios reais (possivelmente 
+com exemplos do Ex\'{e}rcito Brasileiro, parceiro na 
+concep\c c\~{a}o da primeira vers\~{a}o da \neoidl). Um cenário candidato é
+de verificação de controle de acesso aos serviços, a partir de pré-condições com
+chamada ao serviço de autorização, aplicando-se assim solução a um problema
+real (pesquisa-a\c c\~{a}o). Serão empregadas técnicas de avaliação
+empírica em engenharia de software \cite{shull2008guide} para coleta e
+análise dos dados.

@@ -1,0 +1,13 @@
+\subsection{Código NeoIDL}
+
+\begin{lstlisting}[language=NeoIDL, style=NeoIDLstyle, caption=Basedo em Spec\#] 
+   resource store  {
+     /*...*/
+     @post int registerOrder (Order order)
+          require (),
+          ensures ();
+     @delete int removeOrder (int orderId);
+   };
+\end{lstlisting}
+
+\clearpage

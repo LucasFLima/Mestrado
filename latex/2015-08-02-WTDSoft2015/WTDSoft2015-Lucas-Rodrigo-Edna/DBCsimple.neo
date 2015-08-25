@@ -1,0 +1,9 @@
+module Catalogo {
+    service Catalogo {
+    path = "/catalogo";
+
+    /@require old.descricao != null
+    /@otherwise HTTP_Precondition_Failed
+    @post Catalogo incluirItem (string id, string descricao, float valor);
+    (...)
+}

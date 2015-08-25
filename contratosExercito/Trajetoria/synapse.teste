@@ -1,0 +1,263 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "Trajetoria",
+	"version": "1.0.4",
+	"produces": [
+		"application/json"
+	],
+
+	"apis": [
+		{
+			"path": "/item/{idItem}/trajetoria",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "ItemHostilidadeLocalizacaoResponse",
+					"summary": "Retorna a trajetória de um item dentro de um período especificado.",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idItem",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "dataInicio",
+							"paramType": "query",
+							"type": "long",
+							"required": false
+						},
+
+						{
+							"name": "dataFim",
+							"paramType": "query",
+							"type": "long",
+							"required": false
+						},
+
+						{
+							"name": "tipoConsulta",
+							"paramType": "query",
+							"type": "string"
+						},
+
+						{
+							"name": "idLastLoc",
+							"paramType": "query",
+							"type": "string"
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"summary": "Atualiza uma trajetoria já carregada de um item",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idItem",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "trajetoria",
+							"paramType": "body",
+							"type": "ItemHostilidadeLocalizacaoPutRequest",
+							"required": false
+						}
+					]
+				},
+
+				{
+					"method": "DELETE",
+					"summary": "Limpa a trajetoria de um item da memoria",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idItem",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/item/{idItem}/trajetorias/primeira",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "ItemPrimeiraLocalizacaoGetResponse",
+					"summary": "Retorna a data da primeira localização/trajetória válida",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idItem",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				}
+			]
+		}
+	],
+
+	"models": {
+		"ItemHostilidadeLocalizacaoResponse": {
+			"properties": {
+				"idItem": {
+					"type": "string"
+				},
+
+				"nome": {
+					"type": "string"
+				},
+
+				"trajetorias": {
+					"type": "array",
+					"items": {
+						"$ref": "Trajetoria"
+					}
+				},
+
+				"info": {
+					"type": "Trajetoria"
+				}
+			}
+		},
+
+		"Trajetoria": {
+			"properties": {
+				"hostilidade": {
+					"type": "string"
+				},
+
+				"cor": {
+					"type": "string"
+				},
+
+				"localizacao": {
+					"type": "Localizacao"
+				},
+
+				"dataLocalizacao": {
+					"type": "string"
+				},
+
+				"dataLocalizacaoLong": {
+					"type": "long"
+				}
+			}
+		},
+
+		"Localizacao": {
+			"properties": {
+				"idLocalizacao": {
+					"type": "string",
+					"required": true
+				},
+
+				"ponto": {
+					"type": "Ponto",
+					"required": true
+				}
+			}
+		},
+
+		"Ponto": {
+			"properties": {
+				"latitude": {
+					"type": "number",
+					"required": true
+				},
+
+				"longitude": {
+					"type": "number",
+					"required": true
+				},
+
+				"altitude": {
+					"type": "number"
+				}
+			}
+		},
+
+		"ItemHostilidadeLocalizacaoPutRequest": {
+			"hostilidade": {
+				"type": "string"
+			},
+
+			"idTipo": {
+				"type": "string"
+			},
+
+			"localizacao": {
+				"type": "Localizacao"
+			},
+
+			"dataInicio": {
+				"type": "long"
+			},
+
+			"dataFim": {
+				"type": "long"
+			},
+
+			"itemRadio": {
+				"type": "boolean"
+			}
+		},
+
+		"ItemPrimeiraLocalizacaoGetResponse": {
+			"properties": {
+				"data": {
+					"type": "long",
+					"required": true
+				}
+			}
+		},
+		"ItemPrimeiraLocalizacaoGetResponse": {
+			"properties": {
+				"data": {
+					"type": "long",
+					"required": true
+				}
+			}
+		}
+	}
+}

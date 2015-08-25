@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="18" version="2.0">
+<workbenchAdvisor/>
+<window height="638" maximized="true" width="1018" x="548" y="43">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="144" y="30"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="60" y="30"/>
+<coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="60" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="net.sourceforge.texlipse.bibeditor.BibEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="net.sourceforge.texlipse.TexEditor" itemType="typeToolBarContribution" x="208" y="30"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1438546505304" focus="true" label="Workspace - LaTeX">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="net.sourceforge.texlipse.TexEditor" name="wtdsoft-neoidl-dbc.tex" partName="wtdsoft-neoidl-dbc.tex" path="/home/lucas/workspace/WTDSoft2015/WTDSoft2015-Lucas-Rodrigo-Edna/wtdsoft-neoidl-dbc.tex" title="wtdsoft-neoidl-dbc.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/wtdsoft-neoidl-dbc.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WTDSoft2015-Lucas-Rodrigo-Edna/wtdsoft-neoidl-dbc.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1955" selectionTopPixel="1026"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="introducao.tex" partName="introducao.tex" path="/home/lucas/workspace/WTDSoft2015/WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex" title="introducao.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="946" selectionTopPixel="439"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="estadoAtual.tex" partName="estadoAtual.tex" path="/home/lucas/workspace/WTDSoft2015/WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex" title="estadoAtual.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="127" selectionTopPixel="0"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="fundamentacao.tex" partName="fundamentacao.tex" path="/home/lucas/workspace/WTDSoft2015/WTDSoft2015-Lucas-Rodrigo-Edna/fundamentacao.tex" title="fundamentacao.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/fundamentacao.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WTDSoft2015-Lucas-Rodrigo-Edna/fundamentacao.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2773" selectionTopPixel="613"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="modulobasico.neo" partName="modulobasico.neo" path="/home/lucas/workspace/WTDSoft2015/WTDSoft2015-Lucas-Rodrigo-Edna/modulobasico.neo" title="modulobasico.neo" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/modulobasico.neo" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WTDSoft2015-Lucas-Rodrigo-Edna/modulobasico.neo"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="188" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="sbc-template.bib" partName="sbc-template.bib" path="/home/lucas/workspace/WTDSoft2015/WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.bib" title="sbc-template.bib" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.bib" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.bib"/>
+<editorState selectionHorizontalPixel="16" selectionLength="0" selectionOffset="2083" selectionTopPixel="1192"/>
+</editor>
+</editors>
+<views>
+<view id="net.sourceforge.texlipse.TableView" partName="LaTeX Table View"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="net.sourceforge.texlipse.FullOutline" partName="Full Latex Outline"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (5 items)"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="261" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="350" org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="247" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.priorityField="35" org.eclipse.ui.ide.resourceField="105"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="net.sourceforge.texlipse.bibeditor.BibEditor" activePerspective="net.sourceforge.texlipse.TexlipsePerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="org.eclipse.ui.views.BookmarkView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ProgressView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+<perspective_action id="org.eclipse.team.cvs.ui.cvsPerspective"/>
+<perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@5ff09be3" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottomRight" ratio="0.6598131" ratioLeft="353" ratioRight="182" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="bottomLeft" ratio="0.49906543" ratioLeft="267" ratioRight="268" relationship="4" relative="topLeft">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="net.sourceforge.texlipse.TexPerspectiveFactory" id="net.sourceforge.texlipse.TexlipsePerspective" label="LaTeX"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<show_view_action id="org.eclipse.ui.views.BookmarkView"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="net.sourceforge.texlipse.FullOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="net.sourceforge.texlipse.TableView"/>
+<new_wizard_action id="net.sourceforge.texlipse.TexProjectWizard"/>
+<new_wizard_action id="net.sourceforge.texlipse.wizards.TexlipseNewTexFileWizard"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="net.sourceforge.texlipse.FullOutline"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="net.sourceforge.texlipse.TableView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@50caebf">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7494199" ratioLeft="969" ratioRight="324" relationship="2" relative="org.eclipse.ui.internal.ViewStack@50caebf">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.24980666" ratioLeft="323" ratioRight="970" relationship="2" relative="org.eclipse.ui.internal.ViewStack@50caebf"/>
+<info folder="true" part="bottom" ratio="0.6995516" ratioLeft="468" ratioRight="201" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="net.sourceforge.texlipse.TableView" label="LaTeX Table View"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="left" ratio="0.49925262" ratioLeft="334" ratioRight="335" relationship="4" relative="org.eclipse.ui.internal.ViewStack@50caebf">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="net.sourceforge.texlipse.FullOutline" label="Full Latex Outline"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/wtdsoft-neoidl-dbc.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.bib"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/trabalhosRelacionados.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/sbc.bst"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/fundamentacao.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/WTDSoft2015-Lucas-Rodrigo-Edna/modulobasico.neo"/>
+</editors>
+<item historyLabel="sbc.bst" index="5">
+<position info="not_deleted" x="2623" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="0">
+<position info="not_deleted" x="2120" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="0">
+<position info="not_deleted" x="1955" y="0"/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="0">
+<position/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="0">
+<position info="not_deleted" x="1955" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="0">
+<position info="not_deleted" x="1955" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="3">
+<position info="not_deleted" x="5117" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="2633" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="3">
+<position/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="2633" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="3">
+<position info="not_deleted" x="5115" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="309" y="0"/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="0">
+<position info="not_deleted" x="1955" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="3">
+<position info="not_deleted" x="5115" y="0"/>
+</item>
+<item historyLabel="trabalhosRelacionados.tex" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="3">
+<position info="not_deleted" x="5115" y="0"/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="4723" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="4723" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="7">
+<position info="not_deleted" x="5092" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="4426" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="4485" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="1482" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="4480" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="7">
+<position info="not_deleted" x="2016" y="0"/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="1784" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="1595" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="7">
+<position info="not_deleted" x="4798" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="1595" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="7">
+<position info="not_deleted" x="4798" y="0"/>
+</item>
+<item historyLabel="modulobasico.neo" index="8">
+<position info="not_deleted" x="188" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position/>
+</item>
+<item historyLabel="introducao.tex" index="1">
+<position info="not_deleted" x="946" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="804" y="0"/>
+</item>
+<item historyLabel="estadoAtual.tex" index="7">
+<position info="not_deleted" x="127" y="0"/>
+</item>
+<item historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="2083" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="2773" y="0"/>
+</item>
+<item active="true" historyLabel="sbc-template.bib" index="2">
+<position info="not_deleted" x="2083" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="sbc-template.bib" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.bib">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.bib"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="modulobasico.neo" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/modulobasico.neo">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/modulobasico.neo"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="fundamentacao.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/fundamentacao.tex">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/fundamentacao.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="estadoAtual.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/estadoAtual.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="trabalhosRelacionados.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/trabalhosRelacionados.tex">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/trabalhosRelacionados.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="introducao.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="sbc-template.sty" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.sty">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/sbc-template.sty"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="sbc.bst" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/sbc.bst">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/sbc.bst"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="DBCservice.neo" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/DBCservice.neo">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/DBCservice.neo"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="DBCsimple.neo" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/DBCsimple.neo">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/DBCsimple.neo"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="introducao.tex~" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex~">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/introducao.tex~"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="wtdsoft-neoidl-dbc.tex" tooltip="WTDSoft2015-Lucas-Rodrigo-Edna/wtdsoft-neoidl-dbc.tex">
+<persistable path="/WTDSoft2015-Lucas-Rodrigo-Edna/wtdsoft-neoidl-dbc.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="WTDSoft2015" tooltip="/home/lucas/workspace/WTDSoft2015">
+<persistable uri="file:/home/lucas/workspace/WTDSoft2015"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="wtdsoft-neoidl-dbc.tex" tooltip="/home/lucas/workspace/WTDSoft2015/wtdsoft-neoidl-dbc.tex">
+<persistable uri="file:/home/lucas/workspace/WTDSoft2015/wtdsoft-neoidl-dbc.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="wtdsoft-neoidl-dbc.synctex.gz" tooltip="/home/lucas/workspace/WTDSoft2015/wtdsoft-neoidl-dbc.synctex.gz">
+<persistable uri="file:/home/lucas/workspace/WTDSoft2015/wtdsoft-neoidl-dbc.synctex.gz"/>
+</file>
+</mruList>
+</workbench>

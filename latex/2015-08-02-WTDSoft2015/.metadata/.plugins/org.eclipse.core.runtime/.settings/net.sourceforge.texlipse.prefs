@@ -1,0 +1,13 @@
+BiBTeXTemplates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+builderNum=2
+eclipse.preferences.version=1
+none.command=/usr/bin/okular
+okular.arguments=\ %file
+okular.command=/usr/bin/okular
+okular.format=pdf
+okular.forward=false
+okular.inverse=no
+outputFormat=pdf
+viewerCurrent=okular
+viewerNames=okular,xdvi,yap,itexmac,kdvi,gv,sumatra PDF,acroread,none
+viewerNames.TEMP=okular (/usr/bin/okular),xdvi (/usr/bin/xdvi),yap (),itexmac (/bin/open),kdvi (),gv (),sumatra PDF (),acroread (),none ()
