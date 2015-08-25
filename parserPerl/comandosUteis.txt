@@ -1,0 +1,4 @@
+#preparar a lista de entidades para diagrama (yuml.me)
+./ImprimeListaEntidade.pl | grep : | cut -d: -f1| sed 's/^/[/g' | sed 's/$/]/g'
+
+cat listaEntidadesRelacionadas.txt | sort | uniq

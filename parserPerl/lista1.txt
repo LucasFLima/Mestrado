@@ -1,0 +1,1023 @@
+PlanoOrdemCorpoEstrutura:1
+	PlanoOrdem
+EventoCriarRequest:1
+	EventoNeuronSAD
+RegraRedeRelacionamento:1
+	RedeRelacionamento
+RegraRedeRelacionamentoValidarRequest:1
+	RedeRelacionamento
+LoginPostResponse:1
+	ProvedorSeguranca
+AssociacaoAlteracao:1
+	ItemNeuronSAD
+LocalizacaoCriacaoPonto:1
+	ItemNeuronSAD
+EntidadeRemover:1
+	EventoNeuronSAD
+GeneralCommunicationStatus:1
+	Comunicacao
+CalcoGetResponse:1
+	CalcoNeuronSAD
+AlvoPut:1
+	EventoNeuronSAD
+CategoriaAlertaGetResponse:1
+	Alerta
+AlvoResponse:1
+	RadarBuffer
+LocalizacaoGetResponse:1
+	EventoNeuronSAD
+AlertaPostRequest:1
+	Alerta
+UsuariosRemotosPostRequest:1
+	Instancias
+EfeitoCriar:1
+	EventoNeuronSAD
+CategoriaDifusaoAlerta:1
+	Alerta
+TaskPostResponse:1
+	Agendador
+PlanoRevisualizacaoPostResponse:1
+	Revisualizacao
+CommunicationMessage:2
+	Receptor
+	Comunicacao
+Autenticacao:1
+	Configuracao
+PlanosOrdens:1
+	PlanoOrdem
+Pio:5
+	CalcoNeuronSAD
+	EventoNeuronSAD
+	ComunicacaoInterface
+	Assinatura
+	Revisualizacao
+RevisualizacaoGetResponse:1
+	Revisualizacao
+Revisualizacao:1
+	Revisualizacao
+Entidade:1
+	EventoNeuronSAD
+MapeamentoPostResponse:1
+	MapeamentoRadar
+AsterixCat10Sad:1
+	RadarBuffer
+MateriaisRadaresPutRequest:1
+	DispositivoRastreamento
+RadarMapeado:2
+	DispositivoRastreamento
+	MapeamentoRadar
+AcaoEventoEvolucaoGetResponse:1
+	EventoNeuronSAD
+AprovarPiosRequest:1
+	CalcoNeuronSAD
+OrdemBatalhaPutRequest:1
+	OrdemBatalha
+PosicaoRadar:3
+	DispositivoRastreamento
+	MapeamentoRadar
+	RadarBuffer
+CalcoItemPostRequest:1
+	Associacao
+CacheTokenResponse:1
+	CacheAccess
+NumeroMensagensGetResponse:1
+	Chat
+ProxyPadrao:1
+	Configuracao
+MapaVista:1
+	CalcoNeuronSAD
+ItemHostilidadeLocalizacaoResponse:1
+	Trajetoria
+OrganizacaoPostResponse:1
+	ItemNeuronSAD
+UsuarioLocalPutRequest:1
+	Instancias
+InstalacaoPostResponse:1
+	ItemNeuronSAD
+ItemPolling:1
+	CalcoNeuronSAD
+ConexaoPut:2
+	Anexo
+	Configuracao
+EntidadeId:1
+	RedeRelacionamento
+VistaMapaPostRequest:1
+	CalcoNeuronSAD
+Unidade:2
+	Revisualizacao
+	ItemNeuronSAD
+CapacidadeRede:1
+	DispositivoRastreamento
+PessoaStatusConsulta:1
+	ItemNeuronSAD
+EntidadeGetResponse:1
+	EventoNeuronSAD
+InstanciaMaterial:1
+	SGL
+EventosResponse:1
+	EventoNeuronSAD
+ListaEntidadeGetResponse:1
+	EventoNeuronSAD
+EventoGetResponse:1
+	EventoNeuronSAD
+EnviarResponse:1
+	Comunicacao
+AnexoAtualizar:1
+	Anexo
+PublicacaoResponse:2
+	CalcoNeuronSAD
+	Assinatura
+PublicacaoItemResponse:1
+	ItemNeuronSAD
+NosGetResponse:1
+	Instancias
+Alerta:1
+	Alerta
+VistaMapaPostResponse:1
+	CalcoNeuronSAD
+ItemsCopia:1
+	ItemNeuronSAD
+Mensagem:4
+	ChatEnvio
+	Chat
+	UsuariosChat
+	Mensagem
+MensagemListResponse:1
+	Mensagem
+MapaPostRequest:1
+	MapaNeuronSAD
+SchedulerPostRequest:1
+	Agendador
+LocalizacaoMaterialLote:1
+	ItemNeuronSAD
+ItemTipoConsulta:1
+	ItemNeuronSAD
+AnotacaoGetResponse:2
+	EventoNeuronSAD
+	ItemNeuronSAD
+Node:1
+	Receptor
+RedeRelacionamentoPutRequest:1
+	RedeRelacionamento
+ItemHostilidadeLocalizacaoPutRequest:1
+	Trajetoria
+AnexoAtualizarResponse:1
+	Anexo
+MccDirecaoPostRequest:1
+	ItemNeuronSAD
+PlanoOrdemAnexo:1
+	PlanoOrdem
+ItemLocalizacaoPutRequest:1
+	ItemNeuronSAD
+GetCamadasWmsRequest:1
+	Tile
+DataServidorGetResponse:1
+	Configuracao
+DominioGetResponse:1
+	DominioNeuronSAD
+MateriaisRedeGetResponse:1
+	DispositivoRastreamento
+AcaoEfeitoGetResponse:1
+	EventoNeuronSAD
+PioMetadado:1
+	CalcoNeuronSAD
+RadioInfoResponse:1
+	LocalizadorFiltro
+PlanoRevisualizacaoPiosGetResponse:1
+	Revisualizacao
+AssinaturaResponse:1
+	Assinatura
+Plano:1
+	PlanoOrdem
+MaterialRedeDeleteResponse:1
+	DispositivoRastreamento
+MaterialPostRequest:1
+	ItemNeuronSAD
+ItemMovimentacoes:1
+	Movimentacao
+EntidadeCriar:1
+	EventoNeuronSAD
+Radar:3
+	Anexo
+	CalcoNeuronSAD
+	DispositivoRastreamento
+AnexoExcluir:1
+	Anexo
+ItemDeInventario:1
+	ItemNeuronSAD
+Acknowledge:1
+	ChatEnvio
+MapeamentoPutRequest:1
+	MapeamentoRadar
+AssociacaoItensGetResponse:1
+	Associacao
+OrdemComplementar:1
+	PlanoOrdem
+Usuario:4
+	Anexo
+	Instancias
+	Chat
+	UsuariosChat
+DistribuicaoPutRequest:1
+	PlanoOrdem
+HistoricoAlerta:1
+	Alerta
+DadosDoPio:1
+	CalcoNeuronSAD
+CacheDeleteResponse:1
+	CacheAccess
+ItemDeInventarioConsulta:1
+	ItemNeuronSAD
+VistasResponse:1
+	CalcoNeuronSAD
+HostilidadeConsulta:1
+	ItemNeuronSAD
+Fault:1
+	Associacao
+OrdemBatalhaPostRequest:1
+	OrdemBatalha
+ListaAcaoEvolucaoGetResponse:1
+	EventoNeuronSAD
+PersisteLocalizacaoReq:1
+	Radio
+EventoMovimentacao:1
+	OrdemBatalha
+PrevisaoRegiaoGetResponse:1
+	InmetNeuronSAD
+Hostilidade:2
+	CalcoNeuronSAD
+	ItemNeuronSAD
+CategoriaTipoAlerta:1
+	Alerta
+CalcoItemPostResponse:1
+	Associacao
+UsuarioRemoto:1
+	Instancias
+ItemDeInventarioAlteracao:1
+	ItemNeuronSAD
+AsterixCat34Sad:1
+	RadarBuffer
+EventoCriarResponse:1
+	EventoNeuronSAD
+Regiao:1
+	Alerta
+AssociacaoItemRequest:1
+	ItemNeuronSAD
+ListaAcaoEfeitoGetResponse:1
+	EventoNeuronSAD
+cidades:1
+	InmetNeuronSAD
+CertificadoPostResponse:1
+	Certificado
+EventosVistaGetResponse:1
+	EventoNeuronSAD
+RedeRelacionamento:1
+	RedeRelacionamento
+ProxyRequest:1
+	Tile
+Radio:4
+	Anexo
+	Configuracao
+	DispositivoRastreamento
+	Radio
+RegraRedeRelacionamentoPostResponse:1
+	RedeRelacionamento
+MaterialRadar:1
+	DispositivoRastreamento
+OrganizacaoPostRequest:1
+	ItemNeuronSAD
+MaterialRede:1
+	DispositivoRastreamento
+Ponto:12
+	CalcoNeuronSAD
+	OrdemBatalha
+	Alerta
+	EventoNeuronSAD
+	Movimentacao
+	MapeamentoRadar
+	DispositivoRastreamento
+	Revisualizacao
+	ItemNeuronSAD
+	Tile
+	PlanoOrdem
+	Trajetoria
+PlanoRevisualizacaoDeleteResponse:1
+	Revisualizacao
+HighlightPostRequest:1
+	XMLHighlighter
+EventosVista:1
+	EventoNeuronSAD
+Pessoa:1
+	ItemNeuronSAD
+MaterialStatusAlteracao:1
+	ItemNeuronSAD
+EventoPostResponse:1
+	EventoNeuronSAD
+PiosRemotosResponse:1
+	CalcoNeuronSAD
+Frame:1
+	Revisualizacao
+EntidadeAlterar:1
+	EventoNeuronSAD
+InstalacaoStatusConsulta:1
+	ItemNeuronSAD
+ParametrosGetResponse:1
+	Configuracao
+AlvoRadarPersistido:1
+	MapeamentoRadar
+ClassificacaoAlteracao:1
+	ItemNeuronSAD
+Vista:2
+	CalcoNeuronSAD
+	DispositivoRastreamento
+AssociacaoAtualizar:1
+	CalcoNeuronSAD
+ConfigMapa:1
+	CalcoNeuronSAD
+TokenGetRequest:1
+	ProvedorSeguranca
+ItensVistaResponse:1
+	CalcoNeuronSAD
+AssinaturasGetResponse:1
+	Receptor
+TipoRamo:2
+	OrdemBatalha
+	TipoNeuronSAD
+Assinatura:1
+	Receptor
+RadarResponse:1
+	RadarBuffer
+TipoAlertaResponse:1
+	Alerta
+AnotacaoPostRequest:1
+	ItemNeuronSAD
+EntidadeRegra:1
+	RedeRelacionamento
+AnexoPutResponse:1
+	Anexo
+SchedulerPutOrDeleteResponse:1
+	Agendador
+PlanoOrdemPutRequest:1
+	PlanoOrdem
+MCCPutRequest:1
+	ItemNeuronSAD
+ServicoRede:1
+	DispositivoRastreamento
+AlvoRadarMapeado:2
+	DispositivoRastreamento
+	MapeamentoRadar
+MovimentacaoItemPutResponse:1
+	Movimentacao
+HostilidadeAlteracao:1
+	ItemNeuronSAD
+PlanoRevisualizacaoAlterar:1
+	Revisualizacao
+AnotacaoPutRequest:1
+	ItemNeuronSAD
+LoginPostRequest:1
+	ProvedorSeguranca
+InstanciaMaterialGetResponse:1
+	SGL
+OrganizacaoPutRequest:1
+	ItemNeuronSAD
+LocalizacaoPutReq:1
+	LocalizadorNeuronSAD
+EventoPolling:2
+	CalcoNeuronSAD
+	EventoNeuronSAD
+TaskPostRequest:1
+	Agendador
+VistaPolling:1
+	CalcoNeuronSAD
+PessoaPostRequest:1
+	ItemNeuronSAD
+Area:6
+	CalcoNeuronSAD
+	EventoNeuronSAD
+	Revisualizacao
+	ItemNeuronSAD
+	PlanoOrdem
+	Alerta
+ParametrosPutRequest:1
+	Configuracao
+ItemPrimeiraLocalizacaoGetResponse:1
+	Trajetoria
+EntidadeRelacionamento:1
+	RedeRelacionamento
+MaterialRedePutRequest:1
+	DispositivoRastreamento
+MapeamentoPostRequest:1
+	MapeamentoRadar
+MapaCamadaResponse:1
+	MapaNeuronSAD
+WebSocketPostRequest:1
+	ComunicacaoInterface
+EntidadeCriarResponse:1
+	EventoNeuronSAD
+Visualizacao:1
+	Configuracao
+InstalacaoStatus:1
+	ItemNeuronSAD
+ItemPutRequest:1
+	Associacao
+MCCStatus:1
+	ItemNeuronSAD
+OrdensGetResponse:1
+	PlanoOrdem
+ConexaoGet:2
+	Anexo
+	Configuracao
+ChatReceiverPostRequest:1
+	Chat
+PlanoOrdemGetResponse:1
+	PlanoOrdem
+RegraRedeRelacionamentoPutResponse:1
+	RedeRelacionamento
+CacheGetResponse:1
+	CacheAccess
+RedeRelacionamentoPostResponse:1
+	RedeRelacionamento
+Instancia:5
+	CalcoNeuronSAD
+	Assinatura
+	Instancias
+	Chat
+	UsuariosChat
+MapeamentoPutResponse:1
+	MapeamentoRadar
+RadarAtualizacao:1
+	DispositivoRastreamento
+Ordem:1
+	PlanoOrdem
+Material:2
+	ItemNeuronSAD
+	PlanoOrdem
+MensagemFiltroRequest:1
+	Mensagem
+RadarCadastramento:1
+	DispositivoRastreamento
+PIO:1
+	PlanoOrdem
+RadioResponse:1
+	LocalizadorFiltro
+AnexoConteudoGetResponse:2
+	Anexo
+	ItemNeuronSAD
+AssociacaoRelacaoRadioGetResponse:1
+	ItemNeuronSAD
+OrdemBatalhaPostResponse:1
+	OrdemBatalha
+ListaAlvos:1
+	CalcoNeuronSAD
+AnexoPutRequest:1
+	Anexo
+DadosDaLista:1
+	EventoNeuronSAD
+Evento:1
+	Revisualizacao
+AnexoPostResponse:2
+	Anexo
+	ItemNeuronSAD
+AssociacaoRastreador:1
+	DispositivoRastreamento
+PiosRequest:1
+	CalcoNeuronSAD
+RadarStatusResponse:1
+	RadarNeuronSAD
+InstalacaoGetResponse:1
+	ItemNeuronSAD
+PessoaIdioma:1
+	ItemNeuronSAD
+CategoriaAlerta:1
+	Alerta
+PlanosRevisualizacoesGetResponse:1
+	Revisualizacao
+ListaAlvosGetResponse:1
+	EventoNeuronSAD
+PostSimboloReq:1
+	Simbolo
+ItemTipoAlteracao:1
+	ItemNeuronSAD
+ClassificacaoConsulta:3
+	Movimentacao
+	Associacao
+	ItemNeuronSAD
+RegraRedeRelacionamentoGetResponse:1
+	RedeRelacionamento
+PlanoRevisualizacaoPostRequest:1
+	Revisualizacao
+OrganizacaoMilitarPutRequest:1
+	PlanoOrdem
+AlertaResponse:1
+	Alerta
+AprovarPiosResponse:1
+	CalcoNeuronSAD
+VistasRadarPutRequest:1
+	DispositivoRastreamento
+ChatPostRequest:2
+	ChatEnvio
+	Chat
+RegraEntidadeDisponivelGetResponse:1
+	RedeRelacionamento
+PessoaDetalheConsulta:1
+	ItemNeuronSAD
+ItemRamo:1
+	CalcoNeuronSAD
+AnotacaoPostResponse:1
+	ItemNeuronSAD
+MaterialPutResponse:1
+	DispositivoRastreamento
+AnotacaoAlterar:1
+	EventoNeuronSAD
+RedeRelacionamentoGetRequest:1
+	RedeRelacionamento
+MateriaisRadaresPutResponse:1
+	DispositivoRastreamento
+LocalizacaoGeralConsulta:1
+	ItemNeuronSAD
+MccSetorPostRequest:1
+	ItemNeuronSAD
+AlvoDeleteResponse:1
+	EventoNeuronSAD
+NacionalidadeConsulta:1
+	ItemNeuronSAD
+MateriaisRadaresGetResponse:1
+	DispositivoRastreamento
+LocalizacaoConsulta:1
+	ItemNeuronSAD
+DadosGPSRecebido:1
+	LocalizadorFiltro
+CopiaItensPostRequest:1
+	ItemNeuronSAD
+Simbolo:1
+	Simbolo
+VistaMapaGetResponse:1
+	CalcoNeuronSAD
+PollingRequest:1
+	CalcoNeuronSAD
+RegraRedeRelacionamentoExecutarRequest:1
+	RedeRelacionamento
+ConfiguracaoPutRequest:1
+	Configuracao
+DadosDoCalco:1
+	CalcoNeuronSAD
+CalcoMapeado:2
+	MapeamentoRadar
+	DispositivoRastreamento
+MaterialStatusConsulta:1
+	ItemNeuronSAD
+PlanoOrdemDistribuicao:1
+	PlanoOrdem
+ListaAnotacaoGetResponse:1
+	EventoNeuronSAD
+ListaAnexo:1
+	EventoNeuronSAD
+SituacaoLogisticaMaterialGetResponse:1
+	SGL
+No:1
+	Instancias
+CamadaWms:1
+	CalcoNeuronSAD
+MovimentacoesPutRequest:1
+	Movimentacao
+TipoMaterial:1
+	SGL
+ClassificacaoSeguranca:1
+	CalcoNeuronSAD
+PiosRedeRelacionamento:1
+	RedeRelacionamento
+RedesGetResponse:1
+	DispositivoRastreamento
+Anexo:4
+	Anexo
+	EventoNeuronSAD
+	ItemNeuronSAD
+	PlanoOrdem
+Organizacao:2
+	Anexo
+	ItemNeuronSAD
+ClassificacaoCriacao:2
+	Movimentacao
+	ItemNeuronSAD
+Rede:1
+	DispositivoRastreamento
+CategoriaDifusaoGetResponse:1
+	Alerta
+TrocarSenhaRequest:1
+	ProvedorSeguranca
+WmsCamadasServidorReq:1
+	MapaNeuronSAD
+AlvoGetResponse:1
+	EventoNeuronSAD
+ItemEvento:2
+	CalcoNeuronSAD
+	ItemNeuronSAD
+TokenGetResponse:1
+	ProvedorSeguranca
+InmetConfigPut:1
+	InmetNeuronSAD
+AnexoConteudoGetRequest:1
+	ItemNeuronSAD
+ChatPostResponse:1
+	Chat
+Associacao:1
+	ItemNeuronSAD
+PioAlterar:1
+	Revisualizacao
+AnotacaoCriar:1
+	EventoNeuronSAD
+RegraRedeRelacionamentoPostRequest:1
+	RedeRelacionamento
+MapeamentoAlvoGetResponse:1
+	MapeamentoRadar
+AnexoGetResponse:3
+	Anexo
+	EventoNeuronSAD
+	ItemNeuronSAD
+MaterialLotePostRequest:1
+	ItemNeuronSAD
+RadarConfigResponse:1
+	RadarNeuronSAD
+ItemTipo:1
+	ItemNeuronSAD
+AssociacaoPioCalco:1
+	CalcoNeuronSAD
+DadosPioPropriedades:1
+	CalcoNeuronSAD
+HistoricoAlertaGetRequest:1
+	Alerta
+Linha:4
+	CalcoNeuronSAD
+	EventoNeuronSAD
+	ItemNeuronSAD
+	PlanoOrdem
+PiosResponse:1
+	CalcoNeuronSAD
+VistaAssociada:1
+	DispositivoRastreamento
+Nacionalidade:1
+	ItemNeuronSAD
+PrevisaoEstadoGetResponse:1
+	InmetNeuronSAD
+PostElevacoesRequest:1
+	Tile
+EventoPutRequest:1
+	EventoNeuronSAD
+NodeCommunicationStatus:1
+	Comunicacao
+ItemCopiaGetResponse:1
+	ItemNeuronSAD
+MensagemRequest:1
+	Mensagem
+InstalacaoPutRequest:1
+	ItemNeuronSAD
+PosicaoRadarMapeado:1
+	MapeamentoRadar
+LocalizacaoGetResp:1
+	LocalizadorNeuronSAD
+RegraRedeRelacionamentoPutRequest:1
+	RedeRelacionamento
+MccLinhaPostRequest:1
+	ItemNeuronSAD
+MultiplosMateriaisPostRequest:1
+	ItemNeuronSAD
+CamadaWmsResponse:1
+	Tile
+RegraRedeRelacionamentoDeleteRequest:1
+	RedeRelacionamento
+Instalacao:1
+	ItemNeuronSAD
+InstanciasGetResponse:1
+	Instancias
+OrganizacaoStatusConsulta:1
+	ItemNeuronSAD
+PlanoRevisualizacaoGetResponse:1
+	Revisualizacao
+NosGetRequest:1
+	Instancias
+OrdemComplementarPutRequest:1
+	PlanoOrdem
+RedeRelacionamentoGerarRequest:1
+	RedeRelacionamento
+OrganizacaoStatus:1
+	ItemNeuronSAD
+ItemAlvo:1
+	CalcoNeuronSAD
+AssocVistaMapasGetResponse:1
+	CalcoNeuronSAD
+Proxy:2
+	Configuracao
+	Anexo
+AssociacaoItem:1
+	CalcoNeuronSAD
+MovimentacaoItemPutRequest:1
+	Movimentacao
+TipoEquipamentoGetResponse:1
+	SGL
+PlanoRevisualizacaoAdicionar:1
+	Revisualizacao
+TipoAlerta:1
+	Alerta
+OrganizacaoMilitar:4
+	CalcoNeuronSAD
+	Configuracao
+	SGL
+	PlanoOrdem
+CommunicationStatus:1
+	Comunicacao
+MaterialPutRequest:3
+	DispositivoRastreamento
+	ItemNeuronSAD
+	PlanoOrdem
+LocalizadorFiltroConfig:1
+	LocalizadorFiltro
+Event:1
+	Alerta
+AssociacaoConsulta:1
+	ItemNeuronSAD
+ListaAcaoLocalizacaoGetResponse:1
+	EventoNeuronSAD
+ItemAssociado:1
+	ItemNeuronSAD
+TaskParameter:1
+	Agendador
+AlvosPut:1
+	EventoNeuronSAD
+VistaMapaPutRequest:1
+	CalcoNeuronSAD
+AnexoCriar:1
+	EventoNeuronSAD
+LocalizacaoMCCLinha:1
+	ItemNeuronSAD
+SchedulerPutRequest:1
+	Agendador
+OpcoesINMETResponse:1
+	InmetNeuronSAD
+MaterialGetResponse:1
+	ItemNeuronSAD
+InfoUsuariosC2DeleteRequest:1
+	ProvedorSeguranca
+RadarExclusao:1
+	DispositivoRastreamento
+AssocVistaMapaPutRequest:1
+	CalcoNeuronSAD
+EventoNome:1
+	EventoNeuronSAD
+AssocVistaMapasPutRequest:1
+	CalcoNeuronSAD
+ApresentacaoAlerta:1
+	Alerta
+VistasRadarPutResponse:1
+	DispositivoRastreamento
+SchedulerGetResponse:1
+	Agendador
+VersionamentoGetResponse:1
+	Configuracao
+AssociacaoItemConsulta:1
+	Associacao
+EntidadeAssociacaoGetResponse:1
+	EventoNeuronSAD
+LocalizacaoAnotacao:1
+	ItemNeuronSAD
+PlanoOrdemEstado:1
+	PlanoOrdem
+EventoMovimentacaoPostRequest:1
+	OrdemBatalha
+GetMapaTileRequest:1
+	Tile
+VistaGetResponse:1
+	CalcoNeuronSAD
+ItemAlerta:1
+	Alerta
+ComintConfigPut:1
+	ComintNeuronSAD
+Classificacao:4
+	OrdemBatalha
+	EventoNeuronSAD
+	DispositivoRastreamento
+	MapeamentoRadar
+Calco:1
+	PlanoOrdem
+RedeRelacionamentoGetResponse:1
+	RedeRelacionamento
+PessoaStatusAlteracao:1
+	ItemNeuronSAD
+VistasRadarGetResponse:1
+	DispositivoRastreamento
+CriterioRegra:1
+	RedeRelacionamento
+MccAreaPostRequest:1
+	ItemNeuronSAD
+Circulo:1
+	Alerta
+PIOPutRequest:1
+	PlanoOrdem
+PessoaStatus:1
+	ItemNeuronSAD
+OrganizacoesGetResponse:1
+	ItemNeuronSAD
+PlanoOrdemCorpo:1
+	PlanoOrdem
+ListasAlvosGetResponse:1
+	EventoNeuronSAD
+PlanoRevisualizacoesGetResponse:1
+	Revisualizacao
+PessoaDocumento:1
+	ItemNeuronSAD
+CategoriaTipoAlertaGetResponse:1
+	Alerta
+InstalacaoPostRequest:1
+	ItemNeuronSAD
+ItemMapeado:2
+	MapeamentoRadar
+	DispositivoRastreamento
+PioAprovacao:1
+	CalcoNeuronSAD
+RastreadorGetResponse:1
+	DispositivoRastreamento
+PioGetResponse:1
+	CalcoNeuronSAD
+PioArquivarPutRequest:1
+	CalcoNeuronSAD
+OrganizacaoGetResponse:1
+	ItemNeuronSAD
+PlanoRevisualizacaoPutRequest:1
+	Revisualizacao
+HistoricoAlertaGetResponse:1
+	Alerta
+LocalizacaoGeralAlteracao:1
+	ItemNeuronSAD
+ComintConfig:1
+	ComintNeuronSAD
+RegraRedeRelacionamentoValidarResponse:1
+	RedeRelacionamento
+PlanosOrdensGetResponse:1
+	PlanoOrdem
+PlanoRevisualizacao:1
+	Revisualizacao
+Metadado:1
+	Revisualizacao
+InstanciaLocalGetResponse:1
+	Instancias
+EventoAlterar:1
+	EventoNeuronSAD
+Parametro:1
+	Configuracao
+PessoaDetalheAlteracao:1
+	ItemNeuronSAD
+RadarConfigPutRequest:2
+	RadarNeuronSAD
+	ProvedorSeguranca
+AssinaturaPostRequest:1
+	Assinatura
+MCC:1
+	ItemNeuronSAD
+NumeroMensagens:1
+	Chat
+RedeRelacionamentoDeleteRequest:1
+	RedeRelacionamento
+PioAdicionar:1
+	Revisualizacao
+LocalizacaoAlteracao:2
+	Movimentacao
+	ItemNeuronSAD
+PollingResponse:1
+	CalcoNeuronSAD
+EventoPostRequest:1
+	EventoNeuronSAD
+AssociacaoPioCalcoPostRequest:1
+	CalcoNeuronSAD
+RedeRelacionamentoPostRequest:1
+	RedeRelacionamento
+MccPontoPostRequest:1
+	ItemNeuronSAD
+InstalacaoStatusAlteracao:1
+	ItemNeuronSAD
+FiltroMensagem:1
+	Mensagem
+ChatGetResponse:1
+	Chat
+LoginDeleteResponse:1
+	ProvedorSeguranca
+PlanoOrdem:1
+	PlanoOrdem
+DetalheFault:1
+	Associacao
+AlertaDeleteResponse:1
+	Alerta
+MccLimitePostRequest:1
+	ItemNeuronSAD
+AlvoRadar:1
+	MapeamentoRadar
+MensagensPendentesGetResponse:1
+	Chat
+MaterialRedePutResponse:1
+	DispositivoRastreamento
+SubordinarPioPutRequest:1
+	CalcoNeuronSAD
+PublicacaoItemRequest:1
+	ItemNeuronSAD
+MaterialRedeExclusao:1
+	DispositivoRastreamento
+EfeitoRemover:1
+	EventoNeuronSAD
+UnidadeAlerta:1
+	Alerta
+PessoaGetResponse:1
+	ItemNeuronSAD
+MapaResponse:2
+	MapaNeuronSAD
+	CalcoNeuronSAD
+PessoaPutRequest:1
+	ItemNeuronSAD
+PessoaDetalhe:1
+	ItemNeuronSAD
+MaterialRedeDeleteRequest:1
+	DispositivoRastreamento
+DadosDaVista:1
+	CalcoNeuronSAD
+MensagemUsuariosGetResponse:2
+	Chat
+	UsuariosChat
+MaterialRedePostRequest:1
+	DispositivoRastreamento
+UsuarioPutRequest:1
+	Instancias
+NotifyEventPostRequest:1
+	Alerta
+ComintRelatorio:1
+	ComintNeuronSAD
+Aresta:1
+	RedeRelacionamento
+RedeRelacionamentoResponse:1
+	RedeRelacionamento
+RegraRedeRelacionamentoExecutarGetResponse:1
+	RedeRelacionamento
+NacionalidadeAlteracao:1
+	ItemNeuronSAD
+ReceberResponse:1
+	Receptor
+PioPolling:1
+	CalcoNeuronSAD
+AssocMapaVistaResponse:1
+	CalcoNeuronSAD
+ConsultarPiosAprovacaoResponse:1
+	CalcoNeuronSAD
+TabelaEntidade:1
+	RedeRelacionamento
+PrevisaoCidadeGetResponse:1
+	InmetNeuronSAD
+OrganizacaoStatusAlteracao:1
+	ItemNeuronSAD
+UnidadeLimite:1
+	ItemNeuronSAD
+MaterialRedePostResponse:1
+	DispositivoRastreamento
+MaterialStatus:1
+	ItemNeuronSAD
+AlertaPutRequest:1
+	Alerta
+Localizacao:10
+	CalcoNeuronSAD
+	OrdemBatalha
+	EventoNeuronSAD
+	Movimentacao
+	MapeamentoRadar
+	DispositivoRastreamento
+	Revisualizacao
+	ItemNeuronSAD
+	PlanoOrdem
+	Trajetoria
+Trajetoria:1
+	Trajetoria
+CampoEntidade:1
+	RedeRelacionamento
+AssociacaoRastreadorGetResponse:1
+	DispositivoRastreamento
+Item:6
+	CalcoNeuronSAD
+	MapeamentoRadar
+	DispositivoRastreamento
+	Associacao
+	Revisualizacao
+	ItemNeuronSAD
+RegraCampoEntidadeResponse:1
+	RedeRelacionamento
+Anotacao:1
+	CalcoNeuronSAD
+PlanoRevisualizacaoPutResponse:1
+	Revisualizacao
+ConfiguracaoGetResponse:1
+	Configuracao
+InmetConfig:1
+	InmetNeuronSAD
+PublicacaoRequest:1
+	Assinatura
+Destinatario:1
+	Mensagem
+UnidadeAlertaGetResponse:1
+	Alerta
+LocalizacaoMCCArea:1
+	ItemNeuronSAD
+OrdemBatalhaLocalizacaoGetResponse:1
+	OrdemBatalha
