@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;NeoIDL-DbC-28082015/NeoIDL-DbC.tex&apos;" deleteContents="false" description="Delete resource &apos;NeoIDL-DbC-28082015/NeoIDL-DbC.tex&apos;" element1="/NeoIDL-DbC-28082015/NeoIDL-DbC.tex" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1440677999058"/>
+</session>

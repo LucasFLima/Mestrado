@@ -1,0 +1,27 @@
+module comunicacaointerface {
+
+	path = "xxx";
+
+	entity WebSocketPostRequest {
+		[Pio] : pios;
+	};
+
+	entity Pio {
+		string : nomePio;
+		string : idPio;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/comunicacao/interface/websocket";
+
+		/**
+		* @ summary: Envia dados para a interface via WebSocket
+		* @ params: 
+		*	body webSocketPostRequest(*): Informações a serem atualizadas
+		*	query destino: Identificador do usuário de destino
+		*	query ignoraToken: Não envia a informação para o token desta sessão
+		*/
+		@post  <NomeCapacidade> (WebSocketPostRequest webSocketPostRequest, string destino, string ignoraToken);
+	}
+
+

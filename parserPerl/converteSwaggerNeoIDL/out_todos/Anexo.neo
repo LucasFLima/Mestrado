@@ -1,0 +1,137 @@
+module anexo {
+
+	path = "xxx";
+
+	entity AnexoPutResponse {
+		[AnexoAtualizarResponse] : anexos;
+	};
+
+	entity Radar {
+		number : porta;   /*Required.*/
+		string : ip;   /*Required.*/
+	};
+
+	entity AnexoPostResponse {
+		string : ID;   /*Required.*/
+	};
+
+	entity Organizacao {
+		string : id;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idSuperior;   /*Required.*/
+	};
+
+	entity AnexoPutRequest {
+		[AnexoAtualizar] : anexos;   /*Required.*/
+		string : idItem;   /*Required.*/
+	};
+
+	entity AnexoConteudoGetResponse {
+		[] : anexos;   /*Required.*/
+	};
+
+	entity Proxy {
+		string : enderecosDiretos;
+		boolean : naoUsaLocalmente;   /*Required.*/
+		boolean : usaAutenticacao;   /*Required.*/
+		string : ip;   /*Required.*/
+		number : porta;   /*Required.*/
+		Usuario : usuario;
+	};
+
+	entity AnexoGetResponse {
+		[] : anexos;   /*Required.*/
+	};
+
+	entity Radio {
+		number : porta;   /*Required.*/
+	};
+
+	entity ConexaoPut {
+		boolean : utilizaProxy;   /*Required.*/
+		Proxy : proxy;
+	};
+
+	entity AnexoAtualizar {
+		string : codTemp;   /*Required.*/
+		string : tipoAnexo;   /*Required.*/
+		string : nomeAnexo;   /*Required.*/
+	};
+
+	entity AnexoExcluir {
+		string : categoria;   /* Valores possiveis: ITEM EVENTO */
+		string : anexos;   /*Required.*/
+	};
+
+	entity Anexo {
+		string : type;   /*Required.*/
+		string : name;   /*Required.*/
+		string : size;   /*Required.*/
+	};
+
+	entity AnexoAtualizarResponse {
+		string : idAnexo;   /*Required.*/
+	};
+
+	entity Usuario {
+		string : nome;   /*Required.*/
+		string : senha;   /*Required.*/
+	};
+
+	entity ConexaoGet {
+		Radar : radar;   /*Required.*/
+		Radio : radio;   /*Required.*/
+		Proxy : proxy;
+		boolean : utilizaProxy;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/anexos";
+
+		/**
+		* @ summary: Envio de um arquivo para o servidor
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	form anexo(*): Arquivo em anexo
+		*/
+		@post AnexoPostResponse <NomeCapacidade> (string t, file anexo);
+
+		/**
+		* @ summary: Remove um anexo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body anexos(*): 
+		*/
+		@delete AnexoDeleteResponse <NomeCapacidade> (string t, AnexoExcluir anexos);
+
+		/**
+		* @ summary: Retorna a lista de anexos em memória
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get AnexoGetResponse <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Persiste o anexo no servidor
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body Anexos(*): 
+		*/
+		@put AnexoPutResponse <NomeCapacidade> (string t, AnexoPutRequest Anexos);
+	}
+
+	service <NomeServico> {
+		path = "/anexos/conteudo/{idItem}/{idAnexo}";
+
+		/**
+		* @ summary: Retorna o conteúdo de um arquivo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	path idAnexo(*): 
+		*	query categoria: 
+		*/
+		@get AnexoConteudoGetResponse <NomeCapacidade> (string t, string idItem, string idAnexo, string categoria);
+	}
+
+

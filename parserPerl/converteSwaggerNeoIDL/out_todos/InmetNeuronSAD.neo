@@ -1,0 +1,23 @@
+module inmetneuronsad {
+
+	path = "xxx";
+
+	entity PrevisaoEstadoGetResponse {
+		string : umidade_max;
+		string : umidade_min;
+		string : temp_min;
+		string : dir_vento;
+		string : resumo;
+		string : temp_max;
+	};
+
+	entity PrevisaoRegiaoGetResponse {
+		string : umidade_min;
+		string : umidade_max;
+		string : dir_vento;
+		string : temp_min;
+		string : temp_max;
+		string : resumo;
+	};
+
+	entity cidades {

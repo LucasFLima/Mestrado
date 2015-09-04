@@ -1,0 +1,86 @@
+module receptor {
+
+	path = "xxx";
+
+	entity CommunicationMessage {
+		string : body;   /*Required.*/
+		string : topic;   /*Required.*/
+		boolean : encoded;
+		string : node;   /*Required.*/
+		boolean : reliable;
+	};
+
+	entity Assinatura {
+		boolean : assinado;
+		string : idPlanoInformacoesOperacionais;
+		string : permissao;
+	};
+
+	entity AssinaturasGetResponse {
+		[Node] : nodes;
+	};
+
+	entity ReceberResponse {
+		string : Status;
+	};
+
+	entity Node {
+		[Assinatura] : assinaturas;
+		string : idNode;
+	};
+
+	service <NomeServico> {
+		path = "/Receptor/assinaturas";
+
+		/**
+		* @ summary: Obtém o estado de todas as assinaturas.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get AssinaturasGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/receber";
+
+		/**
+		* @ summary: Recebe uma mensagem de um nó remoto
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body message(*): Mensagem recebida
+		*/
+		@post ReceberResponse <NomeCapacidade> (string t, CommunicationMessage message);
+	}
+
+	service <NomeServico> {
+		path = "/Receptor/assinatura/{id_node}/{id_pio}";
+
+		/**
+		* @ summary: Obtém o estado da assinatura.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id_node(*): Id do nó que publica o pio.
+		*	path id_pio(*): Id do pio publicado.
+		*/
+		@get Assinatura <NomeCapacidade> (string t, numeric id_node, numeric id_pio);
+
+		/**
+		* @ summary: Assina um pio.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id_node(*): Id do nó que publica o pio.
+		*	path id_pio(*): Id do pio publicado.
+		*/
+		@post string <NomeCapacidade> (string t, numeric id_node, numeric id_pio);
+
+		/**
+		* @ summary: Cancela uma assinatura.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id_node(*): Id do nó que publica o pio.
+		*	path id_pio(*): Id do pio publicado.
+		*/
+		@delete string <NomeCapacidade> (string t, numeric id_node, numeric id_pio);
+	}
+
+

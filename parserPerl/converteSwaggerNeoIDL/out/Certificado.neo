@@ -1,0 +1,32 @@
+module certificado {
+
+	path = "xxx";
+
+	entity CertificadoPostResponse {
+		string : ID;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/certificado";
+
+		/**
+		* @ summary: Envio de um certificado para o servidor
+		* @ params: 
+		*	form file(*): Certificado em anexo
+		*/
+		@post CertificadoPostResponse <NomeCapacidade> (file file);
+	}
+
+	service <NomeServico> {
+		path = "/certificadoRaiz";
+
+		/**
+		* @ summary: Envio de um certificado para o servidor
+		* @ params: 
+		*	form file(*): Certificado em anexo
+		*	form senha(*): Senha de adm
+		*/
+		@post CertificadoPostResponse <NomeCapacidade> (file file, string senha);
+	}
+
+

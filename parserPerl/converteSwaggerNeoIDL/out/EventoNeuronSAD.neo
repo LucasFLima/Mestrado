@@ -1,0 +1,592 @@
+module eventoneuronsad {
+
+	path = "xxx";
+
+	entity EventosResponse {
+		[EventoPolling] : eventos;
+	};
+
+	entity LocalizacaoGetResponse {
+		Linha : linha;
+		Ponto : ponto;
+		Area : area;
+		string : codigoCategoria;   /*Required.*/
+		string : idLocalizacao;
+		Classificacao : classificacao;   /*Required.*/
+	};
+
+	entity AlvosPut {
+		[AlvoPut] : listaAlvos;
+	};
+
+	entity EfeitoCriar {
+		Classificacao : classificacao;   /*Required.*/
+		string : idItem;   /*Required.*/
+		string : severidade;   /*Required.*/
+		string : descricao;   /*Required.*/
+	};
+
+	entity EntidadeCriar {
+		string : idItem;   /*Required.*/
+		string : envolvimento;   /*Required. Valores possiveis: RES OBJ */
+		string : qualificador;   /*Required.*/
+	};
+
+	entity EventoPostResponse {
+		EventoCriarResponse : evento;   /*Required.*/
+	};
+
+	entity ListaAcaoEvolucaoGetResponse {
+		[AcaoEventoEvolucaoGetResponse] : evolucoes;
+	};
+
+	entity Ponto {
+		double : altitude;
+		double : latitude;   /*Required.*/
+		double : longitude;   /*Required.*/
+	};
+
+	entity EventoAlterar {
+		[AnotacaoAlterar] : anotacoesAlteradas;
+		Localizacao : localizacao;
+		EventoNome : eventoNome;
+		[AnotacaoCriar] : anotacoesCriadas;
+		[EfeitoCriar] : efeitosCriados;
+		[AnexoCriar] : anexosCriados;
+		Classificacao : classificacao;
+		[EntidadeRemover] : entidadesRemovidas;
+		[EntidadeCriar] : entidadesCriadas;
+		[EfeitoRemover] : efeitosRemovidos;
+		int : porcentagemEvolucao;
+		[EntidadeAlterar] : entidadesAlteradas;
+	};
+
+	entity Anexo {
+		string : codTemp;   /*Required.*/
+		string : nomeAnexo;   /*Required.*/
+		string : tipoAnexo;   /*Required.*/
+	};
+
+	entity EventoPutRequest {
+		EventoAlterar : evento;   /*Required.*/
+	};
+
+	entity Classificacao {
+		string : tipoFonte;   /*Required.*/
+		long : gdhInicial;
+		long : gdh;   /*Required.*/
+		string : conteudo;   /*Required.*/
+		string : fonte;   /*Required.*/
+		long : gdhFinal;
+	};
+
+	entity Localizacao {
+		string : idLocalizacao;
+		Area : area;
+		string : codigoCategoria;   /*Required.*/
+		Ponto : ponto;
+		Linha : linha;
+	};
+
+	entity EventoNome {
+		boolean : aceitaNomeDuplicado;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idCategoria;   /*Required.*/
+		string : idPio;   /*Required.*/
+	};
+
+	entity AnotacaoGetResponse {
+		Classificacao : classificacao;   /*Required.*/
+		string : idAnotacao;   /*Required.*/
+		string : descricao;   /*Required.*/
+	};
+
+	entity ListaAnexo {
+		[Anexo] : anexos;
+	};
+
+	entity EventoGetResponse {
+		[AnexoGetResponse] : anexos;
+		[AcaoEventoEvolucaoGetResponse] : evolucoes;
+		[AcaoEfeitoGetResponse] : efeitos;
+		ListaEntidadeGetResponse : objetivos;
+		int : porcentagemEvolucao;   /*Required.*/
+		ListaEntidadeGetResponse : recursos;
+		string : idPio;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : codCategoria;   /*Required.*/
+		[LocalizacaoGetResponse] : localizacoes;
+		Localizacao : localizacao;
+		[AnotacaoGetResponse] : anotacoes;
+		string : idEvento;   /*Required.*/
+	};
+
+	entity ListaAnotacaoGetResponse {
+		[AnotacaoGetResponse] : anotacoes;
+	};
+
+	entity EntidadeAssociacaoGetResponse {
+		string : codCategoria;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idItem;   /*Required.*/
+	};
+
+	entity EntidadeAlterar {
+		string : idEntidade;   /*Required.*/
+		string : qualificador;   /*Required.*/
+		string : envolvimento;   /*Required. Valores possiveis: RES OBJ */
+	};
+
+	entity Entidade {
+		string : idItem;   /*Required.*/
+		string : qualificador;   /*Required.*/
+		string : envolvimento;   /*Required. Valores possiveis: RES OBJ */
+	};
+
+	entity EventoPostRequest {
+		EventoCriarRequest : evento;   /*Required.*/
+	};
+
+	entity AnotacaoAlterar {
+		string : idAnotacao;   /*Required.*/
+		string : descricao;   /*Required.*/
+	};
+
+	entity AnexoGetResponse {
+		string : nomeAnexo;   /*Required.*/
+		string : idAnexo;   /*Required.*/
+		string : tipoAnexo;   /*Required.*/
+	};
+
+	entity Linha {
+		[Ponto] : pontos;   /*Required.*/
+	};
+
+	entity AnotacaoCriar {
+		string : descricao;   /*Required.*/
+	};
+
+	entity ListaEntidadeGetResponse {
+		[EntidadeGetResponse] : pessoas;
+		[EntidadeGetResponse] : instalacoes;
+		[EntidadeGetResponse] : mccs;
+		[EntidadeGetResponse] : materiais;
+		[EntidadeGetResponse] : organizacoes;
+	};
+
+	entity EntidadeCriarResponse {
+		string : idItem;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity EntidadeGetResponse {
+		string : idEntidade;   /*Required.*/
+		[EntidadeAssociacaoGetResponse] : objetos;
+		string : idItem;   /*Required.*/
+		[EntidadeAssociacaoGetResponse] : sujeitos;
+		string : codCategoria;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : qualificador;   /*Required.*/
+	};
+
+	entity EventosVistaGetResponse {
+		[Pio] : pios;
+	};
+
+	entity AcaoEventoEvolucaoGetResponse {
+		int : porcentagemEvolucao;   /*Required.*/
+		string : idEvolucao;   /*Required.*/
+		Classificacao : classificacao;   /*Required.*/
+	};
+
+	entity EntidadeRemover {
+		string : idEntidade;   /*Required.*/
+		string : envolvimento;   /*Required. Valores possiveis: RES OBJ */
+	};
+
+	entity AlvoGetResponse {
+		[AlvoResponse] : listaAlvos;
+		HASH(0x1e1f6c8) : PIO;
+	};
+
+	entity AcaoEfeitoGetResponse {
+		string : idItem;   /*Required.*/
+		string : severidade;   /*Required.*/
+		Classificacao : classificacao;   /*Required.*/
+		string : idEfeito;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : descricao;   /*Required.*/
+	};
+
+	entity AnexoCriar {
+		string : codTemp;   /*Required.*/
+		string : nomeAnexo;   /*Required.*/
+		string : tipoAnexo;   /*Required.*/
+	};
+
+	entity ListaAcaoEfeitoGetResponse {
+		[AcaoEfeitoGetResponse] : efeitos;
+	};
+
+	entity AlvoDeleteResponse {
+		number : idLista;
+		string : idItem;
+	};
+
+	entity EventoPolling {
+		[ItemEvento] : objetivos;
+		string : nome;
+		string : idEvento;
+		Localizacao : localizacao;
+		string : evolucao;
+		[ItemEvento] : recursos;
+	};
+
+	entity AlvoPut {
+		boolean : isExclusao;
+		string : identificador;
+		string : idAlvo;
+		string : prioridade;
+		string : autorizacao;
+		string : acao;
+		string : nomeAlvo;
+	};
+
+	entity EventoCriarRequest {
+		string : idPio;   /*Required.*/
+		Classificacao : classificacao;   /*Required.*/
+		int : porcentagemEvolucao;   /*Required.*/
+		[Anexo] : anexos;
+		Localizacao : localizacao;   /*Required.*/
+		[Entidade] : entidades;
+		boolean : aceitaNomeDuplicado;   /*Required.*/
+		string : codCategoria;   /*Required.*/
+		string : descricao;
+		string : nome;   /*Required.*/
+	};
+
+	entity ListaAcaoLocalizacaoGetResponse {
+		[LocalizacaoGetResponse] : localizacoes;
+	};
+
+	entity Pio {
+		string : idPio;   /*Required.*/
+		string : nomePio;   /*Required.*/
+		string : transparencia;
+		[EventosVista] : eventos;
+	};
+
+	entity EfeitoRemover {
+		string : idEfeito;   /*Required.*/
+	};
+
+	entity ListaAlvosGetResponse {
+		[] : listaAlvos;
+		string : nomeListaAlvo;
+		number : idPio;
+		number : idListaAlvo;
+	};
+
+	entity ListasAlvosGetResponse {
+		number : idPio;
+		string : nomeListaAlvo;
+		[Alvo] : listaAlvos;
+		number : idListaAlvo;
+	};
+
+	entity EventoCriarResponse {
+		[EntidadeCriarResponse] : entidades;
+		string : idEvento;   /*Required.*/
+		Localizacao : localizacao;
+		string : nome;   /*Required.*/
+	};
+
+	entity EventosVista {
+		Localizacao : localizacao;
+		string : idEvento;   /*Required.*/
+		int : porcentagemEvolucao;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity Area {
+		[Ponto] : pontos;   /*Required.*/
+	};
+
+	entity DadosDaLista {
+		number : idPio;   /*Required.*/
+		string : nomeListaAlvos;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/listaAlvos";
+
+		/**
+		* @ summary: cria uma lista de alvo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body DadosDaLista(*): 
+		*/
+		@post ListaAlvosPostResponse <NomeCapacidade> (string t, DadosDaLista DadosDaLista);
+	}
+
+	service <NomeServico> {
+		path = "/listaAlvos/{idListaAlvos}/alvos";
+
+		/**
+		* @ summary: altera a lista de alvo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idListaAlvos(*): Identificador da lista do alvo
+		*	body alvosPut(*): 
+		*/
+		@put ListaAlvosPutResponse <NomeCapacidade> (string t, string idListaAlvos, AlvosPut alvosPut);
+	}
+
+	service <NomeServico> {
+		path = "/listaAlvos/pio/{idPio}";
+
+		/**
+		* @ summary: Retorna as listas de alvos do pio.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPio(*): Identificador do pio
+		*/
+		@get ListasAlvosResponse <NomeCapacidade> (string t, string idPio);
+	}
+
+	service <NomeServico> {
+		path = "/eventos/{idPio}";
+
+		/**
+		* @ summary: Retorna a lista de eventos do pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPio(*): Identificador do pio
+		*/
+		@get EventosResponse <NomeCapacidade> (string t, string idPio);
+	}
+
+	service <NomeServico> {
+		path = "/listaAlvos/{idListaAlvos}";
+
+		/**
+		* @ summary: Retorna a lista de alvo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idListaAlvos(*): Identificador da lista do alvo
+		*/
+		@get ListaAlvosGetResponse <NomeCapacidade> (string t, string idListaAlvos);
+
+		/**
+		* @ summary: altera a lista de alvo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idListaAlvos(*): Identificador da lista do alvo
+		*	body nomeListaAlvos(*): 
+		*/
+		@put ListaAlvosPutResponse <NomeCapacidade> (string t, string idListaAlvos, string nomeListaAlvos);
+
+		/**
+		* @ summary: deleta uma lista de um alvo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idListaAlvos(*): Identificação das listas
+		*/
+		@delete AlvoDeleteResponse <NomeCapacidade> (string t, string idListaAlvos);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/listaAlvos";
+
+		/**
+		* @ summary: Retorna o alvo com suas respectivas listas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): Identificador do Item
+		*/
+		@get AlvoGetResponse <NomeCapacidade> (string t, string idItem);
+
+		/**
+		* @ summary: Altera a situação do item em uma lista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): Identificador do Item
+		*	body listaAlvos(*): Identificação das listas
+		*/
+		@put  <NomeCapacidade> (string t, string idItem, AlvoPutRequest listaAlvos);
+
+		/**
+		* @ summary: Remove o item de uma lista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): Identificador do Item
+		*	query idLista(*): Identificador da Lista
+		*/
+		@delete AlvoDeleteResponse <NomeCapacidade> (string t, string idItem, string idLista);
+	}
+
+	service <NomeServico> {
+		path = "/eventos";
+
+		/**
+		* @ summary: Cria um novo evento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body Evento(*): Dados do novo evento
+		*/
+		@post EventoPostResponse <NomeCapacidade> (string t, EventoPostRequest Evento);
+	}
+
+	service <NomeServico> {
+		path = "/eventos/{idEvento}";
+
+		/**
+		* @ summary: Altera os dados do evento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	body Evento(*): Dados do evento
+		*/
+		@put EventoPutResponse <NomeCapacidade> (string t, string idEvento, EventoPutRequest Evento);
+	}
+
+	service <NomeServico> {
+		path = "/evento/{idEvento}";
+
+		/**
+		* @ summary: Consulta um evento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query limite: Limite de registros nas listas do evento
+		*/
+		@get EventoGetResponse <NomeCapacidade> (string t, string idEvento, int limite);
+
+		/**
+		* @ summary: Exclui um evento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query idPio(*): Identificador do pio
+		*/
+		@delete EventoDeleteResponse <NomeCapacidade> (string t, string idEvento, string idPio);
+	}
+
+	service <NomeServico> {
+		path = "/evento/{idEvento}/efeito/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de efeitos de um evento por intervalo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query limite: Limite de registros
+		*	query dataInicio: Data de início para consulta
+		*/
+		@get ListaAcaoEfeitoGetResponse <NomeCapacidade> (string t, string idEvento, int limite, long dataInicio);
+	}
+
+	service <NomeServico> {
+		path = "/evento/{idEvento}/evolucao/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de evoluções de um evento por intervalo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query limite: Limite de registros
+		*	query dataInicio: Data de início para consulta
+		*/
+		@get ListaAcaoEvolucaoGetResponse <NomeCapacidade> (string t, string idEvento, int limite, long dataInicio);
+	}
+
+	service <NomeServico> {
+		path = "/evento/{idEvento}/localizacao/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de localizações de um evento por intervalo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query limite: Limite de registros
+		*	query dataInicio: Data de início para consulta
+		*/
+		@get ListaAcaoLocalizacaoGetResponse <NomeCapacidade> (string t, string idEvento, int limite, long dataInicio);
+	}
+
+	service <NomeServico> {
+		path = "/evento/{idEvento}/anexo/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de anexos de um evento por intervalo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query limite: Limite de registros
+		*	query idAnexo: ID do último anexo consultado
+		*/
+		@get ListaAnexo <NomeCapacidade> (string t, string idEvento, int limite, string idAnexo);
+	}
+
+	service <NomeServico> {
+		path = "/evento/{idEvento}/anotacao/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de anotações de um evento por intervalo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEvento(*): ID do evento
+		*	query limite: Limite de registros
+		*	query dataInicio: Data de início para consulta
+		*/
+		@get ListaAnotacaoGetResponse <NomeCapacidade> (string t, string idEvento, int limite, long dataInicio);
+	}
+
+	service <NomeServico> {
+		path = "/pio/{idCalco}/eventos";
+
+		/**
+		* @ summary: Consulta os evento de um Calco
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idCalco(*): ID do calco
+		*/
+		@get EventosCalcoGetResponse <NomeCapacidade> (string t, string idCalco);
+	}
+
+	service <NomeServico> {
+		path = "/vistas/{idVista}/eventos";
+
+		/**
+		* @ summary: Lista todos os eventos dos PIOs associados a uma vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): ID da vista
+		*/
+		@get EventosVistaGetResponse <NomeCapacidade> (string t, string idVista);
+	}
+
+	service <NomeServico> {
+		path = "/evento/itens/associacoes";
+
+		/**
+		* @ summary: Associações dos itens de uma lista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body listaIds(*): 
+		*/
+		@post PiosEventosGetResponse <NomeCapacidade> (string t, array listaIds);
+	}
+
+	service <NomeServico> {
+		path = "/evento/pios";
+
+		/**
+		* @ summary: Recupera lista de pios que contém evento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get array <NomeCapacidade> (string t);
+	}
+
+

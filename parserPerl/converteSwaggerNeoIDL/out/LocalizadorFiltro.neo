@@ -1,0 +1,69 @@
+module localizadorfiltro {
+
+	path = "xxx";
+
+	entity LocalizadorFiltroConfig {
+		boolean : enviaTodas;   /*Required.*/
+		integer : tempoMaximo;   /*Required.*/
+		integer : distanciaMaxima;   /*Required.*/
+		integer : bufferTamanho;   /*Required.*/
+	};
+
+	entity RadioInfoResponse {
+		string : idRadio;   /*Required.*/
+	};
+
+	entity DadosGPSRecebido {
+		string : idRadio;   /*Required.*/
+		string : dataRecebimento;   /*Required.*/
+		string : nmea;   /*Required.*/
+	};
+
+	entity RadioResponse {
+		string : idRadio;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/localizador/filtro/posicoes";
+
+		/**
+		* @ summary: Nova Posição
+		* @ params: 
+		*	body novaLocalizacao(*): Nova localização GPS
+		*/
+		@post  <NomeCapacidade> (DadosGPSRecebido novaLocalizacao);
+	}
+
+	service <NomeServico> {
+		path = "/localizador/filtro/config";
+
+		/**
+		* @ summary: Configurações do Filtro
+		* @ params: 
+		*	body filtroConfig(*): Configurações GPS
+		*/
+		@get  <NomeCapacidade> (LocalizadorFiltroConfig filtroConfig);
+	}
+
+	service <NomeServico> {
+		path = "/localizador/filtro/radios";
+
+		/**
+		* @ summary: Lista de Rádios
+		* @ params: 
+		*/
+		@get array <NomeCapacidade> ();
+	}
+
+	service <NomeServico> {
+		path = "/localizador/filtro/radios/{idRadio}";
+
+		/**
+		* @ summary: Informações do Rádio
+		* @ params: 
+		*	path idRadio(*): ID do Rádio
+		*/
+		@get RadioInfoResponse <NomeCapacidade> (string idRadio);
+	}
+
+

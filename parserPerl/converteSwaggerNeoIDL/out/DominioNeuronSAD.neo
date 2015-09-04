@@ -1,0 +1,22 @@
+module dominioneuronsad {
+
+	path = "xxx";
+
+	entity DominioGetResponse {
+		string : codigo;   /*Required.*/
+		string : dominio;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/dominio/{tipo}";
+
+		/**
+		* @ summary: Retorna o dominio referente ao tipo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path tipo(*): Tipo do dominio
+		*/
+		@get array <NomeCapacidade> (string t, string tipo);
+	}
+
+

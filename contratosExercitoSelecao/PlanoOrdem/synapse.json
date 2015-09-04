@@ -1,0 +1,1047 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "PlanoOrdem",
+	"version": "1.0.4",
+	"produces": [
+		"application/json"
+	],
+
+	"apis": [
+		{
+			"path": "/planoordem",
+			"description": "Recuperar todos os planos e ordens",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "PlanosOrdensGetResponse",
+					"summary": "Retorna a lista de planos e ordens locais e ordens remotas",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+		
+        {
+            "path": "/ordem",
+            "description": "Recuperar todas as ordens",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "OrdensGetResponse",
+                    "summary": "Retorna a lista de ordens locais e ordens remotas",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "complementares",
+                            "description": "Filtro para incluir (padrão) ou remover as ordens complementares",
+                            "type": "string",
+                            "allowableValues": {
+                                "valueType": "list",
+                                "values": [
+                                    "true",
+                                    "false"
+                                ]
+                            },
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+
+		{
+			"path": "/plano",
+			"description": "Planos",
+			"operations": [
+				{
+					"method": "POST",
+					"summary": "Criar um plano",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "plano",
+							"paramType": "body",
+							"type": "PlanoOrdem",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+        {
+            "path": "/plano/{id}",
+            "description": "Planos",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "summary": "Remover um plano existente",
+                    "parameters": [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        },
+                        {
+                            "name": "id",
+                            "description": "ID do plano",
+                            "paramType": "path",
+                            "type": "string",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+
+		{
+			"path": "/ordemfragmentaria",
+			"description": "Ordens",
+			"operations": [
+				{
+					"method": "POST",
+					"summary": "Criar uma ordem fragmentária",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "ordem",
+							"paramType": "body",
+							"type": "PlanoOrdem",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/planoordem/{id}",
+			"description": "Recuperar o plano ou ordem específico(a)",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "PlanoOrdemGetResponse",
+					"summary": "Recuperar o plano ou ordem específico(a)",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"summary": "Atualizar um plano ou ordem existente",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "planoOrdem",
+							"paramType": "body",
+							"type": "PlanoOrdemPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/planoordem/corpo/template",
+			"description": "Recuperar o corpo do documento padrão",
+			"operations": [
+				{
+					"method": "GET",
+					"type": "PlanoOrdemCorpo",
+					"summary": "Recuperar o corpo do documento padrão",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+		
+		{
+			"path": "/ordem/{id}",
+			"operations": [
+				{
+					"method": "PUT",
+					"summary": "Recebimento da difusão de uma ordem",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "ordem",
+							"paramType": "body",
+							"type": "OrdemPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+		
+		{
+			"path": "/ordemfragmentaria/{id}",
+			"operations": [
+				{
+					"method": "PUT",
+					"summary": "Recebimento da difusão de uma ordem fragmentária",
+					"parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "ordemFragmentaria",
+							"paramType": "body",
+							"type": "OrdemFragmentariaPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		}
+	],
+
+	"models": {
+		"PlanosOrdensGetResponse": {
+			"properties": {
+				"local": {
+					"type": "PlanosOrdens",
+					"required": true
+				},
+				"statusWebSocket": {
+					"type": "String",
+					"required": true
+				}
+			}
+		},
+
+        "OrdensGetResponse": {
+            "properties": {
+                "local": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Ordem"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+		"PlanosOrdens": {
+			"properties": {
+				"planos": {
+					"type": "array",
+					"items": {
+						"$ref": "Plano"
+					},
+					"required": true
+				},
+				"ordens": {
+					"type": "array",
+					"items": {
+						"$ref": "Ordem"
+					},
+					"required": true
+				}
+			}
+		},
+
+        "Plano": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "numeroSerial": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "Ordem": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "numeroSerial": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": true
+                },
+                "ordensComplementares": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "OrdemComplementar"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "OrdemComplementar": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "numeroSerial": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "PlanoOrdemGetResponse": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "numeroSerial": {
+                    "type": "string",
+                    "required": true
+                },
+                "isDistribuirLista": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "detalhamento": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeAlternativo": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoHoraCivil": {
+                    "type": "string",
+                    "required": false
+                },
+                "dataInicio": {
+                    "type": "long",
+                    "required": false
+                },
+                "dataFim": {
+                    "type": "long",
+                    "required": false
+                },
+                "codigoNivelSeguranca": {
+                    "type": "string",
+                    "required": false
+                },
+                "indicativoReferencia": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoOrdemVerbal": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoEstado": {
+                    "type": "string",
+                    "required": false
+                },
+                "calcos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PIO"
+                    },
+                    "required": false
+                },
+                "distribuicoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemDistribuicao"
+                    },
+                    "required": false
+                },
+                "corpo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemCorpo"
+                    },
+                    "required": false
+                },
+                "localizacao": {
+                    "type": "Localizacao",
+                    "required": false
+                },
+                "anexos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemAnexo"
+                    },
+                    "required": false
+                }
+            }
+        },
+
+        "PIO": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "organizacoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "OrganizacaoMilitar"
+                    },
+                    "required": false
+                },
+                "isAtivo": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        },
+
+
+
+        "PlanoOrdemPutRequest": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "numeroSerial": {
+                    "type": "string",
+                    "required": true
+                },
+                "isDistribuirLista": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "detalhamento": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeAlternativo": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoHoraCivil": {
+                    "type": "string",
+                    "required": true
+                },
+                "dataInicio": {
+                    "type": "long",
+                    "required": true
+                },
+                "dataFim": {
+                    "type": "long",
+                    "required": false
+                },
+                "codigoNivelSeguranca": {
+                    "type": "string",
+                    "required": true
+                },
+                "indicativoReferencia": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoOrdemVerbal": {
+                    "type": "string",
+                    "required": true
+                },
+                "codigoEstado": {
+                    "type": "string",
+                    "required": true
+                },
+                "calcos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PIOPutRequest"
+                    },
+                    "required": false
+                },
+                "distribuicoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "DistribuicaoPutRequest"
+                    },
+                    "required": false
+                },
+                "corpo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemCorpo"
+                    },
+                    "required": true
+                },
+                "localizacao": {
+                    "type": "Localizacao",
+                    "required": true
+                },
+                "anexos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemAnexo"
+                    },
+                    "required": false
+                }
+            }
+        },
+
+        "PIOPutRequest": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "organizacoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "OrganizacaoMilitarPutRequest"
+                    },
+                    "required": false
+                }
+            }
+        },
+
+        "OrganizacaoMilitarPutRequest": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "quantidadeOficial": {
+                    "type": "int",
+                    "required": true
+                },
+                "quantidadePraca": {
+                    "type": "int",
+                    "required": true
+                },
+                "quantidadeOutros": {
+                    "type": "int",
+                    "required": true
+                },
+                "materiais": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "MaterialPutRequest"
+                    },
+                    "required": false
+                }
+            }
+        },
+
+        "MaterialPutRequest": {
+            "properties": {
+                "idTipo": {
+                    "type": "string",
+                    "required": true
+                },
+                "quantidade": {
+                    "type": "int",
+                    "required": true
+                }
+            }
+        },
+
+        "DistribuicaoPutRequest": {
+            "properties": {
+                "idOrdemBatalha": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+		"PlanoOrdem": {
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+
+				"codigoCategoria": {
+					"type": "string"
+				},
+
+				"nome": {
+					"type": "string"
+				},
+
+				"nomeAlternativo": {
+					"type": "string"
+				},
+
+				"numeroSerial": {
+					"type": "string"
+				},
+
+				"codigoHoraCivil": {
+					"type": "string"
+				},
+
+				"dataInicio": {
+					"type": "long"
+				},
+
+				"dataFim": {
+					"type": "long"
+				},
+
+				"codigoNivelSeguranca": {
+					"type": "string"
+				},
+
+				"indicativoReferencia": {
+					"type": "string"
+				},
+
+				"codigoOrdemVerbal": {
+					"type": "string"
+				},
+
+				"detalhamento": {
+					"type": "string"
+				},
+
+				"codigoEstado": {
+					"type": "string"
+				},
+
+				"isDistribuirLista": {
+					"type": "boolean"
+				},
+
+				"isAfetaOrdemAnterior": {
+					"type": "boolean"
+				},
+
+				"corpoList": {
+					"type": "array",
+					"items": {
+						"$ref": "PlanoOrdemCorpo"
+					}
+				},
+
+				"calcos": {
+					"type": "array",
+					"items": {
+						"$ref": "Calco"
+					}
+				},
+
+				"localizacao": {
+					"type": "Localizacao"
+				},
+
+				"anexos": {
+					"type": "array",
+					"items": {
+						"$ref": "Anexo"
+					}
+				},
+
+				"ordensComplementares": {
+					"type": "array",
+					"items": {
+						"$ref": "PlanoOrdemComplementar"
+					}
+				},
+
+				"distribuicoes": {
+					"type": "array",
+					"items": {
+						"$ref": "PlanoOrdemDistribuicao"
+					}
+				}
+			}
+		},
+
+		"PlanoOrdemEstado": {
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+
+				"codigoEstado": {
+					"type": "string"
+				},
+
+				"data": {
+					"type": "long"
+				}
+			}
+		},
+
+        "PlanoOrdemCorpo": {
+            "properties": {
+                "estrutura": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemCorpoEstrutura"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "PlanoOrdemCorpoEstrutura": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "parent": {
+                    "type": "string",
+                    "required": true
+                },
+                "text": {
+                    "type": "string",
+                    "required": true
+                },
+                "descricao": {
+                    "type": "string",
+                    "required": false
+                }
+            }
+        },
+
+		"Calco": {
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+
+				"organizacoes": {
+					"type": "array",
+					"items": {
+						"$ref": "OrganizacaoMilitar"
+					}
+				}
+			}
+		},
+
+        "OrganizacaoMilitar": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "quantidadeOficial": {
+                    "type": "int",
+                    "required": true
+                },
+                "quantidadePraca": {
+                    "type": "int",
+                    "required": true
+                },
+                "quantidadeOutros": {
+                    "type": "int",
+                    "required": true
+                },
+                "materiais": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Material"
+                    },
+                    "required": false
+                },
+                "isAtivo": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "isAtivoPio": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        },
+
+        "Material": {
+            "properties": {
+                "idTipo": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "quantidade": {
+                    "type": "int",
+                    "required": true
+                }
+            }
+        },
+
+        "Localizacao": {
+            "properties": {
+                "idLocalizacao": {
+                    "type": "string",
+                    "required": false
+                },
+                "codigoCategoria": {
+                    "type": "string",
+                    "required": false
+                },
+                "ponto": {
+                    "type": "Ponto",
+                    "required": false
+                },
+                "linha": {
+                    "type": "Linha",
+                    "required": false
+                },
+                "area": {
+                    "type": "Area",
+                    "required": false
+                }
+            }
+        },
+
+        "Ponto": {
+            "properties": {
+                "latitude": {
+                    "type": "double",
+                    "required": true
+                },
+                "longitude": {
+                    "type": "double",
+                    "required": true
+                },
+                "altitude": {
+                    "type": "double",
+                    "required": false
+                }
+            }
+        },
+
+        "Linha": {
+            "properties": {
+                "pontos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Ponto"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "Area": {
+            "properties": {
+                "pontos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Ponto"
+                    },
+                    "required": true
+                }
+            }
+        },
+
+        "PlanoOrdemAnexo": {
+            "properties": {
+                "idAnexo": {
+                    "type": "string",
+                    "required": true
+                },
+                "nomeAnexo": {
+                    "type": "string",
+                    "required": true
+                },
+                "tipoAnexo": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+		"Anexo": {
+			"properties": {
+				"codTemp": {
+					"type": "string",
+					"required": true
+				},
+
+				"nomeAnexo": {
+					"type": "string",
+					"required": true
+				},
+
+				"tipoAnexo": {
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+        "PlanoOrdemDistribuicao": {
+            "properties": {
+                "idOrdemBatalha": {
+                    "type": "string",
+                    "required": true
+                },
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "dataReconhecimento": {
+                    "type": "long",
+                    "required": false
+                },
+                "codigoReconhecimento": {
+                    "type": "string",
+                    "required": false
+                }
+            }
+        },
+
+        "OrdemComplementarPutRequest": {
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "numeroSerial": {
+                    "type": "string",
+                    "required": true
+                },
+                "localizacao": {
+                    "type": "Localizacao",
+                    "required": false
+                },
+                "calcos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PIOPutRequest"
+                    },
+                    "required": false
+                },
+                "anexos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PlanoOrdemAnexo"
+                    },
+                    "required": false
+                },
+                "distribuicoes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "DistribuicaoPutRequest"
+                    },
+                    "required": false
+                },
+                "isDistribuirLista": {
+                    "type": "boolean",
+                    "required": true
+                },
+                "detalhamento": {
+                    "type": "string",
+                    "required": false
+                },
+                "isAfetaOrdemAnterior": {
+                    "type": "boolean",
+                    "required": true
+                }
+            }
+        }
+    }
+}

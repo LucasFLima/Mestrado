@@ -1,0 +1,41 @@
+module calunganeuronsad {
+
+	path = "xxx";
+
+	service <NomeServico> {
+		path = "/calunga/{idTipo}/{hostilidade}";
+
+		/**
+		* @ summary: Retorna o calungo referente ao tipo
+		* @ params: 
+		*	path idTipo(*): Identificador de tipo
+		*	path hostilidade(*): Codigo da hostilidade
+		*	query isOrdemBatalha: Flag que indica se é calunga de ordem de batalha
+		*	query designacao: A designação do calunga
+		*/
+		@get CalungaGetResponse <NomeCapacidade> (string idTipo, string hostilidade, boolean isOrdemBatalha, number designacao);
+	}
+
+	service <NomeServico> {
+		path = "/calunga/{idItem}";
+
+		/**
+		* @ summary: Retorna o calungo referente ao tipo
+		* @ params: 
+		*	path idItem(*): Identificador de tipo
+		*/
+		@get CalungaGetResponse <NomeCapacidade> (string idItem);
+	}
+
+	service <NomeServico> {
+		path = "/calunga/escalao/{hierarquia}";
+
+		/**
+		* @ summary: Retorna o calunga referente ao escalão
+		* @ params: 
+		*	path hierarquia(*): Hierarquia do escalão
+		*/
+		@get CalungaEscalaoGetResponse <NomeCapacidade> (string hierarquia);
+	}
+
+

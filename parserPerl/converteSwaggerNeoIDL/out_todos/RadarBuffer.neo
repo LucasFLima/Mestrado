@@ -1,0 +1,158 @@
+module radarbuffer {
+
+	path = "xxx";
+
+	entity AsterixCat10Sad {
+		number : trackStatusDou;   /*Required.*/
+		number : timeOfDay;   /*Required.*/
+		number : trackVeloPolarGroundSpeed;   /*Required.*/
+		number : measuredPosPolarRho;   /*Required.*/
+		number : trackVeloPolarTrackAngle;   /*Required.*/
+		integer : sac;   /*Required.*/
+		integer : classificacao;   /*Required.*/
+		integer : messageType;   /*Required.*/
+		number : measuredPosPolarTheta;   /*Required.*/
+		integer : sic;   /*Required.*/
+		number : ameaca;   /*Required.*/
+		integer : trackNumber;   /*Required.*/
+	};
+
+	entity AlvoResponse {
+		boolean : rastreado;   /*Required.*/
+		[PosicaoRadar] : posicoes;   /*Required.*/
+		integer : sac;   /*Required.*/
+		integer : trackId;   /*Required.*/
+		integer : classificacao;   /*Required.*/
+		integer : sic;   /*Required.*/
+		boolean : trackTre;
+		number : trackDou;
+	};
+
+	entity AsterixCat34Sad {
+		number : pos3dDataSrcLatitude;   /*Required.*/
+		integer : messageType;   /*Required.*/
+		integer : sic;   /*Required.*/
+		integer : sac;   /*Required.*/
+		number : timeOfDay;   /*Required.*/
+		double : antennaRotationSpeed;   /*Required.*/
+		number : pos3dDataSrcLongitude;   /*Required.*/
+		integer : pos3dDataSrcHeight;   /*Required.*/
+	};
+
+	entity PosicaoRadar {
+		number : relX;
+		number : localPolarR;
+		string : datahoraGmt;
+		number : latitude;
+		number : timeOfDay;   /*Required.*/
+		number : velocidadeAng;
+		number : velocidade;
+		number : longitude;
+		number : localPolarAng;
+		long : datahoraMs;
+		number : relY;
+		long : idPosicao;
+	};
+
+	entity RadarResponse {
+		integer : sac;   /*Required.*/
+		PosicaoRadar : posicao;   /*Required.*/
+		string : idSessaoRadar;   /*Required.*/
+		integer : sic;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/radares";
+
+		/**
+		* @ summary: Lista de Radares
+		* @ params: 
+		*/
+		@get array <NomeCapacidade> ();
+	}
+
+	service <NomeServico> {
+		path = "/radares";
+
+		/**
+		* @ summary: Recebe informação de Radar ASTERIX
+		* @ params: 
+		*	body radar(*): Dados do radar
+		*/
+		@post AsterixCat34Sad <NomeCapacidade> (AsterixCat34Sad radar);
+	}
+
+	service <NomeServico> {
+		path = "/radares/{sac}/{sic}";
+
+		/**
+		* @ summary: Informações do Radar
+		* @ params: 
+		*	path sac(*): SAC do Radar
+		*	path sic(*): SIC do Radar
+		*/
+		@get RadarResponse <NomeCapacidade> (integer sac, integer sic);
+	}
+
+	service <NomeServico> {
+		path = "/radares/{sac}/{sic}/alvos";
+
+		/**
+		* @ summary: Lista de Alvos Rastreados
+		* @ params: 
+		*	path sac(*): SAC do Radar
+		*	path sic(*): SIC do Radar
+		*	query rastreado: Filtra pelo parametro rastreado
+		*/
+		@get array <NomeCapacidade> (integer sac, integer sic, boolean rastreado);
+	}
+
+	service <NomeServico> {
+		path = "/radares/{sac}/{sic}/alvos";
+
+		/**
+		* @ summary: Recebe informação de Alvo do Radar ASTERIX
+		* @ params: 
+		*	path sac(*): SAC do Radar
+		*	path sic(*): SIC do Radar
+		*	body cat10Asterix: Informações Asterix CAT-10
+		*/
+		@post string <NomeCapacidade> (integer sac, integer sic, AsterixCat10Sad cat10Asterix);
+	}
+
+	service <NomeServico> {
+		path = "/radares/{sac}/{sic}/alvos/{trackId}";
+
+		/**
+		* @ summary: Informacoes do Alvo
+		* @ params: 
+		*	path sac(*): SAC do Radar
+		*	path sic(*): SIC do Radar
+		*	path trackId(*): TrackID do Alvo
+		*/
+		@get AlvoResponse <NomeCapacidade> (integer sac, integer sic, integer trackId);
+	}
+
+	service <NomeServico> {
+		path = "/radares/{sac}/{sic}/alvos/{trackId}/rastrear";
+
+		/**
+		* @ summary: Inicia rastreamento do Alvo
+		* @ params: 
+		*	path sac(*): SAC do Radar
+		*	path sic(*): SIC do Radar
+		*	path trackId(*): TrackID do Alvo
+		*/
+		@post AlvoResponse <NomeCapacidade> (integer sac, integer sic, integer trackId);
+
+		/**
+		* @ summary: Elimina o rastreamento do Alvo
+		* @ params: 
+		*	path sac(*): SAC do Radar
+		*	path sic(*): SIC do Radar
+		*	path trackId(*): TrackID do Alvo
+		*/
+		@delete AlvoResponse <NomeCapacidade> (integer sac, integer sic, integer trackId);
+	}
+
+

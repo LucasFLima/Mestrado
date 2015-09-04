@@ -1,0 +1,100 @@
+module provedorseguranca {
+
+	path = "xxx";
+
+	entity TokenGetRequest {
+		string : token;   /*Required.*/
+	};
+
+	entity LoginPostRequest {
+		string : Authentication;   /*Required.*/
+	};
+
+	entity LoginDeleteResponse {
+		string : idUsuario;
+	};
+
+	entity TokenGetResponse {
+		number : identificador;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity InfoUsuariosC2DeleteRequest {
+		string : token;   /*Required.*/
+	};
+
+	entity RadarConfigPutRequest {
+		string : ipRadar;
+		boolean : habilitado;   /*Required.*/
+		long : portaRadar;
+	};
+
+	entity LoginPostResponse {
+		string : idUsuario;
+		number : identificador;
+		String : nome;
+		String : token;
+		[] : funcionalidades;
+	};
+
+	entity TrocarSenhaRequest {
+		string : senhaAtual;   /*Required.*/
+		string : senhaNovaConfirmacao;   /*Required.*/
+		string : senhaNova;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/seguranca/trocarsenha";
+
+		/**
+		* @ summary: Troca de senha
+		* @ params: 
+		*	query t(*): 
+		*	body trocarSenha(*): 
+		*/
+		@post TrocarSenhaResponse <NomeCapacidade> (string t, TrocarSenhaRequest trocarSenha);
+	}
+
+	service <NomeServico> {
+		path = "/seguranca/token";
+
+		/**
+		* @ summary: Validação do token
+		* @ params: 
+		*	query t(*): 
+		*	query flag: 
+		*		\--> Valores possiveis: true false 
+		*/
+		@get TokenGetResponse <NomeCapacidade> (string t, boolean flag);
+	}
+
+	service <NomeServico> {
+		path = "/seguranca/login";
+
+		/**
+		* @ summary: Validação do token
+		* @ params: 
+		*	query auth(*): Dados de autenticação
+		*/
+		@post LoginPostResponse <NomeCapacidade> (string auth);
+
+		/**
+		* @ summary: Operação de logout
+		* @ params: 
+		*	query t(*): 
+		*/
+		@delete LoginDeleteResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/seguranca/login/usuarioaplicacao";
+
+		/**
+		* @ summary: Solicita nova sessão usuário de aplicação
+		* @ params: 
+		*/
+		@post  <NomeCapacidade> ();
+	}
+
+

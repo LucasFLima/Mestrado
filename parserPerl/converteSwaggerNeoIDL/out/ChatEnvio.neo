@@ -1,0 +1,52 @@
+module chatenvio {
+
+	path = "xxx";
+
+	entity Mensagem {
+		string : gidInstanciaDestino;   /*Required.*/
+		string : nomeInstanciaDestino;   /*Required.*/
+		number : idMensagem;   /*Required.*/
+		string : mensagem;   /*Required.*/
+		string : idUsuarioOrigem;   /*Required.*/
+		string : nomeUsuarioOrigem;   /*Required.*/
+		string : idUsuarioDestino;   /*Required.*/
+		string : nomeInstanciaOrigem;   /*Required.*/
+	};
+
+	entity Acknowledge {
+		string : nomeInstanciaDestino;   /*Required.*/
+		string : idUsuarioDestino;   /*Required.*/
+		number : idMensagem;   /*Required.*/
+		string : idUsuarioOrigem;   /*Required.*/
+	};
+
+	entity ChatPostRequest {
+		Mensagem : mensagem;   /*Required.*/
+		string : gidInstanciaDestino;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/chatEnvio/mensagem";
+
+		/**
+		* @ summary: Coloca uma mensagem na caixa de saída
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mensagem(*): Mensagem a ser enviada
+		*/
+		@post  <NomeCapacidade> (string t, ChatPostRequest mensagem);
+	}
+
+	service <NomeServico> {
+		path = "/chatEnvio/acknowledge";
+
+		/**
+		* @ summary: Recurso de reconhecimento de entrega de mensagem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body acknowledge(*): Serviço de reconhecimento de entrega de mensagem
+		*/
+		@post  <NomeCapacidade> (string t, Acknowledge acknowledge);
+	}
+
+

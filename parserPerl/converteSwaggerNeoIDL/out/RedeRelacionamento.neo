@@ -1,0 +1,343 @@
+module rederelacionamento {
+
+	path = "xxx";
+
+	entity EntidadeId {
+		string : id;
+	};
+
+	entity RedeRelacionamentoGetRequest {
+		string : idPio;
+	};
+
+	entity EntidadeRelacionamento {
+		string : idItem;
+		string : idEntidadeRelacionamento;
+		boolean : selecionadoNaRegra;   /*Required.*/
+		int : posicaoY;   /*Required.*/
+		int : posicaoX;   /*Required.*/
+		string : codigoCategoria;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : tipoRelacionamento;
+	};
+
+	entity RedeRelacionamentoGetResponse {
+		[RedeRelacionamento] : redes;
+	};
+
+	entity RedeRelacionamentoPostResponse {
+		RedeRelacionamento : redeRelacionamento;
+	};
+
+	entity RegraRedeRelacionamentoPutResponse {
+		RegraRedeRelacionamento : regraRedeRelacionamento;
+	};
+
+	entity RegraRedeRelacionamentoExecutarRequest {
+		RegraRedeRelacionamento : regraRedeRelacionamento;   /*Required.*/
+	};
+
+	entity EntidadeRegra {
+		string : categoriaEntidade;   /*Required.*/
+		string : idEntidadeRegra;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity RedeRelacionamentoPutRequest {
+		RedeRelacionamento : redeRelacionamento;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoPostRequest {
+		RegraRedeRelacionamento : regraRedeRelacionamento;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoValidarRequest {
+		RegraRedeRelacionamento : regraRedeRelacionamento;   /*Required.*/
+	};
+
+	entity RedeRelacionamentoDeleteRequest {
+		string : redeRelacionamentoId;   /*Required.*/
+	};
+
+	entity RedeRelacionamentoResponse {
+		RedeRelacionamento : redeRelacionamento;
+	};
+
+	entity RedeRelacionamentoPostRequest {
+		RedeRelacionamento : redeRelacionamento;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoPostResponse {
+		RegraRedeRelacionamento : regraRedeRelacionamento;
+	};
+
+	entity TabelaEntidade {
+		string : idTabelaEntidade;   /*Required.*/
+		string : nomeExibicao;   /*Required.*/
+		string : nomeTabela;   /*Required.*/
+	};
+
+	entity RegraCampoEntidadeResponse {
+		[CampoEntidade] : camposEntidade;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoExecutarGetResponse {
+		[EntidadeRegra] : entidades;   /*Required.*/
+	};
+
+	entity CampoEntidade {
+		string : nomeCampo;   /*Required.*/
+		string : tabelaDominio;
+		string : nomeExibicao;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamento {
+		[CriterioRegra] : criterios;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idRegraRedeRelacionamento;
+		string : idPio;   /*Required.*/
+	};
+
+	entity RegraEntidadeDisponivelGetResponse {
+		[TabelaEntidade] : entidades;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoValidarResponse {
+		boolean : valida;
+	};
+
+	entity RedeRelacionamento {
+		[Aresta] : arestas;
+		string : nome;   /*Required.*/
+		string : idRedeRelacionamento;
+		int : panY;
+		string : idRegra;
+		int : panX;
+		int : zoom;
+		int : largura;
+		int : altura;
+		[EntidadeRelacionamento] : vertices;
+		string : idPio;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+	};
+
+	entity Aresta {
+		EntidadeRelacionamento : sujeito;
+		EntidadeRelacionamento : objeto;
+		string : relacionamento;
+	};
+
+	entity RedeRelacionamentoGerarRequest {
+		[EntidadeId] : entidadeIds;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoPutRequest {
+		RegraRedeRelacionamento : regraRedeRelacionamento;   /*Required.*/
+	};
+
+	entity PiosRedeRelacionamento {
+		[string] : pioIds;
+	};
+
+	entity CriterioRegra {
+		string : valor;
+		string : tabelaDominio;
+		string : nomeTabela;
+		string : nomeCampo;
+		int : ordem;   /*Required.*/
+		string : operador;   /*Required. Valores possiveis: MAIOR MENOR MAIOR_OU_IGUAL MENOR_OU_IGUAL IGUAL DIFERENTE E OU PARENTESE_ESQUERDO PARENTESE_DIREITO */
+	};
+
+	entity RegraRedeRelacionamentoGetResponse {
+		[RegraRedeRelacionamento] : regras;   /*Required.*/
+	};
+
+	entity RegraRedeRelacionamentoDeleteRequest {
+		string : idRegra;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/regras/";
+
+		/**
+		* @ summary: Insere uma nova regra de rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post RegraRedeRelacionamentoPostResponse <NomeCapacidade> (string t, RegraRedeRelacionamentoPostRequest parametros);
+
+		/**
+		* @ summary: Retorna uma lista de regras associadas a determinado PIO
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idPio: Id do PIO associado as regras
+		*/
+		@get RegraRededeRelacionamentoGetResponse <NomeCapacidade> (string t, string idPio);
+	}
+
+	service <NomeServico> {
+		path = "/regras/{idRegra}";
+
+		/**
+		* @ summary: Exclui uma regra de rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRegra(*): 
+		*/
+		@delete RegraRedeRelacionamentoDeleteResponse <NomeCapacidade> (string t, string idRegra);
+
+		/**
+		* @ summary: Busca uma regra de rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRegra(*): 
+		*/
+		@get RegraRedeRelacionamentoGetResponse <NomeCapacidade> (string t, string idRegra);
+	}
+
+	service <NomeServico> {
+		path = "/regras/{idRegra}/redesrelacionamento/";
+
+		/**
+		* @ summary: Lista as redes de relacionamento geradas a partir da regra informada
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRegra(*): 
+		*/
+		@get RedeRelacionamentoGetResponse <NomeCapacidade> (string t, string idRegra);
+	}
+
+	service <NomeServico> {
+		path = "/regras/{idPio}/entidadesdisponiveis";
+
+		/**
+		* @ summary: Retorna os campos disponíveis para comparação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPio(*): 
+		*/
+		@get RegraEntidadeDisponivelGetResponse <NomeCapacidade> (string t, string idPio);
+	}
+
+	service <NomeServico> {
+		path = "/regras/executar";
+
+		/**
+		* @ summary: Executa determinada regra de rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post RegraRedeRelacionamentoExecutarGetResponse <NomeCapacidade> (string t, RegraRedeRelacionamentoExecutarRequest parametros);
+	}
+
+	service <NomeServico> {
+		path = "/regras/validar";
+
+		/**
+		* @ summary: Executa determinada regra de rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post RegraRedeRelacionamentoValidarResponse <NomeCapacidade> (string t, RegraRedeRelacionamentoValidarRequest parametros);
+	}
+
+	service <NomeServico> {
+		path = "/regras/{idEntidade}/camposdisponiveis";
+
+		/**
+		* @ summary: Retorna os campos disponíveis de acordo com determinada entidade selecionada
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEntidade(*): 
+		*/
+		@get RegraCampoEntidadeResponse <NomeCapacidade> (string t, string idEntidade);
+	}
+
+	service <NomeServico> {
+		path = "/redesrelacionamento/";
+
+		/**
+		* @ summary: Retorna as redes disponíveis para o PIO e usuários informados na busca
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idPio: Id do PIO associado as regras
+		*/
+		@get RedeRelacionamentoGetResponse <NomeCapacidade> (string t, string idPio);
+
+		/**
+		* @ summary: Insere uma nova rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post RedeRelacionamentoPostResponse <NomeCapacidade> (string t, RedeRelacionamentoPostRequest parametros);
+	}
+
+	service <NomeServico> {
+		path = "/redesrelacionamento/{idRede}";
+
+		/**
+		* @ summary: Retorna a rede que possuí o id informado
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get RedeRelacionamento <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Atualiza uma rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*	path idRede(*): 
+		*/
+		@put RedeRelacionamentoResponse <NomeCapacidade> (string t, RedeRelacionamentoPutRequest parametros, string idRede);
+
+		/**
+		* @ summary: Exclui uma rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*	path idRede(*): 
+		*/
+		@delete  <NomeCapacidade> (string t, RedeRelacionamentoDeleteRequest parametros, string idRede);
+	}
+
+	service <NomeServico> {
+		path = "/redesrelacionamento/gerar";
+
+		/**
+		* @ summary: Gera uma rede a partir das entidades selecionadas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body parametros(*): 
+		*/
+		@post RedeRelacionamento <NomeCapacidade> (string t, RedeRelacionamentoGerarRequest parametros);
+	}
+
+	service <NomeServico> {
+		path = "/redesrelacionamento/expandir";
+
+		/**
+		* @ summary: Gera uma rede a partir das entidades selecionadas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idEntidade(*): 
+		*/
+		@get RedeRelacionamento <NomeCapacidade> (string t, string idEntidade);
+	}
+
+	service <NomeServico> {
+		path = "/redesrelacionamento/pios";
+
+		/**
+		* @ summary: Lista os pios com ao menos uma regra da rede de relacionamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PiosRedeRelacionamento <NomeCapacidade> (string t);
+	}
+
+

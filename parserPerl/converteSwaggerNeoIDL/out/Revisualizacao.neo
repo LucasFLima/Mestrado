@@ -1,0 +1,233 @@
+module revisualizacao {
+
+	path = "xxx";
+
+	entity Localizacao {
+		string : idLocalizacao;   /*Required.*/
+		[Ponto] : linha;
+		string : codigoCategoria;   /*Required.*/
+		[Ponto] : area;
+		Ponto : ponto;
+	};
+
+	entity PlanoRevisualizacoesGetResponse {
+		[PlanoRevisualizacao] : planosRevisualizacoes;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoPostRequest {
+		PlanoRevisualizacaoAdicionar : planoRevisualizacao;   /*Required.*/
+	};
+
+	entity Frame {
+		long : dataHora;   /*Required.*/
+		int : indice;   /*Required.*/
+		[Evento] : eventos;
+		[Item] : itens;
+	};
+
+	entity PioAdicionar {
+		string : idPio;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoPutRequest {
+		PlanoRevisualizacaoAlterar : planoRevisualizacao;   /*Required.*/
+	};
+
+	entity Unidade {
+		string : idUnidade;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : codigoCategoriaAssociacao;   /*Required.*/
+		string : icone;   /*Required.*/
+		int : hierarquia;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoAlterar {
+		[PioAlterar] : pios;   /*Required.*/
+		string : nome;   /*Required.*/
+		long : tempoExecucao;   /*Required.*/
+		long : dataFim;   /*Required.*/
+		long : dataInicio;   /*Required.*/
+		Area : area;
+		[string] : tipos;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoPostResponse {
+		PlanoRevisualizacao : planoRevisualizacao;   /*Required.*/
+	};
+
+	entity PioAlterar {
+		string : idPio;   /*Required.*/
+	};
+
+	entity Item {
+		string : idItem;   /*Required.*/
+		string : codigoHostilidade;
+		string : codigoCategoriaTipo;
+		string : corHostilidade;
+		string : nome;
+		string : idTipo;
+		boolean : removido;   /*Required.*/
+		[Unidade] : associacoes;
+		double : largura;
+		string : icone;
+		string : codigoCategoria;
+		Localizacao : localizacao;
+		string : nomeTipo;
+	};
+
+	entity Ponto {
+		number : longitude;   /*Required.*/
+		number : latitude;   /*Required.*/
+		number : altitude;
+	};
+
+	entity PlanosRevisualizacoesGetResponse {
+		[PlanoRevisualizacao] : pios;   /*Required.*/
+	};
+
+	entity Area {
+		[Ponto] : pontos;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacao {
+		long : dataInicio;   /*Required.*/
+		string : totalFrames;   /*Required.*/
+		Area : area;
+		long : tempoExecucao;   /*Required.*/
+		string : idPlanoRevisualizacao;   /*Required.*/
+		string : nome;   /*Required.*/
+		[string] : tipos;   /*Required.*/
+		long : dataFim;   /*Required.*/
+		[Pio] : pios;   /*Required.*/
+	};
+
+	entity Revisualizacao {
+		Metadado : metadado;   /*Required.*/
+		[Frame] : frames;   /*Required.*/
+	};
+
+	entity RevisualizacaoGetResponse {
+		Revisualizacao : revisualizacao;   /*Required.*/
+	};
+
+	entity Pio {
+		string : nome;   /*Required.*/
+		string : idPio;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoPiosGetResponse {
+		[PlanoRevisualizacao] : PlanosRevisualizacao;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoAdicionar {
+		[string] : tipos;   /*Required.*/
+		Area : area;
+		long : dataInicio;   /*Required.*/
+		long : dataFim;   /*Required.*/
+		long : tempoExecucao;   /*Required.*/
+		string : nome;   /*Required.*/
+		[PioAdicionar] : pios;   /*Required.*/
+	};
+
+	entity Evento {
+		boolean : removido;   /*Required.*/
+		string : nome;
+		string : idEvento;   /*Required.*/
+		double : evolucao;
+		Localizacao : localizacao;
+	};
+
+	entity PlanoRevisualizacaoPutResponse {
+		PlanoRevisualizacao : planoRevisualizacao;   /*Required.*/
+	};
+
+	entity Metadado {
+		long : deltaT;   /*Required.*/
+		int : frameIndice;   /*Required.*/
+		long : tempoExecucao;   /*Required.*/
+		int : quantidadeFrames;   /*Required.*/
+		int : totalFrames;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoDeleteResponse {
+		string : idPlanoRevisualizacao;   /*Required.*/
+	};
+
+	entity PlanoRevisualizacaoGetResponse {
+		PlanoRevisualizacao : planoRevisualizacao;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/pios";
+
+		/**
+		* @ summary: Obtém os PIOs e os tipos de item a eles associados.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PlanoRevisualizacaoPiosGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/planos_revisualizacoes/{idPlanoRevisualizacao}/frames";
+
+		/**
+		* @ summary: Obtém os frames de um plano de revisualização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPlanoRevisualizacao(*): Identificador do plano de revisualização
+		*	query frameIndice(*): Índice do frame a partir do qual os demais serão trazidos
+		*	query quantidadeFrames(*): Quantidade de frames a serem obtidos
+		*/
+		@get RevisualizacaoGetResponse <NomeCapacidade> (string t, string idPlanoRevisualizacao, long frameIndice, long quantidadeFrames);
+	}
+
+	service <NomeServico> {
+		path = "/planos_revisualizacoes";
+
+		/**
+		* @ summary: Obtem lista de planos de revisualizações
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PlanosRevisualizacoesGetResponse <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Cria um plano de revisualização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body PlanoRevisualizacao(*): Dados do plano de revisualização
+		*/
+		@post PlanoRevisualizacaoPostResponse <NomeCapacidade> (string t, PlanoRevisualizacaoPostRequest PlanoRevisualizacao);
+	}
+
+	service <NomeServico> {
+		path = "/planos_revisualizacoes/{idPlanoRevisualizacao}";
+
+		/**
+		* @ summary: Obtém os dados do plano de revisualização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPlanoRevisualizacao(*): Identificador do plano de revisualização
+		*/
+		@get PlanoRevisualizacaoGetResponse <NomeCapacidade> (string t, string idPlanoRevisualizacao);
+
+		/**
+		* @ summary: Atualiza os dados do plano de revisualização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPlanoRevisualizacao(*): Identificador do plano de revisualização
+		*	body PlanoRevisualizacao(*): Dados do plano de revisualização
+		*/
+		@put PlanoRevisualizacaoPutResponse <NomeCapacidade> (string t, string idPlanoRevisualizacao, PlanoRevisualizacaoPutRequest PlanoRevisualizacao);
+
+		/**
+		* @ summary: Remove um plano de revisualização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPlanoRevisualizacao(*): Identificador do plano de revisualização
+		*/
+		@delete PlanoRevisualizacaoDeleteResponse <NomeCapacidade> (string t, string idPlanoRevisualizacao);
+	}
+
+

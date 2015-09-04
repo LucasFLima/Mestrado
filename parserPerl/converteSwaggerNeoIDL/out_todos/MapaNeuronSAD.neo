@@ -1,0 +1,172 @@
+module mapaneuronsad {
+
+	path = "xxx";
+
+	entity MapaPostRequest {
+		string : tipoMapa;   /*Required. Valores possiveis: SHAPE GTIFF WMS */
+		string : nomeMapa;   /*Required.*/
+	};
+
+	entity MapaCamadaResponse {
+		string : wmsFormat;   /*Required.*/
+		[string] : wmsSubLayers;
+		string : wmsLayer;   /*Required.*/
+		string : wmsCrs;   /*Required.*/
+	};
+
+	entity WmsCamadasServidorReq {
+		string : referenciaMapa;   /*Required.*/
+	};
+
+	entity MapaResponse {
+		string : idOrganizacaoRelatora;   /*Required.*/
+		string : wmsQueryParams;
+		string : referenciaMapa;   /*Required.*/
+		string : tipoMapa;   /*Required. Valores possiveis: SHAPE GTIFF WMS */
+		string : localMapa;   /*Required.*/
+		string : nomeOriginalMapa;
+		string : idUsuario;   /*Required.*/
+		string : idTipoMapa;   /*Required.*/
+		string : idMapa;   /*Required.*/
+		string : nomeMapa;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/mapas";
+
+		/**
+		* @ summary: Lista de Mapas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get array <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Criação de Mapa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	form nomeMapa(*): Nome do Mapa
+		*	form tipoMapa(*): Tipo do Mapa
+		*	form arqShapeShp(*): Shapefile .shp
+		*	form arqShapeDbf(*): Shapefile .dbf
+		*	form arqShapeShx(*): Shapefile .shx
+		*	form arqShapePrj(*): Shapefile .prj
+		*	form arqGeotiffTif(*): Geotiff .tif
+		*	form arqGeotiffTfw(*): Geotiff .tfw
+		*	form urlWms: URL WMS
+		*/
+		@post MapaResponse <NomeCapacidade> (string t, string nomeMapa, string tipoMapa, file arqShapeShp, file arqShapeDbf, file arqShapeShx, file arqShapePrj, file arqGeotiffTif, file arqGeotiffTfw, string urlWms);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/{idMapa}";
+
+		/**
+		* @ summary: Recupera um Mapa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idMapa(*): ID do Mapa
+		*/
+		@get MapaResponse <NomeCapacidade> (string t, string idMapa);
+
+		/**
+		* @ summary: Alteração de Mapa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idMapa(*): id do Mapa
+		*	form nomeMapa: Nome do Mapa
+		*	form arqShapeShp(*): Shapefile .shp
+		*	form arqShapeDbf(*): Shapefile .dbf
+		*	form arqShapeShx(*): Shapefile .shx
+		*	form arqShapePrj(*): Shapefile .prj
+		*	form arqGeotiffTif(*): Geotiff .tif
+		*	form arqGeotiffTfw(*): Geotiff .tfw
+		*	form urlWms: URL WMS
+		*/
+		@put MapaResponse <NomeCapacidade> (string t, string idMapa, string nomeMapa, file arqShapeShp, file arqShapeDbf, file arqShapeShx, file arqShapePrj, file arqGeotiffTif, file arqGeotiffTfw, string urlWms);
+
+		/**
+		* @ summary: Exclusão de Mapa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idMapa(*): ID do Mapa a ser excluído
+		*	query flgExcluiAssoc: 
+		*/
+		@delete string <NomeCapacidade> (string t, string idMapa, string flgExcluiAssoc);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/{idMapa}/geotiff/{tz}/{tx}/{ty}";
+
+		/**
+		* @ summary: Pega Ladrilho GeoTIFF
+		* @ params: 
+		*	path idMapa(*): Identificador do Mapa
+		*	path tz(*): Tipo de mapa
+		*	path tx(*): Tipo de mapa
+		*	path ty(*): Tipo de mapa
+		*/
+		@get string <NomeCapacidade> (string idMapa, string tz, string tx, string ty);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/{idMapa}/geojson";
+
+		/**
+		* @ summary: Recupera GeoJson
+		* @ params: 
+		*	path idMapa(*): Identificador do Mapa
+		*/
+		@get string <NomeCapacidade> (string idMapa);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/{idMapa}/camadas";
+
+		/**
+		* @ summary: Recupera Camadas de Mapas WMS
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idMapa(*): Identificador do Mapa
+		*/
+		@get array <NomeCapacidade> (string t, string idMapa);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/{idMapa}/camadas/{nomeCamada}";
+
+		/**
+		* @ summary: Recupera Camadas de Mapas WMS
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idMapa(*): Identificador do Mapa
+		*	path nomeCamada(*): Nome da Camada WMS
+		*/
+		@get MapaCamadaResponse <NomeCapacidade> (string t, string idMapa, string nomeCamada);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/{idMapa}/wms/{nomeCamada}";
+
+		/**
+		* @ summary: Recupera Ladrilho de camada WMS
+		* @ params: 
+		*	path idMapa(*): Identificador do Mapa
+		*	path nomeCamada(*): Nome da Camada a ser retornada
+		*/
+		@get string <NomeCapacidade> (string idMapa, string nomeCamada);
+	}
+
+	service <NomeServico> {
+		path = "/mapas/wms/camadas";
+
+		/**
+		* @ summary: Lista as camadas de um Servidor WMS
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body infoServidorWms(*): Parametros do servidor WMS
+		*/
+		@post array <NomeCapacidade> (string t, WmsCamadasServidorReq infoServidorWms);
+	}
+
+

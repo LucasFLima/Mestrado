@@ -1,0 +1,51 @@
+module cacheaccess {
+
+	path = "xxx";
+
+	entity CacheDeleteResponse {
+		boolean : executed;   /*Required.*/
+	};
+
+	entity CacheGetResponse {
+		string : json;   /*Required.*/
+	};
+
+	entity CacheTokenResponse {
+		string : token;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/cache/token";
+
+		/**
+		* @ summary: Obtém o token de autenticação do cache
+		* @ params: 
+		*/
+		@get CacheTokenResponse <NomeCapacidade> ();
+	}
+
+	service <NomeServico> {
+		path = "/cache/{key}";
+
+		/**
+		* @ summary: Obtém o json da objeto do cache pela chave
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path key(*): 
+		*/
+		@get CacheGetResponse <NomeCapacidade> (string t, string key);
+	}
+
+	service <NomeServico> {
+		path = "/cache/flushall";
+
+		/**
+		* @ summary: Remove todos os objetos do cache
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query key: 
+		*/
+		@delete CacheDeleteResponse <NomeCapacidade> (string t, string key);
+	}
+
+

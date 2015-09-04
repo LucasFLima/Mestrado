@@ -1,0 +1,69 @@
+module comintneuronsad {
+
+	path = "xxx";
+
+	entity ComintConfigPut {
+		boolean : apenasStatus;
+		string : dirRepositorio;   /*Required.*/
+	};
+
+	entity ComintConfig {
+		string : dirRepositorio;   /*Required.*/
+		string : statusComunicacao;   /*Required.*/
+	};
+
+	entity ComintRelatorio {
+		string : htmlRelatorio;
+		string : idRelatorio;   /*Required.*/
+		string : dataRelatorio;   /*Required.*/
+		string : refRelatorio;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/comint/relatorios";
+
+		/**
+		* @ summary: Lista de Relatorios COMINT
+		* @ params: 
+		*	query t(*): Token de autenticação
+		* @ responseCodes: 
+		*	502: Repositorio COMINT inacessivel
+		*/
+		@get array <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/comint/relatorios/{idRelatorio}";
+
+		/**
+		* @ summary: Relatorio COMINT
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idRelatorio(*): Identificador do Relatorio
+		* @ responseCodes: 
+		*	404: Relatorio COMINT nao encontrado
+		*	502: Repositorio COMINT inacessivel
+		*/
+		@get ComintRelatorio <NomeCapacidade> (string t, string idRelatorio);
+	}
+
+	service <NomeServico> {
+		path = "/comint/config";
+
+		/**
+		* @ summary: Recupera Status da Comunicação COMINT
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get ComintConfig <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Alterar Configurações COMINT
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body alterarConfig(*): 
+		*/
+		@put ComintConfig <NomeCapacidade> (string t, ComintConfigPut alterarConfig);
+	}
+
+

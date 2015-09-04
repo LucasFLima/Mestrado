@@ -1,0 +1,1634 @@
+module itemneuronsad {
+
+	path = "xxx";
+
+	entity NacionalidadeAlteracao {
+		string : codigo;   /*Required.*/
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+	};
+
+	entity ItemCopiaGetResponse {
+		string : idPioFilho;
+		[] : relacaoCopia;   /*Required.*/
+		string : idPioPai;
+	};
+
+	entity Material {
+		string : codigoCategoria;
+		string : nome;
+		string : idItem;
+		[LocalizacaoConsulta] : localizacoes;
+		string : identificacaoLote;
+		[ItemDeInventarioConsulta] : sumarioPessoal;
+		[HostilidadeConsulta] : hostilidades;
+		string : idPio;
+		string : numeroRegistro;
+		[ItemDeInventarioConsulta] : inventarioMaterial;
+		[AssociacaoConsulta] : associacoes;
+		string : nomeAlternativo;
+		[ItemEvento] : eventos;
+		string : numeroEspecificoCasco;
+		string : numeroSerial;
+		[NacionalidadeConsulta] : nacionalidades;
+		[MaterialStatusConsulta] : materialStatus;
+		[ItemTipoConsulta] : itemTipos;
+	};
+
+	entity ItemLocalizacaoPutRequest {
+		Localizacao : localizacao;   /*Required.*/
+		string : azimute;   /*Required.*/
+		string : largura;   /*Required.*/
+		boolean : ponte;
+		string : idItem;   /*Required.*/
+		boolean : setor;
+		string : quantidadeVaos;
+		boolean : direcao;
+		string : comprimentoMaiorVao;
+		string : raio;   /*Required.*/
+		boolean : elipse;
+		string : anguloAbertura;   /*Required.*/
+	};
+
+	entity AssociacaoItemRequest {
+		string : codSubCategoria;
+		string : idItemSubj;   /*Required.*/
+		ClassificacaoCriacao : classificacao;
+		string : codCategoria;   /*Required.*/
+		string : idItemObj;   /*Required.*/
+	};
+
+	entity Unidade {
+		string : nomeAbreviado;
+		string : identificacao;
+	};
+
+	entity PessoaIdioma {
+		string : idPessoa;
+		string : codigoCategoria;   /*Required.*/
+		string : proeficienciaGeral;   /*Required.*/
+		string : nivelProeficienciaEscrita;
+		string : indiceHabilitacaoIdioma;
+		string : nivelProeficienciaLeitura;
+		string : nivelProeficienciaAudicao;
+		string : nivelProeficienciaConversacao;
+	};
+
+	entity HostilidadeConsulta {
+		string : codigoHostilidade;
+		ClassificacaoConsulta : classificacao;
+		string : idHostilidade;
+	};
+
+	entity ItemAssociado {
+		string : idItemAssoc;   /*Required.*/
+		string : codCategoria;
+		string : nome;
+	};
+
+	entity MaterialStatusConsulta {
+		string : codigoIndicadorReserva;
+		string : codigoStatusUtilizacao;
+		ClassificacaoConsulta : classificacao;
+		string : codigoStatusOperacional;
+		string : codigoQualificadorStatusOperacional;
+		string : codigoCor;
+	};
+
+	entity ClassificacaoAlteracao {
+		long : gdhFinal;
+		string : tipoFonte;   /*Required.*/
+		String : idClassificacao;
+		string : conteudo;   /*Required.*/
+		long : gdh;   /*Required.*/
+		string : fonte;   /*Required.*/
+		long : gdhInicial;
+	};
+
+	entity PessoaDocumento {
+		string : idPessoa;
+		string : codigo;   /*Required.*/
+		string : indicePessoaIdentificador;
+		string : numeroDocumento;   /*Required.*/
+	};
+
+	entity PessoaStatusAlteracao {
+		string : codigoQualificadorStatusFisico;
+		string : codigoSituacaoServico;
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : codigoIndicadorReserva;
+		string : codigoStatusFisico;
+	};
+
+	entity InstalacaoPostRequest {
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		string : largura;
+		string : idTipo;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+	};
+
+	entity LocalizacaoMCCLinha {
+		string : codigoCategoria;
+		string : idLocalizacao;
+		Linha : linha;
+	};
+
+	entity MCC {
+		[NacionalidadeConsulta] : nacionalidades;
+		[ItemTipoConsulta] : itemTipos;
+		[MCCStatus] : mccStatus;
+		[ItemDeInventarioConsulta] : sumarioPessoal;
+		[LocalizacaoGeralConsulta] : localizacoes;
+		string : nomeAbreviado;
+		string : idItem;
+		[ItemEvento] : eventos;
+		[AssociacaoConsulta] : associacoes;
+		string : nome;
+		string : codigoCategoria;
+		[ItemDeInventarioConsulta] : inventarioMaterial;
+		string : idPio;
+		[HostilidadeConsulta] : hostilidades;
+		string : identificacao;
+	};
+
+	entity Organizacao {
+		boolean : isOrdemBatalha;
+		[AssociacaoConsulta] : associacoes;
+		[ItemEvento] : eventos;
+		string : nomeAlternativo;
+		string : identificacao;
+		[HostilidadeConsulta] : hostilidades;
+		string : idPio;
+		[ItemDeInventarioConsulta] : inventarioMaterial;
+		[NacionalidadeConsulta] : nacionalidades;
+		[ItemTipoConsulta] : itemTipos;
+		string : nomeAbreviado;
+		[OrganizacaoStatusConsulta] : organizacaoStatus;
+		boolean : militar;
+		string : idItem;
+		[string] : idsPio;
+		string : nome;
+		string : codigoCategoria;
+		string : nomeHistorico;
+		[ItemDeInventarioConsulta] : sumarioPessoal;
+		[LocalizacaoConsulta] : localizacoes;
+	};
+
+	entity ClassificacaoConsulta {
+		string : tipoFonte;
+		long : gdhFinal;
+		long : gdhInicial;
+		long : gdh;
+		string : conteudo;
+		string : fonte;
+		String : idClassificacao;
+	};
+
+	entity OrganizacaoStatusAlteracao {
+		string : codigoStatusUtilizacao;
+		string : codigoStatusOperacional;   /*Required.*/
+		string : duracaoProntidao;
+		string : codigoStatusCompromisso;
+		string : codigoDisponibilidade;
+		string : codigoTreinamento;
+		string : codigoPapelComandoControle;
+		string : codigoProntidao;
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : codigoIndicadorReserva;
+		string : codigoQualificadorStatusOperacional;
+		string : codigoReforco;
+		string : codigoModoFogo;
+	};
+
+	entity InstalacaoPutRequest {
+		integer : altura;
+		string : quantidadeVaos;
+		string : comprimentoMaiorVao;
+		string : nome;   /*Required.*/
+		string : designacao;
+		[ItemDeInventarioAlteracao] : sumarioPessoal;
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		integer : largura;
+		[LocalizacaoGeralAlteracao] : localizacoes;
+		[InstalacaoStatusAlteracao] : instalacaoStatus;
+		string : nomeAlternativo;
+		[AssociacaoAlteracao] : associacoes;
+		[ItemDeInventarioAlteracao] : inventarioMaterial;
+		[AssociacaoAlteracao] : associacoesTerminadas;
+		[HostilidadeAlteracao] : hostilidades;
+		string : codigoMaterialConstrucao;
+		string : idPio;   /*Required.*/
+		[ItemTipoAlteracao] : itemTipos;
+		[NacionalidadeAlteracao] : nacionalidades;
+		string : classe;
+		integer : comprimento;
+	};
+
+	entity MaterialPostRequest {
+		string : hostilidade;   /*Required.*/
+		string : idTipo;   /*Required.*/
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		string : nome;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		string : idPio;   /*Required.*/
+	};
+
+	entity OrganizacaoStatus {
+		string : codigoDisponibilidade;
+		string : codigoStatusCompromisso;
+		string : duracaoProntidao;
+		string : codigoStatusUtilizacao;
+		string : codigoStatusOperacional;   /*Required.*/
+		string : codigoPapelComandoControle;
+		string : codigoTreinamento;
+		string : codigoIndicadorReserva;
+		Classificacao : classificacao;
+		string : codigoProntidao;
+		string : codigoModoFogo;
+		string : codigoReforco;
+		string : codigoQualificadorStatusOperacional;
+	};
+
+	entity MaterialPutRequest {
+		[AssociacaoAlteracao] : associacoes;
+		string : nomeAlternativo;
+		string : idPio;   /*Required.*/
+		[HostilidadeAlteracao] : hostilidades;
+		string : nome;   /*Required.*/
+		[AssociacaoAlteracao] : associacoesTerminadas;
+		string : numeroSerial;
+		[MaterialStatusAlteracao] : materialStatus;
+		[NacionalidadeAlteracao] : nacionalidades;
+		[ItemTipoAlteracao] : itemTipos;
+		[LocalizacaoAlteracao] : localizacoes;
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		string : identificacaoLote;
+	};
+
+	entity Localizacao {
+		integer : precisaoTaxaVelocidade;
+		integer : taxaVelocidade;
+		integer : precisaoDirecaoAngulo;
+		Ponto : ponto;
+		string : idLocalizacao;
+		Area : area;
+		ClassificacaoConsulta : classificacao;
+		Linha : linha;
+		integer : direcaoAngulo;
+		string : codigoCategoria;
+	};
+
+	entity AssociacaoAlteracao {
+		ClassificacaoConsulta : classificacao;   /*Required.*/
+		string : codCategoria;   /*Required.*/
+		string : codEstadoAssociacao;   /*Required.*/
+		string : codSubCategoria;
+		ItemAssociado : objeto;   /*Required.*/
+		ItemAssociado : subject;   /*Required.*/
+	};
+
+	entity InstalacaoStatus {
+		string : codigoStatusUtilizacao;
+		string : codigoStatusOperacional;   /*Required.*/
+		Classificacao : classificacao;
+		string : codigoIndicadorReserva;
+		string : codigoIndicadorProgramaOcupacao;
+		string : codigoStatusSeguranca;
+		string : codigoQualificadorStatusOperacional;
+		string : codigoCondicaoAtividadeInimiga;
+	};
+
+	entity Area {
+		[Ponto] : pontos;   /*Required.*/
+	};
+
+	entity Associacao {
+		string : codSubCategoria;
+		string : codEstadoAssociacao;
+		ItemAssociado : subject;
+		ItemAssociado : objeto;
+		string : idAssociacao;
+		Classificacao : classificacao;
+		string : codCategoria;
+	};
+
+	entity MaterialStatusAlteracao {
+		string : codigoIndicadorReserva;
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : codigoStatusOperacional;   /*Required.*/
+		string : codigoStatusUtilizacao;
+		string : codigoQualificadorStatusOperacional;
+		string : codigoCor;
+	};
+
+	entity AnexoConteudoGetRequest {
+		string : idItem;   /*Required.*/
+		[] : anexos;   /*Required.*/
+	};
+
+	entity InstalacaoStatusConsulta {
+		string : codigoIndicadorProgramaOcupacao;
+		string : codigoIndicadorReserva;
+		ClassificacaoConsulta : classificacao;
+		string : codigoCondicaoAtividadeInimiga;
+		string : codigoQualificadorStatusOperacional;
+		string : codigoStatusSeguranca;
+		string : codigoStatusOperacional;
+		string : codigoStatusUtilizacao;
+	};
+
+	entity ItemsCopia {
+		string : idItem;   /*Required.*/
+		string : idPioDestino;   /*Required.*/
+	};
+
+	entity HostilidadeAlteracao {
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : codigoHostilidade;   /*Required.*/
+	};
+
+	entity AnotacaoPutRequest {
+		string : texto;
+		string : idPio;
+		string : codigoCorArea;
+		string : nome;
+		string : terminacao;
+		string : codigoCorTexto;
+		string : largura;
+		boolean : aceitarNomeDuplicado;
+		string : fonte;   /*Required.*/
+		LocalizacaoAnotacao : localizacao;
+	};
+
+	entity PessoaDetalheAlteracao {
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : codigoCorOlhos;
+		string : defeitosFisicos;
+		string : altura;
+		string : codigoCorBarba;
+		string : idPessoa;
+		string : corPele;
+		string : corCabelo;
+		string : peso;
+		string : codigoBigode;
+		string : calvo;
+		string : codigoNacionalidade;
+		string : oculos;
+		string : codigoCorBigode;
+		string : estatura;
+		string : codigoDestreza;
+		string : codigoBarba;
+		string : dataAlistamento;
+		string : codigoCorCabelo;
+	};
+
+	entity AnexoGetResponse {
+		[] : anexos;   /*Required.*/
+	};
+
+	entity MccLinhaPostRequest {
+		string : idTipo;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+		string : idPio;   /*Required.*/
+		LocalizacaoMCCLinha : localizacao;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity AssociacaoConsulta {
+		Classificacao : classificacao;
+		string : codCategoria;
+		string : idAssociacao;
+		ItemAssociado : objeto;
+		ItemAssociado : subject;
+		string : codSubCategoria;
+		string : codEstadoAssociacao;
+	};
+
+	entity ClassificacaoCriacao {
+		string : fonte;   /*Required.*/
+		string : conteudo;   /*Required.*/
+		long : gdh;   /*Required.*/
+		long : gdhInicial;
+		long : gdhFinal;
+		string : tipoFonte;   /*Required.*/
+	};
+
+	entity LocalizacaoMaterialLote {
+		Ponto : ponto;   /*Required.*/
+	};
+
+	entity ItemTipo {
+		string : idTipo;   /*Required.*/
+		Classificacao : classificacao;
+		string : idItem;
+		string : nomeTipo;
+	};
+
+	entity Pessoa {
+		[LocalizacaoConsulta] : localizacoes;
+		string : religiao;
+		[ItemDeInventarioConsulta] : sumarioPessoal;
+		[PessoaDocumento] : pessoaDocumentos;
+		string : tsFatorRh;
+		string : nome;
+		string : codigoCategoria;
+		[PessoaStatusConsulta] : pessoaStatus;
+		[PessoaDetalheConsulta] : pessoaDetalhes;
+		string : idItem;
+		string : dataNascimento;
+		[NacionalidadeConsulta] : nacionalidades;
+		[ItemTipoConsulta] : itemTipos;
+		string : localNascimento;
+		[PessoaIdioma] : pessoaIdiomas;
+		[HostilidadeConsulta] : hostilidades;
+		string : idPio;
+		[ItemDeInventarioConsulta] : inventarioMaterial;
+		[AssociacaoConsulta] : associacoes;
+		string : genero;
+		[ItemEvento] : eventos;
+		string : nomeAlternativo;
+	};
+
+	entity LocalizacaoAlteracao {
+		integer : precisaoTaxaVelocidade;
+		integer : taxaVelocidade;
+		integer : precisaoDirecaoAngulo;
+		string : precisao;
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		Ponto : ponto;   /*Required.*/
+		integer : direcaoAngulo;
+	};
+
+	entity Nacionalidade {
+		string : codigo;   /*Required.*/
+		Classificacao : classificacao;
+		string : nomePais;
+	};
+
+	entity OrganizacaoStatusConsulta {
+		string : codigoStatusCompromisso;
+		string : codigoDisponibilidade;
+		string : codigoStatusOperacional;
+		string : codigoStatusUtilizacao;
+		string : duracaoProntidao;
+		string : codigoPapelComandoControle;
+		string : codigoTreinamento;
+		string : codigoIndicadorReserva;
+		string : codigoProntidao;
+		ClassificacaoConsulta : classificacao;
+		string : codigoReforco;
+		string : codigoQualificadorStatusOperacional;
+		string : codigoModoFogo;
+	};
+
+	entity MCCStatus {
+		string : codigoStatusSeguranca;
+		integer : idMCCStatus;
+		integer : indiceItemStatus;
+		string : codigoInvestigacao;
+		string : codigoStatusUtilizacao;
+	};
+
+	entity PessoaPostRequest {
+		string : hostilidade;   /*Required.*/
+		string : genero;   /*Required.*/
+		string : corPele;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : calvo;   /*Required.*/
+		string : nacionalidade;   /*Required.*/
+		string : codigoBarba;   /*Required.*/
+		string : tipo;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		string : dtNascimento;   /*Required.*/
+		string : corCabelo;   /*Required.*/
+		string : nomePessoa;   /*Required.*/
+	};
+
+	entity AnotacaoGetResponse {
+		LocalizacaoAnotacao : localizacao;   /*Required.*/
+		string : fonte;   /*Required.*/
+		string : largura;   /*Required.*/
+		string : idAnotacao;   /*Required.*/
+		string : codigoCorTexto;   /*Required.*/
+		string : terminacao;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : codigoCorArea;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : texto;   /*Required.*/
+	};
+
+	entity ItemTipoConsulta {
+		string : nomeTipo;
+		ClassificacaoConsulta : classificacao;
+		string : idTipo;
+		string : idItem;
+	};
+
+	entity AnexoConteudoGetResponse {
+		[] : anexos;   /*Required.*/
+	};
+
+	entity AnexoPostResponse {
+		string : ID;   /*Required.*/
+	};
+
+	entity MccPontoPostRequest {
+		string : idTipo;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+		string : idPio;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity PessoaPutRequest {
+		string : idPio;   /*Required.*/
+		[HostilidadeAlteracao] : hostilidades;
+		[AssociacaoAlteracao] : associacoesTerminadas;
+		string : genero;
+		[AssociacaoAlteracao] : associacoes;
+		string : nomeAlternativo;
+		string : dataNascimento;   /*Required.*/
+		[PessoaIdioma] : pessoaIdiomas;
+		string : localNascimento;
+		[NacionalidadeAlteracao] : nacionalidades;
+		[ItemTipoAlteracao] : itemTipos;
+		string : nome;   /*Required.*/
+		string : tsFatorRh;
+		[PessoaDetalheAlteracao] : pessoaDetalhes;
+		[PessoaStatusAlteracao] : pessoaStatus;
+		[LocalizacaoAlteracao] : localizacoes;
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		string : religiao;
+		[PessoaDocumento] : pessoaDocumentos;
+	};
+
+	entity MccAreaPostRequest {
+		string : hostilidade;   /*Required.*/
+		string : idTipo;   /*Required.*/
+		LocalizacaoMCCArea : localizacao;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idPio;   /*Required.*/
+	};
+
+	entity ItemDeInventarioConsulta {
+		string : nomeTipo;
+		string : quantidadeTotal;
+		string : quantidadeDisponivel;
+		string : idTipo;
+		ClassificacaoConsulta : classificacao;
+		string : indice;
+		string : idItem;
+	};
+
+	entity OrganizacaoPostResponse {
+		string : idPio;
+		string : codigoCategoria;
+		string : codigoCategoriaOrganizacao;
+		string : icon;
+		HostilidadeConsulta : hostilidade;
+		string : nomeTipo;
+		string : idOrganizacao;
+		string : nomeOrganizacao;
+		LocalizacaoConsulta : localizacao;
+		string : idTipo;
+	};
+
+	entity Instalacao {
+		string : materialConstrucao;
+		string : idItem;
+		string : altura;
+		string : quantidadeVaos;
+		string : comprimentoMaiorVao;
+		string : codigoCategoria;
+		string : nome;
+		string : designacao;
+		[ItemDeInventarioConsulta] : sumarioPessoal;
+		string : largura;
+		[LocalizacaoGeralConsulta] : localizacoes;
+		[ItemEvento] : eventos;
+		[InstalacaoStatusConsulta] : instalacaoStatus;
+		string : nomeAlternativo;
+		[AssociacaoConsulta] : associacoes;
+		[ItemDeInventarioConsulta] : inventarioMaterial;
+		string : idPio;
+		[HostilidadeConsulta] : hostilidades;
+		[ItemTipoConsulta] : itemTipos;
+		[NacionalidadeConsulta] : nacionalidades;
+		string : classe;
+		string : comprimento;
+	};
+
+	entity MaterialStatus {
+		string : codigoIndicadorReserva;
+		Classificacao : classificacao;
+		string : codigoStatusOperacional;   /*Required.*/
+		string : codigoStatusUtilizacao;
+		string : codigoCor;
+		string : codigoQualificadorStatusOperacional;
+	};
+
+	entity PessoaStatusConsulta {
+		string : codigoQualificadorStatusFisico;
+		ClassificacaoConsulta : classificacao;
+		string : codigoSituacaoServico;
+		string : codigoIndicadorReserva;
+		string : codigoStatusFisico;
+	};
+
+	entity PessoaStatus {
+		string : codigoStatusFisico;
+		string : codigoIndicadorReserva;
+		Classificacao : classificacao;
+		string : codigoSituacaoServico;
+		string : codigoQualificadorStatusFisico;
+	};
+
+	entity InstalacaoStatusAlteracao {
+		string : codigoStatusUtilizacao;
+		string : codigoStatusOperacional;   /*Required.*/
+		string : codigoQualificadorStatusOperacional;
+		string : codigoStatusSeguranca;
+		string : codigoCondicaoAtividadeInimiga;
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : codigoIndicadorReserva;
+		string : codigoIndicadorProgramaOcupacao;
+	};
+
+	entity MccSetorPostRequest {
+		number : anguloAbertura;   /*Required.*/
+		number : raio;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+		number : azimute;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		string : idTipo;   /*Required.*/
+	};
+
+	entity MultiplosMateriaisPostRequest {
+		[MaterialLotePostRequest] : materiais;   /*Required.*/
+	};
+
+	entity ItemDeInventarioAlteracao {
+		string : indice;   /*Required.*/
+		ClassificacaoCriacao : classificacao;
+		string : idTipo;   /*Required.*/
+		string : quantidadeTotal;   /*Required.*/
+		string : quantidadeDisponivel;   /*Required.*/
+	};
+
+	entity PublicacaoItemRequest {
+		string : idGlobalNo;   /*Required.*/
+		string : idPio;   /*Required.*/
+	};
+
+	entity MccLimitePostRequest {
+		LocalizacaoMCCLinha : localizacao;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+		[UnidadeLimite] : unidadesDireita;
+		string : idTipo;   /*Required.*/
+		[UnidadeLimite] : unidadesEsquerda;
+	};
+
+	entity PessoaDetalhe {
+		string : codigoCorCabelo;
+		string : codigoBarba;
+		string : dataAlistamento;
+		string : oculos;
+		string : codigoCorBigode;
+		string : codigoDestreza;
+		string : codigoNacionalidade;
+		string : codigoBigode;
+		string : calvo;
+		string : peso;
+		string : corCabelo;
+		string : corPele;
+		string : idPessoa;
+		string : codigoCorBarba;
+		string : altura;
+		Classificacao : classificacao;
+		string : defeitosFisicos;
+		string : codigoCorOlhos;
+	};
+
+	entity LocalizacaoAnotacao {
+		Ponto : ponto;   /*Required.*/
+	};
+
+	entity OrganizacaoPutRequest {
+		string : nome;   /*Required.*/
+		[AssociacaoAlteracao] : associacoesTerminadas;
+		[ItemDeInventarioAlteracao] : inventarioMaterial;
+		string : idPio;   /*Required.*/
+		[HostilidadeAlteracao] : hostilidades;
+		string : nomeAlternativo;
+		[AssociacaoAlteracao] : associacoes;
+		[OrganizacaoStatusAlteracao] : organizacaoStatus;
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		[LocalizacaoAlteracao] : localizacoes;
+		[ItemTipoAlteracao] : itemTipos;
+		[NacionalidadeAlteracao] : nacionalidades;
+		[ItemDeInventarioAlteracao] : sumarioPessoal;
+		string : nomeHistorico;
+	};
+
+	entity OrganizacaoGetResponse {
+		Organizacao : organizacao;
+	};
+
+	entity LocalizacaoConsulta {
+		integer : taxaVelocidade;
+		integer : precisaoTaxaVelocidade;
+		string : precisao;
+		integer : precisaoDirecaoAngulo;
+		Ponto : ponto;
+		string : idLocalizacao;
+		ClassificacaoConsulta : classificacao;
+		integer : direcaoAngulo;
+	};
+
+	entity ItemEvento {
+		string : nomeEvento;   /*Required.*/
+		string : idEvento;   /*Required.*/
+	};
+
+	entity OrganizacoesGetResponse {
+		LocalizacaoConsulta : localizacao;
+		string : idOrganizacao;
+		string : nomeTipo;
+		string : nomeOrganizacao;
+		string : idTipo;
+		string : codigoCategoria;
+		string : idPio;
+		string : icon;
+		HostilidadeConsulta : hostilidade;
+	};
+
+	entity Item {
+		[ItemTipo] : itemTipos;
+		[Nacionalidade] : nacionalidades;
+		[ItemDeInventario] : sumarioPessoal;
+		[Localizacao] : localizacoes;
+		[ItemEvento] : eventos;
+		string : idItem;
+		[Associacao] : associacoes;
+		[ItemDeInventario] : inventarioMaterial;
+		string : nome;
+		string : codigoCategoria;
+		string : idPio;
+		[Hostilidade] : hostilidades;
+	};
+
+	entity PessoaDetalheConsulta {
+		string : codigoCorCabelo;
+		string : codigoCorBigode;
+		string : oculos;
+		string : codigoDestreza;
+		string : estatura;
+		string : codigoBarba;
+		string : dataAlistamento;
+		string : codigoBigode;
+		string : calvo;
+		string : codigoNacionalidade;
+		string : peso;
+		string : estrangeiro;
+		string : corCabelo;
+		string : sinalDePele;
+		string : codigoCorBarba;
+		string : corPele;
+		string : idPessoa;
+		ClassificacaoConsulta : classificacao;
+		string : defeitosFisicos;
+		string : codigoCorOlhos;
+		string : altura;
+	};
+
+	entity MCCPutRequest {
+		[MCCStatus] : mccStatus;
+		[ItemTipoAlteracao] : itemTipos;
+		[NacionalidadeAlteracao] : nacionalidades;
+		[LocalizacaoGeralAlteracao] : localizacoes;
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		[AssociacaoAlteracao] : associacoes;
+		string : nomeAlternativo;
+		string : idPio;   /*Required.*/
+		[HostilidadeAlteracao] : hostilidades;
+		[AssociacaoAlteracao] : associacoesTerminadas;
+		string : codigoCategoria;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity MccDirecaoPostRequest {
+		string : idTipo;   /*Required.*/
+		string : hostilidade;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : largura;   /*Required.*/
+		string : nome;   /*Required.*/
+		LocalizacaoMCCLinha : localizacao;   /*Required.*/
+	};
+
+	entity MaterialLotePostRequest {
+		LocalizacaoMaterialLote : localizacao;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : numeroSerialSgl;   /*Required.*/
+		string : idTipo;   /*Required.*/
+	};
+
+	entity LocalizacaoGeralConsulta {
+		integer : direcaoAngulo;
+		ClassificacaoConsulta : classificacao;
+		Linha : linha;
+		Area : area;
+		string : idLocalizacao;
+		Ponto : ponto;
+		integer : taxaVelocidade;
+		integer : precisaoTaxaVelocidade;
+		integer : precisaoDirecaoAngulo;
+		string : precisao;
+	};
+
+	entity AnotacaoPostRequest {
+		LocalizacaoAnotacao : localizacao;   /*Required.*/
+		boolean : aceitarNomeDuplicado;
+		string : fonte;   /*Required.*/
+		string : largura;   /*Required.*/
+		string : terminacao;   /*Required.*/
+		string : codigoCorTexto;   /*Required.*/
+		string : codigoCorArea;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : idPio;   /*Required.*/
+		string : texto;   /*Required.*/
+	};
+
+	entity Ponto {
+		number : latitude;   /*Required.*/
+		number : longitude;   /*Required.*/
+		number : altitude;
+	};
+
+	entity Linha {
+		[Ponto] : pontos;   /*Required.*/
+	};
+
+	entity InstalacaoPostResponse {
+		string : idTipo;
+		string : nomeInstalacao;
+		string : icon;
+		string : idInstalacao;
+		LocalizacaoConsulta : localizacao;
+	};
+
+	entity Anexo {
+		string : size;   /*Required.*/
+		string : name;   /*Required.*/
+		string : type;   /*Required.*/
+	};
+
+	entity ItemDeInventario {
+		string : quantidadeTotal;   /*Required.*/
+		string : nomeTipo;
+		string : quantidadeDisponivel;   /*Required.*/
+		string : idTipo;   /*Required.*/
+		Classificacao : classificacao;
+		string : indice;   /*Required.*/
+		string : idItem;
+	};
+
+	entity Hostilidade {
+		string : idHostilidade;
+		string : codigoHostilidade;   /*Required.*/
+		Classificacao : classificacao;
+	};
+
+	entity OrganizacaoPostRequest {
+		string : hostilidade;   /*Required.*/
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		string : idTipo;   /*Required.*/
+		boolean : aceitarNomeDuplicado;   /*Required.*/
+		string : nome;   /*Required.*/
+		LocalizacaoCriacaoPonto : localizacao;   /*Required.*/
+		string : idPio;   /*Required.*/
+	};
+
+	entity MaterialGetResponse {
+		Material : material;
+	};
+
+	entity LocalizacaoMCCArea {
+		Area : area;
+		string : codigoCategoria;
+		string : idLocalizacao;
+	};
+
+	entity AnotacaoPostResponse {
+		string : idPio;   /*Required.*/
+		string : codigoCorArea;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : texto;   /*Required.*/
+		string : largura;   /*Required.*/
+		LocalizacaoAnotacao : localizacao;   /*Required.*/
+		string : terminacao;   /*Required.*/
+		string : codigoCorTexto;   /*Required.*/
+	};
+
+	entity PessoaGetResponse {
+		Pessoa : pessoa;
+	};
+
+	entity PublicacaoItemResponse {
+		string : idPio;
+	};
+
+	entity NacionalidadeConsulta {
+		string : codigo;
+		string : nomePais;
+		ClassificacaoConsulta : classificacao;
+	};
+
+	entity ItemTipoAlteracao {
+		string : idTipo;   /*Required.*/
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+	};
+
+	entity AssociacaoRelacaoRadioGetResponse {
+		[string] : itens;
+	};
+
+	entity UnidadeLimite {
+		string : idUnidade;   /*Required.*/
+	};
+
+	entity LocalizacaoGeralAlteracao {
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+		Linha : linha;
+		integer : direcaoAngulo;
+		integer : taxaVelocidade;
+		integer : precisaoTaxaVelocidade;
+		integer : precisaoDirecaoAngulo;
+		string : precisao;
+		Area : area;
+		Ponto : ponto;
+	};
+
+	entity LocalizacaoCriacaoPonto {
+		Ponto : ponto;   /*Required.*/
+	};
+
+	entity CopiaItensPostRequest {
+		[ItemsCopia] : itens;   /*Required.*/
+	};
+
+	entity InstalacaoGetResponse {
+		Instalacao : instalacao;
+	};
+
+	service <NomeServico> {
+		path = "/item/organizacao";
+
+		/**
+		* @ summary: Consulta as organizações de acordo com o filtro informado
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query nome: 
+		*	query codigoCategoria: 
+		*	query idTipo: 
+		*	query hostilidade: 
+		*	query idPio: 
+		*/
+		@get array <NomeCapacidade> (string t, string nome, string codigoCategoria, string idTipo, string hostilidade, string idPio);
+
+		/**
+		* @ summary: Cria uma nova organização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body organizacao(*): 
+		*/
+		@post OrganizacaoPostResponse <NomeCapacidade> (string t, OrganizacaoPostRequest organizacao);
+	}
+
+	service <NomeServico> {
+		path = "/item/anexo";
+
+		/**
+		* @ summary: Envio de um arquivo para o servidor
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	form anexo(*): Arquivo em anexo
+		*/
+		@post AnexoPostResponse <NomeCapacidade> (string t, file anexo);
+
+		/**
+		* @ summary: Remove um anexo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body anexos(*): 
+		*/
+		@delete AnexoDeleteResponse <NomeCapacidade> (string t, string anexos);
+
+		/**
+		* @ summary: Retorna a lista de anexos em memória
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get AnexoGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/anexo/{idAnexo}";
+
+		/**
+		* @ summary: Retorna o conteudo de um arquivo
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	path idAnexo(*): 
+		*/
+		@get AnexoConteudoGetResponse <NomeCapacidade> (string t, string idItem, string idAnexo);
+	}
+
+	service <NomeServico> {
+		path = "/item/instalacao";
+
+		/**
+		* @ summary: Cria um novo item instalação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body instalacao(*): 
+		*/
+		@post InstalacaoPostResponse <NomeCapacidade> (string t, InstalacaoPostRequest instalacao);
+	}
+
+	service <NomeServico> {
+		path = "/item/instalacao/{id}";
+
+		/**
+		* @ summary: Consulta uma instalacao
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	query limite: 
+		*/
+		@get InstalacaoGetResponse <NomeCapacidade> (string t, string id, int limite);
+
+		/**
+		* @ summary: Atualiza uma instalação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	body instalacao(*): 
+		*/
+		@put void <NomeCapacidade> (string t, string id, InstalacaoPutRequest instalacao);
+	}
+
+	service <NomeServico> {
+		path = "/item/material";
+
+		/**
+		* @ summary: Cria um novo item material
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body material(*): 
+		*/
+		@post MaterialPostResponse <NomeCapacidade> (string t, MaterialPostRequest material);
+	}
+
+	service <NomeServico> {
+		path = "/item/materiais";
+
+		/**
+		* @ summary: Cria múltiplos materiais
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body materiais(*): 
+		* @ responseCodes: 
+		*	204: No Content
+		*/
+		@post  <NomeCapacidade> (string t, MultiplosMateriaisPostRequest materiais);
+	}
+
+	service <NomeServico> {
+		path = "/item/material/{id}";
+
+		/**
+		* @ summary: Consulta um material
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	query limite: 
+		*/
+		@get MaterialGetResponse <NomeCapacidade> (string t, string id, int limite);
+
+		/**
+		* @ summary: Atualiza um material
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	body material(*): 
+		*/
+		@put void <NomeCapacidade> (string t, string id, MaterialPutRequest material);
+	}
+
+	service <NomeServico> {
+		path = "/item/anotacao";
+
+		/**
+		* @ summary: Cria um novo item anotação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body anotacao(*): 
+		*/
+		@post AnotacaoPostResponse <NomeCapacidade> (string t, AnotacaoPostRequest anotacao);
+	}
+
+	service <NomeServico> {
+		path = "/item/anotacao/{idAnotacao}";
+
+		/**
+		* @ summary: Consulta um item anotação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idAnotacao(*): 
+		*/
+		@get AnotacaoGetResponse <NomeCapacidade> (string t, string idAnotacao);
+
+		/**
+		* @ summary: Altera um item anotação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idAnotacao(*): 
+		*	body anotacao(*): 
+		*/
+		@put  <NomeCapacidade> (string t, string idAnotacao, AnotacaoPutRequest anotacao);
+	}
+
+	service <NomeServico> {
+		path = "/itens/{idItem}";
+
+		/**
+		* @ summary: Obtem o item com id referido
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*/
+		@get Item <NomeCapacidade> (string t, string idItem);
+
+		/**
+		* @ summary: Remove todas as associações do item informado
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query idCalco: 
+		*/
+		@delete  <NomeCapacidade> (string t, string idItem, string idCalco);
+	}
+
+	service <NomeServico> {
+		path = "/item/organizacao/{id}";
+
+		/**
+		* @ summary: Consulta uma organização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	query limite: 
+		*/
+		@get OrganizacaoGetResponse <NomeCapacidade> (string t, string id, int limite);
+
+		/**
+		* @ summary: Atualiza uma organização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	body organizacao(*): 
+		*/
+		@put void <NomeCapacidade> (string t, string id, OrganizacaoPutRequest organizacao);
+	}
+
+	service <NomeServico> {
+		path = "/itens/associacao";
+
+		/**
+		* @ summary: Associa itens
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body associacaoItemRequest(*): 
+		*/
+		@post  <NomeCapacidade> (string t, AssociacaoItemRequest associacaoItemRequest);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idSubject}/associacao/verificacao/{idObjeto}/{categoria}";
+
+		/**
+		* @ summary: Verificação de persistencia de associações
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idSubject(*): 
+		*	path idObjeto(*): 
+		*	path categoria(*): 
+		*	query dataInicio: 
+		*	query dataFim: 
+		*/
+		@get string <NomeCapacidade> (string t, string idSubject, string idObjeto, string categoria, long dataInicio, long dataFim);
+	}
+
+	service <NomeServico> {
+		path = "/itens/associacao/{idAssociacaoItem}/{idItemSubj}/{idItemObj}";
+
+		/**
+		* @ summary: Encerrar associação entre itens
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idAssociacaoItem(*): 
+		*/
+		@delete  <NomeCapacidade> (string t, string idAssociacaoItem);
+	}
+
+	service <NomeServico> {
+		path = "/itens/associacao/relacao/radio/{idRadio}";
+
+		/**
+		* @ summary: Retorna a relação de associação de um rádio com os itens
+		* @ params: 
+		*	path idRadio(*): 
+		*/
+		@get AssociacaoRelacaoRadioGetResponse <NomeCapacidade> (string idRadio);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/ponto";
+
+		/**
+		* @ summary: Cria um novo MCC ponto
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccPontoPostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/linha";
+
+		/**
+		* @ summary: Cria um novo MCC linha
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccLinhaPostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/direcao";
+
+		/**
+		* @ summary: Cria um novo MCC direção
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccDirecaoPostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/limite";
+
+		/**
+		* @ summary: Cria um novo MCC limite
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccLimitePostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/area";
+
+		/**
+		* @ summary: Cria um novo MCC área
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccAreaPostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/setor";
+
+		/**
+		* @ summary: Cria um novo MCC setor
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccSetorPostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/elipse";
+
+		/**
+		* @ summary: Cria um novo MCC elipse
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body mcc(*): 
+		*/
+		@post Item <NomeCapacidade> (string t, MccPostRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/{id}";
+
+		/**
+		* @ summary: 
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	query limite: 
+		*/
+		@get MCC <NomeCapacidade> (string t, string id, inte limite);
+
+		/**
+		* @ summary: Atualiza um MCC
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	body mcc(*): 
+		*/
+		@put void <NomeCapacidade> (string t, string id, MCCPutRequest mcc);
+	}
+
+	service <NomeServico> {
+		path = "/item/pessoa";
+
+		/**
+		* @ summary: Cria uma nova pessoa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body pessoa(*): 
+		*/
+		@post PessoaGetResponse <NomeCapacidade> (string t, PessoaPostRequest pessoa);
+	}
+
+	service <NomeServico> {
+		path = "/item/pessoa/{id}";
+
+		/**
+		* @ summary: Consulta uma pessoa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	query limite: 
+		*/
+		@get PessoaGetResponse <NomeCapacidade> (string t, String id, int limite);
+
+		/**
+		* @ summary: Atualiza uma pessoa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	body pessoa(*): 
+		*/
+		@put void <NomeCapacidade> (string t, string id, PessoaPutRequest pessoa);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/localizacao";
+
+		/**
+		* @ summary: Retorna a localização atual de um item.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*/
+		@get  <NomeCapacidade> (string t, String idItem);
+
+		/**
+		* @ summary: Atualiza a localizacao de um item
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	body itemLocalizacao(*): 
+		*/
+		@put void <NomeCapacidade> (string t, string idItem, ItemLocalizacaoPutRequest itemLocalizacao);
+	}
+
+	service <NomeServico> {
+		path = "/itens/copia";
+
+		/**
+		* @ summary: Copia os itens para um outro PIO
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body copiaPostReq(*): 
+		*/
+		@post  <NomeCapacidade> (string t, CopiaItensPostRequest copiaPostReq);
+	}
+
+	service <NomeServico> {
+		path = "/item/publicarItens";
+
+		/**
+		* @ summary: Publicação de itens de um pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body PublicacaoItemRequest(*): 
+		*/
+		@post  <NomeCapacidade> (string t, PublicacaoItemRequest PublicacaoItemRequest);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/tipo/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de tipos com as suas classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query dataFim: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, long dataFim, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/evento/classificacao";
+
+		/**
+		* @ summary: Retorna lista de eventos com as suas classificações por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query idEvento: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, string idItem, string idEvento, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/hostilidade/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de hostilidade com a sua classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query dataFim: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, long dataFim, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/associacao/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de associações com a sua classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/localizacao/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de localizações com a sua classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query dataFim: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, long dataFim, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/organizacao/{idItem}/status/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de status de organização por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/material/{idItem}/status/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de status de material por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/nacionalidade/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de nacionalidade com a sua classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idItem, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/pessoa/{idPessoa}/status/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de status de pessoa com sua classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPessoa(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idPessoa, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/pessoa/{idPessoa}/detalhe/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de detalhe de pessoa por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPessoa(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idPessoa, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/instalacao/{idInstalacao}/status/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de status de instalação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idInstalacao(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idInstalacao, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/mcc/{idMcc}/status/classificacao";
+
+		/**
+		* @ summary: Retorna a lista de status do mcc com sua classificação por intervalo.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idMcc(*): 
+		*	query dataInicio: 
+		*	query limite: 
+		*/
+		@get array <NomeCapacidade> (string t, String idMcc, long dataInicio, int limite);
+	}
+
+	service <NomeServico> {
+		path = "/item/copia/{idPioPai}/{idPioFilho}";
+
+		/**
+		* @ summary: Retorna a relação entre itens juntamente os PIOs
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPioPai(*): 
+		*	path idPioFilho(*): 
+		*/
+		@get ItemCopiaGetResponse <NomeCapacidade> (string t, string idPioPai, string idPioFilho);
+	}
+
+

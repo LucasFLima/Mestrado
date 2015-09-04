@@ -1,0 +1,38 @@
+module tiponeuronsad {
+
+	path = "xxx";
+
+	entity TipoRamo {
+		string : idItem;
+		string : id;
+		[TipoRamo] : children;
+		string : text;
+		string : parent;
+		string : codigoCategoria;
+	};
+
+	service <NomeServico> {
+		path = "/tipos/{codigoCategoria}";
+
+		/**
+		* @ summary: Retorna tipos de item pela categoria
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path codigoCategoria(*): A categoria dos tipos de item desejados.
+		*/
+		@get array <NomeCapacidade> (string t, string codigoCategoria);
+	}
+
+	service <NomeServico> {
+		path = "/tipo/{id}";
+
+		/**
+		* @ summary: Retorna tipo de item por ID
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): O id do tipo de item desejado.
+		*/
+		@get TipoRamo <NomeCapacidade> (string t, string id);
+	}
+
+

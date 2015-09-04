@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;NeoIDL-DbC-28082015/NeoIdl.tex&apos; to &apos;NeoIDL_dbc.tex&apos;" description="Rename resource &apos;NeoIdl.tex&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="NeoIdl.tex" name="NeoIDL_dbc.tex" stamp="1440727759550" updateReferences="true"/>
+</session>

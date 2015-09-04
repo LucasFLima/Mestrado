@@ -1,0 +1,105 @@
+module agendador {
+
+	path = "xxx";
+
+	entity TaskParameter {
+		string : value;   /*Required.*/
+		boolean : object;   /*Required.*/
+		string : key;   /*Required.*/
+	};
+
+	entity SchedulerPutOrDeleteResponse {
+		boolean : executed;   /*Required.*/
+	};
+
+	entity SchedulerPostRequest {
+		string : scheduleName;   /*Required.*/
+		string : taskClass;   /*Required.*/
+		number : scheduleDate;   /*Required.*/
+		[TaskParameter] : parameters;
+		number : errorRetries;   /*Required.*/
+	};
+
+	entity SchedulerGetResponse {
+		string : status;   /*Required.*/
+		number : scheduleDate;   /*Required.*/
+		string : name;   /*Required.*/
+		number : creationDate;   /*Required.*/
+		string : id;   /*Required.*/
+	};
+
+	entity TaskPostResponse {
+		boolean : executed;   /*Required.*/
+	};
+
+	entity TaskPostRequest {
+		[TaskParameter] : parameters;
+		string : taskClass;   /*Required.*/
+	};
+
+	entity SchedulerPutRequest {
+		number : scheduleDate;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/scheduler/{scheduleId}";
+
+		/**
+		* @ summary: Obtém um agendamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path scheduleId(*): 
+		*/
+		@get SchedulerGetResponse <NomeCapacidade> (string t, string scheduleId);
+	}
+
+	service <NomeServico> {
+		path = "/scheduler/{scheduleId}";
+
+		/**
+		* @ summary: Reagenda um agendamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path scheduleId(*): 
+		*	body cancela_agendamento(*): 
+		*/
+		@put SchedulerPutOrDeleteResponse <NomeCapacidade> (string t, string scheduleId, SchedulerPutRequest cancela_agendamento);
+	}
+
+	service <NomeServico> {
+		path = "/scheduler/{scheduleId}";
+
+		/**
+		* @ summary: Cancela um agendamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path scheduleId(*): 
+		*/
+		@delete SchedulerPutOrDeleteResponse <NomeCapacidade> (string t, string scheduleId);
+	}
+
+	service <NomeServico> {
+		path = "/scheduler";
+
+		/**
+		* @ summary: Cria um agendamento
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body novo_agendamento(*): 
+		*/
+		@post SchedulerPostResponse <NomeCapacidade> (string t, SchedulerPostRequest novo_agendamento);
+	}
+
+	service <NomeServico> {
+		path = "/scheduler/task";
+
+		/**
+		* @ summary: Executar uma tarefa
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body executar_tarefa(*): 
+		*/
+		@post TaskPostResponse <NomeCapacidade> (string t, TaskPostRequest executar_tarefa);
+	}
+
+

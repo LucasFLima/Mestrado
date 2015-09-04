@@ -1,0 +1,83 @@
+module comunicacao {
+
+	path = "xxx";
+
+	entity CommunicationStatus {
+		numeric : totalPacketsInQueue;   /*Required.*/
+		numeric : transmitTimeout;   /*Required.*/
+		numeric : totalPacketsSent;   /*Required.*/
+		numeric : totalPacketsReceived;   /*Required.*/
+		string : timeOfLastPacketReceived;   /*Required.*/
+		numeric : lastPacketSent;   /*Required.*/
+		numeric : transmitWindowSize;   /*Required.*/
+		numeric : totalPacketsRetransmitted;   /*Required.*/
+		string : timeOfLastAckReceived;   /*Required.*/
+		string : ipAddress;   /*Required.*/
+		numeric : lastAckReceived;   /*Required.*/
+		string : timeOfLastPacketSent;   /*Required.*/
+		numeric : transmitQueueByteSize;   /*Required.*/
+	};
+
+	entity GeneralCommunicationStatus {
+		string : timeOfLastPacketSent;   /*Required.*/
+		numeric : totalPacketsRetransmitted;   /*Required.*/
+		string : ipAddress;   /*Required.*/
+		[NodeCommunicationStatus] : nodeStatistics;
+		numeric : totalPacketsReceived;   /*Required.*/
+		string : timeOfLastPacketReceived;   /*Required.*/
+		numeric : totalPacketsInQueue;   /*Required.*/
+		numeric : totalPacketsSent;   /*Required.*/
+	};
+
+	entity CommunicationMessage {
+		string : topic;   /*Required.*/
+		boolean : reliable;
+		boolean : encoded;
+		string : node;   /*Required.*/
+		string : body;   /*Required.*/
+	};
+
+	entity EnviarResponse {
+		string : Status;
+	};
+
+	entity NodeCommunicationStatus {
+		string : ipAddress;   /*Required.*/
+		string : node;   /*Required.*/
+		CommunicationStatus : status;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/enviar";
+
+		/**
+		* @ summary: Coloca um dado na fila de envio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body message(*): Mensagem para envio
+		*/
+		@post EnviarResponse <NomeCapacidade> (string t, CommunicationMessage message);
+	}
+
+	service <NomeServico> {
+		path = "/status";
+
+		/**
+		* @ summary: Obtém o estado da comunicacao com todos os nos conectados
+		* @ params: 
+		*/
+		@get GeneralCommunicationStatus <NomeCapacidade> ();
+	}
+
+	service <NomeServico> {
+		path = "/status/{idNode}";
+
+		/**
+		* @ summary: Obtém o estado da comunicacao com todos os nos conectados
+		* @ params: 
+		*	path id_node(*): 
+		*/
+		@get CommunicationStatus <NomeCapacidade> (string id_node);
+	}
+
+

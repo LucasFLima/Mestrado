@@ -1,0 +1,3430 @@
+{
+	"swaggerVersion": "1.2",
+	"id": "CalcoNeuronSAD",
+	"version": "1.0.4",
+	"produces": 
+	[
+		"application/json"
+	],
+
+	"apis": 
+	[
+		{
+			"path": "/pio/{idPio}/itens",
+			"description": "Recurso que obtem informações de itens de um PIO",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemRamo"
+					},
+
+					"summary": "Consulta os itens de um PIO",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idPio",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						},
+
+						{
+							"name": "idItemIgnorado",
+							"paramType": "query",
+							"type": "string"
+						},
+
+						{
+							"name": "tipoConsulta",
+							"paramType": "query",
+							"type": "string"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pio/{idPio}/organizacoesmilitares",
+			"description": "Recurso que obtem as organizações militares e ordens de batalha de um PIO",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "OrganizacaoMilitar"
+					},
+
+					"summary": "Consulta as organizações militares e ordens de batalha de um PIO",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idPio",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/calco/vistas/{idVista}/itens",
+			"description": "Operações relacionadas aos itens de uma vista",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "ItensVistaResponse",
+					"summary": "Listar itens de uma vista.",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"description": "Identificador da vista",
+							"required": true,
+							"type": "string",
+							"paramType": "path"
+						},
+
+						{
+							"name": "categorias",
+							"paramType": "query",
+							"type": "array",
+							"items": 
+							{
+								"$ref": "string"
+							},
+
+							"required": false
+						},
+
+						{
+							"name": "unidades",
+							"paramType": "query",
+							"type": "array",
+							"items": 
+							{
+								"$ref": "string"
+							},
+
+							"required": false
+						},
+
+						{
+							"name": "dtLast",
+							"paramType": "query",
+							"type": "long",
+							"required": false
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/pio/{id}",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "PlanoInformacaoOperacional",
+					"summary": "Obtem o pio com o id referido",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						},
+
+						{
+							"name": "filtrarOrdemBatalha",
+							"description": "Exibir ou não as ordens de batalha. default=false",
+							"paramType": "query",
+							"type": "boolean",
+							"required": false,
+							"enum": 
+							[
+								"true",
+								"false"
+							]
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"type": "DadosDoPio",
+					"summary": "Atualiza um pio",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "dados_alterados",
+							"paramType": "body",
+							"type": "DadosDoPio",
+							"required": true
+						},
+
+						{
+							"name": "id",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "DELETE",
+					"type": "null",
+					"summary": "Remover um pio",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/pios",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "PlanoInformacaoOperacionalGetResponse",
+					"summary": "Obtem todos os pios",
+					"parameters": 
+					[
+						
+					]
+				},
+
+				{
+					"method": "POST",
+					"type": "PlanoInformacaoOperacionalPostResponse",
+					"summary": "Cria um pio",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "dados",
+							"paramType": "body",
+							"type": "DadosDoPio",
+							"required": false
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vistas/pios",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "PlanoInformacaoOperacionalGetResponse",
+					"summary": "Obtem todos os pios",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/pios/menu",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "PioGetResponse",
+					"summary": "Obtem todos os pios e suas propriedades",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "tipoConsulta",
+							"paramType": "query",
+							"type": "string"
+						},
+
+						{
+							"name": "dtLast",
+							"paramType": "query",
+							"type": "long"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vistas",
+			"description": "Operações relacionadas ao CRUD de vista",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "VistasResponse",
+					"summary": "Listar vistas",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "recuperarHierarquiaVistas",
+							"description": "Recuperar hierarquia de pios das vistas",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				},
+
+				{
+					"method": "POST",
+					"type": "VistaResponse",
+					"summary": "Cria uma nova vista",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "DadosDaVista",
+							"paramType": "body",
+							"type": "DadosDaVista",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios/itens",
+			"description": "Obtem info do pio e seus itens",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"type": "PiosResponse",
+					"summary": "Obter info do pio e seus itens",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "PiosRequest",
+							"paramType": "body",
+							"type": "PiosRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/piosPolling",
+			"description": "Operações ao polling de vistas e pios",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"type": "PollingResponse",
+					"summary": "Realizar o pooling de vistas e pios",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "PollingRequest",
+							"paramType": "body",
+							"type": "PollingRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios/aprovarPios",
+			"description": "Operações de aprovação de pios",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"type": "AprovarPiosResponse",
+					"summary": "Realizar aprovação de pios",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "AprovarPiosRequest",
+							"paramType": "body",
+							"type": "AprovarPiosRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios/publicarPios",
+			"description": "Operações de publicação de pio",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"type": "PublicacaoResponse",
+					"summary": "Realizar publicação de pios",
+					"consumes": 
+					[
+						"application/json"
+					],
+
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+						{
+							"name": "idPio",
+							"paramType": "query",
+							"type": "string",
+							"required": true
+						},
+						{
+							"name": "idNo",
+							"paramType": "query",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios/consultarPios",
+			"description": "Operações de consultas de pios para aprovação",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "ConsultarPiosAprovacaoResponse",
+					"summary": "Consulta de pios para aprovação",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vistas/{idVista}",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "Vista",
+					"summary": "Obtem vista com id referido",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"type": "VistaPutResponse",
+					"summary": "Atualiza uma vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "dados_alterados",
+							"paramType": "body",
+							"type": "DadosDaVista",
+							"required": true
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "DELETE",
+					"type": "VistaDeleteResponse",
+					"summary": "Remover vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/calco",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"type": "CalcoPostResponse",
+					"summary": "Cria um calco",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "dados_alterados",
+							"paramType": "body",
+							"type": "DadosDoCalco",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{id}/calco/pios",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "CalcoGetResponse"
+					},
+
+					"summary": "Lista dos PIOs associados ao calco",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/calco/piosAssociacao",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "AssociacaoPioCalco"
+					},
+
+					"summary": "Lista dos PIOs associados ao calco",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"summary": "Serviço de associação de PIOs à vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						},
+
+						{
+							"name": "associacaoPioCalco",
+							"paramType": "body",
+							"type": "AssociacaoPioCalcoPostRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/calco/pios/{idPio}",
+			"operations": 
+			[
+				{
+					"method": "DELETE",
+					"type": "CalcoDeleteResponse",
+					"summary": "Remove uma relação entre pio e vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						},
+
+						{
+							"name": "idPio",
+							"paramType": "path",
+							"type": "number",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"type": "CalcoPutResponse",
+					"summary": "Atualiza a ordenação dos pios em uma vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "associacaoAtualizar",
+							"paramType": "body",
+							"type": "AssociacaoAtualizar",
+							"required": true
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idPio",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/referencia/{idReferencia}",
+			"operations": 
+			[
+				{
+					"method": "PUT",
+					"type": "CalcoPutResponse",
+					"summary": "Atualiza a ordenação de uma referência (camada) na vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "associacaoAtualizar",
+							"paramType": "body",
+							"type": "AssociacaoAtualizar",
+							"required": true
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idReferencia",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/pios/classificacaoSeguranca",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ClassificacaoSeguranca"
+					},
+
+					"summary": "Lista das classificações de seguranca",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/calco/pio/{idPio}/transparencia",
+			"operations": 
+			[
+				{
+					"method": "PUT",
+					"type": "TransparenciaPioRequest",
+					"summary": "Atualiza a transparencia de um Pio",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "transparencia",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idPio",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/mapa/{idMapa}",
+			"operations": 
+			[
+				{
+					"method": "POST",
+					"type": "VistaMapaPostResponse",
+					"summary": "Cadastra um mapa para uma vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idMapa",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "request",
+							"paramType": "body",
+							"type": "VistaMapaPostRequest"
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"summary": "Atualiza configurações do mapa na vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idMapa",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "request",
+							"paramType": "body",
+							"type": "VistaMapaPutRequest"
+						}
+					]
+				},
+
+				{
+					"method": "DELETE",
+					"summary": "Exclui a associação do mapa a vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idMapa",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "GET",
+					"type": "VistaMapaGetResponse",
+					"summary": "Consulta mapa associado a uma vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idMapa",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/mapasAssociacao",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "AssocVistaMapasGetResponse",
+					"summary": "Retorna todos os Mapas associados a Vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"summary": "Atualiza as camadas WMS de um mesmo Mapa associadas a Vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "infoLayersMapa",
+							"paramType": "body",
+							"type": "AssocVistaMapasPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/mapasAssociacao/{idMapaAssoc}",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "AssocMapaVistaResponse",
+					"summary": "Retorna as informações de um Mapa associado a Vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						},
+
+						{
+							"name": "idMapaAssoc",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "PUT",
+					"type": "AssocMapaVistaResponse",
+					"summary": "Atualiza as informações de um Mapa associado a Vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idMapaAssoc",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						},
+
+						{
+							"name": "infoAssoc",
+							"paramType": "body",
+							"type": "AssocVistaMapaPutRequest",
+							"required": true
+						}
+					]
+				},
+
+				{
+					"method": "DELETE",
+					"type": "string",
+					"summary": "Exclui a associação de um Mapa a Vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "String",
+							"required": true
+						},
+
+						{
+							"name": "idMapaAssoc",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{idVista}/calco/pios/categorias",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "CategoriasItensVistaResponse",
+					"summary": "Obtem as categorias de todos os itens da Vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "idVista",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios/subordinar",
+			"operations": 
+			[
+				{
+					"method": "PUT",
+					"summary": "Serviço de subordinacao de PIOs",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "subordinarPio",
+							"paramType": "body",
+							"type": "SubordinarPioPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "PioGetResponse",
+					"summary": "Lista de PIOs",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "status",
+							"description": "Filtra a consulta de PIOs",
+							"paramType": "query",
+							"type": "string",
+							"allowableValues": 
+							{
+								"valueType": "list",
+								"values": 
+								[
+									"ativo",
+									"arquivado",
+									"ativo_e_arquivado"
+								]
+							}
+						},
+
+						{
+							"name": "metadado",
+							"description": "Obtém os metadados de todos os PIOs.",
+							"paramType": "query",
+							"type": "string",
+							"allowableValues": 
+							{
+								"valueType": "list",
+								"values": 
+								[
+									"true",
+									"false"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/pios/{id}",
+			"operations": 
+			[
+				{
+					"method": "PUT",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Radar"
+					},
+
+					"summary": "Serviços sobre PIO",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id",
+							"description": "ID do PIO",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						},
+
+						{
+							"name": "arquivarPio",
+							"description": "Arquiva ou desarquiva o PIO especificado",
+							"paramType": "body",
+							"type": "PioArquivarPutRequest",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"path": "/vista/{id}/radares",
+			"operations": 
+			[
+				{
+					"method": "GET",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Radar"
+					},
+
+					"summary": "Consulta de radares associados a uma vista",
+					"parameters": 
+					[
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+
+						{
+							"name": "id",
+							"description": "ID da vista",
+							"paramType": "path",
+							"type": "string",
+							"required": true
+						}
+					]
+				}
+			]
+		},
+        {
+            "path": "/pios/piosRemotos",
+            "operations": 
+            [
+                {
+                    "method": "GET",
+                    "type": "PiosRemotosResponse",
+                    "summary": "Lista de PIOs remotos por nó",
+                    "parameters": 
+                    [
+                        {
+                            "name": "t",
+                            "description": "Token de autenticação",
+                            "required": true,
+                            "type": "string",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ]
+        }
+	],
+
+	"models": 
+	{
+		"Radar": 
+		{
+			"properties": 
+			{
+				"sac": 
+				{
+					"type": "number",
+					"required": true
+				},
+
+				"sic": 
+				{
+					"type": "number",
+					"required": true
+				}
+			}
+		},
+
+		"ItemRamo": 
+		{
+			"properties": 
+			{
+				"id": 
+				{
+					"type": "string"
+				},
+
+				"text": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"children": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemRamo"
+					}
+				}
+			}
+		},
+
+		"VistaMapaPostResponse": 
+		{
+			"properties": 
+			{
+				"idMapa": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"tipoMapa": 
+				{
+					"type": "string"
+				},
+
+				"tipoAcesso": 
+				{
+					"type": "string"
+				},
+
+				"referencia": 
+				{
+					"type": "string"
+				},
+
+				"url": 
+				{
+					"type": "string"
+				},
+
+				"configMapa": 
+				{
+					"type": "ConfigMapa"
+				}
+			}
+		},
+
+		"VistaMapaGetResponse": 
+		{
+			"properties": 
+			{
+				"idMapa": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"tipoMapa": 
+				{
+					"type": "string"
+				},
+
+				"tipoAcesso": 
+				{
+					"type": "string"
+				},
+
+				"referencia": 
+				{
+					"type": "string"
+				},
+
+				"url": 
+				{
+					"type": "string"
+				},
+
+				"configMapa": 
+				{
+					"type": "ConfigMapa"
+				}
+			}
+		},
+
+		"VistaMapaPostRequest": 
+		{
+			"properties": 
+			{
+				"config": 
+				{
+					"type": "ConfigMapa"
+				}
+			}
+		},
+
+		"VistaMapaPutRequest": 
+		{
+			"properties": 
+			{
+				"config": 
+				{
+					"type": "ConfigMapa"
+				}
+			}
+		},
+
+		"VistaGetResponse": 
+		{
+			"properties": 
+			{
+				"vistas": 
+				{
+					"type": "Vista"
+				},
+
+				"dtExecucao": 
+				{
+					"type": "long"
+				}
+			}
+		},
+
+		"VistasResponse": 
+		{
+			"properties": 
+			{
+				"vistas": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "VistaPolling"
+					}
+				},
+
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "PioPolling"
+					}
+				}
+			}
+		},
+
+		"ClassificacaoSeguranca": 
+		{
+			"properties": 
+			{
+				"idClassificacaoSeguranca": 
+				{
+					"type": "string"
+				},
+
+				"codigoNivel": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"DadosDoPio": 
+		{
+			"properties": 
+			{
+				"nomePio": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"textoDescricao": 
+				{
+					"type": "string"
+				},
+
+				"idClassificacaoSeguranca": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"VistaPolling": 
+		{
+			"properties": 
+			{
+				"id": 
+				{
+					"type": "string"
+				},
+
+				"nomeVista": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "string"
+					}
+				},
+
+				"mapas": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "AssocMapaVistaResponse"
+					}
+				}
+			}
+		},
+
+		"PioAprovacao":
+		{
+			"properties":
+			{
+				"idPio":
+				{
+				   "type": "string"
+				},
+				"nomePio":
+				{
+				   "type": "string"
+				},
+				"dataAprovacao":
+				{
+				   "type": "long"
+				},
+				"remoto":
+				{
+				   "type": "boolean"
+				}
+			}
+		},
+
+		"PioPolling": 
+		{
+			"properties": 
+			{
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"idPioPai": 
+				{
+					"type": "string"
+				},
+
+				"idGlobal": 
+				{
+					"type": "string"
+				},
+
+				"nomePio": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"arquivado": 
+				{
+					"type": "boolean"
+				},
+
+				"novo": 
+				{
+					"type": "boolean"
+				},
+
+				"raiz": 
+				{
+					"type": "boolean"
+				},
+
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "string"
+					}
+				},
+
+				"pessoas": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemPolling"
+					}
+				},
+
+				"organizacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemPolling"
+					}
+				},
+
+				"instalacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemPolling"
+					}
+				},
+
+				"materiais": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemPolling"
+					}
+				},
+
+				"mccs": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemPolling"
+					}
+				},
+
+				"anotacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Anotacao"
+					}
+				},
+
+				"eventos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "EventoPolling"
+					}
+				},
+
+				"listasAlvos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ListaAlvos"
+					}
+				}
+			}
+		},
+
+		"EventoPolling": 
+		{
+			"properties": 
+			{
+				"idEvento": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"evolucao": 
+				{
+					"type": "string"
+				},
+
+				"localizacao": 
+				{
+					"type": "Localizacao"
+				},
+
+				"recursos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemEvento"
+					}
+				},
+
+				"objetivos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemEvento"
+					}
+				}
+			}
+		},
+
+		"ItemEvento": 
+		{
+			"properties": 
+			{
+				"idItem": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"icon": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"ListaAlvos": 
+		{
+			"properties": 
+			{
+				"idListaAlvos": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"alvos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemAlvo"
+					}
+				}
+			}
+		},
+
+		"ItemAlvo": 
+		{
+			"properties": 
+			{
+				"idItem": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"icon": 
+				{
+					"type": "string"
+				},
+
+				"prioridade": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"ItemPolling": 
+		{
+			"properties": 
+			{
+				"idItem": 
+				{
+					"type": "string"
+				},
+
+				"idItemPai": 
+				{
+					"type": "string"
+				},
+
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"largura": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"idTipo": 
+				{
+					"type": "string"
+				},
+
+				"nomeTipo": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoriaTipo": 
+				{
+					"type": "string"
+				},
+
+				"codigoHostilidade": 
+				{
+					"type": "string"
+				},
+
+				"corHostilidade": 
+				{
+					"type": "string"
+				},
+
+				"icon": 
+				{
+					"type": "string"
+				},
+
+				"novo": 
+				{
+					"type": "boolean"
+				},
+
+				"alvo": 
+				{
+					"type": "boolean"
+				},
+
+				"ordemBatalha": 
+				{
+					"type": "boolean"
+				},
+
+				"removido": 
+				{
+					"type": "boolean"
+				},
+
+				"showMenu": 
+				{
+					"type": "boolean"
+				},
+
+				"localizacao": 
+				{
+					"type": "Localizacao"
+				},
+
+				"subordinados": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "ItemPolling"
+					}
+				}
+			}
+		},
+
+		"PiosRequest": 
+		{
+			"properties": 
+			{
+				"pios": 
+				{
+					"type": "array",
+					"required": true,
+					"items": 
+					{
+						"$ref": "string"
+					}
+				}
+			}
+		},
+
+		"PiosResponse": 
+		{
+			"properties": 
+			{
+				"pio": 
+				{
+					"type": "PioPolling"
+				}
+			}
+		},
+
+		"PollingResponse": 
+		{
+			"properties": 
+			{
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "PioPolling"
+					}
+				},
+
+				"dtUltimaAtualizacao": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"ConsultarPiosAprovacaoResponse": {
+			"properties":
+			{
+			    "pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "PioAprovacao"
+					}
+				}
+			}
+		},
+
+		"AprovarPiosResponse":
+		{
+			"properties": 
+			{
+				"result": 
+				{
+					"type": "boolean"
+				}
+			}
+		},
+
+		"PublicacaoResponse": {
+			"properties":
+			{
+				"idPio": {
+					"type": "string"
+				}
+			}
+		},
+
+		"PollingRequest": 
+		{
+			"properties": 
+			{
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "string"
+					}
+				},
+
+				"idPioSelecionado": 
+				{
+					"type": "string"
+				},
+
+				"menuAberto": 
+				{
+					"type": "string"
+				},
+
+				"dtUltimaAtualizacao": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"AprovarPiosRequest": 
+		{
+			"properties": 
+			{
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "string"
+					}
+				}
+			}
+		},
+
+		"Vista": 
+		{
+			"properties": 
+			{
+				"id": 
+				{
+					"type": "string"
+				},
+
+				"nomeVista": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"mapas": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "AssocMapaVistaResponse"
+					}
+				},
+
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Pio"
+					}
+				}
+			}
+		},
+
+		"DadosDaVista": 
+		{
+			"properties": 
+			{
+				"nomeVista": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"idClassificacaoSeguranca": 
+				{
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+		"DadosDoCalco": 
+		{
+			"properties": 
+			{
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"idVista": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"ItensVistaResponse": 
+		{
+			"properties": 
+			{
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Pio"
+					}
+				},
+
+				"dtExecucao": 
+				{
+					"type": "long"
+				}
+			}
+		},
+
+		"MapaVista": 
+		{
+			"properties": 
+			{
+				"idMapa": 
+				{
+					"type": "string"
+				},
+
+				"idAssocMapa": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"tipoMapa": 
+				{
+					"type": "string"
+				},
+
+				"tipoAcesso": 
+				{
+					"type": "string"
+				},
+
+				"referencia": 
+				{
+					"type": "string"
+				},
+
+				"configMapa": 
+				{
+					"type": "ConfigMapa"
+				}
+			}
+		},
+
+		"ConfigMapa": 
+		{
+			"properties": 
+			{
+				"transparencia": 
+				{
+					"type": "string"
+				},
+
+				"shpCorPreenchimento": 
+				{
+					"type": "string"
+				},
+
+				"shpCorLinha": 
+				{
+					"type": "string"
+				},
+
+				"shpTransparenciaPreenchimento": 
+				{
+					"type": "string"
+				},
+
+				"shpTransparenciaLinha": 
+				{
+					"type": "string"
+				},
+
+				"shpEspessLinha": 
+				{
+					"type": "string"
+				},
+
+				"wmsLayer": 
+				{
+					"type": "string"
+				},
+
+				"wmsFormat": 
+				{
+					"type": "string"
+				},
+
+				"wmsCrs": 
+				{
+					"type": "string"
+				},
+
+				"tipoCamada": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"CamadaWms": 
+		{
+			"properties": 
+			{
+				"wmsLayer": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"wmsFormat": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"wmsCrs": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"tipoCamada": 
+				{
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+		"AssocVistaMapasGetResponse": 
+		{
+			"properties": 
+			{
+				"mapas": 
+				{
+					"type": "AssocMapaVistaResponse",
+					"required": true
+				}
+			}
+		},
+
+		"AssocMapaVistaResponse": 
+		{
+			"properties": 
+			{
+				"idMapaAssoc": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"idVista": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"idMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"transparencia": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"wmsLayer": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"wmsFormat": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"wmsCrs": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"tipoCamada": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpCorPreenchimento": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpCorLinha": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpTransparenciaPreenchimento": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpTransparenciaLinha": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpEspessLinha": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"objMapa": 
+				{
+					"type": "MapaResponse",
+					"required": true
+				}
+			}
+		},
+
+		"MapaResponse": 
+		{
+			"properties": 
+			{
+				"idMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"nomeMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"tipoMapa": 
+				{
+					"type": "string",
+					"required": true,
+					"allowableValues": 
+					{
+						"valueType": "LIST",
+						"values": 
+						[
+							"SHAPE",
+							"GTIFF",
+							"WMS"
+						]
+					}
+				},
+
+				"idTipoMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"localMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"referenciaMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"urlReferenciaMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"nomeOriginalMapa": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"idUsuario": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"idOrganizacaoRelatora": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"wmsQueryParams": 
+				{
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+
+		"AssocVistaMapasPutRequest": 
+		{
+			"properties": 
+			{
+				"idMapa": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"camadasWms": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "CamadaWms"
+					}
+				}
+			}
+		},
+
+		"AssocVistaMapaPutRequest": 
+		{
+			"properties": 
+			{
+				"transparencia": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpCorPreenchimento": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpCorLinha": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpTransparenciaPreenchimento": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpTransparenciaLinha": 
+				{
+					"type": "string",
+					"required": false
+				},
+
+				"shpEspessLinha": 
+				{
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+
+		"Pio": 
+		{
+			"properties": 
+			{
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"idGlobal": 
+				{
+					"type": "string"
+				},
+
+				"nomePio": 
+				{
+					"type": "string"
+				},
+
+				"itens": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"anotacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Anotacao"
+					}
+				},
+
+				"transparencia": 
+				{
+					"type": "string"
+				},
+
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Pio"
+					}
+				}
+			}
+		},
+
+		"Anotacao": 
+		{
+			"properties": 
+			{
+				"idAnotacao": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"localizacao": 
+				{
+					"type": "Localizacao",
+					"required": true
+				},
+
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"texto": 
+				{
+					"type": "string"
+				},
+
+				"codigoCorTexto": 
+				{
+					"type": "string"
+				},
+
+				"codigoCorArea": 
+				{
+					"type": "string"
+				},
+
+				"largura": 
+				{
+					"type": "string"
+				},
+
+				"fonte": 
+				{
+					"type": "string"
+				},
+
+				"terminacao": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"AssociacaoAtualizar": 
+		{
+			"properties": 
+			{
+				"ordem": 
+				{
+					"type": "String",
+					"required": true
+				}
+			}
+		},
+
+		"CalcoGetResponse": 
+		{
+			"properties": 
+			{
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"nomePio": 
+				{
+					"type": "string"
+				},
+
+				"ordem": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"AssociacaoPioCalcoPostRequest": 
+		{
+			"properties": 
+			{
+				"idVista": 
+				{
+					"type": "string"
+				},
+
+				"listaPios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "AssociacaoPioCalco"
+					}
+				},
+
+				"idUsuario": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"AssociacaoPioCalco": 
+		{
+			"properties": 
+			{
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"descricao": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"idClassificacaoSeguranca": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"associado": 
+				{
+					"type": "boolean"
+				}
+			},
+
+			"CategoriasItensVistaResponse": 
+			{
+				"categorias": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "string"
+					}
+				}
+			}
+		},
+
+		"SubordinarPioPutRequest": 
+		{
+			"properties": 
+			{
+				"idPioSubordinador": 
+				{
+					"type": "string"
+				},
+
+				"idPioSubordinadorAntigo": 
+				{
+					"type": "string"
+				},
+
+				"idPioSubordinado": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"PioArquivarPutRequest": 
+		{
+			"properties": 
+			{
+				"arquivar": 
+				{
+					"type": "boolean",
+					"required": true
+				}
+			}
+		},
+
+		"PioGetResponse": 
+		{
+			"properties": 
+			{
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "DadosPioPropriedades"
+					}
+				},
+
+				"realizouAssociacao": 
+				{
+					"type": "boolean"
+				},
+
+				"dtExecucao": 
+				{
+					"type": "long"
+				}
+			}
+		},
+
+        "PiosRemotosResponse": 
+        {
+            "properties": 
+            {
+                "nos": 
+                {
+                    "type": "array",
+                    "items": 
+                    {
+                        "$ref": "Instancia"
+                    }
+                }
+            }
+        },
+
+		"DadosPioPropriedades": 
+		{
+			"properties": 
+			{
+				"idPio": 
+				{
+					"type": "string"
+				},
+
+				"nomePio": 
+				{
+					"type": "string"
+				},
+
+				"ordem": 
+				{
+					"type": "string"
+				},
+
+				"materiais": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"pessoas": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"organizacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"instalacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"mccs": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"anotacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				},
+
+				"pios": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "DadosPioPropriedades"
+					}
+				},
+
+				"metadado": 
+				{
+					"type": "PioMetadado",
+					"required": false
+				}
+			}
+		},
+
+		"PioMetadado": 
+		{
+			"properties": 
+			{
+				"arquivado": 
+				{
+					"type": "boolean",
+					"required": true
+				},
+
+				"remoto": 
+				{
+					"type": "boolean",
+					"required": true
+				},
+
+				"instancia": 
+				{
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+
+		"Item": 
+		{
+			"properties": 
+			{
+				"idItem": 
+				{
+					"type": "string"
+				},
+
+				"icon": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoriaAssociacao": 
+				{
+					"type": "string"
+				},
+
+				"nome": 
+				{
+					"type": "string"
+				},
+
+				"idTipo": 
+				{
+					"type": "string"
+				},
+
+				"nomeTipo": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoriaTipo": 
+				{
+					"type": "string"
+				},
+
+				"localizacao": 
+				{
+					"type": "Localizacao"
+				},
+
+				"hostilidade": 
+				{
+					"type": "Hostilidade"
+				},
+
+				"associacoes": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "AssociacaoItem"
+					}
+				},
+
+				"terminacao": 
+				{
+					"type": "string"
+				},
+
+				"sequencialAtualizacao": 
+				{
+					"type": "string"
+				},
+
+				"usuario": 
+				{
+					"type": "string"
+				},
+
+				"isAlvo": 
+				{
+					"type": "boolean"
+				},
+
+				"isShowMenu": 
+				{
+					"type": "boolean"
+				},
+
+				"isOrdemBatalha": 
+				{
+					"type": "boolean"
+				},
+
+				"idItemPai": 
+				{
+					"type": "string"
+				},
+
+				"comandados": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Item"
+					}
+				}
+			}
+		},
+
+		"Localizacao": 
+		{
+			"properties": 
+			{
+				"idLocalizacao": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"ponto": 
+				{
+					"type": "Ponto"
+				},
+
+				"linha": 
+				{
+					"type": "Linha"
+				},
+
+				"area": 
+				{
+					"type": "Area"
+				}
+			}
+		},
+
+		"Ponto": 
+		{
+			"properties": 
+			{
+				"latitude": 
+				{
+					"type": "double"
+				},
+
+				"longitude": 
+				{
+					"type": "double"
+				},
+
+				"altitude": 
+				{
+					"type": "double"
+				}
+			}
+		},
+
+		"Linha": 
+		{
+			"properties": 
+			{
+				"pontos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Ponto"
+					}
+				}
+			}
+		},
+
+		"Area": 
+		{
+			"properties": 
+			{
+				"pontos": 
+				{
+					"type": "array",
+					"items": 
+					{
+						"$ref": "Ponto"
+					}
+				}
+			}
+		},
+
+		"Hostilidade": 
+		{
+			"properties": 
+			{
+				"idHostilidade": 
+				{
+					"type": "string"
+				},
+
+				"codigoHostilidade": 
+				{
+					"type": "string"
+				},
+
+				"corHostilidade": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"AssociacaoItem": 
+		{
+			"properties": 
+			{
+				"idAssociacao": 
+				{
+					"type": "string"
+				},
+
+				"idItemObj": 
+				{
+					"type": "string"
+				},
+
+				"idItemSubj": 
+				{
+					"type": "string"
+				},
+
+				"codigoCategoria": 
+				{
+					"type": "string"
+				},
+
+				"nomeItemObj": 
+				{
+					"type": "string"
+				},
+
+				"nomeItemSubj": 
+				{
+					"type": "string"
+				},
+
+				"iconAssociacao": 
+				{
+					"type": "string"
+				}
+			}
+		},
+
+		"OrganizacaoMilitar": 
+		{
+			"properties": 
+			{
+				"id": 
+				{
+					"type": "string",
+					"required": true
+				},
+
+				"nome": 
+				{
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+
+        "Instancia": {
+            "properties": {
+                "idGlobalNo": {
+                    "type": "string",
+                    "required": true
+                },
+
+                "nomeNo": {
+                    "type": "string",
+                    "required": true
+                },
+
+                "pios": {
+                "type": "array",
+                    "items": {
+                        "$ref": "string"
+                    }
+                }
+            }
+        }
+	}
+}

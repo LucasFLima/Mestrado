@@ -1,0 +1,98 @@
+module movimentacao {
+
+	path = "xxx";
+
+	entity MovimentacoesPutRequest {
+		[LocalizacaoAlteracao] : localizacoes;   /*Required.*/
+		boolean : atualizaLocalizacaoAnterior;
+		[ItemMovimentacoes] : itens;   /*Required.*/
+	};
+
+	entity ClassificacaoCriacao {
+		string : conteudo;   /*Required.*/
+		string : tipoFonte;   /*Required.*/
+		long : gdhInicial;
+		long : gdhFinal;
+		long : gdh;   /*Required.*/
+		string : fonte;   /*Required.*/
+	};
+
+	entity ClassificacaoConsulta {
+		long : gdh;
+		String : idClassificacao;
+		long : gdhFinal;
+		long : gdhInicial;
+		string : tipoFonte;
+		string : conteudo;
+		string : fonte;
+	};
+
+	entity Localizacao {
+		integer : taxaVelocidade;
+		string : codigoCategoria;
+		integer : precisaoTaxaVelocidade;
+		integer : direcaoAngulo;
+		string : idLocalizacao;
+		Ponto : ponto;
+		integer : precisaoDirecaoAngulo;
+		ClassificacaoConsulta : classificacao;
+	};
+
+	entity ItemMovimentacoes {
+		string : idItem;   /*Required.*/
+	};
+
+	entity LocalizacaoAlteracao {
+		integer : precisaoTaxaVelocidade;
+		integer : direcaoAngulo;
+		string : precisao;
+		integer : taxaVelocidade;
+		integer : precisaoDirecaoAngulo;
+		Ponto : ponto;   /*Required.*/
+		ClassificacaoCriacao : classificacao;   /*Required.*/
+	};
+
+	entity Ponto {
+		number : altitude;
+		number : latitude;   /*Required.*/
+		number : longitude;   /*Required.*/
+	};
+
+	entity MovimentacaoItemPutRequest {
+		Localizacao : localizacao;   /*Required.*/
+		boolean : async;
+		boolean : atualizaLocalizacaoAnterior;
+	};
+
+	entity MovimentacaoItemPutResponse {
+		string : idLocalizacao;
+	};
+
+	service <NomeServico> {
+		path = "/item/movimentacoes";
+
+		/**
+		* @ summary: Atualiza a localizações de uma lista de itens
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body movimentacoes(*): 
+		*/
+		@put  <NomeCapacidade> (string t, MovimentacoesPutRequest movimentacoes);
+	}
+
+	service <NomeServico> {
+		path = "/item/movimentacao/{id}";
+
+		/**
+		* @ summary: Atualiza a localização de um item realizando a movimentação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	body movimentacao(*): 
+		*	query ignorarNotificacao: Não notificar esse usuário (token) da nova/própria atualização
+		*		\--> Valores possiveis: true false 
+		*/
+		@put MovimentacaoItemPutResponse <NomeCapacidade> (string t, string id, MovimentacaoItemPutRequest movimentacao, boolean ignorarNotificacao);
+	}
+
+

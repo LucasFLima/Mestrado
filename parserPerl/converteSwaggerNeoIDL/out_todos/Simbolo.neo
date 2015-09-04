@@ -1,0 +1,32 @@
+module simbolo {
+
+	path = "xxx";
+
+	entity PostSimboloReq {
+		[Simbolo] : simbolos;   /*Required.*/
+		string : subordinador;
+		long : largura;
+		string : hstlcor;   /*Required.*/
+		long : altura;
+		string : designacao;
+	};
+
+	entity Simbolo {
+		string : nome;   /*Required.*/
+		boolean : hstllinha;   /*Required.*/
+		boolean : hstlpreench;   /*Required.*/
+		int : ordem;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/simbolo";
+
+		/**
+		* @ summary: Composicao de Simbolos
+		* @ params: 
+		*	body simbInfo(*): 
+		*/
+		@post string <NomeCapacidade> (PostSimboloReq simbInfo);
+	}
+
+

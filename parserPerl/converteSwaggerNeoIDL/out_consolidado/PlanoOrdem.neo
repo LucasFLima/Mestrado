@@ -1,0 +1,315 @@
+module planoordem {
+
+	import entidades;
+
+	path = "xxx";
+
+	entity OrganizacaoMilitarPutRequest {
+		int : quantidadePraca;   /*Required.*/
+		int : quantidadeOficial;   /*Required.*/
+		int : quantidadeOutros;   /*Required.*/
+		string : id;   /*Required.*/
+		[MaterialPutRequest] : materiais;
+	};
+
+	entity OrdensGetResponse {
+		[Ordem] : local;   /*Required.*/
+	};
+
+	entity PlanoOrdemPutRequest {
+		long : dataFim;
+		boolean : isDistribuirLista;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : codigoOrdemVerbal;   /*Required.*/
+		string : codigoHoraCivil;   /*Required.*/
+		string : detalhamento;
+		string : id;   /*Required.*/
+		string : codigoEstado;   /*Required.*/
+		string : indicativoReferencia;   /*Required.*/
+		[PlanoOrdemCorpo] : corpo;   /*Required.*/
+		[PIOPutRequest] : calcos;
+		string : numeroSerial;   /*Required.*/
+		[PlanoOrdemAnexo] : anexos;
+		long : dataInicio;   /*Required.*/
+		string : nomeAlternativo;
+		string : codigoNivelSeguranca;   /*Required.*/
+		Localizacao : localizacao;   /*Required.*/
+		[DistribuicaoPutRequest] : distribuicoes;
+		string : codigoCategoria;   /*Required.*/
+	};
+
+	entity PlanoOrdemGetResponse {
+		[PlanoOrdemCorpo] : corpo;
+		string : indicativoReferencia;
+		string : codigoEstado;
+		string : id;   /*Required.*/
+		string : detalhamento;
+		string : nome;   /*Required.*/
+		string : codigoOrdemVerbal;
+		string : codigoHoraCivil;
+		boolean : isDistribuirLista;   /*Required.*/
+		long : dataFim;
+		[PlanoOrdemDistribuicao] : distribuicoes;
+		string : codigoCategoria;   /*Required.*/
+		Localizacao : localizacao;
+		string : nomeAlternativo;
+		string : codigoNivelSeguranca;
+		long : dataInicio;
+		[PlanoOrdemAnexo] : anexos;
+		[PIO] : calcos;
+		string : numeroSerial;   /*Required.*/
+	};
+
+	entity PlanosOrdens {
+		[Ordem] : ordens;   /*Required.*/
+		[Plano] : planos;   /*Required.*/
+	};
+
+	entity Calco {
+		[OrganizacaoMilitar] : organizacoes;
+		string : id;
+	};
+
+	entity PIO {
+		string : nome;   /*Required.*/
+		[OrganizacaoMilitar] : organizacoes;
+		boolean : isAtivo;   /*Required.*/
+		string : id;   /*Required.*/
+	};
+
+	entity PIOPutRequest {
+		string : id;   /*Required.*/
+		[OrganizacaoMilitarPutRequest] : organizacoes;
+	};
+
+	entity Material {
+		string : idTipo;   /*Required.*/
+		int : quantidade;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity PlanoOrdemAnexo {
+		string : nomeAnexo;   /*Required.*/
+		string : tipoAnexo;   /*Required.*/
+		string : idAnexo;   /*Required.*/
+	};
+
+	entity OrganizacaoMilitar {
+		int : quantidadePraca;   /*Required.*/
+		string : id;   /*Required.*/
+		int : quantidadeOutros;   /*Required.*/
+		int : quantidadeOficial;   /*Required.*/
+		string : nome;   /*Required.*/
+		boolean : isAtivoPio;   /*Required.*/
+		boolean : isAtivo;   /*Required.*/
+		[Material] : materiais;
+	};
+
+	entity PlanosOrdensGetResponse {
+		PlanosOrdens : local;   /*Required.*/
+		String : statusWebSocket;   /*Required.*/
+	};
+
+	entity PlanoOrdemCorpo {
+		[PlanoOrdemCorpoEstrutura] : estrutura;   /*Required.*/
+	};
+
+	entity Plano {
+		string : codigoCategoria;   /*Required.*/
+		string : id;   /*Required.*/
+		string : numeroSerial;   /*Required.*/
+	};
+
+	entity PlanoOrdemEstado {
+		string : id;
+		string : codigoEstado;
+		long : data;
+	};
+
+	entity Ordem {
+		string : codigoCategoria;   /*Required.*/
+		[OrdemComplementar] : ordensComplementares;   /*Required.*/
+		string : id;   /*Required.*/
+		string : numeroSerial;   /*Required.*/
+	};
+
+	entity PlanoOrdemCorpoEstrutura {
+		string : id;   /*Required.*/
+		string : descricao;
+		string : parent;   /*Required.*/
+		string : text;   /*Required.*/
+	};
+
+	entity PlanoOrdem {
+		long : dataInicio;
+		[Anexo] : anexos;
+		[Calco] : calcos;
+		string : numeroSerial;
+		[PlanoOrdemDistribuicao] : distribuicoes;
+		string : codigoCategoria;
+		[PlanoOrdemCorpo] : corpoList;
+		Localizacao : localizacao;
+		string : codigoNivelSeguranca;
+		string : nomeAlternativo;
+		[PlanoOrdemComplementar] : ordensComplementares;
+		string : nome;
+		string : codigoOrdemVerbal;
+		string : codigoHoraCivil;
+		boolean : isDistribuirLista;
+		long : dataFim;
+		string : indicativoReferencia;
+		boolean : isAfetaOrdemAnterior;
+		string : codigoEstado;
+		string : id;
+		string : detalhamento;
+	};
+
+	entity PlanoOrdemDistribuicao {
+		string : nome;   /*Required.*/
+		string : codigoReconhecimento;
+		string : idOrdemBatalha;   /*Required.*/
+		long : dataReconhecimento;
+	};
+
+	entity DistribuicaoPutRequest {
+		string : idOrdemBatalha;   /*Required.*/
+	};
+
+	entity MaterialPutRequest {
+		int : quantidade;   /*Required.*/
+		string : idTipo;   /*Required.*/
+	};
+
+	entity OrdemComplementarPutRequest {
+		[PIOPutRequest] : calcos;
+		string : numeroSerial;   /*Required.*/
+		[PlanoOrdemAnexo] : anexos;
+		boolean : isDistribuirLista;   /*Required.*/
+		string : nome;   /*Required.*/
+		string : detalhamento;
+		Localizacao : localizacao;
+		boolean : isAfetaOrdemAnterior;   /*Required.*/
+		[DistribuicaoPutRequest] : distribuicoes;
+	};
+
+	entity OrdemComplementar {
+		string : codigoCategoria;   /*Required.*/
+		string : numeroSerial;   /*Required.*/
+		string : id;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/planoordem";
+
+		/**
+		* @ summary: Retorna a lista de planos e ordens locais e ordens remotas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PlanosOrdensGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/ordem";
+
+		/**
+		* @ summary: Retorna a lista de ordens locais e ordens remotas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	 complementares: Filtro para incluir (padrão) ou remover as ordens complementares
+		*/
+		@get OrdensGetResponse <NomeCapacidade> (string t, string complementares);
+	}
+
+	service <NomeServico> {
+		path = "/plano";
+
+		/**
+		* @ summary: Criar um plano
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body plano(*): 
+		*/
+		@post  <NomeCapacidade> (string t, PlanoOrdem plano);
+	}
+
+	service <NomeServico> {
+		path = "/plano/{id}";
+
+		/**
+		* @ summary: Remover um plano existente
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): ID do plano
+		*/
+		@delete  <NomeCapacidade> (string t, string id);
+	}
+
+	service <NomeServico> {
+		path = "/ordemfragmentaria";
+
+		/**
+		* @ summary: Criar uma ordem fragmentária
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body ordem(*): 
+		*/
+		@post  <NomeCapacidade> (string t, PlanoOrdem ordem);
+	}
+
+	service <NomeServico> {
+		path = "/planoordem/{id}";
+
+		/**
+		* @ summary: Recuperar o plano ou ordem específico(a)
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*/
+		@get PlanoOrdemGetResponse <NomeCapacidade> (string t, string id);
+
+		/**
+		* @ summary: Atualizar um plano ou ordem existente
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body planoOrdem(*): 
+		*/
+		@put  <NomeCapacidade> (string t, PlanoOrdemPutRequest planoOrdem);
+	}
+
+	service <NomeServico> {
+		path = "/planoordem/corpo/template";
+
+		/**
+		* @ summary: Recuperar o corpo do documento padrão
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PlanoOrdemCorpo <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/ordem/{id}";
+
+		/**
+		* @ summary: Recebimento da difusão de uma ordem
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body ordem(*): 
+		*/
+		@put  <NomeCapacidade> (string t, OrdemPutRequest ordem);
+	}
+
+	service <NomeServico> {
+		path = "/ordemfragmentaria/{id}";
+
+		/**
+		* @ summary: Recebimento da difusão de uma ordem fragmentária
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body ordemFragmentaria(*): 
+		*/
+		@put  <NomeCapacidade> (string t, OrdemFragmentariaPutRequest ordemFragmentaria);
+	}
+
+

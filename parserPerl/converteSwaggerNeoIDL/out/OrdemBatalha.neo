@@ -1,0 +1,112 @@
+module ordembatalha {
+
+	path = "xxx";
+
+	entity EventoMovimentacao {
+		number : latitude;   /*Required.*/
+		number : longitude;   /*Required.*/
+		number : idItem;   /*Required.*/
+	};
+
+	entity OrdemBatalhaLocalizacaoGetResponse {
+		Localizacao : localizacao;
+	};
+
+	entity Classificacao {
+		string : conteudo;   /*Required.*/
+		string : fonte;   /*Required.*/
+		number : gdhInicial;
+		string : tipoFonte;   /*Required.*/
+		number : gdh;
+		number : gdhFinal;
+	};
+
+	entity Localizacao {
+		Ponto : ponto;   /*Required.*/
+		Classificacao : classificacao;
+	};
+
+	entity OrdemBatalhaPostRequest {
+		string : idCalco;
+		Localizacao : localizacao;
+		string : idUsuario;
+		string : idOrdemBatalha;
+	};
+
+	entity EventoMovimentacaoPostRequest {
+		EventoMovimentacao : movimentacao;   /*Required.*/
+	};
+
+	entity Ponto {
+		number : longitude;
+		number : latitude;
+	};
+
+	entity TipoRamo {
+		string : idTipo;
+		string : idItem;
+		string : nome;
+		string : codigoCategoria;
+		[TipoRamo] : ramos;
+	};
+
+	entity OrdemBatalhaPostResponse {
+		string : idCalco;   /*Required.*/
+		string : idOrganizacao;   /*Required.*/
+	};
+
+	entity OrdemBatalhaPutRequest {
+		Localizacao : localizacao;   /*Required.*/
+		boolean : atualizaLocalizacaoAnterior;
+		string : idItem;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/ordemBatalha/evento";
+
+		/**
+		* @ summary: Recebe um evento de movimentação.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body EventoMovimentacao(*): 
+		*/
+		@post  <NomeCapacidade> (string t, EventoMovimentacaoPostRequest EventoMovimentacao);
+	}
+
+	service <NomeServico> {
+		path = "/ordemBatalha/localizacao";
+
+		/**
+		* @ summary: Cria um evento de localização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body localizacao(*): 
+		*/
+		@put  <NomeCapacidade> (string t, OrdemBatalhaPutRequest localizacao);
+	}
+
+	service <NomeServico> {
+		path = "/ordemBatalha/{idOrdemBatalha}/localizacao";
+
+		/**
+		* @ summary: Recupera a localização
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idOrdemBatalha(*): ID da ordem de batalha
+		*/
+		@get OrdemBatalhaLocalizacaoGetResponse <NomeCapacidade> (string t, string idOrdemBatalha);
+	}
+
+	service <NomeServico> {
+		path = "/ordemBatalha/ordem";
+
+		/**
+		* @ summary: Cria uma referência da ordem de batalha em um pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body organizacao(*): 
+		*/
+		@post OrdemBatalhaPostResponse <NomeCapacidade> (string t, OrdemBatalhaPostRequest organizacao);
+	}
+
+

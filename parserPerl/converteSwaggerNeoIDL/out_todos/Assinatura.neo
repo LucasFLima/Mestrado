@@ -1,0 +1,99 @@
+module assinatura {
+
+	path = "xxx";
+
+	entity PublicacaoRequest {
+		string : tipoPublicacao;
+		string : tipoPio;
+		[Pio] : pios;
+		Instancia : no;
+	};
+
+	entity Instancia {
+		string : idGlobalInstancia;
+		string : idGlobalRemetente;
+		[Pio] : pios;
+		string : idOrdemBatalha;
+		string : nome;
+		string : id;
+		string : idGlobalOrdemBatalha;
+		string : nomeOrigem;
+		boolean : publicado;
+		string : estado;
+	};
+
+	entity AssinaturaPostRequest {
+		[Instancia] : nos;
+		string : tipoAssinatura;
+	};
+
+	entity Pio {
+		[Instancia] : nos;
+		boolean : assinado;
+		string : nomeNoOrigem;
+		string : idPio;
+		string : idGlobalPio;
+		string : nome;
+		string : estado;
+	};
+
+	entity PublicacaoResponse {
+		[Instancia] : nos;
+		[Pio] : pios;
+	};
+
+	entity AssinaturaResponse {
+		[Instancia] : nos;
+		Pio : pio;
+	};
+
+	service <NomeServico> {
+		path = "/assinatura/publicarPios";
+
+		/**
+		* @ summary: Obtém todos os pios/nós
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idPio: O id do pio
+		*	query tipoPio(*): O tipo do pio local ou remoto
+		*/
+		@get PublicacaoResponse <NomeCapacidade> (string t, string idPio, string tipoPio);
+	}
+
+	service <NomeServico> {
+		path = "/assinatura/publicarPios";
+
+		/**
+		* @ summary: Envia/recebe a publicação de pios locais e remotos
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body PublicacaoRequest(*): 
+		*/
+		@post PublicacaoResponse <NomeCapacidade> (string t, PublicacaoRequest PublicacaoRequest);
+	}
+
+	service <NomeServico> {
+		path = "/assinatura/assinarPios";
+
+		/**
+		* @ summary: Obtém todos os nós/pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idNo: O id do nó
+		*/
+		@get AssinaturaResponse <NomeCapacidade> (string t, string idNo);
+	}
+
+	service <NomeServico> {
+		path = "/assinatura/assinarPios";
+
+		/**
+		* @ summary: Envia/recebe assinatura
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body AssinaturaPostRequest(*): 
+		*/
+		@post AssinaturaResponse <NomeCapacidade> (string t, AssinaturaPostRequest AssinaturaPostRequest);
+	}
+
+

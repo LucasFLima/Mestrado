@@ -1,0 +1,27 @@
+module backup {
+
+	path = "xxx";
+
+	service <NomeServico> {
+		path = "/sistema/backup";
+
+		/**
+		* @ summary: Um array contendo o alerta consultado.
+		* @ params: 
+		*	query t(*): 
+		*/
+		@post  <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/sistema/restore";
+
+		/**
+		* @ summary: Um array contendo todos os alertas
+		* @ params: 
+		*	query t(*): 
+		*/
+		@post  <NomeCapacidade> (string t);
+	}
+
+

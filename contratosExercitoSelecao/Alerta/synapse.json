@@ -1,0 +1,826 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "Alerta",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/alerta/{idAlerta}",
+      "description": "Retorna o alerta pelo ID",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AlertaResponse",
+          "summary": "Um array contendo o alerta consultado.",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idAlerta",
+              "paramType": "query",
+              "type": "number",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "AlertaResponse",
+          "summary": "Atualiza as informações de um alerta no servidor",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idAlerta",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },            
+            {
+              "name": "alerta",
+              "paramType": "body",
+              "type": "Alerta",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "type": "AlertaDeleteResponse",
+          "summary": "Atualiza as informações de um alerta no servidor",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idAlerta",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta",
+      "description": "Retorna uma lista de alertas baseado no tipo. Os tipos são [N]ormal, [P]adrão e [T]odos. ",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AlertaResponse",
+          "summary": "Um array contendo todos os alertas",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "type": "AlertaResponse",
+          "summary": "Cria um novo alerta",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "alerta",
+              "paramType": "body",
+              "type": "AlertaPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/tipo/{tipoAlerta}",
+      "description": "Retorna uma lista de alertas baseado no tipo. Os tipos são [N]ormal, [P]adrão e [T]odos. ",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AlertaResponse",
+          "summary": "Um array contendo o alerta consultado.",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "tipoAlerta",
+              "paramType": "query",
+              "type": "string",
+              "required": true,
+              "enum": [
+                "N",
+                "P",
+                "T"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/{idAlerta}/enable/{ativar}",
+      "description": "Ativa ou desativa um alerta",
+      "operations": [
+        {
+          "method": "PUT",
+          "type": "AlertaResponse",
+          "summary": "Retorna um array contendo as informações do alerta",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "description": "Dados de autenticação",
+              "required": true
+            },
+            {
+              "name": "idAlerta",
+              "paramType": "path",
+              "type": "string",
+              "description": "Identificador do alerta",
+              "required": true
+            },
+            {
+              "name": "ativar",
+              "paramType": "path",
+              "type": "boolean",
+              "description": "Indica se o alerta será ativado ou desativado.",
+              "required": true,
+              "enum": [
+                "true",
+                "false"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/tipo",
+      "description": "Recurso para consultar os tipos de alertas disponiveis",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "TipoAlertaResponse",
+          "summary": "Retorna um array contendo as informações dos tipos de alerta",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "description": "Dados de autenticação",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/notifyEvent",
+      "description": "Notifica este neurônio que um evento de possível interesse ocorreu.",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "NotifyEventResponse",
+          "summary": "Envia uma notificação de que um  ou mais eventos de possível interesse para o neurôn de alertas.",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+			{
+			 "name": "eventos",
+			 "paramType": "body",
+			 "type": "NotifyEventPostRequest",
+			 "description": "Informa quais eventos foram disparados"
+			}            
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/fireAlert/{idAlerta}",
+      "description": "Dispara um alerta. Este serviço existirá apenas durante os testes.",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "AlertaResponse",
+          "summary": "Força o neurôn a disparar o alerta especificado.",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idAlerta",
+              "paramType": "query",
+              "description": "ID do alerta que deve ser disparado.",
+              "type": "number",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/dom/alerta",
+      "description": "Retorna as categorias de alertas existentes",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CategoriaAlertaGetResponse",
+          "summary": "Retorna os valores possivéis para a categoria de alerta",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/dom/difusao",
+      "description": "Retorna as categorias de difusão existentes",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CategoriaDifusaoGetResponse",
+          "summary": "Retorna os valores possivéis para a categoria de difusao",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/dom/tipo",
+      "description": "Retorna as categorias de tipos de alertas existentes",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "CategoriaTipoAlertaGetResponse",
+          "summary": "Retorna as categorias de tipos de alertas existentes",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/alerta/dom/unidade",
+      "description": "Retorna as unidades disponíveis",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "UnidadeAlertaGetResponse",
+          "summary": "Retorna os valores possivéis para a categoria de alerta",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },    
+    {
+      "path": "/alerta/historico",
+      "description": "Retorna as categorias de tipos de alertas existentes",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "HistoricoAlertaGetResponse",
+          "summary": "Retorna uma lista de históricos. ",
+          "parameters": [
+            {
+              "name": "t",
+              "paramType": "query",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idAlerta",
+              "paramType": "query",
+              "description": "ID do alerta dos históricos que devem ser retornados.",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "dataInicial",
+              "paramType": "query",
+              "description": "A partir de que data o histórico deve ser retornado.",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "dataFinal",
+              "paramType": "query",
+              "description": "Até que data o histórico deve ser retornado.",
+              "type": "string",
+              "required": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Alerta": {
+      "properties": {
+        "idAlerta": {
+          "type": "string",
+          "description": "ID do alerta",
+          "required": false
+        },
+        "ativo": {
+          "type": "boolean",
+          "description": "Indica se o alerta encontra-se ativo.",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "description": "Nome do alerta",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "description": "ID do PIO que este alerta deve monitorar. Pode ser nulo caso seja um alerta Padrão.",
+          "required": false
+        },
+        "nomePio": {
+          "type": "string",
+          "description": "Nome do PIO monitorado por este alerta",
+          "required": false
+        },        
+        "categoria": {
+          "type": "string",
+          "description": "Informa se o Alerta é entidade tipo, entidade unidade ou ambos",
+          "required": true
+        },
+        "tipo": {
+          "type": "string",
+          "description": "Categoria do tipo do alerta. Se é Entrada em um raio(ENTRAI), por exemplo.",
+          "required": true
+        },
+        "txtTipo": {
+          "type": "string",
+          "description": "Descrição do tipo como: Entrada em um raio, saída de um raio, atributo modificado, status modificado",
+          "required": false
+        },
+        "tipoAlerta": {
+          "type": "string",
+          "description": "Se é um alerta [P]adrão ou [N]ormal",
+          "required": true
+        },
+        "txtTipoAlerta": {
+          "type": "string",
+          "description": "Texto referente ao tipo do alerta. Se tipoAlerta for 'P', este atributo será 'Padrão'. Se for 'N' este terá o valor de 'Normal'. Utilizado na consulta",
+          "required": false
+        },        
+        "criticidade": {
+          "type": "string",
+          "description": "Informa a criticidade do alerta. Pode ser primário ou secundário",
+          "required": true
+        },
+        "regiao": {
+          "type": "Regiao",
+          "description": "Região aonde o alerta deve ser disparado",
+          "required": false
+        },        
+        "difusao": {
+          "type": "string",
+          "description": "Informa o nível de difusão do alerta.",
+          "required": true
+        },
+        "apresentacao": {
+          "type": "array",
+          "description": "Informa o nível de difusão do alerta.",
+          "required": true,
+          "items": {
+            "$ref": "ApresentacaoAlerta"
+          }
+        },
+        "itens": {
+          "type": "array",
+          "description": "Informa o nível de difusão do alerta.",
+          "required": false,
+          "items": {
+            "$ref": "ItemAlerta"
+          }
+        },
+        "unidades": {
+          "type": "array",
+          "description": "Informa o nível de difusão do alerta.",
+          "required": false,
+          "items": {
+            "$ref": "UnidadeAlerta"
+          }
+        }
+      }
+    },
+    "Area": {
+      "properties": {
+        "pontos": {
+          "type": "array",
+          "description": "Pontos que montam a região",
+          "required": true,
+          "items": {
+            "$ref": "Ponto"
+          }
+        }
+      }
+    },
+    "Circulo": {
+      "properties": {
+        "raio": {
+          "type": "string",
+          "description": "Raio da circuferência",
+          "required": true
+        },
+        "centro": {
+          "type": "Ponto",
+          "description": "Centro do circulo",
+          "required": true
+        }
+      }
+    },  
+    "Regiao": {
+      "properties": {
+        "area": {
+          "type": "Area",
+          "description": "Área do alerta",
+          "required": false
+        },
+        "circulo": {
+          "type": "Circulo",
+          "description": "Circulo do alerta",
+          "required": false
+        }
+      }
+    },
+    "Ponto": {
+        "properties": {
+            "latitude": {
+                "type": "number",
+                "required": true
+            },
+            "longitude": {
+                "type": "number",
+                "required": true
+            },
+            "altitude": {
+                "type": "number"
+            }
+        }
+    },
+    "UnidadeAlertaGetResponse": {
+      "properties": {
+        "unidades": {
+          "type": "array",
+          "description": "Array de unidades",
+          "required": true,
+          "items": {
+            "$ref": "UnidadeAlerta"
+          }
+        }
+      }
+    },    
+    "ItemAlerta": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "description": "Código do item que será monitorado",
+          "required": true
+        }
+      }
+    },
+    "UnidadeAlerta": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "description": "Código do item que será monitorado",
+          "required": true
+        },
+        "descricao": {
+          "type": "string",
+          "description": "Descrição do item que será monitorado",
+          "required": false
+        }
+      }
+    },
+    "TipoAlerta": {
+      "properties": {
+        "codTipoAlerta": {
+          "type": "string",
+          "description": "Código do tipo do alerta",
+          "required": true
+        },
+        "descricaoTipoAlerta": {
+          "type": "string",
+          "description": "Descrição do tipo do alerta",
+          "required": true
+        }
+      }
+    },
+    "NotifyEventPostRequest": {
+      "properties": {
+        "events": {
+          "type": "array",
+          "description": "Lista de eventos",
+          "items": {
+            "$ref": "Event"
+          }
+        }
+      }
+    },    
+    "Event": {
+      "properties": {
+        "idPio": {
+          "type": "string",
+          "description": "ID do PIO do item que gerou o evento",
+          "required": true
+        },
+        "idSourceItem": {
+          "type": "string",
+          "description": "ID do Item que gerou o evento",
+          "required": true
+        },
+        "typeSourceItem": {
+          "type": "string",
+          "description": "Tipo do item que gerou o evento",
+          "required": false
+        },        
+        "codTipoEvento": {
+          "type": "string",
+          "description": "Descrição do tipo do alerta: atributo do item modificado, localização do item modificada, novo item criado, item excluído.",
+          "required": true
+        }
+      }
+    },
+    "TipoAlertaResponse": {
+      "properties": {
+        "tipos": {
+          "type": "array",
+          "description": "Lista de tipos de alertas",
+          "required": true,
+          "items": {
+            "$ref": "TipoAlerta"
+          }
+        }
+      }
+    },
+    "ApresentacaoAlerta": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "description": "Código da Apresentação do alerta",
+          "required": true
+        }
+      }
+    },    
+    "AlertaResponse": {
+      "properties": {
+        "alertas": {
+          "type": "array",
+          "description": "Lista de alertas",
+          "required": true,
+          "items": {
+            "$ref": "Alerta"
+          }
+        }
+      }
+    },
+    "AlertaDeleteResponse": {
+      "properties": {
+        "idAlerta": {
+          "type": "string",
+          "description": "ID do alerta que foi excluído.",
+          "required": true
+        }
+      }
+    },
+    "CategoriaAlerta": {
+      "properties": {
+        "codCategoria": {
+          "type": "string",
+          "description": "Código da categoria do alerta"
+        },
+        "txtCategoria": {
+          "type": "string",
+          "description": "Texto da categoria do alerta"
+        }
+      }
+    },
+    "CategoriaAlertaGetResponse": {
+      "properties": {
+        "alertas": {
+          "type": "array",
+          "description": "Categorias de alertas",
+          "required": true,
+          "items": {
+            "$ref": "CategoriaAlerta"
+          }
+        }
+      }
+    },
+    "CategoriaTipoAlerta": {
+      "properties": {
+        "codCategoriaTipoAlerta": {
+          "type": "string",
+          "description": "Código da categoria do tipo do alerta"
+        },
+        "txtCategoriaTipoAlerta": {
+          "type": "string",
+          "description": "Código da categoria do tipo do alerta"
+        }
+      }
+    },
+    "CategoriaTipoAlertaGetResponse": {
+      "properties": {
+        "alertas": {
+          "type": "array",
+          "description": "Categorias de tipo de alerta",
+          "required": true,
+          "items": {
+            "$ref": "CategoriaTipoAlerta"
+          }
+        }
+      }
+    },
+    "CategoriaDifusaoAlerta": {
+      "properties": {
+        "codDifusao": {
+          "type": "string",
+          "description": "Código da categoria de difusão"
+        },
+        "txtDifusao": {
+          "type": "string",
+          "description": "Texto da categoria de difusão"
+        },
+        "descDifusao": {
+          "type": "string",
+          "description": "Descrição da categoria do tipo do alerta"
+        }
+      }
+    },
+    "CategoriaDifusaoGetResponse": {
+      "properties": {
+        "alertas": {
+          "type": "array",
+          "description": "Categorias de difusão",
+          "required": true,
+          "items": {
+            "$ref": "CategoriaDifusaoAlerta"
+          }
+        }
+      }
+    },
+    "AlertaPostRequest": {
+      "properties": {
+        "alerta": {
+          "type": "Alerta",
+          "description": "Novo alerta que será criado no sistema"
+        }
+      }
+    },  
+    "HistoricoAlerta": {
+      "properties": {
+        "idHistorico": {
+          "type": "string",
+          "description": "ID do historico. Coincide com o ID do Alerta",
+          "required": true
+        },
+        "idxHistorico": {
+          "type": "string",
+          "description": "Contador de alertas disparados para este alerta",
+          "required": true
+        },
+        "idCriador": {
+          "type": "string",
+          "description": "ID da organização  relatora que disparou o alerta",
+          "required": true
+        },
+        "dataHistorico": {
+          "type": "string",
+          "description": "Timestamp do momento que o alerta foi disparado",
+          "required": true
+        },
+        "criticidade": {
+          "type": "string",
+          "description": "Indicador de criticidade do alerta: [P]rimário ou [S]ecundário",
+          "required": true
+        },
+        "nomeAlerta": {
+          "type": "string",
+          "description": "Nome do alerta disparado",
+          "required": true
+        },
+        "tipo": {
+          "type": "string",
+          "description": "Código do tipo do alerta",
+          "required": true
+        },        
+		"txtTipo": {	
+          "type": "string",
+          "description": "Descrição do tipo do alerta",
+          "required": true
+        },                
+        "entidadeUnidade": {
+          "type": "string",
+          "description": "Código da entidade ou unidade",
+          "required": true
+        },
+        "isUnidade": {
+          "type": "boolean",
+          "description": "Indica se é uma entidade ou unidade. Se for true, entidaeUnidade indica uma unidade se for false é uma entidade",
+          "required": true
+        }
+      }
+    },
+    "HistoricoAlertaGetRequest": {
+      "properties": {
+        "idAlerta": {
+          "type": "string",
+          "description": "ID do alerta",
+          "required": false
+        },
+        "dataInicial": {
+          "type": "string",
+          "description": "Menor data do histórico do alerta",
+          "required": false
+        },
+        "dataFinal": {
+          "type": "string",
+          "description": "Maior data do histórico do alerta",
+          "required": false
+        }
+      }
+    },
+	"HistoricoAlertaGetResponse": {
+      "properties": {
+        "historico": {
+          "type": "array",
+          "description": "Lista de históricos",
+          "required": true,
+          "items": {
+            "$ref": "HistoricoAlerta"
+          }
+        }
+      }
+    },    
+    "AlertaPutRequest": {
+      "properties": {
+        "alerta": {
+          "type": "Alerta",
+          "description": "Alerta que será modificado",
+          "required": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,949 @@
+module calconeuronsad {
+
+	path = "xxx";
+
+	entity PioArquivarPutRequest {
+		boolean : arquivar;   /*Required.*/
+	};
+
+	entity Area {
+		[Ponto] : pontos;
+	};
+
+	entity AprovarPiosResponse {
+		boolean : result;
+	};
+
+	entity ItemPolling {
+		Localizacao : localizacao;
+		boolean : showMenu;
+		[ItemPolling] : subordinados;
+		string : idItemPai;
+		boolean : alvo;
+		string : nome;
+		string : nomeTipo;
+		string : codigoCategoria;
+		boolean : removido;
+		string : corHostilidade;
+		string : idItem;
+		string : idPio;
+		boolean : novo;
+		boolean : ordemBatalha;
+		string : codigoHostilidade;
+		string : codigoCategoriaTipo;
+		string : idTipo;
+		string : largura;
+		string : icon;
+	};
+
+	entity AssocVistaMapaPutRequest {
+		string : shpCorLinha;
+		string : shpEspessLinha;
+		string : shpTransparenciaLinha;
+		string : shpCorPreenchimento;
+		string : shpTransparenciaPreenchimento;
+		string : transparencia;
+	};
+
+	entity ItemAlvo {
+		string : idItem;
+		string : prioridade;
+		string : icon;
+		string : nome;
+	};
+
+	entity PiosRemotosResponse {
+		[Instancia] : nos;
+	};
+
+	entity Item {
+		[Item] : comandados;
+		[AssociacaoItem] : associacoes;
+		string : usuario;
+		string : nomeTipo;
+		string : codigoCategoria;
+		boolean : isOrdemBatalha;
+		string : nome;
+		boolean : isAlvo;
+		string : terminacao;
+		string : idItemPai;
+		Localizacao : localizacao;
+		string : icon;
+		string : codigoCategoriaTipo;
+		string : idTipo;
+		string : sequencialAtualizacao;
+		string : idItem;
+		Hostilidade : hostilidade;
+		string : codigoCategoriaAssociacao;
+		boolean : isShowMenu;
+	};
+
+	entity PublicacaoResponse {
+		string : idPio;
+	};
+
+	entity ListaAlvos {
+		string : nome;
+		string : idListaAlvos;
+		[ItemAlvo] : alvos;
+	};
+
+	entity Linha {
+		[Ponto] : pontos;
+	};
+
+	entity AprovarPiosRequest {
+		[string] : pios;
+	};
+
+	entity ConfigMapa {
+		string : wmsFormat;
+		string : shpCorLinha;
+		string : shpCorPreenchimento;
+		string : wmsLayer;
+		string : wmsCrs;
+		string : shpEspessLinha;
+		string : shpTransparenciaLinha;
+		string : tipoCamada;
+		string : shpTransparenciaPreenchimento;
+		string : transparencia;
+	};
+
+	entity AssocVistaMapasPutRequest {
+		string : idMapa;   /*Required.*/
+		[CamadaWms] : camadasWms;
+	};
+
+	entity AssocMapaVistaResponse {
+		string : idVista;   /*Required.*/
+		string : wmsFormat;
+		string : shpCorLinha;
+		string : shpCorPreenchimento;
+		string : wmsCrs;
+		string : idMapaAssoc;   /*Required.*/
+		string : wmsLayer;
+		MapaResponse : objMapa;   /*Required.*/
+		string : shpTransparenciaPreenchimento;
+		string : tipoCamada;
+		string : transparencia;   /*Required.*/
+		string : shpEspessLinha;
+		string : idMapa;   /*Required.*/
+		string : shpTransparenciaLinha;
+	};
+
+	entity PiosRequest {
+		[string] : pios;   /*Required.*/
+	};
+
+	entity DadosPioPropriedades {
+		[Item] : organizacoes;
+		string : idPio;
+		[Item] : pessoas;
+		[Item] : instalacoes;
+		[Item] : anotacoes;
+		PioMetadado : metadado;
+		string : ordem;
+		[DadosPioPropriedades] : pios;
+		string : nomePio;
+		[Item] : mccs;
+		[Item] : materiais;
+	};
+
+	entity ItemEvento {
+		string : nome;
+		string : icon;
+		string : idItem;
+	};
+
+	entity SubordinarPioPutRequest {
+		string : idPioSubordinado;
+		string : idPioSubordinadorAntigo;
+		string : idPioSubordinador;
+	};
+
+	entity ClassificacaoSeguranca {
+		string : idClassificacaoSeguranca;
+		string : codigoNivel;
+	};
+
+	entity VistaMapaPutRequest {
+		ConfigMapa : config;
+	};
+
+	entity AssociacaoPioCalcoPostRequest {
+		[AssociacaoPioCalco] : listaPios;
+		string : idUsuario;
+		string : idVista;
+	};
+
+	entity DadosDoCalco {
+		string : codigoCategoria;
+		string : idPio;
+		string : idVista;
+	};
+
+	entity CalcoGetResponse {
+		string : nomePio;
+		string : ordem;
+		string : idPio;
+	};
+
+	entity VistaGetResponse {
+		long : dtExecucao;
+		Vista : vistas;
+	};
+
+	entity VistaMapaPostRequest {
+		ConfigMapa : config;
+	};
+
+	entity Instancia {
+		[string] : pios;
+		string : nomeNo;   /*Required.*/
+		string : idGlobalNo;   /*Required.*/
+	};
+
+	entity MapaVista {
+		string : idAssocMapa;
+		string : tipoAcesso;
+		string : nome;
+		string : referencia;
+		ConfigMapa : configMapa;
+		string : idMapa;
+		string : tipoMapa;
+	};
+
+	entity AssociacaoAtualizar {
+		String : ordem;   /*Required.*/
+	};
+
+	entity ConsultarPiosAprovacaoResponse {
+		[PioAprovacao] : pios;
+	};
+
+	entity PioPolling {
+		string : codigoCategoria;
+		boolean : raiz;
+		string : idPioPai;
+		[ItemPolling] : instalacoes;
+		string : nomePio;
+		[Anotacao] : anotacoes;
+		[ItemPolling] : pessoas;
+		[string] : pios;
+		boolean : arquivado;
+		string : idGlobal;
+		[ItemPolling] : mccs;
+		[ItemPolling] : materiais;
+		[ItemPolling] : organizacoes;
+		[ListaAlvos] : listasAlvos;
+		string : idPio;
+		boolean : novo;
+		[EventoPolling] : eventos;
+	};
+
+	entity Localizacao {
+		string : codigoCategoria;
+		Area : area;
+		Linha : linha;
+		string : idLocalizacao;
+		Ponto : ponto;
+	};
+
+	entity VistasResponse {
+		[PioPolling] : pios;
+		[VistaPolling] : vistas;
+	};
+
+	entity DadosDoPio {
+		string : nomePio;
+		string : idClassificacaoSeguranca;
+		string : codigoCategoria;
+		string : textoDescricao;
+	};
+
+	entity AssocVistaMapasGetResponse {
+		AssocMapaVistaResponse : mapas;   /*Required.*/
+	};
+
+	entity Pio {
+		string : transparencia;
+		string : idPio;
+		[Item] : itens;
+		string : idGlobal;
+		[Anotacao] : anotacoes;
+		[Pio] : pios;
+		string : nomePio;
+	};
+
+	entity AssociacaoPioCalco {
+		string : nome;
+		string : idClassificacaoSeguranca;
+		string : codigoCategoria;
+		string : descricao;
+		string : idPio;
+		boolean : associado;
+	};
+
+	entity Anotacao {
+		string : idPio;
+		Localizacao : localizacao;   /*Required.*/
+		string : idAnotacao;
+		string : codigoCorTexto;
+		string : nome;
+		string : terminacao;
+		string : fonte;
+		string : largura;
+		string : codigoCorArea;
+		string : texto;
+	};
+
+	entity MapaResponse {
+		string : idMapa;   /*Required.*/
+		string : idUsuario;   /*Required.*/
+		string : wmsQueryParams;
+		string : nomeOriginalMapa;
+		string : nomeMapa;   /*Required.*/
+		string : urlReferenciaMapa;   /*Required.*/
+		string : tipoMapa;   /*Required. Valores possiveis: SHAPE GTIFF WMS */
+		string : idOrganizacaoRelatora;   /*Required.*/
+		string : codigoCategoria;
+		string : localMapa;   /*Required.*/
+		string : referenciaMapa;   /*Required.*/
+		string : idTipoMapa;   /*Required.*/
+	};
+
+	entity CamadaWms {
+		string : wmsLayer;   /*Required.*/
+		string : wmsFormat;   /*Required.*/
+		string : wmsCrs;   /*Required.*/
+		string : tipoCamada;   /*Required.*/
+	};
+
+	entity PioGetResponse {
+		boolean : realizouAssociacao;
+		[DadosPioPropriedades] : pios;
+		long : dtExecucao;
+	};
+
+	entity AssociacaoItem {
+		string : idItemObj;
+		string : codigoCategoria;
+		string : nomeItemObj;
+		string : iconAssociacao;
+		string : nomeItemSubj;
+		string : idItemSubj;
+		string : idAssociacao;
+	};
+
+	entity Vista {
+		string : codigoCategoria;
+		string : id;
+		[AssocMapaVistaResponse] : mapas;
+		string : nomeVista;
+		[Pio] : pios;
+	};
+
+	entity Radar {
+		number : sic;   /*Required.*/
+		number : sac;   /*Required.*/
+	};
+
+	entity VistaPolling {
+		[AssocMapaVistaResponse] : mapas;
+		string : codigoCategoria;
+		string : id;
+		string : nomeVista;
+		[string] : pios;
+	};
+
+	entity PioAprovacao {
+		string : nomePio;
+		boolean : remoto;
+		string : idPio;
+		long : dataAprovacao;
+	};
+
+	entity PollingResponse {
+		string : dtUltimaAtualizacao;
+		[PioPolling] : pios;
+	};
+
+	entity PiosResponse {
+		PioPolling : pio;
+	};
+
+	entity ItemRamo {
+		[ItemRamo] : children;
+		string : text;
+		string : codigoCategoria;
+		string : id;
+	};
+
+	entity PollingRequest {
+		string : idPioSelecionado;
+		string : dtUltimaAtualizacao;
+		string : menuAberto;
+		[string] : pios;
+	};
+
+	entity ItensVistaResponse {
+		[Pio] : pios;
+		long : dtExecucao;
+	};
+
+	entity OrganizacaoMilitar {
+		string : id;   /*Required.*/
+		string : nome;   /*Required.*/
+	};
+
+	entity Hostilidade {
+		string : corHostilidade;
+		string : codigoHostilidade;
+		string : idHostilidade;
+	};
+
+	entity EventoPolling {
+		[ItemEvento] : recursos;
+		Localizacao : localizacao;
+		string : evolucao;
+		[ItemEvento] : objetivos;
+		string : idEvento;
+		string : nome;
+	};
+
+	entity Ponto {
+		double : longitude;
+		double : latitude;
+		double : altitude;
+	};
+
+	entity PioMetadado {
+		boolean : arquivado;   /*Required.*/
+		string : instancia;
+		boolean : remoto;   /*Required.*/
+	};
+
+	entity VistaMapaPostResponse {
+		string : url;
+		string : tipoMapa;
+		string : idMapa;
+		ConfigMapa : configMapa;
+		string : referencia;
+		string : nome;
+		string : tipoAcesso;
+	};
+
+	entity DadosDaVista {
+		string : idClassificacaoSeguranca;   /*Required.*/
+		string : nomeVista;   /*Required.*/
+	};
+
+	entity VistaMapaGetResponse {
+		string : tipoAcesso;
+		string : nome;
+		ConfigMapa : configMapa;
+		string : referencia;
+		string : idMapa;
+		string : tipoMapa;
+		string : url;
+	};
+
+	service <NomeServico> {
+		path = "/pio/{idPio}/itens";
+
+		/**
+		* @ summary: Consulta os itens de um PIO
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPio(*): 
+		*	query idItemIgnorado: 
+		*	query tipoConsulta: 
+		*/
+		@get array <NomeCapacidade> (string t, string idPio, string idItemIgnorado, string tipoConsulta);
+	}
+
+	service <NomeServico> {
+		path = "/pio/{idPio}/organizacoesmilitares";
+
+		/**
+		* @ summary: Consulta as organizações militares e ordens de batalha de um PIO
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idPio(*): 
+		*/
+		@get array <NomeCapacidade> (string t, string idPio);
+	}
+
+	service <NomeServico> {
+		path = "/calco/vistas/{idVista}/itens";
+
+		/**
+		* @ summary: Listar itens de uma vista.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): Identificador da vista
+		*	query categorias: 
+		*	query unidades: 
+		*	query dtLast: 
+		*/
+		@get ItensVistaResponse <NomeCapacidade> (string t, string idVista, array categorias, array unidades, long dtLast);
+	}
+
+	service <NomeServico> {
+		path = "/vista/pio/{id}";
+
+		/**
+		* @ summary: Obtem o pio com o id referido
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*	query filtrarOrdemBatalha: Exibir ou não as ordens de batalha. default=false
+		*		\--> Valores possiveis: true false 
+		*/
+		@get PlanoInformacaoOperacional <NomeCapacidade> (string t, number id, boolean filtrarOrdemBatalha);
+
+		/**
+		* @ summary: Atualiza um pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body dados_alterados(*): 
+		*	path id(*): 
+		*/
+		@put DadosDoPio <NomeCapacidade> (string t, DadosDoPio dados_alterados, number id);
+
+		/**
+		* @ summary: Remover um pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*/
+		@delete null <NomeCapacidade> (string t, number id);
+	}
+
+	service <NomeServico> {
+		path = "/vista/pios";
+
+		/**
+		* @ summary: Obtem todos os pios
+		* @ params: 
+		*/
+		@get PlanoInformacaoOperacionalGetResponse <NomeCapacidade> ();
+
+		/**
+		* @ summary: Cria um pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body dados: 
+		*/
+		@post PlanoInformacaoOperacionalPostResponse <NomeCapacidade> (string t, DadosDoPio dados);
+	}
+
+	service <NomeServico> {
+		path = "/vistas/pios";
+
+		/**
+		* @ summary: Obtem todos os pios
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PlanoInformacaoOperacionalGetResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/vista/pios/menu";
+
+		/**
+		* @ summary: Obtem todos os pios e suas propriedades
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query tipoConsulta: 
+		*	query dtLast: 
+		*/
+		@get PioGetResponse <NomeCapacidade> (string t, string tipoConsulta, long dtLast);
+	}
+
+	service <NomeServico> {
+		path = "/vistas";
+
+		/**
+		* @ summary: Listar vistas
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query recuperarHierarquiaVistas(*): Recuperar hierarquia de pios das vistas
+		*/
+		@get VistasResponse <NomeCapacidade> (string t, string recuperarHierarquiaVistas);
+
+		/**
+		* @ summary: Cria uma nova vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body DadosDaVista(*): 
+		*/
+		@post VistaResponse <NomeCapacidade> (string t, DadosDaVista DadosDaVista);
+	}
+
+	service <NomeServico> {
+		path = "/pios/itens";
+
+		/**
+		* @ summary: Obter info do pio e seus itens
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body PiosRequest(*): 
+		*/
+		@post PiosResponse <NomeCapacidade> (string t, PiosRequest PiosRequest);
+	}
+
+	service <NomeServico> {
+		path = "/piosPolling";
+
+		/**
+		* @ summary: Realizar o pooling de vistas e pios
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body PollingRequest(*): 
+		*/
+		@post PollingResponse <NomeCapacidade> (string t, PollingRequest PollingRequest);
+	}
+
+	service <NomeServico> {
+		path = "/pios/aprovarPios";
+
+		/**
+		* @ summary: Realizar aprovação de pios
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body AprovarPiosRequest(*): 
+		*/
+		@post AprovarPiosResponse <NomeCapacidade> (string t, AprovarPiosRequest AprovarPiosRequest);
+	}
+
+	service <NomeServico> {
+		path = "/pios/publicarPios";
+
+		/**
+		* @ summary: Realizar publicação de pios
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query idPio(*): 
+		*	query idNo(*): 
+		*/
+		@post PublicacaoResponse <NomeCapacidade> (string t, string idPio, string idNo);
+	}
+
+	service <NomeServico> {
+		path = "/pios/consultarPios";
+
+		/**
+		* @ summary: Consulta de pios para aprovação
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get ConsultarPiosAprovacaoResponse <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/vistas/{idVista}";
+
+		/**
+		* @ summary: Obtem vista com id referido
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*/
+		@get Vista <NomeCapacidade> (string t, number idVista);
+
+		/**
+		* @ summary: Atualiza uma vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body dados_alterados(*): 
+		*	path idVista(*): 
+		*/
+		@put VistaPutResponse <NomeCapacidade> (string t, DadosDaVista dados_alterados, number idVista);
+
+		/**
+		* @ summary: Remover vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*/
+		@delete VistaDeleteResponse <NomeCapacidade> (string t, string idVista);
+	}
+
+	service <NomeServico> {
+		path = "/vista/calco";
+
+		/**
+		* @ summary: Cria um calco
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body dados_alterados(*): 
+		*/
+		@post CalcoPostResponse <NomeCapacidade> (string t, DadosDoCalco dados_alterados);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{id}/calco/pios";
+
+		/**
+		* @ summary: Lista dos PIOs associados ao calco
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): 
+		*/
+		@get array <NomeCapacidade> (string t, number id);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/calco/piosAssociacao";
+
+		/**
+		* @ summary: Lista dos PIOs associados ao calco
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*/
+		@get array <NomeCapacidade> (string t, number idVista);
+
+		/**
+		* @ summary: Serviço de associação de PIOs à vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	body associacaoPioCalco(*): 
+		*/
+		@put  <NomeCapacidade> (string t, number idVista, AssociacaoPioCalcoPostRequest associacaoPioCalco);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/calco/pios/{idPio}";
+
+		/**
+		* @ summary: Remove uma relação entre pio e vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idPio(*): 
+		*/
+		@delete CalcoDeleteResponse <NomeCapacidade> (string t, number idVista, number idPio);
+
+		/**
+		* @ summary: Atualiza a ordenação dos pios em uma vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body associacaoAtualizar(*): 
+		*	path idVista(*): 
+		*	path idPio(*): 
+		*/
+		@put CalcoPutResponse <NomeCapacidade> (string t, AssociacaoAtualizar associacaoAtualizar, String idVista, String idPio);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/referencia/{idReferencia}";
+
+		/**
+		* @ summary: Atualiza a ordenação de uma referência (camada) na vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body associacaoAtualizar(*): 
+		*	path idVista(*): 
+		*	path idReferencia(*): 
+		*/
+		@put CalcoPutResponse <NomeCapacidade> (string t, AssociacaoAtualizar associacaoAtualizar, String idVista, String idReferencia);
+	}
+
+	service <NomeServico> {
+		path = "/vista/pios/classificacaoSeguranca";
+
+		/**
+		* @ summary: Lista das classificações de seguranca
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get array <NomeCapacidade> (string t);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/calco/pio/{idPio}/transparencia";
+
+		/**
+		* @ summary: Atualiza a transparencia de um Pio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path transparencia(*): 
+		*	path idVista(*): 
+		*	path idPio(*): 
+		*/
+		@put TransparenciaPioRequest <NomeCapacidade> (string t, String transparencia, String idVista, String idPio);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/mapa/{idMapa}";
+
+		/**
+		* @ summary: Cadastra um mapa para uma vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapa(*): 
+		*	body request: 
+		*/
+		@post VistaMapaPostResponse <NomeCapacidade> (string t, String idVista, String idMapa, VistaMapaPostRequest request);
+
+		/**
+		* @ summary: Atualiza configurações do mapa na vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapa(*): 
+		*	body request: 
+		*/
+		@put  <NomeCapacidade> (string t, String idVista, String idMapa, VistaMapaPutRequest request);
+
+		/**
+		* @ summary: Exclui a associação do mapa a vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapa(*): 
+		*/
+		@delete  <NomeCapacidade> (string t, String idVista, String idMapa);
+
+		/**
+		* @ summary: Consulta mapa associado a uma vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapa(*): 
+		*/
+		@get VistaMapaGetResponse <NomeCapacidade> (string t, String idVista, String idMapa);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/mapasAssociacao";
+
+		/**
+		* @ summary: Retorna todos os Mapas associados a Vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*/
+		@get AssocVistaMapasGetResponse <NomeCapacidade> (string t, String idVista);
+
+		/**
+		* @ summary: Atualiza as camadas WMS de um mesmo Mapa associadas a Vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	body infoLayersMapa(*): 
+		*/
+		@put  <NomeCapacidade> (string t, String idVista, AssocVistaMapasPutRequest infoLayersMapa);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/mapasAssociacao/{idMapaAssoc}";
+
+		/**
+		* @ summary: Retorna as informações de um Mapa associado a Vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapaAssoc(*): 
+		*/
+		@get AssocMapaVistaResponse <NomeCapacidade> (string t, string idVista, string idMapaAssoc);
+
+		/**
+		* @ summary: Atualiza as informações de um Mapa associado a Vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapaAssoc(*): 
+		*	body infoAssoc(*): 
+		*/
+		@put AssocMapaVistaResponse <NomeCapacidade> (string t, String idVista, string idMapaAssoc, AssocVistaMapaPutRequest infoAssoc);
+
+		/**
+		* @ summary: Exclui a associação de um Mapa a Vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*	path idMapaAssoc(*): 
+		*/
+		@delete string <NomeCapacidade> (string t, String idVista, string idMapaAssoc);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{idVista}/calco/pios/categorias";
+
+		/**
+		* @ summary: Obtem as categorias de todos os itens da Vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idVista(*): 
+		*/
+		@get CategoriasItensVistaResponse <NomeCapacidade> (string t, string idVista);
+	}
+
+	service <NomeServico> {
+		path = "/pios/subordinar";
+
+		/**
+		* @ summary: Serviço de subordinacao de PIOs
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body subordinarPio(*): 
+		*/
+		@put  <NomeCapacidade> (string t, SubordinarPioPutRequest subordinarPio);
+	}
+
+	service <NomeServico> {
+		path = "/pios";
+
+		/**
+		* @ summary: Lista de PIOs
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	query status: Filtra a consulta de PIOs
+		*	query metadado: Obtém os metadados de todos os PIOs.
+		*/
+		@get PioGetResponse <NomeCapacidade> (string t, string status, string metadado);
+	}
+
+	service <NomeServico> {
+		path = "/pios/{id}";
+
+		/**
+		* @ summary: Serviços sobre PIO
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): ID do PIO
+		*	body arquivarPio(*): Arquiva ou desarquiva o PIO especificado
+		*/
+		@put array <NomeCapacidade> (string t, string id, PioArquivarPutRequest arquivarPio);
+	}
+
+	service <NomeServico> {
+		path = "/vista/{id}/radares";
+
+		/**
+		* @ summary: Consulta de radares associados a uma vista
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path id(*): ID da vista
+		*/
+		@get array <NomeCapacidade> (string t, string id);
+	}
+
+	service <NomeServico> {
+		path = "/pios/piosRemotos";
+
+		/**
+		* @ summary: Lista de PIOs remotos por nó
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get PiosRemotosResponse <NomeCapacidade> (string t);
+	}
+
+

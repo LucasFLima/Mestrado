@@ -1,0 +1,32 @@
+module localizadorneuronsad {
+
+	path = "xxx";
+
+	entity LocalizacaoGetResp {
+		boolean : habilitado;   /*Required.*/
+	};
+
+	entity LocalizacaoPutReq {
+		boolean : habilitar;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/localizador";
+
+		/**
+		* @ summary: Retorna o atual status da Comunicação GPS
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get LocalizacaoGetResp <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Habilita Desabilita a comunicação com o GPS
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body habilitar(*): 
+		*/
+		@put LocalizacaoPutRequest <NomeCapacidade> (string t, LocalizacaoPutReq habilitar);
+	}
+
+

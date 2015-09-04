@@ -1,0 +1,54 @@
+module radarneuronsad {
+
+	path = "xxx";
+
+	entity RadarConfigPutRequest {
+		long : portaRadar;
+		boolean : conectar;   /*Required.*/
+		string : ipRadar;
+	};
+
+	entity RadarConfigResponse {
+		string : ipRadar;   /*Required.*/
+		boolean : habilitado;   /*Required.*/
+		integer : estadoComunicacao;
+		boolean : statusComunicacao;
+		integer : portaRadar;   /*Required.*/
+	};
+
+	entity RadarStatusResponse {
+		integer : estadoComunicacao;
+		boolean : statusComunicacao;
+	};
+
+	service <NomeServico> {
+		path = "/config";
+
+		/**
+		* @ summary: Configurações de Radar
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get RadarConfigResponse <NomeCapacidade> (string t);
+
+		/**
+		* @ summary: Alteração das Configurações de Radar
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body radarConfig(*): Parametros a serem atualizados
+		*/
+		@put RadarConfigResponse <NomeCapacidade> (string t, RadarConfigPutRequest radarConfig);
+	}
+
+	service <NomeServico> {
+		path = "/status";
+
+		/**
+		* @ summary: Status da Comunicação com Radares
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*/
+		@get RadarStatusResponse <NomeCapacidade> (string t);
+	}
+
+

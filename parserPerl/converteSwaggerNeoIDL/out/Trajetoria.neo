@@ -1,0 +1,89 @@
+module trajetoria {
+
+	path = "xxx";
+
+	entity ItemPrimeiraLocalizacaoGetResponse {
+		long : data;   /*Required.*/
+	};
+
+	entity Localizacao {
+		string : idLocalizacao;   /*Required.*/
+		Ponto : ponto;   /*Required.*/
+	};
+
+	entity Ponto {
+		number : longitude;   /*Required.*/
+		number : latitude;   /*Required.*/
+		number : altitude;
+	};
+
+	entity ItemHostilidadeLocalizacaoPutRequest {
+		string : hostilidade;
+		long : dataFim;
+		string : idTipo;
+		Localizacao : localizacao;
+		boolean : itemRadio;
+		long : dataInicio;
+	};
+
+	entity ItemHostilidadeLocalizacaoResponse {
+		string : idItem;
+		string : nome;
+		Trajetoria : info;
+		[Trajetoria] : trajetorias;
+	};
+
+	entity Trajetoria {
+		long : dataLocalizacaoLong;
+		string : cor;
+		string : dataLocalizacao;
+		Localizacao : localizacao;
+		string : hostilidade;
+	};
+
+	service <NomeServico> {
+		path = "/item/{idItem}/trajetoria";
+
+		/**
+		* @ summary: Retorna a trajetória de um item dentro de um período especificado.
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	query dataInicio: 
+		*	query dataFim: 
+		*	query tipoConsulta: 
+		*	query idLastLoc: 
+		*/
+		@get ItemHostilidadeLocalizacaoResponse <NomeCapacidade> (string t, String idItem, long dataInicio, long dataFim, string tipoConsulta, string idLastLoc);
+
+		/**
+		* @ summary: Atualiza uma trajetoria já carregada de um item
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*	body trajetoria: 
+		*/
+		@put  <NomeCapacidade> (string t, String idItem, ItemHostilidadeLocalizacaoPutRequest trajetoria);
+
+		/**
+		* @ summary: Limpa a trajetoria de um item da memoria
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*/
+		@delete  <NomeCapacidade> (string t, String idItem);
+	}
+
+	service <NomeServico> {
+		path = "/item/{idItem}/trajetorias/primeira";
+
+		/**
+		* @ summary: Retorna a data da primeira localização/trajetória válida
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	path idItem(*): 
+		*/
+		@get ItemPrimeiraLocalizacaoGetResponse <NomeCapacidade> (string t, String idItem);
+	}
+
+

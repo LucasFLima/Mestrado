@@ -1,0 +1,36 @@
+module entidadesCompartilhadas {
+	path = "xxxx";
+
+	entity Localizacao {
+                Ponto : ponto;
+                Area : area;
+                string : idLocalizacao;
+                Linha : linha;
+                string : codigoCategoria;
+        };
+
+	entity Linha {
+                [Ponto] : pontos;   /*Required.*/
+        };
+
+	entity Localizacao {
+                Ponto : ponto;
+                Area : area;
+                string : idLocalizacao;
+                Linha : linha;
+                string : codigoCategoria;
+        };
+
+	entity Anexo {
+                string : codTemp;   /*Required.*/
+                string : tipoAnexo;   /*Required.*/
+                string : nomeAnexo;   /*Required.*/
+        };
+
+	entity Ponto {
+                double : longitude;   /*Required.*/
+                double : altitude;
+                double : latitude;   /*Required.*/
+        };
+
+}

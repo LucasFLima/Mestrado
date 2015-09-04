@@ -1,0 +1,28 @@
+module radio {
+
+	path = "xxx";
+
+	entity Radio {
+		string : idRadio;   /*Required.*/
+		string : idMaterial;   /*Required.*/
+	};
+
+	entity PersisteLocalizacaoReq {
+		string : nmea;   /*Required.*/
+		string : idRadio;   /*Required.*/
+		long : dataRecebimento;   /*Required.*/
+	};
+
+	service <NomeServico> {
+		path = "/radio";
+
+		/**
+		* @ summary: Insere uma nova localização vindo do rádio
+		* @ params: 
+		*	query t(*): Token de autenticação
+		*	body nmea(*): 
+		*/
+		@post  <NomeCapacidade> (string t, PersisteLocalizacaoReq nmea);
+	}
+
+
