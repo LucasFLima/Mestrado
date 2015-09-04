@@ -13,6 +13,7 @@ opendir(diretorio, "$diretorio");
 closedir(diretorio);
 
 %matrizModelos = ();
+%acumuladorModelos = ();
 
 foreach $arquivo(@lista)
 {
@@ -22,20 +23,23 @@ foreach $arquivo(@lista)
         
         for $modeloBase (keys $contrato->{'models'}){
 
-          for $modeloReferencia (keys $contrato->{'models'}){
+            $acumuladorModelos->{'contrato'}->{$contrato}->{'modelo'}->{$modeloBase}="x";
+ 
+        }
+        # for $modeloReferencia (keys $contrato->{'models'}){
   
-            $fatorSemelhanca = &compararModelos(
-                                    $contrato->{'models'}->{$modeloBase},
-                                    $contrato->{'models'}->{$modeloReferencia});
+        #   $fatorSemelhanca = &compararModelos(
+        #                           $contrato->{'models'}->{$modeloBase},
+        #                           $contrato->{'models'}->{$modeloReferencia});
        
-            if ($fatorSemelhanca > .5){
-	      if (exists $matrizModelos->{$modeloBase}){
-                $matrizModelos->{$modeloBase}->{'qtd'} += 1;
-              } else {
-                $matrizModelos->{$modeloBase}->{'qtd'}  = 0;
-              }
-            }
-          }
+        #   if ($fatorSemelhanca > .5){
+	#     if (exists $matrizModelos->{$modeloBase}){
+        #       $matrizModelos->{$modeloBase}->{'qtd'} += 1;
+        #     } else {
+        #       $matrizModelos->{$modeloBase}->{'qtd'}  = 0;
+        #     }
+        #   }
+         
           
 
 #          if (exists $comparaModelos->{$modelo}){
@@ -62,8 +66,17 @@ foreach $arquivo(@lista)
   }
 }
 
-foreach $ml (keys $matrizModelos){
-    print qq~$ml~."\t".$matrizModelos->{$ml}->{'qtd'}."\n";
+#foreach $ml (keys $matrizModelos){
+#    print qq~$ml~."\t".$matrizModelos->{$ml}->{'qtd'}."\n";
+#}
+
+foreach $ctr (keys $acumuladorModelos->{'contrato'}){
+    print qq~$ctr~."\n";
+    
+    foreach $mdl (keys $acumuladorModelos->{'contrato'}->{$ctr}->{'modelo'}){
+      print "\t\t".qq~$ctr~."\n";
+    }
+
 }
 
 
