@@ -1,6 +1,6 @@
 #!/bin/bash
 
-utilPath="/home/lucas/workspace/utilLucasFLima"
+utilPath="/home/lucas/workspace/mestrado/util/commands"
 
 out=`cat $utilPath/parametros | grep "out_dir:" | cut -d":" -f2`
 neo_dir=`cat $utilPath/parametros | grep "neo_dir:" | cut -d":" -f2`

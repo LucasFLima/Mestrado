@@ -3,6 +3,8 @@
 contratosSwagger="/home/lucas/workspace/mestrado/contratosExercito"
 contratosNeoIDL="/home/lucas/workspace/mestrado/parserPerl/converteSwaggerNeoIDL/out"
 
+baseComando=`pwd`; 
+
 cd $contratosSwagger;
 
 qtdSwagger=0;
@@ -16,8 +18,10 @@ do
      qtdLinhaNeoIDL=`egrep '[a-zA-Z]' $contratosNeoIDL/$contrato.neo | wc -l`;
      qtdNeo=$(($qtdNeo+$qtdLinhaNeoIDL));
 
+     informacoesComplementares=`$baseComando/contaModulos.pl $contrato/synapse.json ' & '`
+
 #     echo $contrato         $qtdLinhaSwagger $qtdLinhaNeoIDL $totalLinhaSwagger $(($qtdLinhaNeoIDL*100/$qtdLinhaSwagger))\% $qtdSwagger $qtdNeo $(($qtdNeo*100/$qtdSwagger))\%;
-     echo $contrato \&  $qtdLinhaSwagger \&  $qtdLinhaNeoIDL \&  $(($qtdLinhaNeoIDL*100/$qtdLinhaSwagger))\% \\\\;
+     echo $contrato \&  $qtdLinhaSwagger \&  $qtdLinhaNeoIDL \&  $(($qtdLinhaNeoIDL*1000/$qtdLinhaSwagger))\\\% \& $informacoesComplementares\\\\;
 
 done
 

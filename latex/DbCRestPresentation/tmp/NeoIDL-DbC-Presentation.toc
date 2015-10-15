@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {portuguese}
+\beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{First Subsection Name}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Avalia\IeC {\c c}\IeC {\~a}o}{13}{0}{1}

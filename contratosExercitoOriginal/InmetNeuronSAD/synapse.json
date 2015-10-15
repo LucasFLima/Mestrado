@@ -259,43 +259,6 @@
           }
         ]
       }
-    },
-    "OpcoesINMETResponse": {
-      "properties": {
-        "regioes": [
-          {
-            "nomeRegiao": {
-              "type": "string"
-            },
-            "codRegiao": {
-              "type": "string"
-            }
-          }
-        ]
-      },
-      "estados": [
-        {
-          "nomeEstado": {
-            "type": "string"
-          },
-          "uf": {
-            "type": "string"
-          }
-        }
-      ]
-    },
-    "cidades": [
-      {
-        "nomeCidade": {
-          "type": "string"
-        },
-        "uf": {
-          "type": "string"
-        },
-        "geocode": {
-          "type": "string"
-        }
-      }
-    ]
+    }
   }
 }

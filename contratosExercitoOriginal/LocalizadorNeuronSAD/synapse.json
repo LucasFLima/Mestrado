@@ -46,17 +46,21 @@
             ]
         }
     ],"models":{
-    	"LocalizacaoGetResp":{
-    		"habilitado": {
-    			"type": "boolean",
-    			"required": true
-    		}
+        "LocalizacaoGetResp":{
+              "properties": {
+          	 "habilitado": {
+    	        	"type": "boolean",
+    		        "required": true
+    	        }
+            }
     	},
     	"LocalizacaoPutReq":{
+              "properties": {
     		"habilitar": {
     			"type": "boolean",
     			"required": true
     		}
+           }
     	}
     }
 }

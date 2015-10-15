@@ -1,0 +1,12 @@
+Okular.arguments=%file
+Okular.command=/usr/bin/okular
+Okular.format=pdf
+Okular.forward=false
+Okular.inverse=no
+builderNum=2
+eclipse.preferences.version=1
+none.command=/usr/bin/okular
+outputFormat=pdf
+viewerCurrent=Okular
+viewerNames=Okular,xdvi,yap,itexmac,kdvi,gv,sumatra PDF,acroread,none
+viewerNames.TEMP=Okular (/usr/bin/okular),xdvi (/usr/bin/xdvi),yap (),itexmac (/bin/open),kdvi (),gv (),sumatra PDF (),acroread (),none ()

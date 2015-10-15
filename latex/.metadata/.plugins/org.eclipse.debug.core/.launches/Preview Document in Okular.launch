@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="net.sourceforge.texlipse.viewer.launchConfigurationType">
+<stringAttribute key="Okular.arguments" value="%file"/>
+<stringAttribute key="Okular.command" value="/usr/bin/okular"/>
+<stringAttribute key="Okular.ddeCloseCommand" value=""/>
+<stringAttribute key="Okular.ddeCloseServer" value=""/>
+<stringAttribute key="Okular.ddeCloseTopic" value=""/>
+<stringAttribute key="Okular.ddeViewCommand" value=""/>
+<stringAttribute key="Okular.ddeViewServer" value=""/>
+<stringAttribute key="Okular.ddeViewTopic" value=""/>
+<stringAttribute key="viewerCurrent" value="Okular"/>
+</launchConfiguration>

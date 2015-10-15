@@ -1,0 +1,20 @@
+resource characters  { 
+     path = "/v1/public/characters"; 
+    
+      /**
+      * @ summary: Fetches lists of comic characters.
+      * @ params:
+      *       query Character.name: characters matching the specified name
+      *       query Character.story: characters matching the specified story
+      *       query limit: limit the result set 
+      * @ throws
+      *       409  Limit greater than 100.
+      *       409  Limit invalid or below 1.
+      */
+      @get    [Character] getCharactersList ( string Character.name, string Character.story,
+                           	                 int limit)
+           require ((limit > 0 and limit <= 100)),
+           ensure (RespCode = 200),
+           otherwise 409;
+     
+ };

@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Oct 05 22:08:03 BRT 2015
+markTmpDer=true
+builderNum=2
+outputDir=out
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=neoidl-wpos-2015.tex
+outputFile=neoidl-wpos-2015.pdf
+langSpell=pt
+markDer=true
+srcDir=src

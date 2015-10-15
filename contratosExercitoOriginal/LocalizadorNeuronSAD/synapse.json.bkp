@@ -1,0 +1,62 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "LocalizadorNeuronSAD",
+    "version": "1.0.4",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/localizador",
+            "operations": [
+                {
+                    "method": "GET",
+                    "type": "LocalizacaoGetResp",
+                    "summary": "Retorna o atual status da Comunicação GPS",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						}
+                    ]
+                },
+                {
+                    "method": "PUT",
+                    "type": "LocalizacaoPutRequest",
+                    "summary": "Habilita Desabilita a comunicação com o GPS",
+                    "parameters": [
+						{
+							"name": "t",
+							"description": "Token de autenticação",
+							"required": true,
+							"type": "string",
+							"paramType": "query"
+						},
+	                   {
+                           "name": "habilitar",
+                           "paramType": "body",
+                           "type": "LocalizacaoPutReq",
+                           "required": true
+	                   }    
+                    ]
+                }
+            ]
+        }
+    ],"models":{
+    	"LocalizacaoGetResp":{
+    		"habilitado": {
+    			"type": "boolean",
+    			"required": true
+    		}
+    	},
+    	"LocalizacaoPutReq":{
+    		"habilitar": {
+    			"type": "boolean",
+    			"required": true
+    		}
+    	}
+    }
+}

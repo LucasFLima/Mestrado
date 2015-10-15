@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Sep 17 22:11:39 BRT 2015
+markTmpDer=true
+builderNum=2
+outputDir=out
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=NeoIDL-DbC-Presentation.tex
+outputFile=NeoIDL-DbC-Presentation.pdf
+langSpell=pt
+markDer=true
+srcDir=src

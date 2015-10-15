@@ -1,0 +1,4732 @@
+{
+  "swaggerVersion": "1.2",
+  "id": "ItemNeuronSAD",
+  "version": "1.0.4",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/item/organizacao",
+      "description": "Operações relacionadas à coleção como Listar e inserir nova organização",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "OrganizacoesGetResponse"
+          },
+          "summary": "Consulta as organizações de acordo com o filtro informado",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "nome",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "codigoCategoria",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "idTipo",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "hostilidade",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "idPio",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "type": "OrganizacaoPostResponse",
+          "summary": "Cria uma nova organização",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "organizacao",
+              "paramType": "body",
+              "type": "OrganizacaoPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/anexo",
+      "description": "Envio de Arquivos anexos para o servidor",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "AnexoPostResponse",
+          "summary": "Envio de um arquivo para o servidor",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "anexo",
+              "paramType": "form",
+              "description": "Arquivo em anexo",
+              "type": "file",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "type": "AnexoDeleteResponse",
+          "summary": "Remove um anexo",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "anexos",
+              "type": "string",
+              "paramType": "body",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "type": "AnexoGetResponse",
+          "summary": "Retorna a lista de anexos em memória",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/anexo/{idAnexo}",
+      "description": "Consulta o conteudo de um ou mais arquivos anexos",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AnexoConteudoGetResponse",
+          "summary": "Retorna o conteudo de um arquivo",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "type": "string",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "name": "idAnexo",
+              "type": "string",
+              "paramType": "path",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/instalacao",
+      "description": "Operações relacionadas à coleção como Listar e inserir nova instalacao",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "InstalacaoPostResponse",
+          "summary": "Cria um novo item instalação",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "instalacao",
+              "paramType": "body",
+              "type": "InstalacaoPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/instalacao/{id}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "InstalacaoGetResponse",
+          "summary": "Consulta uma instalacao",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Atualiza uma instalação",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "instalacao",
+              "paramType": "body",
+              "type": "InstalacaoPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/material",
+      "description": "Operações relacionadas à coleção como Listar e inserir novo material",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "MaterialPostResponse",
+          "summary": "Cria um novo item material",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "material",
+              "paramType": "body",
+              "type": "MaterialPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/materiais",
+      "description": "Operações relacionadas à coleção de materiais",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Cria múltiplos materiais",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "materiais",
+              "paramType": "body",
+	          "type": "MultiplosMateriaisPostRequest",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            { "code": 204, "message": "No Content" }
+      	  ]
+        }
+      ]
+    },
+    {
+      "path": "/item/material/{id}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "MaterialGetResponse",
+          "summary": "Consulta um material",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Atualiza um material",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "material",
+              "paramType": "body",
+              "type": "MaterialPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/anotacao",
+      "description": "Operações relacionadas à coleção como Listar e inserir nova anotação",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "AnotacaoPostResponse",
+          "summary": "Cria um novo item anotação",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "anotacao",
+              "paramType": "body",
+              "type": "AnotacaoPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/anotacao/{idAnotacao}",
+      "description": "Operações relacionadas à coleção como Listar e atualizar uma anotação",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "AnotacaoGetResponse",
+          "summary": "Consulta um item anotação",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idAnotacao",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "summary": "Altera um item anotação",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idAnotacao",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "anotacao",
+              "paramType": "body",
+              "type": "AnotacaoPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/itens/{idItem}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "Item",
+          "summary": "Obtem o item com id referido",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "summary": "Remove todas as associações do item informado",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idCalco",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/organizacao/{id}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "OrganizacaoGetResponse",
+          "summary": "Consulta uma organização",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Atualiza uma organização",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "organizacao",
+              "paramType": "body",
+              "type": "OrganizacaoPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/itens/associacao",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Associa itens",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "associacaoItemRequest",
+              "paramType": "body",
+              "type": "AssociacaoItemRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idSubject}/associacao/verificacao/{idObjeto}/{categoria}",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "string",
+          "summary": "Verificação de persistencia de associações",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idSubject",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idObjeto",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "categoria",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "dataFim",
+              "paramType": "query",
+              "type": "long"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/itens/associacao/{idAssociacaoItem}/{idItemSubj}/{idItemObj}",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Encerrar associação entre itens",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idAssociacaoItem",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/itens/associacao/relacao/radio/{idRadio}",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retorna a relação de associação de um rádio com os itens",
+          "type": "AssociacaoRelacaoRadioGetResponse",
+          "parameters": [
+            {
+              "name": "idRadio",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/ponto",
+      "description": "Operações relacionadas à MCC ponto",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC ponto",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccPontoPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/linha",
+      "description": "Operações relacionadas à MCC linha",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC linha",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccLinhaPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/direcao",
+      "description": "Operações relacionadas à MCC direcao",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC direção",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccDirecaoPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/limite",
+      "description": "Operações relacionadas à MCC limite",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC limite",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccLimitePostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/area",
+      "description": "Operações relacionadas à MCC área",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC área",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccAreaPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/setor",
+      "description": "Operações relacionadas à MCC setor",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC setor",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccSetorPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/elipse",
+      "description": "Operações relacionadas à MCC elipse",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "Item",
+          "summary": "Cria um novo MCC elipse",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MccPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/{id}",
+      "description": "Consulta uma MCC por ID",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "MCC",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "inte"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Atualiza um MCC",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "mcc",
+              "paramType": "body",
+              "type": "MCCPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/pessoa",
+      "description": "Operações relacionadas as pessoas",
+      "operations": [
+        {
+          "method": "POST",
+          "type": "PessoaGetResponse",
+          "summary": "Cria uma nova pessoa",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "pessoa",
+              "paramType": "body",
+              "type": "PessoaPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/pessoa/{id}",
+      "description": "Operações relacionadas a uma pessoa existente",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "PessoaGetResponse",
+          "summary": "Consulta uma pessoa",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Atualiza uma pessoa",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "pessoa",
+              "paramType": "body",
+              "type": "PessoaPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/localizacao",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retorna a localização atual de um item.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "type": "void",
+          "summary": "Atualiza a localizacao de um item",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "itemLocalizacao",
+              "paramType": "body",
+              "type": "ItemLocalizacaoPutRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/itens/copia",
+      "description": "Operação relacionada à cópia de itens para outro PIO",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Copia os itens para um outro PIO",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "copiaPostReq",
+              "paramType": "body",
+              "type": "CopiaItensPostRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/publicarItens",
+      "description": "Operação relacionada a publicação de itens de um pio",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Publicação de itens de um pio",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "PublicacaoItemRequest",
+              "paramType": "body",
+              "type": "PublicacaoItemRequest",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/tipo/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipoConsulta"
+          },
+          "summary": "Retorna a lista de tipos com as suas classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+                "name": "dataFim",
+                "paramType": "query",
+                "type": "long",
+                "required": false
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/evento/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "summary": "Retorna lista de eventos com as suas classificações por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "idEvento",
+              "paramType": "query",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/hostilidade/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "HostilidadeConsulta"
+          },
+          "summary": "Retorna a lista de hostilidade com a sua classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+                "name": "dataFim",
+                "paramType": "query",
+                "type": "long",
+                "required": false
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/associacao/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoConsulta"
+          },
+          "summary": "Retorna a lista de associações com a sua classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/localizacao/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoGeralConsulta"
+          },
+          "summary": "Retorna a lista de localizações com a sua classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+                "name": "dataFim",
+                "paramType": "query",
+                "type": "long",
+                "required": false
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/organizacao/{idItem}/status/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "OrganizacaoStatusConsulta"
+          },
+          "summary": "Retorna a lista de status de organização por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/material/{idItem}/status/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "MaterialStatusConsulta"
+          },
+          "summary": "Retorna a lista de status de material por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/{idItem}/nacionalidade/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "NacionalidadeConsulta"
+          },
+          "summary": "Retorna a lista de nacionalidade com a sua classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idItem",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/pessoa/{idPessoa}/status/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "PessoaStatusConsulta"
+          },
+          "summary": "Retorna a lista de status de pessoa com sua classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idPessoa",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/pessoa/{idPessoa}/detalhe/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "PessoaDetalheConsulta"
+          },
+          "summary": "Retorna a lista de detalhe de pessoa por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idPessoa",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/instalacao/{idInstalacao}/status/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "InstalacaoStatusConsulta"
+          },
+          "summary": "Retorna a lista de status de instalação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idInstalacao",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/item/mcc/{idMcc}/status/classificacao",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "array",
+          "items": {
+            "$ref": "MccStatusConsulta"
+          },
+          "summary": "Retorna a lista de status do mcc com sua classificação por intervalo.",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idMcc",
+              "paramType": "path",
+              "type": "String",
+              "required": true
+            },
+            {
+              "name": "dataInicio",
+              "paramType": "query",
+              "type": "long"
+            },
+            {
+              "name": "limite",
+              "paramType": "query",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+	{
+      "path": "/item/copia/{idPioPai}/{idPioFilho}",
+      "description": "Retorna a lista de copias de itens entre PIOs",
+      "operations": [
+        {
+          "method": "GET",
+          "type": "ItemCopiaGetResponse",
+          "summary": "Retorna a relação entre itens juntamente os PIOs",
+          "parameters": [
+            {
+              "name": "t",
+              "description": "Token de autenticação",
+              "required": true,
+              "type": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "idPioPai",
+              "type": "string",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "name": "idPioFilho",
+              "type": "string",
+              "paramType": "path",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "AnexoPostResponse": {
+      "properties": {
+        "ID": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "AnexoGetResponse": {
+      "properties": {
+        "anexos": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "type": "array",
+          "required": true,
+          "anexo": {
+            "$ref": "Anexo"
+          }
+        }
+      }
+    },
+    "AnexoConteudoGetRequest": {
+      "properties": {
+        "idItem": {
+          "type": "string",
+          "required": true
+        },
+        "anexos": {
+          "type": "array",
+          "required": true,
+          "anexo": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "AnexoConteudoGetResponse":{
+        "properties": {
+            "anexos": {
+                "type": "array",
+                "required": true,
+                "anexo": {
+                    "$ref": "string"
+                }
+            }
+        }       
+    },      
+    "Anexo":{
+        "name":{
+            "type" : "string",
+            "required" : true           
+        },
+        "type":{
+            "type" : "string",
+            "required" : true           
+        },
+        "size":{
+            "type" : "string",
+            "required" : true           
+        }
+    },
+    "CopiaItensPostRequest": {
+      "properties": {
+        "itens": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "ItemsCopia"
+          }
+        }
+      }
+    },
+    "PublicacaoItemRequest": {
+      "properties": {
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "idGlobalNo": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ItemsCopia": {
+      "properties": {
+        "idItem": {
+          "type": "string",
+          "required": true
+        },
+        "idPioDestino": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MccPontoPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MccLinhaPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoMCCLinha",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MccDirecaoPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "largura": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoMCCLinha",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MccLimitePostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoMCCLinha",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "unidadesEsquerda": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "UnidadeLimite"
+          }
+        },
+        "unidadesDireita": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "UnidadeLimite"
+          }
+        }
+      }
+    },
+    "UnidadeLimite": {
+      "properties": {
+        "idUnidade": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MccAreaPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoMCCArea",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MccSetorPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "azimute": {
+          "type": "number",
+          "required": true
+        },
+        "anguloAbertura": {
+          "type": "number",
+          "required": true
+        },
+        "raio": {
+          "type": "number",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MCCPutRequest": {
+      "id": "MCCPutRequest",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "nomeAlternativo": {
+          "type": "string",
+          "required": false
+        },
+        "codigoCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        },
+        "itemTipos": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemTipoAlteracao"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "LocalizacaoGeralAlteracao"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "NacionalidadeAlteracao"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "HostilidadeAlteracao"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "associacoesTerminadas": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "mccStatus": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "MCCStatus"
+          }
+        }
+      }
+    },
+    "ItemLocalizacaoPutRequest": {
+      "id": "ItemLocalizacaoPutRequest",
+      "properties": {
+        "idItem": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "largura": {
+          "type": "string",
+          "required": true
+        },
+        "quantidadeVaos": {
+          "type": "string",
+          "required": false
+        },
+        "comprimentoMaiorVao": {
+          "type": "string",
+          "required": false
+        },
+        "direcao": {
+          "type": "boolean",
+          "required": false
+        },
+        "elipse": {
+          "type": "boolean",
+          "required": false
+        },
+        "setor": {
+          "type": "boolean",
+          "required": false
+        },
+        "ponte": {
+          "type": "boolean",
+          "required": false
+        },
+        "anguloAbertura": {
+          "type": "string",
+          "required": true
+        },
+        "azimute": {
+          "type": "string",
+          "required": true
+        },
+        "raio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "OrganizacaoPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoCriacaoPonto",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "OrganizacaoPostResponse": {
+      "properties": {
+        "idOrganizacao": {
+          "type": "string"
+        },
+        "nomeOrganizacao": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "codigoCategoriaOrganizacao": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "nomeTipo": {
+          "type": "string"
+        },
+        "hostilidade": {
+          "type": "HostilidadeConsulta"
+        },
+        "localizacao": {
+          "type": "LocalizacaoConsulta"
+        }
+      }
+    },
+    "OrganizacoesGetResponse": {
+      "properties": {
+        "idOrganizacao": {
+          "type": "string"
+        },
+        "nomeOrganizacao": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "nomeTipo": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "localizacao": {
+          "type": "LocalizacaoConsulta"
+        },
+        "hostilidade": {
+          "type": "HostilidadeConsulta"
+        }
+      }
+    },
+    "OrganizacaoGetResponse": {
+      "properties": {
+        "organizacao": {
+          "type": "Organizacao"
+        }
+      }
+    },
+    "OrganizacaoPutRequest": {
+      "id": "OrganizacaoPutRequest",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "nomeAlternativo": {
+          "type": "string",
+          "required": false
+        },
+        "nomeHistorico": {
+          "type": "string",
+          "required": false
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        },
+        "itemTipos": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemTipoAlteracao"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "LocalizacaoAlteracao"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "NacionalidadeAlteracao"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "HostilidadeAlteracao"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "associacoesTerminadas": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemDeInventarioAlteracao"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemDeInventarioAlteracao"
+          }
+        },
+        "organizacaoStatus": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "OrganizacaoStatusAlteracao"
+          }
+        }
+      }
+    },
+    "InstalacaoPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "largura": {
+          "type": "string",
+          "required": false
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "InstalacaoPostResponse": {
+      "properties": {
+        "idInstalacao": {
+          "type": "string"
+        },
+        "nomeInstalacao": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "localizacao": {
+          "type": "LocalizacaoConsulta"
+        }
+      }
+    },
+    "InstalacaoPutRequest": {
+      "id": "InstalacaoPutRequest",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "nomeAlternativo": {
+          "type": "string",
+          "required": false
+        },
+        "altura": {
+          "type": "integer",
+          "required": false
+        },
+        "comprimento": {
+          "type": "integer",
+          "required": false
+        },
+        "largura": {
+          "type": "integer",
+          "required": false
+        },
+        "designacao": {
+          "type": "string",
+          "required": false
+        },
+        "quantidadeVaos": {
+          "type": "string",
+          "required": false
+        },
+        "comprimentoMaiorVao": {
+          "type": "string",
+          "required": false
+        },
+        "classe": {
+          "type": "string",
+          "required": false
+        },
+        "codigoMaterialConstrucao": {
+          "type": "string",
+          "required": false
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        },
+        "itemTipos": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemTipoAlteracao"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "LocalizacaoGeralAlteracao"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "NacionalidadeAlteracao"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "HostilidadeAlteracao"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "associacoesTerminadas": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemDeInventarioAlteracao"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemDeInventarioAlteracao"
+          }
+        },
+        "instalacaoStatus": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "InstalacaoStatusAlteracao"
+          }
+        }
+      }
+    },
+    "Item": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "itemTipos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipo"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "Localizacao"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "Associacao"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "Hostilidade"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "items": {
+            "$ref": "Nacionalidade"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventario"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventario"
+          }
+        },
+        "eventos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "required": false
+        }
+      }
+    },
+    "Localizacao": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto"
+        },
+        "linha": {
+          "type": "Linha"
+        },
+        "area": {
+          "type": "Area"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "LocalizacaoConsulta": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        },
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "LocalizacaoAlteracao": {
+      "properties": {
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "LocalizacaoGeralConsulta": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        },
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto"
+        },
+        "linha": {
+          "type": "Linha"
+        },
+        "area": {
+          "type": "Area"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "LocalizacaoGeralAlteracao": {
+      "properties": {
+        "precisao": {
+          "type": "string"
+        },
+        "direcaoAngulo": {
+          "type": "integer"
+        },
+        "precisaoDirecaoAngulo": {
+          "type": "integer"
+        },
+        "taxaVelocidade": {
+          "type": "integer"
+        },
+        "precisaoTaxaVelocidade": {
+          "type": "integer"
+        },
+        "ponto": {
+          "type": "Ponto"
+        },
+        "linha": {
+          "type": "Linha"
+        },
+        "area": {
+          "type": "Area"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "LocalizacaoCriacaoPonto": {
+      "properties": {
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        }
+      }
+    },
+    "LocalizacaoAnotacao": {
+      "properties": {
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        }
+      }
+    },
+    "LocalizacaoMCCArea": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "area": {
+          "type": "Area"
+        }
+      }
+    },
+    "LocalizacaoMCCLinha": {
+      "properties": {
+        "idLocalizacao": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "linha": {
+          "type": "Linha"
+        }
+      }
+    },
+    "AssociacaoRelacaoRadioGetResponse": {
+      "properties": {
+          "itens": {
+              "type": "array",
+              "items": {
+                  "$ref": "string"
+              }
+          }
+      }  
+    },
+    "Associacao": {
+      "properties": {
+        "idAssociacao": {
+          "type": "string"
+        },
+        "objeto": {
+          "type": "ItemAssociado"
+        },
+        "subject": {
+          "type": "ItemAssociado"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        },
+        "codCategoria": {
+          "type": "string"
+        },
+        "codSubCategoria": {
+          "type": "string"
+        },
+        "codEstadoAssociacao": {
+          "type": "string"
+        }
+      }
+    },
+    "AssociacaoConsulta": {
+      "properties": {
+        "idAssociacao": {
+          "type": "string"
+        },
+        "objeto": {
+          "type": "ItemAssociado"
+        },
+        "subject": {
+          "type": "ItemAssociado"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        },
+        "codCategoria": {
+          "type": "string"
+        },
+        "codSubCategoria": {
+          "type": "string"
+        },
+        "codEstadoAssociacao": {
+          "type": "string"
+        }
+      }
+    },
+    "AssociacaoAlteracao": {
+      "properties": {
+        "objeto": {
+          "type": "ItemAssociado",
+          "required": true
+        },
+        "subject": {
+          "type": "ItemAssociado",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta",
+          "required": true
+        },
+        "codCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codSubCategoria": {
+          "type": "string"
+        },
+        "codEstadoAssociacao": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ItemAssociado": {
+      "properties": {
+        "idItemAssoc": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string"
+        },
+        "codCategoria": {
+          "type": "string"
+        }
+      }
+    },
+    "Linha": {
+      "properties": {
+        "pontos": {
+          "type": "array",
+          "items": {
+            "$ref": "Ponto"
+          },
+          "required": true
+        }
+      }
+    },
+    "Area": {
+      "properties": {
+        "pontos": {
+          "type": "array",
+          "items": {
+            "$ref": "Ponto"
+          },
+          "required": true
+        }
+      }
+    },
+    "Ponto": {
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "required": true
+        },
+        "longitude": {
+          "type": "number",
+          "required": true
+        },
+        "altitude": {
+          "type": "number"
+        }
+      }
+    },
+    "AssociacaoItemRequest": {
+      "properties": {
+        "idItemObj": {
+          "type": "string",
+          "required": true
+        },
+        "idItemSubj": {
+          "type": "string",
+          "required": true
+        },
+        "codCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "codSubCategoria": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao"
+        }
+      }
+    },
+    "ClassificacaoCriacao": {
+      "properties": {
+        "gdh": {
+          "type": "long",
+          "required": true
+        },
+        "fonte": {
+          "type": "string",
+          "required": true
+        },
+        "conteudo": {
+          "type": "string",
+          "required": true
+        },
+        "tipoFonte": {
+          "type": "string",
+          "required": true
+        },
+        "gdhInicial": {
+          "type": "long"
+        },
+        "gdhFinal": {
+          "type": "long"
+        }
+      }
+    },
+    "ClassificacaoConsulta": {
+      "properties": {
+        "idClassificacao": {
+          "type": "String"
+        },
+        "gdh": {
+          "type": "long"
+        },
+        "fonte": {
+          "type": "string"
+        },
+        "conteudo": {
+          "type": "string"
+        },
+        "tipoFonte": {
+          "type": "string"
+        },
+        "gdhInicial": {
+          "type": "long"
+        },
+        "gdhFinal": {
+          "type": "long"
+        }
+      }
+    },
+    "ClassificacaoAlteracao": {
+      "properties": {
+        "idClassificacao": {
+          "type": "String"
+        },
+        "gdh": {
+          "type": "long",
+          "required": true
+        },
+        "fonte": {
+          "type": "string",
+          "required": true
+        },
+        "conteudo": {
+          "type": "string",
+          "required": true
+        },
+        "tipoFonte": {
+          "type": "string",
+          "required": true
+        },
+        "gdhInicial": {
+          "type": "long"
+        },
+        "gdhFinal": {
+          "type": "long"
+        }
+      }
+    },
+    "Hostilidade": {
+      "properties": {
+        "idHostilidade": {
+          "type": "string"
+        },
+        "codigoHostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "HostilidadeConsulta": {
+      "properties": {
+        "idHostilidade": {
+          "type": "string"
+        },
+        "codigoHostilidade": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "HostilidadeAlteracao": {
+      "properties": {
+        "codigoHostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "ItemTipo": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nomeTipo": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "ItemEvento": {
+      "properties": {
+        "idEvento": {
+          "type": "string",
+          "required": true
+        },
+        "nomeEvento": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ItemTipoConsulta": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "nomeTipo": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "ItemTipoAlteracao": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "Nacionalidade": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "required": true
+        },
+        "nomePais": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "NacionalidadeConsulta": {
+      "properties": {
+        "codigo": {
+          "type": "string"
+        },
+        "nomePais": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "NacionalidadeAlteracao": {
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "ItemDeInventario": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "indice": {
+          "type": "string",
+          "required": true
+        },
+        "nomeTipo": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        },
+        "quantidadeTotal": {
+          "type": "string",
+          "required": true
+        },
+        "quantidadeDisponivel": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "ItemDeInventarioConsulta": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "idTipo": {
+          "type": "string"
+        },
+        "indice": {
+          "type": "string"
+        },
+        "nomeTipo": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        },
+        "quantidadeTotal": {
+          "type": "string"
+        },
+        "quantidadeDisponivel": {
+          "type": "string"
+        }
+      }
+    },
+    "ItemDeInventarioAlteracao": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "indice": {
+          "type": "string",
+          "required": true
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao"
+        },
+        "quantidadeTotal": {
+          "type": "string",
+          "required": true
+        },
+        "quantidadeDisponivel": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "Material": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "nomeAlternativo": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "numeroSerial": {
+          "type": "string"
+        },
+        "identificacaoLote": {
+          "type": "string"
+        },
+        "numeroEspecificoCasco": {
+          "type": "string"
+        },
+        "numeroRegistro": {
+          "type": "string"
+        },
+        "materialStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "MaterialStatusConsulta"
+          }
+        },
+        "itemTipos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipoConsulta"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoConsulta"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoConsulta"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "HostilidadeConsulta"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "items": {
+            "$ref": "NacionalidadeConsulta"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "eventos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "required": false
+        }
+      }
+    },
+    "MaterialPutRequest": {
+      "id": "MaterialPutRequest",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "nomeAlternativo": {
+          "type": "string",
+          "required": false
+        },
+        "numeroSerial": {
+          "type": "string",
+          "required": false
+        },
+        "identificacaoLote": {
+          "type": "string",
+          "required": false
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        },
+        "itemTipos": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemTipoAlteracao"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "LocalizacaoAlteracao"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "NacionalidadeAlteracao"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "HostilidadeAlteracao"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "associacoesTerminadas": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "materialStatus": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "MaterialStatusAlteracao"
+          }
+        }
+      }
+    },
+    "Pessoa": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "nomeAlternativo": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "dataNascimento": {
+          "type": "string"
+        },
+        "tsFatorRh": {
+          "type": "string"
+        },
+        "genero": {
+          "type": "string"
+        },
+        "religiao": {
+          "type": "string"
+        },
+        "localNascimento": {
+          "type": "string"
+        },
+        "pessoaStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "PessoaStatusConsulta"
+          }
+        },
+        "pessoaDetalhes": {
+          "type": "array",
+          "items": {
+            "$ref": "PessoaDetalheConsulta"
+          }
+        },
+        "pessoaDocumentos": {
+          "type": "array",
+          "items": {
+            "$ref": "PessoaDocumento"
+          }
+        },
+        "pessoaIdiomas": {
+          "type": "array",
+          "items": {
+            "$ref": "PessoaIdioma"
+          }
+        },
+        "itemTipos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipoConsulta"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoConsulta"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoConsulta"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "HostilidadeConsulta"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "items": {
+            "$ref": "NacionalidadeConsulta"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "eventos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "required": false
+        }
+      }
+    },
+    "Instalacao": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "nomeAlternativo": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "altura": {
+          "type": "string"
+        },
+        "comprimento": {
+          "type": "string"
+        },
+        "largura": {
+          "type": "string"
+        },
+        "designacao": {
+          "type": "string"
+        },
+        "materialConstrucao": {
+          "type": "string"
+        },
+		"quantidadeVaos": {
+          "type": "string"
+        },
+        "classe": {
+          "type": "string"
+        },
+        "comprimentoMaiorVao": {
+          "type": "string"
+        },
+        "instalacaoStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "InstalacaoStatusConsulta"
+          }
+        },
+        "itemTipos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipoConsulta"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoGeralConsulta"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoConsulta"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "HostilidadeConsulta"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "items": {
+            "$ref": "NacionalidadeConsulta"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "eventos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "required": false
+        }
+      }
+    },
+    "Organizacao": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "idsPio": {
+          "type": "array",
+          "items": {
+            "$ref": "string"
+          },
+          "required": false
+        },
+        "militar": {
+          "type": "boolean"
+        },
+        "nomeAbreviado": {
+          "type": "string"
+        },
+        "nomeAlternativo": {
+          "type": "string"
+        },
+        "nomeHistorico": {
+          "type": "string"
+        },
+        "identificacao": {
+          "type": "string"
+        },
+        "isOrdemBatalha": {
+          "type": "boolean"
+        },
+        "organizacaoStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "OrganizacaoStatusConsulta"
+          }
+        },
+        "itemTipos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipoConsulta"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoConsulta"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoConsulta"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "HostilidadeConsulta"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "items": {
+            "$ref": "NacionalidadeConsulta"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "eventos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "required": false
+        }
+      }
+    },
+    "MCC": {
+      "properties": {
+        "idItem": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "nomeAbreviado": {
+          "type": "string"
+        },
+        "identificacao": {
+          "type": "string"
+        },
+        "mccStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "MCCStatus"
+          }
+        },
+        "itemTipos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemTipoConsulta"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizacaoGeralConsulta"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "items": {
+            "$ref": "AssociacaoConsulta"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "HostilidadeConsulta"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "items": {
+            "$ref": "NacionalidadeConsulta"
+          }
+        },
+        "sumarioPessoal": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "inventarioMaterial": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemDeInventarioConsulta"
+          }
+        },
+        "eventos": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEvento"
+          },
+          "required": false
+        }
+      }
+    },
+    "Unidade": {
+      "properties": {
+        "nomeAbreviado": {
+          "type": "string"
+        },
+        "identificacao": {
+          "type": "string"
+        }
+      }
+    },
+    "MaterialPostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        }
+      }
+    },
+    "LocalizacaoMaterialLote": {
+      "properties": {
+        "ponto": {
+          "type": "Ponto",
+          "required": true
+        }
+      }
+    },
+    "MaterialLotePostRequest": {
+      "properties": {
+        "idTipo": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoMaterialLote",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "numeroSerialSgl": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MultiplosMateriaisPostRequest": {
+      "properties": {
+        "materiais": {
+          "type": "array",
+          "items": {
+            "$ref": "MaterialLotePostRequest"
+          },
+          "required": true
+        }
+      }
+    },
+    "PessoaPostRequest": {
+      "properties": {
+        "tipo": {
+          "type": "string",
+          "required": true
+        },
+        "nomePessoa": {
+          "type": "string",
+          "required": true
+        },
+        "corPele": {
+          "type": "string",
+          "required": true
+        },
+        "corCabelo": {
+          "type": "string",
+          "required": true
+        },
+        "calvo": {
+          "type": "string",
+          "required": true
+        },
+        "codigoBarba": {
+          "type": "string",
+          "required": true
+        },
+        "nacionalidade": {
+          "type": "string",
+          "required": true
+        },
+        "dtNascimento": {
+          "type": "string",
+          "required": true
+        },
+        "genero": {
+          "type": "string",
+          "required": true
+        },
+        "idUsuario": {
+          "type": "string",
+          "required": true
+        },
+        "hostilidade": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "Localizacao",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "PessoaGetResponse": {
+      "properties": {
+        "pessoa": {
+          "type": "Pessoa"
+        }
+      }
+    },
+    "PessoaPutRequest": {
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "nomeAlternativo": {
+          "type": "string",
+          "required": false
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean",
+          "required": true
+        },
+        "dataNascimento": {
+          "type": "string",
+          "required": true
+        },
+        "tsFatorRh": {
+          "type": "string",
+          "required": false
+        },
+        "genero": {
+          "type": "string",
+          "required": false
+        },
+        "religiao": {
+          "type": "string",
+          "required": false
+        },
+        "localNascimento": {
+          "type": "string",
+          "required": false
+        },
+        "pessoaStatus": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "PessoaStatusAlteracao"
+          }
+        },
+        "pessoaDetalhes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "PessoaDetalheAlteracao"
+          }
+        },
+        "pessoaDocumentos": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "PessoaDocumento"
+          }
+        },
+        "pessoaIdiomas": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "PessoaIdioma"
+          }
+        },
+        "itemTipos": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "ItemTipoAlteracao"
+          }
+        },
+        "localizacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "LocalizacaoAlteracao"
+          }
+        },
+        "nacionalidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "NacionalidadeAlteracao"
+          }
+        },
+        "hostilidades": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "HostilidadeAlteracao"
+          }
+        },
+        "associacoes": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        },
+        "associacoesTerminadas": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "$ref": "AssociacaoAlteracao"
+          }
+        }
+      }
+    },
+    "AnotacaoPostRequest": {
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoAnotacao",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "texto": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCorTexto": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCorArea": {
+          "type": "string",
+          "required": true
+        },
+        "largura": {
+          "type": "string",
+          "required": true
+        },
+        "fonte": {
+          "type": "string",
+          "required": true
+        },
+        "terminacao": {
+          "type": "string",
+          "required": true
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AnotacaoPutRequest": {
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "localizacao": {
+          "type": "LocalizacaoAnotacao"
+        },
+        "idPio": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "codigoCorTexto": {
+          "type": "string"
+        },
+        "codigoCorArea": {
+          "type": "string"
+        },
+        "largura": {
+          "type": "string"
+        },
+        "fonte": {
+          "type": "string",
+          "required": true
+        },
+        "terminacao": {
+          "type": "string"
+        },
+        "aceitarNomeDuplicado": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AnotacaoPostResponse": {
+      "properties": {
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoAnotacao",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "texto": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCorTexto": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCorArea": {
+          "type": "string",
+          "required": true
+        },
+        "largura": {
+          "type": "string",
+          "required": true
+        },
+        "terminacao": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "AnotacaoGetResponse": {
+      "properties": {
+        "idAnotacao": {
+          "type": "string",
+          "required": true
+        },
+        "nome": {
+          "type": "string",
+          "required": true
+        },
+        "localizacao": {
+          "type": "LocalizacaoAnotacao",
+          "required": true
+        },
+        "idPio": {
+          "type": "string",
+          "required": true
+        },
+        "texto": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCorTexto": {
+          "type": "string",
+          "required": true
+        },
+        "codigoCorArea": {
+          "type": "string",
+          "required": true
+        },
+        "largura": {
+          "type": "string",
+          "required": true
+        },
+        "fonte": {
+          "type": "string",
+          "required": true
+        },
+        "terminacao": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "MaterialGetResponse": {
+      "properties": {
+        "material": {
+          "type": "Material"
+        }
+      }
+    },
+    "InstalacaoGetResponse": {
+      "properties": {
+        "instalacao": {
+          "type": "Instalacao"
+        }
+      }
+    },
+    "OrganizacaoStatus": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string",
+          "required": true
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoDisponibilidade": {
+          "type": "string"
+        },
+        "codigoStatusCompromisso": {
+          "type": "string"
+        },
+        "codigoPapelComandoControle": {
+          "type": "string"
+        },
+        "codigoModoFogo": {
+          "type": "string"
+        },
+        "codigoProntidao": {
+          "type": "string"
+        },
+        "duracaoProntidao": {
+          "type": "string"
+        },
+        "codigoReforco": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoTreinamento": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "OrganizacaoStatusConsulta": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string"
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoDisponibilidade": {
+          "type": "string"
+        },
+        "codigoStatusCompromisso": {
+          "type": "string"
+        },
+        "codigoPapelComandoControle": {
+          "type": "string"
+        },
+        "codigoModoFogo": {
+          "type": "string"
+        },
+        "codigoProntidao": {
+          "type": "string"
+        },
+        "duracaoProntidao": {
+          "type": "string"
+        },
+        "codigoReforco": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoTreinamento": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "OrganizacaoStatusAlteracao": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string",
+          "required": true
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoDisponibilidade": {
+          "type": "string"
+        },
+        "codigoStatusCompromisso": {
+          "type": "string"
+        },
+        "codigoPapelComandoControle": {
+          "type": "string"
+        },
+        "codigoModoFogo": {
+          "type": "string"
+        },
+        "codigoProntidao": {
+          "type": "string"
+        },
+        "duracaoProntidao": {
+          "type": "string"
+        },
+        "codigoReforco": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoTreinamento": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "InstalacaoStatus": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string",
+          "required": true
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoCondicaoAtividadeInimiga": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoStatusSeguranca": {
+          "type": "string"
+        },
+        "codigoIndicadorProgramaOcupacao": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "InstalacaoStatusConsulta": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string"
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoCondicaoAtividadeInimiga": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoStatusSeguranca": {
+          "type": "string"
+        },
+        "codigoIndicadorProgramaOcupacao": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "InstalacaoStatusAlteracao": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string",
+          "required": true
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoCondicaoAtividadeInimiga": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoStatusSeguranca": {
+          "type": "string"
+        },
+        "codigoIndicadorProgramaOcupacao": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "MaterialStatus": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string",
+          "required": true
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoCor": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "MaterialStatusConsulta": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string"
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoCor": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "MaterialStatusAlteracao": {
+      "properties": {
+        "codigoStatusOperacional": {
+          "type": "string",
+          "required": true
+        },
+        "codigoQualificadorStatusOperacional": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "codigoCor": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "MCCStatus": {
+      "properties": {
+        "idMCCStatus": {
+          "type": "integer"
+        },
+        "codigoInvestigacao": {
+          "type": "string"
+        },
+        "codigoStatusUtilizacao": {
+          "type": "string"
+        },
+        "indiceItemStatus": {
+          "type": "integer"
+        },
+        "codigoStatusSeguranca": {
+          "type": "string"
+        }
+      }
+    },
+    "PessoaStatus": {
+      "properties": {
+        "codigoSituacaoServico": {
+          "type": "string"
+        },
+        "codigoStatusFisico": {
+          "type": "string"
+        },
+        "codigoQualificadorStatusFisico": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "PessoaStatusConsulta": {
+      "properties": {
+        "codigoSituacaoServico": {
+          "type": "string"
+        },
+        "codigoStatusFisico": {
+          "type": "string"
+        },
+        "codigoQualificadorStatusFisico": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "PessoaStatusAlteracao": {
+      "properties": {
+        "codigoSituacaoServico": {
+          "type": "string"
+        },
+        "codigoStatusFisico": {
+          "type": "string"
+        },
+        "codigoQualificadorStatusFisico": {
+          "type": "string"
+        },
+        "codigoIndicadorReserva": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "PessoaDetalhe": {
+      "properties": {
+        "idPessoa": {
+          "type": "string"
+        },
+        "corPele": {
+          "type": "string"
+        },
+        "corCabelo": {
+          "type": "string"
+        },
+        "calvo": {
+          "type": "string"
+        },
+        "dataAlistamento": {
+          "type": "string"
+        },
+        "codigoCorOlhos": {
+          "type": "string"
+        },
+        "peso": {
+          "type": "string"
+        },
+        "altura": {
+          "type": "string"
+        },
+        "defeitosFisicos": {
+          "type": "string"
+        },
+        "codigoBarba": {
+          "type": "string"
+        },
+        "codigoCorBarba": {
+          "type": "string"
+        },
+        "codigoBigode": {
+          "type": "string"
+        },
+        "codigoCorBigode": {
+          "type": "string"
+        },
+        "codigoCorCabelo": {
+          "type": "string"
+        },
+        "codigoDestreza": {
+          "type": "string"
+        },
+        "codigoNacionalidade": {
+          "type": "string"
+        },
+        "oculos": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "Classificacao"
+        }
+      }
+    },
+    "PessoaDetalheConsulta": {
+      "properties": {
+        "idPessoa": {
+          "type": "string"
+        },
+        "corPele": {
+          "type": "string"
+        },
+        "corCabelo": {
+          "type": "string"
+        },
+        "calvo": {
+          "type": "string"
+        },
+        "dataAlistamento": {
+          "type": "string"
+        },
+        "codigoCorOlhos": {
+          "type": "string"
+        },
+        "peso": {
+          "type": "string"
+        },
+        "altura": {
+          "type": "string"
+        },
+        "estatura": {
+          "type": "string"
+        },
+        "estrangeiro": {
+          "type": "string"
+        },
+        "sinalDePele": {
+          "type": "string"
+        },
+        "defeitosFisicos": {
+          "type": "string"
+        },
+        "codigoBarba": {
+          "type": "string"
+        },
+        "codigoCorBarba": {
+          "type": "string"
+        },
+        "codigoBigode": {
+          "type": "string"
+        },
+        "codigoCorBigode": {
+          "type": "string"
+        },
+        "codigoCorCabelo": {
+          "type": "string"
+        },
+        "codigoDestreza": {
+          "type": "string"
+        },
+        "codigoNacionalidade": {
+          "type": "string"
+        },
+        "oculos": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoConsulta"
+        }
+      }
+    },
+    "PessoaDetalheAlteracao": {
+      "properties": {
+        "idPessoa": {
+          "type": "string"
+        },
+        "corPele": {
+          "type": "string"
+        },
+        "corCabelo": {
+          "type": "string"
+        },
+        "calvo": {
+          "type": "string"
+        },
+        "dataAlistamento": {
+          "type": "string"
+        },
+        "codigoCorOlhos": {
+          "type": "string"
+        },
+        "peso": {
+          "type": "string"
+        },
+        "altura": {
+          "type": "string"
+        },
+        "defeitosFisicos": {
+          "type": "string"
+        },
+        "codigoBarba": {
+          "type": "string"
+        },
+        "codigoCorBarba": {
+          "type": "string"
+        },
+        "codigoBigode": {
+          "type": "string"
+        },
+        "codigoCorBigode": {
+          "type": "string"
+        },
+        "codigoCorCabelo": {
+          "type": "string"
+        },
+        "codigoDestreza": {
+          "type": "string"
+        },
+        "codigoNacionalidade": {
+          "type": "string"
+        },
+        "estatura": {
+          "type": "string"
+        },
+        "oculos": {
+          "type": "string"
+        },
+        "classificacao": {
+          "type": "ClassificacaoCriacao",
+          "required": true
+        }
+      }
+    },
+    "PessoaDocumento": {
+      "properties": {
+        "idPessoa": {
+          "type": "string"
+        },
+        "indicePessoaIdentificador": {
+          "type": "string"
+        },
+        "codigo": {
+          "type": "string",
+          "required": true
+        },
+        "numeroDocumento": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "PessoaIdioma": {
+      "properties": {
+        "idPessoa": {
+          "type": "string"
+        },
+        "indiceHabilitacaoIdioma": {
+          "type": "string"
+        },
+        "codigoCategoria": {
+          "type": "string",
+          "required": true
+        },
+        "proeficienciaGeral": {
+          "type": "string",
+          "required": true
+        },
+        "nivelProeficienciaAudicao": {
+          "type": "string"
+        },
+        "nivelProeficienciaLeitura": {
+          "type": "string"
+        },
+        "nivelProeficienciaConversacao": {
+          "type": "string"
+        },
+        "nivelProeficienciaEscrita": {
+          "type": "string"
+        }
+      }
+    },
+    "ItemCopiaGetResponse" : {
+    	"properties": {
+	    	"idPioPai": {
+				"type": "string"
+	    	},
+	    	"idPioFilho": {
+				"type": "string"
+	    	},
+		    "relacaoCopia": {
+			"type": "array",
+		    "required": true,
+		       "$ref": "string"
+		    }
+    	}
+    },
+    "PublicacaoItemResponse" : {
+        "properties": {
+            "idPio": {
+                "type": "string"
+            }
+        }
+    }  
+  }
+}

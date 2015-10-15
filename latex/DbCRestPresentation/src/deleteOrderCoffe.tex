@@ -1,0 +1,14 @@
+resource order  { 
+     path = "/order/{orderId}"; 
+      /**
+      * @ summary: delete order.
+      * @ params:
+      *       path orderId: Id of order
+      * @ throws
+      *       404 Order not found.
+      *       401 Payment already processed.
+      */
+      @delete null deleteOrder ( int orderId)
+           require (call store.getPaymentStatus(orderId, 'expected') == 200),
+           otherwise 401;
+};

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="11" version="2.0">
+<workbench progressCount="20" version="2.0">
 <workbenchAdvisor/>
 <window height="743" maximized="true" width="1018" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -15,9 +15,12 @@
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="com.python.pydev.toolbars.evaluateActionSetterToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="60" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="net.sourceforge.texlipse.bibeditor.BibEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="net.sourceforge.texlipse.TexEditor" itemType="typeToolBarContribution" x="208" y="30"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -30,15 +33,22 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="net.sourceforge.texlipse.TexEditor" name="NeoIDL-DbC-syntax.tex" partName="NeoIDL-DbC-syntax.tex" path="/home/lucas/workspace/mestrado/latex/NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex" title="NeoIDL-DbC-syntax.tex" tooltip="NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex"/>
+<editor activePart="true" focus="true" id="net.sourceforge.texlipse.TexEditor" name="neoidl-wpos-2015.tex" partName="neoidl-wpos-2015.tex" path="/home/lucas/workspace/mestrado/latex/WPOS/src/neoidl-wpos-2015.tex" title="neoidl-wpos-2015.tex" tooltip="WPOS/src/neoidl-wpos-2015.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WPOS/src/neoidl-wpos-2015.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="25492" selectionTopPixel="10816"/>
 </editor>
-<editor id="net.sourceforge.texlipse.TexEditor" name="multicols.tex" partName="multicols.tex" path="/home/lucas/workspace/mestrado/latex/NeoIDL-DbC-28082015/multicols.tex" title="multicols.tex" tooltip="NeoIDL-DbC-28082015/multicols.tex" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NeoIDL-DbC-28082015/multicols.tex"/>
+<editor id="net.sourceforge.texlipse.TexEditor" name="wtdsoft-neoidl-dbc.tex" partName="wtdsoft-neoidl-dbc.tex" path="/home/lucas/workspace/mestrado/latex/WPOS/src/wtdsoft-neoidl-dbc.tex" title="wtdsoft-neoidl-dbc.tex" tooltip="WPOS/src/wtdsoft-neoidl-dbc.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WPOS/src/wtdsoft-neoidl-dbc.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="29" selectionOffset="103" selectionTopPixel="0"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="fundamentacao.tex" partName="fundamentacao.tex" path="/home/lucas/workspace/mestrado/latex/WPOS/src/fundamentacao.tex" title="fundamentacao.tex" tooltip="WPOS/src/fundamentacao.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/WPOS/src/fundamentacao.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2466" selectionTopPixel="511"/>
 </editor>
 </editors>
 <views>
@@ -49,6 +59,9 @@
 <view id="net.sourceforge.texlipse.FullOutline" partName="Full Latex Outline"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Errors"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="261" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -191,7 +204,7 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24980666" ratioLeft="323" ratioRight="970" relationship="2" relative="org.eclipse.ui.internal.ViewStack@325581b9"/>
 <info folder="true" part="bottom" ratio="0.6995516" ratioLeft="468" ratioRight="201" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -222,88 +235,169 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/NeoIDL-DbC.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/NeoIdl.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/multicols.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/NeoIDL-DbC.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/theorem2.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/soa.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/NeoIDL-DbC-28082015/multicols.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WPOS/src/neoidl-wpos-2015.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WPOS/src/wtdsoft-neoidl-dbc.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" path="/WPOS/src/IEEEexample.bib"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/WPOS/src/IEEEtran.bst"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" path="/WPOS/src/sbc-template.bib"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" path="/WPOS/src/neoIDL-WPOS.bib"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/WPOS/src/fundamentacao.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DbCRestPresentation/src/Area.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DbCRestPresentation/src/Ponto.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DbCRestPresentation/src/deleteOrderCoffe.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DbCRestPresentation/src/getCharacters.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DbCRestPresentation/src/getCharactersDbc.tex"/>
 </editors>
-<item historyLabel="NeoIDL-DbC.tex" index="0">
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="2110" y="55"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="27200" y="0"/>
+</item>
+<item historyLabel="IEEEexample.bib" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIdl.tex" index="1">
-<position/>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="2164" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC.tex" index="0">
+<item historyLabel="IEEEexample.bib" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="353" y="0"/>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="2164" y="0"/>
 </item>
-<item historyLabel="NeoIdl.tex" index="1">
+<item historyLabel="IEEEtran.bst" index="3">
+<position info="not_deleted" x="43620" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="2108" y="0"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="27200" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="2110" y="55"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="27200" y="0"/>
+</item>
+<item historyLabel="IEEEexample.bib" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="9534" y="0"/>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="27199" y="0"/>
 </item>
-<item historyLabel="multicols.tex" index="3">
+<item historyLabel="IEEEexample.bib" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC.tex" index="4">
+<item historyLabel="sbc-template.bib" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="multicols.tex" index="3">
+<item historyLabel="IEEEexample.bib" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11577" y="0"/>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="27199" y="0"/>
 </item>
-<item historyLabel="multicols.tex" index="3">
+<item historyLabel="neoIDL-WPOS.bib" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11577" y="0"/>
-</item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11843" y="0"/>
-</item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11878" y="0"/>
-</item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11901" y="0"/>
-</item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11934" y="0"/>
-</item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11965" y="0"/>
-</item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11993" y="0"/>
-</item>
-<item historyLabel="theorem2.tex" index="5">
+<item historyLabel="IEEEexample.bib" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11993" y="0"/>
-</item>
-<item historyLabel="NeoIdl.tex" index="1">
+<item historyLabel="neoIDL-WPOS.bib" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="2">
-<position info="not_deleted" x="11993" y="0"/>
+<item historyLabel="IEEEexample.bib" index="2">
+<position info="not_deleted" x="8056" y="362"/>
 </item>
-<item historyLabel="soa.tex" index="6">
+<item historyLabel="neoIDL-WPOS.bib" index="5">
+<position info="not_deleted" x="4413" y="0"/>
+</item>
+<item historyLabel="IEEEexample.bib" index="2">
+<position info="not_deleted" x="24016" y="342"/>
+</item>
+<item historyLabel="neoIDL-WPOS.bib" index="5">
+<position info="not_deleted" x="773" y="0"/>
+</item>
+<item historyLabel="IEEEexample.bib" index="2">
+<position info="not_deleted" x="16284" y="396"/>
+</item>
+<item historyLabel="neoIDL-WPOS.bib" index="5">
+<position info="not_deleted" x="769" y="0"/>
+</item>
+<item historyLabel="IEEEexample.bib" index="2">
+<position info="not_deleted" x="16284" y="396"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="27199" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="2110" y="55"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="21033" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="NeoIDL-DbC-syntax.tex" index="7"/>
-<item historyLabel="multicols.tex" index="8"/>
-<item active="true" historyLabel="NeoIDL-DbC-syntax.tex" index="7"/>
+<item historyLabel="Area.tex" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Ponto.tex" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="deleteOrderCoffe.tex" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="getCharacters.tex" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="2465" y="0"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="24457" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="194" y="330"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="15088" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="84" y="18"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="14757" y="0"/>
+</item>
+<item historyLabel="wtdsoft-neoidl-dbc.tex" index="1">
+<position info="not_deleted" x="103" y="29"/>
+</item>
+<item historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="14757" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="2465" y="0"/>
+</item>
+<item historyLabel="getCharactersDbc.tex" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fundamentacao.tex" index="6">
+<position info="not_deleted" x="2466" y="0"/>
+</item>
+<item active="true" historyLabel="neoidl-wpos-2015.tex" index="0">
+<position info="not_deleted" x="14757" y="0"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -321,26 +415,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="soa.tex" tooltip="NeoIDL-DbC-28082015/soa.tex">
-<persistable path="/NeoIDL-DbC-28082015/soa.tex"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="getCharactersDbc.tex" tooltip="DbCRestPresentation/src/getCharactersDbc.tex">
+<persistable path="/DbCRestPresentation/src/getCharactersDbc.tex"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="theorem2.tex" tooltip="NeoIDL-DbC-28082015/theorem2.tex">
-<persistable path="/NeoIDL-DbC-28082015/theorem2.tex"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="getCharacters.tex" tooltip="DbCRestPresentation/src/getCharacters.tex">
+<persistable path="/DbCRestPresentation/src/getCharacters.tex"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="NeoIDL-DbC.tex" tooltip="NeoIDL-DbC-28082015/NeoIDL-DbC.tex">
-<persistable path="/NeoIDL-DbC-28082015/NeoIDL-DbC.tex"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="deleteOrderCoffe.tex" tooltip="DbCRestPresentation/src/deleteOrderCoffe.tex">
+<persistable path="/DbCRestPresentation/src/deleteOrderCoffe.tex"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="multicols.tex" tooltip="NeoIDL-DbC-28082015/multicols.tex">
-<persistable path="/NeoIDL-DbC-28082015/multicols.tex"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="Ponto.tex" tooltip="DbCRestPresentation/src/Ponto.tex">
+<persistable path="/DbCRestPresentation/src/Ponto.tex"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="NeoIdl.tex" tooltip="NeoIDL-DbC-28082015/NeoIdl.tex">
-<persistable path="/NeoIDL-DbC-28082015/NeoIdl.tex"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="Area.tex" tooltip="DbCRestPresentation/src/Area.tex">
+<persistable path="/DbCRestPresentation/src/Area.tex"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="NeoIDL-DbC.pdf" tooltip="NeoIDL-DbC-28082015/apresentacao/NeoIDL-DbC.pdf">
-<persistable path="/NeoIDL-DbC-28082015/apresentacao/NeoIDL-DbC.pdf"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="fundamentacao.tex" tooltip="WPOS/src/fundamentacao.tex">
+<persistable path="/WPOS/src/fundamentacao.tex"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="NeoIDL-DbC-syntax.tex" tooltip="NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex">
-<persistable path="/NeoIDL-DbC-28082015/NeoIDL-DbC-syntax.tex"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="neoIDL-WPOS.bib" tooltip="WPOS/src/neoIDL-WPOS.bib">
+<persistable path="/WPOS/src/neoIDL-WPOS.bib"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="sbc-template.bib" tooltip="WPOS/src/sbc-template.bib">
+<persistable path="/WPOS/src/sbc-template.bib"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="IEEEtran.bst" tooltip="WPOS/src/IEEEtran.bst">
+<persistable path="/WPOS/src/IEEEtran.bst"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="IEEEexample.bib" tooltip="WPOS/src/IEEEexample.bib">
+<persistable path="/WPOS/src/IEEEexample.bib"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="sample.bib" tooltip="NeoIDL-DbC-28082015/sample.bib">
+<persistable path="/NeoIDL-DbC-28082015/sample.bib"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="wtdsoft-neoidl-dbc.tex" tooltip="WPOS/src/wtdsoft-neoidl-dbc.tex">
+<persistable path="/WPOS/src/wtdsoft-neoidl-dbc.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="neoidl-wpos-2015.tex" tooltip="WPOS/src/neoidl-wpos-2015.tex">
+<persistable path="/WPOS/src/neoidl-wpos-2015.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="bare_jrnl.tex" tooltip="WPOS/src/bare_jrnl.tex">
+<persistable path="/WPOS/src/bare_jrnl.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="caption2.sty" tooltip="WPOS/caption2.sty">
+<persistable path="/WPOS/caption2.sty"/>
 </file>
 </mruList>
 </workbench>

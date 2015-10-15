@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WPOS/src/sbc-template.bib&apos; to &apos;neoIDL-WPOS.bib&apos;" description="Rename resource &apos;sbc-template.bib&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/sbc-template.bib" name="neoIDL-WPOS.bib" stamp="1444100918774" updateReferences="true"/>
+</session>

@@ -1,0 +1,50 @@
+\section{Exemplo de DBC para SOC}\label{sec:exemplobdc}
+
+Nesta seção apresentamos dois exemplos do uso de DBC para SOC. O primeiro caso,
+mais simples, consiste em estabelecer um contrato que restringe o argumento
+passado para o serviço. O segundo exemplo é mais elaborado, no qual se
+estabelece como pré-condição o resultado positivo na chamada de um outro
+serviço. Satisfeita a pré-condição, o serviço principal garante, por meio de
+outra chamada, que a necessidade do cliente é atendida.
+
+\subsection{Exemplo simples}
+
+O trecho de módulo \neoidl constante da figura \ref{lst:DBCSimple} destaca a
+capacidade \emph{incluirItem} (linha 8). Para que se tenha o item incluído no
+catálogo, é necessário fornecer um valor para o atributo descrição
+(obrigatório). A pré-condição (linha 6) se inicia com a notação \emph{/@pre} e
+possui validação sobre o atributo descrição. Note que o atributo é precedido
+da palavra \emph{old}, que indica o valor do atributo antes do processamento do
+serviço. De forma inversa, o prefixo \emph{new} indicaria o valor do atributo
+após a execução do serviço. É estabelecido ainda a cláusula \emph{/@otherwise}
+na linha 7. Sua função é informar ao cliente do serviço a falha no atendimento da pré-condição,
+retornando o código HTTP 412 (Falha de pré-condição).
+ 
+\begin{figure}[htb]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCsimple.neo}
+\end{small}
+\caption{Exemplo da notação DBC no \neoidl}
+\label{lst:DBCSimple}
+\end{figure}
+
+
+\subsection{Exemplo de DBC com chamada a serviço}
+
+A figura \ref{lst:DBCService} apresenta a capacidade \emph{excluirItem} (linha
+8). Nesse caso são estabelecidas a pré e a pós condições, ambas com chamadas ao
+serviço \emph{Catalogo.pesquisarItem}. Antes do processamento da capacidade
+\emph{excluirItem}, é verificado se o item exite. Caso exista, a pré-condição é
+satisfeita e o item é excluído. A pós-condição (linha 6) confirma que o item não
+consta mais do catálogo. Se a pré-condição não for satisfeita, a cláusula
+\emph{/@otherwise} (linha 7) informa ao cliente do serviço que o item não foi
+localizado (código HTTP 404 - Objeto não encontrado).
+
+
+\begin{figure}[htb]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCservice.neo}
+\end{small}
+\caption{Exemplo da notação DBC no \neoidl com chamada a serviço}
+\label{lst:DBCService}
+\end{figure}

@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: neoidl-wpos-2015.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: neoIDL-WPOS.bib
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 16 entries,
+            4024 wiz_defined-function locations,
+            909 strings with 9949 characters,
+and the built_in function-call counts, 10730 in all, are:
+= -- 881
+> -- 209
+< -- 83
++ -- 113
+- -- 35
+* -- 511
+:= -- 1706
+add.period$ -- 36
+call.type$ -- 16
+change.case$ -- 15
+chr.to.int$ -- 183
+cite$ -- 16
+duplicate$ -- 779
+empty$ -- 910
+format.name$ -- 43
+if$ -- 2446
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 135
+newline$ -- 75
+num.names$ -- 18
+pop$ -- 304
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 846
+stack$ -- 0
+substring$ -- 446
+swap$ -- 613
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 16
+warning$ -- 0
+while$ -- 54
+width$ -- 18
+write$ -- 177
