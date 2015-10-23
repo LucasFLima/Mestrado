@@ -1,0 +1,36 @@
+{ "swaggerVersion": "1.2",
+  "id": "Symbol",
+  "version": "1.0.4",
+  "produces": ["application/xml"],
+  "apis": [
+   {"path": "/symbol",
+    "operations": [
+      {"method": "post",
+       "type": "string",
+       "summary": "Symbols composition",
+       "parameters": [
+        {  "name": "symbInfo",
+         "paramType": "body",
+         "type": "SymbolReq",
+         "required": true  } ]
+        }    ]
+   }  ],
+  "models": {
+   "SymbolReq": {
+    "properties": {
+      "hstlyColor": {  "type": "string", "required": true, "description": "The color of hostility"},
+      "designation": { "type": "string", "description": "Designation of the militar composition"},
+      "subordinated": { "type": "string", "description": "For whom this composition is subordinated"},
+      "height": {"type": "long", "description": "The heigth of the symbol"},
+      "width": { "type": "long", "description": "The width of the symbol" },
+      "symbols": { "type": "array", "items": {"$ref": "Symbol" }, "required": true, "description": "Set of compose symbols" }
+    }
+   },
+   "Symbol": {
+    "properties": {
+      "name": { "type": "string", "required": true, "description": "Name of the symbol"  },
+      "order": { "type": "int", "required": true, "description": "Order of the symbol in composition"},
+      "hstlyFill": { "type": "boolean","required": true, "description": "The fill of the symbol"},
+      "hstlyLine": { "type": "boolean","required": true, "description": "The type of line of hostility" }
+    }    }    }
+}

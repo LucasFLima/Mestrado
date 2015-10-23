@@ -1,0 +1,10 @@
+MODULES_MANAGER_V2
+SimpleTwistedServer|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/SimpleTwistedServer.py
+callService|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/callService.py
+hello|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/hello.py
+sum|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/sum.py
+teste|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/teste.py
+twisted_server|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/twisted_server.py
+twisted_server_teste|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/twisted_server_teste.py
+usuarioChat|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/usuarioChat.py
+utils|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/utils.py

@@ -1,0 +1,20 @@
+module Agente {
+ 
+ entity Agent { 
+  ...
+ };
+
+ annotation SecurityPolicy for resource {
+  string method;
+  string algorithm;
+  string role;
+ };
+
+ @SecurityPolicy(method = "basic", 
+            algorithm="AES", 
+            role = "admin");
+ resource agent {
+  path = "/agent";
+  @post void persistAgent(Agent agent);
+ };
+};

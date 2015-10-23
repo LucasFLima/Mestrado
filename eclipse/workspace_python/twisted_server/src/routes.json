@@ -1,0 +1,22 @@
+{
+    "routes": [
+        {
+            "id": "hello",
+            "uri": "/hello",
+            "pattern": "/hello",
+            "srv": "hello.py"
+        },
+        {
+            "id": "sum",
+            "uri": "/sum/{id}",
+            "pattern": "\/sum\/([0-9]*)",
+            "srv": "sum.py"
+        },
+        {
+            "id": "usuariosChat",
+            "uri": "/usuariosChat/instancia/nomeInstancia/mensagem/idUsuarioDestino/usuarios",
+            "pattern": "\/usuariosChat\/instancia\/([a-zA-Z]*)\/mensagem\/([a-zA-Z]*)\/usuarios",
+            "srv": "usuarioChat.py"
+        }  
+    ]
+}

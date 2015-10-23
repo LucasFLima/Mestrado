@@ -1,0 +1,87 @@
+-- VERSION_4
+-- START DISKCACHE
+/home/lucas/workspace/eclipse/workspace_python/.metadata/.plugins/org.eclipse.core.resources/.projects/twisted_server/com.python.pydev.analysis/v2_indexcache
+hello|1442286763000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/hello.py
+twisted_server_teste|1442318760000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/twisted_server_teste.py
+utils|1442179292000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/utils.py
+teste|1442230071000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/teste.py
+SimpleTwistedServer|1445360895000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/SimpleTwistedServer.py
+twisted_server|1442288478000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/twisted_server.py
+sum|1442110805000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/sum.py
+usuarioChat|1442289299000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/usuarioChat.py
+callService|1442273885000|/home/lucas/workspace/eclipse/workspace_python/twisted_server/src/callService.py
+-- END DISKCACHE
+-- START DICTIONARY
+25
+21=Resource
+7=twisted_server_teste
+11=TwistedServer
+25=Chamada.__init__
+18=Response.__init__
+2=teste
+12=Response
+6=twisted_server
+8=sum
+22=GetRequestParameters.__init__
+13=Request
+10=ResponseCode
+17=Request.__init__
+3=usuarioChat
+24=Chamada.call
+9=hello
+23=TwistedServer.__init__
+16=Recibo
+4=utils
+5=SimpleTwistedServer
+20=Recibo.__init__
+19=SimpleServer
+14=Chamada
+15=GetRequestParameters
+1=callService
+-- END DICTIONARY
+-- START TREE 1
+11
+cal|1|callService!10@
+cha|2|chamada!19@Chamada!25@
+ext|1|extractArgsFromPath!34@
+get|1|GetRequestParameters!25@
+por|1|porta!43@
+rec|1|Recibo!25@
+req|1|Request!49@
+res|6|ResponseCode!49@Resource!25@ResponseCode!57@Response!49@Resource!65@Resource!73@
+sim|1|SimpleServer!41@
+sit|1|site!43@
+twi|2|TwistedServer!57@TwistedServer!49@
+-- END TREE
+-- START TREE 2
+29
+Ok|2|Ok!10&51@Ok!10&59@
+__i|6|__init__!11&50@__init__!12&50@__init__!13&50@__init__!14&26@__init__!15&26@__init__!16&26@
+arg|1|args!17&51@
+bad|2|BadRequest!10&51@BadRequest!10&59@
+bod|2|body!18&51@body!17&51@
+cal|3|callbackSucess!19&42@call!14&26@callbackFail!19&42@
+cod|1|code!18&51@
+cre|3|createModuleAndRequest!11&50@Created!10&59@Created!10&51@
+dat|1|dataHora!20&27@
+dbc|2|dbcConditionCheck!19&42@dbcCondition!19&42@
+del|1|delete!21&26@
+des|1|destinatario!20&27@
+get|4|getProcessing!19&42@get!21&26@get!21&74@get!21&66@
+idu|1|idUsuarioDestino!22&27@
+int|2|InternalServerError!10&59@InternalServerError!10&51@
+inv|2|InvalidPrecondition!10&59@InvalidPrecondition!10&51@
+isl|2|isLeaf!11&51@isLeaf!19&43@
+nom|1|nomeInstancia!22&27@
+pat|2|path!17&51@pathTable!23&51@
+pos|1|post!21&26@
+pro|1|processaChamada!21&26@
+put|1|put!21&26@
+ren|6|render_GET!11&50@render_POST!11&50@render_GET!11&58@render_GET!19&42@render_DELETE!11&50@render_PUT!11&50@
+ret|2|retorno!24&27@retorno!14&27@
+rou|1|routeTable!23&51@
+sit|2|site!11&59@site!11&51@
+tok|1|token!22&27@
+una|2|Unauthorized!10&59@Unauthorized!10&51@
+url|1|url!25&27@
+-- END TREE

@@ -1,0 +1,89 @@
+from twisted.web import server, resource
+from twisted.internet import reactor
+from time import sleep
+from httplib import HTTPConnection
+from twisted.internet import defer, threads
+from twisted.internet.defer import Deferred
+from twisted.web.server import NOT_DONE_YET
+from twisted.web.client import Agent
+from twisted.web.http_headers import Headers
+
+class Acionador(object):
+    
+    def __init__(self, url=None):
+        self.url = self
+        
+    
+    def chamaServico(self):
+        self.status = call()
+        
+
+def call():
+        print 'inside call'
+        r=HTTPConnection("127.0.0.1", 8082)
+        r.request('GET', '/hello')
+        res = r.getresponse()
+        return res.status
+
+def pErro():
+    print 'erro'
+    return 'erro'
+
+class Simple(resource.Resource):
+    isLeaf = True
+    
+    def final(self, message, request, encoding): 
+    # Message will contain the message returned by callback1
+        request.write(message.encode(encoding)) # This will write the message and return it to the browser.
+        
+        request.finish() # Done
+    
+    def getProcessing(self, request):
+        print 'getProcessing'
+        #request.finish()
+    
+    def callback1(self):
+    #raise ValueError  # E1
+        lines = ['<html><body>\n',
+                 '<p>OK<p>',
+                 '</body></html>\n']
+        return ''.join(lines)
+        
+    def render_GET(self, request):
+        print 'Path ' + request.path
+        
+        if request.path == '/hello':
+            #sleep(2)
+            return 'Hello World'
+        
+        if request.path == '/teste':
+            #sleep(2)
+            print 'before deferToThread'
+            #acion = Acionador()
+            #acion.chamaServico()
+            #print '>> ' + str(acion.status)
+            agent = Agent(reactor)
+   
+            d = agent.request(
+                'GET',
+                'http://127.0.0.1:8082/hello',
+                Headers({'User-Agent': ['Twisted Web Client Example']}),
+                None)
+            
+            d = threads.deferToThread(self.callback1)
+            d.addCallback(self.getProcessing(request))
+            #d.addErrback(pErro())
+            
+            print 'after deferToThread'
+            
+            return NOT_DONE_YET
+            #return NOT_DONE_YET
+        
+        else:
+            return 'default site'
+
+site = server.Site(Simple())
+porta = 8082
+print 'Running server on port ' + str(porta)
+reactor.listenTCP(porta, site)
+reactor.run()

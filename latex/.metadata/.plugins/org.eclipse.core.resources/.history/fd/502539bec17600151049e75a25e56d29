@@ -1,0 +1,29 @@
+module simbol {
+
+  entity SymbolReq {
+     string : designation; /*Designation of the militar composition*/
+   [Symbol] : symbols;      /*Required. Set of compose symbols */
+     string : subordinated; /*For whom this composition is subordinated */
+       long : width;        /* The width of the symbol*/
+       long : height;       /* The heigth of the symbol*/
+     string : hstlyColor;   /*Required. The color of hostility*/
+   };
+
+   entity Symbol {
+         int : order;    /*Required. Order of the symbol in composition.*/
+     boolean : hstlyLine;/*Required. The type of line of hostility.*/
+      string : name;     /*Required. Name of the symbol.*/
+     boolean : hstlyFill;/*Required. The fill of the symbol*/
+   };
+
+   service symbol {
+      path = "/symbol";
+
+      /**
+      * @ summary: Symbols composition
+      * @ params:
+      *   body symbInfo(*):
+      */
+      @post string symbol (SymbolReq symbInfo);
+  }; 
+}

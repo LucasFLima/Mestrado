@@ -1,0 +1,9 @@
+module  Message {
+ import MessageData; 
+
+ resource sentbox { 
+  path = "/messages/sent";
+  @post void sendMessage(Message message); 
+  @get [Message] listMessages(string seq); 
+ };
+};

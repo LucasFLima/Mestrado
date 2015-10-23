@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: edna.aux
+The style file: plain.bst
+Database file #1: references.bib
+Warning--empty institution in park-sloc:1992
+You've used 21 entries,
+      2118 wiz_defined-function locations,
+      620 strings with 7116 characters,
+and the built_in function-call counts, 6271 in all, are:
+= -- 611
+> -- 310
+< -- 6
++ -- 122
+- -- 100
+* -- 391
+:= -- 1107
+add.period$ -- 73
+call.type$ -- 21
+change.case$ -- 110
+chr.to.int$ -- 0
+cite$ -- 22
+duplicate$ -- 258
+empty$ -- 483
+format.name$ -- 100
+if$ -- 1309
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 23
+newline$ -- 113
+num.names$ -- 46
+pop$ -- 126
+preamble$ -- 1
+purify$ -- 90
+quote$ -- 0
+skip$ -- 158
+stack$ -- 0
+substring$ -- 227
+swap$ -- 40
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 68
+warning$ -- 1
+while$ -- 57
+width$ -- 23
+write$ -- 248
+(There was 1 warning)

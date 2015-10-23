@@ -1,0 +1,45 @@
+{
+    "swaggerVersion": "1.2",
+    "id": "Simbolo",
+    "version": "1.0.4",
+    "produces": [
+        "application/xml"
+    ],
+    "apis": [
+        {   "path": "/simbolo",
+            "operations": [
+                {
+                    "method": "post",
+                    "type": "string",
+                    "summary": "Composicao de Simbolos",
+                    "parameters": [
+                        {   "name": "simbInfo",
+                            "paramType": "body",
+                            "type": "PostSimboloReq",
+                            "required": true  }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "PostSimboloReq": {
+            "properties": {
+                "hstlcor": {  "type": "string", "required": true},
+                "designacao": { "type": "string"},
+                "subordinador": { "type": "string"},
+                "altura": {"type": "long"},
+                "largura": { "type": "long" },
+                "simbolos": { "type": "array", "items": {"$ref": "Simbolo" }, "required": true }
+            }
+        },
+        "Simbolo": {
+            "properties": {
+                "nome": { "type": "string", "required": true  },
+                "ordem": { "type": "int", "required": true},
+                "hstlpreench": { "type": "boolean","required": true},
+                "hstllinha": { "type": "boolean","required": true }
+            }
+        }
+    }
+}

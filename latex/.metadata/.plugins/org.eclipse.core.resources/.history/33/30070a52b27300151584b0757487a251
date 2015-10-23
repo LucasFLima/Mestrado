@@ -1,0 +1,363 @@
+@book{twisted:book,
+ author = {Fettig, Abe},
+ title = {Twisted Network Programming Essentials},
+ year = {2005},
+ isbn = {0596100329},
+ publisher = {O'Reilly Media, Inc.},
+} 
+
+@book{erl2012soa,
+  title={SOA with REST: Principles, Patterns \& Constraints for Building Enterprise Solutions with REST},
+  author={Erl, T. and Balasubramanian, R. and Carlyle, B. and Pautasso, C.},
+  isbn={9780137012510},
+  year={2012},
+  publisher={Prentice Hall}
+}
+
+
+@inproceedings{pang:2004,
+ author = {Pang, Andr{\'e} and Stewart, Don and Seefried, Sean and Chakravarty, Manuel M. T.},
+ title = {Plugging Haskell in},
+ booktitle = {Proceedings of the 2004 ACM SIGPLAN Workshop on Haskell},
+ series = {Haskell '04},
+ year = {2004},
+ location = {Snowbird, Utah, USA},
+ pages = {10--21},
+ publisher = {ACM},
+ address = {New York, NY, USA}} 
+
+@inproceedings{leijen1999domain,
+  title={Domain specific embedded compilers},
+  author={Leijen, Daan and Meijer, Erik},
+  booktitle={ACM Sigplan Notices},
+  volume={35},
+  pages={109--122},
+  year={1999},
+  organization={ACM}
+}
+
+@inproceedings{contracts,
+  title={Composing contracts: An adventure in financial engineering},
+  author={Peyton Jones, Simon L},
+  booktitle={Proceedings of the International Symposium of Formal Methods Europe on Formal Methods for Increasing Software Productivity},
+  year={2001},
+  organization={Springer-Verlag}
+}
+
+@book{hudak-dsl2
+  ,author={Paul Hudak}
+  ,title={The Haskell School of Music -- From Signals to Symphonies}
+  ,publisher={(Version 2.6)}
+  ,year=2014
+  ,month={January}
+} 
+
+@article{hudak-dsl1,
+  title={Building domain-specific embedded languages},
+  author={Hudak, Paul},
+  journal={ACM Computing Surveys (CSUR)},
+  volume={28},
+  number={4es},
+  pages={196},
+  year={1996},
+  publisher={ACM}
+}
+
+@article{dsl,
+ author = {van Deursen, Arie and Klint, Paul and Visser, Joost},
+ title = {Domain-specific Languages: An Annotated Bibliography},
+ journal = {SIGPLAN Not.},
+ volume = {35},
+ number = {6},
+ month = jun,
+ year = {2000},
+ pages = {26--36},
+ acmid = {352035},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+
+@book{templates,
+ author = {Abrahams, David and Gurtovoy, Aleksey},
+ title = {C++ Template Metaprogramming: Concepts, Tools, and Techniques from Boost and Beyond (C++ in Depth Series)},
+ year = {2004},
+ isbn = {0321227255},
+ publisher = {Addison-Wesley Professional},
+} 
+
+@incollection{aop,
+  title={Aspect-oriented programming},
+  author={Kiczales, Gregor and Lamping, John and Mendhekar, Anurag and Maeda, Chris and Lopes, Cristina and Loingtier, Jean-Marc and Irwin, John},
+  booktitle={ECOOP'97—Object-Oriented Programming},
+  pages={220--242},
+  year={1997},
+  publisher={Springer Berlin Heidelberg}
+}
+
+@book{czarnecki-book,
+ author = {Czarnecki, Krzysztof and Eisenecker, Ulrich W.},
+ title = {Generative Programming: Methods, Tools, and Applications},
+ year = {2000},
+ isbn = {0-201-30977-7},
+ publisher = {ACM Press/Addison-Wesley Publishing Co.},
+ address = {New York, NY, USA},
+} 
+
+@article{jml,
+ author = {Leavens, Gary T. and Baker, Albert L. and Ruby, Clyde},
+ title = {Preliminary Design of JML: A Behavioral Interface Specification Language for Java},
+ journal = {Softw. Eng. Notes},
+ issue_date = {May 2006},
+ volume = {31},
+ number = {3},
+ month = may,
+ year = {2006},
+ issn = {0163-5948},
+ pages = {1--38},
+ numpages = {38},
+ acmid = {1127884},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+@incollection{spec,
+  title={The Spec\# programming system: An overview},
+  author={Barnett, Mike and Leino, K Rustan M and Schulte, Wolfram},
+  booktitle={Construction and analysis of safe, secure, and interoperable smart devices},
+  pages={49--69},
+  year={2005},
+  publisher={Springer}
+}
+
+@book{nestor-idl,
+  title={IDL-Interface description language: Formal description},
+  author={Nestor, John R and Lamb, DA and Wulf, WA},
+  year={1981},
+  publisher={Computer Science Department, Carnegie-Mellon Univ.}
+}
+
+
+@incollection{ghc-api,
+  author      = "Simon Marlow and Simon Peyton-Jones",
+  title       = "The {G}lasgow {H}askell {C}ompiler",
+  editor      = "Amy Brown and Greg Wilson",
+  booktitle   = "The {A}rchitecture of {O}pen {S}ource {A}pplications",
+  Volume      = 2, 
+  publisher   = "lulu.com",
+  year        = 2012
+}
+
+@inproceedings{ghc,
+  title={The {G}lasgow {H}askell {C}ompiler: a technical overview},
+  author={Jones, SL Peyton and Hall, Cordy and Hammond, Kevin and Partain, Will and Wadler, Philip},
+  booktitle={Proc. UK Joint Framework for Information Technology (JFIT) Technical Conference},
+  volume={93},
+  year={1993}
+}
+
+@inproceedings{forsberg-bnfc:2004,
+ author = {Forsberg, Markus and Ranta, Aarne},
+ title = {BNF Converter},
+ booktitle = {Proceedings of the 2004 ACM SIGPLAN Workshop on Haskell},
+ series = {Haskell '04},
+ year = {2004},
+ isbn = {1-58113-850-4},
+ location = {Snowbird, Utah, USA},
+ pages = {94--95},
+ numpages = {2},
+ acmid = {1017475},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {BNF, abstract syntax, compiler construction, document automation, grammar, parser generator, pretty printer}
+}
+
+@article{forsberg-bnfc:2003,
+Author = {Forsberg, Markus and Ranta, Aarne},
+ISSN = {14060086},
+Journal = {Proceedings of the Estonian Academy of Sciences, Physics, Mathematics},
+Keywords = {PROGRAMMING languages (Electronic computers), COMPUTER science, SYNTAX (Grammar), COMPUTER software, COMPUTERS},
+Number = {4},
+Pages = {356 - 377},
+Title = {Labelled BNF: a high-level formalism for defining well-behaved programming languages.},
+Volume = {52},
+Year = {2003}
+}
+
+@book{ranta-bnfc:2012,
+  title={Implementing Programming Languages. An Introduction to Compilers and Interpreters},
+  author={Ranta, A.},
+  isbn={9781848900646},
+  series={Texts in computing},
+  year={2012},
+  publisher={College Publications}
+}
+
+@article{papazoglou-computer:2007,
+author = {Michael P. Papazoglou and Paolo Traverso and Schahram Dustdar and Frank Leymann},
+title = {Service-Oriented Computing: State of the Art and Research Challenges},
+journal ={Computer},
+volume = {40},
+number = {11},
+issn = {0018-9162},
+year = {2007},
+pages = {38-45},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+}
+
+@book{erl-soa-book:2005,
+ author = {Erl, Thomas},
+ title = {Service-Oriented Architecture: Concepts, Technology, and Design},
+ year = {2005},
+ isbn = {0131858580},
+ publisher = {Prentice Hall PTR},
+ address = {Upper Saddle River, NJ, USA},
+} 
+
+
+@TechReport{w3c-wsdl,
+  author      = "Erik Christensen and Francisco Curbera and Greg Meredith and Sanjiva Weerawarana",
+  title       = "Web Services Description Language (WSDL) 1.1",
+  month       = feb,
+  note        = "http://www.w3.org/TR/wsdl",
+  year        = "2001",
+  type        = "{W3C} Recommendation",
+  institution = "W3C"
+}
+
+@TechReport{w3c-wadl,
+  author      = "Marc Hadley", 
+  title       = "Web Application Description Language (WADL)",
+  month       = aug,
+  note        = "http://www.w3.org/Submission/wadl/",
+  year        = "2009",
+  type        = "{W3C} Recommendation",
+  institution = "W3C"
+}
+
+
+@TechReport{swagger,
+  author= "Swagger Team",
+  title = "Swagger RESTful API Documentation Specification 1.2", 
+  note = "https://github.com/wordnik/swagger-spec/blob/master/versions/1.2.md",
+  institution = "Wordnik",
+  year = "2014"
+}
+
+@TechReport{thrift, 
+ author = "Mark Slee and Aditya Agarwal and Marc Kwiatkowski",
+ title = "Thrift: Scalable Cross-Language Services Implementation",
+ institution = "Facebook", 
+ note = "http://thrift.apache.org/static/files/thrift-20070401.pdf",
+ year = "2012"
+}
+
+
+@TechReport{corba, 
+ author = "Object Management Group (OMG)",
+ title = "Interface Definition Language 3.5",
+ institution = "Object Management Group", 
+ note = "http://www.omg.org/spec/IDL35/3.5/PDF/",
+ year = "2014"
+}
+
+@article{fielding-rest:2002,
+ author = {Fielding, Roy T. and Taylor, Richard N.},
+ title = {Principled Design of the Modern Web Architecture},
+ journal = {ACM Trans. Internet Technol.},
+ issue_date = {May 2002},
+ volume = {2},
+ number = {2},
+ month = may,
+ year = {2002},
+ issn = {1533-5399},
+ pages = {115--150},
+ numpages = {36},
+ acmid = {514185},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Network-based applications, REST, World Wide Web},
+} 
+
+@inproceedings{wadler-typeClasses:1989,
+ author = {Wadler, P. and Blott, S.},
+ title = {How to Make Ad-hoc Polymorphism Less Ad Hoc},
+ booktitle = {Proceedings of the 16th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+ series = {POPL '89},
+ year = {1989},
+ isbn = {0-89791-294-2},
+ location = {Austin, Texas, USA},
+ pages = {60--76},
+ numpages = {17},
+ acmid = {75283},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@incollection{jones-typeClasses:1995,
+year={1995},
+isbn={978-3-540-59451-2},
+booktitle={Advanced Functional Programming},
+volume={925},
+series={Lecture Notes in Computer Science},
+editor={Jeuring, Johan and Meijer, Erik},
+title={Functional programming with overloading and higher-order polymorphism},
+publisher={Springer },
+author={Jones, Mark P.},
+pages={97-136}
+}
+
+@TechReport{sloccount,  
+ title= {SLOCCount User's Guide}, 
+ author={David A. Wheeler},
+ note= {on-line http://www.dwheeler.com/sloccount/sloccount.html},
+ year={2004}, 
+ institution={}
+}
+
+@TechReport{jsr-175,
+ author={Gilad Bracha},
+ title={{JSR}-175 {A} Metadata Facility for the Java Programming Language},
+ institution={Java {C}ommunity {P}rocess},
+ year={2004}
+}
+
+@article{shihab-sloc:2013,
+  title={Is lines of code a good measure of effort in effort-aware models?},
+  author={Shihab, Emad and Kamei, Yasutaka and Adams, Bram and Hassan, Ahmed E},
+  journal={Information and Software Technology},
+  volume={55},
+  number={11},
+  pages={1981--1993},
+  year={2013},
+  publisher={Elsevier}
+}
+
+@TechReport{park-sloc:1992,
+ author = {Robert Park}, 
+ title  = {Software Size Measurement: A Framework for Counting Source Statements}, 
+ institute = {Software {E}ngineering {I}nstitute},  
+ number = {CMU/SEI-92-TR-020},
+ year={1992} 
+}
+
+
+@book{bohem:2000,
+ author = {Boehm, Barry W. and Clark and Horowitz and Brown and Reifer and Chulani and Madachy, Ray and Steece, Bert},
+ title = {Software Cost Estimation with Cocomo II},
+ year = {2000},
+ isbn = {0130266922},
+ edition = {1st},
+ publisher = {Prentice Hall PTR}
+} 
+
+@book{david:commandControl,
+ title={Understanding Command and Control},
+ author={David S. Alberts and Richard E. Hayes},
+ publisher={{DoD} {C}ommand and {C}ontrol {R}esearch {P}rogram},
+ year={2006},
+ edition={1st}
+}

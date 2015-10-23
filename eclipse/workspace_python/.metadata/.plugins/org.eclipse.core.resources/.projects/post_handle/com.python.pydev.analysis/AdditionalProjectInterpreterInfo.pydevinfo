@@ -1,0 +1,20 @@
+-- VERSION_4
+-- START DISKCACHE
+/home/lucas/workspace/eclipse/workspace_python/.metadata/.plugins/org.eclipse.core.resources/.projects/post_handle/com.python.pydev.analysis/v2_indexcache
+post_handle01|1442080644000|/home/lucas/workspace/eclipse/workspace_python/post_handle/src/post_handle01.py
+-- END DISKCACHE
+-- START DICTIONARY
+2
+1=post_handle01
+2=FormPage
+-- END DICTIONARY
+-- START TREE 1
+2
+fac|1|factory!11@
+for|1|FormPage!9@
+-- END TREE
+-- START TREE 2
+2
+isl|1|isLeaf!2&11@
+ren|2|render_POST!2&10@render_GET!2&10@
+-- END TREE

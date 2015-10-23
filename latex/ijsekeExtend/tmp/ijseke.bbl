@@ -1,0 +1,141 @@
+\begin{thebibliography}{10}
+
+\bibitem{david:commandControl}
+David~S. Alberts and Richard~E. Hayes.
+\newblock {\em Understanding Command and Control}.
+\newblock {DoD} {C}ommand and {C}ontrol {R}esearch {P}rogram, 1st edition,
+  2006.
+
+\bibitem{bohem:2000}
+Barry~W. Boehm, Clark, Horowitz, Brown, Reifer, Chulani, Ray Madachy, and Bert
+  Steece.
+\newblock {\em Software Cost Estimation with Cocomo II}.
+\newblock Prentice Hall PTR, 1st edition, 2000.
+
+\bibitem{w3c-wsdl}
+Erik Christensen, Francisco Curbera, Greg Meredith, and Sanjiva Weerawarana.
+\newblock Web services description language (wsdl) 1.1.
+\newblock {W3C} recommendation, W3C, February 2001.
+\newblock http://www.w3.org/TR/wsdl.
+
+\bibitem{czarnecki-book}
+Krzysztof Czarnecki and Ulrich~W. Eisenecker.
+\newblock {\em Generative Programming: Methods, Tools, and Applications}.
+\newblock ACM Press/Addison-Wesley Publishing Co., New York, NY, USA, 2000.
+
+\bibitem{erl2012soa}
+T.~Erl, R.~Balasubramanian, B.~Carlyle, and C.~Pautasso.
+\newblock {\em SOA with REST: Principles, Patterns \& Constraints for Building
+  Enterprise Solutions with REST}.
+\newblock Prentice Hall, 2012.
+
+\bibitem{erl-soa-book:2005}
+Thomas Erl.
+\newblock {\em Service-Oriented Architecture: Concepts, Technology, and
+  Design}.
+\newblock Prentice Hall PTR, Upper Saddle River, NJ, USA, 2005.
+
+\bibitem{twisted:book}
+Abe Fettig.
+\newblock {\em Twisted Network Programming Essentials}.
+\newblock O'Reilly Media, Inc., 2005.
+
+\bibitem{fielding-rest:2002}
+Roy~T. Fielding and Richard~N. Taylor.
+\newblock Principled design of the modern web architecture.
+\newblock {\em ACM Trans. Internet Technol.}, 2(2):115--150, May 2002.
+
+\bibitem{forsberg-bnfc:2004}
+Markus Forsberg and Aarne Ranta.
+\newblock Bnf converter.
+\newblock In {\em Proceedings of the 2004 ACM SIGPLAN Workshop on Haskell},
+  Haskell '04, pages 94--95, New York, NY, USA, 2004. ACM.
+
+\bibitem{w3c-wadl}
+Marc Hadley.
+\newblock Web application description language (wadl).
+\newblock {W3C} recommendation, W3C, August 2009.
+\newblock http://www.w3.org/Submission/wadl/.
+
+\bibitem{hudak-dsl1}
+Paul Hudak.
+\newblock Building domain-specific embedded languages.
+\newblock {\em ACM Computing Surveys (CSUR)}, 28(4es):196, 1996.
+
+\bibitem{jones-typeClasses:1995}
+Mark~P. Jones.
+\newblock Functional programming with overloading and higher-order
+  polymorphism.
+\newblock In Johan Jeuring and Erik Meijer, editors, {\em Advanced Functional
+  Programming}, volume 925 of {\em Lecture Notes in Computer Science}, pages
+  97--136. Springer, 1995.
+
+\bibitem{jml}
+Gary~T. Leavens, Albert~L. Baker, and Clyde Ruby.
+\newblock Preliminary design of jml: A behavioral interface specification
+  language for java.
+\newblock {\em Softw. Eng. Notes}, 31(3):1--38, May 2006.
+
+\bibitem{ghc-api}
+Simon Marlow and Simon Peyton-Jones.
+\newblock The {G}lasgow {H}askell {C}ompiler.
+\newblock In Amy Brown and Greg Wilson, editors, {\em The {A}rchitecture of
+  {O}pen {S}ource {A}pplications}, volume~2. lulu.com, 2012.
+
+\bibitem{MeyerDbC}
+Bertrand Meyer.
+\newblock Applying design by contract.
+\newblock {\em Computer}, 25(10):40--51, October 1992.
+
+\bibitem{app-6a}
+NATO.
+\newblock A{PP}-6a - {M}ilitary {S}ymbols for {L}and {B}ased {S}ystems, dec
+  1999.
+
+\bibitem{nestor-idl}
+John~R Nestor, DA~Lamb, and WA~Wulf.
+\newblock {\em IDL-Interface description language: Formal description}.
+\newblock Computer Science Department, Carnegie-Mellon Univ., 1981.
+
+\bibitem{corba}
+Object Management~Group (OMG).
+\newblock Interface definition language 3.5.
+\newblock Technical report, Object Management Group, 2014.
+\newblock http://www.omg.org/spec/IDL35/3.5/PDF/.
+
+\bibitem{pang:2004}
+Andr{\'e} Pang, Don Stewart, Sean Seefried, and Manuel M.~T. Chakravarty.
+\newblock Plugging haskell in.
+\newblock In {\em Proceedings of the 2004 ACM SIGPLAN Workshop on Haskell},
+  Haskell '04, pages 10--21, New York, NY, USA, 2004. ACM.
+
+\bibitem{park-sloc:1992}
+Robert Park.
+\newblock Software size measurement: A framework for counting source
+  statements.
+\newblock Technical Report CMU/SEI-92-TR-020, {S}oftware {E}ngineering
+  {I}nstitute, 1992.
+
+\bibitem{ranta-bnfc:2012}
+A.~Ranta.
+\newblock {\em Implementing Programming Languages. An Introduction to Compilers
+  and Interpreters}.
+\newblock Texts in computing. College Publications, 2012.
+
+\bibitem{richardson2008maturity}
+L~Richardson.
+\newblock The maturity heuristic, 2008.
+
+\bibitem{thrift}
+Mark Slee, Aditya Agarwal, and Marc Kwiatkowski.
+\newblock Thrift: Scalable cross-language services implementation.
+\newblock Technical report, Facebook, 2012.
+\newblock http://thrift.apache.org/static/files/thrift-20070401.pdf.
+
+\bibitem{swagger}
+Swagger Team.
+\newblock Swagger restful api documentation specification 1.2.
+\newblock Technical report, Wordnik, 2014.
+\newblock https://github.com/wordnik/swagger-spec/blob/master/versions/1.2.md.
+
+\end{thebibliography}
