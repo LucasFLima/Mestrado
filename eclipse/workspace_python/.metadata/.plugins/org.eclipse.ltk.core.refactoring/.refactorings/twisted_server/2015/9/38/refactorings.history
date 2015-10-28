@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;twisted_server/src/twisted_server_teste2&apos; to &apos;twisted_server_teste2.py&apos;" description="Rename resource &apos;twisted_server_teste2&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/twisted_server_teste2" name="twisted_server_teste2.py" stamp="1442318930572" updateReferences="true"/>
-</session>
