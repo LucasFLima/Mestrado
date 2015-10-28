@@ -16,7 +16,7 @@ class SimpleServer(resource.Resource):
         if (equal and response.code == codeCheck) or (not equal and response.code != codeCheck):
                 return ''
         else:
-            raise RuntimeError, "Error"
+            raise RuntimeError, "Error "
         
     def dbcCondition (self, url, callbackChain, rCode, eqTest = True):
         agent = Agent(reactor)
