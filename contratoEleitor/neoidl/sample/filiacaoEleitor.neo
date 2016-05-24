@@ -1,0 +1,15 @@
+module filiacaoEleitor {
+
+  path = "/filiacaoEleitor";
+
+  import estruturaEleitor;
+  import estruturaFiliacaoPartidaria;
+ 
+  resource filiacaoEleitor  {
+     path = "/filiacaoEleitor/{inscricao}";
+
+     @get    FiliacaoPartidaria recuperaFiliacaoEleitor (InscricaoEleitoral inscricao)
+	require (call eleitor.getEleitor(inscricao) <> "NotFound");
+   };
+      
+}

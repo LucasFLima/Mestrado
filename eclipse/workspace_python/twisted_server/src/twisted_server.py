@@ -55,6 +55,7 @@ class TwistedServer(resource.Resource):
     def createModuleAndRequest(self, request):
         """ An utility method for parsing an HTTP request. 
         """ 
+        server = None
         #server = self.routeTable.get(request.path, None)
         for pattern in (self.routeTable.keys()):
             pathCheck = re.compile(pattern)

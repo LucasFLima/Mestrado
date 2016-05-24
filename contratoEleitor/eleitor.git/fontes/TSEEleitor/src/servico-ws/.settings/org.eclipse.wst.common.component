@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="eleitor-servico-ws">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <dependent-module archiveName="eleitor-servico-1.0.6-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/eleitor-servico/eleitor-servico">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="eleitor-dominio-1.0.6-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/eleitor-dominio/eleitor-dominio">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="eleitor-servico-ws"/>
+        <property name="java-output-path" value="/eleitor-servico-ws/build/classes"/>
+    </wb-module>
+</project-modules>

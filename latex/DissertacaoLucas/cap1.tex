@@ -1,0 +1,119 @@
+
+
+%%%%%%%%%%%%%%%%%% in�cio dos cap�tulos
+% cap�tulo 1
+\chapter{INTRODUÇÃO}
+\pagenumbering{arabic}
+\vspace{-6mm}
+
+A computação orientada a serviços ( \emph{Service-oriented computing, SOC)} tem
+se mostrado uma solução de \textit{design} de \textit{software} que favorece o
+alinhamento às mudanças constantes e urgentes nas instituições
+\cite{chen2008towards}. Nessa abordagem, os recursos de software são empacotados
+como serviços, os quais são módulos bem definidos e auto-contidos, provêem funcionalidades negociais e com estado e
+contexto independente \cite{papazoglou2007service}.
+
+Os benefícios de SOC estão diretamente relacionados ao
+baixo acoplamento dos serviços que compõem a solução, de forma que as partes
+(nesse caso serviços) possam ser substituídas e evoluídas facilmente, ou ainda
+rearranjadas em novas composições. Contudo, para que isso seja possível, é
+necessário que os serviços possuam contratos bem definidos e independentes da
+implementação.
+
+A relação entre quem provê e quem consome o serviço se
+dá por meio de um contrato. O contrato de serviço é o documento que descreve os
+propósitos e as funcionalidades do serviço, como ocorre a troca de mensagens, condições sobre
+como as operações são realizadas e informações sobre as operações \cite{erl2009web}.
+
+Nesse contexto, a qualidade da especificação do contrato é fundamental para o
+projeto de software baseado em SOC. Este trabalho de pesquisa aborda um aspecto
+importante para a melhoria da robustez de contratos de serviços: a construção de
+garantias mútuas por meio da especificação formal de contratos, agregando o
+conceito de Desing-by-Contract.
+
+\section{PROBLEMA DE PESQUISA}
+\vspace{-6mm}
+
+As linguagens de especificação de contratos para SOC apresentam
+algumas limitações. Por exemplo, a linguagem WSDL (\emph{Web-services
+description language}) \cite{zur2005developing} é considerada uma solução
+verbosa que desestimula a abordagem \textit{Contract First}. Por essa razão,
+especificações WSDL são usualmente derivadas a partir de anotações em código
+fonte \textit{Code First}.
+Além disso, os conceitos descritos em contratos na linguagem WSDL não são
+diretamente mapeados aos elementos que compõem as interfaces do estilo
+arquitetural REST (\emph{Representational State Transfer}).
+Outras alternativas para REST, como Swagger e
+RAML\footnote{http://raml.org/spec.html}, usam linguagens de propósito geral (em
+particular JSON e YAML) adaptadas para especificação de contratos. Ainda que
+façam uso de contratos mais sucintos que WSDL, essas linguagens não se
+beneficiam da clareza típica das linguagens específicas para esse fim (como IDLs CORBA) e não oferecem
+mecanismos semânticos de extensibilidade e modularidade.
+
+Com o objetivo de mitigar esses problemas, a linguagem \neoidl foi proposta
+para simplificar a especificação de serviços REST com mecanismos de modularização,
+suporte a anotações, herança em tipos de dados definidos pelo desenvolvedor, e
+uma sintaxe simples e concisa semelhante às \textit{Interface Description
+Languages} -- IDLs -- presentes em \textit{Apache Thrift}\texttrademark e
+CORBA\texttrademark. Por outro lado, a \neoidl, da mesma forma que WSDL, Swagger
+e RAML não oferece construções para especificação de contratos formais de
+comportamento como os presentes em linguagens que suportam DBC (\emph{Design by
+Contract})~\cite{meyer1992applying}, como JML, Spec\# e Eiffel. Em outras
+palavras, a \neoidl  admite apenas contratos fracos (\textit{weak contracts}),
+sem suporte a construções como pré e pós condições.
+
+
+
+\section{OBJETIVO GERAL}
+\vspace{-6mm}
+
+O objetivo geral de trabalho é investigar o uso de construções de
+\designbycontract{} no contexto de computação orientada a serviços, verificando a
+viabilidade e utilidade de sua adoção na especificação de contratos e
+implentação de serviços REST.
+
+\subsection{Objetivos específicos}
+\vspace{-6mm}
+
+\begin{enumerate}
+  \item Realizar análise empírica de expressividade e reuso da especificação de
+  contratos em \neoidl em comparação com \textit{Swagger}, a partir de contratos
+  reais do Exército Brasileiro.
+  \item Extender a sintaxe da \neoidl para admitir construções de 
+  \designbycontract, com pré e pós condições para operações de serviços REST.
+  \item Implementar um estudo de caso de geração de código em \textit{Python
+  Twisted} com suporte a \designbycontract a partir de contratos especificados
+  em \neoidl
+  \item Coletar a percepção de desenvolvedores sobre a aceitação da
+  especificação de contratos REST com \designbycontract na \neoidl
+\end{enumerate}
+
+
+\subsection{JUSTIFICATIVA E RELEVÂNCIA}
+\vspace{-6mm}
+
+- aumento do uso de SOC
+- potencial do SOC está no baixo acomplamento dos serviços.
+- aumento do uso de REST
+- contratos fracos prejudicam a qualidade/aumentam os erros
+- baixa qualidade prejudica o reuso
+- 
+
+
+O uso do padrão REST para construção de \ws é crescente 
+no contexto do desenvolvimento de soluções basedas em serviço e não se dipõe de
+uma linguagem padrão para especificação de contratos fortes. A linguagem
+específica de domínio \neoidl foi desenvolvida para ser uma alternativa para
+especificação REST, caracterizada pela coesão e simplicidade em se compreender,
+mas que não dispunha de suporte a pré e pós condições.
+
+
+\subsection{ESTRUTURA}
+\vspace{-6mm}
+
+% Introdução - Estudos empíricos / DbC para NeoIDL
+% Fundamentação teórica - SOC / REST / Contratos / DbC - 10 páginas
+% NeoIDL - Objetivos / Resultados / Extensão da Linguagem / Avaliação empírica
+% Análise da Aceitação da NeoIDL - Método / GQM / Resultados
+% Conclusão 
+

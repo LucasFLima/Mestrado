@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.jus.tse.eleitoral</groupId>
+		<artifactId>eleitor</artifactId>
+		<version>1.0.6-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>eleitor-servico</artifactId>
+	<packaging>jar</packaging>
+	<name>Dominio Negocial Eleitor - Servico</name>
+	<description>Modulo de implementacao dos servicos da camada de integracao</description>
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>br.jus.tse.eleitoral</groupId>
+			<artifactId>eleitor-dominio</artifactId>
+			<version>1.0.6-SNAPSHOT</version>
+		</dependency>
+	
+
+		<dependency>
+			<groupId>br.jus.tse.corporativa.arquitetura.integracao</groupId>
+			<artifactId>tse-jee-spring-integracao-ws-cxf-soap</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>br.jus.tse.corporativa.arquitetura.integracao</groupId>
+			<artifactId>tse-jee-spring-integracao-ws-cxf-rest</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+	
+	
+		<!-- Redeclaracao das dependencias com escopo "Provided" necessárias a este projeto (Nao vem indiretamente pelas dependencias transitivas -->
+		<!-- WebServices: Apache CXF -->
+		<dependency>
+		   <groupId>org.apache.cxf</groupId>
+		   <artifactId>cxf-rt-frontend-jaxws</artifactId>
+		</dependency>
+		<!-- WebServices: Apache CXF -->
+		<dependency>
+		   <groupId>org.apache.cxf</groupId>
+		   <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+	
+	
+	</dependencies>
+	
+</project>

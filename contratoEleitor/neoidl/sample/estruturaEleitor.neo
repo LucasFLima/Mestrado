@@ -1,0 +1,21 @@
+module estruturaEleitor {
+
+   entity Eleitor {
+     PessoaFisica       pessoa;
+     SituacaoEleitor    situacao;
+     DataNascimentoCadastroEleitores  dataNascimentoCadastroEleitores;
+     SecaoEleitoral     secao;
+     InscricaoEleitoral inscricao;  
+   }; 
+
+   enum SituacaoEleitor {"REGULAR", "CANCELADO", "SUSPENSO", "NAO_LIBERADO", "LIBERADO"};
+ 
+   entity InscricaoEleitoral {
+     int      inscricao; // pattern d{5,12}
+   };
+
+   entity DataNascimentoCadastroEleitores {
+     int      data;  //data no formato YYYYMMDD
+   };
+     
+}

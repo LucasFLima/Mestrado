@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{chen2008towards}
+Chen,~H.-M.
+\newblock Towards service engineering: service orientation and business-it
+  alignment.
+\newblock In {\em Hawaii International Conference on System Sciences,
+  Proceedings of the 41st Annual}, pages 114--114. IEEE, 2008.
+
+\bibitem{erl2009web}
+Erl,~T., Karmarkar,~A., Walmsley,~P., Haas,~H., Yalcinalp,~L.~U., Liu,~K.,
+  Orchard,~D., Tost,~A., e Pasley,~J.
+\newblock {\em Web service contract design and versioning for SOA}.
+\newblock Prentice Hall, 2009.
+
+\bibitem{meyer1992applying}
+Meyer,~B.
+\newblock Applying'design by contract'.
+\newblock {\em Computer}, 25(10):40--51, 1992.
+
+\bibitem{papazoglou2007service}
+Papazoglou,~M.~P., Traverso,~P., Dustdar,~S., e Leymann,~F.
+\newblock Service-oriented computing: State of the art and research challenges.
+\newblock {\em Computer}, (11):38--45, 2007.
+
+\end{thebibliography}

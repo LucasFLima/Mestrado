@@ -1,0 +1,73 @@
+Neste arquivo são apresentadas algumas informações para a adequada
+montagem dos arquivos que comporão a dissertação ou tese.
+
+  1) O arquivo do tipo *.cls foi definido como teseft - atualizado em
+  06/07/2003.
+  2) Foi definido um arquivo de modelo para definir entre outros, 
+  o formato da página e comandos usuais para o LaTex.
+  3) O arquivo mestre para montagem do trabalho foi definido como
+  dissert.tex .  Este chama o arquivo modelo.tex e recebe através
+  de comandos input os seguintes arquivos (os quais devem ser modificados
+  conforme o trabalha seja dissertação ou tese, e com as inserções
+  pertinentes):
+   Para os PRELIMINARES
+    - folha_titulo.tex
+    - aprov.tex
+    - folha_catalografica.tex
+    - dedicatoria.tex
+    - agradecimento.tex
+    - resumo.tex
+    - abstr.tex
+    - lista_simbolos_nomenclaturas_abreviaturas.tex
+  Para o texto principal
+    - cap1.tex
+    - cap2.tex
+    - cap3.tex
+    se outros capítulos forem necessários, arquivos semelhantes
+    podem ser inseridos no arquivo mestre, conforme a seqüência de interesse.
+  O arquivo de referências bibliográficas foi definido como bibdata.bib
+  Os arquivos para os apêndices são
+    - apend_a.tex
+    - apend_b.tex
+    se outros complementares forem necessários, outros arquivos devem ser 
+    definidos no texto, conforme a seqüência de interesse.
+  Juntamente com os arquivos do tipo *.tex e teseft.cls, foi inserido
+  também o arquivo portuges.ldf, para definições de alguns nomes
+  padrões em português.
+
+  OBSERVAÇÕES
+   1) O presente modelo foi concebido com base no LaTex 2.3e . Alguns comandos
+      úteis são     dvips dissert.dvi (converte o arquivo dissert.dvi
+                    em dissert.ps (post-script)
+		    dvipdfm dissert.dvi (converte o arquivo dissert.dvi
+                    em dissert.pdf (esse comando possibilitou a geração
+		    de arquivos menores, comparativamente aos gerados a
+		    partir de arquivos *.ps, manipulando o Gseview).
+   2) Caso seja necessário converter algum arquivo do tipo *.jpg para
+      *.eps, há um conversor que pode ser baixado livremente da internet
+      denominado jpeg2ps.exe. 
+   3) O modelo CONTÊM OS SEGUINTES BUGS, ainda não corrigidos:
+         - Na LISTA DE TABELAS e LISTA DE FIGURAS, ao se executar
+	   o LaTex para gerar o arquivo tipo dvi e conseqüentemente
+	   se visualizar o texto, observar que não estão
+	   aparecendo as palavras "Tabela" e "Figura" antes dos respectivos
+	   números. Esse problema pode ser corrigido no arquivo teseft.cls .
+	   No entanto, temporariamente, até ser solucionado esse problema, 
+	   na versão final do texto, as palavras
+	   podem ser acrescentadas nos arquivos dissert.lot e dissert.lof,
+	   respectivamente. Para isto é necessário acrescentar a palavra
+	   Tabela ou Figura antes de \numberline, em toda linha em que
+	   houver o comando \contentsline, em ambos os arquivos. O travessão,
+	   após o número da tabela ou figura, deve ser acrescentado após
+	   os números que aparecem entre chaves, os quais são os próprios
+	   números das tabelas ou figuras. Após esse procedimento,
+	   executar novamente o LaTex através do comando latex dissert.
+	   Nesse caso, o arquivo dissert.dvi gerado conterá os termos
+	   "Tabela" e "Figura" antes dos números. Como as inserções
+	   nos arquivos *.lot e *.lof são temporárias, as mesmas foram
+	   perdidas no momento que o comando latex foi executado
+	   novamente.
+	 
+   
+     
+  

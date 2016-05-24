@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Jan 25 10:25:05 BRST 2016
+markTmpDer=true
+builderNum=0
+outputDir=out
+makeIndSty=
+bibrefDir=
+outputFormat=dvi
+tempDir=tmp
+mainTexFile=dissertacaoLucas.tex
+outputFile=dissertacaoLucas.dvi
+langSpell=pt
+markDer=true
+srcDir=

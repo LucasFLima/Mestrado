@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:repository="http://www.springframework.org/schema/data/repository"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+						http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository.xsd">
+
+	<bean id="dtsBDCadastroEleitoral" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>${dominio.eleitor.jndi.dataSource.nome}</value>
+		</property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="transactionManagerPadrao" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaPropertyMap" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map>
+				<entry key="hibernate.show_sql" value="${dominio.eleitor.hibernate.show-sql}" />
+				<entry key="hibernate.format_sql" value="true" />
+				<entry key="hibernate.use_sql_comments" value="${dominio.eleitor.hibernate.use-sql-comments}" />
+				<entry key="hibernate.current_session_context_class" value="${dominio.eleitor.hibernate.current-session-context-class}" />
+				
+				<entry key="hibernate.cache.use_second_level_cache" value="${dominio.eleitor.hibernate.cache.use-second-level-cache}" />
+				<entry key="hibernate.cache.use_query_cache" value="${dominio.eleitor.hibernate.cache.use-query-cache}" />
+				
+				<entry key="hibernate.validator.apply_to_ddl" value="${dominio.eleitor.hibernate.validator.apply-to-ddl}" />
+				<entry key="hibernate.validator.autoregister_listeners" value="${dominio.eleitor.hibernate.validator.autoregister-listeners}" />
+			</map>
+		</property>
+	</bean>
+			
+	<tx:annotation-driven transaction-manager="transactionManagerPadrao" />
+	
+	<bean id="validatorFactory" class="javax.validation.Validation" factory-method="buildDefaultValidatorFactory" />
+    <bean id="validator" factory-bean="validatorFactory" factory-method="getValidator" />
+    
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dtsBDCadastroEleitoral" />
+		<property name="jpaPropertyMap" ref="jpaPropertyMap" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="${dominio.eleitor.hibernate.show-sql}" />
+				<property name="databasePlatform" value="${dominio.eleitor.hibernate.dialect.name}" />
+				<property name="generateDdl" value="${dominio.eleitor.hibernate.generateDdl}" />
+			</bean>
+		</property>
+		
+		<property name="packagesToScan" value="br.jus.tse.*.*.dominio.negocio.models" />
+	</bean>
+    
+</beans>

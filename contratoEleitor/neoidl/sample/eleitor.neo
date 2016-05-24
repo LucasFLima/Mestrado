@@ -1,0 +1,65 @@
+module eleitor {
+
+  //path = "/store";
+ 
+   entity Eleitor {
+     PessoaFisica       pessoa;
+     SituacaoEleitor    situacao;
+     OcupacaoEleitor    ocupacao;
+     DataNascimentoCadastroEleitores  dataNascimentoCadastroEleitores;
+     SecaoEleitoral     secao;
+   //binary             imagemAssinatura;
+     InscricaoEleitoral inscricao;  
+   }; 
+
+   enum SituacaoEleitor {"REGULAR", "CANCELADO", "SUSPENSO", "NAO_LIBERADO", "LIBERADO"};
+ 
+   entity InscricaoEleitoral {
+     int      inscricao; // pattern d{5,12}
+   };
+
+   entity OcupacaoEleitor {
+     [NomeDescOcupacao] nomeDescOcupacao;
+     int                numero;
+   };
+
+   // esta estrutura foi criada apenas para atender a sequencia da entidade anterior. Verificar possibilidade de outra forma;
+   entity NomeDescOcupacao {
+     string   nome;
+     string   eleitor;
+   };
+
+   entity DataNascimentoCadastroEleitores {
+     int      data;  //data no formato YYYYMMDD
+   };
+     
+
+
+
+   entity Order {
+     int      id;
+     int      petId;
+     int      quantity;
+     date     shipDate;
+     Status   status; 
+     bool     complete;
+   }; 
+
+   resource order  {
+     path = "/order/{orderId}";
+
+     @get    int getOrder (int orderId)
+	require (orderId <> "0") otherwise "InvalidPrecondition";
+//	require (orderId <> "-1") otherwise "InvalidPrecondition",
+//	ensure  (orderId > "0") otherwise "NotFound";
+
+     @post   int postOrder (Order order)
+	require (call store.getOrder(orderId = 10, item = 2) <> "NotFound");
+   };
+      
+   resource store  {
+     path = "/store/{storeId}";
+
+     @get    int getStore (int storeId);
+   };
+}

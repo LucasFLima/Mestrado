@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.jus.tse.eleitoral</groupId>
+		<artifactId>eleitor</artifactId>
+		<version>1.0.6-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>eleitor-dominio</artifactId>
+	<packaging>jar</packaging>
+	<name>Dominio Negocial Eleitor - Dominio</name>
+	<description>Modulo de dominio de negocio de Eleitor</description>
+
+	<dependencies> 
+		
+		<dependency>
+			<groupId>br.jus.tse.eleitoral</groupId>
+			<artifactId>estruturaje-dominio</artifactId>
+			<version>1.0.2</version>
+		</dependency> 
+		
+		<!-- Dependencias para teste unitario -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		
+		<!-- Redeclaracao das dependencias com escopo "Provided" necessárias a este projeto (Nao vem indiretamente pelas dependencias transitivas -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${tse_homologada.log4j.version}</version>			
+			<scope>provided</scope>			
+		</dependency>				
+		
+		
+	</dependencies>
+		
+</project>

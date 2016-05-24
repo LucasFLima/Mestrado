@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:beans="http://www.springframework.org/schema/beans"
+	   xmlns:util="http://www.springframework.org/schema/util"
+ 	   xmlns:cxf="http://cxf.apache.org/core"
+ 	   xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	   xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:simple="http://cxf.apache.org/simple"
+       xmlns:soap="http://cxf.apache.org/bindings/soap"
+       xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+						   http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+						   http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+						   http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+						   http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd
+					       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+						   http://cxf.apache.org/simple http://cxf.apache.org/schemas/simple.xsd">	
+	
+	<!-- Load CXF modules from cxf.jar -->
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<!-- Configurações dos WebServices SOAP -->
+	<simple:server id="eleitorService" address="/eleitoral/eleitor/EleitorService"   
+		serviceClass="br.jus.tse.eleitoral.eleitor.integracao.webservices.soap.IEleitorSOAPService" serviceName="EleitorService">
+		
+		<simple:invoker>
+			<bean class="org.apache.cxf.service.invoker.BeanInvoker">
+				<constructor-arg>
+					<ref bean="eleitorSOAPServiceImpl" />
+				</constructor-arg>
+			</bean>
+		</simple:invoker>
+		
+	</simple:server>
+
+	<!-- Configurações dos WebServices REST -->
+	<jaxrs:server id="restContainer" address="/rest">
+
+		<jaxrs:serviceBeans>
+			<ref bean="eleitorRESTServiceImpl" />
+		</jaxrs:serviceBeans>
+
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		
+		<jaxrs:extensionMappings>
+			<entry key="xml" value="application/xml" />
+			<entry key="json" value="application/json"/>
+		</jaxrs:extensionMappings>
+		
+		<jaxrs:features>
+			<cxf:logging/>
+		</jaxrs:features>		
+		
+	</jaxrs:server>
+	
+	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider">
+		<property name="marshallerProperties" ref="propertiesMap"/>
+	</bean>
+	
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+  
+	<util:map id="propertiesMap">
+		<entry key="jaxb.formatted.output">
+			<value type="java.lang.Boolean">true</value>
+		</entry>
+	</util:map>
+	
+</beans>

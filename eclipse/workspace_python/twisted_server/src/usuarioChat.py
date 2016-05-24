@@ -22,15 +22,15 @@ class Resource(object):
         
 #         #set variables used in capability
         responseCode = ResponseCode.Ok 
-#         getRequestParameters = GetRequestParameters (request.args['t'], request.args['nomeInstancia'], request.args['idUsuarioDestino'])
-#         
-#         if getRequestParameters.token == 'TOKEN':
-#             responseCode = ResponseCode.InvalidPrecondition
-#             return responseCode, 'Invalid Precondition'
-#         
-#         if getRequestParameters.idUsuarioDestino != "usuarioY":
-#             responseCode = ResponseCode.Unauthorized
-#             return responseCode, 'Unauthorized User'
+        getRequestParameters = GetRequestParameters (request.args['t'], request.args['nomeInstancia'], request.args['idUsuarioDestino'])
+         
+        if getRequestParameters.token == 'TOKEN':
+            responseCode = ResponseCode.InvalidPrecondition
+            return responseCode, 'Invalid precondition'
+         
+        if getRequestParameters.idUsuarioDestino != "usuarioY":
+            responseCode = ResponseCode.Unauthorized
+            return responseCode, 'Unauthorized user'
         
 
       

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.jus.tse.corporativa</groupId>
+		<artifactId>tse-jee-spring</artifactId>
+		<version>1.0.2</version>
+	</parent>
+
+	<groupId>br.jus.tse.eleitoral</groupId>
+	<artifactId>eleitor</artifactId>
+	<version>1.0.6-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Dominio Negocial Eleitor - Parent</name>
+	<description>Dominio Negocial: Eleitor</description>
+
+	<modules>
+		<module>dominio</module>
+		<module>servico</module>
+		<module>servico-ws</module>
+	</modules>
+
+	<!-- Organizacao -->
+	<organization>
+		<name>Tribunal Superior Eleitoral</name>
+		<url>http://www.tse.jus.br</url>
+	</organization>
+	
+	<distributionManagement>
+	    <repository>
+	        <id>ConstructorTSE-Artifactory</id>
+	        <name>ConstructorTSE-Artifactory</name>
+	        <url>http://constructor.tse.jus.br:8180/artifactory/tse-eleitoral-releases</url>
+	    </repository>
+	    <snapshotRepository>
+	        <id>ConstructorTSE-Artifactory</id>
+	        <name>ConstructorTSE-Artifactory</name>
+	        <url>http://constructor.tse.jus.br:8180/artifactory/tse-eleitoral-snapshots</url>
+	    </snapshotRepository>
+	</distributionManagement>
+	
+	<repositories>
+		<repository>
+			<id>ConstructorTSE-Artifactory</id>
+			<name>ConstructorTSE-Artifactory</name>
+			<url>http://constructor.tse.jus.br:8180/artifactory/repo/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+	
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-compiler-plugin
+										</artifactId>
+										<versionRange>
+											[2.3.2, )
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>2.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-confluence</artifactId>
+							<version>1.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<!-- <plugin>
+					<groupId>com.springsource.bundlor</groupId>
+					<artifactId>com.springsource.bundlor.maven</artifactId>
+					<inherited>true</inherited>
+					<executions>
+						<execution>
+							<id>bundlor-transform</id>
+							<goals>
+								<goal>bundlor</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant</artifactId>
+							<version>1.7.0</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant-trax</artifactId>
+							<version>1.7.0</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant-apache-regexp</artifactId>
+							<version>1.7.0</version>
+						</dependency>
+						<dependency>
+							<groupId>foundrylogic.vpp</groupId>
+							<artifactId>vpp</artifactId>
+							<version>2.2.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<useDefaultManifestFile>true</useDefaultManifestFile>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>2.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.2</version>
+					<dependencies>
+						<dependency>
+							<groupId>br.jus.tse.corporativo</groupId>
+							<artifactId>tse-maven-enforce-regras</artifactId>
+							<version>0.0.1-SNAPSHOT</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>enforce</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<rules>
+							<myCustomRule implementation="br.jus.tse.corporativo.maven.enforceplugin.ArquivoEstaticoRegra" />
+						</rules>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		
+		
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin}</version>
+				<executions>
+					<execution>
+						<id>incluir-codigo-fonte</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+                <inherited>true</inherited>
+				<configuration>
+					<source>${java.jdk.version}</source>
+					<target>${java.jdk.version}</target>
+					<!-- <encoding>${project.build.sourceEncoding}</encoding> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+<!-- 				<version>2.12</version>				 -->
+				<configuration>
+					<includes>
+						<include>**/*Tests.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/Abstract*.java</exclude>
+					</excludes>
+					<junitArtifactName>junit:junit</junitArtifactName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+	default-autowire="byName" default-lazy-init="true">						
+
+	<!--  Use this to set additional properties on beans at run time -->
+	<bean id="placeholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+            	<value>classpath:arqsConfig/spring/AmbienteConfig.properties</value>
+			</list>
+		</property>
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="ignoreUnresolvablePlaceholders" value="false" />
+		<property name="order" value="1" />
+	</bean>
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="br.jus.tse">
+	    
+		<context:include-filter type="regex" expression="br.jus.tse.*.*.dominio.negocio.managers.impl.*Manager" />
+		<context:include-filter type="regex" expression="br.jus.tse.*.*.dominio.infra.daos.jpa.*DAOJPA" />
+
+		<context:include-filter type="regex" expression="br.jus.tse.*.*.integracao.webservices.soap.impl.*SOAPServiceImpl" />
+		<context:include-filter type="regex" expression="br.jus.tse.*.*.integracao.webservices.rest.impl.*RESTServiceImpl" />
+		
+		<context:include-filter type="regex" expression="br.jus.tse.corporativa.arquitetura.conversor.*" />
+		
+		<context:include-filter type="annotation" expression="javax.jws.WebService"/>		
+		
+	</context:component-scan>
+    
+ 	<import resource="classpath*:arqsConfig/spring/applicationContext-02-Persistencia.xml" />
+ 
+	<bean id="org.dozer.Mapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
+		<property name="mappingFiles" value="classpath*:/arqsConfig/dozer/*Mapping-*.xml"/>
+	</bean>
+ 
+</beans>

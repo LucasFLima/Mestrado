@@ -1,0 +1,140 @@
+%%%%%%% Arquivo geral - recebe as informa��es dos preliminares, monta o sum�rio
+%%%%%%% a lista de tabelas, a lista de figuras. � necess�rio entrar com arquivo de s�mbolos
+%%%%%%% e abreveaturas. Recebe ainda as informa�oes do texto principal, refer�ncias 
+%%%%%%% bibliogr�ficas e ap�ndices.
+% A classe do documento est� definida em modelo.tex, bem como o layout da folha.
+
+%%%%%%%%%%%%%%%%%%%%% pend�ncias:
+%%%%%%%%%%%%%%%%%%%%% - tirar o negrito e os dois pontos das legendas de figuras e tabelas;
+%%%%%%%%%%%%%%%%%%%%% - retirar os [ ] das refer�ncias nas refer�ncias e no caso das citacoes
+%%%%%%%%%%%%%%%%%%%%% - substitu�-los por ( ).
+%%%%%%%%%%%%%%%%%%%%% - retirar a palavra Ap�ndice do t�tulo dos nos Ap�ndices.
+
+
+\input{modelo}
+% o pacote gr�fico ainda nao foi acrescentado
+%\usepackage[dvips]{graphics}
+
+% estou acrescentando os comandos abaixo: sao necess�rios
+% para os tipos de par�grafos adotados: sem identa�ao e com uma linha
+% em branco entre cada um.
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0.7cm plus 0.5ex minus 0.2ex}
+% 
+
+\newcommand{\neoidl}{NeoIDL}
+\newcommand{\designbycontract}{Design by Contract}
+\newcommand{\ws}{\textit{Web Service}}
+
+\begin{document}
+\pagenumbering{roman}
+%\input{capa} Uma capa semelhante a esta dever� ser usada na encaderna��o.
+
+\input{folha_titulo}
+\input{aprova}
+%\input{folha_catalografica}
+\input{dedicatoria}
+\input{agradecimento}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Resumo e abstract %%%%%%%%%%%%%%%%%%%%%%%%
+\input{resumo}
+\input{abstr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%
+\tableofcontents
+\listoftables
+\listoffigures
+
+\pagebreak
+
+\input{lista_simbolos_nomeclaturas_abreviacoes}
+
+% fim do preambulo (preliminares) - a numera�ao a partir daqui � em ar�bico
+% e come�ando da p�gina 1.
+
+%%%%%%%%%%%%%%%%%% in�cio dos cap�tulos
+
+% os dois comandos abaixo tiram a identa�ao nos par�grafos
+% e indicam que o espa�o equivalente a uma linha de texto deve ser 
+% deixado em branco entre par�grafos.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7cm plus 0.5ex minus 0.2ex}
+%
+
+% Introdução - Estudos empíricos / DbC para NeoIDL
+% Fundamentação teórica -
+% NeoIDL - Objetivos / Resultados / Extensão da Linguagem / Avaliação empírica
+% / Destacar as mudanças da sintaxe da NeoIDL para e o uso do BNFConverter
+% Análise da Aceitação da NeoIDL - Método / GQM / Resultados
+% Conclusão 
+
+% 1. Introdução - DbC para SOC(NeoIDL), estudo empíricos
+\input{cap1}
+% 2. Referêncial Teórico -  SOC / REST / Contratos / DbC - 10 páginas
+\input{cap2}
+% 3. NeoIDL - Objetivos / Resultados / Avaliação empírica / Extensão da
+% Linguagem  / Estudo de caso
+\input{cap3}
+% Avaliação da NeoIDL
+\input{cap4}
+% Conclusão
+\input{cap5}
+
+
+
+\clearpage
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%% Bibliografia %%%%%%%%%%%%%%%%%%%%%%%
+
+%Espa�amento simples
+%\baselineskip=12pt
+
+% espa�amento 1,5
+\linespread{1.3}
+
+ \bibliographystyle{plainbr}
+
+%\bibliographystyle{ieee}
+
+\addcontentsline{toc}{chapter}{REFER�NCIAS BIBLIOGR�FICAS}
+
+\bibliography{bibdata}
+
+%%%%%%%%%%%%%%
+% \input{biblio}
+
+\baselineskip=18pt
+%%%%%%%%%%%%%%%%%%%%%%%%% Ap�ndices
+\appendix
+
+
+
+\clearpage
+
+\addcontentsline{toc}{chapter}{AP�NDICES}
+\hspace{1mm}
+
+\vfill
+
+\begin{large}
+
+\begin{center}
+\begin{bf}
+APÊNDICES
+
+% T�TULO DO PRIMEIRO CAP�TULO DO AP�NDICE
+
+\end{bf}
+\end{center}
+\end{large}
+
+\vfill
+
+\clearpage
+\input{apend_a}
+%\input{apend_b}
+% fim do texto
+
+
+\end{document}

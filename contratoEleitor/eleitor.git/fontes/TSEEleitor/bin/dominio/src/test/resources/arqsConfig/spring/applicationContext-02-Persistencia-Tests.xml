@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:repository="http://www.springframework.org/schema/data/repository"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+						http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository.xsd">
+
+    <bean id="dtsBDCadastroEleitoral" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${dominioEleitor.jdbc.driverClassName}"/>
+		<property name="url" value="${dominioEleitor.jdbc.url}"/>
+		<property name="username" value="${dominioEleitor.jdbc.username}"/>
+		<property name="password" value="${dominioEleitor.jdbc.password}"/>  
+		<property name="maxActive" value="20"/>
+		<property name="maxWait" value="60000"/>
+		<property name="poolPreparedStatements" value="true"/>
+		<property name="defaultAutoCommit" value="true"/>
+		<property name="validationQuery" value="${dominioEleitor.jdbc.pool.validationQuery}"/>
+		<property name="testOnBorrow" value="true"/>
+		
+		<property name="initialSize" value="8"/>
+		<property name="minIdle" value="2"/>    
+		<property name="maxIdle" value="4"/>
+		<property name="removeAbandoned" value="true"/>
+		<property name="removeAbandonedTimeout" value="300"/>
+		<property name="logAbandoned" value="true"/>
+    </bean>
+
+	<bean id="transactionManagerPadrao" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaPropertyMap" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map>
+				<entry key="hibernate.hbm2ddl.auto" value="${dominioEleitor.hibernate.hbm2ddl.formaExecucao}" />
+				<entry key="hibernate.show_sql" value="${dominioEleitor.hibernate.show-sql}" />
+				<entry key="hibernate.format_sql" value="true" />
+				<entry key="hibernate.use_sql_comments" value="${dominioEleitor.hibernate.use-sql-comments}" />
+				<entry key="hibernate.current_session_context_class" value="${dominioEleitor.hibernate.current-session-context-class}" />
+				
+				<entry key="hibernate.cache.use_second_level_cache" value="${dominioEleitor.hibernate.cache.use-second-level-cache}" />
+				<entry key="hibernate.cache.use_query_cache" value="${dominioEleitor.hibernate.cache.use-query-cache}" />
+				
+				<entry key="hibernate.validator.apply_to_ddl" value="${dominioEleitor.hibernate.validator.apply-to-ddl}" />
+				<entry key="hibernate.validator.autoregister_listeners" value="${dominioEleitor.hibernate.validator.autoregister-listeners}" />
+			</map>
+		</property>
+	</bean>
+			
+	<tx:annotation-driven transaction-manager="transactionManagerPadrao" />
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dtsBDCadastroEleitoral" />
+		<property name="jpaPropertyMap" ref="jpaPropertyMap" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="${dominioEleitor.hibernate.show-sql}" />
+				<property name="databasePlatform" value="${dominioEleitor.hibernate.dialect.name}" />
+				<property name="generateDdl" value="${dominioEleitor.hibernate.generateDdl}" />
+			</bean>
+		</property>
+		
+		<property name="packagesToScan" value="br.jus.tse.*.*.dominio.negocio.models" />
+	</bean>
+    
+</beans>
