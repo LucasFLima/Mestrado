@@ -1,32 +1,311 @@
  
 \chapter{REFERENCIAL TEÓRICO}
 \vspace{-6mm}
-% 
+
 \section{COMPUTAÇÃO ORIENTADA A SERVIÇO}
 \vspace{-6mm}
 
-\ldots
 
+As empresas precisam estar preparadas para responder rápida e
+eficientemente a mudanças impostas por novas regulações, por aumento de
+competição ou ainda para usufruir de novas oportunidades. No contexto atual, em que as
+informações fluem de modo extremamente veloz, o tempo disperdiçado pelas organizações para se
+adaptar a um novo cenário tem um preço elevado, gerando expressiva perda de
+receita e, em um determinados casos, podendo causar a falência.
+
+No campo das instituições governamentais, a eficiência na condução das ações do
+Estado impõem que a estrutura de troca de informações entre os mais variados
+entes seja continuamente adaptável, mutuamente integrada. Pode-se tomar como
+exemplo a edição de nova lei que implique alteração no cálculo do tempo de
+serviço para aposentadoria. A nova fórmula deve se propagar para ser
+aplicada em várias intituições que compõem a máquina pública.
+
+Nessas situações, os sistemas de informação das organizações devem possibilitar
+que a dinâmica de adaptação ocorra sem demora, sob pena de, em vez de serem
+ferramental para apoiar continuamente os processos de negócio, se tornem entrave
+para a ágil incorporação dos novos processos. Por outro lado, a nova
+configuração deve se manter integra e funcional com o já complexo cenário de TI.
+
+A eficiência na integração entre as soluções de TI é determinante para que se
+consiga alterar uma parte sem comprometer todo o ecossistema. A integração
+possibilita a combinação de eficiência e flexibilidade de recursos para otimizar
+a operação através e além dos limites de uma organização e a habilita para
+inteoperar facilmente \cite{papazoglou2008service}.
+
+A computação orientada a serviços -- SOC -- endereça essas necessidades em uma
+plataforma que aumenta a flexibilidade e melhora o alinhamento com o negócio, a
+fim de reagir rapidamente a mudanças nos requisitos de negócio. Para obter esses
+benefícios, os serviços devem cumprir com determinados quesitos, que incluem
+alta autonomia ou baixo acoplamento \cite{erl2008soa}. Assim, o paradigma de SOC
+está voltado para o projeto de soluções preparadas para constantes mudanças,
+substituindo-se pequenas peças -- os serviços -- por outras.
+
+Portando, o objetivo da SOC é conceber um estilo de projeto, tecnologia e
+processos que permitam às empresas desenvolver, interconectar e manter suas
+aplicações e serviços corporativos com eficiência e baixo custo. Embora esses
+objetivos não sejam novos, SOC procura superar os esforços prévios como
+programação modular, reuso de código e técnicas de desenvolvimento orientadas a
+objetos \cite{papazoglou2007serviceApprTechRechIss}.
+
+As vertentes mais visionárias -- não ainda concretizada e utópica para muitos
+pesquisadores -- da computação orientada a serviços prevêem uma coordenação de
+serviços cooperantes por todo o mundo, onde os componentes possam ser conectados
+facilmente em uma rede de serviços pouquíssimo acoplados e, assim, criar
+processos de negócio dinâmicos e aplicações ágeis entre organizações e plataformas de
+computação \cite{leymann2005combining}.
+
+
+\subsection{Terminologia}
 \vspace{-6mm}
 
-\subsection{Motivação }
-\vspace{-6mm}
+\begin{description}
+\item [Computação orientada a serviço] é um termo \textit{guarda-chuva} para
+descrever uma nova geração de computação distribuída. Desse modo, é um conceito
+que engloba várias coisas, como paradigmas e princípios de projeto, catálogo de
+padrões de projeto, padronização de linguagem, modelo arquitetural específico, e
+conceitos correlacionados, tecnologias e plataformas.
+A computação orientada a serviços é baseada em modelos anteriores de computação
+distribuída e os extendem com novas camadas de projeto, aspectos de governança,
+e uma grande gama de tecnologias de implementações especializadas, em grande
+parte baseadas em \ws{} \cite{erl2009web}.
 
-\ldots
+\item [Orientação a serviço] é um paradígma de projeto cuja intenção é a criação
+de unidades lógicas moldadas individualmente para podem serem utilizadas
+conjutamente e repetidamente para se atender a objetivos e funções específicos
+associados com SOA e computação orientada a serviço.
 
-\vspace{-6mm}
+A lógica concebida de acordo com orientação a serviço pode ser designada de
+\textbf{orientada a serviço}, e as unidades da lógica orientada a serviço são
+referenciadas como \textbf{serviços}. Como um paradigma de computação
+distribuída, a orientação a serviço pode ser comparada a orientação a objetos,
+de onde advém várias de suas raízes, além da influência de EAI, BMP e \ws
+\cite{erl2009web}.
+
+A orientação a serviços é composta principalmente de oito princípios de projeto
+(descritos na seção \ref{PrincipiosSOA}).
+
+\item [Arquitetura orientada a serviço - SOA] representa um modelo arquitetural
+cujo objetivo é elevar a agilidade e a redução de custos e ao mesmo tempo
+reduzir o peso da TI para a organização. Isso é feito colocando o serviço no
+como elemento central da representação lógica da solução \cite{erl2009web}.
+
+Como uma arquitetura tecnológica, uma implementação SOA consiste da combinação
+de tecnologias, produtos, APIs, extensões da infraestrutura, etc. A implantação
+concreta de uma arquitetura orientada a serviço é única para cada organização,
+entretanto é caracterizada pela introdução de tecnologias e plataformas que
+suportam a criação, execução e evolução de soluções orientadas a serviços. O
+resultado é a formação de um ambiente projetado para produzir soluções alinhadas
+aos princípios de projeto de orientação a serviço.
+
+Segundo Thomas Erl \cite{erl2009web}, o termo arquitetura orientada a serviço --
+SOA -- vem sendo amplamente utilizado na mídia e nos produtos de divugação de
+fabricantes que tem se tornado quase que sinônimo de computação orientada a
+serviço -- SOC.
+
+\item [Serviço] é a unidade da solução no qual foi aplicada a orientação a
+serviço. É a aplicação da orientação dos princípios de projeto de orientação a
+serviço que distigue uma unidade de lógica como um serviço comporada a outras
+unidades de serviços que podem existir isoladamente como um objeto ou
+componente \cite{erl2009web}.
+
+Após a modelagem conceitual do serviço, os estágios de projeto e desenvolvimento
+produzem um serviço que é programa de \textit{software} independente com
+características específicas para suportar a realização dos objetivos associados
+a computação orientada a serviço.
+
+Cada serviço possui um contexto funcional distinto e é composto de uma lista
+de capacidades relacionadas a esse contexto. Então um serviço pode ser
+considerado um conjunto de capacidades descritas em seu contrato.
+
+
+\item [Contrato de serviço] é o conjunto de documentos que expressam as
+meta-informações do serviço, sendo a parte fundamental a que descreve a
+sua interface técnica. Eles compõem o contrato técnico do serviço, cuja essência
+é estabelecer uma API com as funcionalidades providas pelo serviço por meio de
+suas capacidades \cite{erl2009web}.
+
+Os serviços implementados como \ws SOAP normalmente são descritos em seu WSDL
+\footnote{\ws{} \textit{Description Language}}, \textit{XML schemas} and
+políticas (\textit{WS-policy}). Já os serviços implementados como \ws{} REST não
+possuem uma linguagem padrão para especificação de contratos. Já foram propostas
+algumas alternativas como WADL \cite{hadley2006web}, Swagger \cite{swaggerSite},
+e \neoidl{} \cite{lima2015neoidl}.
+
+O contrato de serviço também pode ser composto de documentos de leitura humana,
+como os que descrevem níveis de serviços (\textit{SLA}), comportamentos e
+limitações. Muitas dessas características também podem ser descritas em
+linguagens formais (para processamento computacional).
+
+No contexto de orientação a serviço, o projeto do contrato do serviço é de suma
+importância de tal forma que o princípio de projeto contrato de serviço
+padronizado é dedicado exclusivamente para se padronizar a criação dos contratos
+de serviços \cite{erl2009web}.
+
+\end{description}
+
+
+
 
 \subsection{Modelo arquitetural}
 \vspace{-6mm}
 \ldots
 
+In contrast to conventional software architectures pri-
+marily delineating the organization of a system in its
+(sub)systems and their interrelationships, the SOA cap-
+tures a logical way of designing a software system to
+provide services to either end-user applications or other
+services distributed in a network through published and
+discoverable interfaces. SOA is focused on creating a
+design style, technology, and process framework that will
+allow enterprises to develop, interconnect, and maintain
+enterprise applications and services efficiently and cost-
+effectively.
+\cite{papazoglou2007serviceApprTechRechIss}
+
+
+
+ Service orientation provides the underlying implementation that can make an on demand IT
+operating environment a reality by supporting the functions of both integration and infra-
+structure management [Lymann 2005a].
+Service-Oriented Computing (SOC) utilizes services as the constructs to support the devel-
+opment of rapid, low-cost and easy composition of distributed applications. Services are
+autonomous, platform-independent computational entities that can be used in a platform
+independent way. Services can be described, published, discovered, and dynamically as-
+sembled for developing massively distributed, interoperable, evolvable systems. Services
+perform functions that can range from answering simple requests to executing sophisticated
+business processes requiring peer-to-peer relationships between possibly multiple layers of
+service consumers and providers. Any piece of code and any application component de-
+ployed on a system can be reused and transformed into a network-available service. Serv-
+ices reflect a "service-oriented" approach to programming, based on the idea of composing
+applications by discovering and invoking network-available services rather than building new
+applications or by invoking available applications to accomplish some task [Papazoglou
+2003]. Services are most often built in a way that is independent of the context in which
+they are used. This means that the service provider and the consumers are loosely coupled.
+This "service-oriented" approach is independent of specific programming languages or oper-
+ating systems.
+
+
 \vspace{-6mm}
 
-\subsection{Princípios}
+\subsection{Princípios SOA}
+\label{PrincipiosSOA} 
 \vspace{-6mm}
-\ldots
 
-\vspace{-6mm}
+O paradigma de orientação a serviço é estruturada em oito princípios
+fundamentais \cite{erl2009web}. São eles que caraterizam a abordagem SOA e a sua
+aplicação fazem com que um serviço se diferenciem de um componente ou módulo. Os
+contratos de serviços permeiam a maior parte destes princípios:
+
+\begin{description}
+\item[Contrato padronizado] fornecem um meio padrão para os serviços
+sejam registrados em um inventário. Os contratos de serviços são elementos
+fundamentais pois é por meio deles que os serviços interagem uns com os outros e
+com potenciais consumidores. 
+
+\item[Baixo acomplamento]
+
+\item[Abstração]
+
+\item[Reusabilidade]
+
+\item[Autonomia]
+
+\item[Ausência de estado]
+
+\item[Descoberta de serviço]
+
+\item[Composição]
+
+\end{description}
+ 
+
+Service-orientation represents a design approach comprised of eight specific design
+principles. Service contracts tie into most but not all of these principles. Let’s first introduce
+their official definitions:
+• Standardized Service Contract – “Services within the same service inventory are in
+compliance with the same contract design standards.”
+• Service Loose Coupling – “Service contracts impose low consumer coupling
+requirements and are themselves decoupled from their surrounding
+environment.”
+• Service Abstraction – “Service contracts only contain essential information and
+information about services is limited to what is published in service contracts.”
+• Service Reusability – “Services contain and express agnostic logic and can be positioned
+as reusable enterprise resources.”
+• Service Autonomy – “Services exercise a high level of control over their underlying
+runtime execution environment.”
+• Service Statelessness – “Services minimize resource consumption by deferring the
+management of state information when necessary.”
+• Service Discoverability – “Services are supplemented with communicative meta
+data by which they can be effectively discovered and interpreted.”
+• Service Composability – “Services are effective composition participants, regardless
+of the size and complexity of the composition.”
+
+
+Standardized Service Contract
+Given its name, it’s quite evident that this design principle is only about service contracts
+and the requirement for them to be consistently standardized within the boundary
+of a service inventory. This design principle essentially advocates “contract first”
+design for services.
+
+Service Loose Coupling
+This principle also relates to the service contract. Its design and how it is architecturally
+positioned within the service architecture are regulated with a strong emphasis on
+ensuring that only the right type of content makes its way into the contract in order to
+avoid the negative coupling types.
+The following sections briefly describe common types of coupling. All are considered
+negative coupling types, except for the last.
+Contract-to-Functional Coupling, Contract-to-Implementation Coupling,
+Contract-to-Logic Coupling, Contract-to-Technology Coupling, 
+Logic-to-Contract Coupling (
+Each of the previously described forms of coupling are considered negative because
+they can shorten the lifespan of a Web service contract, thereby leading to increased governance
+burden as a result of having to manage service contract versions.)
+
+Service Abstraction
+By turning services into black boxes, the contracts are all that is officially made available
+to consumer designers who want to use the services. While much of this principle is
+about the controlled hiding of information by service owners, it also advocates the
+streamlining of contract content to ensure that only essential content is made available.
+The related use of the Validation Abstraction pattern further can affect aspects of contract
+design, especially related to the constraint granularity of service capabilities.
+
+Service Reusability
+While this design principle is certainly focused on ensuring that service logic is designed
+to be robust and generic and much like a commercial product, these qualities also carry
+over into contract design. When viewing the service as a product and its contract as a
+generic API to which potentially many consumer programs will need to interface, the
+requirement emerges to ensure that the service’s functional context, the definition of its
+capabilities, and the level at which each of its design granularities are set are appropriate
+for it to be positioned as a reusable enterprise resource.
+
+Service autonomy
+
+Autonomia de serviços é um princípio que visa fornecer serviços com
+independência de seu ambiente de execução. Isso resulta em maior confiabilidade, já que os serviços podem operar com menos dependência de recursos sobre os quais há pouco ou nenhum controle. Confiabilidade é crítico para garantir a longevidade do serviço. 
+
+
+Service statelessness
+
+Interação entre softwares ou requisitos de negócio muitas vezes exigem o esforço
+de manter e gerenciar o controle do estado das informações entre as operações. Isso se torna mais importante em arquiteturas distribuídas onde o cliente e o servidor não estão fisicamente na mesma máquina. Numa composição de serviço, um serviço pode armazenar dados específicos da atividade em memória enquanto ele espera um outro serviço completar seu processamento. Gestão eficiente da atividade de serviço relacionado aos dados se torna mais importante como um serviço que visa a reutilização do mesmo. As diretrizes de arquitetura SOA é construir serviços stateless, deslocando a sobrecarga de gerenciamento de estado dos serviços para um outro componente/middleware externo. Isso ajuda ainda mais na escalabilidade global da solução. 
+
+
+Service Discoverability
+Because the service contracts usually represent all that is made available about a service,
+they are what this principle is primarily focused on when attempting to make each service
+as discoverable and interpretable as possible by a range of project team members.
+Note that although Web service contracts need to be designed to be discoverable, this
+book does not discuss discovery processes or registry-based architectures.
+
+Service Composability
+This regulatory design principle is very concerned with ensuring that service contracts
+are designed to represent and enable services to be effective composition participants.
+The contracts must therefore adhere to the requirements of the previously listed design
+principles and also take multiple and complex service composition requirements into
+account.
+
+
 
 \subsubsection{Padrões de projeto }
 \vspace{-6mm}
