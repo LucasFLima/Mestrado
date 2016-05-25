@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  24 MAY 2016 09:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  24 MAY 2016 09:37
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -392,65 +392,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [7
 
 
-]
-
-! Package inputenc Error: Unicode char \u 8:\GenericError {(inputenc)          
-      }{Package inputenc Error: Unicode char \u8:� not set up for use with La
-TeX}{See the inputenc package documentation for explanation.}{Your command was 
-ignored.
-(inputenc) Type  I <command> <return>  to replace it with another command,
-(inputenc) or  <return>  to continue without it.} not set up for use with LaTeX
-.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44 ...return> to continue without it.}FICAS}{15}
-                                                  
-Your command was ignored.
-Type I <command> <return> to replace it with another command,
-or <return> to continue without it.
-
-
-! Package inputenc Error: Unicode char \u 8:\GenericError {(inputenc)          
-      }{Package inputenc Error: Unicode char \u8:� not set up for use with La
-TeX}{See the inputenc package documentation for explanation.}{Your command was 
-ignored.
-(inputenc) Type  I <command> <return>  to replace it with another command,
-(inputenc) or  <return>  to continue without it.} not set up for use with LaTeX
-.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44 ...return> to continue without it.}FICAS}{15}
-                                                  
-Your command was ignored.
-Type I <command> <return> to replace it with another command,
-or <return> to continue without it.
-
-
-! Package inputenc Error: Unicode char \u 8:\GenericError {(inputenc)          
-      }{Package inputenc Error: Unicode char \u8:� not set up for use with La
-TeX}{See the inputenc package documentation for explanation.}{Your command was 
-ignored.
-(inputenc) Type  I <command> <return>  to replace it with another command,
-(inputenc) or  <return>  to continue without it.} not set up for use with LaTeX
-.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.45 ...eturn> to continue without it.}NDICES}{16}
-                                                  
-Your command was ignored.
-Type I <command> <return> to replace it with another command,
-or <return> to continue without it.
-
-)
+])
 \tf@toc=\write3
 \openout3 = `dissertacaoLucas.toc'.
 
@@ -460,14 +402,14 @@ or <return> to continue without it.
 
  [9
 
-] (./dissertacaoLucas.lof)
+]
+(./dissertacaoLucas.lof)
 \tf@lof=\write5
 \openout5 = `dissertacaoLucas.lof'.
 
  [10
 
-]
-(./lista_simbolos_nomeclaturas_abreviacoes.tex
+] (./lista_simbolos_nomeclaturas_abreviacoes.tex
 Overfull \hbox (14.9749pt too wide) in paragraph at lines 4--8
  \OT1/cmr/bx/n/14.4 LISTA DE S[]IMBOLOS, NO-MEN-CLA-TURA E ABREVIA[][]OES
  []
@@ -493,33 +435,32 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  2.
 [4
 
-]) (./cap3.tex [5] [6]
+]) (./cap3.tex [5]
  3.
-[7
+[6
 
-] <ServiceDbC.png, id=69, 950.04938pt x 545.03625pt>
+] <ServiceDbC.png, id=65, 950.04938pt x 545.03625pt>
 File: ServiceDbC.png Graphic file (type png)
  <use ServiceDbC.png>
-Package pdftex.def Info: ServiceDbC.png used on input line 58.
+Package pdftex.def Info: ServiceDbC.png used on input line 84.
 (pdftex.def)             Requested size: 441.01772pt x 246.40288pt.
 
-[8 <./ServiceDbC.png>]
-<PreconditionValidation.png, id=77, 798.73407pt x 344.03531pt>
+[7] <PreconditionValidation.png, id=72, 798.73407pt x 344.03531pt>
 File: PreconditionValidation.png Graphic file (type png)
 
 <use PreconditionValidation.png>
-Package pdftex.def Info: PreconditionValidation.png used on input line 97.
+Package pdftex.def Info: PreconditionValidation.png used on input line 123.
 (pdftex.def)             Requested size: 441.01772pt x 182.10506pt.
 
-<PostconditionValidation.png, id=79, 797.98125pt x 295.85532pt>
+<PostconditionValidation.png, id=74, 797.98125pt x 295.85532pt>
 File: PostconditionValidation.png Graphic file (type png)
 
 <use PostconditionValidation.png>
-Package pdftex.def Info: PostconditionValidation.png used on input line 109.
+Package pdftex.def Info: PostconditionValidation.png used on input line 135.
 (pdftex.def)             Requested size: 441.01772pt x 155.64842pt.
- [9 <./PreconditionValidation.png> <./PostconditionValidation.png>]
+ [8 <./ServiceDbC.png>]
 ! Undefined control sequence.
-l.130 \lstinputlisting
+l.156 \lstinputlisting
                       [language=NeoIDL,firstnumber=1]{DBCsimple.neo}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -527,22 +468,23 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-) (./cap4.tex [10]
+[9 <./PreconditionValidation.png> <./PostconditionValidation.png>]) (./cap4.tex
+[10]
  4.
 [11
 
-] [12]) (./cap5.tex [13]
+]) (./cap5.tex [12]
  5.
-) [14
+) [13
 
-] (./dissertacaoLucas.bbl) [15
+] (./dissertacaoLucas.bbl) [14
 
 
-] [16
+] [15
 
 ] (./apend_a.tex
  A.
-) [17
+) [16
 
 
 ] (./dissertacaoLucas.aux)
@@ -551,23 +493,23 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2239 strings out of 494963
- 30057 string characters out of 6179648
+ 2238 strings out of 494963
+ 30051 string characters out of 6179648
  91951 words of memory out of 5000000
- 5387 multiletter control sequences out of 15000+600000
+ 5386 multiletter control sequences out of 15000+600000
  7935 words of font info for 28 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
- 37i,8n,23p,778b,240s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,8n,23p,260b,240s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertacaoLucas.pdf (29 pages, 233682 bytes).
+Output written on dissertacaoLucas.pdf (28 pages, 234414 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  34 words of extra memory for PDF output out of 10000 (max. 10000000)
 

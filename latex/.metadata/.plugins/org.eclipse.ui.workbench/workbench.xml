@@ -32,13 +32,38 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="net.sourceforge.texlipse.TexEditor" name="ijseke.tex" partName="ijseke.tex" path="/home/lucas/workspace/mestrado/latex/ijsekeExtend/ijseke.tex" title="ijseke.tex" tooltip="ijsekeExtend/ijseke.tex" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ijsekeExtend/ijseke.tex"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="66000" selectionTopPixel="23515"/>
+<editor activePart="true" focus="true" id="net.sourceforge.texlipse.TexEditor" name="cap1.tex" partName="cap1.tex" path="/home/lucas/workspace/mestrado/latex/DissertacaoLucas/cap1.tex" title="cap1.tex" tooltip="DissertacaoLucas/cap1.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DissertacaoLucas/cap1.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3926" selectionTopPixel="1197"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="dissertacaoLucas.tex" partName="dissertacaoLucas.tex" path="/home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.tex" title="dissertacaoLucas.tex" tooltip="DissertacaoLucas/dissertacaoLucas.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DissertacaoLucas/dissertacaoLucas.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3172" selectionTopPixel="1026"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="cap2.tex" partName="cap2.tex" path="/home/lucas/workspace/mestrado/latex/DissertacaoLucas/cap2.tex" title="cap2.tex" tooltip="DissertacaoLucas/cap2.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DissertacaoLucas/cap2.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1408" selectionTopPixel="1084"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="cap3.tex" partName="cap3.tex" path="/home/lucas/workspace/mestrado/latex/DissertacaoLucas/cap3.tex" title="cap3.tex" tooltip="DissertacaoLucas/cap3.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DissertacaoLucas/cap3.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="255" selectionTopPixel="912"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="cap4.tex" partName="cap4.tex" path="/home/lucas/workspace/mestrado/latex/DissertacaoLucas/cap4.tex" title="cap4.tex" tooltip="DissertacaoLucas/cap4.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DissertacaoLucas/cap4.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="247" selectionTopPixel="56"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="cap5.tex" partName="cap5.tex" path="/home/lucas/workspace/mestrado/latex/DissertacaoLucas/cap5.tex" title="cap5.tex" tooltip="DissertacaoLucas/cap5.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DissertacaoLucas/cap5.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -55,10 +80,7 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (5 items)"/>
-</expanded>
-<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="304" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="312" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -85,7 +107,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="net.sourceforge.texlipse.TexEditor" activePerspective="net.sourceforge.texlipse.TexlipsePerspective">
+<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="net.sourceforge.texlipse.TexlipsePerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -234,159 +256,85 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ijsekeExtend/symbol.json"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/ijsekeExtend/symbol.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/ijsekeExtend/ijseke.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/cap1.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/dissertacaoLucas.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/cap1.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/cap2.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/cap3.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/cap4.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/DissertacaoLucas/cap5.tex"/>
 </editors>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="444" y="0"/>
+<item historyLabel="cap1.tex" index="0">
+<position info="not_deleted" x="563" y="0"/>
 </item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="26" y="9"/>
+<item historyLabel="dissertacaoLucas.tex" index="1">
+<position info="not_deleted" x="1083" y="0"/>
 </item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="567" y="0"/>
+<item historyLabel="cap1.tex" index="0">
+<position info="not_deleted" x="563" y="0"/>
 </item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="378" y="10"/>
+<item historyLabel="cap1.tex" index="0">
+<position info="not_deleted" x="3729" y="0"/>
 </item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="486" y="0"/>
+<item historyLabel="dissertacaoLucas.tex" index="1">
+<position info="not_deleted" x="1083" y="0"/>
 </item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="404" y="22"/>
+<item historyLabel="cap1.tex" index="2">
+<position info="not_deleted" x="3729" y="0"/>
 </item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="566" y="0"/>
+<item historyLabel="dissertacaoLucas.tex" index="1">
+<position info="not_deleted" x="2658" y="0"/>
 </item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="52" y="11"/>
+<item historyLabel="cap2.tex" index="3">
+<position info="not_deleted" x="1408" y="0"/>
 </item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="666" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="67" y="38"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1497" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="67" y="38"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1497" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="188" y="12"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="688" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="204" y="41"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="768" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="320" y="6"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="785" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="337" y="24"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="845" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="263" y="5"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="861" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="280" y="23"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="921" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="122" y="7"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="987" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="148" y="22"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1048" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="617" y="4"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1110" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="640" y="18"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1185" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="640" y="18"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1185" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="470" y="5"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1203" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="493" y="34"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1291" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="677" y="9"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="301" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="700" y="22"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1390" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="546" y="9"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1410" y="0"/>
-</item>
-<item historyLabel="symbol.tex" index="1">
-<position info="not_deleted" x="569" y="29"/>
-</item>
-<item historyLabel="symbol.json" index="0">
-<position info="not_deleted" x="1496" y="0"/>
-</item>
-<item historyLabel="ijseke.tex" index="2">
-<position/>
-</item>
-<item historyLabel="ijseke.tex" index="2">
+<item historyLabel="cap3.tex" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="ijseke.tex" index="2">
+<item historyLabel="cap3.tex" index="4">
+<position info="not_deleted" x="6703" y="0"/>
+</item>
+<item historyLabel="cap2.tex" index="3">
+<position info="not_deleted" x="1408" y="0"/>
+</item>
+<item historyLabel="cap3.tex" index="4">
+<position info="not_deleted" x="6703" y="0"/>
+</item>
+<item historyLabel="dissertacaoLucas.tex" index="1">
+<position info="not_deleted" x="2658" y="0"/>
+</item>
+<item historyLabel="cap3.tex" index="4">
+<position info="not_deleted" x="6703" y="0"/>
+</item>
+<item historyLabel="cap4.tex" index="5">
+<position info="not_deleted" x="3332" y="0"/>
+</item>
+<item historyLabel="cap3.tex" index="4">
+<position info="not_deleted" x="6703" y="0"/>
+</item>
+<item historyLabel="cap2.tex" index="3">
+<position info="not_deleted" x="1408" y="0"/>
+</item>
+<item historyLabel="cap3.tex" index="4">
+<position info="not_deleted" x="255" y="0"/>
+</item>
+<item historyLabel="cap4.tex" index="5">
+<position info="not_deleted" x="3332" y="0"/>
+</item>
+<item historyLabel="cap5.tex" index="6">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="dissertacaoLucas.tex" index="1">
+<position info="not_deleted" x="3172" y="0"/>
+</item>
+<item historyLabel="cap4.tex" index="5">
+<position info="not_deleted" x="3332" y="0"/>
+</item>
+<item historyLabel="cap4.tex" index="5">
+<position info="not_deleted" x="247" y="0"/>
+</item>
+<item active="true" historyLabel="cap1.tex" index="2">
+<position info="not_deleted" x="3729" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -405,6 +353,24 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="cap5.tex" tooltip="DissertacaoLucas/cap5.tex">
+<persistable path="/DissertacaoLucas/cap5.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="cap4.tex" tooltip="DissertacaoLucas/cap4.tex">
+<persistable path="/DissertacaoLucas/cap4.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="cap3.tex" tooltip="DissertacaoLucas/cap3.tex">
+<persistable path="/DissertacaoLucas/cap3.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="cap2.tex" tooltip="DissertacaoLucas/cap2.tex">
+<persistable path="/DissertacaoLucas/cap2.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="dissertacaoLucas.tex" tooltip="DissertacaoLucas/dissertacaoLucas.tex">
+<persistable path="/DissertacaoLucas/dissertacaoLucas.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="cap1.tex" tooltip="DissertacaoLucas/cap1.tex">
+<persistable path="/DissertacaoLucas/cap1.tex"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="ijseke.tex" tooltip="ijsekeExtend/ijseke.tex">
 <persistable path="/ijsekeExtend/ijseke.tex"/>
 </file>
@@ -431,24 +397,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="Area.tex" tooltip="DbCRestPresentation/src/Area.tex">
 <persistable path="/DbCRestPresentation/src/Area.tex"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="fundamentacao.tex" tooltip="WPOS/src/fundamentacao.tex">
-<persistable path="/WPOS/src/fundamentacao.tex"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="neoIDL-WPOS.bib" tooltip="WPOS/src/neoIDL-WPOS.bib">
-<persistable path="/WPOS/src/neoIDL-WPOS.bib"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="sbc-template.bib" tooltip="WPOS/src/sbc-template.bib">
-<persistable path="/WPOS/src/sbc-template.bib"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="IEEEtran.bst" tooltip="WPOS/src/IEEEtran.bst">
-<persistable path="/WPOS/src/IEEEtran.bst"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="IEEEexample.bib" tooltip="WPOS/src/IEEEexample.bib">
-<persistable path="/WPOS/src/IEEEexample.bib"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.bibeditor.BibEditor" name="sample.bib" tooltip="NeoIDL-DbC-28082015/sample.bib">
-<persistable path="/NeoIDL-DbC-28082015/sample.bib"/>
 </file>
 </mruList>
 </workbench>
