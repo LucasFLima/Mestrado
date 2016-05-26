@@ -144,11 +144,10 @@ de serviços \cite{erl2009web}.
 \end{description}
 
 
-
-
 \subsection{Modelo arquitetural}
 \vspace{-6mm}
-\ldots
+
+O 	
 
 In contrast to conventional software architectures pri-
 marily delineating the organization of a system in its
@@ -164,8 +163,7 @@ effectively.
 \cite{papazoglou2007serviceApprTechRechIss}
 
 
-
- Service orientation provides the underlying implementation that can make an on demand IT
+Service orientation provides the underlying implementation that can make an on demand IT
 operating environment a reality by supporting the functions of both integration and infra-
 structure management [Lymann 2005a].
 Service-Oriented Computing (SOC) utilizes services as the constructs to support the devel-
@@ -186,6 +184,9 @@ This "service-oriented" approach is independent of specific programming language
 ating systems.
 
 
+\cite{erl2008soaDesigPatterns}
+
+
 \vspace{-6mm}
 
 \subsection{Princípios SOA}
@@ -194,121 +195,97 @@ ating systems.
 
 O paradigma de orientação a serviço é estruturada em oito princípios
 fundamentais \cite{erl2009web}. São eles que caraterizam a abordagem SOA e a sua
-aplicação fazem com que um serviço se diferenciem de um componente ou módulo. Os
-contratos de serviços permeiam a maior parte destes princípios:
+aplicação fazem com que um serviço se diferencie de um componente ou de
+um módulo.
+Os contratos de serviços permeiam a maior parte destes princípios:
 
 \begin{description}
-\item[Contrato padronizado] fornecem um meio padrão para os serviços
-sejam registrados em um inventário. Os contratos de serviços são elementos
-fundamentais pois é por meio deles que os serviços interagem uns com os outros e
-com potenciais consumidores. 
+\item[Contrato padronizado] - \textbf{Serviços dentro de um mesmo inventário
+estão em conformidade com os mesmos padrões de contrato de serviço}. 
+Os contratos de serviços são elementos fundamentais na arquitetura orientada
+a serviço, pois é por meio deles que os serviços interagem uns com os outros e
+com potenciais consumidores. Este princípio tem como foco principal o contrato de serviço e seus requisitos. O padrão de projeto \textit{contract firts} é
+uma consequência direta deste princípio \cite{erl2009web}. 
 
-\item[Baixo acomplamento]
+\item[Baixo acomplamento] - \textbf{Os contratos de serviços impõem aos
+consumidores do serviço requisitos de baixo acoplamento e são, os próprios
+contratos, desacoplados do seu ambiente}. 
+Este princípio também possui forte relação com o contratos de serviço, pois a
+forma como o contrato é projetado e posicionado na arquitetura é que gerará o
+benefício do baixo acoplamento. O projeto deve garantir que o contrato
+possua tão somente as informações necessárias para possibilitar a compreensão e
+o consumo do serviço, bem como não possuir outras características que gerem
+acoplamento.
 
-\item[Abstração]
+São considerados negativos, e que devem ser evitados, os acoplamentos  
+\begin{enumerate}[label=(\alph*)] 
+\item do contrato com as funcionalidades que ele suporta, agregando ao
+contrato características dos processos que o serviço suporta,
+\item do contrato com a sua implementação, invertendo a estratégia de conceber
+primeiramente o contrato
+\item do contrato com a sua lógica interna, expondo aos consumidores
+características que levem os consumidores a inadivertidamente aumentarem o
+acoplamento
+\item do contrato com a tecnologia do serviço, causando impactos idesejáveis em
+caso de substituição de tecnologia.
+\end{enumerate}
 
-\item[Reusabilidade]
+Por outro lado, há um acoplamento positivo que o que gera dependência da
+lógica em relação ao contrato \cite{erl2009web}. Ou seja, idealmente a
+implementação do serviço deve ser derivada do contrato, pondendo se ter inclusive a geração de código a
+partir do contrato.
 
-\item[Autonomia]
 
-\item[Ausência de estado]
+\item[Abstração] - \textbf{Os constratos de serviços devem conter apenas
+informações essenciais e as informações sobre os serviços são limitadas àquelas
+publicadas em seus contratos}. O contrato é a forma oficial a partir da qual o
+consumidor do serviço faz seu projeto e tudo o que está além do contrato deve
+ser desconhecido por ele. Por um lado este princípio busca a ocultação
+controlada de informações. Por outro, visa a simplificação de informações do
+contrato de modo a assegurar que apenas informações essenciais estão
+disponíveis.
 
-\item[Descoberta de serviço]
 
-\item[Composição]
+\item[Reusabilidade]- \textbf{Serviços contém e expressam lógica agnóstica e
+podem ser disponibilizados como recursos reutilizáveis}. Este princípio
+contribui para se entender o serviço como um produto e seu contrato com uma API
+genérica para potenciais consumidores. Essa abordagem aplicada ao projeto dos
+serviços leva a desenhá-lo com lógicas não dependentes de processos de negócio
+específicos, de modo a torná-los reutilizáveis em vários processos.
+
+\item[Autonomia]- \textbf{Serviços exercem um elevado nível de controle sobre
+o seu ambiente em tempo de execução}. O controle do ambiente não está ligado a
+dependência do serviço à sua plataforma em termos de projeto, mas sim ao aumento
+da confiabilidade sobre a execução e redução da dependência dos recursos não se tem controle. 
+O que se busca é a previsibilidade sobre o comportamento do serviço.
+
+\item[Ausência de estado] - \textbf{Serviços reduzem o consumo de recursos
+restringindo a gestão de estado das informações apenas a quando for necessário}.
+Este princípio visa reduzir ou mesmo remover a sobrecarga gerada pelo
+gerenciamento do estado de cada operação, aumentando a escalabilidade da
+plataforma de arquitetura orientação a serviço como um todo. Na composição do
+serviço, o serviço deve armazenar apenas os dados necessários para completar o
+processamento, enquanto se aguarda o processamento de outro serviço.
+
+\item[Descoberta de serviço] - \textbf{Serviços devem conter metadados por meio
+dos quais os serviços possam ser descobertos e interpretados}. Tornar cada
+serviço de fácil descoberta e interpreção pelas equipes de projeto é o foco
+deste princípio. Os próprios contratos de serviço devem ser projetados para
+incorporar informações que auxiliem na sua descoberta.
+
+\item[Composição] - \textbf{Serviços são participantes efetivos de composição,
+independentemente do tamanho ou complexidade da composição}. O princípio da
+composição faz com que os projetos de serviços sejam projetados para
+possibilitar que eles se tornem participantes de composições. Deve-se levar em
+conta, entretanto, os outros princípios no planejamento de uma nova composição,
+considerando a complexidade de composições formadas.
 
 \end{description}
  
-
-Service-orientation represents a design approach comprised of eight specific design
-principles. Service contracts tie into most but not all of these principles. Let’s first introduce
-their official definitions:
-• Standardized Service Contract – “Services within the same service inventory are in
-compliance with the same contract design standards.”
-• Service Loose Coupling – “Service contracts impose low consumer coupling
-requirements and are themselves decoupled from their surrounding
-environment.”
-• Service Abstraction – “Service contracts only contain essential information and
-information about services is limited to what is published in service contracts.”
-• Service Reusability – “Services contain and express agnostic logic and can be positioned
-as reusable enterprise resources.”
-• Service Autonomy – “Services exercise a high level of control over their underlying
-runtime execution environment.”
-• Service Statelessness – “Services minimize resource consumption by deferring the
-management of state information when necessary.”
-• Service Discoverability – “Services are supplemented with communicative meta
-data by which they can be effectively discovered and interpreted.”
-• Service Composability – “Services are effective composition participants, regardless
-of the size and complexity of the composition.”
-
-
-Standardized Service Contract
-Given its name, it’s quite evident that this design principle is only about service contracts
-and the requirement for them to be consistently standardized within the boundary
-of a service inventory. This design principle essentially advocates “contract first”
-design for services.
-
-Service Loose Coupling
-This principle also relates to the service contract. Its design and how it is architecturally
-positioned within the service architecture are regulated with a strong emphasis on
-ensuring that only the right type of content makes its way into the contract in order to
-avoid the negative coupling types.
-The following sections briefly describe common types of coupling. All are considered
-negative coupling types, except for the last.
-Contract-to-Functional Coupling, Contract-to-Implementation Coupling,
-Contract-to-Logic Coupling, Contract-to-Technology Coupling, 
-Logic-to-Contract Coupling (
-Each of the previously described forms of coupling are considered negative because
-they can shorten the lifespan of a Web service contract, thereby leading to increased governance
-burden as a result of having to manage service contract versions.)
-
-Service Abstraction
-By turning services into black boxes, the contracts are all that is officially made available
-to consumer designers who want to use the services. While much of this principle is
-about the controlled hiding of information by service owners, it also advocates the
-streamlining of contract content to ensure that only essential content is made available.
-The related use of the Validation Abstraction pattern further can affect aspects of contract
-design, especially related to the constraint granularity of service capabilities.
-
-Service Reusability
-While this design principle is certainly focused on ensuring that service logic is designed
-to be robust and generic and much like a commercial product, these qualities also carry
-over into contract design. When viewing the service as a product and its contract as a
-generic API to which potentially many consumer programs will need to interface, the
-requirement emerges to ensure that the service’s functional context, the definition of its
-capabilities, and the level at which each of its design granularities are set are appropriate
-for it to be positioned as a reusable enterprise resource.
-
-Service autonomy
-
-Autonomia de serviços é um princípio que visa fornecer serviços com
-independência de seu ambiente de execução. Isso resulta em maior confiabilidade, já que os serviços podem operar com menos dependência de recursos sobre os quais há pouco ou nenhum controle. Confiabilidade é crítico para garantir a longevidade do serviço. 
-
-
-Service statelessness
-
-Interação entre softwares ou requisitos de negócio muitas vezes exigem o esforço
-de manter e gerenciar o controle do estado das informações entre as operações. Isso se torna mais importante em arquiteturas distribuídas onde o cliente e o servidor não estão fisicamente na mesma máquina. Numa composição de serviço, um serviço pode armazenar dados específicos da atividade em memória enquanto ele espera um outro serviço completar seu processamento. Gestão eficiente da atividade de serviço relacionado aos dados se torna mais importante como um serviço que visa a reutilização do mesmo. As diretrizes de arquitetura SOA é construir serviços stateless, deslocando a sobrecarga de gerenciamento de estado dos serviços para um outro componente/middleware externo. Isso ajuda ainda mais na escalabilidade global da solução. 
-
-
-Service Discoverability
-Because the service contracts usually represent all that is made available about a service,
-they are what this principle is primarily focused on when attempting to make each service
-as discoverable and interpretable as possible by a range of project team members.
-Note that although Web service contracts need to be designed to be discoverable, this
-book does not discuss discovery processes or registry-based architectures.
-
-Service Composability
-This regulatory design principle is very concerned with ensuring that service contracts
-are designed to represent and enable services to be effective composition participants.
-The contracts must therefore adhere to the requirements of the previously listed design
-principles and also take multiple and complex service composition requirements into
-account.
-
-
-
-\subsubsection{Padrões de projeto }
-\vspace{-6mm}
+ 
+% avaliar a necessidade de falar de design patterns
+%\subsubsection{Padrões de projeto }
+%\vspace{-6mm}
 
 \ldots
 
