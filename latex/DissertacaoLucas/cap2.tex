@@ -144,50 +144,76 @@ de serviços \cite{erl2009web}.
 \end{description}
 
 
-\subsection{Modelo arquitetural}
+\subsection{Objetivos, benefícios e características}
 \vspace{-6mm}
 
-O 	
+De modo diferente de arquiteturas convecionais, ditas monolíticas, em que os
+sistemas são concebidos agregando continuamente funcionalidades a um mesmo pacote de
+\textit{software}, a arquitetura orientada a serviço prega o projeto de pequenas
+aplicações distribuídas que podem ser consumidas tanto por usuários finais como
+por outros serviços \cite{papazoglou2007serviceApprTechRechIss}. 
 
-In contrast to conventional software architectures pri-
-marily delineating the organization of a system in its
-(sub)systems and their interrelationships, the SOA cap-
-tures a logical way of designing a software system to
-provide services to either end-user applications or other
-services distributed in a network through published and
-discoverable interfaces. SOA is focused on creating a
-design style, technology, and process framework that will
-allow enterprises to develop, interconnect, and maintain
-enterprise applications and services efficiently and cost-
-effectively.
-\cite{papazoglou2007serviceApprTechRechIss}
+A unidade lógica da arquitetura orientada a serviços é exatamente os serviços.
+Serviços são pequenos que provêem funcionalidades específicas para serem
+reutilizadas em várias aplicações. Cada serviço é uma entidade isolada com
+dependências limitadas de outros recursos compartilhados
+\cite{serrano2014service}. Assim, é formada uma abstração entre os fornecedores
+e consumidores dos serviços, por meio de baixo acoplamento, e promovendo a
+flexibilidade de mudanças de implementação sem impacto aos consumidores.
+
+A arquitetura SOC busca atingir um conjunto de objetivos e benefícios
+\cite{erl2008soaDesigPatterns}:
+\begin{enumerate}[label=(\alph*)] 
+  \item Ampliar a iterperabilidade intrínseca, de modo a se ter uma rápida
+  resposta a mudanças de requisitos de negócio por meio da efetiva
+  reconfiguração das composições de serviços.
+  \item Ampliar a federação da solução, permitindo que os serviços possam ser
+  evoluídos e governados individualmente, a partir da uniformização de
+  contratos.
+  \item Ampliar a diversificação de fornecedores, fazendo com que se possa
+  evoluir a arquitetura em conjunto com o negócio, sem ficar restrito a
+  características de derminados fornecedores.
+  \item Ampliar o alinhamento entre a tecnologia e o negócio, especializando-se
+  alguns serviços ao contexto do negócio e possibilitando sua evolução.
+  \item Ampliar o retorno sobre investimento, pois muitos serviços podem
+  ser reajandos em novas composições sem que se tenha que se construir grandes
+  soluções de custo elevado.
+  \item Ampliar a agilidade, remontando as composições por reduzido esforço,
+  beneficiando-se do reuso interoperabilidade nativas dos serviços.
+  \item Reduzir o custo de TI, como resultado de todos os benefícios acima
+  citados.
+\end{enumerate}
+
+Para possibilitar que esses benefícios sejam atingidos, quatro características
+são observadas em qualquer plataforma SOA. A primeira é o direcionamento
+efetivo ao negócio, levando-se em conta dos objetivos estratégicos de negócio na
+concepção do projeto arquitetural. Se isso não ocorrer, é inevitável que o
+desalinhamento com os requisitos de negócio cheguem a níveis muito elevados
+muito rapidamente \cite{erl2008soaDesigPatterns}.
+
+A segunda característica é a independência de fabricante. O projeto arquitetural
+que considere apenas um fabricante específico levará inadvertidamente a
+implantação dependente de características proprietárias. Essa dependência também
+reduzirá a agilidade na reação às mudanças e tornará a arquitetura inefetiva. A
+arquitetura orientada a serviço deve fazer uso de tecnologias providas pelos
+fornecedores, sem, no entanto, se tornar dependente dela, por meio de APIs e
+protocolos padrões de mercado.
+
+Outra característica da aplicação da plataforma SOA é os serviços são
+considerados recursos corporativos, ou seja, da empresa como um todo. Serviços
+desenvolvidos para atender um único objetivo perdem esta característica e se
+assemelham a soluções de propósito específico, tal como soluções monolíticas. O
+modelo arquitetural deve se guiar pela premissa que os serviços serão
+compartilhados por várias áreas da empresa ou farão parte de soluções maiores,
+como serviços compatilhados.
+
+A capacidade de composição é a quarta característica. Os serviços devem ser
+projetados não somente para serem reusados, mas também possuir
+flexibilidade para serem compostos em diferentes estruturas de variadas
+soluções. Confiabilidade, escalabilidade, troca de dados em tempo de execução
+com integridade são pontos chave para essa característica.
 
 
-Service orientation provides the underlying implementation that can make an on demand IT
-operating environment a reality by supporting the functions of both integration and infra-
-structure management [Lymann 2005a].
-Service-Oriented Computing (SOC) utilizes services as the constructs to support the devel-
-opment of rapid, low-cost and easy composition of distributed applications. Services are
-autonomous, platform-independent computational entities that can be used in a platform
-independent way. Services can be described, published, discovered, and dynamically as-
-sembled for developing massively distributed, interoperable, evolvable systems. Services
-perform functions that can range from answering simple requests to executing sophisticated
-business processes requiring peer-to-peer relationships between possibly multiple layers of
-service consumers and providers. Any piece of code and any application component de-
-ployed on a system can be reused and transformed into a network-available service. Serv-
-ices reflect a "service-oriented" approach to programming, based on the idea of composing
-applications by discovering and invoking network-available services rather than building new
-applications or by invoking available applications to accomplish some task [Papazoglou
-2003]. Services are most often built in a way that is independent of the context in which
-they are used. This means that the service provider and the consumers are loosely coupled.
-This "service-oriented" approach is independent of specific programming languages or oper-
-ating systems.
-
-
-\cite{erl2008soaDesigPatterns}
-
-
-\vspace{-6mm}
 
 \subsection{Princípios SOA}
 \label{PrincipiosSOA} 
@@ -287,41 +313,102 @@ considerando a complexidade de composições formadas.
 %\subsubsection{Padrões de projeto }
 %\vspace{-6mm}
 
-\ldots
-
-\vspace{-6mm}
 
 \section{Web Services}
 \vspace{-6mm}
 
-\ldots
+\ws{} são aplicações modulares e autocontidas que podem ser publicadas,
+localizadas a acessadas pela \textit{Web} \cite{alonso2004web}. A diferença
+entre o \ws{} e a aplicação \textit{Web} propriamente dita é que o primeiro se
+preocupa apenas com o dado gravado ou fornecido, deixando para o cliente a atribuição de apresentar a
+informação \cite{serrano2014service}.
+
+A necessidade das organizações de integrar suas soluções, seja
+entre os sistemas internos ou entre esses e sistemas de outras empresas
+\cite{rao2004survey}, não é recente. Essa é uma das principais motivações do uso
+de \ws{}, por possibilitar que soluções contruídas com tecnologias distintas possam trocar
+informações por meio da \textit{Web}. Nesse contexto, as arquiteturas
+orientadas a serviço fazem amplo uso de \ws{} como meio para disponibilização de serviços.
+
+Há dois tipos de \ws{}: baseados em SOAP e baseados em REST. Os mais diversos
+tipo de aplicações podem ser concebidas utilizando SOAP ou REST \ws{}, situação também aplicável a serviços.
+Originalmente os serviços utilizaram \ws{} SOAP, trafegando as informações em
+uma mensagem codificada em um formato de troca de dados (XML), por meio do
+protocolo SOAP (seção \ref{secaoSOAP}). Entretanto, a adoção de \ws{} REST
+(seção \ref{secaoSOAP}) tem ganhado popularidade \cite{mumbaikar2013web}.
 
 \subsection{SOAP (W3C) }
+\label{secaoSOAP}
 \vspace{-6mm}
 
-\ldots
+SOAP -- \textit{Simple Object Access Protocol} -- é um protocolo padrão W3C que
+provê uma definição de como trocar informações estruturadas, por meio de XML, entre
+partes em um ambientes descentralizado ou distribuído \cite{WSDLSite}. SOAP é um
+protocolo mais antigo que REST, e foi desenvolvido para troca de informações
+pela Internet se utilizando de protocolos como HTTP, SMTP, FTP, sendo o primeiro
+o mais comumente utilizado.
+
+Por ser mais antigo, SOAP é o \ws{} mais comumente utilizado pela indústria.
+Algumas pessoas chegam a tratar \ws{} apenas como SOAP e WSDL
+\cite{serrano2014service}. SOAP atua como um envelope que transporta a mensagem
+XML, e possui vastos padrões para transformar e proteger a mensagem e a
+trasmissão. 
+
 
 \subsubsection{Especificação de contratos}
 \vspace{-6mm}
 
-\ldots
+Os contratos em SOAP são especificados no padrão WSDL -- Web Services
+Description Language -- que define uma gramática XML para descrever os serviços
+como uma coleção de \textit{endpoints} capazes de atuar na troca de mensagens.
+As mensagens e operações são descritas abstratamente na primeira seção do
+documento. Uma segunda seçaõ, dita concreta, estabelece o protocolo de rede e o
+formato das mensagens.
 
-\vspace{-6mm}
+Muitas organizações preferem utilizar SOAP por ele dispor de mais mecanismos de
+segurança e tratamento de erros \cite{serrano2014service}. Além disso a tipagem
+de dados é mais forte em SOAP que em REST \cite{mumbaikar2013web}.
+
 
 \subsection{REST (Fielding)}
 \label{secaoREST}
 \vspace{-6mm}
 
-A tecnologia REST é caracterizada principalmente pela
-convenção da adoção dos métodos do protocolo HTTP para definição das operações, transferência de estado nas requisições.
-- Ausência de padrão para especificação de contratos REST.
-- Fragilidade de garantias por quem consome o serviço;
-- Risco de a ausência de informações prejudicarem os consumidores.
+O termo REST foi criado por Roy Fielding, em sua tese de doutorado
+\cite{fielding2000architectural}, para descrever um modelo arquitetural
+distribuído de sistemas hipermedia. Um \ws{} REST é baseado no conceito de
+recurso (que é qualquer coisa que possua uma URI) que pode ter zero ou mais
+representações \cite{he2003service}.
+
+O estilo arquitetural REST é cliente-servidor, em que o cliente enviar uma
+requisitação por um determinado recurso ao servidor e este retorna uma resposta.
+Tanto a requisição como a resposta ocorrem por meio da transferência de
+representações de recursos \cite{mumbaikar2013web}, que podem ser vários
+formatos, como XML e JSON \cite{serrano2014service}. Toda troca de informações
+ocorre por meio do protocolo HTTP, com uma semântica específica para cara
+operação:
+
+\begin{enumerate}
+\item HTTP GET é usado para obter a representação de um recurso.
+\item HTTP DELETE é usado para remover a representação de um recurso.
+\item HTTP POST é usado para atualizar ou criar a representação de um recurso.
+\item HTTP PUT é usado para criar a representação de um recurso.
+\end{enumerate}
+
+As transações são independentes entre si e com as transações anteriores, pois o
+servidor não guarda qualquer informação de sessão do cliente. Todas as
+informações de estado são trafegadas nas proprias requisições, de modo que as
+respostas também são independentes. Essas características tornam as \ws{} REST
+simples e leves \cite{mumbaikar2013web}.
+
+O uso de REST tem se tornado popular por conta de sua flexibilidade e
+performance em comparação com SOAP, que precisa envelopar suas informações em
+um pacote XML \cite{mumbaikar2013web}. 
 
 \subsubsection{Especificação de contratos}
 \vspace{-6mm}
 
-\ldots
+
 
 
 \subsubsection{Outros padrões }
@@ -333,7 +420,7 @@ convenção da adoção dos métodos do protocolo HTTP para definição das oper
 \label{Design-by-Contract}
 \vspace{-6mm}
 
-\ldots
+\cite{meyer1988object}
 
 \subsection{Origem}
 \vspace{-6mm}
