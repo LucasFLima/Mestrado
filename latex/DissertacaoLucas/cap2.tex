@@ -308,10 +308,43 @@ considerando a complexidade de composições formadas.
 
 \end{description}
  
- 
-% avaliar a necessidade de falar de design patterns
-%\subsubsection{Padrões de projeto }
-%\vspace{-6mm}
+
+\subsection{Contract First}
+\vspace{-6mm}
+
+O princípio do baixo acoplamento tem por objetivo principal reduzir o
+acoplamento entre o cliente e o fornecedor do serviço. Há vários tipos de
+acopamentos negativos, como citado acima. Porém, um acoplamento é considerado
+positivo e desejável: da implementação a partir do contrato. Ou seja, a lógica
+do serviço deve corresponder ao que está especificado no contrato.
+
+Duas abordagens podem ser seguidas para se produzir esse efeito. A primeira é a
+geração do contrato a partir da lógica implementada, conhecida como
+\CdFirst{}. A outra propõem um sentido inverso, partindo-se do contrato
+para a geração do código, chamada \CtFirst{}. A abordagem
+\CtFirst{} é recomendada para a arquitetura orientada a serviço
+\cite{erl2009web}.
+
+Embora muitas vezes preferível pelo desenvolvedor, a desvantagem do uso
+\CdFirst{} está no elevado impacto que alterações na implementação causam ao
+contrato, fazendo com que os clientes dos serviços seja afetados. Reduz-se a
+flexibilidade e extensibilidade, de modo que o reuso é prejudicado. Ainda,
+eleva-se o risco de os serviços serem projetados para aplicações específicas e
+não voltados para reuso e composição \cite{karthikeyancontract}.
+
+A abordagem \CtFirst{} preocupa-se principalmente com a clareza, completude e
+estabilidade do contrato para os clientes dos serviços. Toda a
+estrutura da informação é definida sem a preocupação sobre restrições ou
+características das implementações subjacentes. Do mesmo modo, as
+capacidades são definidas para atenderem a funcionalidade a que se destina,
+porém com a preocupação em se promover estabilidade e reuso.
+
+As principais vantagens do \CtFirst{} no baixo acoplamento do contrato em
+relação a sua implementação, possibilidade de reuso de esquemas de dados (XML
+ou JSON Schema), simplificação do versionamento e facilidade de manutenção
+\cite{karthikeyancontract}. A desvantagem está justamente na complexidade de
+escrita to contrato. Porém várias ferramentas já foram desenvolvidas para
+facilitar essa tarefa.
 
 
 \section{Web Services}
@@ -362,7 +395,7 @@ Os contratos em SOAP são especificados no padrão WSDL -- Web Services
 Description Language -- que define uma gramática XML para descrever os serviços
 como uma coleção de \textit{endpoints} capazes de atuar na troca de mensagens.
 As mensagens e operações são descritas abstratamente na primeira seção do
-documento. Uma segunda seçaõ, dita concreta, estabelece o protocolo de rede e o
+documento. Uma segunda seção, dita concreta, estabelece o protocolo de rede e o
 formato das mensagens.
 
 Muitas organizações preferem utilizar SOAP por ele dispor de mais mecanismos de
@@ -408,29 +441,267 @@ um pacote XML \cite{mumbaikar2013web}.
 \subsubsection{Especificação de contratos}
 \vspace{-6mm}
 
+Ao contrário de SOAP, REST não dispõe de um padrão para especificação de
+contratos. Essa carência, que no início não era considerada um problema, foi se
+tornando uma necessidade cada vez mais evidente a medida em que se amplia o
+conjunto de \ws{} implantados. Atualmente existem algumas linguagens com o
+propósito de documentar o contrato REST.
+
+A linguagem mais popular é \textit{Swagger} cujo projeto se iniciou por volta de
+2010 para atender a necessidade de um projeto específico, sendo posteriormente
+vedida para uma grande empresa. Em janeiro de 2016, \textit{Swagger} foi doada
+para o \textit{Open API Iniciative (OAI)} e denominada de \textit{Open API
+Specification}. O própito da iniciativa é tornar \textit{Swagger} padrão para
+especificação de APIs com independencia de fornecedor. Apoiam o projeto grandes
+empresas como Google, Microsoft e IBM.
+
+WADL (\textit{Web Application Description Language}), uma especição baseada em
+XML semelhante ao WSDL, foi proposta projetada pela \textit{Sun Microsystems} e
+sua última versão submetida em 2009. Outra linguagem proposta é a RAML --
+abreviação de \textit{RESTful API Modeling Language} -- baseada em YAML e
+projetada pela MuleSoft. Muitos projetos \textit{open source} adotam RAML.
+
+Todas estas linguagens possuem suporte tanto para \CdFirst{} como para
+\CtFirst{} \cite{wideberg2015restful}.
 
 
 
-\subsubsection{Outros padrões }
-\vspace{-6mm}
+%\subsubsection{Outros padrões }
+%\vspace{-6mm}
+%\ldots
 
-\ldots
-
-\section{Design-by-Contract}
+\section{\designbycontract{}}
 \label{Design-by-Contract}
 \vspace{-6mm}
 
 \cite{meyer1988object}
 
-\subsection{Origem}
-\vspace{-6mm}
 
-- Bertrand Meyer (eifel)
+\designbycontract{} \cite{meyer1992applying} - DbC - é um conceito
+oriundo da orientação a objetos, no qual consumidor e fornecedor firmam entre si garantias para
+o uso de métodos ou classes. De um lado o consumidor deve garantir que, antes da
+chamada a um método, algumas condições sejam satisfeitas (denominadas de pré-condições).
+Do outro lado o fornecedor deve garantir, se respeitadas as pré-condições,
+as propriedades relacionadas ao sucesso da execução (pós-condições).
+
+
+DbC tem o objetivo de aumentar a robustez do sistema e tem na linguagem Eiffel
+\cite{meyer1988eiffel} um de seus precursores. Para os mantenedores do Eiffel, DBC é
+tão importante quanto classes, objetos, herança, etc. O uso de DBC na
+concepção de sistemas é uma abordagem sistemática que produz sistemas mais
+corretos.
+
+O conceito chave de \designbycontract{} é ver a relação entre a classe e
+seus clientes como uma relação formal, que expressa os direitos e oblicações de
+cada parte \cite{meyer1997object}. Se, por um lado, o cliente tem a obrigação de
+respeitar as condições impostas pelo fornecedor para fazer uso do módulo, por
+outro, o fornecedor deve garantir que o retorno ocorra como esperado.
+
+As pré-condições vinculam o cliente, no sentido de definir as condições que
+o habilitam para acionar o recurso. Corresponde a uma obrigação para o cliente e
+o benefício para o fornecedor \cite{meyer1997object} de que certos
+pressupostos serão sempre respeitados nas chamadas à rotina.
+As pós-condições vinculam o fornecedor, de modo a definir as condições para que o retorno ocorra.
+Corresponde a uma obrigação para o fornecedor e o benefício para o cliente de
+que certas propriedades serão respeitadas após a chamada à rotina.
+
+De forma indireta, \designbycontract{} estimula a análise das condições de
+consistência necessárias para o funcionamento correto da relação de cooperação entre clinte-fornecedor.
+Essas condições são expressas em cada contrato, o qual especifica as obrigações
+a que cada parte está condicionada. 
+
+Segundo Bertrand Meyer \cite{meyer1997object}, \designbycontract{} é um
+ferramental para análise, projeto, implementação e documentação, facilitando a
+construção de \textit{softwares} cuja confiabilidade é embutida, no lugar de
+buscar essa característica por meio de depuração. Meyer utiliza uma expressão de
+Harlan D. Mills \cite{mills1975new} para afirmar que \designbycontract permite
+construir programas corretos e saber que estão corretos.
+
+Com o uso de \designbycontract{}, cada rotina é levada a realizar o trabalho
+para o qual foi projetada e fazer isso bem: com corretude, eficiência e
+genericamente suficiente para ser reusada. Por outro lado, especifica de forma
+clara o que a rotina não trata. Esse paradigma é coerente, pois para que a
+rotina realize seu trabalho bem, é esperado que se estabeleça bem as
+circunstâncias.
+
+
+
+
+
+
+
+
+-- Assetion violation rule (2)
+A precondition violation is the manifestation of a bug in the client.
+A postcondition violation is the manifestation of a bug in the supplier
+
+
+
+
+
+
+-- Usar na motivação --
+The problem gets aggravated by
+the fact that modern software applications are expected to
+make use of these reusable modules as much as possible,
+in an effort to reduce both the development costs and the
+production time. Unfortunately, this situation opens the door
+for the propagation of security vulnerabilities among several
+applications as a result of the incorrect enforcement of security
+properties in reusable software modules and threatens the
+security and safety of applications as a whole.
+\cite{rubio2013verifying}
+
+
+-- Usar na motivação
+There is a simple lesson here: Reuse without a precise specification
+mechanism is a disastrous risk.
+Effective reuse requires design by contract.
+Without a precise specification attached to each reusable component—
+precondition, postcondition, invariant— no one can trust a supposedly reusable
+component. Without a specification, it is probably safer to redo than to reuse.
+\cite{jazequel1997design}
+
+
+
+The cornerstone of object-oriented technology is reuse. For reusable components,
+which may be used in thousands of different applications, the potential
+consequences of incorrect behavior are even more serious than for applicationspecific
+developments.
+
+The mechanisms for expressing such conditions are called assertions. Some
+assertions.
+called preconditions and postconditions.
+apply to individual routines. Others, the class invariants, constrain all the
+routines of a given class and will be discussed later.The construct Old may
+appear only in a routine postcondition.
+
+This principle is the exact opposite of the idea of defensive programming, since
+it directs programmers to avoid redundant tests.
+If the contract is precise and explicit, there is no need for redundant checks.
+
+Client programmers do not expect miracles.
+As long as the conditions on the use of a routine make sense, and the routine’s
+documentation states these conditions (the contract) explicitly, the programmers
+will be able to use the routine properly by observing their part of the deal.
+
+Eiffel assertions are Boolean expressions, with a few extensions such as the old
+notation. Since the whole power of Boolean expressions is available, they may
+include function calls. Because the full power of the language is available to
+write these functions, the conditions they express can be quite sophisticated.
+\cite{meyer1992applying}
+
+
+
+
+
+
+
+
+
+
+
+
+-- Reasonable Precondition principle
+Every routine precondition (in a “demanding” design approach) must satisfy
+the following requirements:
+• The precondition appears in the official documentation distributed to
+authors of client modules.
+• It is possible to justify the need for the precondition in terms of the
+specification only.
+
+This clearly unacceptable situation is akin,
+in human contracts, to a deal in which the supplier would impose some conditions not
+stated explicitly in the contract, and hence could reject a client’s request as incorrect
+without giving the client any way to determine in advance whether it is correct.
+
+-- Precondition Availability rule
+Every feature appearing in the precondition of a routine must be available to
+every client to which the routine is available.
+There is no such rule for postconditions.
+
+
+Preconditions and postconditions describe the properties of individual routines. There is
+also a need for expressing global properties of the instances of a class, which must be
+preserved by all routines. Such properties will make up the class invariant, capturing the
+deeper semantic properties and integrity constraints characterizing a class.
+
+- Invariants 
+There isalso a need for expressing global properties of the instances of a class, which must be
+preserved by all routines.
+Invariants have a clear interpretation in the contract metaphor. Human contracts often
+contain references to general clauses or regulations that apply to all contracts within a
+certain category;
+\cite{meyer1997object}
+
+
+
+
+
+
 
 \subsection{Implementações de DbC}
 
  - Eifel
+
+Much of the emphasis in the design of Eiffel has been on
+promoting such quality factors as reusability, extendibility,
+and compatibility. But these qualities are meaningless
+unless programs are also correct and robust. In fact,
+as techniques for the production of truly reusable.
+ Eiffel includes language constmcts that promote a
+systematic approach to software construction. The regular
+use of these constructs, and the general attitude they
+imply towards program const~ction, have proved extremely
+beneficial as to the correctness and robustness of
+software built with Eiffel. 
+
+The precondition and postcondition of a routine may
+be viewed as an explicit contract between the class
+implementer and the authors of client classes. The
+precondition binds the clients: a call that does not satisfy
+it is not valid, and the class may do what it pleases with
+it. The postcondition binds the class: If the precondition
+is satisfied, the client is entitled to expect that the routine
+will terminate in a state that satisfies the postcondition.
+An approach to software construction based on this
+notion of contract is developed
+\cite{meyer1988eiffel}
+
  - JML
+ 
+ The Java Modeling Language
+(JML) [5], is a behavioral interface specification language
+(BISL) for Java, with a rich support for DBC contracts. Using
+JML, the behavior of Java modules, e.g., what a Java class or
+interface is expected to do at runtime, can be specified using
+pre, post conditions, and class invariants, which are commonly
+expressed in the form of assertions, and are added to Java
+source code as comments of the form //@ or /*@...@*/.
+ 
+ JML stands for “Java Modeling Language”. It is a
+formal behavioral interface specification language for Java. As such it allows one to specify both the syn-
+tactic interface of Java code and its behavior. The
+syntactic interface of Java code consists of names,
+visibility and other modifiers, and type checking in-
+formation.
+JML combines the practicality of DBC language
+like Eiffel [12] with the expressiveness and formal-
+ity of model-oriented specification languages.
+\cite{leavens2006design} 
+ 
  - Spec\#
+
+The Spec# language is a superset of C\#, an object-oriented language targeted
+for the .NET Platform. C\# features single inheritance whose classes can
+implement multiple interfaces, object references, dynamically dispatched methods, and exceptions, to mention
+the features most relevant to this paper. Spec# adds to C\# type support for
+distinguishing non-null object references from possibly-null object references, method speci-
+fications like pre- and postconditions, a discipline for managing exceptions, and support
+for constraining the data fields of objects. In this section, we explain these features and
+rationalize their design
+\cite{barnett2004spec}
+
+
 
 
