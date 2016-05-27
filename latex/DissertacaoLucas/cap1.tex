@@ -97,8 +97,6 @@ implentação de serviços REST.
 - aumento do uso de REST
 - contratos fracos prejudicam a qualidade/aumentam os erros
 - baixa qualidade prejudica o reuso
-- 
-
 
 O uso do padrão REST para construção de \ws é crescente 
 no contexto do desenvolvimento de soluções basedas em serviço e não se dipõe de
@@ -106,6 +104,40 @@ uma linguagem padrão para especificação de contratos fortes. A linguagem
 específica de domínio \neoidl foi desenvolvida para ser uma alternativa para
 especificação REST, caracterizada pela coesão e simplicidade em se compreender,
 mas que não dispunha de suporte a pré e pós condições.
+
+
+
+-- Usar na motivação
+There is a simple lesson here: Reuse without a precise specification
+mechanism is a disastrous risk.
+Effective reuse requires design by contract.
+Without a precise specification attached to each reusable component—
+precondition, postcondition, invariant— no one can trust a supposedly reusable
+component. Without a specification, it is probably safer to redo than to reuse.
+\cite{jazequel1997design}
+
+
+
+-- Usar na motivação --
+The problem gets aggravated by
+the fact that modern software applications are expected to
+make use of these reusable modules as much as possible,
+in an effort to reduce both the development costs and the
+production time. Unfortunately, this situation opens the door
+for the propagation of security vulnerabilities among several
+applications as a result of the incorrect enforcement of security
+properties in reusable software modules and threatens the
+security and safety of applications as a whole.
+\cite{rubio2013verifying}
+
+
+Solution logic designed in accordance with service-orientation can be qualified with
+“service-oriented,” and units of service-oriented solution logic are referred to as “services.”
+As a design paradigm for distributed computing, service-orientation can be compared
+to object-orientation (or object-oriented design). Service-orientation, in fact, has
+many roots in object-orientation and has also been influenced by other industry developments,
+including EAI, BPM, and Web services.
+\cite{erl2009web}
 
 
 \subsection{ESTRUTURA}

@@ -480,10 +480,15 @@ Todas estas linguagens possuem suporte tanto para \CdFirst{} como para
 \designbycontract{} \cite{meyer1992applying} - DbC - é um conceito
 oriundo da orientação a objetos, no qual consumidor e fornecedor firmam entre si garantias para
 o uso de métodos ou classes. De um lado o consumidor deve garantir que, antes da
-chamada a um método, algumas condições sejam satisfeitas (denominadas de pré-condições).
-Do outro lado o fornecedor deve garantir, se respeitadas as pré-condições,
-as propriedades relacionadas ao sucesso da execução (pós-condições).
+chamada a um método, algumas condições sejam por ele satisfeitas.
+Do outro lado o fornecedor deve garantir, se respeitadas suas exigências,
+o sucesso da execução.
 
+O mecanismo que expressa essas condições são chamados de asserções
+(\textit{assrtions}, em inglês). As asserções que o consumidor deve respeitar
+para fazer uso da rotina é chamada de \textbf{precondição}. As asserções que
+fornecem, de parte do fornecedor, as garatias ao consumidor, é denominada
+\textbf{pós-condição}.
 
 DbC tem o objetivo de aumentar a robustez do sistema e tem na linguagem Eiffel
 \cite{meyer1988eiffel} um de seus precursores. Para os mantenedores do Eiffel, DBC é
@@ -497,7 +502,7 @@ cada parte \cite{meyer1997object}. Se, por um lado, o cliente tem a obrigação 
 respeitar as condições impostas pelo fornecedor para fazer uso do módulo, por
 outro, o fornecedor deve garantir que o retorno ocorra como esperado.
 
-As pré-condições vinculam o cliente, no sentido de definir as condições que
+As precondições vinculam o cliente, no sentido de definir as condições que
 o habilitam para acionar o recurso. Corresponde a uma obrigação para o cliente e
 o benefício para o fornecedor \cite{meyer1997object} de que certos
 pressupostos serão sempre respeitados nas chamadas à rotina.
@@ -505,10 +510,17 @@ As pós-condições vinculam o fornecedor, de modo a definir as condições para
 Corresponde a uma obrigação para o fornecedor e o benefício para o cliente de
 que certas propriedades serão respeitadas após a chamada à rotina.
 
-De forma indireta, \designbycontract{} estimula a análise das condições de
-consistência necessárias para o funcionamento correto da relação de cooperação entre clinte-fornecedor.
+De forma indireta, \designbycontract{} estimula um cuidado maior na análise das
+condições necessárias para, de forma consistente, se ter o funcionamento correto
+da relação de cooperação entre clinte-fornecedor.
 Essas condições são expressas em cada contrato, o qual especifica as obrigações
-a que cada parte está condicionada. 
+a que cada parte está condicionada e, em contra-ponto, os benefícios garantidos.
+
+Nesse contexto, o contrato é um veículo de comunicação, por meio do qual os
+clientes tomam conhecimento das condições de uso, em especial das precondições.
+É fundamental que as precondições estejam disponíveis para todos os clientes
+para os quais as rotinas estão disponvéis, pois, sem que isso ocorra, o cliente
+pode acionar a rotina fora de suas garantias de funcionamento. 
 
 Segundo Bertrand Meyer \cite{meyer1997object}, \designbycontract{} é um
 ferramental para análise, projeto, implementação e documentação, facilitando a
@@ -524,184 +536,81 @@ clara o que a rotina não trata. Esse paradigma é coerente, pois para que a
 rotina realize seu trabalho bem, é esperado que se estabeleça bem as
 circunstâncias.
 
+Outra característica da aplicação de \designbycontract{} é que o recurso tem sua
+lógica concentrada em efetivamente cumprir com sua função principal, deixando
+para as precondições o encargo de validar as entradas de dados. Essa abordagem
+é o oposto à ideia de programação defensiva, pois vai de encontro à realização
+de testes redundantes. Se os contratos são precisos e explícitos, não há
+necessidade de testes redundantes \cite{meyer1992applying}.
 
+Todos esses aspectos são fundamentais para se possibilitar o reuso eficiente de
+componentes, que é o pilar da orientação da objetos e se aplica de forma análoga
+à orientação a serviços. Componentes reusáveis por várias aplicações devem ser
+robustos pois as consequências de falhas ou comportamentos incorretos são muito
+piores que de aplicações que atendem a único propósito \cite{meyer1992applying}.
 
-
-
-
-
-
--- Assetion violation rule (2)
-A precondition violation is the manifestation of a bug in the client.
-A postcondition violation is the manifestation of a bug in the supplier
-
-
-
-
-
-
--- Usar na motivação --
-The problem gets aggravated by
-the fact that modern software applications are expected to
-make use of these reusable modules as much as possible,
-in an effort to reduce both the development costs and the
-production time. Unfortunately, this situation opens the door
-for the propagation of security vulnerabilities among several
-applications as a result of the incorrect enforcement of security
-properties in reusable software modules and threatens the
-security and safety of applications as a whole.
-\cite{rubio2013verifying}
-
-
--- Usar na motivação
-There is a simple lesson here: Reuse without a precise specification
-mechanism is a disastrous risk.
-Effective reuse requires design by contract.
-Without a precise specification attached to each reusable component—
-precondition, postcondition, invariant— no one can trust a supposedly reusable
-component. Without a specification, it is probably safer to redo than to reuse.
-\cite{jazequel1997design}
-
-
-
-The cornerstone of object-oriented technology is reuse. For reusable components,
-which may be used in thousands of different applications, the potential
-consequences of incorrect behavior are even more serious than for applicationspecific
-developments.
-
-The mechanisms for expressing such conditions are called assertions. Some
-assertions.
-called preconditions and postconditions.
-apply to individual routines. Others, the class invariants, constrain all the
-routines of a given class and will be discussed later.The construct Old may
-appear only in a routine postcondition.
-
-This principle is the exact opposite of the idea of defensive programming, since
-it directs programmers to avoid redundant tests.
-If the contract is precise and explicit, there is no need for redundant checks.
-
-Client programmers do not expect miracles.
-As long as the conditions on the use of a routine make sense, and the routine’s
-documentation states these conditions (the contract) explicitly, the programmers
-will be able to use the routine properly by observing their part of the deal.
-
-Eiffel assertions are Boolean expressions, with a few extensions such as the old
-notation. Since the whole power of Boolean expressions is available, they may
-include function calls. Because the full power of the language is available to
-write these functions, the conditions they express can be quite sophisticated.
-\cite{meyer1992applying}
-
-
- 
-
-
-
-
-
-
-
-
-
--- Reasonable Precondition principle
-Every routine precondition (in a “demanding” design approach) must satisfy
-the following requirements:
-• The precondition appears in the official documentation distributed to
-authors of client modules.
-• It is possible to justify the need for the precondition in terms of the
-specification only.
-
-This clearly unacceptable situation is akin,
-in human contracts, to a deal in which the supplier would impose some conditions not
-stated explicitly in the contract, and hence could reject a client’s request as incorrect
-without giving the client any way to determine in advance whether it is correct.
-
--- Precondition Availability rule
-Every feature appearing in the precondition of a routine must be available to
-every client to which the routine is available.
-There is no such rule for postconditions.
-
-
-Preconditions and postconditions describe the properties of individual routines. There is
-also a need for expressing global properties of the instances of a class, which must be
-preserved by all routines. Such properties will make up the class invariant, capturing the
-deeper semantic properties and integrity constraints characterizing a class.
-
-- Invariants 
-There isalso a need for expressing global properties of the instances of a class, which must be
-preserved by all routines.
-Invariants have a clear interpretation in the contract metaphor. Human contracts often
-contain references to general clauses or regulations that apply to all contracts within a
-certain category;
-\cite{meyer1997object}
-
-
-
-
+Há de se registrar ainda que, em orientação a objetos, existe outro tipo de
+asserção além das pré e pós-condições. Em vez de cuidar das propriedades de cada
+rotina individualmente, elas expressão condições globais para todas as
+instâncias de uma classe \cite{meyer1997object}. Esse tipo de asserção é chamada
+de invariante.
 
 
 
 \subsection{Implementações de DbC}
 
- - Eifel
+\begin{description}
+\item[Eiffel] - A linguagem Eiffel foi desenvolvida em meados dos anos 80 por
+Bertrand Meyer \cite{meyer1988eiffel} com o objetivo de criar ferramentas que
+garantissem mais qualidade aos \textit{softwares}. A ênfase do projeto de
+Eiffel foi promover reusabilidade, extensibilidade e compatibilidade.
+Características que só fazem sentido se os programas forem corretos e
+robustos.
 
-Much of the emphasis in the design of Eiffel has been on
-promoting such quality factors as reusability, extendibility,
-and compatibility. But these qualities are meaningless
-unless programs are also correct and robust. In fact,
-as techniques for the production of truly reusable.
- Eiffel includes language constmcts that promote a
-systematic approach to software construction. The regular
-use of these constructs, and the general attitude they
-imply towards program const~ction, have proved extremely
-beneficial as to the correctness and robustness of
-software built with Eiffel. 
+Foi essa preocupação que incorporou à linguagem Eiffel o conceito de contratos.
+A partir desse estilo de projeto se criou a noção de \designbycontract{},
+concretizada na linguagem por meio das precondições, pós-condições e invariantes
+\cite{meyer1988eiffel}. Esta obordagem influenciou outras linguagem de programação orientadas a objeto.
 
-The precondition and postcondition of a routine may
-be viewed as an explicit contract between the class
-implementer and the authors of client classes. The
-precondition binds the clients: a call that does not satisfy
-it is not valid, and the class may do what it pleases with
-it. The postcondition binds the class: If the precondition
-is satisfied, the client is entitled to expect that the routine
-will terminate in a state that satisfies the postcondition.
-An approach to software construction based on this
-notion of contract is developed
-\cite{meyer1988eiffel}
 
- - JML
+\begin{center}
+\textcolor{red}{* * * Incluir trecho de código em Eiffel * * *}
+\end{center}
+
+
+\item[JML] - \textit{Java Modeling Language} é uma extensão da linguagem Java
+para suporte a especificação comportamental de interfaces, ou seja, controlar o
+comportamento de classes em tempo de execução. Para realizar essa função, JML
+possui amplo suporte a \designbycontract{}. As asserções (precondição,
+pós-condição e invariantes) são incluídas no código Java na forma de comentários
+(//@ ou /*@\ldots@*/).
+
+JML combina a praticidade de \designbycontract{} de linguagens como Eiffel com a
+expressividade e formalismo de linguagens de especificação orientadas a modelo
+\cite{leavens2006design}.
+
  
- The Java Modeling Language
-(JML) [5], is a behavioral interface specification language
-(BISL) for Java, with a rich support for DBC contracts. Using
-JML, the behavior of Java modules, e.g., what a Java class or
-interface is expected to do at runtime, can be specified using
-pre, post conditions, and class invariants, which are commonly
-expressed in the form of assertions, and are added to Java
-source code as comments of the form //@ or /*@...@*/.
+\begin{center}
+\textcolor{red}{* * * Incluir trecho de código em JML * * *}
+\end{center}
  
- JML stands for “Java Modeling Language”. It is a
-formal behavioral interface specification language for Java. As such it allows one to specify both the syn-
-tactic interface of Java code and its behavior. The
-syntactic interface of Java code consists of names,
-visibility and other modifiers, and type checking in-
-formation.
-JML combines the practicality of DBC language
-like Eiffel [12] with the expressiveness and formal-
-ity of model-oriented specification languages.
-\cite{leavens2006design} 
+
+\item[Spec\#] - é uma extensão da linguagem C\#, ao qual agrega o suporte para
+distinguir referência de objetos nulos de referência a objetos possivelmente não
+nulos, especificações de pré e pós-condições, um método para gerenciar exceções
+entre outros recursos \cite{barnett2004spec}.
+
+
+\begin{center}
+\textcolor{red}{* * * Incluir trecho de código em Spec\# * * *}
+\end{center}
+
+
+\end{description}
+
+
+
+
+
  
- - Spec\#
-
-The Spec# language is a superset of C\#, an object-oriented language targeted
-for the .NET Platform. C\# features single inheritance whose classes can
-implement multiple interfaces, object references, dynamically dispatched methods, and exceptions, to mention
-the features most relevant to this paper. Spec# adds to C\# type support for
-distinguishing non-null object references from possibly-null object references, method speci-
-fications like pre- and postconditions, a discipline for managing exceptions, and support
-for constraining the data fields of objects. In this section, we explain these features and
-rationalize their design
-\cite{barnett2004spec}
-
-
-
 
