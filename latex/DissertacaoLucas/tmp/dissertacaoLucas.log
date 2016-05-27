@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  24 MAY 2016 09:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  27 MAY 2016 19:23
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -290,35 +290,99 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 ))
-(./dissertacaoLucas.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip43
+\enit@outerparindent=\dimen106
+\enit@toks=\toks17
+\enit@inbox=\box26
+\enitdp@description=\count90
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen107
+\lightrulewidth=\dimen108
+\cmidrulewidth=\dimen109
+\belowrulesep=\dimen110
+\belowbottomsep=\dimen111
+\aboverulesep=\dimen112
+\abovetopsep=\dimen113
+\cmidrulesep=\dimen114
+\cmidrulekern=\dimen115
+\defaultaddspace=\dimen116
+\@cmidla=\count91
+\@cmidlb=\count92
+\@aboverulesep=\dimen117
+\@belowrulesep=\dimen118
+\@thisruleclass=\count93
+\@lastruleclass=\count94
+\@thisrulewidth=\dimen119
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count95
+\lst@gtempboxa=\box27
+\lst@token=\toks18
+\lst@length=\count96
+\lst@currlwidth=\dimen120
+\lst@column=\count97
+\lst@pos=\count98
+\lst@lostspace=\dimen121
+\lst@width=\dimen122
+\lst@newlines=\count99
+\lst@lineno=\count100
+\lst@maxwidth=\dimen123
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+\c@lstnumber=\count101
+\lst@skipnumbers=\count102
+\lst@framebox=\box28
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2013/08/26 1.5b listings configuration
+))
+Package: listings 2013/08/26 1.5b (Carsten Heinz)
+
+(./dissertacaoLucas.aux
+
+LaTeX Warning: Label `lst:DBCService' multiply defined.
+
+)
 \openout1 = `dissertacaoLucas.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count90
-\scratchdimen=\dimen106
-\scratchbox=\box26
-\nofMPsegments=\count91
-\nofMParguments=\count92
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count93
-\MPscratchDim=\dimen107
-\MPnumerator=\count94
-\makeMPintoPDFobject=\count95
-\everyMPtoPDFconversion=\toks18
+\scratchcounter=\count103
+\scratchdimen=\dimen124
+\scratchbox=\box29
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen125
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
+\everyMPtoPDFconversion=\toks20
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -367,6 +431,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+\c@lstlisting=\count109
+
 (./folha_titulo.tex [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
@@ -431,85 +497,345 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 47.
 [1
 
-] [2]) (./cap2.tex [3]
+] [2]) (./cap2.tex [3] [4]
  2.
-[4
+[5
 
-]) (./cap3.tex [5]
+] [6]
+Overfull \hbox (0.94975pt too wide) in paragraph at lines 121--126
+[][]\OT1/cmr/m/n/12 ^^Se o con-junto de do-cu-men-tos que ex-pres-sam as meta-i
+nforma^^Xc~oes
+ []
+
+[7] [8]
+Overfull \hbox (10.17343pt too wide) in paragraph at lines 181--183
+[][]\OT1/cmr/m/n/12 Ampliar a agi-li-dade, re-mon-tando as com-posi^^Xc~oes por
+ re-du-zido es-for^^Xco, beneficiando-
+ []
+
+[9] [10] [11] [12] [13] [14]
+
+LaTeX Warning: Citation `meyer1988object' on page 15 undefined on input line 47
+7.
+
+[15] [16] [17]) (./cap3.tex [18]
  3.
-[6
 
-] <ServiceDbC.png, id=65, 950.04938pt x 545.03625pt>
+LaTeX Warning: Citation `fielding-rest:2002' on page 19 undefined on input line
+ 23.
+
+
+LaTeX Warning: Reference `fig:programGenerator' on page 19 undefined on input l
+ine 38.
+
+[19
+
+]
+
+LaTeX Warning: Citation `twisted:book' on page 20 undefined on input line 56.
+
+
+LaTeX Warning: Reference `fig:programGenerator' on page 20 undefined on input l
+ine 71.
+
+
+LaTeX Warning: Citation `david:commandControl' on page 20 undefined on input li
+ne 80.
+
+
+LaTeX Warning: File `sloc-boxplot.pdf' not found on input line 104.
+
+
+! Package pdftex.def Error: File `sloc-boxplot.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 ...ludegraphics[scale=0.5]{sloc-boxplot.pdf}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[20]
+
+LaTeX Warning: Reference `fig:programGenerator' on page 21 undefined on input l
+ine 124.
+
+<neoidl.pdf, id=113, 304.13625pt x 171.64125pt>
+File: neoidl.pdf Graphic file (type pdf)
+ <use neoidl.pdf>
+Package pdftex.def Info: neoidl.pdf used on input line 141.
+(pdftex.def)             Requested size: 182.48315pt x 102.98552pt.
+ [21 <./neoidl.pdf>]
+
+LaTeX Warning: Citation `jones-typeClasses:1995' on page 22 undefined on input 
+line 181.
+
+
+LaTeX Warning: Reference `lst:loader' on page 22 undefined on input line 216.
+
+
+LaTeX Warning: Reference `lst:loader' on page 22 undefined on input line 254.
+
+
+LaTeX Warning: Citation `ghc-api' on page 22 undefined on input line 259.
+
+[22]
+
+LaTeX Warning: Reference `lst:loader' on page 23 undefined on input line 266.
+
+[23] (./mensagemData.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
+) [24] (./mensagem.tex) [25] (./agent.tex)
+
+LaTeX Warning: Citation `forsberg-bnfc:2004' on page 26 undefined on input line
+ 444.
+
+[26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--486
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 490
+.
+(/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 490.
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--502
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--511
+
+ []
+
+[28]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 513.
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 515.
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--524
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--528
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 529--533
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 534--538
+
+ []
+
+
+Overfull \hbox (12.51161pt too wide) in paragraph at lines 539--543
+[][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 539--543
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--547
+
+ []
+
+
+Overfull \hbox (5.45493pt too wide) in paragraph at lines 548--551
+[][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--551
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 552--555
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--559
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 560--563
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--568
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--575
+
+ []
+
+
+Overfull \hbox (45.27042pt too wide) in paragraph at lines 576--579
+[][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 576--579
+
+ []
+
+
+Overfull \hbox (61.20961pt too wide) in paragraph at lines 580--583
+[][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 580--583
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 585--592
+
+ []
+
+
+LaTeX Warning: Reference `sub:experience' on page 30 undefined on input line 61
+3.
+
+
+LaTeX Warning: Citation `swagger' on page 30 undefined on input line 618.
+
+[30] [31] [32] <ServiceDbC.png, id=215, 950.04938pt x 545.03625pt>
 File: ServiceDbC.png Graphic file (type png)
- <use ServiceDbC.png>
-Package pdftex.def Info: ServiceDbC.png used on input line 84.
-(pdftex.def)             Requested size: 441.01772pt x 246.40288pt.
 
-[7] <PreconditionValidation.png, id=72, 798.73407pt x 344.03531pt>
+<use ServiceDbC.png>
+Package pdftex.def Info: ServiceDbC.png used on input line 748.
+(pdftex.def)             Requested size: 441.01772pt x 246.40288pt.
+ [33]
+<PreconditionValidation.png, id=221, 798.73407pt x 344.03531pt>
 File: PreconditionValidation.png Graphic file (type png)
 
 <use PreconditionValidation.png>
-Package pdftex.def Info: PreconditionValidation.png used on input line 123.
+Package pdftex.def Info: PreconditionValidation.png used on input line 787.
 (pdftex.def)             Requested size: 441.01772pt x 182.10506pt.
 
-<PostconditionValidation.png, id=74, 797.98125pt x 295.85532pt>
+<PostconditionValidation.png, id=223, 797.98125pt x 295.85532pt>
 File: PostconditionValidation.png Graphic file (type png)
 
 <use PostconditionValidation.png>
-Package pdftex.def Info: PostconditionValidation.png used on input line 135.
+Package pdftex.def Info: PostconditionValidation.png used on input line 799.
 (pdftex.def)             Requested size: 441.01772pt x 155.64842pt.
- [8 <./ServiceDbC.png>]
+ [34 <./ServiceDbC.png>] (./DBCsimple.neo)
+(./DBCservice.neo) [35 <./PreconditionValidation.png> <./PostconditionValidatio
+n.png>]) [36] [37] (./dissertacaoLucas.bbl
 ! Undefined control sequence.
-l.156 \lstinputlisting
-                      [language=NeoIDL,firstnumber=1]{DBCsimple.neo}
+l.5 \newblock \url
+                  {http://swagger.io/}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[9 <./PreconditionValidation.png> <./PostconditionValidation.png>]) (./cap4.tex
-[10]
- 4.
-[11
-
-]) (./cap5.tex [12]
- 5.
-) [13
-
-] (./dissertacaoLucas.bbl) [14
+! Undefined control sequence.
+l.10 \newblock \url
+                   {https://www.w3.org/TR/wsdl}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-] [15
+Underfull \hbox (badness 2865) in paragraph at lines 9--12
+[][]\OT1/cmr/m/n/12 World wide web con-sor-tium (w3c) - web ser-vi-ces des-crip
+-tion lan-guage.
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 59--62
+[][]\OT1/cmr/m/n/12 He, H.  What is service-oriented ar-chi-tec-ture.  \OT1/cmr
+/m/it/12 Pu-blica^^Xc~ao eletr^onica em
+ []
+
+[38
+
+
+] [39]) [40] [41
 
 ] (./apend_a.tex
  A.
-) [16
+) [42
 
 
 ] (./dissertacaoLucas.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 2238 strings out of 494963
- 30051 string characters out of 6179648
- 91951 words of memory out of 5000000
- 5386 multiletter control sequences out of 15000+600000
- 7935 words of font info for 28 fonts, out of 8000000 for 9000
+ 4431 strings out of 494963
+ 60260 string characters out of 6179648
+ 152057 words of memory out of 5000000
+ 7529 multiletter control sequences out of 15000+600000
+ 10774 words of font info for 38 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
- 37i,8n,23p,260b,240s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertacaoLucas.pdf (28 pages, 234414 bytes).
+ 38i,9n,43p,667b,1445s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on dissertacaoLucas.pdf (54 pages, 443404 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
+ 313 PDF objects out of 1000 (max. 8388607)
+ 206 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 34 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 39 words of extra memory for PDF output out of 10000 (max. 10000000)
 

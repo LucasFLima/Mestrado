@@ -23,12 +23,89 @@
 % 
 \usepackage{enumitem} 
 \usepackage{graphicx,color}
+\usepackage{booktabs}
+\usepackage{listings}
+
+\newenvironment{joincode}  {\let\orighscode=\hscode
+  \let\origendhscode=\endhscode
+  \def\endhscode{\def\hscode{\endgroup\def\@currenvir{hscode}\\}\begingroup}
+    \orighscode\def\hscode{\endgroup\def\@currenvir{hscode}}}  {\origendhscode
+  \global\let\hscode=\orighscode
+  \global\let\endhscode=\origendhscode}
 
 \newcommand{\neoidl}{NeoIDL}
+\newcommand{\neocortex}{NeoCortex}
+\newcommand{\bnfc}{\texttt{BNFConverter}}
 \newcommand{\designbycontract}{Design by Contract}
 \newcommand{\ws}{\textit{Web Service}}
 \newcommand{\CdFirst}{\textit{Code-first}}
 \newcommand{\CtFirst}{\textit{Contract-first}}
+\newcommand{\method}[1]{\texttt{#1}}
+
+\newcommand{\emptyP}{\mbox{$\epsilon$}}
+\newcommand{\terminal}[1]{\mbox{{\texttt {#1}}}}
+\newcommand{\nonterminal}[1]{\mbox{$\langle \mbox{{\sl #1 }} \! \rangle$}}
+\newcommand{\arrow}{\mbox{::=}}
+\newcommand{\delimit}{\mbox{$|$}}
+\newcommand{\reserved}[1]{\mbox{{\texttt {#1}}}}
+\newcommand{\literal}[1]{\mbox{{\texttt {#1}}}}
+\newcommand{\symb}[1]{\mbox{{\texttt {#1}}}}
+
+
+\lstdefinelanguage{json}{
+  basicstyle=\normalfont\ttfamily,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+   literate=
+  *{0}{{{\color{numb}0}}}{1}
+  {1}{{{\color{numb}1}}}{1}
+  {2}{{{\color{numb}2}}}{1}
+  {3}{{{\color{numb}3}}}{1}
+  {4}{{{\color{numb}4}}}{1}
+  {5}{{{\color{numb}5}}}{1}
+  {6}{{{\color{numb}6}}}{1}
+  {7}{{{\color{numb}7}}}{1}
+  {8}{{{\color{numb}8}}}{1}
+  {9}{{{\color{numb}9}}}{1}
+  {:}{{{\color{punct}{:}}}}{1}
+  {,}{{{\color{punct}{,}}}}{1}
+  {\{}{{{\color{delim}{\{}}}}{1}
+  {\}}{{{\color{delim}{\}}}}}{1}
+  {[}{{{\color{delim}{[}}}}{1}
+  {]}{{{\color{delim}{]}}}}{1},
+}
+
+\lstdefinelanguage{NeoIDL}{
+  sensitive = true,
+  keywords = {module, resource, enum, annotation, for, import, entity, path},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  }
+
+
+\lstdefinelanguage{Haskell}{
+  sensitive = true,
+  keywords = {data, type, module, where, do, IO, import},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  }
+
+
 
 \begin{document}
 \pagenumbering{roman}
@@ -80,7 +157,7 @@
 \input{cap2}
 % 3. NeoIDL - Objetivos / Resultados / Avaliação empírica / Extensão da
 % Linguagem  / Estudo de caso
-% \input{cap3}
+\input{cap3}
 % 4. Análise da aceitação - Método / GQM / Resultados
 % \input{cap4}
 % 5. Conclusão e trabalhos futuros

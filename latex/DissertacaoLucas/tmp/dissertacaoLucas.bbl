@@ -1,4 +1,25 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{swaggerSite}
+Swagger - the world's most popular framework for apis.
+\newblock \url{http://swagger.io/}.
+\newblock Swagger project oficial site.
+
+\bibitem{WSDLSite}
+World wide web consortium (w3c) - web services description language.
+\newblock \url{https://www.w3.org/TR/wsdl}.
+\newblock WSDL W3C oficial site.
+
+\bibitem{alonso2004web}
+Alonso,~G., Casati,~F., Kuno,~H., e Machiraju,~V.
+\newblock {\em Web services}.
+\newblock Springer, 2004.
+
+\bibitem{barnett2004spec}
+Barnett,~M., Leino,~K. R.~M., e Schulte,~W.
+\newblock The spec\# programming system: An overview.
+\newblock In {\em Construction and analysis of safe, secure, and interoperable
+  smart devices}, pages 49--69. Springer, 2004.
 
 \bibitem{chen2008towards}
 Chen,~H.-M.
@@ -7,20 +28,132 @@ Chen,~H.-M.
 \newblock In {\em Hawaii International Conference on System Sciences,
   Proceedings of the 41st Annual}, pages 114--114. IEEE, 2008.
 
+\bibitem{erl2008soaDesigPatterns}
+Erl,~T.
+\newblock {\em SOA design patterns}.
+\newblock Pearson Education, 2008.
+
+\bibitem{erl2008soa}
+Erl,~T.
+\newblock {\em Soa: principles of service design}, volume~1.
+\newblock Prentice Hall Upper Saddle River, 2008.
+
 \bibitem{erl2009web}
 Erl,~T., Karmarkar,~A., Walmsley,~P., Haas,~H., Yalcinalp,~L.~U., Liu,~K.,
   Orchard,~D., Tost,~A., e Pasley,~J.
 \newblock {\em Web service contract design and versioning for SOA}.
 \newblock Prentice Hall, 2009.
 
+\bibitem{fielding2000architectural}
+Fielding,~R.~T.
+\newblock {\em Architectural styles and the design of network-based software
+  architectures}.
+\newblock Tese de Doutorado, University of California, Irvine, 2000.
+
+\bibitem{hadley2006web}
+Hadley,~M.~J.
+\newblock Web application description language (wadl).
+\newblock 2006.
+
+\bibitem{he2003service}
+He,~H.
+\newblock What is service-oriented architecture.
+\newblock {\em Publica{\c{c}}{\~a}o eletr{\^o}nica em 30/09/2003}, 2003.
+
+\bibitem{jazequel1997design}
+Jazequel,~J.-M. e Meyer,~B.
+\newblock Design by contract: The lessons of ariane.
+\newblock {\em Computer}, 30(1):129--130, 1997.
+
+\bibitem{karthikeyancontract}
+Karthikeyan,~T. e Geetha,~J.
+\newblock Contract first design: The best approach to design of web services.
+\newblock {\em (IJCSIT) International Journal of Computer Science and
+  Information Technologies}, 5:338--339, 2014.
+
+\bibitem{leavens2006design}
+Leavens,~G.~T. e Cheon,~Y.
+\newblock Design by contract with jml, 2006.
+
+\bibitem{leymann2005combining}
+Leymann,~F.
+\newblock Combining web services and the grid: Towards adaptive enterprise
+  applications.
+\newblock In {\em CAiSE Workshops (2)}, pages 9--21, 2005.
+
+\bibitem{lima2015neoidl}
+Lima,~L., Bonif{\'a}cio,~R., Canedo,~E., Castro,~T.~M.de~, Fernandes,~R.,
+  Palmeira,~A., e Kulesza,~U.
+\newblock Neoidl: A domain specific language for specifying rest contracts
+  detailed design and extended evaluation.
+\newblock {\em International Journal of Software Engineering and Knowledge
+  Engineering}, 25(09n10):1653--1675, 2015.
+
+\bibitem{meyer1988eiffel}
+Meyer,~B.
+\newblock Eiffel: A language and environment for software engineering.
+\newblock {\em Journal of Systems and Software}, 8(3):199--246, 1988.
+
 \bibitem{meyer1992applying}
 Meyer,~B.
 \newblock Applying'design by contract'.
 \newblock {\em Computer}, 25(10):40--51, 1992.
 
+\bibitem{meyer1997object}
+Meyer,~B.
+\newblock {\em Object-oriented software construction}, volume~2.
+\newblock Prentice hall New York, 1997.
+
+\bibitem{mills1975new}
+Mills,~H.~D.
+\newblock The new math of computer programming.
+\newblock {\em Communications of the ACM}, 18(1):43--48, 1975.
+
+\bibitem{mumbaikar2013web}
+Mumbaikar,~S., Padiya,~P., e others,.
+\newblock Web services based on soap and rest principles.
+\newblock {\em International Journal of Scientific and Research Publications},
+  3(5).
+
 \bibitem{papazoglou2007service}
 Papazoglou,~M.~P., Traverso,~P., Dustdar,~S., e Leymann,~F.
 \newblock Service-oriented computing: State of the art and research challenges.
 \newblock {\em Computer}, (11):38--45, 2007.
+
+\bibitem{papazoglou2008service}
+Papazoglou,~M.~P., Traverso,~P., Dustdar,~S., e Leymann,~F.
+\newblock Service-oriented computing: a research roadmap.
+\newblock {\em International Journal of Cooperative Information Systems},
+  17(02):223--255, 2008.
+
+\bibitem{papazoglou2007serviceApprTechRechIss}
+Papazoglou,~M.~P. e Van Den~Heuvel,~W.-J.
+\newblock Service oriented architectures: approaches, technologies and research
+  issues.
+\newblock {\em The VLDB journal}, 16(3):389--415, 2007.
+
+\bibitem{ranta-bnfc:2012}
+Ranta,~A.
+\newblock {\em Implementing Programming Languages. An Introduction to Compilers
+  and Interpreters}.
+\newblock Texts in computing. College Publications, 2012.
+
+\bibitem{rao2004survey}
+Rao,~J. e Su,~X.
+\newblock A survey of automated web service composition methods.
+\newblock In {\em Semantic Web Services and Web Process Composition}, pages
+  43--54. Springer, 2004.
+
+\bibitem{serrano2014service}
+Serrano,~N., Hernantes,~J., e Gallardo,~G.
+\newblock Service-oriented architecture and legacy systems.
+\newblock {\em Software, IEEE}, 31(5):15--19, 2014.
+
+\bibitem{wideberg2015restful}
+Wideberg,~R.
+\newblock Restful services in an enterprise environment - a comparative case
+  study of specification formats and hateoas.
+\newblock Disserta\c{c}\~{a}o de Mestrado, Royal Institute of Technology,
+  Stockholm, Sweden, 2015.
 
 \end{thebibliography}

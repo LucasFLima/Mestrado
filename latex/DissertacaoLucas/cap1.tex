@@ -50,16 +50,16 @@ façam uso de contratos mais sucintos que WSDL, essas linguagens não se
 beneficiam da clareza típica das linguagens específicas para esse fim (como IDLs CORBA) e não oferecem
 mecanismos semânticos de extensibilidade e modularidade.
 
-Com o objetivo de mitigar esses problemas, a linguagem \neoidl foi proposta
+Com o objetivo de mitigar esses problemas, a linguagem \neoidl{} foi proposta
 para simplificar a especificação de serviços REST com mecanismos de modularização,
 suporte a anotações, herança em tipos de dados definidos pelo desenvolvedor, e
 uma sintaxe simples e concisa semelhante às \textit{Interface Description
 Languages} -- IDLs -- presentes em \textit{Apache Thrift}\texttrademark e
-CORBA\texttrademark. Por outro lado, a \neoidl, da mesma forma que WSDL, Swagger
-e RAML não oferece construções para especificação de contratos formais de
+CORBA\texttrademark. Por outro lado, a \neoidl{}, da mesma forma que WSDL,
+Swagger e RAML não oferece construções para especificação de contratos formais de
 comportamento como os presentes em linguagens que suportam DBC (\emph{Design by
 Contract})~\cite{meyer1992applying}, como JML, Spec\# e Eiffel. Em outras
-palavras, a \neoidl  admite apenas contratos fracos (\textit{weak contracts}),
+palavras, a \neoidl{}  admite apenas contratos fracos (\textit{weak contracts}),
 sem suporte a construções como pré e pós condições.
 
 
@@ -77,19 +77,19 @@ implentação de serviços REST.
 
 \begin{enumerate}
   \item Realizar análise empírica de expressividade e reuso da especificação de
-  contratos em \neoidl em comparação com \textit{Swagger}, a partir de contratos
+  contratos em \neoidl{} em comparação com \textit{Swagger}, a partir de contratos
   reais do Exército Brasileiro.
-  \item Extender a sintaxe da \neoidl para admitir construções de 
+  \item Extender a sintaxe da \neoidl{} para admitir construções de 
   \designbycontract, com pré e pós condições para operações de serviços REST.
   \item Implementar um estudo de caso de geração de código em \textit{Python
   Twisted} com suporte a \designbycontract a partir de contratos especificados
   em \neoidl
   \item Coletar a percepção de desenvolvedores sobre a aceitação da
-  especificação de contratos REST com \designbycontract na \neoidl
+  especificação de contratos REST com \designbycontract na \neoidl{}
 \end{enumerate}
 
 
-\subsection{JUSTIFICATIVA E RELEVÂNCIA}
+\subsection{Justificativa e relevância}
 \vspace{-6mm}
 
 A necessidade de integração entre sistemas de várias origens e tecnologias fez
@@ -112,7 +112,7 @@ abordagem SOC.
 Nesse contexto, REST não dispõe de um meio padrão para especificação de
 contratos. Linguangens como Swagger, YAML e WAML cumprem com o propósito de
 especificar contratos REST, porém padecem do mesmo problema: são voltados para
-computadores e de escrita não trivial para humanos, o que prejudica a prática
+computadores e de escrita não trivial para humanos, o que prejudica a prática de
 \CtFirst{}. A linguagem \neoidl{} foi concebida com o objetivo de ser mais
 expressiva para humanos.
 
@@ -121,7 +121,7 @@ suporte a contratos robustos, com garantias. A estratégia para superar essa
 limitação foi de buscar no paradigma de orientação a objetos, que é uma das
 principais influências de orientação a serviços \cite{erl2009web},
 o conceito de \designbycontract{}. Ambas as abordagens, orientação a serviços e
-a objetivos, tem em comum a ênfase no reuso e comunicação entre componentes
+a objetos, tem em comum a ênfase no reuso e comunicação entre componentes
 (serviços e classes).
 
 A proposta deste trabalho de
@@ -131,7 +131,7 @@ contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
 
 
 
-\subsection{ESTRUTURA}
+\subsection{Estrutura}
 \vspace{-6mm}
 
 Este trabalho está organizado em quatro capítulos\ldots

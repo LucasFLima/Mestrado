@@ -3,51 +3,46 @@
 \contentsline {section}{\numberline {1.1}PROBLEMA DE PESQUISA}{1}
 \contentsline {section}{\numberline {1.2}OBJETIVO GERAL}{2}
 \contentsline {subsection}{\numberline {1.2.1}Objetivos espec\IeC {\'\i }ficos}{2}
-\contentsline {subsection}{\numberline {1.2.2}JUSTIFICATIVA E RELEV\IeC {\^A}NCIA}{3}
-\contentsline {subsection}{\numberline {1.2.3}ESTRUTURA}{3}
-\contentsline {chapter}{\numberline {2}REFERENCIAL TE\IeC {\'O}RICO}{4}
-\contentsline {section}{\numberline {2.1}COMPUTA\IeC {\c C}\IeC {\~A}O ORIENTADA A SERVI\IeC {\c C}O}{4}
-\contentsline {subsection}{\numberline {2.1.1}Motiva\IeC {\c c}\IeC {\~a}o }{4}
-\contentsline {subsection}{\numberline {2.1.2}Modelo arquitetural}{4}
-\contentsline {subsection}{\numberline {2.1.3}Princ\IeC {\'\i }pios}{4}
-\contentsline {subsubsection}{\numberline {2.1.3.1}Padr\IeC {\~o}es de projeto }{4}
-\contentsline {section}{\numberline {2.2}Web Services}{4}
-\contentsline {subsection}{\numberline {2.2.1}SOAP (W3C) }{4}
-\contentsline {subsubsection}{\numberline {2.2.1.1}Especifica\IeC {\c c}\IeC {\~a}o de contratos}{4}
-\contentsline {subsection}{\numberline {2.2.2}REST (Fielding)}{5}
-\contentsline {subsubsection}{\numberline {2.2.2.1}Especifica\IeC {\c c}\IeC {\~a}o de contratos}{5}
-\contentsline {subsubsection}{\numberline {2.2.2.2}Outros padr\IeC {\~o}es }{5}
-\contentsline {section}{\numberline {2.3}Design-by-Contract}{5}
-\contentsline {subsection}{\numberline {2.3.1}Origem}{5}
-\contentsline {subsection}{\numberline {2.3.2}Implementa\IeC {\c c}\IeC {\~o}es de DbC}{5}
-\contentsline {chapter}{\numberline {3}A LINGUAGEM PARA ESPECIFICA\IeC {\c C}\IeC {\~A}O DE CONTRATOS NEOIDL}{6}
-\contentsline {section}{\numberline {3.1}NeoIDL}{6}
-\contentsline {subsection}{\numberline {3.1.1}Objetivos}{6}
-\contentsline {subsection}{\numberline {3.1.2}Hist\IeC {\'o}rico}{6}
-\contentsline {subsection}{\numberline {3.1.3}Arquitetura do framework}{6}
-\contentsline {subsection}{\numberline {3.1.4}Avalia\IeC {\c c}\IeC {\~o}es}{6}
-\contentsline {subsubsection}{\numberline {3.1.4.1}Expressividade}{6}
-\contentsline {subsubsection}{\numberline {3.1.4.2}Potencial de reuso}{6}
-\contentsline {section}{\numberline {3.2}Proposta: Servi\IeC {\c c}os com Desing-by-Contract}{6}
-\contentsline {subsection}{\numberline {3.2.1}Modelo de opera\IeC {\c c}\IeC {\~a}o}{7}
-\contentsline {subsubsection}{\numberline {3.2.1.1}Verifica\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~o}es}{8}
-\contentsline {subsubsection}{\numberline {3.2.1.2}Verifica\IeC {\c c}\IeC {\~a}o das p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}{9}
-\contentsline {section}{\numberline {3.3}Implementa\IeC {\c c}\IeC {\~a}o de Design-by-Contract na NeoIDL}{10}
-\contentsline {subsection}{\numberline {3.3.1}Pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{10}
-\contentsline {subsection}{\numberline {3.3.2}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{10}
-\contentsline {subsection}{\numberline {3.3.3}Pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{10}
-\contentsline {subsection}{\numberline {3.3.4}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{10}
-\contentsline {section}{\numberline {3.4}Estudo de caso}{10}
-\contentsline {subsection}{\numberline {3.4.1}Pluggin Twisted}{10}
-\contentsline {chapter}{\numberline {4}AVALIA\IeC {\c C}\IeC {\~A}O SUBJETIVA}{11}
-\contentsline {section}{\numberline {4.1}Utilidade da NeoIDL com DbC}{11}
-\contentsline {subsection}{\numberline {4.1.1}M\IeC {\'e}todo}{11}
-\contentsline {subsection}{\numberline {4.1.2}GQM}{11}
-\contentsline {subsection}{\numberline {4.1.3}Question\IeC {\'a}rio}{11}
-\contentsline {subsection}{\numberline {4.1.4}An\IeC {\'a}lise dos Resultados}{11}
-\contentsline {chapter}{\numberline {5}CONCLUS\IeC {\~O}ES E TRABALHOS RELACIONADOS}{13}
-\contentsline {section}{\numberline {5.1}CONCLUS\IeC {\~O}ES GERAIS}{13}
-\contentsline {section}{\numberline {5.2}TRABALHOS RELACIONADOS E PESQUISAS FUTURAS }{13}
-\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{14}
-\contentsline {chapter}{AP\IeC {\^E}NDICES}{15}
-\contentsline {chapter}{\numberline {A}CONTRATO NEOIDL COM DBC}{16}
+\contentsline {subsection}{\numberline {1.2.2}Justificativa e relev\IeC {\^a}ncia}{3}
+\contentsline {subsection}{\numberline {1.2.3}Estrutura}{4}
+\contentsline {chapter}{\numberline {2}REFERENCIAL TE\IeC {\'O}RICO}{5}
+\contentsline {section}{\numberline {2.1}COMPUTA\IeC {\c C}\IeC {\~A}O ORIENTADA A SERVI\IeC {\c C}O}{5}
+\contentsline {subsection}{\numberline {2.1.1}Terminologia}{6}
+\contentsline {subsection}{\numberline {2.1.2}Objetivos, benef\IeC {\'\i }cios e caracter\IeC {\'\i }sticas}{8}
+\contentsline {subsection}{\numberline {2.1.3}Princ\IeC {\'\i }pios SOA}{10}
+\contentsline {subsection}{\numberline {2.1.4}Contract First}{12}
+\contentsline {section}{\numberline {2.2}Web Services}{13}
+\contentsline {subsection}{\numberline {2.2.1}SOAP (W3C) }{13}
+\contentsline {subsubsection}{\numberline {2.2.1.1}Especifica\IeC {\c c}\IeC {\~a}o de contratos}{14}
+\contentsline {subsection}{\numberline {2.2.2}REST (Fielding)}{14}
+\contentsline {subsubsection}{\numberline {2.2.2.1}Especifica\IeC {\c c}\IeC {\~a}o de contratos}{15}
+\contentsline {section}{\numberline {2.3}Design by Contract{}}{15}
+\contentsline {subsection}{\numberline {2.3.1}Implementa\IeC {\c c}\IeC {\~o}es de DbC}{18}
+\contentsline {chapter}{\numberline {3}A LINGUAGEM PARA ESPECIFICA\IeC {\c C}\IeC {\~A}O DE CONTRATOS NEOIDL}{19}
+\contentsline {section}{\numberline {3.1}Apresenta\IeC {\c c}\IeC {\~a}o}{19}
+\contentsline {subsection}{\numberline {3.1.1}Hist\IeC {\'o}rico e motiva\IeC {\c c}\IeC {\~a}o}{19}
+\contentsline {subsection}{\numberline {3.1.2}\textit {Framework}}{21}
+\contentsline {subsubsection}{\numberline {3.1.2.1}PluginDef component}{21}
+\contentsline {subsubsection}{\numberline {3.1.2.2}PluginLoader component}{22}
+\contentsline {subsection}{\numberline {3.1.3}Linguagem}{24}
+\contentsline {subsubsection}{\numberline {3.1.3.1}The lexical structure of NeoIDL}{26}
+\contentsline {subsubsection}{\numberline {3.1.3.2}The syntactic structure of NeoIDL}{29}
+\contentsline {section}{\numberline {3.2}Avalia\IeC {\c c}\IeC {\~a}o emp\IeC {\'\i }rica}{30}
+\contentsline {subsection}{\numberline {3.2.1}Expressividade}{30}
+\contentsline {subsection}{\numberline {3.2.2}Potencial de reuso}{32}
+\contentsline {section}{\numberline {3.3}Extens\IeC {\~a}o da NeoIDL para Design by Contract{}}{32}
+\contentsline {subsection}{\numberline {3.3.1}Proposta: Servi\IeC {\c c}os com Desing-by-Contract}{32}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Modelo de opera\IeC {\c c}\IeC {\~a}o}{33}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Verifica\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~o}es}{33}
+\contentsline {subsubsection}{\numberline {3.3.1.3}Verifica\IeC {\c c}\IeC {\~a}o das p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}{34}
+\contentsline {subsection}{\numberline {3.3.2}Extens\IeC {\~a}o da linguagem}{35}
+\contentsline {subsubsection}{\numberline {3.3.2.1}Precondi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{35}
+\contentsline {subsubsection}{\numberline {3.3.2.2}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{35}
+\contentsline {subsubsection}{\numberline {3.3.2.3}Precondi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{36}
+\contentsline {subsubsection}{\numberline {3.3.2.4}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{36}
+\contentsline {subsection}{\numberline {3.3.3}Estudo de caso: plugin twisted}{36}
+\contentsline {subsubsection}{\numberline {3.3.3.1}Arquitetura}{37}
+\contentsline {subsubsection}{\numberline {3.3.3.2}Gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo}{37}
+\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{38}
+\contentsline {chapter}{AP\IeC {\^E}NDICES}{41}
+\contentsline {chapter}{\numberline {A}CONTRATO NEOIDL COM DBC}{42}
