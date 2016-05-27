@@ -92,56 +92,49 @@ implentação de serviços REST.
 \subsection{JUSTIFICATIVA E RELEVÂNCIA}
 \vspace{-6mm}
 
-- aumento do uso de SOC
-- potencial do SOC está no baixo acomplamento dos serviços.
-- aumento do uso de REST
-- contratos fracos prejudicam a qualidade/aumentam os erros
-- baixa qualidade prejudica o reuso
+A necessidade de integração entre sistemas de várias origens e tecnologias fez
+aumentar a adoção de soluções baseada em computação orienta a serviços. Isso de
+deve justamente de busar tornar a interoperabilidade de soluções heterogênias
+o menos acopladas possível, de modo a que mudanças nos requisitos de negócio ou
+na inclusão de novos serviços seja simples, eficiente e rápida.
 
-O uso do padrão REST para construção de \ws é crescente 
-no contexto do desenvolvimento de soluções basedas em serviço e não se dipõe de
-uma linguagem padrão para especificação de contratos fortes. A linguagem
-específica de domínio \neoidl foi desenvolvida para ser uma alternativa para
-especificação REST, caracterizada pela coesão e simplicidade em se compreender,
-mas que não dispunha de suporte a pré e pós condições.
+O uso de \ws{} é a forma mais comum de se implementar os serviços. O
+desenvolvimetno de \ws{}, que era inicialmente construído sobre a abordagem
+SOAP, com o tráfego de mensagens codificadas em XML, tem gradativamente se
+intensificado no sentido da utilização de REST.
 
+Uma dos principais benefícios do uso de SOC está na possibilidade de reuso de
+seus componentes. Porém, reuso requer que serviços bem construídos e precisos em
+relação a sua especificação \cite{jazequel1997design}. A qualidade e precisão do
+contrato de serviço torna-se assim um elemento fudamental para que auferir os benefícios da
+abordagem SOC.
 
+Nesse contexto, REST não dispõe de um meio padrão para especificação de
+contratos. Linguangens como Swagger, YAML e WAML cumprem com o propósito de
+especificar contratos REST, porém padecem do mesmo problema: são voltados para
+computadores e de escrita não trivial para humanos, o que prejudica a prática
+\CtFirst{}. A linguagem \neoidl{} foi concebida com o objetivo de ser mais
+expressiva para humanos.
 
--- Usar na motivação
-There is a simple lesson here: Reuse without a precise specification
-mechanism is a disastrous risk.
-Effective reuse requires design by contract.
-Without a precise specification attached to each reusable component—
-precondition, postcondition, invariant— no one can trust a supposedly reusable
-component. Without a specification, it is probably safer to redo than to reuse.
-\cite{jazequel1997design}
+Todas essas linguagens tem, entretanto, um outra limitação em comum: não dão
+suporte a contratos robustos, com garantias. A estratégia para superar essa
+limitação foi de buscar no paradigma de orientação a objetos, que é uma das
+principais influências de orientação a serviços \cite{erl2009web},
+o conceito de \designbycontract{}. Ambas as abordagens, orientação a serviços e
+a objetivos, tem em comum a ênfase no reuso e comunicação entre componentes
+(serviços e classes).
 
+A proposta deste trabalho de
+pesquisa de mestrado está justamente em incluir garantias na especificação de
+contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
+\designbycontract{}.
 
-
--- Usar na motivação --
-The problem gets aggravated by
-the fact that modern software applications are expected to
-make use of these reusable modules as much as possible,
-in an effort to reduce both the development costs and the
-production time. Unfortunately, this situation opens the door
-for the propagation of security vulnerabilities among several
-applications as a result of the incorrect enforcement of security
-properties in reusable software modules and threatens the
-security and safety of applications as a whole.
-\cite{rubio2013verifying}
-
-
-Solution logic designed in accordance with service-orientation can be qualified with
-“service-oriented,” and units of service-oriented solution logic are referred to as “services.”
-As a design paradigm for distributed computing, service-orientation can be compared
-to object-orientation (or object-oriented design). Service-orientation, in fact, has
-many roots in object-orientation and has also been influenced by other industry developments,
-including EAI, BPM, and Web services.
-\cite{erl2009web}
 
 
 \subsection{ESTRUTURA}
 \vspace{-6mm}
+
+Este trabalho está organizado em quatro capítulos\ldots
 
 % Introdução - Estudos empíricos / DbC para NeoIDL
 % Fundamentação teórica - SOC / REST / Contratos / DbC - 10 páginas
