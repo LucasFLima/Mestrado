@@ -1,0 +1,12 @@
+class CircularList {
+
+  // Construct an empty circular list 
+  public CircularList()
+    require true;  
+    ensure Empty();  
+
+  // Return my number of elements 
+  public int Size()
+    require true;  
+    ensure size = CountElements() && noChange;  
+}

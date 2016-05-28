@@ -3,8 +3,6 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dissertacaoLucas.aux
 The style file: plainbr.bst
 Database file #1: bibdata.bib
-Warning--I didn't find a database entry for "zur2005developing"
-Warning--I didn't find a database entry for "meyer1988object"
 Warning--I didn't find a database entry for "fielding-rest:2002"
 Warning--I didn't find a database entry for "twisted:book"
 Warning--I didn't find a database entry for "david:commandControl"
@@ -12,14 +10,14 @@ Warning--I didn't find a database entry for "jones-typeClasses:1995"
 Warning--I didn't find a database entry for "ghc-api"
 Warning--I didn't find a database entry for "forsberg-bnfc:2004"
 Warning--I didn't find a database entry for "swagger"
-Warning--to sort, need author or key in swaggerSite
 Warning--to sort, need author or key in WSDLSite
+Warning--to sort, need author or key in swaggerSite
 Warning--empty journal in hadley2006web
 Warning--empty year in mumbaikar2013web
 Warning--there's a number but no volume in papazoglou2007service
 You've used 28 entries,
             2118 wiz_defined-function locations,
-            665 strings with 8364 characters,
+            663 strings with 8332 characters,
 and the built_in function-call counts, 8492 in all, are:
 = -- 840
 > -- 367
@@ -58,4 +56,4 @@ warning$ -- 5
 while$ -- 84
 width$ -- 30
 write$ -- 300
-(There were 14 warnings)
+(There were 12 warnings)

@@ -38,6 +38,7 @@
 \newcommand{\bnfc}{\texttt{BNFConverter}}
 \newcommand{\designbycontract}{Design by Contract}
 \newcommand{\ws}{\textit{Web Service}}
+\newcommand{\wss}{\textit{Web Services}}
 \newcommand{\CdFirst}{\textit{Code-first}}
 \newcommand{\CtFirst}{\textit{Contract-first}}
 \newcommand{\method}[1]{\texttt{#1}}
@@ -104,7 +105,44 @@
   breaklines=true,
   frame=lines,
   }
+  
+  \lstdefinelanguage{Eiffel}{
+  sensitive = true,
+  keywords = {class, feature, create, require, ensure, end, is, INTEGER,
+  requires, ensures}, numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  }
+  
 
+  \lstdefinelanguage{JML}{
+  sensitive = true,
+  keywords = {class, public, static, int, return},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  }
+  
+   \lstdefinelanguage{SpecSharp}{
+  sensitive = true,
+  keywords = {class, public, require, ensure, true, int},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  }
+  
 
 
 \begin{document}

@@ -1,0 +1,13 @@
+public class IntMathOps { 
+
+  /*@ public normal_behavior 
+    @ requires y >= 0; 
+    @ ensures \result * \result <= y && y < (Math.abs(\result) + 1)
+    @ * (Math.abs(\result) + 1); 
+    @*/ 
+
+  public static int isqrt(int y) 
+  { 
+    return (int) Math.sqrt(y); 
+  } 
+} 

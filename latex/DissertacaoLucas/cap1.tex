@@ -10,39 +10,41 @@ A computação orientada a serviços ( \emph{Service-oriented computing, SOC)} t
 se mostrado uma solução de \textit{design} de \textit{software} que favorece o
 alinhamento às mudanças constantes e urgentes nas instituições
 \cite{chen2008towards}. Nessa abordagem, os recursos de software são empacotados
-como serviços, os quais são módulos bem definidos e auto-contidos, provêem funcionalidades negociais e com estado e
-contexto independente \cite{papazoglou2007service}.
+como serviços, módulos bem definidos e auto-contidos, que provêem
+funcionalidades negociais e com independência de estado e contexto
+\cite{papazoglou2007service}.
 
 Os benefícios de SOC estão diretamente relacionados ao
 baixo acoplamento dos serviços que compõem a solução, de forma que as partes
 (nesse caso serviços) possam ser substituídas e evoluídas facilmente, ou ainda
 rearranjadas em novas composições. Contudo, para que isso seja possível, é
-necessário que os serviços possuam contratos bem definidos e independentes da
+necessário que os serviços possuam contratos bem escritos e independentes da
 implementação.
 
 A relação entre quem provê e quem consome o serviço se
 dá por meio de um contrato. O contrato de serviço é o documento que descreve os
-propósitos e as funcionalidades do serviço, como ocorre a troca de mensagens, condições sobre
-como as operações são realizadas e informações sobre as operações \cite{erl2009web}.
+propósitos e as funcionalidades do serviço, como ocorre a troca de mensagens,
+informações sobre as operações e condições para sua execução \cite{erl2009web}.
 
 Nesse contexto, a qualidade da especificação do contrato é fundamental para o
 projeto de software baseado em SOC. Este trabalho de pesquisa aborda um aspecto
 importante para a melhoria da robustez de contratos de serviços: a construção de
 garantias mútuas por meio da especificação formal de contratos, agregando o
-conceito de Desing-by-Contract.
+conceito de \designbycontract{}.
 
 \section{PROBLEMA DE PESQUISA}
 \vspace{-6mm}
 
 As linguagens de especificação de contratos para SOC apresentam
 algumas limitações. Por exemplo, a linguagem WSDL (\emph{Web-services
-description language}) \cite{zur2005developing} é considerada uma solução
+description language}) \cite{WSDLSite} é considerada uma solução
 verbosa que desestimula a abordagem \textit{Contract First}. Por essa razão,
 especificações WSDL são usualmente derivadas a partir de anotações em código
 fonte \textit{Code First}.
 Além disso, os conceitos descritos em contratos na linguagem WSDL não são
 diretamente mapeados aos elementos que compõem as interfaces do estilo
 arquitetural REST (\emph{Representational State Transfer}).
+
 Outras alternativas para REST, como Swagger e
 RAML\footnote{http://raml.org/spec.html}, usam linguagens de propósito geral (em
 particular JSON e YAML) adaptadas para especificação de contratos. Ainda que
@@ -55,12 +57,15 @@ para simplificar a especificação de serviços REST com mecanismos de modulariz
 suporte a anotações, herança em tipos de dados definidos pelo desenvolvedor, e
 uma sintaxe simples e concisa semelhante às \textit{Interface Description
 Languages} -- IDLs -- presentes em \textit{Apache Thrift}\texttrademark e
-CORBA\texttrademark. Por outro lado, a \neoidl{}, da mesma forma que WSDL,
-Swagger e RAML não oferece construções para especificação de contratos formais de
-comportamento como os presentes em linguagens que suportam DBC (\emph{Design by
-Contract})~\cite{meyer1992applying}, como JML, Spec\# e Eiffel. Em outras
-palavras, a \neoidl{}  admite apenas contratos fracos (\textit{weak contracts}),
-sem suporte a construções como pré e pós condições.
+CORBA\texttrademark.
+
+Por outro lado, a \neoidl{}, da mesma forma que WSDL,
+Swagger e RAML não oferece construções para especificação de contratos formais
+com aspecto comportamental como os presentes em linguagens que
+suportam DBC (\emph{Design by Contract})~\cite{meyer1992applying}, como
+Eiffel, JML e Spec\#. Em outras palavras, a \neoidl{}  admite apenas
+contratos fracos (\textit{weak contracts}), sem suporte a construções como pré e
+pós-condições.
 
 
 
@@ -78,43 +83,44 @@ implentação de serviços REST.
 \begin{enumerate}
   \item Realizar análise empírica de expressividade e reuso da especificação de
   contratos em \neoidl{} em comparação com \textit{Swagger}, a partir de contratos
-  reais do Exército Brasileiro.
+  reais do Exército Brasileiro;
   \item Extender a sintaxe da \neoidl{} para admitir construções de 
-  \designbycontract, com pré e pós condições para operações de serviços REST.
+  \designbycontract, com pré e pós condições para operações de serviços REST;
   \item Implementar um estudo de caso de geração de código em \textit{Python
-  Twisted} com suporte a \designbycontract a partir de contratos especificados
-  em \neoidl
+  Twisted} com suporte a \designbycontract{} a partir de contratos especificados
+  em \neoidl;
   \item Coletar a percepção de desenvolvedores sobre a aceitação da
-  especificação de contratos REST com \designbycontract na \neoidl{}
+  especificação de contratos REST com \designbycontract{} na \neoidl{}.
 \end{enumerate}
 
 
-\subsection{Justificativa e relevância}
+\section{JUSTIFICATIVA E RELEVÂNCIA}
 \vspace{-6mm}
 
-A necessidade de integração entre sistemas de várias origens e tecnologias fez
-aumentar a adoção de soluções baseada em computação orienta a serviços. Isso de
-deve justamente de busar tornar a interoperabilidade de soluções heterogênias
-o menos acopladas possível, de modo a que mudanças nos requisitos de negócio ou
-na inclusão de novos serviços seja simples, eficiente e rápida.
+A demanda por integração entre sistemas de várias origens e tecnologias diversas
+fez aumentar a adoção de soluções baseada em computação orienta a serviços. Isso
+se deve justamente à necessidade de tornar a interoperabilidade de soluções
+heterogênias o menos acopladas possível, de modo que mudanças nos requisitos de negócio ou
+na inclusão de novos serviços sejam atendidas com simplicidade,
+eficiência e rapidez.
 
 O uso de \ws{} é a forma mais comum de se implementar os serviços. O
-desenvolvimetno de \ws{}, que era inicialmente construído sobre a abordagem
+desenvolvimento de \ws{}, que eram inicialmente projetados sobre a abordagem
 SOAP, com o tráfego de mensagens codificadas em XML, tem gradativamente se
 intensificado no sentido da utilização de REST.
 
 Uma dos principais benefícios do uso de SOC está na possibilidade de reuso de
-seus componentes. Porém, reuso requer que serviços bem construídos e precisos em
+seus componentes. Porém, reuso requer serviços bem construídos e precisos em
 relação a sua especificação \cite{jazequel1997design}. A qualidade e precisão do
-contrato de serviço torna-se assim um elemento fudamental para que auferir os benefícios da
-abordagem SOC.
+contrato de serviço torna-se claramente um elemento fudamental para que auferir
+os benefícios da abordagem SOC.
 
 Nesse contexto, REST não dispõe de um meio padrão para especificação de
-contratos. Linguangens como Swagger, YAML e WAML cumprem com o propósito de
+contratos. Linguangens como Swagger, YAML e WADL cumprem com o propósito de
 especificar contratos REST, porém padecem do mesmo problema: são voltados para
-computadores e de escrita não trivial para humanos, o que prejudica a prática de
-\CtFirst{}. A linguagem \neoidl{} foi concebida com o objetivo de ser mais
-expressiva para humanos.
+computadores e de escrita e leitura complexa para humanos, o que
+prejudica a prática de \CtFirst{}. A linguagem \neoidl{} foi concebida com o objetivo de ser mais
+expressiva para humanos, além de outros propósitos.
 
 Todas essas linguagens tem, entretanto, um outra limitação em comum: não dão
 suporte a contratos robustos, com garantias. A estratégia para superar essa
@@ -131,7 +137,7 @@ contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
 
 
 
-\subsection{Estrutura}
+\section{ESTRUTURA}
 \vspace{-6mm}
 
 Este trabalho está organizado em quatro capítulos\ldots
