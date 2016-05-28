@@ -1,295 +1,157 @@
-\chapter{NEOIDL: LINGUAGEM PARA ESPECIFICAÇÃO DE CONTRATOS REST}
+\chapter{NEOIDL: LINGUAGEM PARA ESPECIFICAÇÃO DE CONTRATOS REST	}
 \vspace{-6mm}
 
 
 \section{APRESENTAÇÃO}
 
-Nevertheless, these languages do not target
-to the REST architectural style and 
-lack support for language extensibility. In this paper we present the design and implementation of 
-NeoIDL, an extensible domain specific language and program generator for writing REST based
-contracts that are further translated into service's implementations.
+A \neoidl{} é uma linguagem específica de domínio (\textit{Domain Specific
+Language - DSL}) desenvolvida com o objetivo de possibilitar e simplificar o
+processo de elaboração de contratos para serviços REST. Em seu projeto, foram
+consideradas os requisitos de concisão, facilidade de compreensão humana,
+extensibilidade e suporte à herança simples dos tipos de dados definidos pelo
+usuário.
 
-Besides describing REST contracts in terms of resources,
-methods, and media types, \neoidl{} specifications also include the
-definition of the data types used in the visible interface of a service. 
-We considered the following requirements when designing \neoidl.
-First, the language should be concise and easy to learn and
-understand.
-Second, the language should present a well-defined type system
-and support single inheritance of user defined data types. In
-addition, developers using \neoidl{} should be able to specify
-concepts related to the \emph{REST architectural style for service-oriented
-  computing}~\cite{fielding-rest:2002}, in order to simplify the translation of a \neoidl{}
-specification into basic components tailored to that architectural style. Finally,
-both \neoidl{} and the program generator should be extensible. For
-that reason, we designed \neoidl{} to support extensibility 
-through annotations;
+Além de ser um linguagem, a \neoidl{} é também um \textit{framework} de geração
+de código, que permite, a partir de contratos especificados na linguagem, a geração
+da implementação do serviço em várias linguagens e tecnologias, por meio de seus
+\textit{pluggins}. As próximas subseções apresentam o histórico da \neoidl{},
+sua sintaxe e \textit{framework}.
+
 
 \subsection{Histórico e motivação}
 \vspace{-6mm}
 
+A \neoidl{} surgiu no contexto de um projeto de colaboração entre a Universidade
+de Brasília e o Exército Brasileiro. O projeto tinha os requisitos de modularidade,
+com a lógica distribuída inclusive geograficamente, e de execução em plataformas
+diversas. Diante dessa necessidade, o Exército desenvolveu um \textit{framework}
+proprietário, voltado para arquitetura orientada a serviço e com suporte
+a implantação de serviços REST em vários linguagens, chamado \neocortex{}.
 
-NeoIDL has been developed to enable the specification of REST 
-services and to allow the code generation for the implementation 
-of those services for specific platforms.
-It aims to simplify the development of
-services, by generating code from a
-service specification. Figure~\ref{fig:programGenerator} illustrates
-the main components of our approach, which consists
-of: (i) a domain-specific language (\neoidl)
-for specifying REST services with their respective
-contracts; and (ii) a
-program generator that enables the code generation of REST services
-in different platforms. 
-The \neoidl{} generator is structured as a set of
-core modules, which are responsible for the parsing,
-syntax definition, and processing of \neoidl{} specifications;
-as well as modules for the definition and
-management of \neoidl{} plugins. Each \neoidl{} plugin
-defines specific extensions for the code generator
-that enables the generation of REST services for different platforms
-or programming languages.
+A característica do \neocortex{} de se utilizar serviços implementados em vários
+linguagens motivou o desenvolvimento um programa gerador de serviços poliglota
+-- que produz código de várias linguagens de progração -- a partir da descrição
+do contrato do serviço. Daí nasceu a \neoidl{}.
 
-The current implementation of \neoidl{} has been already used
-to enable the generation of services for the \neocortex{} platform and the open-source 
-Python Twisted Framework~\cite{twisted:book}. The \neocortex{} platform is 
-a proprietary framework designed by the Brazilian Army that implements 
-a service-oriented architecture based on
-REST. \neocortex{} has been developed using  NodeJS---a cross-platform
-runtime environment for server-side and networking applications.
-The main reasons for
-developing \neocortex{}, instead of using existing frameworks for 
-SOC, are related to specific needs to deploy services in
-different platforms, ranging from well structured environments to
-small devices (such as tablets and mobile phones), as well as different
-networking environments (including eventually-connected half-duplex
-radio channels).
+Entretanto, as linguagens de programação disponíveis para especificação de
+contratos REST, como Swagger, WADL e RAML, tinham (e ainda tem) limitações
+importantes para a abordagem desejada de se escrever primeiramente o contrato e,
+a partir dele, gerar a implementação. Todas elas utilizam linguangens de
+propósito geral (XML, JSON, YAML), tornando os contratos extensos e de difícil
+compreensão por humanos. Além disso, não possuem mecanismos semânticos de
+extensibilidade e modularidade.
 
-The polyglot requirement of \neocortex{} motivated us to implement 
-the program generator of \neoidl{} as a pluggable architecture 
-(see Figure~\ref{fig:programGenerator})---so that
-we are able to evolve the code generation support in a modular
-way. For instance, implementing a C++ program generator from \neoidl{}
-specifications does not require any change in the existing code of the
-program generator. It is only necessary to implement a new \neoidl{}
-plugin. 
+Partiu-se então para o desenvolvimento de uma nova linguagem, com sintaxe
+inspirada em linguagens mais claras e concisas -- CORBA IDL \cite{corba} e
+Apache Thrift \cite{thrift} --, e que permitisse a declaração de tipos de
+dados definidos pelo usuário e extensibilidade. Ambas,
+CORBA e Apache Thrift, possuem limitações nesses últimos aspectos. A sintaxe e
+as características da linguagem \neoidl{} são discutidas na subseção \ref{linguagemNeoIDL}.
 
+Em relação à geração de código, dado o requisito de geração de código para
+linguagens distintas, a \neoidl{} foi projetada para possui uma arquitetura
+modular, de modo que novas linguagens ou características de implementaçao
+pudessem se incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é
+possível desenvolver um novo \textit{plugin} para geração de serviços em outras
+linguagens, por exemplo PHP, sem alterar qualquer outro componente, conforme
+apresentado na subseção \ref{frameNeoIDL}.
 
-We have developed nine services that implement operations related to 
-the domain of Command and Control (C2)~\cite{david:commandControl}. 
-These services comprehend almost 50 resources and 
-3000 lines of Python code. Therefore, all these services have been
-implemented in Python, though other projects have been implemented in
-Java as well. Here we concentrate our analysis to the services implemented
-in Python. 
-
-Approximately, the number of lines of Python code related to 
-our service repository increases according to the 
-function $sloc = 330 \times numberOfServices$--- since, in average, each
-service requires about 330 lines of Python code (with a standard
-deviation of 119). It is important to note that services are often
-implemented as a thin layer on top of existing components that
-implement reusable tasks or business logic. Accordingly, to understand
-the impact of \neoidl{} accurately, here we do not consider lines of code related to (a) existing tasks and 
-business logic implementations and (b) libraries that might be 
-reused through different services. 
-The boxplot of Figure~\ref{fig:sloc-boxplot}
-summarizes the SLOC distribution among the services 
-implementations. 
-
-\begin{figure}[thb]
-\begin{center}
-\vspace{-1cm}
-\includegraphics[scale=0.5]{sloc-boxplot.pdf}
-\vspace{-1.5cm}
-\end{center}
-\caption{SLOC distribution among services implementations}
-\label{fig:sloc-boxplot}
-\end{figure}
-
-
-
-
-
-
-
+A primeira versão da \neoidl{}, ponto de onde partiu este trabalho, dava suporte
+a geração de código em Java, Python e Swagger com as características necessárias
+para execução no \neocortex{}. Foram desenvolvidos no decorrer do projeto nove
+serviços do domínio de comando e controle \cite{david:commandControl},
+compreendendo aproximadamente cinquenta módulos e geração de três mil linhas de
+código Python a partir dos contrato especificados em \neoidl{} (contratos são
+denominados \texttt{módulos} na \neoidl{}). Outros serviços foram implementados em Java. 
 
 
 
 \subsection{\textit{Framework}}
+\label{frameNeoIDL}
 \vspace{-6mm}
 
+A parte da \neoidl{} responsável pela geração de código de
+serviço para as várias linguagens é chamada de \framework{} \neoidl{}. O núcleo do \framework{} é
+composto de módulos responsáveis por fazer o \textit{parse} do contrato escrito
+em \neoidl{}, por processar a especificação e pelo gerenciamento dos
+\textit{plugins}. Já os \textit{plugins} extendem, cada um, a \neoidl{} para as
+linguagens de destino. A figura \ref{fig:neoidl-architecture} ilustra a
+arquitetura do \framework{}.
 
-As shown in Figure~\ref{fig:programGenerator}, the implementation of \neoidl{}
-consists of a core (split into several Haskell modules) and 
-several plugins, one for each target language (such as Swagger,
-Python, or Java). The core module includes a tiny application that loads 
-plugins definition and processes the program arguments, which 
-specify the input \neoidl{} file, the output directory, and the languages that should be generated code from the 
-input file. Moreover, the core module contains a
-parser and a type checker for \neoidl{} specifications. 
-We have developed the parser for \neoidl{} using \bnfc~\cite{ranta-bnfc:2012}, 
-an easy to use parser generator that takes as
-input a syntax specification and generates code (both abstract syntax and
-parser) for different languages, including Haskell. Figure~\ref{fig:neoidl-architecture}
-represents an architectural abstraction of \neoidl{} program
-generator. 
-
-\begin{figure}[b]
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.6]{neoidl.pdf}
 \vspace{-.5cm}
 \end{center}
-\caption{Major architectural components of \neoidl{} program generator.}
+\caption{Arquitetura do framework de geração de código da \neoidl{}.}
 \label{fig:neoidl-architecture} 
 \end{figure}
 
-In the remaining of this section
-we present details about the implementation of two
-\neoidl{} Haskell modules: 
-\texttt{PluginDef} and \texttt{PluginLoader}. The first states the
-organization of a \neoidl{} plugin and the second is responsible for
-loading all available plugins. The details here are
-particularly useful for those who want to develop extensible architectures
-using Haskell. 
+
+O núcleo do \framework{} possui um uma pequena aplicação que carrega as
+definições dos \textit{plugins} e processa os argumentos da chamada do gerador
+(o arquivo de contrato que terá o código gerado, o diretório de destino e a
+linguagem a ser utilizada). O modo de funcionamento geral do \framework{} é
+ilustrado na figura \ref{fig:programGenerator}. O \textit{parser} da \neoidl{}
+foi construído utilizando \bnfc{} \cite{ranta-bnfc:2012} com a linguagem
+funcional Haskell.
+
+\begin{figure*}[bt]
+\begin{center}
+\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm 0cm]{programgenerator.pdf}
+\vspace{-.5cm}
+\end{center}
+\caption{Gerador de código da \neoidl{}}
+\label{fig:programGenerator}
+\end{figure*}
+
+As próximas subseções detalham o funcionamento de dois módulos onde estão
+contidas os principais trechos da lógica implementada na \neoidl{}: O
+\textit{PluginDef} e \textit{PluginLoader}.
 
 
-\subsubsection{PluginDef component}{\label{sec:plugindef}}
+\subsubsection{Componente PluginDef}{\label{sec:plugindef}}
 
-\neoidl{} plugins must comply 
-with a few design rules that \texttt{PluginDef}
-states. \texttt{PluginDef} is a Haskell module that 
-declares two data types (\texttt{Plugin} and
-\texttt{GeneratedFile}) and a type signature
-(\texttt{Transform = Module -> [GeneratedFile]}) 
-defining a family of functions that map a \neoidl{} module into 
-a list of files whose contents are the results of the 
-transformation process.
+O desenvolvimento de \textit{plugins} na \neoidl{} devem obedecer algumas regras
+de projeto estabelecidas no componente \texttt{PluginDef}, que é um módulo
+escrito em Haskell. No \texttt{PluginDef} declara dois tipo de dados
+(\texttt{Plugin} and \texttt{GeneratedFile}) e uma assinatura de tipo
+(\texttt{Transform = Module -> [GeneratedFile]}). Eles definem uma família de
+tipos que mapeiam um módulo \neoidl{} em uma lista de arquivos com o código
+gerado ao final do processo.
 
-According to these design rules, each \neoidl{} plugin must declare an instance of the
-\texttt{Plugin} data type and implement functions according to the
-\texttt{Transform} type signature. Moreover, the 
-\texttt{Plugin} instance must be named as \texttt{plugin}, so that the
-\texttt{PluginLoader} component will be able to obtain the necessary 
-data for executing a given plugin. Indeed, the execution of a plugin
-consists of applying the respective \texttt{transformation} function for a
-\neoidl{} module, producing as result a list of files that consists of 
-a name and a \texttt{Doc} as file content.\footnote{The \texttt{Doc} data type
-comes from the John Hughes Pretty Printer library.}  
+De acordo com estas regras de projeto, cada \textit{plugin} precisa declarar uma
+instância do tipo \texttt{Plugin} e implementar uma função de acordo com a
+assinatura definida em \texttt{Transform}. Além disso, cada instância de  
+\texttt{Plugin} precisa ter o nome \texttt{plugin} de forma que o componenente
+\texttt{PluginLoader} possa obter os dados necessários para o seu processamento.
+Assim, a execução de um \textit{plugin} consiste em aplicar sua função de
+transformação correspondente a um módulo \neoidl{} e produzir uma lista de
+arquivos de código fonte. 
 
-As an alternative, we could have implemented a Haskell type class~\cite{jones-typeClasses:1995} 
-exposing operations for obtaining the necessary data for a given
-plugin. Although this approach might seem more natural for specifying
-design rules for a pluggable architecture in Haskell, in the end it
-would lead to a cumbersome approach to our problem. The main reason
-for discarding this alternative approach was the need to (a) implement 
-a data type, (b) make this data type an instance of the mentioned type
-class, and (c) create an instance of that data type. All those steps
-would be necessary for each plugin. Using our approach, the obligation
-of a plugin developer is just to provide an instance of the
-\texttt{Plugin} datatype, taking into account the name convention we
-mentioned above. 
-The \texttt{language} attribute of the \texttt{Plugin} datatype
-is used for UI purpose only, so that the users will be able to obtain the list of available
-plugins and select which plugins will be used during a program generation.  
+\vspace{6mm}
 
-% \begin{figure}[htb]
-% \begin{hscode}\SaveRestoreHook 
-% \column{B}{@{}>{\hspre}l<{\hspost}@{}}\column{3}{@{}>{\hspre}l<{\hspost}@{}}\column{9}{@{}>{\hspre}l<{\hspost}@{}}\column{16}{@{}>{\hspre}l<{\hspost}@{}}\column{E}{@{}>{\hspre}l<{\hspost}@{}}\>[B]{}\mathbf{module}\;\Conid{PluginDef}\;\mathbf{where}{}\<[E]\\[\blanklineskip]\>[B]{}\mathbf{data}\;\Conid{Plugin}\mathrel{=}\Conid{Plugin}\;\{\mskip1.5mu {}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\Varid{language}{}\<[16]\>[16]{}\mathbin{::}\Conid{String},{}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\Varid{transformation}\mathbin{::}\Conid{Transformation}{}\<[E]\\
-% \>[B]{}\mskip1.5mu\}{}\<[E]\\[\blanklineskip]\>[B]{}\mathbf{data}\;\Conid{GeneratedFile}\mathrel{=}\Conid{GeneratedFile}\;\{\mskip1.5mu {}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\Varid{name}{}\<[9]\>[9]{}\mathbin{::}\Conid{String},{}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\Varid{content}\mathbin{::}\Conid{Doc}{}\<[E]\\
-% \>[B]{}\mskip1.5mu\}{}\<[E]\\[\blanklineskip]\>[B]{}\mathbf{type}\;\Conid{Transformation}\mathrel{=}\Conid{Module}\to [\mskip1.5mu \Conid{GeneratedFile}\mskip1.5mu]{}\<[E]\ColumnHook
-% \end{hscode}\resethooks
-% \caption{\texttt{PluginDef} component.}
-% \label{fig:plugindef}
-% \end{figure}
+\begin{figure}[h]
+\begin{small}
+\lstinputlisting[language=HaskellSimple,firstnumber=1]{pluginDefStructure.tex}
+\vspace{-.5cm}
+\end{small}
+\caption{Assinatura do \texttt{PluginDef}}
+\label{lst:pluginDef}
+\end{figure}
 
-\subsubsection{PluginLoader component}
+\subsubsection{Componente PluginLoader}
 
-Based on the design rules discussed in the previous section, 
-the \texttt{PluginLoader} component is able to dynamically 
-load the available \neoidl{} plugins. This is a Haskell
-module (see Figure~\ref{lst:loader}) that exposes the
-\texttt{loadPlugins} function, which returns a list  with all
-available plugins. This list is obtained by compiling the Haskell plugin modules 
-during the program execution and dynamically evaluating an 
-expression that yields a list of \texttt{Plugin} datatype instances. 
+O carregamento e validação dos \textit{plugins} são competências do componente
+\texttt{PlutinLoader}. O primeito passo é listar todos os arquivos do diretório
+do \textit{plugin} a ser carregado, filtrar os arquivos Haskell (extensão
+\texttt{``.hs''}), criar um nome para um nome reservado (\textit{qualified
+name}) para cada arquivo de \textit{plugin} e aplicar a função de compilação.
 
-% \begin{figure}[htb]
-% \begin{hscode}\SaveRestoreHook
-% \column{B}{@{}>{\hspre}l<{\hspost}@{}}\column{3}{@{}>{\hspre}l<{\hspost}@{}}\column{4}{@{}>{\hspre}l<{\hspost}@{}}\column{5}{@{}>{\hspre}l<{\hspost}@{}}\column{6}{@{}>{\hspre}l<{\hspost}@{}}\column{7}{@{}>{\hspre}l<{\hspost}@{}}\column{8}{@{}>{\hspre}l<{\hspost}@{}}\column{16}{@{}>{\hspre}l<{\hspost}@{}}\column{26}{@{}>{\hspre}l<{\hspost}@{}}\column{E}{@{}>{\hspre}l<{\hspost}@{}}\>[B]{}\mathbf{module}\;\Conid{PluginLoader}\;(\Varid{loadPlugins})\;\mathbf{where}{}\<[E]\\[\blanklineskip]\>[B]{}\mathbf{type}\;\Conid{HSFile}\mathrel{=}\Conid{String}{}\<[E]\\[\blanklineskip]\>[B]{}\Varid{dir}\mathbin{::}\Conid{String}{}\<[E]\\
-% \>[B]{}\Varid{dir}\mathrel{=}\text{\tt \char34 Plugins\char34}{}\<[E]\\[\blanklineskip]\>[B]{}\Varid{loadPlugins}\mathbin{::}\Conid{IO}\;[\mskip1.5mu \Conid{Plugin}\mskip1.5mu]{}\<[E]\\
-% \>[B]{}\Varid{loadPlugins}\mathrel{=}{}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\mathbf{let}{}\<[E]\\
-% \>[3]{}\hsindent{1}{}\<[4]\>[4]{}\Varid{pattern}\mathrel{=}\Varid{isSuffixOf}\;{}\<[26]\>[26]{}\text{\tt \char34 hs\char34}{}\<[E]\\
-% \>[3]{}\hsindent{1}{}\<[4]\>[4]{}\Varid{path}\;\Varid{file}\mathrel{=}\Varid{dir}\mathbin{</>}\Varid{file}{}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\mathbf{in}\;(\Varid{list}\;\Varid{dir})\bind (\Varid{compile}\mathbin{\circ}\Varid{map}\;\Varid{path}\mathbin{\circ}\Varid{filter}\;\Varid{pattern}){}\<[E]\\[\blanklineskip]\>[B]{}\Varid{dfm}\mathrel{=}\Varid{defaultFatalMessager}{}\<[E]\\
-% \>[B]{}\Varid{flushOut}\mathrel{=}\Varid{defaultFlushOut}{}\<[E]\\[\blanklineskip]\>[B]{}\Varid{compile}\mathbin{::}[\mskip1.5mu \Conid{HSFile}\mskip1.5mu]\to \Conid{IO}\;[\mskip1.5mu \Conid{Plugin}\mskip1.5mu]{}\<[E]\\
-% \>[B]{}\Varid{compile}\;\Varid{modules}\mathrel{=}{}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\Varid{defaultErrorHandler}\;\Varid{dfm}\;\Varid{flushOut}\mathbin{\$}\mathbf{do}{}\<[E]\\
-% \>[3]{}\hsindent{3}{}\<[6]\>[6]{}\Varid{result}\leftarrow \Varid{runGhc}\;(\Conid{Just}\;\Varid{libdir})\mathbin{\$}\mathbf{do}{}\<[E]\\
-% \>[6]{}\hsindent{2}{}\<[8]\>[8]{}\mathbf{let}\;\Varid{hsModules}\mathrel{=}\Varid{map}\;\Varid{haskellModule}\;\Varid{modules}{}\<[E]\\
-% \>[6]{}\hsindent{2}{}\<[8]\>[8]{}\mbox{\onelinecomment  five lines of (boilerplate) code are necessary to }{}\<[E]\\
-% \>[6]{}\hsindent{2}{}\<[8]\>[8]{}\mbox{\onelinecomment  dynamically compile Haskell code using GHC}{}\<[E]\\
-% \>[6]{}\hsindent{1}{}\<[7]\>[7]{}\mathbf{let}\;\Varid{exp}\mathrel{=}\Varid{buildExpresson}\;\Varid{hsModules}{}\<[E]\\
-% \>[6]{}\hsindent{1}{}\<[7]\>[7]{}\Varid{plugins}\leftarrow \Varid{compileExpr}\;(\Varid{exp}\plus \text{\tt \char34 ::[Plugin]\char34}){}\<[E]\\
-% \>[6]{}\hsindent{1}{}\<[7]\>[7]{}\Varid{return}\;\Varid{unsafeCoerce}\;\Varid{plugins}\mathbin{::}[\mskip1.5mu \Conid{Plugin}\mskip1.5mu]{}\<[E]\\
-% \>[3]{}\hsindent{3}{}\<[6]\>[6]{}\Varid{return}\;\Varid{result}{}\<[E]\\[\blanklineskip]\>[B]{}\Varid{buildExpression}\mathbin{::}[\mskip1.5mu \Conid{HSModule}\mskip1.5mu]\to \Conid{String}{}\<[E]\\
-% \>[B]{}\Varid{buildExpression}\;\Varid{hsms}\mathrel{=}\text{\tt \char34 [\char34}\plus \Varid{plugins}\plus \text{\tt \char34 ]\char34}{}\<[E]\\
-% \>[B]{}\hsindent{3}{}\<[3]\>[3]{}\mathbf{where}{}\<[E]\\
-% \>[3]{}\hsindent{2}{}\<[5]\>[5]{}\Varid{plugins}\mathrel{=}{}\<[16]\>[16]{}\Varid{concatMap}\;(\lambda \Varid{x}\to \Varid{x}\plus \text{\tt \char34 .plugin\char34})\;\Varid{hsms}{}\<[E]\\
-% \>[3]{}\hsindent{2}{}\<[5]\>[5]{}\Varid{concat}\mathrel{=}\Varid{join}\;\text{\tt \char34 ,\char34}{}\<[E]\ColumnHook
-% \end{hscode}\resethooks
-% \caption{\texttt{PluginLoader} component.}
-% \label{lst:loader}
-% \end{figure}
-
-We assume that
-all Haskell modules within the top level \texttt{Plugins} directory must have a plugin
-definition, according to the design rules of Section~\ref{sec:plugindef}.  
-In Figure~\ref{lst:loader}, the \texttt{loadPlugins} function lists all files within the
-\texttt{Plugins} directory, filters the Haskell files (files
- with the \texttt{``.hs''} extension), creates a qualified name to these
- files, and applies the \texttt{compile} function to the resulting
- list of qualified names. In the next step, the \texttt{compile}
- function uses the GHC API~\cite{ghc-api}
- for compiling the Haskell modules with plugin definitions and to
- evaluate an expression that produces a list with the available
- plugins. 
-
-Our dynamic approach for loading plugins relies on the 
- GHC API, using a specific idiom to compile Haskell
- modules and execute expressions. Figure~\ref{lst:loader} shows that
- idiom in the definition of the \texttt{compile} function, although we omit some boilerplate code that is 
- necessary to compile Haskell modules using the GHC API. The last four lines of \texttt{compile} are specific to the program generator of \neoidl.
-First, we build a string representation of a Haskell \texttt{list} comprising 
- all instances of the \texttt{Plugin} datatype, obtained from the
- different \neoidl{} plugins. Then, we evaluate this string
- representation of a plugin list using the \emph{meta-programming} ability
- of the \texttt{compileExpr} function, which is available in the GHC
- API. Thus, \texttt{compileExpr} dynamically evaluates a string representation of an
- expression, which leads to a value that could be used by other
- functions of a program. 
-The call to \texttt{compileExpr}  
-also checks the design rule that requires 
-(a) a \texttt{plugin} definition
-within all \neoidl{} plugins; and (b) that  
-definition must be an instance of the \texttt{Plugin} data type. 
-In the cases where a plugin (exposed as a Haskell module on the
-top-level Plugins directory) does not comply with this design rule, 
-a runtime error occurs. Accordingly, we use the default error 
-handler of GHC API to report problems when loading a plugin. 
-This is a new approach of using the GHC
-API to dynamically check Haskell modules in pluggable architectures. 
-
-
-As an example of design rule violation in the \neoidl{} architecture, 
-if there is no \texttt{plugin} definition within a
-plugin, the following error is reported at runtime:
+Caso todas as regras de definição do \textit{plugin} tenham sido atendidas, o
+\textit{plugin} é carregado e estará pronto para ser acionado. Caso contrário,
+algumas exceções podem ocorrer, como, por exemplo, não haver definição de
+nenhum \textit{plugin} no arquivo:
 
 \begin{tabbing}\tt
 ~\char36{}\char46{}\char47{}neoIDL\\
@@ -298,14 +160,8 @@ plugin, the following error is reported at runtime:
 \tt ~~~~Not~in~scope\char58{}~\char96{}Plugins\char46{}Python\char46{}plugin\char39{}
 \end{tabbing}
 
-In the last line of the above interactive section, 
-\neoidl{} program generator reports that \texttt{plugin} is not defined within 
-the Python plugin module. In a similar way, if the \texttt{plugin}
-definition is available but it is not an instance of the \texttt{Plugin}
-data type, a type error occurs during the execution of the \neoidl{}
-program (see the reported message bellow, using a \texttt{plugin} definition
-assigned to a String value). 
-
+Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
+\texttt{Plugin}:
 
 \begin{tabbing}\tt
 ~\char36{}\char46{}\char47{}neoIDL\\
@@ -315,72 +171,63 @@ assigned to a String value).
 \tt ~~~with~actual~type~\char96{}\char91{}GHC\char46{}Types\char46{}Char\char93{}\char39{}
 \end{tabbing}
 
-Therefore, we are using GHC API to type check Haskell modules (note that Haskell is a statically typed language) during
-the loading phase of a \neoidl{} execution. Next section presents the assessment of \neoidl{} considering different 
-goals. 
 
 
 \subsection{Linguagem}
+\label{linguagemNeoIDL}
 \vspace{-6mm}
 
+A \neoidl{} simplifica a especificação de contratos REST pois possui uma sintaxe
+concisa própria de linguagens de especificação de interfaces (\emph{interface
+description languages}). Ademais, a \neoidl{} provê mecanismos de
+modularização e herança, de forma que os contratos possam ser separados em
+módulos \footnote{Os arquivos utilizados para definição de contratos
+são denominados módulos na \neoidl{}}, facilitando a herança e manutenção dos
+contratos.
 
-\neoidl{} simplifies service specifications by means of 
-(a) mechanisms for modularizing and inheriting user defined data 
-types, and (b) a concise syntax that is quite similar to the 
-\emph{interface description languages} of Apache Thrift or CORBA. A 
-\neoidl{} specification might be split into modules, where each
-module contains several definitions. In essence, a \neoidl{} definition might be either a 
-data type (using the \texttt{entity} construct) or a service describing
-operations that might be reached by a given pair (URI, HTTP
-method). Figures~\ref{lst:messagedata-neo}
-and~\ref{lst:sentmessage-neo} present two \neoidl{} modules:
-(i) the data-oriented \texttt{MessageData} module;
-and the service-oriented \texttt{Message} module.
+Para demonstrar como os módulos são estruturados na
+\neoidl{}, a seguir são apresentados alguns trechos de um serviço hipotético
+de envio de mensagens. Na primeira parte, um módulo faz uma definição de tipo
+de dado; em seguida, um segundo módulo, orientado a serviço, importa as
+definições do primeiro para então declarar as especificações das operações do
+serviço. Por fim, o módulo de serviço é acrescentado de uma anotação como
+forma de extender as características da operação.
 
-The \texttt{MessageData} module (Figure~\ref{lst:messagedata-neo})
-declares an enumeration
-(\texttt{MessageType}), which states the two valid types of
-messages (a message must be either a \emph{message sent} or
-a \emph{message received}); and a data type (\texttt{Message}),
-which details the expected structure of a
-message. We use a \emph{convention over configuration approach}, 
-assuming that all attributes of a user defined data type are
-mandatory, though it is possible to specify an attribute as being optional  
-using the syntax \texttt{<Type> <Ident> = 0;}, as exemplified by
-the \texttt{subject} field of the \texttt{Message} data type.
+\vspace{6mm}
 
-\begin{figure}[htb]
+\begin{figure}[h]
 \begin{small}
 \lstinputlisting[language=NeoIDL,firstnumber=1]{mensagemData.tex}
 \vspace{-.5cm}
 \end{small} 
-\caption{Message data type specified in \neoidl}
+\caption{Tipos de dados definidos na \neoidl}
 \label{lst:messagedata-neo}
 \end{figure}
 
-The \texttt{Message} module of Figure~\ref{lst:sentmessage-neo}
-specifies one service resource (\texttt{sentbox}). As explained,
-we send requests for the methods of a given resource using a specific
-path. In the example, the \texttt{sentbox} resource's
-methods are available from the relative path
-\texttt{/messages/sent}. This resource declares 
- two operations: one
-\method{POST} method that might be used for
-sending messages and one \method{GET} method 
-that might be used for listing all messages
-sent from a given sequential number.
+O trecho ilustrado na figura \ref{lst:messagedata-neo} faz a definição de dois
+tipos de dados. \emph{MessageType}, declarado no linha 2, é uma estrutura
+simples do tipo enumeração. O outro tipo é \emph{Message}, declarado entre as
+linhas 4 e 11, composto de seis atributos. O atributo \emph{type} de
+\emph{Message} é do tipo \emph{MessageType} recém declarado.
 
-Also according to our \emph{convention over configuration}
-approach, we assume
-that the arguments of \method{POST} and \method{PUT} operations
-are sent in the 
-request body, whereas arguments of \method{GET} operations are
-either sent enclosed
-with the request URL or enclosed with the URL path (in a similar way
-as \method{DELETE} operations). We are able to change these conventions by
-using specific annotations attached to an operation parameter.  In
-these examples, conventions are used to reduce the size of services'
-specifications. 
+Na \neoidl{} é utiliza a abordagem convenção sobre configuração, de modo que
+todos os atributos declarados são obrigatórios, a menos que explicitamente
+seja declarado diferente. O atributo \emph{subject} do tipo \emph{Message} é um
+exemplo de atributo opcional (\texttt{<Type> <Ident> = 0;}).
+
+O módulo seguinte (figura \ref{lst:sentmessage-neo}), na linha proposta pela
+\neoidl{} para suporte a herança e reuso, importa o conjunto de definições de \emph{MessageData} e declara o
+serviço \emph{sendbox} (linha 4), o qual possui duas capacidades. A
+capacidade \emph{sendMessage} (linha 6) utiliza a operação \method{post} para submeter uma
+mensagem (tipo \emph{Message}). A outra capacidade (linha 7) tem a finalidade de
+listas as mensagens com um determinado sequecial, por meio da operação
+\method{get}.
+
+Por fim, a instrução \emph{path} indica o caminho (URI) onde as
+operações serão disponibilizadas. Esse atribuito é importante para se definir
+como as requisições serão roteadas entre os serviços.
+
+\vspace{6mm}
 
 \begin{figure}[htb]
 \begin{small}
@@ -390,59 +237,42 @@ specifications.
 \label{lst:sentmessage-neo}
 \end{figure}
 
-To support language extensibility, \neoidl{}
-specifications can be augmented through annotations. The main reason
-for introducing annotations in \neoidl{} was the possibility to extend
-the semantics of a specification without the need to change the 
-concrete syntax of \neoidl. For instance, suppose that we want to 
-express security policies for a service resource. A developer could 
-change the concrete syntax of \neoidl{} for this purpose, defining new
-language constructs for specifying the authentication method (based on
-tokens or user passwords), the cryptographic algorithm used in the
-resource request and response, and the role-based permissions to the
-resource capabilities. However,
-changing the concrete syntax to allow the specification of
-unanticipated properties of a resource often breaks the code of the program
-generator. 
+Ainda na filosofia de conversão sobre configuração, a \neoidl{} assume que os
+argumentos das operações \method{POST} e \method{PUT} são enviadas no corpo da
+requisição. Nas operações \method{GET} e \method{DELETE}, por outro lado,
+presume-se que os agumentos estão contidos no \emph{path} da requisição ou ainda
+como \textit{query string}.
 
-Instead,
-using annotations, developers might extend the language within \neoidl{}
-specifications. Therefore, apart from the \neoidl{} definitions
-discussed before, it is also possible to define new annotations that
-might be attached to the fundamental constructs of \neoidl{} (i.e.
-\texttt{module}, \texttt{enum}, \texttt{entity}, and
-\texttt{resource}). Each annotation consists of a name, a target
-element that indicates the \neoidl{} constructs the annotation 
-might be attached to, and a list of properties. When transforming 
-a specification, the list of annotations attached to a \neoidl{}
-element is available to the plugins, which could consider the 
-additional semantics during the program generation. Figure~\ref{lst:agent}
-presents a \neoidl{} example that attaches an user defined
-annotation (\texttt{SecurityPolicy}) to specify security policies 
-on the \texttt{agent} resource. In the example, 
-using the \texttt{SecurityPolicy} annotation we specify
-that the operations of the \texttt{agent} resource
-(i) must use a basic authentication mechanism, (ii)
-the arguments and return values must be encoded using the
-AES algorithm, and (iii) only authenticated users
-having the \emph{admin} role are authorized to request the
-resources. 
+A especificação dos contratos na \neoidl{} pode ser enriquecida com
+anotações, por meio das quais se possibilita extender a semântica de uma
+especificação sem que seja necessário alterar a sintaxe da \neoidl{}. Esse
+recurso da \neoidl{} simplifica a inclusão de novas características aos
+serviços, pois a alteração da sintaxe da própria \neoidl{} envolve um esfoço não
+trivial de compatibilizar todos os \textit{plugins} já construídos.
 
+O módulo apresentado na figura \ref{lst:annotationNeoIDL} contém, além das
+informações contidas no módulo da figura \ref{lst:sentmessage-neo}, uma anotação chamada
+\emph{Security Policy} (linhas 4 a 6) aplicada ao serviço \emph{sentbox}. A
+declaração da anotação é feita no final do módulo (linhas 14 a 18).
+
+\vspace{6mm}
  
 \begin{figure}
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{agent.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{messageSendAnnotation.tex}
 \vspace{-.5cm}
 \end{small}
-\caption{\neoidl{} specification using annotations}
-\label{lst:agent}
+\caption{Especificação de anotação na \neoidl{}}
+\label{lst:annotationNeoIDL}
 \end{figure}
 
-In the next sections we present the lexical and 
-syntactic structures of NeoIDL, considering 
-the revision of August 23, 2015. Both sections 
-were (almost) automatically generated by the BNF-Converter~\cite{forsberg-bnfc:2004} 
-parser generator. 
+Além de aplicáveis a \texttt{resources}, as anotações também podem ser aplicadas
+a outros construtores da linguagem: \texttt{module}, \texttt{enum},
+\texttt{entity}. Qualquer anotação na \neoidl{} possui a mesma estrutura: um
+nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
+disponíveis para utilização pelos \textit{plugins}.
+
+
 
 
 \subsubsection{The lexical structure of NeoIDL}\label{sub:lexical}

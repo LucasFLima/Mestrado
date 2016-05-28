@@ -1,0 +1,10 @@
+module PluginDef where
+  data Plugin = Plugin {
+    language :: String;
+    transformation :: Transformation
+  }
+  data GeneratedFile = GeneratedFile {
+    name :: String;
+    content :: Doc
+  }
+  type Transformation = Module ! [GeneratedFile ]

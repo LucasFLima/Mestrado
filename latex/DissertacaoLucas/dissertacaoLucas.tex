@@ -41,6 +41,7 @@
 \newcommand{\wss}{\textit{Web Services}}
 \newcommand{\CdFirst}{\textit{Code-first}}
 \newcommand{\CtFirst}{\textit{Contract-first}}
+\newcommand{\framework}{\textit{framework}}
 \newcommand{\method}[1]{\texttt{#1}}
 
 \newcommand{\emptyP}{\mbox{$\epsilon$}}
@@ -101,6 +102,14 @@
   numberstyle=\scriptsize,
   stepnumber=1,
   numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  }
+  
+  \lstdefinelanguage{HaskellSimple}{
+  sensitive = true,
+  keywords = {data, type, module, where, do, IO, import},
   showstringspaces=false,
   breaklines=true,
   frame=lines,
