@@ -1,14 +1,30 @@
 \begin{thebibliography}{10}
 
+\bibitem{JSon}
+Javascript object notation.
+\newblock \url{http://www.json.org}.
+\newblock JSON official site.
+
 \bibitem{swaggerSite}
 Swagger - the world's most popular framework for apis.
 \newblock \url{http://swagger.io/}.
-\newblock Swagger project oficial site.
+\newblock Swagger project official site.
 
 \bibitem{WSDLSite}
 World wide web consortium (w3c) - web services description language.
 \newblock \url{https://www.w3.org/TR/wsdl}.
-\newblock WSDL W3C oficial site.
+\newblock WSDL W3C official site.
+
+\bibitem{YAML}
+Yaml ain't markup language.
+\newblock \url{http://yaml.org}.
+\newblock The Official YAML web site.
+
+\bibitem{david:commandControl}
+Alberts,~D.~S. e Hayes,~R.~E.
+\newblock {\em Understanding Command and Control}.
+\newblock {DoD} {C}ommand and {C}ontrol {R}esearch {P}rogram, 1st edition,
+  2006.
 
 \bibitem{alonso2004web}
 Alonso,~G., Casati,~F., Kuno,~H., e Machiraju,~V.
@@ -50,6 +66,12 @@ Fielding,~R.~T.
   architectures}.
 \newblock Tese de Doutorado, University of California, Irvine, 2000.
 
+\bibitem{forsberg-bnfc:2004}
+Forsberg,~M. e Ranta,~A.
+\newblock Bnf converter.
+\newblock In {\em Proceedings of the 2004 ACM SIGPLAN Workshop on Haskell},
+  Haskell '04, pages 94--95, New York, NY, USA, 2004. ACM.
+
 \bibitem{hadley2006web}
 Hadley,~M.~J.
 \newblock Web application description language (wadl).
@@ -59,6 +81,12 @@ Hadley,~M.~J.
 He,~H.
 \newblock What is service-oriented architecture.
 \newblock {\em Publica{\c{c}}{\~a}o eletr{\^o}nica em 30/09/2003}, 2003.
+
+\bibitem{hudak1998modular}
+Hudak,~P.
+\newblock Modular domain specific languages and tools.
+\newblock In {\em Software Reuse, 1998. Proceedings. Fifth International
+  Conference on}, pages 134--142. IEEE, 1998.
 
 \bibitem{jazequel1997design}
 Jazequel,~J.-M. e Meyer,~B.
@@ -89,6 +117,11 @@ Lima,~L., Bonif{\'a}cio,~R., Canedo,~E., Castro,~T.~M.de~, Fernandes,~R.,
 \newblock {\em International Journal of Software Engineering and Knowledge
   Engineering}, 25(09n10):1653--1675, 2015.
 
+\bibitem{mackinlay1985expressiveness}
+Mackinlay,~J. e Genesereth,~M.~R.
+\newblock Expressiveness and language choice.
+\newblock {\em Data \& Knowledge Engineering}, 1(1):17--29, 1985.
+
 \bibitem{meyer1988eiffel}
 Meyer,~B.
 \newblock Eiffel: A language and environment for software engineering.
@@ -114,6 +147,12 @@ Mumbaikar,~S., Padiya,~P., e others,.
 \newblock Web services based on soap and rest principles.
 \newblock {\em International Journal of Scientific and Research Publications},
   3(5).
+
+\bibitem{corba}
+(OMG),~O. M.~G.
+\newblock Interface definition language 3.5.
+\newblock Technical report, Object Management Group, 2014.
+\newblock http://www.omg.org/spec/IDL35/3.5/PDF/.
 
 \bibitem{papazoglou2007service}
 Papazoglou,~M.~P., Traverso,~P., Dustdar,~S., e Leymann,~F.
@@ -148,6 +187,18 @@ Rao,~J. e Su,~X.
 Serrano,~N., Hernantes,~J., e Gallardo,~G.
 \newblock Service-oriented architecture and legacy systems.
 \newblock {\em Software, IEEE}, 31(5):15--19, 2014.
+
+\bibitem{thrift}
+Slee,~M., Agarwal,~A., e Kwiatkowski,~M.
+\newblock Thrift: Scalable cross-language services implementation.
+\newblock Technical report, Facebook, 2012.
+\newblock http://thrift.apache.org/static/files/thrift-20070401.pdf.
+
+\bibitem{taha2008domain}
+Taha,~W.
+\newblock Domain-specific languages.
+\newblock In {\em International Conference on Computer Engineering Systems
+  (ICCES)}. Springer, 2008.
 
 \bibitem{wideberg2015restful}
 Wideberg,~R.

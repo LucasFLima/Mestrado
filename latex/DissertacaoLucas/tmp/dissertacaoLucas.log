@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  28 MAY 2016 10:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  30 MAY 2016 19:35
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -361,18 +361,18 @@ LaTeX Warning: Label `lst:DBCService' multiply defined.
 )
 \openout1 = `dissertacaoLucas.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 148.
-LaTeX Font Info:    ... okay on input line 148.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 148.
-LaTeX Font Info:    ... okay on input line 148.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 148.
-LaTeX Font Info:    ... okay on input line 148.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 148.
-LaTeX Font Info:    ... okay on input line 148.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 148.
-LaTeX Font Info:    ... okay on input line 148.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 148.
-LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count103
@@ -541,240 +541,127 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [18] (./exemploSpecSharp.tex)) (./cap3.tex [19]
  3.
-
-LaTeX Warning: Citation `fielding-rest:2002' on page 20 undefined on input line
- 23.
-
-
-LaTeX Warning: Reference `fig:programGenerator' on page 20 undefined on input l
-ine 38.
-
 [20
 
-]
-
-LaTeX Warning: Citation `twisted:book' on page 21 undefined on input line 56.
-
-
-LaTeX Warning: Reference `fig:programGenerator' on page 21 undefined on input l
-ine 71.
-
-
-LaTeX Warning: Citation `david:commandControl' on page 21 undefined on input li
-ne 80.
-
-
-LaTeX Warning: File `sloc-boxplot.pdf' not found on input line 104.
-
-
-! Package pdftex.def Error: File `sloc-boxplot.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.104 ...ludegraphics[scale=0.5]{sloc-boxplot.pdf}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[21]
-
-LaTeX Warning: Reference `fig:programGenerator' on page 22 undefined on input l
-ine 124.
-
-<neoidl.pdf, id=120, 304.13625pt x 171.64125pt>
+] <neoidl.pdf, id=117, 304.13625pt x 171.64125pt>
 File: neoidl.pdf Graphic file (type pdf)
  <use neoidl.pdf>
-Package pdftex.def Info: neoidl.pdf used on input line 141.
+Package pdftex.def Info: neoidl.pdf used on input line 85.
 (pdftex.def)             Requested size: 182.48315pt x 102.98552pt.
- [22 <./neoidl.pdf>]
-
-LaTeX Warning: Citation `jones-typeClasses:1995' on page 23 undefined on input 
-line 181.
 
 
-LaTeX Warning: Reference `lst:loader' on page 23 undefined on input line 216.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<programgenerator.pdf, id=118, 667.49374pt x 197.73875pt>
+File: programgenerator.pdf Graphic file (type pdf)
+
+<use programgenerator.pdf>
+Package pdftex.def Info: programgenerator.pdf used on input line 103.
+(pdftex.def)             Requested size: 367.1227pt x 85.28307pt.
+ [21] [22 <./neoidl.pdf> <./programgenerator.pdf>]
+(./pluginDefStructure.tex)
+Overfull \hbox (5.16678pt too wide) in paragraph at lines 147--152
+[][]\OT1/cmr/m/n/12 O car-re-ga-mento e va-lida^^Xc~ao dos \OT1/cmr/m/it/12 plu
+-gins \OT1/cmr/m/n/12 s~ao com-pet^encias do com-po-nente \OT1/cmtt/m/n/12 Plut
+inLoader\OT1/cmr/m/n/12 .
+ []
+
+[23] (./mensagemData.tex) [24] (./mensagem.tex) [25]
+(./messageSendAnnotation.tex) [26]
+! Undefined control sequence.
+l.296 ...inal{``}, a menos que precedido por \text
+                                                  {\tt \char92{}}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `lst:loader' on page 23 undefined on input line 254.
-
-
-LaTeX Warning: Citation `ghc-api' on page 23 undefined on input line 259.
-
-[23]
-
-LaTeX Warning: Reference `lst:loader' on page 24 undefined on input line 266.
-
-[24] (./mensagemData.tex) [25] (./mensagem.tex) [26] (./agent.tex)
-
-LaTeX Warning: Citation `forsberg-bnfc:2004' on page 27 undefined on input line
- 444.
-
-[27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 479--486
+Underfull \hbox (badness 10000) in paragraph at lines 316--323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 490
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 327
 .
 (/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 490.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 327.
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--502
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 507--511
+Underfull \hbox (badness 10000) in paragraph at lines 326--339
 
  []
 
-[29]
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 344--347
+
+ []
+
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 515.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 351.
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--524
-
+Overfull \hbox (12.51161pt too wide) in paragraph at lines 375--379
+[][][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 525--528
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--533
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 534--538
-
- []
-
-
-Overfull \hbox (12.51161pt too wide) in paragraph at lines 539--543
+[28]
+Overfull \hbox (5.45493pt too wide) in paragraph at lines 384--387
 [][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--543
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 544--547
-
- []
-
-
-Overfull \hbox (5.45493pt too wide) in paragraph at lines 548--551
+Overfull \hbox (45.27042pt too wide) in paragraph at lines 412--415
 [][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 548--551
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 552--555
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 556--559
-
- []
-
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 560--563
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 564--568
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 569--575
-
- []
-
-
-Overfull \hbox (45.27042pt too wide) in paragraph at lines 576--579
+Overfull \hbox (61.20961pt too wide) in paragraph at lines 416--419
 [][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--579
+Underfull \hbox (badness 10000) in paragraph at lines 420--427
 
  []
 
-
-Overfull \hbox (61.20961pt too wide) in paragraph at lines 580--583
-[][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 580--583
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 585--592
-
- []
-
-
-LaTeX Warning: Reference `sub:experience' on page 31 undefined on input line 61
-3.
-
-
-LaTeX Warning: Citation `swagger' on page 31 undefined on input line 618.
-
-[31] [32] [33] <ServiceDbC.png, id=220, 950.04938pt x 545.03625pt>
+[29] [30] [31] [32] <ServiceDbC.png, id=304, 950.04938pt x 545.03625pt>
 File: ServiceDbC.png Graphic file (type png)
 
 <use ServiceDbC.png>
-Package pdftex.def Info: ServiceDbC.png used on input line 748.
+Package pdftex.def Info: ServiceDbC.png used on input line 613.
 (pdftex.def)             Requested size: 441.01772pt x 246.40288pt.
- [34]
-<PreconditionValidation.png, id=226, 798.73407pt x 344.03531pt>
+ [33 <./ServiceDbC.png>]
+<PreconditionValidation.png, id=312, 798.73407pt x 344.03531pt>
 File: PreconditionValidation.png Graphic file (type png)
 
 <use PreconditionValidation.png>
-Package pdftex.def Info: PreconditionValidation.png used on input line 787.
+Package pdftex.def Info: PreconditionValidation.png used on input line 652.
 (pdftex.def)             Requested size: 441.01772pt x 182.10506pt.
 
-<PostconditionValidation.png, id=228, 797.98125pt x 295.85532pt>
+<PostconditionValidation.png, id=314, 797.98125pt x 295.85532pt>
 File: PostconditionValidation.png Graphic file (type png)
 
 <use PostconditionValidation.png>
-Package pdftex.def Info: PostconditionValidation.png used on input line 799.
+Package pdftex.def Info: PostconditionValidation.png used on input line 664.
 (pdftex.def)             Requested size: 441.01772pt x 155.64842pt.
- [35 <./ServiceDbC.png>] (./DBCsimple.neo)
-(./DBCservice.neo) [36 <./PreconditionValidation.png> <./PostconditionValidatio
-n.png>]) [37] [38] (./dissertacaoLucas.bbl
+ [34 <./PreconditionValidation.png>]
+(./DBCsimple.neo) [35 <./PostconditionValidation.png>] (./DBCservice.neo))
+[36] (./dissertacaoLucas.bbl
 ! Undefined control sequence.
 l.5 \newblock \url
-                  {http://swagger.io/}.
+                  {http://www.json.org}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -783,6 +670,15 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.10 \newblock \url
+                   {http://swagger.io/}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.15 \newblock \url
                    {https://www.w3.org/TR/wsdl}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -791,43 +687,312 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Underfull \hbox (badness 2865) in paragraph at lines 9--12
+Underfull \hbox (badness 2865) in paragraph at lines 14--17
 [][]\OT1/cmr/m/n/12 World wide web con-sor-tium (w3c) - web ser-vi-ces des-crip
 -tion lan-guage.
  []
 
+! Undefined control sequence.
+l.20 \newblock \url
+                   {http://yaml.org}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Underfull \hbox (badness 1199) in paragraph at lines 59--62
+[37
+
+
+]
+Underfull \hbox (badness 1199) in paragraph at lines 81--84
 [][]\OT1/cmr/m/n/12 He, H.  What is service-oriented ar-chi-tec-ture.  \OT1/cmr
 /m/it/12 Pu-blica^^Xc~ao eletr^onica em
  []
 
-[39
+[38]
+Underfull \hbox (badness 4120) in paragraph at lines 192--196
+[][]\OT1/cmr/m/n/12 Slee, M., Agarwal, A., e Kwi-at-kowski, M.  Th-rift: Sca-la
+-ble cross-
+ []
 
 
-] [40]) [41] [42
+Underfull \hbox (badness 5563) in paragraph at lines 192--196
+\OT1/cmr/m/n/12 language ser-vi-ces im-ple-men-ta-tion.  Te-ch-ni-cal re-port, 
+Fa-ce-book, 2012.
+ []
+
+) [39] [40
 
 ] (./apend_a.tex
  A.
-) [43
+(./swagger2NeoIDL.pl
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 # cabeçalho
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
-] (./dissertacaoLucas.aux)
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
 
-LaTeX Warning: There were undefined references.
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 # cabeçalho
+                 
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
 
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 #TODO: Path do modulo não 
+                                disponível no swagger
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 #TODO: Path do modulo não 
+                                disponível no swagger
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 #TODO: Path do modulo não disponível 
+                                            no swagger
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 #TODO: Path do modulo não disponível 
+                                            no swagger
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 		} else #não 
+                    possui atributo de tipo definido
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 		} else #não 
+                    possui atributo de tipo definido
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\lst@FillFixed@ not set up for use 
+with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 		#verificar se o dado é 
+                               obrigatório
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 		#verificar se o dado é 
+                               obrigatório
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 		#verificar se o dado é obrigatório
+                                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 		#verificar se o dado é obrigatório
+                                           
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 	#Obs: Nome do servico nao disponível 
+                                            no swagger
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 	#Obs: Nome do servico nao disponível 
+                                            no swagger
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 ...            #Obs: Nome da capacidade não 
+                                                  disponível
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 ...            #Obs: Nome da capacidade não 
+                                                  disponível
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Unicode char \u8:�\expandafter not set up for use wit
+h LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 ... #Obs: Nome da capacidade não disponível
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 ... #Obs: Nome da capacidade não disponível
+                                                  
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+)
+
+LaTeX Warning: Float too large for page by 2493.18983pt on input line 14.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [41
+
+
+] [42] (./dissertacaoLucas.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4525 strings out of 494963
- 61469 string characters out of 6179648
- 165698 words of memory out of 5000000
- 7611 multiletter control sequences out of 15000+600000
- 10774 words of font info for 38 fonts, out of 8000000 for 9000
+ 4684 strings out of 494963
+ 63536 string characters out of 6179648
+ 409213 words of memory out of 5000000
+ 7763 multiletter control sequences out of 15000+600000
+ 10606 words of font info for 37 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
- 38i,9n,43p,667b,1566s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,9n,43p,325b,1566s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
@@ -845,10 +1010,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dissertacaoLucas.pdf (55 pages, 464950 bytes).
+Output written on dissertacaoLucas.pdf (54 pages, 511935 bytes).
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
+ 408 PDF objects out of 1000 (max. 8388607)
+ 261 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 39 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 44 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -3,6 +3,7 @@
 
 
 \section{APRESENTAÇÃO}
+\label{apresentacaoNeoIDL}
 
 A \neoidl{} é uma linguagem específica de domínio (\textit{Domain Specific
 Language - DSL}) desenvolvida com o objetivo de possibilitar e simplificar o
@@ -19,6 +20,7 @@ sua sintaxe e \textit{framework}.
 
 
 \subsection{Histórico e motivação}
+\label{histMotivNeoIDL}
 \vspace{-6mm}
 
 A \neoidl{} surgiu no contexto de um projeto de colaboração entre a Universidade
@@ -272,39 +274,44 @@ a outros construtores da linguagem: \texttt{module}, \texttt{enum},
 nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
 disponíveis para utilização pelos \textit{plugins}.
 
+As próxima subseções apresentam a estrutura sintática e léxica \neoidl{} e
+refletem a situação de Agosto de 2015, antes da incorporação das construções
+relativas a \designbycontract{} (estas informações foram geradas 
+automaticamente pelo BNF-Converter \cite{forsberg-bnfc:2004} \textit{parser
+generator}). 
 
-
-
-\subsubsection{The lexical structure of NeoIDL}\label{sub:lexical}
+\subsubsection{A estrutura léxica da \neoidl{}}\label{sub:lexico}
 
 \begin{enumerate}
-  \item Identifiers
+  \item Identificadores
+  
+  Identificadores \nonterminal{Ident} são literais (\textit{strings}) não
+  delimitadas que começam com uma letra seguida por letras, números e os caracteres {\tt \_ '},
+  exceto palavras reservadas.
+  
+  \item Literais
+  
+  Literais de texto são cadeias de caracteres  \nonterminal{String}\ com a forma
+  \terminal{``}$x$\terminal{``}, onde $x$ é qualquer sequencia de caracter,
+  exceto \terminal{``}, a menos que precedido por \text{\tt \char92{}}.
+  
+  Literais numéricos \nonterminal{Int}\ são sequências não vazias de números.
+  
+  Literais de ponto flutuantes \nonterminal{Double}\ tem a estrutura
+  definida pela seguinte expressão regular: $\nonterminal{digit}+ \mbox{{\it
+  `.'}} \nonterminal{digit}+ (\mbox{{\it `e'}} \mbox{{\it `-'}}?
+  \nonterminal{digit}+)?$, ou seja, duas sequências de números separadas por um
+  ponto, opcionalmente precedida de um símbolo de negativo.
 
-Identifiers \nonterminal{Ident} are unquoted strings beginning with a letter,
-followed by any combination of letters, digits, and the characters {\tt \_ '},
-reserved words excluded.
+  \item Palavras reservadas e símbolos
 
-  \item Literals
-
-String literals \nonterminal{String}\ have the form
-\terminal{``}$x$\terminal{``}, where $x$ is any sequence of any characters
-except \terminal{``} unless preceded by %% \text{\tt \char92{}}. 
-
-Integer literals \nonterminal{Int}\ are nonempty sequences of digits.
-
-Double-precision float literals \nonterminal{Double}\ have the structure
-indicated by the regular expression $\nonterminal{digit}+ \mbox{{\it `.'}} 
-\nonterminal{digit}+ (\mbox{{\it `e'}} \mbox{{\it `-'}}? \nonterminal{digit}+)?$ i.e.
-two sequences of digits separated by a decimal point, optionally
-followed by an unsigned or negative exponent.
-
-  \item Reserved words and symbols
-The set of reserved words is the set of terminals appearing in the grammar. 
-Those reserved words that consist of non-letter characters are called symbols, 
-and they are treated in a different way from those that are similar to identifiers. 
-The lexer follows rules familiar from languages like Haskell, C, and Java, including longest match and spacing conventions.
-
-The reserved words used in NeoIDL are the following: \\
+  O conjunto de palavras reservadas são os terminais da gramática da linguagem
+  \neoidl{}. As palavras reservadas não compostas de letras são chamados
+  símbolos, que são tratados de forma diferente dos identificadores. A
+  sintaxe analisador léxico segue regras típicas de linguagens como Haskell, C e
+  Java, incluindo correspondência mais longa e convenções para o espaço.
+  
+  As palavras reservadas utilizadas na \neoidl{} são as seguintes: \\
 
 \begin{tabular}{lll}
 {\reserved{annotation}} &{\reserved{call}} &{\reserved{entity}} \\
@@ -314,7 +321,7 @@ The reserved words used in NeoIDL are the following: \\
 {\reserved{string}} & & \\
 \end{tabular}\\
   
-The symbols used in NeoIDL are the following: \\
+Os símbolos utilizados na \neoidl{} são os seguintes: \\
 
 \begin{tabular}{lll}
 {\symb{\{}} &{\symb{\}}} &{\symb{;}} \\
@@ -332,12 +339,11 @@ The symbols used in NeoIDL are the following: \\
 
 \end{enumerate}
 
-\subsubsection{The syntactic structure of NeoIDL}\label{sub:syntactic}
+\subsubsection{A estrutura sintática da NeoIDL}\label{sub:sintatico}
 
-Non-terminals are enclosed between $\langle$ and $\rangle$. 
-The symbols  {\arrow}  (production),  {\delimit}  (union) 
-and {\emptyP} (empty rule) belong to the following BNF notation.
-All other symbols are terminals.\\
+Não-terminais são delimitados entre $\langle$ e $\rangle$. O símbolo {\arrow}
+(produto), {\delimit} (união) e {\emptyP} (regra vazia) advêm da notação BNF.
+Todos os demais símbolos são terminais.\\
 
 \begin{small}
 \begin{tabular}{lll}
@@ -350,67 +356,66 @@ All other symbols are terminals.\\
  \quad {\nonterminal{ListResource}} \\ 
  \quad {\nonterminal{ListDecAnnotation}} \\ 
 {\terminal{\}}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Import}} & {\arrow}  &{\terminal{import}} {\nonterminal{NImport}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{MPath}} & {\arrow}  &{\emptyP} \\
  & {\delimit}  &{\terminal{path}} {\terminal{{$=$}}} {\nonterminal{String}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{NImport}} & {\arrow}  &{\nonterminal{Ident}}  \\
  & {\delimit}  &{\nonterminal{Ident}} {\terminal{.}} {\nonterminal{NImport}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Entity}} & {\arrow}  &{\nonterminal{ListDefAnnotation}} {\terminal{entity}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
  & {\delimit}  &{\nonterminal{ListDefAnnotation}} {\terminal{entity}} {\nonterminal{Ident}} {\terminal{extends}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Enum}} & {\arrow}  &{\terminal{enum}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListValue}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{DecAnnotation}} & {\arrow}  &{\terminal{annotation}} {\nonterminal{Ident}} {\terminal{for}} {\nonterminal{AnnotationType}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{DefAnnotation}} & {\arrow}  &{\terminal{@}} {\nonterminal{Ident}} {\terminal{(}} {\nonterminal{ListAssignment}} {\terminal{)}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Parameter}} & {\arrow}  &{\nonterminal{Type}} {\nonterminal{Ident}} {\nonterminal{Modifier}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Assignment}} & {\arrow}  &{\nonterminal{Ident}} {\terminal{{$=$}}} {\nonterminal{Value}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Modifier}} & {\arrow}  &{\emptyP} \\
  & {\delimit}  &{\terminal{{$=$}}} {\terminal{0}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lllllllll}
 {\nonterminal{AnnotationType}} & {\arrow}  &{\terminal{resource}}  
  & {\delimit}  &{\terminal{enum}}  
  & {\delimit}  &{\terminal{entity}}  
  & {\delimit}  &{\terminal{module}} 
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Resource}} & {\arrow}  &{\nonterminal{ListDefAnnotation}} {\terminal{resource}} {\nonterminal{Ident}} {\terminal{\{}} {\terminal{path}} {\terminal{{$=$}}} {\nonterminal{String}} {\terminal{;}} {\nonterminal{ListCapacity}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}\\
+\end{tabular}
 
 \begin{tabular}{lll}
 {\nonterminal{Capacity}} & {\arrow}  &{\nonterminal{NeoDoc}} {\nonterminal{ListDefNAnnotation}} {\nonterminal{Method}} {\nonterminal{Type}} {\nonterminal{Ident}} {\terminal{(}} {\nonterminal{ListParameter}} {\terminal{)}} {\terminal{;}}  \\
-\end{tabular}\\
-
+\end{tabular}
 
 \begin{tabular}{lllllllll}
 {\nonterminal{Method}} & {\arrow}  &{\terminal{@get}} 
@@ -422,30 +427,60 @@ All other symbols are terminals.\\
 
 
 
-
-
-
-
-
-
-
-
 \section{AVALIAÇÃO EMPÍRICA}
 \vspace{-6mm}
 
-% anexar script de transcrição.
+A primeira versão da \neoidl{} foi submetida a uma avaliação empírica de sua
+expressividade e reuso em um contexto real. As próximas subseções apresentam 
+o resultado da análise comparativa da representação de 44 (quarenta e quatro)
+contratos escritos em Swagger em relação à mesma especificação em \neoidl{}.
+Esse estudo foi realizado no transcurso do trabalho de mestrado e 
+publicado no periódico IJSeke \cite{lima2015neoidl}.
 
 \subsection{Expressividade}
 \vspace{-6mm}
 
+A \neoidl{} é uma DSL, conforme apresentado na seção \ref{apresentacaoNeoIDL},
+e como tal se destina a atender a um propósito específico, nem mais, nem menos
+\cite{hudak1998modular}. A \neoidl{} foi projetada para permitir a
+especificação de contratos de serviços REST de forma mais expressiva e concisa,
+facilitando-se a escrita e leitura por humanos (mais detalhes na subseção
+\ref{histMotivNeoIDL}).
+
+Programas escritos em DSLs costumam ser mais fáceis de escrever e,
+consequentemente, mais fáceis de se manter comparavelmente a programas escritos
+em linguagens de propósito geral \cite{hudak1998modular}. Isso se deve
+justamente ao fato de a DSL tratar apenas um conjunto reduzido de situações e
+problemas, fazendo com ela seja, muitas vezes, mais acessível ao público geral
+\cite{taha2008domain}.
+
+A expressividade da linguagem é um dos principais critérios para se escolher uma
+linguagem. Entretanto a linguagem que não expressa todas as situações
+necessárias ao seu contexto de uso, por óbvio, não podem ser usadas
+\cite{mackinlay1985expressiveness}. Nesse sentido, o primeiro teste que a
+\neoidl{} passou foi a produção de contratos e serviços reais no início do
+projeto com o Exército Brasileiro (vide subseção \ref{histMotivNeoIDL}).
+
+Assim, tendo a \neoidl{} demonstrado sua capacidade de representar contratos
+REST, foi realizada uma segunda análise: quão expressiva seria a \neoidl{}
+em comparação com outra linguagem com o mesmo objetivo. Foi escolhida
+Swagger \cite{swaggerSite}, uma linguagem cujo uso tem crescido pela indústria.
+Em Swagger, os contratos são escritos em JSON\cite{JSon} ou YAML\cite{YAML},
+ambos com uma estrutura geral de chave-valor.
+
+Tendo sido a \neoidl{} desenvolvida para ser mais fácil de compreender e
+manipular por humanos, foi adotada a estratégia de comparar a expressividade em
+termos de quantidade de linhas de código (SLOC - do inglês \textit{Source Lines of Code}), uma vez que
+muitas linhas significam maior esforço para escrita, sobretudo na abordagem
+\CtFirst{}. 
 
 
-In Section~\ref{sub:experience} we presented the comparison in SLOC between the contracts
-specification in NeoIDL and the resultant code generated by the framework. Another
-relevant issue is a comparison of expressiveness of contracts written in \neoidl{} and other popular
-languages with the same purpose (specifying contracts for REST services). In this context,
-we compared \neoidl{} specifications with Swagger specifications, a language that has been increasily used by the industry.
-Swagger ~\cite{swagger} contracts may by written in JSON and Yaml, both based on key-value structure.
+
+
+
+
+
+
 
 In a collaborative work with the Brazilian Army,
 we obtained a portion of their contracts' specifications in Swagger (44 in total), specified with version 1.2.

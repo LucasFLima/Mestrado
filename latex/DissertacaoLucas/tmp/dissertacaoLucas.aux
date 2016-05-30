@@ -99,105 +99,130 @@
 \@writefile{lol}{\contentsline {lstlisting}{exemploSpecSharp.tex}{19}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Exemplo de pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es em Spec\#}}{19}}
 \newlabel{lst:exemploJML}{{2.3}{19}}
-\citation{fielding-rest:2002}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}NEOIDL: LINGUAGEM PARA ESPECIFICA\IeC {\c C}\IeC {\~A}O DE CONTRATOS REST}{20}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}NEOIDL: LINGUAGEM PARA ESPECIFICA\IeC {\c C}\IeC {\~A}O DE CONTRATOS REST }{20}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}APRESENTA\IeC {\c C}\IeC {\~A}O}{20}}
+\newlabel{apresentacaoNeoIDL}{{3.1}{20}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Hist\IeC {\'o}rico e motiva\IeC {\c c}\IeC {\~a}o}{20}}
-\citation{twisted:book}
+\newlabel{histMotivNeoIDL}{{3.1.1}{20}}
+\citation{corba}
+\citation{thrift}
 \citation{david:commandControl}
 \citation{ranta-bnfc:2012}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces SLOC distribution among services implementations}}{22}}
-\newlabel{fig:sloc-boxplot}{{3.1}{22}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}\textit  {Framework}}{22}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.1}PluginDef component}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}\textit  {Framework}}{21}}
+\newlabel{frameNeoIDL}{{3.1.2}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquitetura do framework de gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo da NeoIDL{}.}}{22}}
+\newlabel{fig:neoidl-architecture}{{3.1}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Gerador de c\IeC {\'o}digo da NeoIDL{}}}{22}}
+\newlabel{fig:programGenerator}{{3.2}{22}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.1}Componente PluginDef}{22}}
 \newlabel{sec:plugindef}{{3.1.2.1}{22}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Major architectural components of NeoIDL{} program generator.}}{22}}
-\newlabel{fig:neoidl-architecture}{{3.2}{22}}
-\citation{jones-typeClasses:1995}
-\citation{ghc-api}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.2}PluginLoader component}{23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Linguagem}{25}}
-\@writefile{lol}{\contentsline {lstlisting}{mensagemData.tex}{26}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Message data type specified in NeoIDL}}{26}}
-\newlabel{lst:messagedata-neo}{{3.3}{26}}
-\@writefile{lol}{\contentsline {lstlisting}{mensagem.tex}{26}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Sent message service specification in NeoIDL}}{26}}
-\newlabel{lst:sentmessage-neo}{{3.4}{26}}
+\@writefile{lol}{\contentsline {lstlisting}{pluginDefStructure.tex}{23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Assinatura do \texttt  {PluginDef}}}{23}}
+\newlabel{lst:pluginDef}{{3.3}{23}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.2}Componente PluginLoader}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Linguagem}{24}}
+\newlabel{linguagemNeoIDL}{{3.1.3}{24}}
+\@writefile{lol}{\contentsline {lstlisting}{mensagemData.tex}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Tipos de dados definidos na NeoIDL}}{24}}
+\newlabel{lst:messagedata-neo}{{3.4}{24}}
+\@writefile{lol}{\contentsline {lstlisting}{mensagem.tex}{25}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Sent message service specification in NeoIDL}}{25}}
+\newlabel{lst:sentmessage-neo}{{3.5}{25}}
 \citation{forsberg-bnfc:2004}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.1}The lexical structure of NeoIDL}{27}}
-\newlabel{sub:lexical}{{3.1.3.1}{27}}
-\@writefile{lol}{\contentsline {lstlisting}{agent.tex}{28}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces NeoIDL{} specification using annotations}}{28}}
-\newlabel{lst:agent}{{3.5}{28}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.2}The syntactic structure of NeoIDL}{30}}
-\newlabel{sub:syntactic}{{3.1.3.2}{30}}
-\newlabel{lst:BNFnot}{{3.1.3.2}{30}}
-\citation{swagger}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}AVALIA\IeC {\c C}\IeC {\~A}O EMP\IeC {\'I}RICA}{31}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Expressividade}{31}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Correlation of the Expressiveness Improvement with the size of the Swagger specifications}}{32}}
-\newlabel{tab:size-corr}{{3.1}{32}}
+\@writefile{lol}{\contentsline {lstlisting}{messageSendAnnotation.tex}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Especifica\IeC {\c c}\IeC {\~a}o de anota\IeC {\c c}\IeC {\~a}o na NeoIDL{}}}{26}}
+\newlabel{lst:annotationNeoIDL}{{3.6}{26}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.1}A estrutura l\IeC {\'e}xica da NeoIDL{}}{27}}
+\newlabel{sub:lexico}{{3.1.3.1}{27}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.2}A estrutura sint\IeC {\'a}tica da NeoIDL}{28}}
+\newlabel{sub:sintatico}{{3.1.3.2}{28}}
+\newlabel{lst:BNFnot}{{3.1.3.2}{28}}
+\citation{lima2015neoidl}
+\citation{hudak1998modular}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}AVALIA\IeC {\c C}\IeC {\~A}O EMP\IeC {\'I}RICA}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Expressividade}{29}}
+\citation{hudak1998modular}
+\citation{taha2008domain}
+\citation{mackinlay1985expressiveness}
+\citation{swaggerSite}
+\citation{JSon}
+\citation{YAML}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Correlation of the Expressiveness Improvement with the size of the Swagger specifications}}{31}}
+\newlabel{tab:size-corr}{{3.1}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Potencial de reuso}{31}}
 \citation{meyer1992applying}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Potencial de reuso}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}EXTENS\IeC {\~A}O DA NEOIDL PARA DESIGN BY CONTRACT}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Proposta: Servi\IeC {\c c}os com Desing-by-Contract}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.1}Modelo de opera\IeC {\c c}\IeC {\~a}o}{34}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}EXTENS\IeC {\~A}O DA NEOIDL PARA DESIGN BY CONTRACT}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Proposta: Servi\IeC {\c c}os com Desing-by-Contract}{32}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.1}Modelo de opera\IeC {\c c}\IeC {\~a}o}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Digrama de atividades com verifica\IeC {\c c}\IeC {\~a}o de pr\IeC {\'e} e p\IeC {\'o}s condi\IeC {\c c}\IeC {\~o}es}}{33}}
+\newlabel{FigServiceDbC}{{3.7}{33}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.2}Verifica\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~o}es}{34}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Digrama de atividades com verifica\IeC {\c c}\IeC {\~a}o de pr\IeC {\'e} e p\IeC {\'o}s condi\IeC {\c c}\IeC {\~o}es}}{35}}
-\newlabel{FigServiceDbC}{{3.6}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de atividades do processamento da pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~a}o}}{34}}
+\newlabel{FigServicePrecondition}{{3.8}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de atividades do processamento da p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o}}{35}}
+\newlabel{FigServicePostcondition}{{3.9}{35}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.3}Verifica\IeC {\c c}\IeC {\~a}o das p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}{35}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de atividades do processamento da pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~a}o}}{36}}
-\newlabel{FigServicePrecondition}{{3.7}{36}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de atividades do processamento da p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o}}{36}}
-\newlabel{FigServicePostcondition}{{3.8}{36}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Extens\IeC {\~a}o da linguagem}{36}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.1}Precondi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{36}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Extens\IeC {\~a}o da linguagem}{35}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.1}Precondi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{35}}
+\@writefile{lol}{\contentsline {lstlisting}{DBCsimple.neo}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Exemplo da nota\IeC {\c c}\IeC {\~a}o DBC b\IeC {\'a}sica na NeoIDL{}}}{35}}
+\newlabel{lst:DBCService}{{3.10}{35}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.2}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{36}}
-\@writefile{lol}{\contentsline {lstlisting}{DBCsimple.neo}{37}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Exemplo da nota\IeC {\c c}\IeC {\~a}o DBC b\IeC {\'a}sica na NeoIDL{}}}{37}}
-\newlabel{lst:DBCService}{{3.9}{37}}
-\@writefile{lol}{\contentsline {lstlisting}{DBCservice.neo}{37}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Exemplo da nota\IeC {\c c}\IeC {\~a}o DBC na NeoIDL{} com chamada a servi\IeC {\c c}o}}{37}}
-\newlabel{lst:DBCService}{{3.10}{37}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.3}Precondi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{37}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.4}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{37}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Estudo de caso: plugin twisted}{37}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3.1}Arquitetura}{38}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3.2}Gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo}{38}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.3}Precondi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{36}}
+\@writefile{lol}{\contentsline {lstlisting}{DBCservice.neo}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Exemplo da nota\IeC {\c c}\IeC {\~a}o DBC na NeoIDL{} com chamada a servi\IeC {\c c}o}}{36}}
+\newlabel{lst:DBCService}{{3.11}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.4}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{36}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Estudo de caso: plugin twisted}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3.1}Arquitetura}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3.2}Gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo}{36}}
 \bibstyle{plainbr}
 \bibdata{bibdata}
-\bibcite{swaggerSite}{1}
-\bibcite{WSDLSite}{2}
-\bibcite{alonso2004web}{3}
-\bibcite{barnett2004spec}{4}
-\bibcite{chen2008towards}{5}
-\bibcite{erl2008soaDesigPatterns}{6}
-\bibcite{erl2008soa}{7}
-\bibcite{erl2009web}{8}
-\bibcite{fielding2000architectural}{9}
-\bibcite{hadley2006web}{10}
-\bibcite{he2003service}{11}
-\bibcite{jazequel1997design}{12}
-\bibcite{karthikeyancontract}{13}
-\@writefile{toc}{\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{39}}
-\bibcite{leavens2006design}{14}
-\bibcite{leymann2005combining}{15}
-\bibcite{lima2015neoidl}{16}
-\bibcite{meyer1988eiffel}{17}
-\bibcite{meyer1992applying}{18}
-\bibcite{meyer1997object}{19}
-\bibcite{mills1975new}{20}
-\bibcite{mumbaikar2013web}{21}
-\bibcite{papazoglou2007service}{22}
-\bibcite{papazoglou2008service}{23}
-\bibcite{papazoglou2007serviceApprTechRechIss}{24}
-\bibcite{ranta-bnfc:2012}{25}
-\bibcite{rao2004survey}{26}
-\bibcite{serrano2014service}{27}
-\bibcite{wideberg2015restful}{28}
-\@writefile{toc}{\contentsline {chapter}{AP\IeC {\^E}NDICES}{42}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}CONTRATO NEOIDL COM DBC}{43}}
+\bibcite{JSon}{1}
+\bibcite{swaggerSite}{2}
+\bibcite{WSDLSite}{3}
+\bibcite{YAML}{4}
+\bibcite{david:commandControl}{5}
+\bibcite{alonso2004web}{6}
+\bibcite{barnett2004spec}{7}
+\bibcite{chen2008towards}{8}
+\bibcite{erl2008soaDesigPatterns}{9}
+\bibcite{erl2008soa}{10}
+\bibcite{erl2009web}{11}
+\bibcite{fielding2000architectural}{12}
+\bibcite{forsberg-bnfc:2004}{13}
+\@writefile{toc}{\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{37}}
+\bibcite{hadley2006web}{14}
+\bibcite{he2003service}{15}
+\bibcite{hudak1998modular}{16}
+\bibcite{jazequel1997design}{17}
+\bibcite{karthikeyancontract}{18}
+\bibcite{leavens2006design}{19}
+\bibcite{leymann2005combining}{20}
+\bibcite{lima2015neoidl}{21}
+\bibcite{mackinlay1985expressiveness}{22}
+\bibcite{meyer1988eiffel}{23}
+\bibcite{meyer1992applying}{24}
+\bibcite{meyer1997object}{25}
+\bibcite{mills1975new}{26}
+\bibcite{mumbaikar2013web}{27}
+\bibcite{corba}{28}
+\bibcite{papazoglou2007service}{29}
+\bibcite{papazoglou2008service}{30}
+\bibcite{papazoglou2007serviceApprTechRechIss}{31}
+\bibcite{ranta-bnfc:2012}{32}
+\bibcite{rao2004survey}{33}
+\bibcite{serrano2014service}{34}
+\bibcite{thrift}{35}
+\bibcite{taha2008domain}{36}
+\bibcite{wideberg2015restful}{37}
+\@writefile{toc}{\contentsline {chapter}{AP\IeC {\^E}NDICES}{40}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}TRANFORMA\IeC {\c C}\IeC {\~A}O SWAGGER PARA NEOIDL}{41}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{scriptSwagger2NeoIDL}{{A}{41}}
+\@writefile{lol}{\contentsline {lstlisting}{swagger2NeoIDL.pl}{42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Conversor de Swagger para NeoIDL{}}}{42}}
+\newlabel{lst:swagger2NeoIDL}{{A.1}{42}}
