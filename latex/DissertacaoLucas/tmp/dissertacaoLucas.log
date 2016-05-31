@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  30 MAY 2016 19:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  31 MAY 2016 16:59
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -290,13 +290,9 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip43
-\enit@outerparindent=\dimen106
-\enit@toks=\toks17
-\enit@inbox=\box26
-\enitdp@description=\count90
+(/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+\@enLab=\toks17
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -308,43 +304,43 @@ Package color Info: Driver file: pdftex.def on input line 130.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen107
-\lightrulewidth=\dimen108
-\cmidrulewidth=\dimen109
-\belowrulesep=\dimen110
-\belowbottomsep=\dimen111
-\aboverulesep=\dimen112
-\abovetopsep=\dimen113
-\cmidrulesep=\dimen114
-\cmidrulekern=\dimen115
-\defaultaddspace=\dimen116
-\@cmidla=\count91
-\@cmidlb=\count92
-\@aboverulesep=\dimen117
-\@belowrulesep=\dimen118
-\@thisruleclass=\count93
-\@lastruleclass=\count94
-\@thisrulewidth=\dimen119
+\heavyrulewidth=\dimen106
+\lightrulewidth=\dimen107
+\cmidrulewidth=\dimen108
+\belowrulesep=\dimen109
+\belowbottomsep=\dimen110
+\aboverulesep=\dimen111
+\abovetopsep=\dimen112
+\cmidrulesep=\dimen113
+\cmidrulekern=\dimen114
+\defaultaddspace=\dimen115
+\@cmidla=\count90
+\@cmidlb=\count91
+\@aboverulesep=\dimen116
+\@belowrulesep=\dimen117
+\@thisruleclass=\count92
+\@lastruleclass=\count93
+\@thisrulewidth=\dimen118
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count95
-\lst@gtempboxa=\box27
+\lst@mode=\count94
+\lst@gtempboxa=\box26
 \lst@token=\toks18
-\lst@length=\count96
-\lst@currlwidth=\dimen120
-\lst@column=\count97
-\lst@pos=\count98
-\lst@lostspace=\dimen121
-\lst@width=\dimen122
-\lst@newlines=\count99
-\lst@lineno=\count100
-\lst@maxwidth=\dimen123
+\lst@length=\count95
+\lst@currlwidth=\dimen119
+\lst@column=\count96
+\lst@pos=\count97
+\lst@lostspace=\dimen120
+\lst@width=\dimen121
+\lst@newlines=\count98
+\lst@lineno=\count99
+\lst@maxwidth=\dimen122
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-\c@lstnumber=\count101
-\lst@skipnumbers=\count102
-\lst@framebox=\box28
+\c@lstnumber=\count100
+\lst@skipnumbers=\count101
+\lst@framebox=\box27
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2013/08/26 1.5b listings configuration
@@ -355,36 +351,33 @@ Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
 LaTeX Warning: Label `lst:exemploJML' multiply defined.
 
-
-LaTeX Warning: Label `lst:DBCService' multiply defined.
-
 )
 \openout1 = `dissertacaoLucas.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count103
-\scratchdimen=\dimen124
-\scratchbox=\box29
-\nofMPsegments=\count104
-\nofMParguments=\count105
+\scratchcounter=\count102
+\scratchdimen=\dimen123
+\scratchbox=\box28
+\nofMPsegments=\count103
+\nofMParguments=\count104
 \everyMPshowfont=\toks19
-\MPscratchCnt=\count106
-\MPscratchDim=\dimen125
-\MPnumerator=\count107
-\makeMPintoPDFobject=\count108
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen124
+\MPnumerator=\count106
+\makeMPintoPDFobject=\count107
 \everyMPtoPDFconversion=\toks20
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -434,7 +427,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count109
+\c@lstlisting=\count108
 
 (./folha_titulo.tex [1
 
@@ -496,7 +489,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 49.
 [1
 
-] [2] [3]) (./cap2.tex [4]
+]
+
+LaTeX Warning: Reference `extensaoNeoIDL-DbC' on page 2 undefined on input line
+ 91.
+
+
+LaTeX Warning: Reference `pluginTwisted' on page 2 undefined on input line 94.
+
+
+LaTeX Warning: Reference `analiseSubjetiva' on page 2 undefined on input line 9
+8.
+
+[2]) (./cap2.tex [3] [4]
  2.
 [5
 
@@ -507,7 +512,7 @@ nforma^^Xc~oes
  []
 
 [7] [8]
-Overfull \hbox (10.17343pt too wide) in paragraph at lines 181--183
+Overfull \hbox (1.68741pt too wide) in paragraph at lines 181--183
 [][]\OT1/cmr/m/n/12 Ampliar a agi-li-dade, re-mon-tando as com-posi^^Xc~oes por
  re-du-zido es-for^^Xco, beneficiando-
  []
@@ -567,98 +572,7 @@ inLoader\OT1/cmr/m/n/12 .
  []
 
 [23] (./mensagemData.tex) [24] (./mensagem.tex) [25]
-(./messageSendAnnotation.tex) [26]
-! Undefined control sequence.
-l.296 ...inal{``}, a menos que precedido por \text
-                                                  {\tt \char92{}}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 327
-.
-(/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
-File: omscmtt.fd 
-)
-LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 327.
-
-Underfull \hbox (badness 10000) in paragraph at lines 326--339
-
- []
-
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 344--347
-
- []
-
-LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 351.
-
-Overfull \hbox (12.51161pt too wide) in paragraph at lines 375--379
-[][][] 
- []
-
-[28]
-Overfull \hbox (5.45493pt too wide) in paragraph at lines 384--387
-[][][] 
- []
-
-
-Overfull \hbox (45.27042pt too wide) in paragraph at lines 412--415
-[][][] 
- []
-
-
-Overfull \hbox (61.20961pt too wide) in paragraph at lines 416--419
-[][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 420--427
-
- []
-
-[29] [30] [31] [32] <ServiceDbC.png, id=304, 950.04938pt x 545.03625pt>
-File: ServiceDbC.png Graphic file (type png)
-
-<use ServiceDbC.png>
-Package pdftex.def Info: ServiceDbC.png used on input line 613.
-(pdftex.def)             Requested size: 441.01772pt x 246.40288pt.
- [33 <./ServiceDbC.png>]
-<PreconditionValidation.png, id=312, 798.73407pt x 344.03531pt>
-File: PreconditionValidation.png Graphic file (type png)
-
-<use PreconditionValidation.png>
-Package pdftex.def Info: PreconditionValidation.png used on input line 652.
-(pdftex.def)             Requested size: 441.01772pt x 182.10506pt.
-
-<PostconditionValidation.png, id=314, 797.98125pt x 295.85532pt>
-File: PostconditionValidation.png Graphic file (type png)
-
-<use PostconditionValidation.png>
-Package pdftex.def Info: PostconditionValidation.png used on input line 664.
-(pdftex.def)             Requested size: 441.01772pt x 155.64842pt.
- [34 <./PreconditionValidation.png>]
-(./DBCsimple.neo) [35 <./PostconditionValidation.png>] (./DBCservice.neo))
-[36] (./dissertacaoLucas.bbl
+(./messageSendAnnotation.tex) [26] [27] [28]) [29] (./dissertacaoLucas.bbl
 ! Undefined control sequence.
 l.5 \newblock \url
                   {http://www.json.org}.
@@ -701,7 +615,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[37
+[30
 
 
 ]
@@ -710,7 +624,7 @@ Underfull \hbox (badness 1199) in paragraph at lines 81--84
 /m/it/12 Pu-blica^^Xc~ao eletr^onica em
  []
 
-[38]
+[31]
 Underfull \hbox (badness 4120) in paragraph at lines 192--196
 [][]\OT1/cmr/m/n/12 Slee, M., Agarwal, A., e Kwi-at-kowski, M.  Th-rift: Sca-la
 -ble cross-
@@ -722,7 +636,7 @@ Underfull \hbox (badness 5563) in paragraph at lines 192--196
 Fa-ce-book, 2012.
  []
 
-) [39] [40
+) [32] [33
 
 ] (./apend_a.tex
  A.
@@ -977,22 +891,97 @@ LaTeX Warning: Float too large for page by 2493.18983pt on input line 14.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [41
+) (./apend_b.tex [34
 
 
-] [42] (./dissertacaoLucas.aux)
+] [35]
+ B.
+! Undefined control sequence.
+l.20 ...minal{``}, a menos que precedido por \text
+                                                  {\tt \char92{}}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--47
+
+ []
+
+[36
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 51.
+
+(/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--71
+
+ []
+
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 77.
+[37]
+Overfull \hbox (12.51161pt too wide) in paragraph at lines 102--106
+[][][] 
+ []
+
+
+Overfull \hbox (5.45493pt too wide) in paragraph at lines 111--114
+[][][] 
+ []
+
+
+Overfull \hbox (45.27042pt too wide) in paragraph at lines 139--142
+[][][] 
+ []
+
+
+Overfull \hbox (61.20961pt too wide) in paragraph at lines 143--146
+[][][] 
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 147--281
+
+ []
+
+[38] (./dissertacaoLucas.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4684 strings out of 494963
- 63536 string characters out of 6179648
- 409213 words of memory out of 5000000
- 7763 multiletter control sequences out of 15000+600000
+ 4380 strings out of 494963
+ 58301 string characters out of 6179648
+ 403433 words of memory out of 5000000
+ 7469 multiletter control sequences out of 15000+600000
  10606 words of font info for 37 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
- 38i,9n,43p,325b,1566s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,9n,43p,328b,1524s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
@@ -1010,10 +999,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dissertacaoLucas.pdf (54 pages, 511916 bytes).
+Output written on dissertacaoLucas.pdf (50 pages, 383435 bytes).
 PDF statistics:
- 408 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
+ 383 PDF objects out of 1000 (max. 8388607)
+ 249 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 44 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

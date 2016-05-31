@@ -11,10 +11,6 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Tipos de dados definidos na NeoIDL}}{24}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Sent message service specification in NeoIDL}}{25}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Especifica\IeC {\c c}\IeC {\~a}o de anota\IeC {\c c}\IeC {\~a}o na NeoIDL{}}}{26}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Digrama de atividades com verifica\IeC {\c c}\IeC {\~a}o de pr\IeC {\'e} e p\IeC {\'o}s condi\IeC {\c c}\IeC {\~o}es}}{33}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de atividades do processamento da pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~a}o}}{34}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de atividades do processamento da p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o}}{35}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Exemplo da nota\IeC {\c c}\IeC {\~a}o DBC b\IeC {\'a}sica na NeoIDL{}}}{35}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Exemplo da nota\IeC {\c c}\IeC {\~a}o DBC na NeoIDL{} com chamada a servi\IeC {\c c}o}}{36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Conversor de Swagger para NeoIDL{}}}{42}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Conversor de Swagger para NeoIDL{}}}{35}
+\addvspace {10\p@ }

@@ -1,0 +1,153 @@
+\chapter{ESTRUTURA DA LINGUAGEM NEOIDL}
+\label{apend:estruturaLexicaNeoIDL}
+
+Estas informações foram geradas automaticamente pelo BNF-Converter \cite{forsberg-bnfc:2004}
+\textit{parser generator}) a partir da gramática da \neoidl{}.
+
+\section{ESTRUTURA LÉXICA DA NEOIDL}
+
+\begin{enumerate}
+  \item Identificadores
+  
+  Identificadores \nonterminal{Ident} são literais (\textit{strings}) não
+  delimitadas que começam com uma letra seguida por letras, números e os caracteres {\tt \_ '},
+  exceto palavras reservadas.
+  
+  \item Literais
+  
+  Literais de texto são cadeias de caracteres  \nonterminal{String}\ com a forma
+  \terminal{``}$x$\terminal{``}, onde $x$ é qualquer sequencia de caracter,
+  exceto \terminal{``}, a menos que precedido por \text{\tt \char92{}}.
+  
+  Literais numéricos \nonterminal{Int}\ são sequências não vazias de números.
+  
+  Literais de ponto flutuantes \nonterminal{Double}\ tem a estrutura
+  definida pela seguinte expressão regular: $\nonterminal{digit}+ \mbox{{\it
+  `.'}} \nonterminal{digit}+ (\mbox{{\it `e'}} \mbox{{\it `-'}}?
+  \nonterminal{digit}+)?$, ou seja, duas sequências de números separadas por um
+  ponto, opcionalmente precedida de um símbolo de negativo.
+
+  \item Palavras reservadas e símbolos
+
+  O conjunto de palavras reservadas são os terminais da gramática da linguagem
+  \neoidl{}. As palavras reservadas não compostas de letras são chamados
+  símbolos, que são tratados de forma diferente dos identificadores. A
+  sintaxe analisador léxico segue regras típicas de linguagens como Haskell, C e
+  Java, incluindo correspondência mais longa e convenções para o espaço.
+  
+  As palavras reservadas utilizadas na \neoidl{} são as seguintes: \\
+
+\begin{tabular}{lll}
+{\reserved{annotation}} &{\reserved{call}} &{\reserved{entity}} \\
+{\reserved{enum}} &{\reserved{extends}} &{\reserved{float}} \\
+{\reserved{for}} &{\reserved{import}} &{\reserved{int}} \\
+{\reserved{module}} &{\reserved{path}} &{\reserved{resource}} \\
+{\reserved{string}} & & \\
+\end{tabular}\\
+  
+Os símbolos utilizados na \neoidl{} são os seguintes: \\
+
+\begin{tabular}{lll}
+{\symb{\{}} &{\symb{\}}} &{\symb{;}} \\
+{\symb{{$=$}}} &{\symb{.}} &{\symb{@}} \\
+{\symb{(}} &{\symb{)}} &{\symb{0}} \\
+{\symb{{$=$}{$=$}}} &{\symb{{$<$}{$>$}}} &{\symb{{$>$}}} \\
+{\symb{{$>$}{$=$}}} &{\symb{{$<$}}} &{\symb{{$<$}{$=$}}} \\
+{\symb{[}} &{\symb{]}} &{\symb{@get}} \\
+{\symb{@post}} &{\symb{@put}} &{\symb{@delete}} \\
+{\symb{/@require}} &{\symb{/@ensure}} &{\symb{/@invariant}} \\
+{\symb{/@otherwise}} &{\symb{/**}} &{\symb{*/}} \\
+{\symb{*}} &{\symb{@desc}} &{\symb{@param}} \\
+{\symb{@consume}} &{\symb{,}} & \\
+\end{tabular}\\
+
+\end{enumerate}
+
+\section{ESTRUTURA SINTÁTICA DA NEOIDL}\label{sub:sintatico}
+
+Não-terminais são delimitados entre $\langle$ e $\rangle$. O símbolo {\arrow}
+(produto), {\delimit} (união) e {\emptyP} (regra vazia) advêm da notação BNF.
+Todos os demais símbolos são terminais.\\
+
+
+\begin{small}
+
+\begin{tabular}{lll}
+\label{lst:BNFnot}
+{\nonterminal{Modulo}} {\arrow} {\terminal{module}} {\nonterminal{Ident}} {\terminal{\{}} \\ 
+ \quad {\nonterminal{ListImport}} \\ 
+ \quad {\nonterminal{MPath}} \\ 
+ \quad {\nonterminal{ListEnum}} \\ 
+ \quad {\nonterminal{ListEntity}} \\ 
+ \quad {\nonterminal{ListResource}} \\ 
+ \quad {\nonterminal{ListDecAnnotation}} \\ 
+{\terminal{\}}}  \\
+\end{tabular}
+
+
+\begin{tabular}{lll}
+{\nonterminal{Import}} & {\arrow}  &{\terminal{import}} {\nonterminal{NImport}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{MPath}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\terminal{path}} {\terminal{{$=$}}} {\nonterminal{String}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{NImport}} & {\arrow}  &{\nonterminal{Ident}}  \\
+ & {\delimit}  &{\nonterminal{Ident}} {\terminal{.}} {\nonterminal{NImport}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Entity}} & {\arrow}  &{\nonterminal{ListDefAnnotation}} {\terminal{entity}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
+ & {\delimit}  &{\nonterminal{ListDefAnnotation}} {\terminal{entity}} {\nonterminal{Ident}} {\terminal{extends}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Enum}} & {\arrow}  &{\terminal{enum}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListValue}} {\terminal{\}}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{DecAnnotation}} & {\arrow}  &{\terminal{annotation}} {\nonterminal{Ident}} {\terminal{for}} {\nonterminal{AnnotationType}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{DefAnnotation}} & {\arrow}  &{\terminal{@}} {\nonterminal{Ident}} {\terminal{(}} {\nonterminal{ListAssignment}} {\terminal{)}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Parameter}} & {\arrow}  &{\nonterminal{Type}} {\nonterminal{Ident}} {\nonterminal{Modifier}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Assignment}} & {\arrow}  &{\nonterminal{Ident}} {\terminal{{$=$}}} {\nonterminal{Value}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Modifier}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\terminal{{$=$}}} {\terminal{0}}  \\
+\end{tabular}
+
+\begin{tabular}{lllllllll}
+{\nonterminal{AnnotationType}} & {\arrow}  &{\terminal{resource}}  
+ & {\delimit}  &{\terminal{enum}}  
+ & {\delimit}  &{\terminal{entity}}  
+ & {\delimit}  &{\terminal{module}} 
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Resource}} & {\arrow}  &{\nonterminal{ListDefAnnotation}} {\terminal{resource}} {\nonterminal{Ident}} {\terminal{\{}} {\terminal{path}} {\terminal{{$=$}}} {\nonterminal{String}} {\terminal{;}} {\nonterminal{ListCapacity}} {\terminal{\}}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lll}
+{\nonterminal{Capacity}} & {\arrow}  &{\nonterminal{NeoDoc}} {\nonterminal{ListDefNAnnotation}} {\nonterminal{Method}} {\nonterminal{Type}} {\nonterminal{Ident}} {\terminal{(}} {\nonterminal{ListParameter}} {\terminal{)}} {\terminal{;}}  \\
+\end{tabular}
+
+\begin{tabular}{lllllllll}
+{\nonterminal{Method}} & {\arrow}  &{\terminal{@get}} 
+ & {\delimit}  &{\terminal{@post}} 
+ & {\delimit}  &{\terminal{@put}}  
+ & {\delimit}  &{\terminal{@delete}} 
+\end{tabular}\\
+\end{small}    

@@ -2,7 +2,6 @@
 \contentsline {chapter}{\numberline {1}INTRODU\IeC {\c C}\IeC {\~A}O}{1}
 \contentsline {section}{\numberline {1.1}PROBLEMA DE PESQUISA}{1}
 \contentsline {section}{\numberline {1.2}OBJETIVO GERAL}{2}
-\contentsline {subsection}{\numberline {1.2.1}Objetivos espec\IeC {\'\i }ficos}{2}
 \contentsline {section}{\numberline {1.3}JUSTIFICATIVA E RELEV\IeC {\^A}NCIA}{3}
 \contentsline {section}{\numberline {1.4}ESTRUTURA}{4}
 \contentsline {chapter}{\numberline {2}REFERENCIAL TE\IeC {\'O}RICO}{5}
@@ -25,24 +24,12 @@
 \contentsline {subsubsection}{\numberline {3.1.2.1}Componente PluginDef}{22}
 \contentsline {subsubsection}{\numberline {3.1.2.2}Componente PluginLoader}{23}
 \contentsline {subsection}{\numberline {3.1.3}Linguagem}{24}
-\contentsline {subsubsection}{\numberline {3.1.3.1}A estrutura l\IeC {\'e}xica da NeoIDL{}}{27}
-\contentsline {subsubsection}{\numberline {3.1.3.2}A estrutura sint\IeC {\'a}tica da NeoIDL}{28}
-\contentsline {section}{\numberline {3.2}AVALIA\IeC {\c C}\IeC {\~A}O EMP\IeC {\'I}RICA}{29}
-\contentsline {subsection}{\numberline {3.2.1}Expressividade}{29}
-\contentsline {subsection}{\numberline {3.2.2}Potencial de reuso}{31}
-\contentsline {section}{\numberline {3.3}EXTENS\IeC {\~A}O DA NEOIDL PARA DESIGN BY CONTRACT}{32}
-\contentsline {subsection}{\numberline {3.3.1}Proposta: Servi\IeC {\c c}os com Desing-by-Contract}{32}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Modelo de opera\IeC {\c c}\IeC {\~a}o}{33}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Verifica\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e}-condi\IeC {\c c}\IeC {\~o}es}{34}
-\contentsline {subsubsection}{\numberline {3.3.1.3}Verifica\IeC {\c c}\IeC {\~a}o das p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}{35}
-\contentsline {subsection}{\numberline {3.3.2}Extens\IeC {\~a}o da linguagem}{35}
-\contentsline {subsubsection}{\numberline {3.3.2.1}Precondi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{35}
-\contentsline {subsubsection}{\numberline {3.3.2.2}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica}{36}
-\contentsline {subsubsection}{\numberline {3.3.2.3}Precondi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{36}
-\contentsline {subsubsection}{\numberline {3.3.2.4}P\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o}{36}
-\contentsline {subsection}{\numberline {3.3.3}Estudo de caso: plugin twisted}{36}
-\contentsline {subsubsection}{\numberline {3.3.3.1}Arquitetura}{36}
-\contentsline {subsubsection}{\numberline {3.3.3.2}Gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo}{36}
-\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{37}
-\contentsline {chapter}{AP\IeC {\^E}NDICES}{40}
-\contentsline {chapter}{\numberline {A}TRANFORMA\IeC {\c C}\IeC {\~A}O SWAGGER PARA NEOIDL}{41}
+\contentsline {section}{\numberline {3.2}AVALIA\IeC {\c C}\IeC {\~A}O EMP\IeC {\'I}RICA}{27}
+\contentsline {subsection}{\numberline {3.2.1}Expressividade}{27}
+\contentsline {subsection}{\numberline {3.2.2}Potencial de reuso}{29}
+\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{30}
+\contentsline {chapter}{AP\IeC {\^E}NDICES}{33}
+\contentsline {chapter}{\numberline {A}TRANFORMA\IeC {\c C}\IeC {\~A}O SWAGGER PARA NEOIDL}{34}
+\contentsline {chapter}{\numberline {B}ESTRUTURA DA LINGUAGEM NEOIDL}{36}
+\contentsline {section}{\numberline {B.1}ESTRUTURA L\IeC {\'E}XICA DA NEOIDL}{36}
+\contentsline {section}{\numberline {B.2}ESTRUTURA SINT\IeC {\'A}TICA DA NEOIDL}{37}

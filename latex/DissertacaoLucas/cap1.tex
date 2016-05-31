@@ -75,22 +75,27 @@ pós-condições.
 O objetivo geral de trabalho é investigar o uso de construções de
 \designbycontract{} no contexto de computação orientada a serviços, verificando a
 viabilidade e utilidade de sua adoção na especificação de contratos e
-implentação de serviços REST.
+implentação de serviços REST. Para atingir o objetivo geral, os seguintes 
+objetivos específicos foram definidos, sendo diretamente mapeados nas 
+principais contribuições do trabalho. 
 
-\subsection{Objetivos específicos}
+%\subsection{Objetivos específicos}
 \vspace{-6mm}
 
-\begin{enumerate}
+\begin{enumerate}[(OE1)]
   \item Realizar análise empírica de expressividade e reuso da especificação de
   contratos em \neoidl{} em comparação com \textit{Swagger}, a partir de contratos
-  reais do Exército Brasileiro;
+  reais do Exército Brasileiro (Seção \ref{estudoExpressividadeNeoIDL});
   \item Extender a sintaxe da \neoidl{} para admitir construções de 
-  \designbycontract, com pré e pós condições para operações de serviços REST;
-  \item Implementar um estudo de caso de geração de código em \textit{Python
-  Twisted} com suporte a \designbycontract{} a partir de contratos especificados
-  em \neoidl;
+  \designbycontract, com pré e pós condições para operações de serviços REST
+  (Seção \ref{extensaoNeoIDL-DbC});
+  \item Implementar regras de transformação que traduzem construções de DbC
+ \neoidl{} em código de validação para o framework \textit{Python
+ Twisted} (Seção \ref{pluginTwisted});% com suporte a \designbycontract{} a
+ % partir de contratos especificados em \neoidl;
   \item Coletar a percepção de desenvolvedores sobre a aceitação da
-  especificação de contratos REST com \designbycontract{} na \neoidl{}.
+  especificação de contratos REST com \designbycontract{} na \neoidl{} (Seção
+  \ref{analiseSubjetiva}).
 \end{enumerate}
 
 

@@ -116,7 +116,7 @@ contidas os principais trechos da lógica implementada na \neoidl{}: O
 
 O desenvolvimento de \textit{plugins} na \neoidl{} devem obedecer algumas regras
 de projeto estabelecidas no componente \texttt{PluginDef}, que é um módulo
-escrito em Haskell. No \texttt{PluginDef} declara dois tipo de dados
+escrito em Haskell. No \texttt{PluginDef} declara-se dois tipo de dados
 (\texttt{Plugin} and \texttt{GeneratedFile}) e uma assinatura de tipo
 (\texttt{Transform = Module -> [GeneratedFile]}). Eles definem uma família de
 tipos que mapeiam um módulo \neoidl{} em uma lista de arquivos com o código
@@ -190,9 +190,9 @@ contratos.
 Para demonstrar como os módulos são estruturados na
 \neoidl{}, a seguir são apresentados alguns trechos de um serviço hipotético
 de envio de mensagens. Na primeira parte, um módulo faz uma definição de tipo
-de dado; em seguida, um segundo módulo, orientado a serviço, importa as
-definições do primeiro para então declarar as especificações das operações do
-serviço. Por fim, o módulo de serviço é acrescentado de uma anotação como
+de dado; em seguida, um segundo módulo, voltado para especificação do serviço em
+si, importa as definições do primeiro para então declarar as operações do
+serviço. Por fim, ao módulo de serviço é acrescentada uma anotação como
 forma de extender as características da operação.
 
 \vspace{6mm}
@@ -274,170 +274,27 @@ a outros construtores da linguagem: \texttt{module}, \texttt{enum},
 nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
 disponíveis para utilização pelos \textit{plugins}.
 
-As próxima subseções apresentam a estrutura sintática e léxica \neoidl{} e
-refletem a situação de Agosto de 2015, antes da incorporação das construções
-relativas a \designbycontract{} (estas informações foram geradas 
-automaticamente pelo BNF-Converter \cite{forsberg-bnfc:2004} \textit{parser
-generator}). 
-
-\subsubsection{A estrutura léxica da \neoidl{}}\label{sub:lexico}
-
-\begin{enumerate}
-  \item Identificadores
-  
-  Identificadores \nonterminal{Ident} são literais (\textit{strings}) não
-  delimitadas que começam com uma letra seguida por letras, números e os caracteres {\tt \_ '},
-  exceto palavras reservadas.
-  
-  \item Literais
-  
-  Literais de texto são cadeias de caracteres  \nonterminal{String}\ com a forma
-  \terminal{``}$x$\terminal{``}, onde $x$ é qualquer sequencia de caracter,
-  exceto \terminal{``}, a menos que precedido por \text{\tt \char92{}}.
-  
-  Literais numéricos \nonterminal{Int}\ são sequências não vazias de números.
-  
-  Literais de ponto flutuantes \nonterminal{Double}\ tem a estrutura
-  definida pela seguinte expressão regular: $\nonterminal{digit}+ \mbox{{\it
-  `.'}} \nonterminal{digit}+ (\mbox{{\it `e'}} \mbox{{\it `-'}}?
-  \nonterminal{digit}+)?$, ou seja, duas sequências de números separadas por um
-  ponto, opcionalmente precedida de um símbolo de negativo.
-
-  \item Palavras reservadas e símbolos
-
-  O conjunto de palavras reservadas são os terminais da gramática da linguagem
-  \neoidl{}. As palavras reservadas não compostas de letras são chamados
-  símbolos, que são tratados de forma diferente dos identificadores. A
-  sintaxe analisador léxico segue regras típicas de linguagens como Haskell, C e
-  Java, incluindo correspondência mais longa e convenções para o espaço.
-  
-  As palavras reservadas utilizadas na \neoidl{} são as seguintes: \\
-
-\begin{tabular}{lll}
-{\reserved{annotation}} &{\reserved{call}} &{\reserved{entity}} \\
-{\reserved{enum}} &{\reserved{extends}} &{\reserved{float}} \\
-{\reserved{for}} &{\reserved{import}} &{\reserved{int}} \\
-{\reserved{module}} &{\reserved{path}} &{\reserved{resource}} \\
-{\reserved{string}} & & \\
-\end{tabular}\\
-  
-Os símbolos utilizados na \neoidl{} são os seguintes: \\
-
-\begin{tabular}{lll}
-{\symb{\{}} &{\symb{\}}} &{\symb{;}} \\
-{\symb{{$=$}}} &{\symb{.}} &{\symb{@}} \\
-{\symb{(}} &{\symb{)}} &{\symb{0}} \\
-{\symb{{$=$}{$=$}}} &{\symb{{$<$}{$>$}}} &{\symb{{$>$}}} \\
-{\symb{{$>$}{$=$}}} &{\symb{{$<$}}} &{\symb{{$<$}{$=$}}} \\
-{\symb{[}} &{\symb{]}} &{\symb{@get}} \\
-{\symb{@post}} &{\symb{@put}} &{\symb{@delete}} \\
-{\symb{/@require}} &{\symb{/@ensure}} &{\symb{/@invariant}} \\
-{\symb{/@otherwise}} &{\symb{/**}} &{\symb{*/}} \\
-{\symb{*}} &{\symb{@desc}} &{\symb{@param}} \\
-{\symb{@consume}} &{\symb{,}} & \\
-\end{tabular}\\
-
-\end{enumerate}
-
-\subsubsection{A estrutura sintática da NeoIDL}\label{sub:sintatico}
-
-Não-terminais são delimitados entre $\langle$ e $\rangle$. O símbolo {\arrow}
-(produto), {\delimit} (união) e {\emptyP} (regra vazia) advêm da notação BNF.
-Todos os demais símbolos são terminais.\\
-
-\begin{small}
-\begin{tabular}{lll}
-\label{lst:BNFnot}
-{\nonterminal{Modulo}} {\arrow} {\terminal{module}} {\nonterminal{Ident}} {\terminal{\{}} \\ 
- \quad {\nonterminal{ListImport}} \\ 
- \quad {\nonterminal{MPath}} \\ 
- \quad {\nonterminal{ListEnum}} \\ 
- \quad {\nonterminal{ListEntity}} \\ 
- \quad {\nonterminal{ListResource}} \\ 
- \quad {\nonterminal{ListDecAnnotation}} \\ 
-{\terminal{\}}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Import}} & {\arrow}  &{\terminal{import}} {\nonterminal{NImport}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{MPath}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\terminal{path}} {\terminal{{$=$}}} {\nonterminal{String}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{NImport}} & {\arrow}  &{\nonterminal{Ident}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{.}} {\nonterminal{NImport}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Entity}} & {\arrow}  &{\nonterminal{ListDefAnnotation}} {\terminal{entity}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
- & {\delimit}  &{\nonterminal{ListDefAnnotation}} {\terminal{entity}} {\nonterminal{Ident}} {\terminal{extends}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Enum}} & {\arrow}  &{\terminal{enum}} {\nonterminal{Ident}} {\terminal{\{}} {\nonterminal{ListValue}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{DecAnnotation}} & {\arrow}  &{\terminal{annotation}} {\nonterminal{Ident}} {\terminal{for}} {\nonterminal{AnnotationType}} {\terminal{\{}} {\nonterminal{ListProperty}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{DefAnnotation}} & {\arrow}  &{\terminal{@}} {\nonterminal{Ident}} {\terminal{(}} {\nonterminal{ListAssignment}} {\terminal{)}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Parameter}} & {\arrow}  &{\nonterminal{Type}} {\nonterminal{Ident}} {\nonterminal{Modifier}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Assignment}} & {\arrow}  &{\nonterminal{Ident}} {\terminal{{$=$}}} {\nonterminal{Value}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Modifier}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\terminal{{$=$}}} {\terminal{0}}  \\
-\end{tabular}
-
-\begin{tabular}{lllllllll}
-{\nonterminal{AnnotationType}} & {\arrow}  &{\terminal{resource}}  
- & {\delimit}  &{\terminal{enum}}  
- & {\delimit}  &{\terminal{entity}}  
- & {\delimit}  &{\terminal{module}} 
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Resource}} & {\arrow}  &{\nonterminal{ListDefAnnotation}} {\terminal{resource}} {\nonterminal{Ident}} {\terminal{\{}} {\terminal{path}} {\terminal{{$=$}}} {\nonterminal{String}} {\terminal{;}} {\nonterminal{ListCapacity}} {\terminal{\}}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lll}
-{\nonterminal{Capacity}} & {\arrow}  &{\nonterminal{NeoDoc}} {\nonterminal{ListDefNAnnotation}} {\nonterminal{Method}} {\nonterminal{Type}} {\nonterminal{Ident}} {\terminal{(}} {\nonterminal{ListParameter}} {\terminal{)}} {\terminal{;}}  \\
-\end{tabular}
-
-\begin{tabular}{lllllllll}
-{\nonterminal{Method}} & {\arrow}  &{\terminal{@get}} 
- & {\delimit}  &{\terminal{@post}} 
- & {\delimit}  &{\terminal{@put}}  
- & {\delimit}  &{\terminal{@delete}} 
-\end{tabular}\\
-\end{small}    
+A estrutura de um módulo \neoidl{}, como pode ser verificado nos exemplos
+acima, é composta pelas seguintes seções: importação, caminho do serviço,
+enumerações, entidades, serviços e declaração de anotações. O apêndice 
+\ref{apend:estruturaLexicaNeoIDL} apresenta a estrutura sintática e léxica da
+\neoidl{} e refletem a situação de Agosto de 2015, antes da incorporação das 
+construções relativas a \designbycontract{}.
 
 
 
 \section{AVALIAÇÃO EMPÍRICA}
 \vspace{-6mm}
 
-A primeira versão da \neoidl{} foi submetida a uma avaliação empírica de sua
-expressividade e reuso em um contexto real. As próximas subseções apresentam 
+A primeira versão da \neoidl{} foi submetida a um estudo empírico de sua expressividade 
+e reuso em um contexto real. As próximas subseções apresentam 
 o resultado da análise comparativa da representação de 44 (quarenta e quatro)
 contratos escritos em Swagger em relação à mesma especificação em \neoidl{}.
 Esse estudo foi realizado no transcurso do trabalho de mestrado e 
 publicado no periódico IJSeke \cite{lima2015neoidl}.
 
 \subsection{Expressividade}
+\label{estudoExpressividadeNeoIDL}
 \vspace{-6mm}
 
 A \neoidl{} é uma DSL, conforme apresentado na seção \ref{apresentacaoNeoIDL},
@@ -456,10 +313,10 @@ problemas, fazendo com ela seja, muitas vezes, mais acessível ao público geral
 
 A expressividade é um dos principais critérios para se escolher uma
 linguagem. Entretanto a linguagem que não expressa todas as situações
-necessárias ao seu contexto de uso, por óbvio, não podem ser usadas
-\cite{mackinlay1985expressiveness}. Nesse sentido, o primeiro teste que a
-\neoidl{} passou foi a produção de contratos e serviços reais no início do
-projeto com o Exército Brasileiro (vide subseção \ref{histMotivNeoIDL}).
+necessárias ao seu contexto de uso, por óbvio, não pode ser usada
+\cite{mackinlay1985expressiveness}. Nesse sentido, o primeiro teste a que a
+\neoidl{} foi submetida constituiu-se na produção de contratos e serviços reais
+no início do projeto com o Exército Brasileiro (vide subseção \ref{histMotivNeoIDL}).
 
 Assim, tendo a \neoidl{} demonstrado sua capacidade de representar contratos
 REST, foi realizada uma segunda análise: quão expressiva seria a \neoidl{}
@@ -468,53 +325,69 @@ Swagger \cite{swaggerSite}, uma linguagem cujo uso tem crescido pela indústria.
 Em Swagger, os contratos são escritos em JSON\cite{JSon} ou YAML\cite{YAML},
 ambos com uma estrutura geral de chave-valor.
 
-Tendo sido a \neoidl{} desenvolvida para ser mais fácil de compreender e
-manipular por humanos, foi adotada a estratégia de comparar a expressividade em
-termos de quantidade de linhas de código (SLOC - do inglês \textit{Source Lines of Code}), uma vez que
-muitas linhas significam maior esforço para escrita, sobretudo na abordagem
-\CtFirst{}. 
+Tendo sido a facilidade de compreensão e manipulação por humanos um dos pilares
+de desenvolvimento da \neoidl{}, foi adotada a estratégia de comparar a
+expressividade em termos de quantidade de linhas de código (SLOC - do inglês
+\textit{Source Lines of Code}), uma vez que muitas linhas significam maior
+esforço para escrita, sobretudo na abordagem \CtFirst{}.
 
+Com este propósito, foi obtido um conjunto de 44 contratos do Exército
+Brasileiro especificados em Swagger. A primeira etapa foi reescrever esses
+contratos em \neoidl{} e então comparar a quantidade de linhas de código
+produzida com a quantidade de linhas de código dos contratos originais. Para a
+transcrição dos contratos, em razão da \neoidl{} não possuir recursos para
+transcrição bidirecional de Swagger para \neoidl{}, foi desenvolvido
+e utilizado um \textit{script} na linguagem \textit{Perl}, 
+o qual consta do Apêndice desta dissertação
+(Apêndice \ref{scriptSwagger2NeoIDL}).
 
+Os quarenta e quatro contratos em Swagger contabilizaram 13.921 linhas de
+especificação. Os mesmos contratos especificados em \neoidl{} somaram 5.140
+linhas de especificação, correspondendo a uma redução média de 63\%. Assim, para
+cada 10 linhas de especificação em Swagger são requeridas 4 linhas de
+especificação \neoidl{}. Nessa análise foram consideradas linhas físicas de
+código, ignorando-se linhas em branco ou compostas apenas de delimitadores.
 
+A proporção de redução não se deu de forma igual em todos os contratos. Por
+exemplo, o contrato de um determinado serviço \footnote{Os nomes reais dos
+contratos foram omitidos em razão de acordo de confidencialidade.} requereu 367
+linhas na especificação Swagger e 112 linhas na especificação \neoidl{} --
+redução da ordem de 69\%.
+Em contraponto, outro serviço especificado em Swagger possuia 81 linhas e o
+correspondente em \neoidl{} 42 linhas -- redução de linhas de código pouco inferior a 50\%.
 
+Estatisticamente, o tamanho original dos contratos tem apenas uma pequena
+influência na expressividade avaliada. Dessa forma, não é possível assumir que
+contratos Swagger maiores terão um correspondente proporcionalmente menor em
+\neoidl{}.
+Outros atributos como documentação mais descritiva, quantidade de entidades e o
+número de capacidades de cada serviço também não possuem correlação com redução
+de linha de código maior ou menor após o processo de tranformação para
+\neoidl{}.
 
+A tabela \ref{tab:size-corr} apresenta a correlação entre a
+melhoria na expressividade observada (medida como percentual de redução após a
+transformação da especificação Swagger em especificação \neoidl{}) e algumas
+métricas relacionadas ao tamanho da especificação original em Swagger.
 
-
-
-
-In a collaborative work with the Brazilian Army,
-we obtained a portion of their contracts' specifications in Swagger (44 in total), specified with version 1.2.
-Our first step was to rewrite these specifications in \neoidl{} and thus compare the total
-number of lines of code (which might serve as a metric of expressiveness).
-The 44 contracts in Swagger amount to 13921 lines of specification, while the same set of contracts in NeoIDL comprises 5140 lines of specification. Thus, the average reduction was about 63\%. In others words, it means that 10 lines of structured Swagger specification require
-about 4 lines of \neoidl{} specification. In this analysis we only considered \emph{physical lines of code}, ignoring 
-blank lines and lines consisting of delimiters only. The Appendix A shows a sample contract we analised.
-
-The reduction in number of lines is not the same in all contracts. For instance, a given service\footnote{For confidentiality reasons, the real names of contracts were omitted.} required 367 lines of Swagger specification and 112 lines of \neoidl{} specification. This case  
-represents a reduction of about 69\%. On the other hand, another service contract required 
-81 lines of specification in Swagger and 42 lines of \neoidl{} specification. In this case, the SLOC decrease was slightly less than 50\%.
-
-The size of the original contract has only a small influence in the observed expressiveness. 
-Therefore, we cannot assume that \emph{the bigger the contract is in Swagger 
-the bigger is the improvement (with respect to the smaller specification size) of \neoidl}. We 
-also realized that the use of a more descritive documentation, the number of entities, and the number of capacities do not correlate to the advantageous reduction of lines of code during a 
-transformation of Swagger specifications into \neoidl{} specifications. Therefore, it seems that 
-the benefits do not relate to the size of the original specifications.  
-Table~\ref{tab:size-corr} presents the correlation between the improvement of 
-expressiveness (measured as the percentage of reduction obtained 
-after transforming Swagger specifications into \neoidl{} specifications) and 
-some metrics related to the size of the original Swagger specifications.
+% 
+% 
+% Table~\ref{tab:size-corr} presents the correlation between the improvement of
+% expressiveness (measured as the percentage of reduction obtained after
+% transforming Swagger specifications into \neoidl{} specifications) and some
+% metrics related to the size of the original Swagger specifications.
 
 \begin{table}[htb]
-\caption{Correlation of the Expressiveness Improvement with the size of the Swagger specifications}
+\caption{Correlação da melhoria de expressividade com o tamanho da especificação
+em Swagger}
 \begin{center}
 \begin{tabular}{lrr} 
 \toprule
-Metric & Pearson's correlation & \emph{p-value} \\ \hline \hline 
-LOC of Swagger specification & 0.19 &  0.20 \\ 
-Number of services & 0.14 & 0.35 \\ 
-Number of capacities & 0.14 & 0.34 \\
-Number of entities & 0.20 & 0.18 \\ \bottomrule 
+Métrica & Correlação Pearson's & \emph{p-value} \\ \hline \hline 
+LOC da especificação Swagger & 0.19 &  0.20 \\ 
+Número de serviços & 0.14 & 0.35 \\ 
+Numero de capacidades & 0.14 & 0.34 \\
+Número de entidades & 0.20 & 0.18 \\ \bottomrule 
 \end{tabular} 
 \end{center}
 \label{tab:size-corr}
@@ -526,199 +399,17 @@ Number of entities & 0.20 & 0.18 \\ \bottomrule
 
 \subsection{Potencial de reuso}
 
+De forma similar à \neoidl{}, Swagger também possui recursos para reuso de
+estruturas, por meio de referências (marcação \$ref). Entretanto, esse recurso
+praticamente não foi explorado no conjunto de contratos analisados, o que
+ocasinou na duplicação da declaração de estruturas entre os diferentes arquivos
+de especificação Swagger. Isso se deve, provavelmente, ao modo não intuitivo de
+se fazer referência em Swagger (baseado na referência a outro arquivo JSON) e à
+dificuldade de se identificar que uma determinada entidade foi declarada em
+outro contrato.
 
+No conjunto dos 44 contratos Swagger analisados foram identificadas 40 entidades
+especificadas em pelo menos dois contratos. Uma entidade específica, de
+identificação da posição geográfica, muito utilizada no domínio de Comando e Controle, aparece
+declarada 12 vezes com contratos distintos.
 
-Similar to \neoidl{}, Swagger presents 
-some mechanisms to reuse user defined structures. Nevertheless, 
-this feature is almost ignored in the set of contracts we analysed, which 
-leads to the duplication of entities' definition across different 
-Swagger specifications. This might have occurred either due to the 
-nonintuitive construct for reusing definitions in Swagger (based on 
-references to JSON files) and the difficulties to identify 
-that one entity had already been specified in another contract.
-After analysing the 44 Swagger specifications, we realized that 40 entities 
-have been specified in  more than one contract. Actually, one specific 
-entity is present in 12 distinct Swagger contracts. 
-
-
-
-
- 
-\section{EXTENSÃO DA NEOIDL PARA DESIGN BY CONTRACT}
-
-Influência de Eiffel, JML e Spec\#
-
-Eiffel assertions are Boolean expressions, with a few extensions such as the old
-notation. Since the whole power of Boolean expressions is available, they may
-include function calls. Because the full power of the language is available to
-write these functions, the conditions they express can be quite sophisticated.
-\cite{meyer1992applying}
-
- 
- 
-\subsection{Proposta: Serviços com Desing-by-Contract}
-\vspace{-6mm}
-
-Os benefícios esperados pela adoção da arquitetura orientada a serviços
-somente serão auferidos com a concepção adequada de cada serviço. 
-Por essa razão, é necessário planejar o projeto dos serviços criteriosamente
-antes de lançar mão do desenvolvimento, com preocupação especial em garantir
-um nível aceitável de estabilidade aos consumidores de cada serviço.
-Nessa etapa do projeto de desenho da solução, a especificação do contrato do
-serviço (Web API) exerce uma função fundamental. 
-
-Na sociedade civil, contratos são meios de se formalizar acordo entre partes a
-fim de definir os direitos e deveres de cada parte e buscar atingir o
-objetivo esperado dentro de determinadas regras. Cada parte espera que as outras
-cumpram com suas obrigações.
-Por outro lado, sabe-se que o descumprimeto das obrigações costuma implicar de
-penalizações até o desfazimento do contrato. 
-
-Contratos entre serviços Web seguem em uma linha análoga. O desenho das
-capacidades (operações) e dos dados das mensagens correspondem aos
-termos do contrato no sentido do que o consumidor deve esperar do serviço
-provedor. Porém identificou-se, após ampla pesquisa realizada sobre o tema, que
-as linguagens disponíves para especificação de contratos atingem apenas esse
-nível de garantias. No contexto de webservices em REST, conforme descrito na
-seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
-contratos, tal como ocorre com o WSDL adotado em SOAP.
-
-A proposta deste trabalho é extender os níveis de garantias, de modo a promover
-um patamar adicional com obrigações mutuas entre os serviços (consumidor e
-provedor). Isso se dá para adoção do conceito de Design-by-Contract (debatido
-na seção \ref{Design-by-Contract}) em que a execução da
-capacidade do serviço garantirá a execução, desde que satisfeitas as condições
-prévias. O detalhamento do processo é exposto nas seções que se seguem.
-
-\vspace{-6mm}
-
-\subsubsection{Modelo de operação}
-\vspace{-6mm}
-
-As garantias para execução dos serviços são estabelecidas em duas etapas: pré- e
-pós-condições. Nas pré-condições o provedor do serviço estabelece os requisitos
-para que o serviço possa ser executado. A etapa de pós-condições tem o papel de
-validar se a mensagem de retorno do serviço possui resultados válidos.
-
-O diagrama da Figura \ref{FigServiceDbC} descreve como ocorre a operação das
-pré- e pós-condições. O processo se inicia com a chamada à capacidade do serviço e a
-identificação da existência de uma pré-condição. Caso tenham sido estabelecidas 
-pré-condições, essas são avaliadas. Caso alguma delas não tenham sido
-satisfeitas, o serviço principal não é processado e o provedor do serviço
-retornar o código de falha definido no contrato correspondente.
-
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm 0mm,clip]{ServiceDbC.png}
-\caption{Digrama de atividades com verificação de pré e pós condições}
-\label{FigServiceDbC}
-\end{figure}
-
-Caso tenham sido definidas pós-condições, essas são acionadas após o
-processamento da capacidade, porém antes do retorno ao consumidor do serviço.
-Assim, conforme Figura \ref{FigServiceDbC}, visando não entregar ao cliente uma
-mensagem ou situação incoerente, as pós-condições são validadas. Caso todas as
-pós-condições tenham sido satisfeitas, a mensagem de retorno é encaminhada ao
-cliente. Caso contrário, será retornado o código de falha.
-
-
-\vspace{-6mm}
-
-
-\subsubsection{Verificação das pré-condições}
-\vspace{-6mm}
-
-As pré-condições podem ser do tipo baseado nos parâmetros da requisição ou do
-tipo baseado na chamada a outro serviço. Denominamos, para o contexto desta
-dissertação, de básica a pré-condição baseada apenas nos parâmetros da
-requisição (atributos da chamada ao serviço). Nessa validação é direta,
-comparando os valores passados com os valores admitidos. 
-
-No caso das pré-condições baseadas em serviços, é realizada chamada a outro
-serviço para verificar se uma determinada condição é satisfeita. Este modo de
-funcionamento, que se assemelha a uma composição de serviço, é mais versátil, pois permite
-validações de condições complexas sem que a lógica associada seja conhecida pelo
-cliente. Assim, os contratos que estabelecem esse tipo de
-pré-condição se mantem simples.
-
-A Figura \ref{FigServicePrecondition} detalha as etapas de verificação de cada
-pré-condição. Nota-se que a saída para as situações de desatendimento às
-pré-condições, independentemente do tipo, é o mesmo. O objetivo desta abordagem
-é simplificar o tratametno de exceção no consumidor.
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm 0mm,clip]{PreconditionValidation.png}
-\caption{Diagrama de atividades do processamento da pré-condição}
-\label{FigServicePrecondition}
-\end{figure}
-
-
-\subsubsection{Verificação das pós-condições}
-\vspace{-6mm}
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm
-0mm,clip]{PostconditionValidation.png} 
-\vspace{-6mm}
-\caption{Diagrama de atividades do processamento da pós-condição}
-\label{FigServicePostcondition}
-\end{figure}
-
-A verificação das pós-condições acontece de modo muito similar a das
-pré-condições. Há também os dois tipos, baseado em valores e em chamadas a
-outros serviços. O diferencial está em que a validação dos valores passa a
-ocorrer a partir dos valores contidos na mensagem de retorno. A Figura
-\ref{FigServicePostcondition} descreve as etapas necessárias para validação de
-cada pré-condição.
-
-	
-	
-	
-	
-
-\subsection{Extensão da linguagem}
-
-\subsubsection{Precondição básica}
-
-\begin{figure}[htb]
-\begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCsimple.neo}
-\end{small}
-\caption{Exemplo da notação DBC básica na \neoidl{}}
-\label{lst:DBCService}
-\end{figure} 
-
-\subsubsection{Pós-condição básica}
-
-\ldots
-
-
-
-\subsubsection{Precondição com chamada a serviço}
-
-\begin{figure}[htb]
-\begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCservice.neo}
-\end{small}
-\caption{Exemplo da notação DBC na \neoidl{} com chamada a serviço}
-\label{lst:DBCService}
-\end{figure} 
-
-
-\subsubsection{Pós-condição com chamada a serviço}
-
-\ldots
-
-\subsection{Estudo de caso: plugin twisted}
-
-\ldots
-
-\subsubsection{Arquitetura}
-
-% Diagrama da estrutura do código gerado
-
-
-\subsubsection{Geração de código}
