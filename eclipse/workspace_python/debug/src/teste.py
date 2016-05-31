@@ -1,34 +1,59 @@
-from twisted.web import resource
+from pprint import pformat
+
+from twisted.internet import reactor
+from twisted.internet.defer import Deferred
+from twisted.internet.protocol import Protocol
 from twisted.web.client import Agent
 from twisted.web.http_headers import Headers
-from twisted.internet import reactor, defer
 
-# A callback that unpacks and prints the results of a DeferredList
+# class BeginningPrinter(Protocol):
+#     def __init__(self, finished):
+#         self.finished = finished
+#         self.remaining = 1024 * 10
+# 
+#     def dataReceived(self, bytes):
+#         if self.remaining:
+#             display = bytes[:self.remaining]
+#             print 'Some data received:'
+#             print display
+#             self.remaining -= len(display)
+# 
+#     def connectionLost(self, reason):
+#         print 'Finished receiving body:', reason.getErrorMessage()
+#         self.finished.callback(None)
+
+agent = Agent(reactor)
+d = agent.request(
+    'GET',
+    'http://www.google.com',
+    Headers({'User-Agent': ['Twisted Web Client Example']}),
+    None)
+
+def cbRequest(response):
+    print 'Response version:', response.version
+    print 'Response code:', response.code
+    print 'Response phrase:', response.phrase
+    #print 'Response headers:'
+    #print pformat(list(response.headers.getAllRawHeaders()))
+    #finished = Deferred()
+    #response.deliverBody(BeginningPrinter(finished))
+    #return finished
+    
+    return response.code
+d.addCallback(cbRequest)
+
 def printResult(result):
-    for (success, value) in result:
-        if success:
-            print 'Success:', value
-        else:
-            print 'Failure:', value.getErrorMessage()
+    print 'Result of request'
+    print result
+    return result
 
-# Create three deferreds.
-deferred1 = defer.Deferred()
-deferred2 = defer.Deferred()
-deferred3 = defer.Deferred()
+d.addCallback(printResult)
+d.addCallback(printResult)
 
-# Pack them into a DeferredList
-dl = defer.DeferredList([deferred1, deferred2, deferred3], consumeErrors=True)
 
-# Add our callback
-dl.addCallback(printResult)
 
-# Fire our three deferreds with various values.
-deferred1.callback('one')
-deferred2.errback(Exception('bang!'))
-deferred3.callback('three')
+def cbShutdown(ignored):
+    reactor.stop()
+d.addBoth(cbShutdown)
 
-# At this point, dl will fire its callback, printing:
-#    Success: one
-#    Failure: bang!
-#    Success: three
-# (note that defer.SUCCESS == True, and defer.FAILURE == False)
+reactor.run()

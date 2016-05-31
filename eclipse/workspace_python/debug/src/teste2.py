@@ -1,52 +1,64 @@
-from twisted.internet import defer
-from twisted.python import failure, util
-
+from twisted.web.client import Agent
+from twisted.web.http_headers import Headers
+from twisted.internet import reactor, defer
 
 class Test (object):
-    
+       
+       
     @classmethod
-    def handleFailure(self, f, d):
-        print "handleFailure"
-        f.trap(RuntimeError)
-        d.callbacks = []
-        return '0', 'erro'
-     
-    @classmethod
-    def handleResult(self, result, message):
-        print "handleResult of %s. Old results %s, %s: " % (message, result[0], result[1])
-        return 1, 'ok'
-    
-    @classmethod
-    def doFailure (self, result, message):
-        print "handleResult of %s. Old results %s, %s: " % (message, result[0], result[1])
-        raise RuntimeError, "whoops! we encountered an error"
-     
-    
-    @classmethod
-    def deferredExample(self):
-        d = defer.Deferred()
-        # 1o. call without error
-        d.addCallback(Test.handleResult, 'call 1')
-        # 2o. call without error
-        d.addCallback(Test.handleResult, 'call 1')
-        # 3o. call causes the failure
-        d.addCallback(Test.doFailure,    'call 3')
-        # the failure calls the error back 
-        d.addErrback (Test.handleFailure, d) # - A -
-        # after error back, the next call back is called
-        d.addCallback(Test.handleResult, 'call 4')
-        # and the last call back is called
-        d.addCallback(Test.handleResult, 'call 5')
+    def getRequest (self, result, extDefList):
+
+        print "Function getRequest"
+
+        agent = Agent(reactor)
+
+        d2 = agent.request('GET',
+                           'http://www.google.com',
+                           Headers({'User-Agent': ['Twisted Web Client Example']}),
+                           None)
         
+        
+        d2.addCallback(Test.cbResponse)
+        
+        # 1 st attempt: return the result of d2. Fail: exceptions.AttributeError: Deferred instance has no attribute 'result'
+        #return d2.result            # --> line A
+       
+        # 2nd attempt: return only the deferr object d2. Don't fail, but I can't get the result of the above request
+        return d2                   # --> line B
+        
+        # 3rd attemp: return None (without return). 
+                                        # --> line C
+                                        
+        # 4th attemp: Add the current Deferred list to the master Deferred (main function)
+        #defTmp = extDefList.chainDeferred(d2)
+        #extDefList = defTmp
+           
+    
+    @classmethod
+    def cbResponse(response):
+        
+        print 'Function cbResponse %s', response.code
+        # This is the return value I want to pass back to deferredChain function (called at line E)
+        return response.code            # line D
+    
+    @classmethod
+    def deferredChain(self):
+        d = defer.Deferred()
+        
+        d.addCallback(Test.getRequest, d)  # line E
         d.callback("success")
-        return d.result[0], d.result[1]
+
+        return d.result 
         
     
 
 if __name__ == '__main__':
-#    behindTheScenes("success")
-    print "\n-------------------------------------------------\n"
-    global num; num = 0
-    tst = Test()
-    rtn1, rtn2 = tst.deferredExample()
-    print "RTN: %s %s" % (rtn1, rtn2)
+    #tst = Test()
+    #rtn = tst.deferredChain()
+    
+    defA = defer.Deferred()
+    defA.addCallback(Test.deferredChain)
+    defA.callback("success")
+    rtn = defA.result
+    reactor.run()
+    print "RTN: %s " % rtn
