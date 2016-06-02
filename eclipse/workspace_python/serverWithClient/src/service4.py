@@ -15,17 +15,14 @@ class GetRequestParameters(object):
 class Resource(object): 
  
     @classmethod
+    def byPass(cls, result):
+        print 'byPass'
+        print result
+        return result
+    
+    @classmethod
     def get(cls, result, request, agent):
-#         responseCode = 203 #ResponseCode.Ok
-#  
-#         #######    Replace this section by your logic   #######
-#         result = {}
-#         result ['method'] = 'get'
-#         result ['path'] = request.path
-#         result ['arguments'] = request.args
-#         responseBody = json.dumps(result, sort_keys=False, indent=4, separators=(',', ': '))
-#         #######    Replace this section by your logic   #######
-#         return responseCode, responseBody
+
 
         #print 'Service 4 - call unb'
         #return agent.request('GET', "http://www.unb.br", Headers({}), None)
@@ -34,6 +31,11 @@ class Resource(object):
         print 'Service 4 - call service3 por callback'
         d = defer.Deferred()
         d.addCallback(service3.Resource.get, request, agent)
+        
+        d.addCallback(Resource.byPass)
+        
+        
+
         d.callback(request)
         
         return d

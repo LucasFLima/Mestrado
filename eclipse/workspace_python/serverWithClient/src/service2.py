@@ -13,16 +13,10 @@ class Resource(object):
  
     @classmethod
     def get(cls, result, request, agent):
-#         responseCode = 203 #ResponseCode.Ok
-#  
-#         #######    Replace this section by your logic   #######
-#         result = {}
-#         result ['method'] = 'get'
-#         result ['path'] = request.path
-#         result ['arguments'] = request.args
-#         responseBody = json.dumps(result, sort_keys=False, indent=4, separators=(',', ': '))
-#         #######    Replace this section by your logic   #######
-#         return responseCode, responseBody
+
+        print '''
+        Service 2
+        '''
 
         #return agent.request('GET', "http://www.unb.br", Headers({}), None)
         print 'Service 2 - call service3'

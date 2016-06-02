@@ -31,7 +31,9 @@ class HelloResource(resource.Resource):
     def render_GET(self, request):
         def cbResponse(response):
             request.setHeader("content-type", "text/html")
-            response.deliverBody(HTTPReturner(request))
+            #response.deliverBody(HTTPReturner(request))
+            response.deliverBody()
+    
       
         #d = agent.request('GET', "https://www.google.com/search?q=YOLO", Headers({}), None)
         #d.addCallback(cbResponse)
