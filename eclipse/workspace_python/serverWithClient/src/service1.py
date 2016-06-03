@@ -4,6 +4,7 @@ from httplib import HTTPConnection
 from twisted.internet import defer
 from twisted.web.client import Response
 from twisted.web.http_headers import Headers
+from serviceObject import serviceResponse
  
 class GetRequestParameters(object):
     def __init__ (self, xxx, yyy, zzz):
@@ -24,19 +25,19 @@ class Resource(object):
         result ['arguments'] = request.args
         responseBody = json.dumps(result, sort_keys=False, indent=4, separators=(',', ': '))
         #######    Replace this section by your logic   #######
-        #return responseCode, responseBody
+        
+        
+        #request.setResponseCode(responseCode)
+        #request.write(responseBody)
+        #return ''
+        
         request.setResponseCode(responseCode)
-        request.write(responseBody)
-        
-        
-        
-        resp = Response(('HTTP', 1, 1), 201, 'bla bla', Headers(), None)
-        
-        
+        resp = serviceResponse(responseCode, responseBody)
         return resp
+        
  
     @classmethod
-    def get(cls, result, request, agent):
+    def get(cls, result, agent, request, args):
         
         d = defer.Deferred()
         d.addCallback(Resource.createResponse)

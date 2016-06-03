@@ -12,7 +12,7 @@ class GetRequestParameters(object):
 class Resource(object): 
  
     @classmethod
-    def get(cls, result, request, agent):
+    def get(cls, result, agent, request, args):
 
         print '''
         Service 2

@@ -3,7 +3,7 @@ import json
 from httplib import HTTPConnection
 from twisted.web.http_headers import Headers
 from twisted.internet import defer
-from serviceObjects import serviceResponse
+from serviceObject import serviceResponse
  
 class GetRequestParameters(object):
     def __init__ (self, xxx, yyy, zzz):
@@ -14,35 +14,33 @@ class GetRequestParameters(object):
 class Resource(object): 
  
     @classmethod
-    def requestSrv3 (self, result, request, agent):
+    def requestSrv3 (self, result, agent, request, args):
         print 'requestSrv3'
-        d = agent.request('GET', "http://localhost/site.html", Headers({}), None)
+        d = agent.request('GET', "http://localhost/site2.html", Headers({}), None)
         
         d.addCallback(Resource.cbResponse, request)
         return d
     
     @classmethod
     def cbResponse (self, response, request):
+        
         #print 'cbResponse'
-        #res = serviceResponse(response.code, 'ok')
-        #return res
+        #request.write('cbResponse - ok')
+        #request.setResponseCode(response.code)
+        #return response
         
-        
-        
-        print 'cbResponse'
-        request.write('cbResponse - ok')
         request.setResponseCode(response.code)
-        return response
-        
+        resp = serviceResponse(response.code, 'Retorno do servico 3')
+        return resp
     
     @classmethod
-    def get(cls, result, request, agent):
+    def get(cls, result, agent, request, args):
 
         #print 'Service 3 - site local'
         #d = agent.request('GET', "http://localhost/site.html", Headers({}), None)
         
         d = defer.Deferred()
-        d.addCallback(Resource.requestSrv3, request, agent)
+        d.addCallback(Resource.requestSrv3, agent, request, args)
         
         d.callback(request)
         

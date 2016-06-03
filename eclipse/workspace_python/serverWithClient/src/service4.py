@@ -21,7 +21,7 @@ class Resource(object):
         return result
     
     @classmethod
-    def get(cls, result, request, agent):
+    def get(cls, result, agent, request, args):
 
 
         #print 'Service 4 - call unb'
@@ -30,7 +30,9 @@ class Resource(object):
         # chamada a outro service por meio de callback
         print 'Service 4 - call service3 por callback'
         d = defer.Deferred()
-        d.addCallback(service3.Resource.get, request, agent)
+        #d.addCallback(service3.Resource.get, request, agent)
+        
+        d.addCallback(service1.Resource.get, request, agent)
         
         d.addCallback(Resource.byPass)
         
