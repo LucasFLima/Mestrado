@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  4 JUN 2016 14:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  4 JUN 2016 14:32
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1020,7 +1020,7 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dissertacaoLucas.pdf (50 pages, 360090 bytes).
+Output written on dissertacaoLucas.pdf (50 pages, 360094 bytes).
 PDF statistics:
  327 PDF objects out of 1000 (max. 8388607)
  216 compressed objects within 3 object streams
