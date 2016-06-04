@@ -1,20 +1,8 @@
 \chapter{CONTRATOS REST COM DESIGN-BY-CONTRACT}
 
- 
-\section{EXTENSÃO DA NEOIDL PARA DESIGN BY CONTRACT}
-\label{extensaoNeoIDL-DbC}
 
-Influência de Eiffel, JML e Spec\#
-
-Eiffel assertions are Boolean expressions, with a few extensions such as the old
-notation. Since the whole power of Boolean expressions is available, they may
-include function calls. Because the full power of the language is available to
-write these functions, the conditions they express can be quite sophisticated.
-\cite{meyer1992applying}
-
- 
- 
-\subsection{Proposta: Serviços com Desing-by-Contract}
+\section{PROPOSTA: SERVIÇOS COM DESIGN-BY-CONTRACT}
+\label{PropostaServicoDbC}
 \vspace{-6mm}
 
 Os benefícios esperados pela adoção da arquitetura orientada a serviços
@@ -39,29 +27,31 @@ provedor. Porém identificou-se, após ampla pesquisa realizada sobre o tema, qu
 as linguagens disponíves para especificação de contratos atingem apenas esse
 nível de garantias. No contexto de webservices em REST, conforme descrito na
 seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
-contratos, tal como ocorre com o WSDL adotado em SOAP.
+contratos.
 
 A proposta deste trabalho é extender os níveis de garantias, de modo a promover
 um patamar adicional com obrigações mutuas entre os serviços (consumidor e
-provedor). Isso se dá para adoção do conceito de Design-by-Contract (debatido
+provedor). Isso se dá para adoção do conceito de \designbycontract{} (debatido
 na seção \ref{Design-by-Contract}) em que a execução da
 capacidade do serviço garantirá a execução, desde que satisfeitas as condições
-prévias. O detalhamento do processo é exposto nas seções que se seguem.
+prévias. As próximas subseções detalham o modo de operação dos serviços com as
+construções de \designbycontract{}.
 
 \vspace{-6mm}
 
-\subsubsection{Modelo de operação}
+\subsection{Modelo de operação}
 \vspace{-6mm}
 
-As garantias para execução dos serviços são estabelecidas em duas etapas: pré- e
-pós-condições. Nas pré-condições o provedor do serviço estabelece os requisitos
-para que o serviço possa ser executado. A etapa de pós-condições tem o papel de
-validar se a mensagem de retorno do serviço possui resultados válidos.
+As garantias para execução dos serviços são estabelecidas em duas etapas: pré e
+póscondições. Nas precondições o provedor do serviço estabelece os requisitos
+para que o serviço possa ser executado pelo cliente. A etapa de pós-condições
+tem o papel de validar se a mensagem de retorno do serviço possui os resultados
+esperados.
 
 O diagrama da Figura \ref{FigServiceDbC} descreve como ocorre a operação das
-pré- e pós-condições. O processo se inicia com a chamada à capacidade do serviço e a
-identificação da existência de uma pré-condição. Caso tenham sido estabelecidas 
-pré-condições, essas são avaliadas. Caso alguma delas não tenham sido
+pré e pós-condições. O processo se inicia com a chamada à capacidade do serviço e a
+identificação da existência de uma precondição. Caso tenham sido estabelecidas 
+precondições, essas são avaliadas. Caso alguma delas não tenham sido
 satisfeitas, o serviço principal não é processado e o provedor do serviço
 retornar o código de falha definido no contrato correspondente.
 
@@ -78,42 +68,52 @@ processamento da capacidade, porém antes do retorno ao consumidor do serviço.
 Assim, conforme Figura \ref{FigServiceDbC}, visando não entregar ao cliente uma
 mensagem ou situação incoerente, as pós-condições são validadas. Caso todas as
 pós-condições tenham sido satisfeitas, a mensagem de retorno é encaminhada ao
-cliente. Caso contrário, será retornado o código de falha.
+cliente. Caso contrário, será retornado o código de falha definido para a
+pós-condição violada.
 
-
+\subsubsection{Observação sobre invariantes}
 \vspace{-6mm}
 
+Em \designbycontract{}, além dos conceitos de pré e pós-condições,
+há também a ideia de invariantes\cite{meyer1997object}. Quando aplicadas a uma classe na
+orientação a objetos, as invariantes estabelecem restrições sobre o estado
+armazenado nos objetos instanciados dessa classe. No contexto de orientação a
+serviços, tem-se por princípio a ausência de estados dos serviços, descrito na
+seção \ref{PrincipiosSOA}. Por essa razão, no estudo sobre a incorporação de
+\designbycontract{} em contratos de serviços, as invariantes não foram
+consideradas.
 
-\subsubsection{Verificação das pré-condições}
+
+\subsection{Verificação das precondições}
 \vspace{-6mm}
 
-As pré-condições podem ser do tipo baseado nos parâmetros da requisição ou do
-tipo baseado na chamada a outro serviço. Denominamos, para o contexto desta
-dissertação, de básica a pré-condição baseada apenas nos parâmetros da
-requisição (atributos da chamada ao serviço). Nessa validação é direta,
+As precondições podem ser do tipo baseado nos parâmetros da requisição ou do
+tipo baseado na chamada a outro serviço. Denomina-se, no contexto desta
+dissertação, de básica a precondição baseada apenas nos parâmetros da
+requisição (atributos da chamada ao serviço). Essa validação é direta,
 comparando os valores passados com os valores admitidos. 
 
-No caso das pré-condições baseadas em serviços, é realizada chamada a outro
+No caso das precondições baseadas em serviços, é realizada chamada a outro
 serviço para verificar se uma determinada condição é satisfeita. Este modo de
 funcionamento, que se assemelha a uma composição de serviço, é mais versátil, pois permite
 validações de condições complexas sem que a lógica associada seja conhecida pelo
 cliente. Assim, os contratos que estabelecem esse tipo de
-pré-condição se mantem simples.
+precondição se mantem simples.
 
 A Figura \ref{FigServicePrecondition} detalha as etapas de verificação de cada
-pré-condição. Nota-se que a saída para as situações de desatendimento às
-pré-condições, independentemente do tipo, é o mesmo. O objetivo desta abordagem
+precondição. Nota-se que a saída para as situações de desatendimento às
+precondições, independentemente do tipo, é o mesmo. O objetivo desta abordagem
 é simplificar o tratametno de exceção no consumidor.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\textwidth,trim = 0mm 5mm 0mm 0mm,clip]{PreconditionValidation.png}
-\caption{Diagrama de atividades do processamento da pré-condição}
+\caption{Diagrama de atividades do processamento da precondição}
 \label{FigServicePrecondition}
 \end{figure}
 
 
-\subsubsection{Verificação das pós-condições}
+\subsection{Verificação das pós-condições}
 \vspace{-6mm}
 
 \begin{figure}[!htb]
@@ -126,20 +126,64 @@ pré-condições, independentemente do tipo, é o mesmo. O objetivo desta aborda
 \end{figure}
 
 A verificação das pós-condições acontece de modo muito similar a das
-pré-condições. Há também os dois tipos, baseado em valores e em chamadas a
+precondições. Há também os dois tipos, baseado em valores e em chamadas a
 outros serviços. O diferencial está em que a validação dos valores passa a
 ocorrer a partir dos valores contidos na mensagem de retorno. A Figura
 \ref{FigServicePostcondition} descreve as etapas necessárias para validação de
-cada pré-condição.
+cada precondição.
 
-	
-	
-	
-	
 
-\subsection{Extensão da linguagem}
+\section{EXTENSÃO DA NEOIDL PARA DESIGN BY CONTRACT}
+\label{extensaoNeoIDL-DbC}
 
-\subsubsection{Precondição básica}
+A sintaxe escolhida para possibilitar a especificação de pré e pós condições
+na \neoidl{} foi influenciada por três linguagens e extensões de linguagens de
+programação: Eiffel, JML e Spec\# (exemplificadas na subseção
+\ref{implementDbC}). 
+
+Em Eiffel, as asserções são expressões booleanas, de modo que uma pré e uma
+poscondição podem ter resultado verdadeiro ou falso. As asserções também podem
+incluir chamadas a funções, extendendo a validações a lógicas mais sofisticadas
+\cite{meyer1992applying}. Essas caracteríticas, por serem simples e versáteis,
+foram consideradas adequadas e incorporadas à especificação de
+\designbycontract{} em contratos de serviços na \neoidl{}.
+
+A primeira sintaxe de \designbycontract{} na \neoidl{} teve como
+base a sintaxe da JML, especialmente em como se associar as pré e poscondições a
+cada serviço ou capacidade, assemelhando-se a comentários e iniciados pelo
+símbolo de arroba (@). A figura \ref{lst:precondicaoJML-neo} apresenta um
+exemplo de especificação de precondição seguindo a linha da JML.
+
+\vspace{6mm}
+
+\begin{figure}[h]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCsimple.neo}
+\vspace{-.5cm}
+\end{small} 
+\caption{Forma preliminar de precondição na \neoidl}
+\label{lst:precondicaoJML-neo}
+\end{figure}
+
+Essa forma foi apresentada no Workshop de Teses e Dissertações do CBSoft em 2015
+\cite{lima2015contratos}, ainda nos primeiros estágios do trabalho. Os revisores
+apontaram dificuldade de distinguir, na especificação, entre as pré e
+poscondições e os serviços e capacidades, pois possuiam prefixos muito
+semelhantes (ver linhas 6 a 8).
+Essas críticas impulsionaram a busca por outra sintaxe mais adequada aos elementos textuais já
+existentes na \neoidl{}.
+
+Spec\# possui uma forma de especificação de asserções em que as pré e
+poscondições são declaradas logo após a assinatura do método ou classe, apenas
+com o uso das palavras reservadas \emph{require} e \emph{ensure}, sem uso de
+símbolos. Essa abordagem foi aplicada à \neoidl{} para versão final da sintaxe
+com suporte a \designbycontract{}.
+
+As próximas subseções apresentam alguns exemplos de especificação de pre e
+poscondições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.	
+
+
+\subsection{Precondição básica}
 
 \begin{figure}[htb]
 \begin{small}
@@ -149,13 +193,13 @@ cada pré-condição.
 \label{lst:DBCService}
 \end{figure} 
 
-\subsubsection{Pós-condição básica}
+\subsection{Pós-condição básica}
 
 \ldots
 
 
 
-\subsubsection{Precondição com chamada a serviço}
+\subsection{Precondição com chamada a serviço}
 
 \begin{figure}[htb]
 \begin{small}
@@ -166,23 +210,24 @@ cada pré-condição.
 \end{figure} 
 
 
-\subsubsection{Pós-condição com chamada a serviço}
+
+\subsection{Pós-condição com chamada a serviço}
 
 \ldots
 
-\subsection{Estudo de caso: plugin twisted}
+\section{ESTUDO DE CASO: PLUGIN TWISTED}
 \label{pluginTwisted}
 
 \ldots
 
-\subsubsection{Arquitetura}
+\subsection{Arquitetura}
 
 % Diagrama da estrutura do código gerado
 
 
-\subsubsection{Geração de código}
+\subsection{Geração de código}
 
-\section{ESTUDO EMPÍRICO DA ANÁLISE SUBJETIVA}
+\section{ESTUDO EMPÍRICO DA ANÁLISE SUBJETIVA} 
 \vspace{-6mm}
 
 \label{analiseSubjetiva}
@@ -285,16 +330,16 @@ relação a descrição textual, aumentará meu nível de acerto na implementaç
 simples para mim.
 
 4. DbC
-4.1 Conhecer previamente e explicitamente as pré-condições será útil para mim.
+4.1 Conhecer previamente e explicitamente as precondições será útil para mim.
 (Useful)
-4.2 Aprender a identificar as pré-condições na NeoIDL parece ser simples pra mim
+4.2 Aprender a identificar as precondições na NeoIDL parece ser simples pra mim
 (Easy to learn)
-4.3 Parece ser fácil para mim declarar uma pré-condição na NeoIDL
+4.3 Parece ser fácil para mim declarar uma precondição na NeoIDL
 (Clear and understandable)
-4.4 Me lembrar da sintaxe da pré-condição na NeoIDL é fácil  (Remember)
+4.4 Me lembrar da sintaxe da precondição na NeoIDL é fácil  (Remember)
 
 5. Geração de código
-5.1 É claro e compreensível para mim o efeito da pré-condição sobre o código
+5.1 É claro e compreensível para mim o efeito da precondição sobre o código
 gerado  (Controllable)
 5.2 A geração do código de pré e pós-condições aumentará minha produtividade na
 implementação do serviço (Job performance)
