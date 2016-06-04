@@ -1,14 +1,15 @@
 import json
-from twisted_server import ResponseCode
+from twisted_server import ResponseCode, server
 from httplib import HTTPConnection
 import pre_order_srv
 from pre_order_srv import PreConditionOrder
 from twisted.web.server import NOT_DONE_YET
 from twisted.internet import reactor, defer
 import teste3
-from twisted.web.client import Agent
+from twisted.web.client import Agent, getPage
 from twisted.web.http_headers import Headers
 from __builtin__ import classmethod
+from requests.api import request
  
 class GetRequestParameters(object):
     def __init__ (self, xxx, yyy, zzz):
@@ -56,14 +57,12 @@ class Resource(object):
                            None)
         
         d2.addCallback(Resource.cbRequest, extDbc)
-        d2.addCallback(Resource.dummy)
-        #extDbc.addCallback(d2)
-        
-        #d2.callback(d2.response)
+        #extDbc.pause()
+
+        d2.callback(request)
         print 'Pos callback request'
         
-        return NOT_DONE_YET
-        #return d2
+        return d2
     
    
     @classmethod
@@ -73,21 +72,53 @@ class Resource(object):
         print 'Response phrase:', response.phrase
         #print 'Response headers:'
         #print pformat(list(response.headers.getAllRawHeaders()))
-        d = defer.Deferred()
-        d.addCallback(Resource.cbBody)
-        return d
-        #return response.code
+        #d = defer.Deferred()
+        #d.addCallback(Resource.cbBody)
+        #extDbc2.resume()
+        
+        #return d
+        return response.code, response.phrase
     
     @classmethod
     def cbBody(body):
         print 'Response body:'
         #print body
-        return 111
+        return 2
     
     @classmethod
-    def dummy(self, str):
-        print 'Dummy: %s' % str
-        return 404
+    def dummy(self, result):
+        print 'Show results %s %s' % (result[0], result[1])
+        print result
+        #print output
+        return result[0], result[1]
+   
+    @classmethod
+    def endRequest(self, result, request):
+        print 'end Request'
+        request.finish()
+        return 10, 'ok-10'
+        
+    
+    @classmethod
+    def basicReturn(self, request):
+        print 'basicReturn'
+        return [200, 'Chamada completa']
+    
+    @classmethod
+    def basicReturnDef(self, request):
+        d3 = defer.Deferred()
+        d3.addCallback(Resource.basicReturn)
+        
+        #return 10, 'ok-10'
+        return d3
+
+    @classmethod
+    def basicReturnDefYield(self, request):
+        r1, r2 = yield Resource.basicReturn(request)
+        defer.returnValue(r1, r2)
+        #return 10, 'ok-10'
+        #return d3
+        
     
     @classmethod
     def getProcessing (self, result, request):
@@ -110,42 +141,74 @@ class Resource(object):
     
     
     @classmethod
-    def get(cls, request):
+    @defer.inlineCallbacks
+    def pre_get_goole(self):
+        tst = yield  Resource.get_google()
+        #
+        print 'pre_get_google'
+        defer.returnValue(tst)
+    
+    @classmethod
+    @defer.inlineCallbacks
+    def get_google(self):
+        #body = yield getPage("http://www.google.com/")
+        #defer.returnValue(body)
+        
+        
+        agent = Agent(reactor)
+        resp = yield agent.request('GET', 'http://www.google.com/')
+        print 'get_google'
+        defer.returnValue(resp)
+    
+    
+    @classmethod
+    #@defer.inlineCallbacks
+    def get(cls, aRequest):
         responseCode = ResponseCode.Ok
         
-        dbc1 = defer.Deferred()
-        #url =  'http://127.0.0.1:8080/store/getOrder/orderId/10/item/2'
-        #dbc1 = PreConditionOrder.dbcCondition(url, PreConditionOrder.callbackSucess, 200)
-        #dbc1.addCallback (Resource.preGetProcessing, request)
-        #dbc1.addErrback     (Resource.preGetOtherwise, dbc1)
-        #dbc1.addCallback (Resource.getProcessing, request)
-        dbc1.addCallback (Resource.getRequest, request, dbc1)
-        dbc1.addCallback(Resource.dummy)
-        dbc1.addCallback(Resource.dummy)
+        #dget = getPage('http://localhost:8080/store/10')
+        #dget.addCallback (Resource.dummy)
+        #dget.callback(request)
         
-        dbc1.callback(request)
-        
-        a = dbc1.result
-        
-        
-        #print dbc1.result, 'ok'
-                
-        #return NOT_DONE_YET, NOT_DONE_YET
-        #return dbc1.result[0], dbc1.result[1]
-        
-        
-        print 'Result to external function'
-        return dbc1.result, 'ok'
-     
- 
-#    @classmethod
-#    def post(cls, request):
-#        responseCode = ResponseCode.Ok
-# 
-        #url =  'http://127.0.0.1:8080/store/getOrder/orderId/10/item/2'
-        #dbc1 = PreConditionOrder.dbcCondition(url, PreConditionOrder.callbackSucess, 200)
-        #dbc1.addCallback (self.postProcessing, request)
-        
-        #return NOT_DONE_YET
- 
 
+        dbc1 = defer.Deferred()
+        
+        dbc1.addCallback (Resource.getRequest, request, dbc1)
+        return dbc1
+        
+        
+        #dbc1.addCallback(Resource.basicReturn)
+        #dbc1.addCallback(Resource.basicReturnDef)
+        #dbc1.addCallback(Resource.basicReturnDefYield)
+        
+       
+       
+        #dbc1.addCallback (Resource.dummy)
+        #dbc1.addBoth(Resource.endRequest, request)
+        
+        #dbc1.callback(request)
+        
+   
+        #tst = yield  Resource.pre_get_goole()
+        
+        print 'After agent'
+        #print tst
+#         
+        
+        #res = yield Resource.basicReturn(request)
+        #res2 = yield Resource.test_smth()
+        
+        #res2 = None
+        #print 'get function return'
+        #defer.returnValue(res)
+        #return defer.returnValue(a), 'Teste'
+        #defer.returnValue(tst)
+        #defer.returnValue(tst)
+        
+        print 'get function return'
+        
+        
+        #return dbc1.result[0], dbc1.result[1]
+        #return server.NOT_DONE_YET, server.NOT_DONE_YET
+        #return dbc1
+        #server.NOT_DONE_YET

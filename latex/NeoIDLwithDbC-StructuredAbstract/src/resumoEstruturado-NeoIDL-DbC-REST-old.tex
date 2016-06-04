@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[brazil]{babel} % Suporte para o Portugu�s
+\usepackage[utf8]{inputenc} % Suporte para acentua��o sem necessidade dos
+\usepackage{blindtext}
+\usepackage[inline]{enumitem}
+
+\newcommand{\absdiv}[1]{%
+  \par\addvspace{.5\baselineskip}% adjust to suit
+  \noindent\textbf{#1}\quad\ignorespaces
+}
+
+\begin{document}
+
+{\large {\bf CONTRATOS REST ROBUSTOS E LEVES: UMA ABORDAGEM EM
+DESIGN-BY-CONTRACT COM NEOIDL}}
+
+\begin{abstract}
+
+\emph{Contexto.}
+A demanda por integração entre sistemas de várias origens e tecnologias diversas
+fez aumentar a adoção de soluções baseada em computação orienta a serviços,
+sendo o uso de \textit{Serviços Web} a estratégia mais comum para implementar 
+serviços, em particular com a adoção crescente do estilo arquitetural REST.
+Por outro lado, REST ainda não dispõe de uma notação padrão para especificação
+de contratos, e linguangens como Swagger, YAML e WADL cumprem com o
+único propósito de descrição de serviços, porém apresentam uma significativa 
+limitação: essas linguagens 
+são voltadas para computadores, tendo escrita e leitura complexas para
+humanos--o que prejudica a abordagem \textit{Contract-first} inerente da 
+orientação a serviços. Tal limitação motivou a especificação da 
+linguagem NeoIDL,\footnote{Além de ser uma linguagem (\textit{Domain Specif
+Language}), a NeoIDL também possui um framework de geração de código para outras linguagens de propósito amplo.} 
+que foi concebida
+com o objetivo de ser mais expressiva para humanos, além de
+prover suporte a modularização e herança.
+\emph{Problema.} Entretanto, nenhuma dessas linguagens, incluindo a NeoIDL, dão
+suporte a contratos robustos, como os possíveis de serem descritos em
+linguagens ou extensões de linguagens com suporte a \emph{Design-by-Contract},
+presentes tipicamente (ou exploradas) no paradigma de orientação a objetos.
+\emph{Objetivos.}
+O objetivo geral deste trabalho é investigar o uso de construções de
+\textit{Design-by-Contract} no contexto de computação orientada a serviços,
+verificando a viabilidade e utilidade de sua adoção na especificação de
+contratos e implementação de serviços REST.
+% \absdiv{Método}
+% 
+% Após ampla revisão bibliográfica, sobretudo dos temas SOC, REST,
+% \textit{Design-by-Contract}, a hipótese da aplicabilidade de DbC em
+% especificação de contratos REST foi levantada. Com o propósito de validar essa
+% hipótese, a sintaxe da NeoIDL foi extendida para suportar DbC e, em seguida,
+% implementadas regras de transformação que traduzem as construções de DbC em
+% código de validação para o \textit{framework Python
+%  Twisted}. Paralelamente, foi conduzida pesquisa junto a desenvolvedores
+%  experientes sobre a sua aceitação de especificações de contratos REST com
+%  \textit{Design-by-Contract} na NeoIDL. Adicionalmente, foi realizada uma
+%  análise empírica sobre a expressividade e reuso da NeoIDL em si.
+\emph{Resultados e Contribuições.} 
+Essa dissertação contribui com uma extensão da NeoIDL para DbC, contemplando
+dois tipos de precondição e pós-condição: uma básica, que valida os 
+parâmetros de requisição de entrada e dados de saída; outra baseada em serviços,
+em que outros serviços são acionados para validar se a capacidade do serviço 
+deve ou não ser executada (ou se foi executada adequadamente, em caso de
+pós-condição). %Essa lógica foi expressa na sintaxe da NeoIDL e possibilitou a
+%transformação para serviços com esse comportamento. 
+Foram realizados dois estudos empíricos. Um primeiro estudo visando demonstrar
+que a NeoIDL cumpre com seus
+requisitos de expressividade e reuso, no contexto de utilização de Comando e
+Controle no Exército Brasileiro. O segundo, sobre percepção de utilidade e
+facilidade de uso também demostrou resultados satisfatórios em termos
+simplicidade e controle sobre o código gerado.
+% 
+% \absdiv{Conclusões}
+% 
+% O trabalho demonstrou que o conceito de \textit{Design-by-Contract} se aplica
+% também ao paradigma de orientação a serviços. O presente trabalho tem como
+% principais limitações a ausência até o presente momento do uso em contexto real
+% da NeoIDL com \textit{Design-by-Contract} e não implementação de plugins para
+% outras linguagens.
+
+\end{abstract}
+
+
+
+% 
+% Aim.  The purpose of this study was to test the hypothesis that structured abstracts might also be
+%           appropriate for a particular psychology journal.
+% 
+% Method.  24 traditional abstracts from the Journal of Educational Psychology were re-written in a
+%           structured form.  Measures of word length, information content and readability were made
+%           for both sets of abstracts, and 48 authors rated their clarity.
+% 
+% Results.  The structured abstracts were significantly longer than the original ones, but they were also
+%          significantly more informative and readable, and judged significantly clearer by these
+%          academic authors.
+% 
+% Conclusions.  These findings support the notion that structured abstracts could be profitably introduced
+%          into many journals.
+% 
+
+
+\end{document}

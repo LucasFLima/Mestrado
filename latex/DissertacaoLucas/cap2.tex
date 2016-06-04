@@ -6,7 +6,7 @@
 \vspace{-6mm}
 
 
-As empresas precisam estar preparadas para responder rápida e
+As empresas precisam estar preparadas para responder rápidamente e
 eficientemente a mudanças impostas por novas regulações, por aumento de
 competição ou ainda para usufruir de novas oportunidades. No contexto atual, em que as
 informações fluem de modo extremamente veloz, o tempo disperdiçado pelas organizações para se
@@ -24,7 +24,8 @@ Nessas situações, os sistemas de informação das organizações devem possibi
 que a dinâmica de adaptação ocorra sem demora, sob pena de, em vez de serem
 ferramental para apoiar continuamente os processos de negócio, se tornem entrave
 para a ágil incorporação dos novos processos. Por outro lado, a nova
-configuração deve se manter integra e funcional com o já complexo cenário de TI.
+configuração deve se manter integra e funcional com o cenário de TI existente,
+normalmente complexo.
 
 A eficiência na integração entre as soluções de TI é determinante para que se
 consiga alterar uma parte sem comprometer todo o ecossistema. A integração
@@ -78,11 +79,12 @@ A lógica concebida de acordo com orientação a serviço pode ser designada de
 \textbf{orientada a serviço}, e as unidades da lógica orientada a serviço são
 referenciadas como \textbf{serviços}. Como um paradigma de computação
 distribuída, a orientação a serviço pode ser comparada a orientação a objetos,
-de onde advém várias de suas raízes, além da influência de EAI, BMP e \ws
-\cite{erl2009web}.
+de onde advém várias de suas raízes, além da influência de
+\textit{Interface Description Languages} -- EAI,
+\textit{Business Process Modeling} -- BPM e \ws \cite{erl2009web}.
 
 A orientação a serviços é composta principalmente de oito princípios de projeto
-(descritos na subseção \ref{PrincipiosSOA}).
+(os quais serão descritos na subseção \ref{PrincipiosSOA}).
 
 \item [Arquitetura orientada a serviço - SOA] representa um modelo arquitetural
 cujo objetivo é elevar a agilidade e a redução de custos e ao mesmo tempo
@@ -124,9 +126,9 @@ sua interface técnica a mais fundamental. Esses documentos compõem o contrato
 técnico do serviço, cuja essência é estabelecer uma API com as funcionalidades providas pelo serviço por meio de
 suas capacidades \cite{erl2009web}.
 
-Os serviços implementados como \ws{} SOAP normalmente são descritos em seu WSDL
-\footnote{\ws{} \textit{Description Language}}, \textit{XML schemas} and
-políticas (\textit{WS-policy}). Já os serviços implementados como \ws{} REST não
+Os serviços implementados como \ws{} SOAP normalmente são descritos em
+arquivos \ws{} \textit{Description Language} -- WSDL, \textit{XML
+schemas} and políticas (\textit{WS-policy}). Já os serviços implementados como \ws{} REST não
 possuem uma linguagem padrão para especificação de contratos. Já foram propostas
 algumas alternativas como WADL \cite{hadley2006web}, Swagger \cite{swaggerSite},
 e \neoidl{} \cite{lima2015neoidl}.
@@ -199,7 +201,7 @@ arquitetura orientada a serviço deve fazer uso de tecnologias providas pelos
 fornecedores, sem, no entanto, se tornar dependente dela, por meio de APIs e
 protocolos padrões de mercado.
 
-Outra característica da aplicação da plataforma SOA é os serviços são
+Outra característica da aplicação da plataforma SOA é os serviços serem
 considerados recursos corporativos, ou seja, da empresa como um todo. Serviços
 desenvolvidos para atender um único objetivo perdem esta característica e se
 assemelham a soluções de propósito específico, tal como soluções monolíticas. O
@@ -316,13 +318,13 @@ considerando a complexidade das composições a serem formadas.
 
 O princípio do baixo acoplamento tem por objetivo principal reduzir o
 acoplamento entre o cliente e o fornecedor do serviço. Há vários tipos de
-acopamentos negativos, como citado acima. Porém, um acoplamento é considerado
-positivo e desejável: da implementação a partir do contrato. Ou seja, a lógica
+acopamentos negativos, como citado na subseção \ref{PrincipiosSOA}. Porém, um
+acoplamento é considerado positivo e desejável: da implementação a partir do contrato. Ou seja, a lógica
 do serviço deve corresponder ao que está especificado no contrato.
 
 Duas abordagens podem ser seguidas para se produzir esse efeito. A primeira é a
 geração do contrato a partir da lógica implementada, conhecida como
-\CdFirst{}. A outra propõem um sentido inverso, partindo-se do contrato
+\CdFirst{}. A outra propõe um sentido inverso, partindo-se do contrato
 para a geração do código, chamada \CtFirst{}. A abordagem
 \CtFirst{} é recomendada para a arquitetura orientada a serviço
 \cite{erl2009web}.
@@ -361,12 +363,12 @@ informação \cite{serrano2014service}.
 A necessidade das organizações de integrar suas soluções, seja
 entre os sistemas internos ou entre esses e sistemas de outras empresas
 \cite{rao2004survey}, não é recente. Essa é uma das principais motivações do uso
-de \ws{}, por possibilitar que soluções contruídas com tecnologias distintas possam trocar
-informações por meio da \textit{Web}. Nesse contexto, as arquiteturas
+de \ws{}, por possibilitar que soluções construídas com tecnologias distintas
+possam trocar informações por meio da \textit{Web}. Nesse contexto, as arquiteturas
 orientadas a serviço fazem amplo uso de \ws{} como meio para disponibilização de serviços.
 
 Há dois tipos de \ws{}: baseados em SOAP e baseados em REST. Os mais diversos
-tipo de aplicações podem ser concebidas utilizando \wss{} SOAP ou REST,
+tipos de aplicações podem ser concebidas utilizando \wss{} SOAP ou REST,
 situação também aplicável a serviços.
 Originalmente os serviços utilizaram \ws{} SOAP, trafegando as informações em
 uma mensagem codificada em um formato de troca de dados (XML), por meio do
@@ -414,10 +416,11 @@ de dados é mais forte em SOAP que em REST \cite{mumbaikar2013web}.
 O termo REST foi criado por Roy Fielding, em sua tese de doutorado
 \cite{fielding2000architectural}, para descrever um modelo arquitetural
 distribuído de sistemas hipermedia. Um \ws{} REST é baseado no conceito de
-recurso (que é qualquer coisa que possua uma URI) que pode ter zero ou mais
-representações \cite{he2003service}.
+recurso (que é qualquer coisa que possua uma \textit{Uniform Resource
+Identifier} -- URI) que pode ter zero ou mais representações
+\cite{he2003service}.
 
-O estilo arquitetural REST é cliente-servidor, em que o cliente enviar uma
+O estilo arquitetural REST é cliente-servidor, em que o cliente envia uma
 requisição por um determinado recurso ao servidor e este retorna uma resposta.
 Tanto a requisição como a resposta ocorrem por meio da transferência de
 representações de recursos \cite{mumbaikar2013web}, que podem ser de vários
@@ -449,12 +452,12 @@ processamento onerosos.
 Ao contrário de SOAP, REST não dispõe de um padrão para especificação de
 contratos. Essa carência, que no início não era considerada um problema, foi se
 tornando uma necessidade cada vez mais evidente a medida em que se amplia o
-conjunto de \wss{} implantados. Atualmente existem algumas linguagens com o
+conjunto de \wss{} implantados. Atualmente, existem algumas linguagens com o
 propósito de documentar o contrato REST.
 
 A linguagem mais popular atualmente é \textit{Swagger} cujo projeto se iniciou
 por volta de 2010 para atender a necessidade de um projeto específico, sendo posteriormente
-vedida para uma grande empresa. Em janeiro de 2016, \textit{Swagger} foi doada
+vendida para uma grande empresa. Em janeiro de 2016, \textit{Swagger} foi doada
 para o \textit{Open API Iniciative (OAI)} e denominada de \textit{Open API
 Specification}. O propósito da iniciativa é tornar \textit{Swagger} padrão para
 especificação de APIs com independencia de fornecedor. Apoiam o projeto grandes
@@ -462,10 +465,10 @@ empresas como Google\textsuperscript{\textregistered},
 Microsoft\textsuperscript{\textregistered} e
 IBM\textsuperscript{\textregistered}.
 
-WADL (\textit{Web Application Description Language}), uma especição baseada em
+WADL (\textit{Web Application Description Language}), uma especifição baseada em
 XML semelhante ao WSDL, foi projetada e proposta pela \textit{Sun
 Microsystems}\textsuperscript{\textregistered} e sua última versão submetida
-ao W3C em 2009. Outra linguagem proposta é a RAML -- abreviação de
+ao W3C em 2009. Outra linguagem proposta é a RAML\cite{RAML} -- abreviação de
 \textit{RESTful API Modeling Language} -- baseada em YAML e projetada pela
 MuleSoft\textsuperscript{\textregistered}. Muitos projetos \textit{open source} adotam RAML.
 
@@ -492,11 +495,11 @@ o sucesso da execução.
 O mecanismo que expressa essas condições são chamados de asserções
 (\textit{assertions}, em inglês). As asserções que o consumidor deve respeitar
 para fazer uso da rotina são chamadas de \textbf{precondições}. As asserções que
-fornecem, de parte do fornecedor, as garatias ao consumidor, são denominadas
+fornecem, de parte do fornecedor, as garantias ao consumidor, são denominadas
 \textbf{pós-condições}.
 
 DbC tem o objetivo de aumentar a robustez do sistema e tem na linguagem Eiffel
-\cite{meyer1988eiffel} um de seus precursores. Para os mantenedores do Eiffel, DBC é
+\cite{meyer1988eiffel} um de seus precursores. Para os mantenedores do Eiffel, DbC é
 tão importante quanto classes, objetos, herança, etc. O uso de DBC na
 concepção de sistemas é uma abordagem sistemática que produz sistemas com mais
 corretude.
@@ -549,7 +552,7 @@ de checagens redundantes. Se os contratos são precisos e explícitos, não há
 necessidade de testes redundantes \cite{meyer1992applying}.
 
 Todos esses aspectos são fundamentais para se possibilitar o reuso eficiente de
-componentes, que é o pilar da orientação da objetos e se aplica de forma análoga
+componentes, que é o pilar da orientação a objetos e se aplica de forma análoga
 à orientação a serviços. Componentes reusáveis por várias aplicações devem ser
 robustos pois as consequências de falhas ou comportamentos incorretos são muito
 piores que as de aplicações que atendem a único propósito
@@ -557,7 +560,7 @@ piores que as de aplicações que atendem a único propósito
 
 Há de se registrar ainda que, em orientação a objetos, existe outro tipo de
 asserção além das pré e pós-condições. Em vez de cuidar das propriedades de cada
-rotina individualmente, elas expressão condições globais para todas as
+rotina individualmente, elas expressam condições globais para todas as
 instâncias de uma classe \cite{meyer1997object}. Esse tipo de asserção é chamada
 de invariante. Uma vez que em orientação a serviço se preconiza a ausência de
 estado, o conceito de invariante não é explorado neste trabalho.
@@ -577,7 +580,10 @@ robustos.
 Foi essa preocupação que incorporou à linguagem Eiffel o conceito de contratos.
 A partir desse estilo de projeto se criou a noção de \designbycontract{},
 concretizada na linguagem por meio das precondições, pós-condições e invariantes
-\cite{meyer1988eiffel}. Esta obordagem influenciou outras linguagem de programação orientadas a objeto.
+\cite{meyer1988eiffel}. Esta abordagem influenciou outras linguagem de programação orientadas a objeto.
+
+A figura \ref{lst:exemploEiffel} apresenta um exemplo de especificação de pré e
+póscondição na linguagem Eiffel.
 
 \vspace{6mm}
 
@@ -602,6 +608,9 @@ JML combina a praticidade de \designbycontract{} de linguagens como Eiffel com a
 expressividade e formalismo de linguagens de especificação orientadas a modelo
 \cite{leavens2006design}. 
 
+A figura \ref{lst:exemploJML} apresenta um exemplo de especificação de pré e
+póscondição na linguagem de extensão JML.
+
 \begin{figure}[h]
 \begin{small}
 \lstinputlisting[language=JML,firstnumber=1]{exemploJML.tex}
@@ -618,6 +627,9 @@ distinguir referência de objetos nulos de referência a objetos possivelmente n
 nulos, especificações de pré e pós-condições, um método para gerenciar exceções
 entre outros recursos \cite{barnett2004spec}.
 
+A figura \ref{lst:exemploSpec} apresenta um exemplo de especificação de pré e
+póscondição na linguagem de extensão JML.
+
 \vspace{6mm}
 
 \begin{figure}[h]
@@ -626,7 +638,7 @@ entre outros recursos \cite{barnett2004spec}.
 \vspace{-.5cm}
 \end{small}
 \caption{Exemplo de pré e pós-condições em Spec\#}
-\label{lst:exemploJML}
+\label{lst:exemploSpec}
 \end{figure}
 
 

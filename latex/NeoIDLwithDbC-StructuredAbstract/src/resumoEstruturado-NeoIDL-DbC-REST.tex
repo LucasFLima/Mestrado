@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage[brazil]{babel} % Suporte para o Portugu�s
+\usepackage[utf8]{inputenc} % Suporte para acentua��o sem necessidade dos
+\usepackage{blindtext}
+\usepackage[inline]{enumitem}
+
+\newcommand{\absdiv}[1]{%
+\par\addvspace{.5\baselineskip}% adjust to suit
+\noindent\textbf{#1}\quad\ignorespaces
+}
+
+\hyphenation{NeoIDL}
+
+\begin{document}
+
+\bf  CONTRATOS REST ROBUSTOS E LEVES: UMA\\ ABORDAGEM EM DESIGN-BY-CONTRACT COM
+NEOIDL
+
+\begin{abstract}
+
+\emph{Contexto.}
+A demanda por integração entre sistemas de origens diversas e tecnologias
+variadas fez aumentar a adoção de soluções baseadas em computação orienta a
+serviços, sendo o uso de servi\-ços Web a estratégia mais comum para implementar
+serviços, em particular com a adoção crescente do estilo arquitetural REST.
+Por outro lado, REST ainda não dispõe de uma notação padrão para especificação
+de contratos e linguangens como Swagger, YAML e WADL cumprem com o
+único propósito de descrição de serviços, porém apresentam uma significativa
+limitação: essas linguagens
+são voltadas para computadores, tendo escrita e leitura complexas para
+humanos -- o que prejudica a abordagem \textit{Contract-first}, prática
+estimulada na orientação a serviços. Tal limitação motivou a especificação da
+linguagem NeoIDL\footnote{Além de ser uma linguagem (\textit{Domain Specific
+Language}), a NeoIDL também possui um framework de geração de código para outras linguagens de propósito
+amplo.}, que foi concebida com o objetivo de ser mais expressiva para humanos,
+além de prover suporte a modularização e herança.
+\emph{Problema.} Entretanto, nenhuma dessas linguagens, incluindo a NeoIDL, dá
+suporte a contratos robustos, como os possíveis de serem descritos em
+linguagens ou extensões de linguagens com suporte a \emph{Design-by-Contract},
+presentes tipicamente (ou exploradas) no paradigma de orientação a objetos.
+\emph{Objetivos.}
+O objetivo geral deste trabalho é investigar o uso de construções de
+\textit{Design-by-Contract} no contexto de computação orientada a serviços,
+verificando a viabilidade e utilidade de sua adoção na especificação de
+contratos e implementação de serviços REST.
+% \absdiv{Método}
+%
+% Após ampla revisão bibliográfica, sobretudo dos temas SOC, REST,
+% \textit{Design-by-Contract}, a hipótese da aplicabilidade de DbC em
+% especificação de contratos REST foi levantada. Com o propósito de validar essa
+% hipótese, a sintaxe da NeoIDL foi extendida para suportar DbC e, em seguida,
+% implementadas regras de transformação que traduzem as construções de DbC em
+% código de validação para o \textit{framework Python
+%  Twisted}. Paralelamente, foi conduzida pesquisa junto a desenvolvedores
+%  experientes sobre a sua aceitação de especificações de contratos REST com
+%  \textit{Design-by-Contract} na NeoIDL. Adicionalmente, foi realizada uma
+%  análise empírica sobre a expressividade e reuso da NeoIDL em si.
+\emph{Resultados e Contribuições.}
+Essa dissertação contribui tecnicamente com uma extensão da NeoIDL para DbC, contemplando
+dois tipos de precondição e pós-condição: uma básica, que valida os
+parâmetros de requisição de entrada e dados de saída; e outra baseada em serviços,
+em que composições de serviços são acionados para validar se a
+capacidade do serviço deve ou não ser executada (ou se foi executada adequadamente, em caso de
+uma pós-condição). %Essa lógica foi expressa na sintaxe da NeoIDL e possibilitou a
+%transformação para serviços com esse comportamento.
+Sob a perspectiva de validação empírica, esta dissertação contribui com dois estudos.
+Um primeiro, com o intuito de verificar
+os requisitos de expressividade e reuso da NeoIDL, sendo realizado no
+domínio de Comando e Controle em parceria com o Exército Brasileiro. O segundo
+estudo teve como maior interesse a análise da percepção de utilidade e
+facilidade de uso das construções DbC propostas para a NeoIDL,
+levando a respostas positivas em termos de simplicidade e aceitação dos efeitos
+sobre código gerado a partir de especificações NeoIDL.
+%
+% \absdiv{Conclusões}
+%
+% O trabalho demonstrou que o conceito de \textit{Design-by-Contract} se aplica
+% também ao paradigma de orientação a serviços. O presente trabalho tem como
+% principais limitações a ausência até o presente momento do uso em contexto real
+% da NeoIDL com \textit{Design-by-Contract} e não implementação de plugins para
+% outras linguagens.
+
+\end{abstract}
+
+
+\end{document}

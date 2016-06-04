@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Tue May 31 10:33:41 BRT 2016
+markTmpDer=true
+builderNum=2
+outputDir=out
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=resumoEstruturado-NeoIDL-DbC-REST.tex
+outputFile=NeoIDL-DbC - Abordagem de Design by Contract em servi\u00E7os REST.pdf
+langSpell=pt
+markDer=true
+srcDir=src

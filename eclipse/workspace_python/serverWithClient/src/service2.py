@@ -21,4 +21,4 @@ class Resource(object):
         #return agent.request('GET', "http://www.unb.br", Headers({}), None)
         print 'Service 2 - call service3'
         return agent.request('GET', "http://localhost:8081/service3", Headers({}), None)
-        
+

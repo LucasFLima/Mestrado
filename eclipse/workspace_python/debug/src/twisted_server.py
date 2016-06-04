@@ -3,7 +3,9 @@ import re
 import utils
 
 from twisted.web import server, resource
-from twisted.internet import reactor
+from twisted.internet import reactor, defer
+import time
+from twisted.web.server import NOT_DONE_YET
 
 # class Resource(object):
 #     __metaclass__ = abc.ABCMeta
@@ -51,6 +53,10 @@ class TwistedServer(resource.Resource):
             for route in routes["routes"]:
                 self.routeTable[route["pattern"]] = route["srv"]
                 self.pathTable[route["pattern"]] = route["uri"]
+
+    #def _delayedRender(self, request):
+    #    request.write("Finally done, at %s" % (time.asctime(),))
+    #    request.finish()
 
     def createModuleAndRequest(self, request):
         """ An utility method for parsing an HTTP request. 
@@ -106,16 +112,30 @@ class TwistedServer(resource.Resource):
 
         try:
             module, aRequest = self.createModuleAndRequest(request)
-            responseCode, response = module.Resource.get(aRequest)
-            request.setResponseCode(responseCode)
-            return response
+            #responseCode, response = module.Resource.get(aRequest, request)
+            #srvResult = module.Resource.get(aRequest)
+            #[responseCode, response] = srvResult.result
+            
+            
+            d = module.Resource.get(aRequest)
+            d.addBoth(TwistedServer.endRequest, request)
+            #d.callback()
+            
+            return NOT_DONE_YET
+            
+            #request.setResponseCode(responseCode)
+            #return response
         except LookupError as e:
             request.setResponseCode(ResponseCode.BadRequest)
             return ResponseCode.BadRequest
- #       except:
- #           request.setResponseCode(ResponseCode.InternalServerError)
- #           return ResponseCode.BadRequest
+        except:
+            request.setResponseCode(ResponseCode.InternalServerError)
+            return ResponseCode.BadRequest
 
+    def endRequest(self, result, request):
+        print 'endRequest'
+        request.SetResponseCode(result[0])
+        return result[1]
 
     def render_POST(self, request):
         """ Deals with HTTP POST requests.
@@ -185,7 +205,7 @@ class TwistedServer(resource.Resource):
 
 if __name__ == "__main__" :
     print 'Starting server at port 8080...' 
-    server.NOT_DONE_YET
+    #server.NOT_DONE_YET
     site = server.Site(TwistedServer())
     reactor.listenTCP(8080, site)
     reactor.run()

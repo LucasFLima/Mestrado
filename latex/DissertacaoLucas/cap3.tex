@@ -6,172 +6,76 @@
 \label{apresentacaoNeoIDL}
 
 A \neoidl{} é uma linguagem específica de domínio (\textit{Domain Specific
-Language - DSL}) desenvolvida com o objetivo de possibilitar e simplificar o
-processo de elaboração de contratos para serviços REST. Em seu projeto, foram
-consideradas os requisitos de concisão, facilidade de compreensão humana,
+Language - DSL}) elaborada com o objetivo de possibilitar, em um processo
+simples, a elaboração de contratos para serviços REST. Em seu projeto, 
+foram consideradas os requisitos de concisão, facilidade de compreensão humana,
 extensibilidade e suporte à herança simples dos tipos de dados definidos pelo
 usuário.
 
-Além de ser um linguagem, a \neoidl{} é também um \textit{framework} de geração
-de código, que permite, a partir de contratos especificados na linguagem, a geração
-da implementação do serviço em várias linguagens e tecnologias, por meio de seus
-\textit{pluggins}. As próximas subseções apresentam o histórico da \neoidl{},
-sua sintaxe e \textit{framework}.
+Além de ser uma linguagem, a \neoidl{} é também um \textit{framework} de geração
+de código que permite, a partir de contratos especificados na própria
+linguagem, a produção da implementação da estrutura do serviço. Os serviços
+podem ser construídos em várias linguagens e tecnologias, por meio
+de \textit{pluggins} da \neoidl{}.
+
+As próximas subseções apresentam o histórico da \neoidl{}, exemplificam sua
+sintaxe e descrevem sucintamente seu \textit{framework} de geração de código.
 
 
 \subsection{Histórico e motivação}
 \label{histMotivNeoIDL}
 \vspace{-6mm}
 
-A \neoidl{} surgiu no contexto de um projeto de colaboração entre a Universidade
-de Brasília e o Exército Brasileiro. O projeto tinha os requisitos de modularidade,
-com a lógica distribuída inclusive geograficamente, e de execução em plataformas
-diversas. Diante dessa necessidade, o Exército desenvolveu um \textit{framework}
-proprietário, voltado para arquitetura orientada a serviço e com suporte
-a implantação de serviços REST em vários linguagens, chamado \neocortex{}.
+A \neoidl{} surgiu no contexto de um acordo de colaboração entre a Universidade
+de Brasília e o Exército Brasileiro. O projeto do exército caracterizava-se
+pelos requisitos de modularidade -- com a lógica distribuída inclusive
+geograficamente -- e de execução em plataformas diversificadas. Diante dessa
+necessidade, o Exército desenvolveu um \textit{framework} proprietário,
+voltado para arquitetura orientada a serviço e com suporte
+a implantação de serviços REST em vários linguagens, denominado \neocortex{}.
 
-A característica do \neocortex{} de se utilizar serviços implementados em vários
-linguagens motivou o desenvolvimento um programa gerador de serviços poliglota
--- que produz código de várias linguagens de progração -- a partir da descrição
-do contrato do serviço. Daí nasceu a \neoidl{}.
+A particularidade do \neocortex{} de se utilizar serviços implementados em
+vários linguagens motivou o desenvolvimento um programa gerador de serviços
+poliglotas -- que produz código de várias linguagens de programação -- a partir da
+descrição do contrato do serviço. A \neoidl{} foi concebida para atender a essa
+finalidade. A primeira decisão de projeto da \neoidl{} foi a linguagem para se
+especificar o contrato de serviço.
 
-Entretanto, as linguagens de programação disponíveis para especificação de
-contratos REST, como Swagger, WADL e RAML, tinham (e ainda tem) limitações
-importantes para a abordagem desejada de se escrever primeiramente o contrato e,
-a partir dele, gerar a implementação. Todas elas utilizam linguangens de
-propósito geral (XML, JSON, YAML), tornando os contratos extensos e de difícil
-compreensão por humanos. Além disso, não possuem mecanismos semânticos de
-extensibilidade e modularidade.
+Porém, as linguagens de programação disponíveis para especificação de
+contratos REST, como Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
+RAML\cite{RAML}, possuiam (e ainda possuem) limitações importantes para a
+abordagem desejada, qual seja elaborar primeiramente o contrato e, a
+partir dele, gerar a implementação do serviço. Todas essas linguagens utilizam
+notações de propósito geral (XML\cite{XML}, JSON\cite{JSon}, YAML\cite{YAML}),
+tornando os contratos extensos e de difícil compreensão humana. Além disso,
+elas não possuem mecanismos semânticos de extensibilidade e modularidade.
 
-Partiu-se então para o desenvolvimento de uma nova linguagem, com sintaxe
-inspirada em linguagens mais claras e concisas -- CORBA IDL \cite{corba} e
-Apache Thrift \cite{thrift} --, e que permitisse a declaração de tipos de
-dados definidos pelo usuário e extensibilidade. Ambas,
-CORBA e Apache Thrift, possuem limitações nesses últimos aspectos. A sintaxe e
-as características da linguagem \neoidl{} são discutidas na subseção \ref{linguagemNeoIDL}.
+Partiu-se então para a criação uma nova linguagem, com sintaxe
+inspirada em linguagens mais claras e concisas -- como emph{CORBA
+IDL}\texttrademark \cite{corba} e \emph{Apache
+Thrift}\texttrademark\cite{thrift} --, e que permitisse ainda a declaração de
+tipos de dados definidos pelo usuário e extensibilidade. Ambas, \emph{CORBA} e
+\emph{Apache Thrift}, possuem limitações nesses últimos aspectos. A sintaxe e as
+características da linguagem \neoidl{} são brevemente discutidas na subseção
+\ref{linguagemNeoIDL}.
 
-Em relação à geração de código, dado o requisito de geração de código para
-linguagens distintas, a \neoidl{} foi projetada para possui uma arquitetura
-modular, de modo que novas linguagens ou características de implementaçao
-pudessem se incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é
+Em relação à geração de código, para se viabilizar a geração poliglota de
+código, a \neoidl{} foi projetada para possui uma arquitetura modular, de modo que novas linguagens ou características de implementaçao
+pudessem ser incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é
 possível desenvolver um novo \textit{plugin} para geração de serviços em outras
-linguagens, por exemplo PHP, sem alterar qualquer outro componente, conforme
-apresentado na subseção \ref{frameNeoIDL}.
+linguagens, por exemplo PHP, sem alterar qualquer outro componente do \framework,
+conforme apresentado na subseção \ref{frameNeoIDL}.
 
-A primeira versão da \neoidl{}, ponto de onde partiu este trabalho, dava suporte
-a geração de código em Java, Python e Swagger com as características necessárias
-para execução no \neocortex{}. Foram desenvolvidos no decorrer do projeto nove
-serviços do domínio de comando e controle \cite{david:commandControl},
-compreendendo aproximadamente cinquenta módulos e geração de três mil linhas de
-código Python a partir dos contrato especificados em \neoidl{} (contratos são
-denominados \texttt{módulos} na \neoidl{}). Outros serviços foram implementados em Java. 
-
-
-
-\subsection{\textit{Framework}}
-\label{frameNeoIDL}
-\vspace{-6mm}
-
-A parte da \neoidl{} responsável pela geração de código de
-serviço para as várias linguagens é chamada de \framework{} \neoidl{}. O núcleo do \framework{} é
-composto de módulos responsáveis por fazer o \textit{parse} do contrato escrito
-em \neoidl{}, por processar a especificação e pelo gerenciamento dos
-\textit{plugins}. Já os \textit{plugins} extendem, cada um, a \neoidl{} para as
-linguagens de destino. A figura \ref{fig:neoidl-architecture} ilustra a
-arquitetura do \framework{}.
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.6]{neoidl.pdf}
-\vspace{-.5cm}
-\end{center}
-\caption{Arquitetura do framework de geração de código da \neoidl{}.}
-\label{fig:neoidl-architecture} 
-\end{figure}
-
-
-O núcleo do \framework{} possui um uma pequena aplicação que carrega as
-definições dos \textit{plugins} e processa os argumentos da chamada do gerador
-(o arquivo de contrato que terá o código gerado, o diretório de destino e a
-linguagem a ser utilizada). O modo de funcionamento geral do \framework{} é
-ilustrado na figura \ref{fig:programGenerator}. O \textit{parser} da \neoidl{}
-foi construído utilizando \bnfc{} \cite{ranta-bnfc:2012} com a linguagem
-funcional Haskell.
-
-\begin{figure*}[bt]
-\begin{center}
-\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm 0cm]{programgenerator.pdf}
-\vspace{-.5cm}
-\end{center}
-\caption{Gerador de código da \neoidl{}}
-\label{fig:programGenerator}
-\end{figure*}
-
-As próximas subseções detalham o funcionamento de dois módulos onde estão
-contidas os principais trechos da lógica implementada na \neoidl{}: O
-\textit{PluginDef} e \textit{PluginLoader}.
-
-
-\subsubsection{Componente PluginDef}{\label{sec:plugindef}}
-
-O desenvolvimento de \textit{plugins} na \neoidl{} devem obedecer algumas regras
-de projeto estabelecidas no componente \texttt{PluginDef}, que é um módulo
-escrito em Haskell. No \texttt{PluginDef} declara-se dois tipo de dados
-(\texttt{Plugin} and \texttt{GeneratedFile}) e uma assinatura de tipo
-(\texttt{Transform = Module -> [GeneratedFile]}). Eles definem uma família de
-tipos que mapeiam um módulo \neoidl{} em uma lista de arquivos com o código
-gerado ao final do processo.
-
-De acordo com estas regras de projeto, cada \textit{plugin} precisa declarar uma
-instância do tipo \texttt{Plugin} e implementar uma função de acordo com a
-assinatura definida em \texttt{Transform}. Além disso, cada instância de  
-\texttt{Plugin} precisa ter o nome \texttt{plugin} de forma que o componenente
-\texttt{PluginLoader} possa obter os dados necessários para o seu processamento.
-Assim, a execução de um \textit{plugin} consiste em aplicar sua função de
-transformação correspondente a um módulo \neoidl{} e produzir uma lista de
-arquivos de código fonte. 
-
-\vspace{6mm}
-
-\begin{figure}[h]
-\begin{small}
-\lstinputlisting[language=HaskellSimple,firstnumber=1]{pluginDefStructure.tex}
-\vspace{-.5cm}
-\end{small}
-\caption{Assinatura do \texttt{PluginDef}}
-\label{lst:pluginDef}
-\end{figure}
-
-\subsubsection{Componente PluginLoader}
-
-O carregamento e validação dos \textit{plugins} são competências do componente
-\texttt{PlutinLoader}. O primeito passo é listar todos os arquivos do diretório
-do \textit{plugin} a ser carregado, filtrar os arquivos Haskell (extensão
-\texttt{``.hs''}), criar um nome para um nome reservado (\textit{qualified
-name}) para cada arquivo de \textit{plugin} e aplicar a função de compilação.
-
-Caso todas as regras de definição do \textit{plugin} tenham sido atendidas, o
-\textit{plugin} é carregado e estará pronto para ser acionado. Caso contrário,
-algumas exceções podem ocorrer, como, por exemplo, não haver definição de
-nenhum \textit{plugin} no arquivo:
-
-\begin{tabbing}\tt
-~\char36{}\char46{}\char47{}neoIDL\\
-\tt ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
-\tt ~~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
-\tt ~~~~Not~in~scope\char58{}~\char96{}Plugins\char46{}Python\char46{}plugin\char39{}
-\end{tabbing}
-
-Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
-\texttt{Plugin}:
-
-\begin{tabbing}\tt
-~\char36{}\char46{}\char47{}neoIDL\\
-\tt ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
-\tt ~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
-\tt ~~Couldn\char39{}t~match~expected~type~\char96{}Plugin\char39{}\\
-\tt ~~~with~actual~type~\char96{}\char91{}GHC\char46{}Types\char46{}Char\char93{}\char39{}
-\end{tabbing}
+A primeira versão da \neoidl{}, ponto de onde partiu este trabalho de mestrado,
+dava suporte à geração de código em Java, Python e Swagger com as
+características necessárias para execução no \neocortex{}. Nessa versão, foram
+desenvolvidos para o Exército Brasileiro nove serviços do domínio de Comando e
+Controle \cite{david:commandControl}, os quais compreenderam aproximadamente
+cinquenta módulos\footnote{O conjunto de documentos
+utilizados para descrever contratos na \neoidl{} são denominados
+\texttt{módulos}.} e geração de três mil linhas de código Python a partir
+da especificação dos contrato em \neoidl{}. Alguns outros serviços foram
+ainda implementados em Java.
 
 
 
@@ -179,13 +83,12 @@ Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
 \label{linguagemNeoIDL}
 \vspace{-6mm}
 
-A \neoidl{} simplifica a especificação de contratos REST pois possui uma sintaxe
-concisa própria de linguagens de especificação de interfaces (\emph{interface
-description languages}). Ademais, a \neoidl{} provê mecanismos de
+A linguagem \neoidl{} simplifica a especificação de contratos REST pois possui
+uma sintaxe concisa, própria de linguagens de especificação de interfaces
+(\emph{interface description languages}). Ademais, a \neoidl{} provê mecanismos de
 modularização e herança, de forma que os contratos possam ser separados em
-módulos \footnote{Os arquivos utilizados para definição de contratos
-são denominados módulos na \neoidl{}}, facilitando a herança e manutenção dos
-contratos.
+módulos, facilitando a herança e manutenção dos
+contratos. 
 
 Para demonstrar como os módulos são estruturados na
 \neoidl{}, a seguir são apresentados alguns trechos de um serviço hipotético
@@ -208,25 +111,30 @@ forma de extender as características da operação.
 
 O trecho ilustrado na figura \ref{lst:messagedata-neo} faz a definição de dois
 tipos de dados. \emph{MessageType}, declarado no linha 2, é uma estrutura
-simples do tipo enumeração. O outro tipo é \emph{Message}, declarado entre as
-linhas 4 e 11, composto de seis atributos. O atributo \emph{type} de
-\emph{Message} é do tipo \emph{MessageType} recém declarado.
+simples do tipo enumeração. No exemplo, \emph{MessageType} pode ter os valores
+\emph{Received} e \emph{Send}.
+O outro tipo é \emph{Message}, declarado entre as linhas 4 e 11,
+composto de seis atributos (\emph{id, from, to, subject, content} e
+\emph{type}).
+O atributo \emph{type} de \emph{Message} é do tipo \emph{MessageType} recém declarado.
 
-Na \neoidl{} é utiliza a abordagem convenção sobre configuração, de modo que
-todos os atributos declarados são obrigatórios, a menos que explicitamente
-seja declarado diferente. O atributo \emph{subject} do tipo \emph{Message} é um
-exemplo de atributo opcional (\texttt{<Type> <Ident> = 0;}).
+Na \neoidl{}, é utilizada a abordagem \emph{convenção sobre configuração}, de
+modo que todos os atributos declarados são obrigatórios, a menos que
+seja explicitamente declarado diferente. O atributo \emph{subject} do tipo
+\emph{Message} é um exemplo de atributo opcional (\texttt{<Type> <Ident> = 0;}).
 
-O módulo seguinte (figura \ref{lst:sentmessage-neo}), na linha proposta pela
-\neoidl{} para suporte a herança e reuso, importa o conjunto de definições de \emph{MessageData} e declara o
-serviço \emph{sendbox} (linha 4), o qual possui duas capacidades. A
-capacidade \emph{sendMessage} (linha 6) utiliza a operação \method{post} para submeter uma
-mensagem (tipo \emph{Message}). A outra capacidade (linha 7) tem a finalidade de
-listas as mensagens com um determinado sequecial, por meio da operação
-\method{get}.
+Definido o tipo de dado, o módulo seguinte (figura \ref{lst:sentmessage-neo})
+, na linha proposta pela \neoidl{} para suporte a herança
+e reuso, importa o conjunto de definições de \emph{MessageData} e declara o
+serviço \emph{sendbox} (linha 4). Esse serviço possui duas capacidades:
+\emph{sendMessage} e \emph{listMessages}.
+A capacidade \emph{sendMessage} (linha 6) utiliza a operação \method{post} para
+submeter uma mensagem (tipo \emph{Message}). A capacidade \emph{listMessages}
+(linha 7) tem a finalidade de listar as mensagens com um determinado sequecial,
+por meio da operação \method{get}.
 
-Por fim, a instrução \emph{path} indica o caminho (URI) onde as
-operações serão disponibilizadas. Esse atribuito é importante para se definir
+A instrução \emph{path} (linha 5) completa a especificação do serviço, indicando
+o caminho (URI) onde as operações serão disponibilizadas. Esse atribuito é importante para se definir
 como as requisições serão roteadas entre os serviços.
 
 \vspace{6mm}
@@ -239,27 +147,28 @@ como as requisições serão roteadas entre os serviços.
 \label{lst:sentmessage-neo}
 \end{figure}
 
-Ainda na filosofia de conversão sobre configuração, a \neoidl{} assume que os
-argumentos das operações \method{POST} e \method{PUT} são enviadas no corpo da
-requisição. Nas operações \method{GET} e \method{DELETE}, por outro lado,
-presume-se que os agumentos estão contidos no \emph{path} da requisição ou ainda
+Seguindo a filosofia de \emph{conversão sobre configuração}, a \neoidl{} assume
+que os argumentos das operações do tipos \method{POST} e \method{PUT} são
+enviadas no corpo da requisição. Nas operações dos tipos \method{GET} e
+\method{DELETE}, por outro lado, presume-se que os agumentos estão contidos no \emph{path} da requisição ou ainda
 como \textit{query string}.
 
-A especificação dos contratos na \neoidl{} pode ser enriquecida com
-anotações, por meio das quais se possibilita extender a semântica de uma
-especificação sem que seja necessário alterar a sintaxe da \neoidl{}. Esse
-recurso da \neoidl{} simplifica a inclusão de novas características aos
-serviços, pois a alteração da sintaxe da própria \neoidl{} envolve um esfoço não
-trivial de compatibilizar todos os \textit{plugins} já construídos.
+A especificação dos contratos na \neoidl{} pode ser enriquecida de forma simples
+com o uso de anotações, pois elas possibilitam extender a semântica
+de uma especificação sem que seja necessário alterar a sintaxe da
+linguagem \neoidl{}. Essa versatilidade das anotações é bastante útil, pois a
+alteração da sintaxe da própria \neoidl{} não é um esfoço trivial, por demandar
+a compatibilização de todos os \textit{plugins} já construídos.
 
 O módulo apresentado na figura \ref{lst:annotationNeoIDL} contém, além das
-informações contidas no módulo da figura \ref{lst:sentmessage-neo}, uma anotação chamada
-\emph{Security Policy} (linhas 4 a 6) aplicada ao serviço \emph{sentbox}. A
-declaração da anotação é feita no final do módulo (linhas 14 a 18).
+informações contidas no módulo da figura \ref{lst:sentmessage-neo}, uma anotação
+denominada \emph{Security Policy} (linhas 4 a 6) que é aplicada ao serviço
+\emph{sentbox}.
+A declaração da anotação é feita ao final do módulo (linhas 14 a 18).
 
 \vspace{6mm}
  
-\begin{figure}
+\begin{figure}[htb]
 \begin{small}
 \lstinputlisting[language=NeoIDL,firstnumber=1]{messageSendAnnotation.tex}
 \vspace{-.5cm}
@@ -268,19 +177,100 @@ declaração da anotação é feita no final do módulo (linhas 14 a 18).
 \label{lst:annotationNeoIDL}
 \end{figure}
 
-Além de aplicáveis a \texttt{resources}, as anotações também podem ser aplicadas
-a outros construtores da linguagem: \texttt{module}, \texttt{enum},
-\texttt{entity}. Qualquer anotação na \neoidl{} possui a mesma estrutura: um
+Além de serem aplicáveis a \texttt{resources}, as anotações também podem ser
+utilizadas em outros construtores da linguagem: \texttt{module},
+\texttt{enum}, \texttt{entity}. Qualquer anotação na \neoidl{} possui a mesma estrutura: um
 nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
 disponíveis para utilização pelos \textit{plugins}.
 
-A estrutura de um módulo \neoidl{}, como pode ser verificado nos exemplos
+A estrutura de um módulo \neoidl{}, como pôde ser verificado nos exemplos
 acima, é composta pelas seguintes seções: importação, caminho do serviço,
 enumerações, entidades, serviços e declaração de anotações. O apêndice 
 \ref{apend:estruturaLexicaNeoIDL} apresenta a estrutura sintática e léxica da
-\neoidl{} antes da incorporação das construções relativas a
-\designbycontract{}.
+\neoidl{} antes de terem sido incorporadas as construções
+relativas a \designbycontract{}.
 
+
+
+
+\subsection{\textit{Framework}}
+\label{frameNeoIDL}
+\vspace{-6mm}
+
+A parte da \neoidl{} responsável pela geração de código de
+serviço para as várias linguagens é denominado \framework{} \neoidl{}. O
+\framework{} \neoidl{} possui suas partes: o núcleo e os \textit{plugins},
+conforme ilustrado na figura \ref{fig:programGenerator}.
+O núcleo é composto de módulos responsáveis (a) por fazer o \textit{parse}\footnote{O \textit{parser} da \neoidl{}
+foi construído utilizando \bnfc{} \cite{ranta-bnfc:2012} com a linguagem de
+programação funcional Haskell.}
+do contrato escrito em \neoidl{}, (b) por processar a sintaxe da linguagem \neoidl{} e (c) pelo gerenciamento dos \textit{plugins}.
+
+Fora do núcleo da \neoidl{} ficam os \textit{plugins}, responsáveis,
+cada um, por gerar código para as linguagens de destino. Assim, para se
+possibilitar a geração de código para uma nova linguagem ou segundo uma nova arquitetura, um
+novo \textit{plugin} deve ser desenvolvido. A primeira versão da \neoidl{}
+possuia \textit{plugins} para Python, Java e Swagger.
+
+\begin{figure*}[h]
+\begin{center}
+\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm 0cm]{programgenerator.pdf}
+\vspace{-.5cm}
+\end{center}
+\caption{Gerador de código da \neoidl{}}
+\label{fig:programGenerator}
+\end{figure*}
+
+As próximas subseções resumem o funcionamento de
+dois módulos onde estão contidas os principais trechos da lógica implementada na \neoidl{}: O
+\textit{PluginDef} e \textit{PluginLoader}. Mais detalhes podem ser obtidos na
+publicação \textit{NeoIDL: A Domain Specific Language for Specifying REST
+Contracts Detailed Design and Extended Evaluation} \cite{lima2015neoidl}.
+
+
+\subsubsection{Componente PluginDef}{\label{sec:plugindef}}
+
+O módulo \texttt{PluginDef} estabelece as definições de regras de projeto
+(\textit{Design Rules}) obrigatórias para o desenvolvimento de
+\textit{plugins}, padronizando-os. De acordo com as regras de projeto, cada
+\textit{plugin} precisa declarar uma instância do tipo \emph{Plugin} e implementar uma função de
+transformação de acordo com a assinatura definida.
+
+Além disso, cada instância de  
+\texttt{Plugin} precisa ter o nome do \texttt{plugin} de forma que o
+componenente \texttt{PluginLoader} (subseção \ref{compPluginLoader}) possa obter
+os dados necessários para o seu processamento.
+Resumidamente, a execução de um \textit{plugin} consiste em aplicar sua função
+de transformação a um módulo \neoidl{} e produzir uma lista de
+arquivos de código fonte. 
+
+
+\subsubsection{Componente PluginLoader}
+\label{compPluginLoader}
+
+O carregamento e validação dos \textit{plugins} são competências do componente
+\texttt{PluginLoader}. Se todas as regras de definição do \textit{plugin}
+tiverem sido atendidas, o \textit{plugin} é carregado e estará pronto para ser
+ acionado. Caso contrário, algumas exceções podem ocorrer, como, por exemplo, não haver definição de
+nenhum \textit{plugin} no arquivo:
+
+\begin{tabbing}\tt
+~\char36{}\char46{}\char47{}neoIDL\\
+\tt ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
+\tt ~~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
+\tt ~~~~Not~in~scope\char58{}~\char96{}Plugins\char46{}Python\char46{}plugin\char39{}
+\end{tabbing}
+
+Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
+\texttt{Plugin}:
+
+\begin{tabbing}\tt
+~\char36{}\char46{}\char47{}neoIDL\\
+\tt ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
+\tt ~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
+\tt ~~Couldn\char39{}t~match~expected~type~\char96{}Plugin\char39{}\\
+\tt ~~~with~actual~type~\char96{}\char91{}GHC\char46{}Types\char46{}Char\char93{}\char39{}
+\end{tabbing}
 
 
 \section{AVALIAÇÃO EMPÍRICA}
@@ -290,8 +280,9 @@ A primeira versão da \neoidl{} foi submetida a um estudo empírico de sua expre
 e reuso em um contexto real. As próximas subseções apresentam 
 o resultado da análise comparativa da representação de 44 (quarenta e quatro)
 contratos escritos em Swagger em relação à mesma especificação em \neoidl{}.
-Esse estudo foi realizado no transcurso do trabalho de mestrado e 
-publicado no periódico IJSeke \cite{lima2015neoidl}.
+
+Esse estudo é uma das contribuições deste trabalho de mestrado e foi publicado
+no periódico IJSeke \cite{lima2015neoidl}.
 
 \subsection{Expressividade}
 \label{estudoExpressividadeNeoIDL}
@@ -315,17 +306,18 @@ A expressividade é um dos principais critérios para se escolher uma
 linguagem. Entretanto a linguagem que não expressa todas as situações
 necessárias ao seu contexto de uso, por óbvio, não pode ser usada
 \cite{mackinlay1985expressiveness}. Nesse sentido, o primeiro teste a que a
-\neoidl{} foi submetida constituiu-se na produção de contratos e serviços reais
+\neoidl{} foi submetido constituiu-se na produção de contratos e serviços reais
 no início do projeto com o Exército Brasileiro (vide subseção \ref{histMotivNeoIDL}).
 
 Assim, tendo a \neoidl{} demonstrado sua capacidade de representar contratos
-REST, foi realizada uma segunda análise: quão expressiva seria a \neoidl{}
-em comparação com outra linguagem com o mesmo objetivo. Foi escolhida
-Swagger \cite{swaggerSite}, uma linguagem cujo uso tem crescido pela indústria.
+REST reais, foi realizada uma segunda análise: quão expressiva seria a
+\neoidl{} em comparação com outra linguagem com o mesmo objetivo. Foi escolhida
+Swagger \cite{swaggerSite}, uma linguagem de especificação de contratos REST
+cujo uso tem crescido pela indústria.
 Em Swagger, os contratos são escritos em JSON\cite{JSon} ou YAML\cite{YAML},
 ambos com uma estrutura geral de chave-valor.
 
-Tendo sido a facilidade de compreensão e manipulação por humanos um dos pilares
+Sendo a facilidade de compreensão e manipulação por humanos um dos pilares
 de desenvolvimento da \neoidl{}, foi adotada a estratégia de comparar a
 expressividade em termos de quantidade de linhas de código (SLOC - do inglês
 \textit{Source Lines of Code}), uma vez que muitas linhas significam maior
@@ -334,7 +326,9 @@ esforço para escrita, sobretudo na abordagem \CtFirst{}.
 Com este propósito, foi obtido um conjunto de 44 contratos do Exército
 Brasileiro especificados em Swagger. A primeira etapa foi reescrever esses
 contratos em \neoidl{} e então comparar a quantidade de linhas de código
-produzida com a quantidade de linhas de código dos contratos originais. Para a
+produzida com a quantidade de linhas de código dos contratos originais.
+
+Para a
 transcrição dos contratos, em razão da \neoidl{} não possuir recursos para
 transcrição bidirecional de Swagger para \neoidl{}, foi desenvolvido
 e utilizado um \textit{script} na linguagem \textit{Perl}, 
@@ -349,7 +343,7 @@ especificação \neoidl{}. Nessa análise foram consideradas linhas físicas de
 código, ignorando-se linhas em branco ou compostas apenas de delimitadores.
 
 A proporção de redução não se deu de forma igual em todos os contratos. Por
-exemplo, o contrato de um determinado serviço \footnote{Os nomes reais dos
+exemplo, o contrato de um determinado serviço\footnote{Os nomes reais dos
 contratos foram omitidos em razão de acordo de confidencialidade.} requereu 367
 linhas na especificação Swagger e 112 linhas na especificação \neoidl{} --
 redução da ordem de 69\%.
@@ -368,7 +362,11 @@ de linha de código maior ou menor após o processo de tranformação para
 A tabela \ref{tab:size-corr} apresenta a correlação entre a
 melhoria na expressividade observada (medida como percentual de redução após a
 transformação da especificação Swagger em especificação \neoidl{}) e algumas
-métricas relacionadas ao tamanho da especificação original em Swagger.
+métricas relacionadas ao tamanho da especificação original em Swagger. Na
+Correlação Pearson, um \emph{p-value} igual a 1 significa correlação
+positiva perfeita. \emph{p-value} igual a -1, significa correlação negativa
+perfeita, enquanto \emph{p-value} igual a zero indica que as medidas não possuem
+correlação linear.
 
 % 
 % 
@@ -411,5 +409,5 @@ outro contrato.
 No conjunto dos 44 contratos Swagger analisados foram identificadas 40 entidades
 especificadas em pelo menos dois contratos. Uma entidade específica, de
 identificação da posição geográfica, muito utilizada no domínio de Comando e Controle, aparece
-declarada 12 vezes com contratos distintos.
+declarada 12 vezes em contratos distintos.
 

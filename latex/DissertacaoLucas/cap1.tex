@@ -38,33 +38,35 @@ conceito de \designbycontract{}.
 As linguagens de especificação de contratos para SOC apresentam
 algumas limitações. Por exemplo, a linguagem WSDL (\emph{Web-services
 description language}) \cite{WSDLSite} é considerada uma solução
-verbosa que desestimula a abordagem \textit{Contract First}. Por essa razão,
-especificações WSDL são usualmente derivadas a partir de anotações em código
+pouco expressiva que desestimula a abordagem \textit{Contract First}. Por essa
+razão, especificações WSDL são usualmente derivadas a partir de anotações em código
 fonte \textit{Code First}.
 Além disso, os conceitos descritos em contratos na linguagem WSDL não são
 diretamente mapeados aos elementos que compõem as interfaces do estilo
-arquitetural REST (\emph{Representational State Transfer}).
+arquitetural REST\cite{fielding2000architectural} (\emph{Representational State Transfer}).
 
-Outras alternativas para REST, como Swagger e
-RAML\footnote{http://raml.org/spec.html}, usam linguagens de propósito geral (em
-particular JSON e YAML) adaptadas para especificação de contratos. Ainda que
-façam uso de contratos mais sucintos que WSDL, essas linguagens não se
-beneficiam da clareza típica das linguagens específicas para esse fim (como IDLs CORBA) e não oferecem
+Outras alternativas para REST, como Swagger\cite{swaggerSite} e
+RAML\cite{RAML}, usam linguagens de propósito geral (em
+particular JSON\cite{JSon} e YAML\cite{YAML}) adaptadas para especificação de
+contratos.
+Ainda que façam uso de contratos mais sucintos que WSDL, essas linguagens não se
+beneficiam da clareza típica das linguagens específicas para esse fim (como
+a IDL\footnote{Interface Description
+Languages.} CORBA\cite{corba}) e não oferecem
 mecanismos semânticos de extensibilidade e modularidade.
 
 Com o objetivo de mitigar esses problemas, a linguagem \neoidl{} foi proposta
 para simplificar a especificação de serviços REST com mecanismos de modularização,
 suporte a anotações, herança em tipos de dados definidos pelo desenvolvedor, e
-uma sintaxe simples e concisa semelhante às \textit{Interface Description
-Languages} -- IDLs -- presentes em \textit{Apache Thrift}\texttrademark e
-CORBA\texttrademark.
+uma sintaxe simples e concisa semelhante às IDLs presentes em \emph{Apache
+Thrift}\texttrademark\cite{thrift} e \emph{CORBA}\texttrademark\cite{corba}.
 
 Por outro lado, a \neoidl{}, da mesma forma que WSDL,
 Swagger e RAML não oferece construções para especificação de contratos formais
 com aspecto comportamental como os presentes em linguagens que
 suportam DBC (\emph{Design by Contract})~\cite{meyer1992applying}, como
 Eiffel, JML e Spec\#. Em outras palavras, a \neoidl{}  admite apenas
-contratos fracos (\textit{weak contracts}), sem suporte a construções como pré e
+contratos fracos (\textit{weak contracts}), sem suporte a construções com pré e
 pós-condições.
 
 
@@ -72,7 +74,7 @@ pós-condições.
 \section{OBJETIVO GERAL}
 \vspace{-6mm}
 
-O objetivo geral de trabalho é investigar o uso de construções de
+O objetivo geral deste trabalho é investigar o uso de construções de
 \designbycontract{} no contexto de computação orientada a serviços, verificando a
 viabilidade e utilidade de sua adoção na especificação de contratos e
 implentação de serviços REST. Para atingir o objetivo geral, os seguintes 
@@ -103,16 +105,16 @@ principais contribuições do trabalho.
 \vspace{-6mm}
 
 A demanda por integração entre sistemas de várias origens e tecnologias diversas
-fez aumentar a adoção de soluções baseada em computação orienta a serviços. Isso
-se deve justamente à necessidade de tornar a interoperabilidade de soluções
+fez aumentar a adoção de soluções baseada em computação orientada a serviços.
+Isso se deve justamente à necessidade de tornar a interoperabilidade de soluções
 heterogênias o menos acopladas possível, de modo que mudanças nos requisitos de negócio ou
 na inclusão de novos serviços sejam atendidas com simplicidade,
 eficiência e rapidez.
 
-O uso de \ws{} é a forma mais comum de se implementar os serviços. O
+O uso de \ws{}\cite{erl2009web} é a forma mais comum de se implementar os serviços. O
 desenvolvimento de \ws{}, que eram inicialmente projetados sobre a abordagem
-SOAP, com o tráfego de mensagens codificadas em XML, tem gradativamente se
-intensificado no sentido da utilização de REST.
+SOAP, com o tráfego de mensagens codificadas em XML\cite{XML}, tem gradativamente
+se intensificado no sentido da utilização de REST\cite{fielding2000architectural}.
 
 Uma dos principais benefícios do uso de SOC está na possibilidade de reuso de
 seus componentes. Porém, reuso requer serviços bem construídos e precisos em
@@ -125,9 +127,10 @@ contratos. Linguangens como Swagger, YAML e WADL cumprem com o propósito de
 especificar contratos REST, porém padecem do mesmo problema: são voltados para
 computadores e de escrita e leitura complexa para humanos, o que
 prejudica a prática de \CtFirst{}. A linguagem \neoidl{} foi concebida com o objetivo de ser mais
-expressiva para humanos, além de outros propósitos.
+expressiva para humanos, além de outros propósitos, como expressividade e
+modularidade.
 
-Todas essas linguagens tem, entretanto, um outra limitação em comum: não dão
+Todas essas linguagens tem, entretanto, uma outra limitação em comum: não dão
 suporte a contratos robustos, com garantias. A estratégia para superar essa
 limitação foi de buscar no paradigma de orientação a objetos, que é uma das
 principais influências de orientação a serviços \cite{erl2009web},
@@ -135,8 +138,8 @@ o conceito de \designbycontract{}. Ambas as abordagens, orientação a serviços
 a objetos, tem em comum a ênfase no reuso e comunicação entre componentes
 (serviços e classes).
 
-A proposta deste trabalho de
-pesquisa de mestrado está justamente em incluir garantias na especificação de
+A principal contribuição deste trabalho de
+pesquisa de mestrado está em incluir garantias na especificação de
 contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
 \designbycontract{}.
 

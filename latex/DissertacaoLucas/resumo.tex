@@ -18,28 +18,26 @@ Autor: Lucas Ferreira de Lima}
 
 
 \emph{Contexto.}
-A demanda por integração entre sistemas de origens diversas e tecnologias
-variadas fez aumentar a adoção de soluções baseadas em computação orienta a
-serviços, sendo o uso de servi\-ços Web a estratégia mais comum para implementar
-serviços, em particular com a adoção crescente do estilo arquitetural REST.
+A demanda por integração entre sistemas heterogêneos fez aumentar a adoção de
+soluções baseadas em computação orientada a serviços -- SOC, sendo o uso de
+serviços Web a estratégia mais comum para implementar serviços, com a adoção crescente do estilo arquitetural REST.
 Por outro lado, REST ainda não dispõe de uma notação padrão para especificação
 de contratos e linguangens como Swagger, YAML e WADL cumprem com o
-único propósito de descrição de serviços, porém apresentam uma significativa
-limitação: essas linguagens
-são voltadas para computadores, tendo escrita e leitura complexas para
+único propósito de descrever serviços, porém apresentam uma significativa
+limitação: são voltadas para computadores, tendo escrita e leitura complexas para
 humanos -- o que prejudica a abordagem \textit{Contract-first}, prática
-estimulada na orientação a serviços. Tal limitação motivou a especificação da
+estimulada em SOC. Tal limitação motivou a especificação da
 linguagem NeoIDL\footnote{Além de ser uma linguagem (\textit{Domain Specific
 Language}), a NeoIDL também possui um framework de geração de código para outras linguagens de propósito
-amplo.}, que foi concebida com o objetivo de ser mais expressiva para humanos,
+amplo.}, concebida com o objetivo de ser mais expressiva para humanos,
 além de prover suporte a modularização e herança.
-\emph{Problema.} Entretanto, nenhuma dessas linguagens, incluindo a NeoIDL, dá
+\emph{Problema.} Nenhuma dessas linguagens, incluindo a NeoIDL, dá
 suporte a contratos robustos, como os possíveis de serem descritos em
-linguagens ou extensões de linguagens com suporte a \emph{Design-by-Contract},
-presentes tipicamente (ou exploradas) no paradigma de orientação a objetos.
+linguagens ou extensões de linguagens com suporte a \designbycontract{},
+exploradas tipicamente no paradigma de orientação a objetos.
 \emph{Objetivos.}
 O objetivo geral deste trabalho é investigar o uso de construções de
-\textit{Design-by-Contract} no contexto de computação orientada a serviços,
+\textit{Design-by-Contract} no contexto de SOC,
 verificando a viabilidade e utilidade de sua adoção na especificação de
 contratos e implementação de serviços REST.
 % \absdiv{Método}
@@ -56,18 +54,16 @@ contratos e implementação de serviços REST.
 %  análise empírica sobre a expressividade e reuso da NeoIDL em si.
 \emph{Resultados e Contribuições.}
 Essa dissertação contribui tecnicamente com uma extensão da NeoIDL para DbC, contemplando
-dois tipos de precondição e pós-condição: uma básica, que valida os
-parâmetros de requisição de entrada e dados de saída; e outra baseada em serviços,
-em que composições de serviços são acionados para validar se a
-capacidade do serviço deve ou não ser executada (ou se foi executada adequadamente, em caso de
-uma pós-condição). %Essa lógica foi expressa na sintaxe da NeoIDL e possibilitou a
-%transformação para serviços com esse comportamento.
+dois tipos de precondição e pós-condição: uma básica, que valida o valor de
+atributos e dados de saída; e outra baseada em
+serviços, em que composições de serviços são acionadas para validar se o serviço
+deve ser executado (ou se foi executado adequadamente, em caso de pós-condições). %Essa lógica foi expressa na sintaxe da NeoIDL e possibilitou
+% a transformação para serviços com esse comportamento.
 Sob a perspectiva de validação empírica, esta dissertação contribui com dois estudos.
-Um primeiro, com o intuito de verificar
+Um primeiro, verificou
 os requisitos de expressividade e reuso da NeoIDL, sendo realizado no
-domínio de Comando e Controle em parceria com o Exército Brasileiro. O segundo
-estudo teve como maior interesse a análise da percepção de utilidade e
-facilidade de uso das construções DbC propostas para a NeoIDL,
+domínio de Comando e Controle em parceria com o Exército Brasileiro. O segundo,
+teve como maior interesse a análise da percepção de utilidade e facilidade de uso das construções DbC propostas para a NeoIDL,
 levando a respostas positivas em termos de simplicidade e aceitação dos efeitos
 sobre código gerado a partir de especificações NeoIDL.
 %

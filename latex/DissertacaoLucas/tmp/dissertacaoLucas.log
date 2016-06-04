@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  31 MAY 2016 17:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.5)  4 JUN 2016 14:22
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -347,26 +347,23 @@ File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
-(./dissertacaoLucas.aux
-
-LaTeX Warning: Label `lst:exemploJML' multiply defined.
-
-)
+(./dissertacaoLucas.aux)
 \openout1 = `dissertacaoLucas.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 171.
-LaTeX Font Info:    ... okay on input line 171.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 171.
-LaTeX Font Info:    ... okay on input line 171.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 171.
-LaTeX Font Info:    ... okay on input line 171.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 171.
-LaTeX Font Info:    ... okay on input line 171.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 171.
-LaTeX Font Info:    ... okay on input line 171.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 171.
-LaTeX Font Info:    ... okay on input line 171.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
 \scratchdimen=\dimen123
@@ -441,39 +438,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
 ]) (./resumo.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 32.
+(Font)              <12> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 32.
+(Font)              <8> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 32.
+(Font)              <6> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 34.
+(Font)              <7> on input line 32.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 34.
+(Font)              <5> on input line 32.
  [5
 
-] [6]) (./abstr.tex [7
+]) (./abstr.tex [6
 
 ])
-(./dissertacaoLucas.toc [8
+(./dissertacaoLucas.toc [7
 
 
 ])
 \tf@toc=\write3
 \openout3 = `dissertacaoLucas.toc'.
 
- [9] (./dissertacaoLucas.lot)
+ [8] (./dissertacaoLucas.lot)
 \tf@lot=\write4
 \openout4 = `dissertacaoLucas.lot'.
 
- [10
+ [9
 
 ]
 (./dissertacaoLucas.lof)
 \tf@lof=\write5
 \openout5 = `dissertacaoLucas.lof'.
 
- [11
+ [10
 
 ] (./lista_simbolos_nomeclaturas_abreviacoes.tex
 Overfull \hbox (14.9749pt too wide) in paragraph at lines 4--8
@@ -485,47 +482,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--8
 
  []
 
-) [12] (./cap1.tex
+) [11] (./cap1.tex
  1.
 [1
 
 ]
 
 LaTeX Warning: Reference `extensaoNeoIDL-DbC' on page 2 undefined on input line
- 91.
+ 93.
 
 
-LaTeX Warning: Reference `pluginTwisted' on page 2 undefined on input line 94.
+LaTeX Warning: Reference `pluginTwisted' on page 2 undefined on input line 96.
 
 
-LaTeX Warning: Reference `analiseSubjetiva' on page 2 undefined on input line 9
-8.
+Overfull \hbox (2.4528pt too wide) in paragraph at lines 94--98
+[][]\OT1/cmr/m/n/12 Implementar re-gras de trans-forma^^Xc~ao que tra-du-zem co
+ns-tru^^Xc~oes de DbC NeoIDL
+ []
+
+
+LaTeX Warning: Reference `analiseSubjetiva' on page 2 undefined on input line 1
+00.
 
 [2]) (./cap2.tex [3] [4]
  2.
 [5
 
 ] [6]
-Overfull \hbox (0.94975pt too wide) in paragraph at lines 121--126
+Overfull \hbox (0.94975pt too wide) in paragraph at lines 123--128
 [][]\OT1/cmr/m/n/12 ^^Se o con-junto de do-cu-men-tos que ex-pres-sam as meta-i
 nforma^^Xc~oes
  []
 
 [7] [8]
-Overfull \hbox (1.68741pt too wide) in paragraph at lines 181--183
+Overfull \hbox (1.68741pt too wide) in paragraph at lines 183--185
 [][]\OT1/cmr/m/n/12 Ampliar a agi-li-dade, re-mon-tando as com-posi^^Xc~oes por
  re-du-zido es-for^^Xco, beneficiando-
  []
 
 [9] [10] [11] [12] [13] [14]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 461.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 464.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 461.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 464.
  [15] [16] [17]
 (./exemploEiffel.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -546,33 +549,30 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [18] (./exemploSpecSharp.tex)) (./cap3.tex [19]
  3.
+
+Overfull \hbox (1.3916pt too wide) in paragraph at lines 44--52
+[][]\OT1/cmr/m/n/12 Por^^Sem, as lin-gua-gens de pro-grama^^Xc~ao dis-pon^^S^^P
+veis para es-pe-ci-fica^^Xc~ao de con-tra-tos REST,
+ []
+
 [20
 
-] <neoidl.pdf, id=120, 304.13625pt x 171.64125pt>
-File: neoidl.pdf Graphic file (type pdf)
- <use neoidl.pdf>
-Package pdftex.def Info: neoidl.pdf used on input line 85.
-(pdftex.def)             Requested size: 182.48315pt x 102.98552pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<programgenerator.pdf, id=121, 667.49374pt x 197.73875pt>
+] [21] (./mensagemData.tex) [22] (./mensagem.tex)
+(./messageSendAnnotation.tex) [23] [24]
+<programgenerator.pdf, id=131, 667.49374pt x 197.73875pt>
 File: programgenerator.pdf Graphic file (type pdf)
 
 <use programgenerator.pdf>
-Package pdftex.def Info: programgenerator.pdf used on input line 103.
+Package pdftex.def Info: programgenerator.pdf used on input line 217.
 (pdftex.def)             Requested size: 367.1227pt x 85.28307pt.
- [21] [22 <./neoidl.pdf> <./programgenerator.pdf>]
-(./pluginDefStructure.tex)
-Overfull \hbox (5.16678pt too wide) in paragraph at lines 147--152
+
+Overfull \hbox (5.16678pt too wide) in paragraph at lines 251--256
 [][]\OT1/cmr/m/n/12 O car-re-ga-mento e va-lida^^Xc~ao dos \OT1/cmr/m/it/12 plu
--gins \OT1/cmr/m/n/12 s~ao com-pet^encias do com-po-nente \OT1/cmtt/m/n/12 Plut
+-gins \OT1/cmr/m/n/12 s~ao com-pet^encias do com-po-nente \OT1/cmtt/m/n/12 Plug
 inLoader\OT1/cmr/m/n/12 .
  []
 
-[23] (./mensagemData.tex) [24] (./mensagem.tex) [25]
-(./messageSendAnnotation.tex) [26] [27] [28]) [29] (./dissertacaoLucas.bbl
+[25 <./programgenerator.pdf>] [26] [27] [28]) [29] (./dissertacaoLucas.bbl
 ! Undefined control sequence.
 l.5 \newblock \url
                   {http://www.json.org}.
@@ -584,7 +584,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.10 \newblock \url
-                   {http://swagger.io/}.
+                   {http://raml.org}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -593,6 +593,30 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.15 \newblock \url
+                   {http://swagger.io/}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.20 \newblock \url
+                   {https://www.w3.org/XML}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 19--22
+[][]\OT1/cmr/m/n/12 World wide web con-sor-tium (w3c) - ex-ten-si-ble mar-kup l
+an-guage (xml).
+ []
+
+! Undefined control sequence.
+l.25 \newblock \url
                    {https://www.w3.org/TR/wsdl}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -601,13 +625,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Underfull \hbox (badness 2865) in paragraph at lines 14--17
+Underfull \hbox (badness 2865) in paragraph at lines 24--27
 [][]\OT1/cmr/m/n/12 World wide web con-sor-tium (w3c) - web ser-vi-ces des-crip
 -tion lan-guage.
  []
 
 ! Undefined control sequence.
-l.20 \newblock \url
+l.30 \newblock \url
                    {http://yaml.org}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -619,19 +643,19 @@ and I'll forget about whatever was undefined.
 
 
 ]
-Underfull \hbox (badness 1199) in paragraph at lines 81--84
+Underfull \hbox (badness 1199) in paragraph at lines 91--94
 [][]\OT1/cmr/m/n/12 He, H.  What is service-oriented ar-chi-tec-ture.  \OT1/cmr
 /m/it/12 Pu-blica^^Xc~ao eletr^onica em
  []
 
 [31]
-Underfull \hbox (badness 4120) in paragraph at lines 192--196
+Underfull \hbox (badness 4120) in paragraph at lines 202--206
 [][]\OT1/cmr/m/n/12 Slee, M., Agarwal, A., e Kwi-at-kowski, M.  Th-rift: Sca-la
 -ble cross-
  []
 
 
-Underfull \hbox (badness 5563) in paragraph at lines 192--196
+Underfull \hbox (badness 5563) in paragraph at lines 202--206
 \OT1/cmr/m/n/12 language ser-vi-ces im-ple-men-ta-tion.  Te-ch-ni-cal re-port, 
 Fa-ce-book, 2012.
  []
@@ -962,7 +986,7 @@ Overfull \hbox (61.20961pt too wide) in paragraph at lines 143--146
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 147--281
+Underfull \hbox (badness 10000) in paragraph at lines 147--283
 
  []
 
@@ -970,17 +994,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 147--281
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 4380 strings out of 494963
- 58301 string characters out of 6179648
- 403433 words of memory out of 5000000
- 7469 multiletter control sequences out of 15000+600000
- 10606 words of font info for 37 fonts, out of 8000000 for 9000
- 38 hyphenation exceptions out of 8191
+ 4363 strings out of 494963
+ 58005 string characters out of 6179648
+ 403411 words of memory out of 5000000
+ 7454 multiletter control sequences out of 15000+600000
+ 10774 words of font info for 38 fonts, out of 8000000 for 9000
+ 39 hyphenation exceptions out of 8191
  38i,9n,43p,328b,1524s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
@@ -999,10 +1020,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dissertacaoLucas.pdf (51 pages, 386799 bytes).
+Output written on dissertacaoLucas.pdf (50 pages, 360090 bytes).
 PDF statistics:
- 386 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
+ 327 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

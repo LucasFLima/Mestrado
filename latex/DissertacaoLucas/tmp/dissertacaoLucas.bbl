@@ -5,10 +5,20 @@ Javascript object notation.
 \newblock \url{http://www.json.org}.
 \newblock JSON official site.
 
+\bibitem{RAML}
+Raml - the simplest way to design apis.
+\newblock \url{http://raml.org}.
+\newblock The Official RAML web site.
+
 \bibitem{swaggerSite}
 Swagger - the world's most popular framework for apis.
 \newblock \url{http://swagger.io/}.
 \newblock Swagger project official site.
+
+\bibitem{XML}
+World wide web consortium (w3c) - extensible markup language (xml).
+\newblock \url{https://www.w3.org/XML}.
+\newblock XML W3C official site.
 
 \bibitem{WSDLSite}
 World wide web consortium (w3c) - web services description language.

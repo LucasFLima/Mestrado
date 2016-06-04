@@ -23,7 +23,6 @@ print "module ".lc($model_name)." {\n";
 #TODO: Path do modulo não disponível no swagger
 print "\n\tpath = \"xxx\";\n\n";
 
-#print "\t/*Linhas de geração das entidades comentadas*/\n\n";
 for $models (keys $text->{'models'}){
 	print "\tentity ".$models." {\n";
 
@@ -82,17 +81,16 @@ for $models (keys $text->{'models'}){
 }
 #=cut
 
-#print "\t/*Linhas de geração dos servicos comentados*/\n\n";
 #imprime a lista de servicos
 foreach $service (@{$text->{'apis'}}){
-	#TODO: Nome do servico nao disponível no swagger
+	#Obs: Nome do servico nao disponível no swagger
 	print "\tservice <NomeServico> {\n";
 	print "\t\tpath = \"".$service->{'path'}."\";\n";
      	
 	foreach $capacidades (@{$service->{'operations'}}){
 		$capacidade_pp = "\t\t\@".lc($capacidades->{'method'}).
 		                   " ".$capacidades->{'type'}.
-		                   #TODO: Nome da capacidade não disponível
+		                   #Obs: Nome da capacidade não disponível
 		                   " "."<NomeCapacidade>".
                                    " (";
 		$capacidade_doc_pp = "\n\t\t/**\n";
@@ -109,7 +107,6 @@ foreach $service (@{$text->{'apis'}}){
 			$capacidade_doc_pp .= ": ".$parametros->{'description'}."\n";
 			if (exists $parametros->{'enum'}){
 				$capacidade_doc_pp .= "\t\t\*\t\t\\--> Valores possiveis: ";
-				#TODO: Verificar se os parametros com enumeracao sao pre-condicoes
 				foreach $enum (@{$parametros->{'enum'}}){
 					$capacidade_doc_pp .= $enum." ";
 				}
