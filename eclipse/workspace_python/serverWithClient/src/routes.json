@@ -11,6 +11,12 @@
           "uri" :"/store/storeId",
           "pattern": "\/store\/([a-zA-Z0-9]*)",
           "srv": "service5.py"
+      },
+    {
+          "id" : "test" ,
+          "uri" :"/test/testId",
+          "pattern": "\/test\/([a-zA-Z0-9]*)",
+          "srv": "service6.py"
       }
   ]
 }
