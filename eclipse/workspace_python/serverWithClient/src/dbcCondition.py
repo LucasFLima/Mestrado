@@ -2,6 +2,13 @@ from abc import ABCMeta, abstractmethod
 from twisted.web.http_headers import Headers
 from twisted.internet import defer
 from serviceObject import serviceResponse
+from twisted.internet.defer import FAILURE
+from twisted.python.failure import Failure
+
+class DbcException(Exception):
+    def __init__(self, srvResp):
+        self.serviceResponse = srvResp
+
 
 class DbcCheck(object):
     __metaclass__ = ABCMeta
@@ -30,7 +37,9 @@ class DbcCheckBasic (DbcCheck):
         if self.checkValue(args[self.arg]):
             request.setResponseCode(self.excptVal)
             resp = serviceResponse(self.excptVal, 'Falhou precondicao ('+self.arg+' '+self.test+' '+self.value+')', True)
-            return resp
+            #return resp
+            raise DbcException(resp)
+            
         return result
 
 
@@ -53,3 +62,9 @@ class DbcCheckService (DbcCheck):
         
         d.addCallback(cbResponse, request)
         return d
+
+#class handleOtherwise():
+#    @classmethod
+#    def handle (self, result, request):
+#        request.setResponseCode(result.value.serviceResponse.code)
+#        return result.value.serviceResponse

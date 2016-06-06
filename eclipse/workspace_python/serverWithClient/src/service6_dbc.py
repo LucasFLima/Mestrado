@@ -10,8 +10,11 @@ class Service6Dbc(object):
         pre = DbcCheckBasic('testId', '30', 430, args['teste'][1:-1])
         rtn.append(pre)
         
-        pre = DbcCheckService('http://localhost/'+args['site']+'.html','200',501)
-        rtn.append(pre)
+        #pre = DbcCheckBasic('id', 'lucas', 400, args['teste'][1:-1])
+        #rtn.append(pre)
+        
+        #pre = DbcCheckService('http://localhost/'+args['site']+'.html','200',501)
+        #rtn.append(pre)
 
         return rtn
         

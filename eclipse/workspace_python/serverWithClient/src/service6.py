@@ -4,7 +4,7 @@ from httplib import HTTPConnection
 from twisted.web.http_headers import Headers
 from twisted.internet import defer
 from serviceObject import serviceResponse
-from dbcCondition import DbcCheckBasic, DbcCheckService
+from dbcCondition import DbcCheckBasic, DbcCheckService, DbcException
 from service6_dbc import Service6Dbc
 
  
@@ -37,6 +37,12 @@ class Resource(object):
             return resp
     
     @classmethod
+    def erBackTst (cls, result, request):
+        request.setResponseCode(result.value.serviceResponse.code)
+        return result.value.serviceResponse
+        #return resp    
+    
+    @classmethod
     def get(cls, result, agent, request, args):
 
         resp = serviceResponse(None, None)
@@ -48,14 +54,9 @@ class Resource(object):
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)
         
-        
-        #tst = DbcCheckBasic('testId', '30', 430, args['teste'][1:-1])
-        #d.addCallback(tst.checkCondition, agent, request, args)
-        #
-        #srv = DbcCheckService('http://localhost/'+args['site']+'.html','200',501)
-        #d.addCallback(srv.checkCondition, agent, request, args)
-        
         d.addCallback(Resource.getCore,     request)
+        
+        d.addErrback(Resource.erBackTst,    request)
         
         #lst = []
         #for x in range (1, 4):
