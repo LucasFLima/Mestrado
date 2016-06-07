@@ -68,6 +68,8 @@ class HelloResource(resource.Resource):
         pathArgs = utils.extractArgsFromPath(reqUri, reqPattern, request.path)
         for key, value in pathArgs.iteritems():
             args[key] = value
+        
+        args['requestContent'] = request.content.read()
 
         return module, args
     

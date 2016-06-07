@@ -19,34 +19,27 @@ class Resource(object):
  
     @classmethod
     def getCore (self, result, request, args):
-        if result.finish:
-            return result
-        else:
-            
-     
-            #######    Replace this section by your logic   #######
-            db = Base('database_service6.pdl')
-            db.create('testId', 'testMessage', mode="open")
-            result = db(testId = int(args['testId']))
-            
-            if len(result) == 0:
-                responseCode = 404 #ResponseCode.Ok
-            else:
-                responseCode = 200 #ResponseCode.Ok
-            
+ 
+        #######    Replace this section by your logic   #######
+        db = Base('database_service6.pdl')
+        db.create('testId', 'testMessage', mode="open")
+        result = db(testId = int(args['testId']))
+        
+        if len(result) == 0:
+            responseCode = 404 #ResponseCode.Ok
             responseBody = json.dumps(result, sort_keys=True, indent=4, separators=(',', ': '))
-            #######    Replace this section by your logic   #######
+        else:
+            responseCode = 200 #ResponseCode.Ok
+            responseBody = json.dumps(result[0], sort_keys=True, indent=4, separators=(',', ': '))
+        #######    Replace this section by your logic   #######
 
+
+        request.setResponseCode(responseCode)
+        resp = serviceResponse(responseCode, responseBody)
+        
+        return resp
     
-            request.setResponseCode(responseCode)
-            resp = serviceResponse(responseCode, responseBody)
-            
-            return resp
-    
-    @classmethod
-    def postCondition(cls, result, agent, request, args):
-        print 'postCondition'
-        return result
+
     
     @classmethod
     def get(cls, result, agent, request, args):
@@ -54,7 +47,7 @@ class Resource(object):
         d = defer.Deferred()
         
         preCondLst = Service6Dbc()
-        l = preCondLst.preConditionList(args)
+        l = preCondLst.getPreconditionList(args)
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)
         
@@ -62,7 +55,7 @@ class Resource(object):
         
         
         postCondLst = Service6Dbc()
-        l = postCondLst.postConditionList(args)
+        l = postCondLst.getPostconditionList(args)
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)        
         
@@ -108,10 +101,10 @@ class Resource(object):
 
         d = defer.Deferred()
         
-        #preCondLst = Service6Dbc()
-        #l = preCondLst.preConditionList(args)
-        #for dbc in l:
-        #    d.addCallback(dbc.checkCondition, agent, request, args)
+        preCondLst = Service6Dbc()
+        l = preCondLst.postPreconditionList(args)
+        for dbc in l:
+            d.addCallback(dbc.checkCondition, agent, request, args)
         
         d.addCallback(Resource.postCore,      request, args)
         
