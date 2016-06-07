@@ -90,21 +90,30 @@ class HelloResource(resource.Resource):
             else:
                 response.deliverBody(HTTPReturner(request))
             
-            
-      
-        #d = agent.request('GET', "https://www.google.com/search?q=YOLO", Headers({}), None)
-        #d.addCallback(cbResponse)
-        #return NOT_DONE_YET
-      
-        #srv = self.createModule(request.uri)
-        #responseCode, response = srv.Resource.get(request, agent)
-        #request.setResponseCode(responseCode)
-        #return response
       
         srv, args = self.createModuleAndArgs(request)
         d = srv.Resource.get(None, agent, request, args)
         d.addCallback(cbResponse, request)
         
+        return NOT_DONE_YET
+
+    def render_POST(self, request):
+        def cbResponse(response, request):
+            request.setHeader("content-type", "text/html")
+            
+            if isinstance(response, str):
+                request.finish()
+            elif isinstance(response, serviceResponse):
+                request.write(response.body)
+                #request.setResponseCode(response.code)
+                request.finish()
+            else:
+                response.deliverBody(HTTPReturner(request))
+            
+      
+        srv, args = self.createModuleAndArgs(request)
+        d = srv.Resource.post(None, agent, request, args)
+        d.addCallback(cbResponse, request)
         
         return NOT_DONE_YET
 
