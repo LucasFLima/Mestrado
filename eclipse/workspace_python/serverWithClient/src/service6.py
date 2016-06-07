@@ -5,7 +5,7 @@ from twisted.internet import defer, reactor
 from serviceObject import serviceResponse
 from dbcCondition import HandleOtherwise
 from service6_dbc import Service6Dbc
-from time import sleep
+from pydblite import Base
 
  
 class GetRequestParameters(object):
@@ -22,14 +22,13 @@ class Resource(object):
         if result.finish:
             return result
         else:
-            responseCode = 300 #ResponseCode.Ok
+            responseCode = 200 #ResponseCode.Ok
      
             #######    Replace this section by your logic   #######
-            result = {}
-            result ['method'] = 'get'
-            result ['path'] = request.path
-            result ['arguments'] = request.args
-            result ['return'] = {'body': 'fail'}
+            db = Base('database_service6.pdl')
+            db.create('testId', 'testMessage', mode="open")
+            result = db(testId = int(args['testId']))
+
             responseBody = json.dumps(result, sort_keys=True, indent=4, separators=(',', ': '))
             #######    Replace this section by your logic   #######
 
@@ -56,7 +55,7 @@ class Resource(object):
         
         d.addCallback(Resource.getCore,      request, args)
         
-        #d.addCallback(Resource.postCondition, agent, request, args)
+        
         postCondLst = Service6Dbc()
         l = postCondLst.postConditionList(args)
         for dbc in l:

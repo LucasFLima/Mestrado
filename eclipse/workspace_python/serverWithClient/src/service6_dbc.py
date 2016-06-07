@@ -20,10 +20,10 @@ class Service6Dbc(object):
 
         rtn = []
         
-        post = PostDbcCheckBasic('return.body', 'success', 450, args['teste'][1:-1])
-        rtn.append(post)
+        #post = PostDbcCheckBasic('return.body', 'success', 450, args['teste'][1:-1])
+        #rtn.append(post)
         
-        post = PostDbcCheckBasic('return.body', 'fail', 460, args['teste'][1:-1])
-        rtn.append(post)
+        #post = PostDbcCheckBasic('return.body', 'fail', 460, args['teste'][1:-1])
+        #rtn.append(post)
        
         return rtn    
