@@ -1,11 +1,11 @@
 import json
 #import twisted_server
-from httplib import HTTPConnection
 from twisted.web.http_headers import Headers
-from twisted.internet import defer
+from twisted.internet import defer, reactor
 from serviceObject import serviceResponse
-from dbcCondition import DbcCheckBasic, DbcCheckService, DbcException
+from dbcCondition import HandleOtherwise
 from service6_dbc import Service6Dbc
+from time import sleep
 
  
 class GetRequestParameters(object):
@@ -18,7 +18,7 @@ class GetRequestParameters(object):
 class Resource(object): 
  
     @classmethod
-    def getCore (self, result, request):
+    def getCore (self, result, request, args):
         if result.finish:
             return result
         else:
@@ -29,24 +29,24 @@ class Resource(object):
             result ['method'] = 'get'
             result ['path'] = request.path
             result ['arguments'] = request.args
-            responseBody = json.dumps(result, sort_keys=False, indent=4, separators=(',', ': '))
+            result ['return'] = {'body': 'fail'}
+            responseBody = json.dumps(result, sort_keys=True, indent=4, separators=(',', ': '))
             #######    Replace this section by your logic   #######
+
     
             request.setResponseCode(responseCode)
             resp = serviceResponse(responseCode, responseBody)
+            
             return resp
     
     @classmethod
-    def erBackTst (cls, result, request):
-        request.setResponseCode(result.value.serviceResponse.code)
-        return result.value.serviceResponse
-        #return resp    
+    def postCondition(cls, result, agent, request, args):
+        print 'postCondition'
+        return result
     
     @classmethod
     def get(cls, result, agent, request, args):
 
-        resp = serviceResponse(None, None)
-        
         d = defer.Deferred()
         
         preCondLst = Service6Dbc()
@@ -54,19 +54,18 @@ class Resource(object):
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)
         
-        d.addCallback(Resource.getCore,     request)
+        d.addCallback(Resource.getCore,      request, args)
         
-        d.addErrback(Resource.erBackTst,    request)
+        #d.addCallback(Resource.postCondition, agent, request, args)
+        postCondLst = Service6Dbc()
+        l = postCondLst.postConditionList(args)
+        for dbc in l:
+            d.addCallback(dbc.checkCondition, agent, request, args)        
         
-        #lst = []
-        #for x in range (1, 4):
-        #    pre = DoRequest('msg'+str(x))
-        #    lst.append(pre)
-        # 
-        #for l in lst:
-        #    l.printMsg()
+        d.addErrback (HandleOtherwise.handle, request)
         
-        d.callback(resp)
+        d.callback(serviceResponse())
+        #reactor.callLater(int(args['tempo']), d.callback, serviceResponse())
         
         return d
         

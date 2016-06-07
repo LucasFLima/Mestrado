@@ -1,4 +1,4 @@
-from dbcCondition import DbcCheckBasic, DbcCheckService
+from dbcCondition import PreDbcCheckBasic, PostDbcCheckBasic, DbcCheckService
 
         
 class Service6Dbc(object): 
@@ -7,14 +7,23 @@ class Service6Dbc(object):
 
         rtn = []
         
-        pre = DbcCheckBasic('testId', '30', 430, args['teste'][1:-1])
+        pre = PreDbcCheckBasic('testId', '30', 430, args['teste'][1:-1])
         rtn.append(pre)
         
-        #pre = DbcCheckBasic('id', 'lucas', 400, args['teste'][1:-1])
-        #rtn.append(pre)
-        
-        #pre = DbcCheckService('http://localhost/'+args['site']+'.html','200',501)
-        #rtn.append(pre)
+        pre = DbcCheckService('http://localhost/'+args['site']+'.html','200',501)
+        rtn.append(pre)
 
         return rtn
+    
+    
+    def postConditionList (self, args):
+
+        rtn = []
         
+        post = PostDbcCheckBasic('return.body', 'success', 450, args['teste'][1:-1])
+        rtn.append(post)
+        
+        post = PostDbcCheckBasic('return.body', 'fail', 460, args['teste'][1:-1])
+        rtn.append(post)
+       
+        return rtn    

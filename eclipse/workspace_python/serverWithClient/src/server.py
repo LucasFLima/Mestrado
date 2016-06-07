@@ -105,6 +105,7 @@ class HelloResource(resource.Resource):
         d = srv.Resource.get(None, agent, request, args)
         d.addCallback(cbResponse, request)
         
+        
         return NOT_DONE_YET
 
 print 'Starting server at port 8081...'
