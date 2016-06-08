@@ -23,7 +23,7 @@ class HTTPReturner(Protocol):
         self._request.write(self._data)
         self._request.finish()
 
-class HelloResource(resource.Resource):
+class ServerResource(resource.Resource):
     isLeaf = True
     
     def __init__(self):
@@ -113,7 +113,27 @@ class HelloResource(resource.Resource):
         d.addCallback(cbResponse, request)
         
         return NOT_DONE_YET
+    
+    def render_DELETE(self, request):
+        def cbResponse(response, request):
+            request.setHeader("content-type", "text/html")
+            
+            if isinstance(response, str):
+                request.finish()
+            elif isinstance(response, serviceResponse):
+                request.write(response.body)
+                #request.setResponseCode(response.code)
+                request.finish()
+            else:
+                response.deliverBody(HTTPReturner(request))
+            
+      
+        srv, args = self.createModuleAndArgs(request)
+        d = srv.Resource.delete(None, agent, request, args)
+        d.addCallback(cbResponse, request)
+        
+        return NOT_DONE_YET
 
 print 'Starting server at port 8081...'
-reactor.listenTCP(8081, server.Site(HelloResource()))
+reactor.listenTCP(8081, server.Site(ServerResource()))
 reactor.run() 

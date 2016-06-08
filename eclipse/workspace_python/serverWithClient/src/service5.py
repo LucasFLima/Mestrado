@@ -72,7 +72,7 @@ class Resource(object):
         
         d = defer.Deferred()
         d.addCallback(Resource.requestSrv5, agent, request, args)
-        d.addCallback(Resource.requestBsc5, agent, request, args)
+        #d.addCallback(Resource.requestBsc5, agent, request, args)
         d.addCallback(Resource.getCore,     request)
         
         
