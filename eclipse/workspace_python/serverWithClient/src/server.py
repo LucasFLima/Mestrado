@@ -73,11 +73,6 @@ class HelloResource(resource.Resource):
 
         return module, args
     
-    #def createModule(self, srv):
-    #    #moduleName  = 'service1.py'
-    #    #module = __import__(moduleName[0:len(moduleName)-3])
-    #    module = __import__(srv[1:9])
-    #    return module
     
     def render_GET(self, request):
         def cbResponse(response, request):

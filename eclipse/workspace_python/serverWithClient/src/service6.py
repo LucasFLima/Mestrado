@@ -47,7 +47,7 @@ class Resource(object):
         d = defer.Deferred()
         
         preCondLst = Service6Dbc()
-        l = preCondLst.getPreconditionList(args)
+        l = preCondLst.get_PreconditionList()
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)
         
@@ -55,7 +55,7 @@ class Resource(object):
         
         
         postCondLst = Service6Dbc()
-        l = postCondLst.getPostconditionList(args)
+        l = postCondLst.get_PostconditionList()
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)        
         
@@ -102,7 +102,7 @@ class Resource(object):
         d = defer.Deferred()
         
         preCondLst = Service6Dbc()
-        l = preCondLst.postPreconditionList(args)
+        l = preCondLst.post_PreconditionList()
         for dbc in l:
             d.addCallback(dbc.checkCondition, agent, request, args)
         
@@ -110,11 +110,11 @@ class Resource(object):
         
         
         #postCondLst = Service6Dbc()
-        #l = postCondLst.postConditionList(args)
+        #l = postCondLst.post_PostconditionList(args)
         #for dbc in l:
         #    d.addCallback(dbc.checkCondition, agent, request, args)        
         
-        #d.addErrback (HandleOtherwise.handle, request)
+        d.addErrback (HandleOtherwise.handle, request)
         
         d.callback(serviceResponse())
         #reactor.callLater(int(args['tempo']), d.callback, serviceResponse())

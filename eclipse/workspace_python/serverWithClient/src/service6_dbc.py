@@ -1,41 +1,28 @@
-from dbcCondition import PreDbcCheckBasic, PostDbcCheckBasic, DbcCheckService
+from dbcCondition import DbcCheckService, CheckType, DbcCheckBasic, DbcConditionType
 
         
 class Service6Dbc(object): 
  
-    def getPreconditionList (self, args):
+    def get_PreconditionList (self):
 
         rtn = []
+        rtn.append(DbcCheckBasic('testId', '30', 430, CheckType.argument, '==', DbcConditionType.PreCondition))
+        rtn.append(DbcCheckService('http://localhost:8081/store/{testId}?site=site','200', 501, CheckType.argument, '<>', DbcConditionType.PreCondition))
         
-        pre = PreDbcCheckBasic('testId', '30', 430, '==')
-        rtn.append(pre)
-        
-        pre = PreDbcCheckBasic('testId', '100', 430, '>')
-        rtn.append(pre)
-        
-        pre = DbcCheckService('http://localhost/'+args['site']+'.html','200',501,'<>')
-        rtn.append(pre)
-
         return rtn
     
     
-    def getPostconditionList (self, args):
+    def get_PostconditionList (self):
 
         rtn = []
-        
-        post = PostDbcCheckBasic('testMessage', 'success', 450, '==')
-        rtn.append(post)
-        
-        #post = PostDbcCheckBasic('return.body', 'fail', 460, args['teste'][1:-1])
-        #rtn.append(post)
+        rtn.append(DbcCheckBasic('testMessage', 'fail', 460, CheckType.responseBody, '==', DbcConditionType.PostCondition))
        
         return rtn    
     
-    def postPreconditionList (self, args):
+    def post_PreconditionList (self):
 
         rtn = []
-        
-        post = PostDbcCheckBasic('testId', '20', 430, '==')
-        rtn.append(post)
+        rtn.append(DbcCheckBasic('testId', '20', 430, CheckType.requestBody, '==', DbcConditionType.PreCondition))
+        rtn.append(DbcCheckService('http://localhost:8081/test/{testId}','200',501,CheckType.requestBody, '<>', DbcConditionType.PreCondition))
         
         return rtn
