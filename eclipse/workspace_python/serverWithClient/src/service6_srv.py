@@ -1,10 +1,10 @@
 import json
 #import twisted_server
 #from twisted.web.http_headers import Headers
-from serviceObject import serviceResponse
+import utils
 from pydblite import Base
 
-class Service6(object):
+class Service6Srv(object):
     @classmethod
     def do_Get (self, result, request, args):
  
@@ -23,7 +23,7 @@ class Service6(object):
 
 
         request.setResponseCode(responseCode)
-        resp = serviceResponse(responseCode, responseBody)
+        resp = utils.serviceResponse(responseCode, responseBody)
         
         return resp
     
@@ -54,7 +54,7 @@ class Service6(object):
 
 
         request.setResponseCode(responseCode)
-        resp = serviceResponse(responseCode, responseBody)
+        resp = utils.serviceResponse(responseCode, responseBody)
         
         return resp
     
@@ -81,6 +81,6 @@ class Service6(object):
 
 
         request.setResponseCode(responseCode)
-        resp = serviceResponse(responseCode, responseBody)
+        resp = utils.serviceResponse(responseCode, responseBody)
         
         return resp

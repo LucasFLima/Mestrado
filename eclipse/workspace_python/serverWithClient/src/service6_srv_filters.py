@@ -1,15 +1,10 @@
 #from twisted.web.http_headers import Headers
 from twisted.internet import defer
-from serviceObject import serviceResponse
+import utils
 from dbcCondition import HandleOtherwise
 from dbcCondition import DbcCheckService, ValuesSource, DbcCheckBasic, DbcConditionType, OperationType, DbcConditionList
-from service6_srv import Service6
+from service6_srv import Service6Srv
  
-class GetRequestParameters(object):
-    def __init__ (self, xxx, yyy, zzz):
-        self.xxx = xxx
-        self.yyy = yyy
-        self.zzz = zzz
 
 class DbcConditionsList(DbcConditionList):
     def __init__(self):
@@ -20,8 +15,8 @@ class DbcConditionsList(DbcConditionList):
         
         self.list.append(DbcCheckBasic('testMessage', '<>', 'fail', 460, ValuesSource.responseBody, DbcConditionType.PostCondition, OperationType.GET))
        
-        self.list.append(DbcCheckBasic('testId', '<>', '20', 430, ValuesSource.requestBody, DbcConditionType.PreCondition, OperationType.POST))
-        self.list.append(DbcCheckService('http://localhost:8081/test/{testId}?site=site', '==', '404', 501, ValuesSource.requestBody, DbcConditionType.PreCondition, OperationType.POST))
+        #self.list.append(DbcCheckBasic('testId', '<>', '20', 430, ValuesSource.requestBody, DbcConditionType.PreCondition, OperationType.POST))
+        #self.list.append(DbcCheckService('http://localhost:8081/test/{testId}?site=site', '==', '404', 501, ValuesSource.requestBody, DbcConditionType.PreCondition, OperationType.POST))
 
         self.list.append(DbcCheckService('http://localhost:8081/test/{testId}?site=site', '<>', '404', 501, ValuesSource.argument, DbcConditionType.PreCondition, OperationType.DELETE))
 
@@ -38,7 +33,7 @@ class Resource(object):
         dbcCondList.addFilterCondition(d, OperationType.GET, DbcConditionType.PreCondition, agent, request, args)
   
         # call Get operation
-        d.addCallback(Service6.do_Get,      request, args)
+        d.addCallback(Service6Srv.do_Get,      request, args)
         
         # loads post conditions filters
         dbcCondList.addFilterCondition(d, OperationType.GET, DbcConditionType.PostCondition, agent, request, args)
@@ -46,7 +41,7 @@ class Resource(object):
         # errorBack to return otherwise value if some filter fails
         d.addErrback (HandleOtherwise.handle, request)
         
-        d.callback(serviceResponse())
+        d.callback(utils.serviceResponse())
         
         return d
 
@@ -61,7 +56,7 @@ class Resource(object):
         dbcCondList.addFilterCondition(d, OperationType.POST, DbcConditionType.PreCondition, agent, request, args)
         
         # call Post operation
-        d.addCallback(Service6.do_Post,      request, args)
+        d.addCallback(Service6Srv.do_Post,      request, args)
         
         # loads post conditions filters
         dbcCondList.addFilterCondition(d, OperationType.POST, DbcConditionType.PostCondition, agent, request, args)
@@ -69,7 +64,7 @@ class Resource(object):
         # errorBack to return otherwise value if some filter fails
         d.addErrback (HandleOtherwise.handle, request)
         
-        d.callback(serviceResponse())
+        d.callback(utils.serviceResponse())
         #reactor.callLater(int(args['tempo']), d.callback, serviceResponse())
         
         return d
@@ -84,7 +79,7 @@ class Resource(object):
         dbcCondList.addFilterCondition(d, OperationType.DELETE, DbcConditionType.PreCondition, agent, request, args)
         
         # call Post operation
-        d.addCallback(Service6.do_Delete,      request, args)
+        d.addCallback(Service6Srv.do_Delete,      request, args)
         
         # loads post conditions filters
         dbcCondList.addFilterCondition(d, OperationType.DELETE, DbcConditionType.PostCondition, agent, request, args)
@@ -92,7 +87,7 @@ class Resource(object):
         # errorBack to return otherwise value if some filter fails
         d.addErrback (HandleOtherwise.handle, request)
         
-        d.callback(serviceResponse())
+        d.callback(utils.serviceResponse())
         #reactor.callLater(int(args['tempo']), d.callback, serviceResponse())
         
         return d

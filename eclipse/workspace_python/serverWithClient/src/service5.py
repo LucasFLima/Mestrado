@@ -3,7 +3,7 @@ import json
 from httplib import HTTPConnection
 from twisted.web.http_headers import Headers
 from twisted.internet import defer
-from serviceObject import serviceResponse
+import utils
  
 class GetRequestParameters(object):
     def __init__ (self, xxx, yyy, zzz):
@@ -21,7 +21,7 @@ class Resource(object):
             def cbResponse (response, request):
                 if response.code == 404:
                     request.setResponseCode(401)
-                    resp = serviceResponse(401, 'Falhou precondicao requestSrv5', True)
+                    resp = utils.serviceResponse(401, 'Falhou precondicao requestSrv5', True)
                     return resp
                 else:
                     return result
@@ -38,7 +38,7 @@ class Resource(object):
         else:
             if args['storeId'] == '0':
                 request.setResponseCode(400)
-                resp = serviceResponse(400, 'Falhou precondicao resquestBsc5', True)
+                resp = utils.serviceResponse(400, 'Falhou precondicao resquestBsc5', True)
                 return resp
             else:
                 return result
@@ -59,7 +59,7 @@ class Resource(object):
             #######    Replace this section by your logic   #######
     
             request.setResponseCode(responseCode)
-            resp = serviceResponse(responseCode, responseBody)
+            resp = utils.serviceResponse(responseCode, responseBody)
             return resp
     
     @classmethod
@@ -68,7 +68,7 @@ class Resource(object):
         #print 'Service 3 - site local'
         #d = agent.request('GET', "http://localhost/site.html", Headers({}), None)
         
-        resp = serviceResponse(None, None)
+        resp = utils.serviceResponse(None, None)
         
         d = defer.Deferred()
         d.addCallback(Resource.requestSrv5, agent, request, args)

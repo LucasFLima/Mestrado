@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from twisted.web.http_headers import Headers
 from twisted.internet import defer
-from serviceObject import serviceResponse
+import utils
 
 import json, re
 
@@ -79,7 +79,7 @@ class DbcCheckBasic (DbcCheck):
         if self.checkType == ValuesSource.argument:
             if not self.checkValue(args[self.arg]):
                 request.setResponseCode(self.excptVal)
-                resp = serviceResponse(self.excptVal, self.conditionType + ' failure ('+self.arg+' '+self.testType+' '+self.value+'; Value of attribute '+self.arg+' is '+args[self.arg]+')')
+                resp = utils.serviceResponse(self.excptVal, self.conditionType + ' failure ('+self.arg+' '+self.testType+' '+self.value+'; Value of attribute '+self.arg+' is '+args[self.arg]+')')
                 raise DbcException(resp)
         
         elif self.checkType == ValuesSource.requestBody:
@@ -90,7 +90,7 @@ class DbcCheckBasic (DbcCheck):
                 
                 if not self.checkValue(valueOfArg):
                     request.setResponseCode(self.excptVal)
-                    resp = serviceResponse(self.excptVal, self.conditionType + ' failure ('+self.arg+' '+self.testType+' '+self.value+'; Value of attribute '+self.arg+' is '+valueOfArg+')')
+                    resp = utils.serviceResponse(self.excptVal, self.conditionType + ' failure ('+self.arg+' '+self.testType+' '+self.value+'; Value of attribute '+self.arg+' is '+valueOfArg+')')
                     raise DbcException(resp)
                         
         elif self.checkType == ValuesSource.responseBody:
@@ -99,7 +99,7 @@ class DbcCheckBasic (DbcCheck):
                 
                 if not self.checkValue(valueOfArg):
                     request.setResponseCode(self.excptVal)
-                    resp = serviceResponse(self.excptVal, self.conditionType + ' failure ('+self.arg+' '+self.testType+' '+self.value+'; Value of attribute '+self.arg+' is '+valueOfArg+')')
+                    resp = utils.serviceResponse(self.excptVal, self.conditionType + ' failure ('+self.arg+' '+self.testType+' '+self.value+'; Value of attribute '+self.arg+' is '+valueOfArg+')')
                     raise DbcException(resp)
                 
         return result
@@ -122,7 +122,7 @@ class DbcCheckService (DbcCheck):
         def cbResponse (response, request, getUrl):
             if not self.checkValue(str(response.code)):
                 request.setResponseCode(self.excpt)
-                resp = serviceResponse(self.excpt, self.conditionType + ' failure (GET '+getUrl+' '+self.testType+' '+self.value+'; Request returns '+str(response.code)+')')
+                resp = utils.serviceResponse(self.excpt, self.conditionType + ' failure (GET '+getUrl+' '+self.testType+' '+self.value+'; Request returns '+str(response.code)+')')
                 raise DbcException(resp)
             else:
                 return result
