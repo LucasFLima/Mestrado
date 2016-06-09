@@ -168,7 +168,7 @@ class DbcCheckService (DbcCheck):
                 return result
         
         # Arguments to be replaced are enclosed between '{' and '}'
-        splitUrl = re.split('\\{|\\}', self.url)
+        splitUrl = re.split('\{|\}', self.url)
         
         getUrl = ''
         if self.checkType == ValuesSource.argument:
@@ -221,3 +221,4 @@ class DbcConditionList(object):
         dbc = self.getListByType(operation, dbcType)
         for f in dbc:
             d.addCallback(f.checkCondition, agent, request, args)
+

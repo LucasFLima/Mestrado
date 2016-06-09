@@ -1,50 +1,30 @@
-import json
+from twisted.web import server, resource
+from twisted.internet import reactor
+from twisted.web.client import Agent
+from twisted.web.http_headers import Headers
+from twisted.web.server import NOT_DONE_YET
+from twisted.internet.protocol import Protocol
 import re
 import utils
+import json
 
-from twisted.web import server, resource
-from twisted.internet import reactor, defer
-import time
-from twisted.web.server import NOT_DONE_YET
+agent = Agent(reactor)
 
-# class Resource(object):
-#     __metaclass__ = abc.ABCMeta
+class HTTPReturner(Protocol):
+    def __init__(self, request):
+        self._request = request
+        self._data = ""
 
-#     @abc.abstractmethod
-#     def get(self, request):
-#         """ expected method for handling GET requests""" 
-#         return
+    def dataReceived(self, input):
+        self._data += input
 
-#     @abc.abstractmethod
-#     def post(self, request):
-#         """ expected method for handling POST requests""" 
-#         return
+    def connectionLost(self, reason):
+        self._request.write(self._data)
+        self._request.finish()
 
-class Request:
-    def __init__(self, path = None, args = None, body = None):
-        self.path = path
-        self.args = args
-        self.body = body
-
-class Response:
-    def __init__(self, code = 200, body = None):
-        self.code = code
-        self.body = body
-
-class ResponseCode:
-    Ok = 200
-    Created = 201
-    BadRequest = 400
-    Unauthorized = 401
-    InvalidPrecondition = 412
-    InternalServerError = 500
-
-
-class TwistedServer(resource.Resource):
-    """ Implements an HTTP Server for handling REST APIs.
-    """
+class ServerResource(resource.Resource):
     isLeaf = True
-
+    
     def __init__(self):
         with open('routes.json') as data_file:
             routes = json.load(data_file)
@@ -53,12 +33,8 @@ class TwistedServer(resource.Resource):
             for route in routes["routes"]:
                 self.routeTable[route["pattern"]] = route["srv"]
                 self.pathTable[route["pattern"]] = route["uri"]
-
-    #def _delayedRender(self, request):
-    #    request.write("Finally done, at %s" % (time.asctime(),))
-    #    request.finish()
-
-    def createModuleAndRequest(self, request):
+    
+    def createModuleAndArgs(self, request):
         """ An utility method for parsing an HTTP request. 
         """
         server = None
@@ -91,121 +67,49 @@ class TwistedServer(resource.Resource):
         pathArgs = utils.extractArgsFromPath(reqUri, reqPattern, request.path)
         for key, value in pathArgs.iteritems():
             args[key] = value
+        
+        args['requestContent'] = request.content.read()
 
-        return module, Request(request.path, args)
-
-
+        return module, args
+    
+    @classmethod
+    def cbResponse(self, response, request):
+            request.setHeader("content-type", "text/html")
+            
+            if isinstance(response, str):
+                request.finish()
+            elif isinstance(response, utils.serviceResponse):
+                request.write(response.body)
+                #request.setResponseCode(response.code)
+                request.finish()
+            else:
+                response.deliverBody(HTTPReturner(request))
+    
+    
     def render_GET(self, request):
-        """ Deals with HTTP GET requests. 
-
-        Args:
-           request: an HTTP request from the twisted API
-
-        Returns:
-           A reponse to the HTTP request. Ideally, this response should be 
-           in JSON format. As a side effect, if something goes wrong, 
-           it is necessary to set the correct HTTP response code. For 
-           instance, if the route does not exist, we set the BadRequest
-           response code. 
-        """
-        print request.path
-
-        try:
-            module, aRequest = self.createModuleAndRequest(request)
-            #responseCode, response = module.Resource.get(aRequest, request)
-            #srvResult = module.Resource.get(aRequest)
-            #[responseCode, response] = srvResult.result
-            
-            
-            d = module.Resource.get(aRequest)
-            d.addBoth(TwistedServer.endRequest, request)
-            #d.callback()
-            
-            return NOT_DONE_YET
-            
-            #request.setResponseCode(responseCode)
-            #return response
-        except LookupError as e:
-            request.setResponseCode(ResponseCode.BadRequest)
-            return ResponseCode.BadRequest
-        except:
-            request.setResponseCode(ResponseCode.InternalServerError)
-            return ResponseCode.BadRequest
-
-    def endRequest(self, result, request):
-        print 'endRequest'
-        request.SetResponseCode(result[0])
-        return result[1]
+        
+        srv, args = self.createModuleAndArgs(request)
+        d = srv.Resource.get(None, agent, request, args)
+        d.addCallback(ServerResource.cbResponse, request)
+        
+        return NOT_DONE_YET
 
     def render_POST(self, request):
-        """ Deals with HTTP POST requests.
-
-        Args:
-           request: an HTTP Request from the twisted API
-
-        Returns:
-          A response to the HTTP request. Please, for more details, 
-          see the documentation of render_GET.
-        """
-        try:
-            module, aRequest = self.createModuleAndRequest(request)
-            responseCode, response = module.Resource.post(aRequest)
-            request.setResponseCode(responseCode)
-            return response
-        except LookupError as e:
-            request.setResponseCode(ResponseCode.BadRequest)
-            return ResponseCode.BadRequest
-        except:
-            request.setResponseCode(ResponseCode.InternalServerError)
-            return ResponseCode.BadRequest
-
+      
+        srv, args = self.createModuleAndArgs(request)
+        d = srv.Resource.post(None, agent, request, args)
+        d.addCallback(ServerResource.cbResponse, request)
+        
+        return NOT_DONE_YET
+    
     def render_DELETE(self, request):
-        """ Deals with HTTP DELETE requests.
+      
+        srv, args = self.createModuleAndArgs(request)
+        d = srv.Resource.delete(None, agent, request, args)
+        d.addCallback(ServerResource.cbResponse, request)
+        
+        return NOT_DONE_YET
 
-        Args:
-           request: an HTTP Request from the twisted API
-
-        Returns:
-          A response to the HTTP request. Please, for more details, 
-          see the documentation of render_GET.
-        """
-        try:
-            module, aRequest = self.createModuleAndRequest(request)
-            responseCode, response = module.Resource.delete(aRequest)
-            request.setResponseCode(responseCode)
-            return response
-        except LookupError as e:
-            request.setResponseCode(ResponseCode.BadRequest)
-            return ResponseCode.BadRequest
-        except:
-            request.setResponseCode(ResponseCode.InternalServerError)
-            return ResponseCode.BadRequest
-
-    def render_PUT(self, request):
-        """ Deals with HTTP PUT requests.
-
-        Args:
-           request: an HTTP Request from the twisted API
-
-        Returns:
-          A response to the HTTP request. Please, for more details, 
-          see the documentation of render_GET.
-        """
-        try:
-            module, aRequest = self.createModuleAndRequest(request)
-            responseCode, response = module.Resource.put(aRequest)
-            request.setResponseCode(responseCode)
-            return response
-        except LookupError as e:
-            request.setResponseCode(ResponseCode.BadRequest)
-            return ResponseCode.BadRequest
-        except:
-            request.setResponseCode(ResponseCode.InternalServerError)
-            return ResponseCode.BadRequest
-
-if __name__ == "__main__" :
-    print 'Starting server at port 8080...' 
-    #server.NOT_DONE_YET
-    site = server.Site(TwistedServer())
-    reactor.listenTCP(8080, site)
-    reactor.run()
+print 'Starting server at port 8081...'
+reactor.listenTCP(8081, server.Site(ServerResource()))
+reactor.run() 
