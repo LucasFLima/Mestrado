@@ -37,3 +37,109 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/WPOS/src/funda
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 !SUBENTRY 1 org.eclipse.core.resources 4 368 2015-10-19 12:57:20.569
 !MESSAGE Resource '/WPOS/src/fundamentacao.tex' does not exist.
+!SESSION 2016-06-09 14:34:37.627 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 4 2 2016-06-09 14:35:57.572
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+net.sourceforge.texlipse.builder.BuilderCoreException: Could not write to an output file. Please close the output document in your viewer and rebuild.
+	at net.sourceforge.texlipse.builder.OutputFileManager.performAfterBuild(OutputFileManager.java:634)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:375)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:35:57.573
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+!SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:35:57.573
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+
+!ENTRY org.eclipse.core.resources 4 75 2016-06-09 14:35:57.630
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 net.sourceforge.texlipse 4 75 2016-06-09 14:35:57.630
+!MESSAGE Errors running builder 'Latex Builder' on project 'DissertacaoLucas'.
+!STACK 1
+net.sourceforge.texlipse.builder.BuilderCoreException: Could not write to an output file. Please close the output document in your viewer and rebuild.
+	at net.sourceforge.texlipse.builder.OutputFileManager.performAfterBuild(OutputFileManager.java:634)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:375)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 net.sourceforge.texlipse 4 4 2016-06-09 14:35:57.630
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+!SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:35:57.630
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+
+!ENTRY org.eclipse.core.resources 4 2 2016-06-09 14:37:16.911
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+net.sourceforge.texlipse.builder.BuilderCoreException: Could not write to an output file. Please close the output document in your viewer and rebuild.
+	at net.sourceforge.texlipse.builder.OutputFileManager.performAfterBuild(OutputFileManager.java:634)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:375)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:37:16.912
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+!SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:37:16.912
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+
+!ENTRY org.eclipse.core.resources 4 75 2016-06-09 14:37:16.939
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 net.sourceforge.texlipse 4 75 2016-06-09 14:37:16.939
+!MESSAGE Errors running builder 'Latex Builder' on project 'DissertacaoLucas'.
+!STACK 1
+net.sourceforge.texlipse.builder.BuilderCoreException: Could not write to an output file. Please close the output document in your viewer and rebuild.
+	at net.sourceforge.texlipse.builder.OutputFileManager.performAfterBuild(OutputFileManager.java:634)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:375)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 net.sourceforge.texlipse 4 4 2016-06-09 14:37:16.939
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+!SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:37:16.939
+!MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.

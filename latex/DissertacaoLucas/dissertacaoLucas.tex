@@ -24,9 +24,11 @@
 
 \usepackage{enumerate}
 %\usepackage{enumitem} 
-\usepackage{graphicx,color}
+\usepackage{graphicx,color, soul}
 \usepackage{booktabs}
 \usepackage{listings}
+
+
 
 \newenvironment{joincode}  {\let\orighscode=\hscode
   \let\origendhscode=\endhscode
@@ -54,6 +56,12 @@
 \newcommand{\reserved}[1]{\mbox{{\texttt {#1}}}}
 \newcommand{\literal}[1]{\mbox{{\texttt {#1}}}}
 \newcommand{\symb}[1]{\mbox{{\texttt {#1}}}}
+
+
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{dark-yellow}{RGB}{215,167,0}
+
+\newcommand{\hilight}[1]{\colorbox{light-gray}{#1}}
 
 
 \hyphenation{NeoIDL}
@@ -86,9 +94,20 @@
   {]}{{{\color{delim}{]}}}}{1},
 }
 
+
+
 \lstdefinelanguage{NeoIDL}{
   sensitive = true,
-  keywords = {module, resource, enum, annotation, for, import, entity, path},
+  keywords={},
+  otherkeywords={% Operators
+    >, <, ==
+  },
+  keywords = [2]{module, resource, enum, annotation, for, import, entity, path,
+  @get, @post, @put, @delete, require, ensure, otherwise, call},
+  %ndkeywords={int, \char{}  },
+  %ndkeywordstyle=\color{blue}\bfseries,
+  keywordstyle=[1]\color{dark-yellow}\textbf,
+  keywordstyle=[2]\color{black}\textbf,
   numbers=left,
   numberstyle=\scriptsize,
   stepnumber=1,
@@ -96,6 +115,12 @@
   showstringspaces=false,
   breaklines=true,
   frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
   }
 
 

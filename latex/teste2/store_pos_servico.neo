@@ -1,0 +1,11 @@
+module store {
+   (...)
+
+   resource order  {
+     path = "/order/{id}";
+
+     @delete   int deleteOrder (int id)
+	ensure (call store.getOrder(id) == "NotFound"),
+        otherwise "NotModified";
+   };
+}

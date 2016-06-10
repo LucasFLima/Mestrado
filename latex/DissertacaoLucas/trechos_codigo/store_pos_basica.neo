@@ -1,0 +1,11 @@
+module store {
+   (...)
+
+   resource order  {
+     path = "/order/{id}";
+
+     @get    Order getOrder (int id)
+	ensure (quantity > "0"),
+	otherwise "NoContent";
+   };
+}

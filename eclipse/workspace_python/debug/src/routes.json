@@ -1,16 +1,10 @@
 {
   "routes": [
     {
-          "id" : "order" ,
-          "uri" :"/order/orderId",
-          "pattern": "\/order\/([a-zA-Z0-9]*)",
-          "srv": "order_srv.py"
-      },
-    {
-          "id" : "store" ,
-          "uri" :"/store/storeId",
-          "pattern": "\/store\/([a-zA-Z0-9]*)",
-          "srv": "store_srv.py"
+          "id" : "pet" ,
+          "uri" :"/pet/id",
+          "pattern": "\/pet\/([a-zA-Z0-9]*)",
+          "srv": "pet_srv_filters.py"
       }
   ]
 }

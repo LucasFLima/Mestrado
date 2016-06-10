@@ -1,0 +1,48 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{article}
+
+
+\usepackage{graphicx,color}
+\usepackage{booktabs}
+\usepackage{listings}
+
+\definecolor{dark-yellow}{RGB}{215,167,0}
+
+\lstdefinelanguage{NeoIDL}{
+  sensitive = true,
+  keywords={},
+  otherkeywords={% Operators
+    >, <, ==
+  },
+  keywords = [2]{module, resource, enum, annotation, for, import, entity, path,
+  @get, @post, @put, @delete, require, ensure, otherwise, call},
+  %ndkeywords={int, \char{}  },
+  %ndkeywordstyle=\color{blue}\bfseries,
+  keywordstyle=[1]\color{dark-yellow}\textbf,
+  keywordstyle=[2]\color{black}\textbf,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]",
+  }
+  
+\begin{document}
+  
+\begin{figure}[htb]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{store_pos_servico.neo}
+\end{small}
+\caption{Service 1}
+\end{figure} 
+  
+\end{document}

@@ -1,0 +1,11 @@
+module store {
+   (...)
+
+   resource order  {
+     path = "/order/{id}";
+
+     @post   int postOrder (Order order)
+	require (call store.getOrder(id) == "NotFound"),
+	otherwise "InvalidPrecondition"
+   };
+}

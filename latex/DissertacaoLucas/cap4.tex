@@ -107,7 +107,8 @@ precondições, independentemente do tipo, é o mesmo. O objetivo desta abordage
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm 0mm,clip]{PreconditionValidation.png}
+\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm
+0mm,clip]{img/PreconditionValidation.png}
 \caption{Diagrama de atividades do processamento da precondição}
 \label{FigServicePrecondition}
 \end{figure}
@@ -119,7 +120,7 @@ precondições, independentemente do tipo, é o mesmo. O objetivo desta abordage
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\textwidth,trim = 0mm 5mm 0mm
-0mm,clip]{PostconditionValidation.png} 
+0mm,clip]{img/PostconditionValidation.png} 
 \vspace{-6mm}
 \caption{Diagrama de atividades do processamento da pós-condição}
 \label{FigServicePostcondition}
@@ -158,7 +159,7 @@ exemplo de especificação de precondição seguindo a linha da JML.
 
 \begin{figure}[h]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCsimple.neo}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/DBCsimple.neo}
 \vspace{-.5cm}
 \end{small} 
 \caption{Forma preliminar de precondição na \neoidl}
@@ -168,7 +169,7 @@ exemplo de especificação de precondição seguindo a linha da JML.
 Essa forma foi apresentada no Workshop de Teses e Dissertações do CBSoft em 2015
 \cite{lima2015contratos}, ainda nos primeiros estágios do trabalho. Os revisores
 apontaram dificuldade de distinguir, na especificação, entre as pré e
-poscondições e os serviços e capacidades, pois possuiam prefixos muito
+poscondições e as capacidades, pois possuiam prefixos muito
 semelhantes (ver linhas 6 a 8).
 Essas críticas impulsionaram a busca por outra sintaxe mais adequada aos elementos textuais já
 existentes na \neoidl{}.
@@ -180,40 +181,171 @@ símbolos. Essa abordagem foi aplicada à \neoidl{} para versão final da sintax
 com suporte a \designbycontract{}.
 
 As próximas subseções apresentam alguns exemplos de especificação de pre e
-poscondições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.	
+poscondições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.
+Inicialmente as condições de \designbycontract{} são demonstradas separadamente
+e, ao final, a subseção \ref{SintaxeGeralDbc} consolida o conjunto
+de novos elementos sintáticos e como eles são estruturados.
 
 
 \subsection{Precondição básica}
+\label{precondicaoBasica}
+
+Uma precondição básica é a que valida os valores recebidos na
+requisição, comparando-os com os valores estabelecidos na instrução
+\emph{require} do contrato. Esse tipo de precondição assemelha-se a validação
+dos atributos recebidos por um método no paradigma de orientação a objetos. A origem das
+informações, isto é, onde os valores que serão validados se encontram, depende
+da operação HTTP utilizada. A subseção \ref{FonteDadosDbc} descreve como esses
+dados são obtidos.
+
+A \neoidl{} admite seis operadores de comparação: igualdade (\literal{==}),
+diferença (\literal{<>}), maior (\literal{>}), maior ou igual (\literal{>=}),
+menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados a
+qualquer tipo de pré ou poscondição.
+
+A Figura \ref{lst:DBCPreCondBasica} (linhas 7 e 8) apresenta um exemplo de
+precondição básica em uma forma simples, em que apenas um valor é testado (id)
+e, caso a condição não seja satisfeita, a instrução \emph{otherwise} indica o
+valor a ser retornado (código HTTP Not Found).  	
 
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCsimple.neo}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pre_basica.neo}
 \end{small}
-\caption{Exemplo da notação DBC básica na \neoidl{}}
-\label{lst:DBCService}
+\caption{Exemplo de notação de precondição básica na \neoidl{}}
+\label{lst:DBCPreCondBasica}
 \end{figure} 
+
+As precondições básicas admitem algums combinações com os operadores \emph{not},
+\emph{and} e \emph{or}, permitindo estabelecer regras mais flexíveis. Por
+exemplo, a precondição apresentada na Figura \ref{lst:DBCPreCondBasica} poderia
+ser escrita como \emph{\textbf{require} (\textbf{not} id \literal{<=} 0)}. Os
+operadores \emph{and} e \emph{or} são infixos (ex.: \emph{\textbf{require}
+((id \literal{>} 0 \textbf{or} id \literal{<=} -1000))}). O uso do operador
+\emph{and} produz o mesmo efeito de se declarar duas precondições.
+
+
 
 \subsection{Pós-condição básica}
 
-\ldots
+Em termos sintáticos, as pós-condições básicas possuem uma forma muito
+semelhante às precondições básicas (\ref{precondicaoBasica}), diferindo-se
+exclusivamente pelo uso da instrução \emph{ensure}. A Figura
+\ref{lst:DBCPosCondBasica} (linhas 8 e 9) mostra um exemplo de pós-condição
+básica em que, após a execução da operação \emph{get}, se o valor do atributo \emph{quantity} não
+for maior que zero, então o serviço não foi executado adequadamente e a exceção
+(\emph{otherwise}) é retornada.
 
+\begin{figure}[htb]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pos_basica.neo}
+\end{small}
+\caption{Exemplo de notação de pós-condição básica na \neoidl{}}
+\label{lst:DBCPosCondBasica}
+\end{figure} 
 
 
 \subsection{Precondição com chamada a serviço}
 
+As precondições baseadas em serviços seguem uma sequência que envolve a chamada
+a outro serviço antes do processamento do serviço principal, em um tipo simples de
+composição de serviço. Essa abordagem permite que precondições complexas sejam
+validadas por serviços especializados, sem que a especificação do contrato
+de serviço seja complexa. Essa proposta preserva ainda a ideia original de
+Eiffel\cite{meyer1988eiffel}, de que pré e pós-condições sejam expressões
+\emph{booleanas}.
+
+A primeira etapa do processo de execução da precondição de serviço consiste em
+fazer a chamada a um serviço (ver Figura \ref{FigServicePrecondition}) por meio de uma
+operação \emph{GET}. Em seguida, o código de \textit{status} retornado pelo
+serviço da precondição é comparado com o valor especificado na precondição do contrato.
+
+Após o acionamento do serviço da precondição, o comportamento é mesmo da
+precondição básica (ver \ref{precondicaoBasica}). Caso a precondição seja
+satisfeita, é retornado o valor indicado pela instrução \emph{otherwise}. As
+precondições de serviço na \neoidl{} admitem os mesmos operadores de comparação
+que as precondições básicas.
+
+A Figura \ref{lst:DBCPreCondServico} ilustra a especificação de uma precondição
+do tipo serviço (linhas 8 e 9). Assim, antes de executar a operação \emph{POST}
+do serviço principal, o serviço \emph{store.getOrder} é acionado. Caso esse
+serviço retorno o código correspondente a \emph{HTTP Not Found}, a operação
+\emph{POST} é executada. Caso contrário, o serviço principal retorna o valor
+correspondente a \emph{HTTP Invalid Precondition}, em razão do estabelecido no
+\emph{otherwise}.
+
+
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{DBCservice.neo}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pre_servico.neo}
 \end{small}
-\caption{Exemplo da notação DBC na \neoidl{} com chamada a serviço}
-\label{lst:DBCService}
+\caption{Exemplo de notação de precondição com chamada a serviço na
+\neoidl{}} 
+\label{lst:DBCPreCondServico}
 \end{figure} 
 
 
 
 \subsection{Pós-condição com chamada a serviço}
+\label{Pos-condicao servico}
 
-\ldots
+A pós-condição com chamada a serviço seguem a sequência de eventos indicada na
+Figura \ref{FigServicePostcondition}. No caso da pós-condição, a execução do
+serviço principal já ocoreu e a função do serviço na pós-condição é validar se a
+execução do serviço principal ocorreu com sucesso. Algumas pós-condições são
+naturais, como as que verificam se um objeto foi inserido após a operação de
+inclusão (método \emph{POST}). Ou ainda, a que verifica se o objeto foi excluído
+após uma operação \emph{DELETE}.
+
+No exemplo da Figura \ref{lst:DBCPosCondServico}, o serviço principal faz a
+exclusão de um objeto \textit{Order}. A pós-condição (linha 8) verifica, após o
+processamento do \emph{DELETE}, se o objeto foi efetivamente apagado por meio do
+serviço \emph{store.getOrder}. Se o serviço da pós-condição retornar o valor
+\emph{HTTP Not Found}, o objeto foi adequadamente excluído. Caso contrário, o
+serviço principal retornará o valor \emph{HTTP Not Modified}, o qual foi
+estabelecido na instrução \textit{otherwise}.
+
+\begin{figure}[htb]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pos_servico.neo}
+\end{small}
+\caption{Exemplo de notação de pós-condição com chamada a serviço na
+\neoidl{}}
+\label{lst:DBCPosCondServico}
+\end{figure} 
+
+
+\subsection{Sintaxe geral de pre e pós-condições}
+\label{SintaxeGeralDbc}
+
+Entre as subseções \ref{precondicaoBasica} e \ref{Pos-condicao servico} foram
+apresentados exemplos simples de especificação de pre e condições na \neoidl{}
+de modo separado, de modo a facilitar a compreensão. Esta subseção demonstra
+a estruturação sintática das construções de \designbycontract{} agregadas
+\neoidl{} por este trabalho.
+
+Um módulo \neoidl{} possui uma seção para declaração dos serviços  
+
+\center{\hilight{\texttt{Capacidade [\designbycontract{}]}}}
+
+
+
+
+
+% (\texttt{<Type> <Ident> = 0;})
+% \begin{tabbing}\tt
+% ~\char36{}\char46{}\char47{}neoIDL\\
+% \tt
+% ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
+%\tt
+% ~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
+%\tt ~~Couldn\char39{}t~match~expected~type~\char96{}Plugin\char39{}\\
+%\tt
+% ~~~with~actual~type~\char96{}\char91{}GHC\char46{}Types\char46{}Char\char93{}\char39{}
+%\end{tabbing}  
+
+\subsection{Fontes de dados para pré e pós-condições}
+\label{FonteDadosDbc}
 
 \section{ESTUDO DE CASO: PLUGIN TWISTED}
 \label{pluginTwisted}

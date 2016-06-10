@@ -1,0 +1,13 @@
+class interface ACCOUNT create
+    make
+feature
+    balance: INTEGER
+    ...
+    deposit (sum: INTEGER) is
+            -- Deposit sum into the account.
+         require
+            sum >= 0
+         ensure
+            balance = old balance + sum
+
+end -- class ACCOUNT

@@ -102,7 +102,7 @@ forma de extender as características da operação.
 
 \begin{figure}[h]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{mensagemData.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/mensagemData.tex}
 \vspace{-.5cm}
 \end{small} 
 \caption{Tipos de dados definidos na \neoidl}
@@ -141,7 +141,7 @@ como as requisições serão roteadas entre os serviços.
 
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{mensagem.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/mensagem.tex}
 \end{small}
 \caption{Sent message service specification in \neoidl}
 \label{lst:sentmessage-neo}
@@ -170,7 +170,7 @@ A declaração da anotação é feita ao final do módulo (linhas 14 a 18).
  
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{messageSendAnnotation.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/messageSendAnnotation.tex}
 \vspace{-.5cm}
 \end{small}
 \caption{Especificação de anotação na \neoidl{}}
@@ -183,13 +183,22 @@ utilizadas em outros construtores da linguagem: \texttt{module},
 nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
 disponíveis para utilização pelos \textit{plugins}.
 
-A estrutura de um módulo \neoidl{}, como pôde ser verificado nos exemplos
-acima, é composta pelas seguintes seções: importação, caminho do serviço,
-enumerações, entidades, serviços e declaração de anotações. O apêndice 
-\ref{apend:estruturaLexicaNeoIDL} apresenta a estrutura sintática e léxica da
-\neoidl{} antes de terem sido incorporadas as construções
-relativas a \designbycontract{}.
+\begin{figure*}[h]
+\begin{center}
+\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm
+0cm]{img/EstruturaModuloNeoIDL.png}  
+\end{center}
+\caption{Módulo \neoidl{}}
+\label{fig:moduloNeoIDL}
+\end{figure*}
 
+
+A estrutura de um módulo \neoidl{}, como pôde ser verificado nos exemplos
+acima e ilustrada na Figura \ref{fig:moduloNeoIDL}, é composta pelas seguintes
+seções: assinatura do módulo, seção de importação, enumerações e estruturas,
+serviços e anotações. O apêndice \ref{apend:estruturaLexicaNeoIDL} apresenta a
+estrutura sintática e léxica da \neoidl{} antes de terem sido incorporadas as construções
+relativas a \designbycontract{}.
 
 
 
@@ -214,7 +223,7 @@ possuia \textit{plugins} para Python, Java e Swagger.
 
 \begin{figure*}[h]
 \begin{center}
-\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm 0cm]{programgenerator.pdf}
+\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm 0cm]{img/programgenerator.pdf}
 \vspace{-.5cm}
 \end{center}
 \caption{Gerador de código da \neoidl{}}
@@ -226,7 +235,7 @@ dois módulos onde estão contidas os principais trechos da lógica implementada
 \textit{PluginDef} e \textit{PluginLoader}. Mais detalhes podem ser obtidos na
 publicação \textit{NeoIDL: A Domain Specific Language for Specifying REST
 Contracts Detailed Design and Extended Evaluation} \cite{lima2015neoidl}.
-
+ 
 
 \subsubsection{Componente PluginDef}{\label{sec:plugindef}}
 

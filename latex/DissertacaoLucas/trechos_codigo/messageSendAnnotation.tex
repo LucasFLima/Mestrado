@@ -1,0 +1,20 @@
+module  Message {
+ import MessageData; 
+
+ @SecurityPolicy(method = "basic", 
+                 algorithm="AES", 
+                 role = "admin");
+                 
+ resource sentbox { 
+  path = "/messages/sent";
+  @post void sendMessage(Message message); 
+  @get [Message] listMessages(string seq); 
+ };
+ 
+ annotation SecurityPolicy for resource {
+   string method;
+   string algorithm;
+   string role;
+ };
+ 
+};
