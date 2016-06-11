@@ -143,3 +143,124 @@ net.sourceforge.texlipse.builder.BuilderCoreException: Could not write to an out
 !MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
 !SUBENTRY 1 net.sourceforge.texlipse 4 4 2016-06-09 14:37:16.939
 !MESSAGE Could not write to an output file. Please close the output document in your viewer and rebuild.
+!SESSION 2016-06-10 14:23:32.903 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.wireframesketcher.ui 1 0 2016-06-10 14:27:32.801
+!MESSAGE WireframeSketcher v4.6.4 (trial)
+!SESSION 2016-06-10 14:59:54.525 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 4 2 2016-06-10 15:04:06.497
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while moving resources.
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1642)
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1598)
+	at net.sourceforge.texlipse.builder.OutputFileManager.moveFiles(OutputFileManager.java:277)
+	at net.sourceforge.texlipse.builder.OutputFileManager.access$5(OutputFileManager.java:231)
+	at net.sourceforge.texlipse.builder.OutputFileManager$4.run(OutputFileManager.java:489)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2326)
+	at net.sourceforge.texlipse.builder.OutputFileManager.restoreTempFiles(OutputFileManager.java:487)
+	at net.sourceforge.texlipse.builder.OutputFileManager.performBeforeBuild(OutputFileManager.java:600)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:366)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: File already exists on disk: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux.
+!SUBENTRY 1 org.eclipse.core.resources 4 4 2016-06-10 15:04:06.498
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 2 org.eclipse.core.filesystem 4 268 2016-06-10 15:04:06.498
+!MESSAGE File already exists on disk: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux.
+!SUBENTRY 1 org.eclipse.core.filesystem 4 268 2016-06-10 15:04:06.498
+!MESSAGE File already exists on disk: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux.
+
+!ENTRY org.eclipse.core.resources 4 75 2016-06-10 15:04:06.535
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 net.sourceforge.texlipse 4 75 2016-06-10 15:04:06.535
+!MESSAGE Errors running builder 'Latex Builder' on project 'DissertacaoLucas'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while moving resources.
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1642)
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1598)
+	at net.sourceforge.texlipse.builder.OutputFileManager.moveFiles(OutputFileManager.java:277)
+	at net.sourceforge.texlipse.builder.OutputFileManager.access$5(OutputFileManager.java:231)
+	at net.sourceforge.texlipse.builder.OutputFileManager$4.run(OutputFileManager.java:489)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2326)
+	at net.sourceforge.texlipse.builder.OutputFileManager.restoreTempFiles(OutputFileManager.java:487)
+	at net.sourceforge.texlipse.builder.OutputFileManager.performBeforeBuild(OutputFileManager.java:600)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:366)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: File already exists on disk: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux.
+!SUBENTRY 2 org.eclipse.core.resources 4 4 2016-06-10 15:04:06.535
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 268 2016-06-10 15:04:06.535
+!MESSAGE File already exists on disk: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux.
+!SUBENTRY 1 org.eclipse.core.resources 4 4 2016-06-10 15:04:06.535
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 2 org.eclipse.core.filesystem 4 268 2016-06-10 15:04:06.535
+!MESSAGE File already exists on disk: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux.
+!SESSION 2016-06-10 15:06:03.898 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY net.sourceforge.texlipse 4 4 2016-06-10 15:10:18.647
+!MESSAGE Could not parse .aux-file L/DissertacaoLucas/dissertacaoLucas.aux
+!STACK 0
+java.io.FileNotFoundException: /home/lucas/workspace/mestrado/latex/DissertacaoLucas/dissertacaoLucas.aux (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at net.sourceforge.texlipse.properties.TexlipseProperties.getFileContents(TexlipseProperties.java:221)
+	at net.sourceforge.texlipse.auxparser.AuxFileParser.doParse(AuxFileParser.java:96)
+	at net.sourceforge.texlipse.auxparser.AuxFileParser.getCitations(AuxFileParser.java:67)
+	at net.sourceforge.texlipse.builder.TexBuilder.buildResource(TexBuilder.java:254)
+	at net.sourceforge.texlipse.builder.AbstractBuilder.build(AbstractBuilder.java:121)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:370)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:102)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

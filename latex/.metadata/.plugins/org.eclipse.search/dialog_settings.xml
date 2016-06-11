@@ -6,8 +6,8 @@
 	<section name="DialogBounds_SearchDialog">
 		<item value="595" key="DIALOG_WIDTH"/>
 		<item value="108" key="DIALOG_Y_ORIGIN"/>
-		<item value="477" key="DIALOG_HEIGHT"/>
 		<item value="631" key="DIALOG_X_ORIGIN"/>
+		<item value="477" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="Search">
@@ -47,12 +47,12 @@
 			</list>
 		</section>
 	</section>
+	<section name="SearchDialog.ScopePart">
+		<item value="0" key="scope"/>
+	</section>
 	<section name="ReplaceDialog2">
 		<list key="replace_with">
 			<item value="  "/>
 		</list>
-	</section>
-	<section name="SearchDialog.ScopePart">
-		<item value="0" key="scope"/>
 	</section>
 </section>

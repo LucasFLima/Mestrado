@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="11" x="144" y="72" measuredWidth="329" measuredHeight="257">
+    <widgets xsi:type="model:Panel" id="1" y="56" width="329" height="201" measuredWidth="329" measuredHeight="201"/>
+    <widgets xsi:type="model:Label" id="3" x="32" text="Módulo NeoIDL" measuredWidth="271" measuredHeight="51">
+      <font size="43px"/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="5" x="10" y="66" width="309" height="25" text="Declaração do Módulo" measuredWidth="309" measuredHeight="25">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="6" x="10" y="96" width="309" height="25" text="Seção de importação de outros módulos" measuredWidth="309" measuredHeight="25">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="7" x="10" y="128" width="309" height="25" text="Seção de declaração de enumerações e estruturas" measuredWidth="309" measuredHeight="25">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="8" x="10" y="160" width="309" height="57" text="Seção de declaração de serviços" measuredWidth="309" measuredHeight="57">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="9" x="24" y="184" width="285" height="25" text="Subseção de declaração de operações" measuredWidth="285" measuredHeight="25">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="10" x="10" y="224" width="309" height="25" text="Seção de declaração de anotações" measuredWidth="309" measuredHeight="25">
+      <font size="15px"/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

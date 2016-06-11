@@ -177,20 +177,20 @@ A declaração da anotação é feita ao final do módulo (linhas 14 a 18).
 \label{lst:annotationNeoIDL}
 \end{figure}
 
+\begin{figure*}[htb]
+\begin{center}
+\includegraphics[scale=0.60,trim=0cm 1.5cm 0cm
+0cm]{img/EstruturaModuloNeoIDL.png}
+\end{center}
+\caption{Módulo \neoidl{}}
+\label{fig:moduloNeoIDL}
+\end{figure*}
+
 Além de serem aplicáveis a \texttt{resources}, as anotações também podem ser
 utilizadas em outros construtores da linguagem: \texttt{module},
 \texttt{enum}, \texttt{entity}. Qualquer anotação na \neoidl{} possui a mesma estrutura: um
 nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
 disponíveis para utilização pelos \textit{plugins}.
-
-\begin{figure*}[h]
-\begin{center}
-\includegraphics[scale=0.55,trim=0cm 1.5cm 0cm
-0cm]{img/EstruturaModuloNeoIDL.png}  
-\end{center}
-\caption{Módulo \neoidl{}}
-\label{fig:moduloNeoIDL}
-\end{figure*}
 
 
 A estrutura de um módulo \neoidl{}, como pôde ser verificado nos exemplos
@@ -215,12 +215,6 @@ foi construído utilizando \bnfc{} \cite{ranta-bnfc:2012} com a linguagem de
 programação funcional Haskell.}
 do contrato escrito em \neoidl{}, (b) por processar a sintaxe da linguagem \neoidl{} e (c) pelo gerenciamento dos \textit{plugins}.
 
-Fora do núcleo da \neoidl{} ficam os \textit{plugins}, responsáveis,
-cada um, por gerar código para as linguagens de destino. Assim, para se
-possibilitar a geração de código para uma nova linguagem ou segundo uma nova arquitetura, um
-novo \textit{plugin} deve ser desenvolvido. A primeira versão da \neoidl{}
-possuia \textit{plugins} para Python, Java e Swagger.
-
 \begin{figure*}[h]
 \begin{center}
 \includegraphics[scale=0.55,trim=0cm 1.5cm 0cm 0cm]{img/programgenerator.pdf}
@@ -229,6 +223,12 @@ possuia \textit{plugins} para Python, Java e Swagger.
 \caption{Gerador de código da \neoidl{}}
 \label{fig:programGenerator}
 \end{figure*}
+
+Fora do núcleo da \neoidl{} ficam os \textit{plugins}, responsáveis,
+cada um, por gerar código para as linguagens de destino. Assim, para se
+possibilitar a geração de código para uma nova linguagem ou segundo uma nova arquitetura, um
+novo \textit{plugin} deve ser desenvolvido. A primeira versão da \neoidl{}
+possuia \textit{plugins} para Python, Java e Swagger.
 
 As próximas subseções resumem o funcionamento de
 dois módulos onde estão contidas os principais trechos da lógica implementada na \neoidl{}: O
@@ -283,6 +283,7 @@ Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
 
 
 \section{AVALIAÇÃO EMPÍRICA}
+\label{EstudoExpressividadeReuso}
 \vspace{-6mm}
 
 A primeira versão da \neoidl{} foi submetida a um estudo empírico de sua expressividade 

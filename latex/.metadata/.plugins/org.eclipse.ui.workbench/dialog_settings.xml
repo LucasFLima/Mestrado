@@ -2,7 +2,14 @@
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item value="9" key="DIALOG_Y_ORIGIN"/>
-		<item value="349" key="DIALOG_X_ORIGIN"/>
+		<item value="142" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="InstallationDialogSettings">
+		<item value="686" key="DIALOG_WIDTH"/>
+		<item value="-9" key="DIALOG_Y_ORIGIN"/>
+		<item value="733" key="DIALOG_HEIGHT"/>
+		<item value="-30" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="NewWizardAction">
 	</section>

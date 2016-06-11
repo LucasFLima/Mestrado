@@ -134,7 +134,7 @@ ocorrer a partir dos valores contidos na mensagem de retorno. A Figura
 cada precondição.
 
 
-\section{EXTENSÃO DA NEOIDL PARA DESIGN BY CONTRACT}
+\section{EXTENSÃO DA NEOIDL PARA DESIGN-BY-CONTRACT}
 \label{extensaoNeoIDL-DbC}
 
 A sintaxe escolhida para possibilitar a especificação de pré e pós condições
@@ -193,20 +193,18 @@ de novos elementos sintáticos e como eles são estruturados.
 Uma precondição básica é a que valida os valores recebidos na
 requisição, comparando-os com os valores estabelecidos na instrução
 \emph{require} do contrato. Esse tipo de precondição assemelha-se a validação
-dos atributos recebidos por um método no paradigma de orientação a objetos. A origem das
-informações, isto é, onde os valores que serão validados se encontram, depende
-da operação HTTP utilizada. A subseção \ref{FonteDadosDbc} descreve como esses
-dados são obtidos.
+dos atributos recebidos por um método no paradigma de orientação a objetos.
 
-A \neoidl{} admite seis operadores de comparação: igualdade (\literal{==}),
-diferença (\literal{<>}), maior (\literal{>}), maior ou igual (\literal{>=}),
-menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados a
-qualquer tipo de pré ou poscondição.
+A origem das informações, isto é, onde os valores que serão validados se
+encontram, depende da operação HTTP utilizada. A subseção \ref{FonteDadosDbc} descreve como esses
+dados são obtidos. Para realizar a comparação do valor recebido com o valor
+esperado, a \neoidl{} admite seis operadores de comparação (Subseção
+\ref{TiposContrDbC}).
 
 A Figura \ref{lst:DBCPreCondBasica} (linhas 7 e 8) apresenta um exemplo de
 precondição básica em uma forma simples, em que apenas um valor é testado (id)
 e, caso a condição não seja satisfeita, a instrução \emph{otherwise} indica o
-valor a ser retornado (código HTTP Not Found).  	
+valor a ser retornado (código HTTP Not Found). 	
 
 \begin{figure}[htb]
 \begin{small}
@@ -216,14 +214,6 @@ valor a ser retornado (código HTTP Not Found).
 \label{lst:DBCPreCondBasica}
 \end{figure} 
 
-As precondições básicas admitem algums combinações com os operadores \emph{not},
-\emph{and} e \emph{or}, permitindo estabelecer regras mais flexíveis. Por
-exemplo, a precondição apresentada na Figura \ref{lst:DBCPreCondBasica} poderia
-ser escrita como \emph{\textbf{require} (\textbf{not} id \literal{<=} 0)}. Os
-operadores \emph{and} e \emph{or} são infixos (ex.: \emph{\textbf{require}
-((id \literal{>} 0 \textbf{or} id \literal{<=} -1000))}). O uso do operador
-\emph{and} produz o mesmo efeito de se declarar duas precondições.
-
 
 
 \subsection{Pós-condição básica}
@@ -232,8 +222,8 @@ Em termos sintáticos, as pós-condições básicas possuem uma forma muito
 semelhante às precondições básicas (\ref{precondicaoBasica}), diferindo-se
 exclusivamente pelo uso da instrução \emph{ensure}. A Figura
 \ref{lst:DBCPosCondBasica} (linhas 8 e 9) mostra um exemplo de pós-condição
-básica em que, após a execução da operação \emph{get}, se o valor do atributo \emph{quantity} não
-for maior que zero, então o serviço não foi executado adequadamente e a exceção
+básica em que, após a execução da operação \method{GET}, se o valor do atributo
+\emph{quantity} não for maior que zero, então o serviço não foi executado adequadamente e a exceção
 (\emph{otherwise}) é retornada.
 
 \begin{figure}[htb]
@@ -257,7 +247,7 @@ Eiffel\cite{meyer1988eiffel}, de que pré e pós-condições sejam expressões
 
 A primeira etapa do processo de execução da precondição de serviço consiste em
 fazer a chamada a um serviço (ver Figura \ref{FigServicePrecondition}) por meio de uma
-operação \emph{GET}. Em seguida, o código de \textit{status} retornado pelo
+operação \method{GET}. Em seguida, o código de \textit{status} retornado pelo
 serviço da precondição é comparado com o valor especificado na precondição do contrato.
 
 Após o acionamento do serviço da precondição, o comportamento é mesmo da
@@ -267,10 +257,10 @@ precondições de serviço na \neoidl{} admitem os mesmos operadores de compara�
 que as precondições básicas.
 
 A Figura \ref{lst:DBCPreCondServico} ilustra a especificação de uma precondição
-do tipo serviço (linhas 8 e 9). Assim, antes de executar a operação \emph{POST}
+do tipo serviço (linhas 8 e 9). Assim, antes de executar a operação \method{POST}
 do serviço principal, o serviço \emph{store.getOrder} é acionado. Caso esse
 serviço retorno o código correspondente a \emph{HTTP Not Found}, a operação
-\emph{POST} é executada. Caso contrário, o serviço principal retorna o valor
+\method{POST} é executada. Caso contrário, o serviço principal retorna o valor
 correspondente a \emph{HTTP Invalid Precondition}, em razão do estabelecido no
 \emph{otherwise}.
 
@@ -294,12 +284,12 @@ Figura \ref{FigServicePostcondition}. No caso da pós-condição, a execução d
 serviço principal já ocoreu e a função do serviço na pós-condição é validar se a
 execução do serviço principal ocorreu com sucesso. Algumas pós-condições são
 naturais, como as que verificam se um objeto foi inserido após a operação de
-inclusão (método \emph{POST}). Ou ainda, a que verifica se o objeto foi excluído
-após uma operação \emph{DELETE}.
+inclusão (método \method{POST}). Ou ainda, a que verifica se o objeto foi excluído
+após uma operação \method{DELETE}.
 
 No exemplo da Figura \ref{lst:DBCPosCondServico}, o serviço principal faz a
 exclusão de um objeto \textit{Order}. A pós-condição (linha 8) verifica, após o
-processamento do \emph{DELETE}, se o objeto foi efetivamente apagado por meio do
+processamento do \method{DELETE}, se o objeto foi efetivamente apagado por meio do
 serviço \emph{store.getOrder}. Se o serviço da pós-condição retornar o valor
 \emph{HTTP Not Found}, o objeto foi adequadamente excluído. Caso contrário, o
 serviço principal retornará o valor \emph{HTTP Not Modified}, o qual foi
@@ -315,37 +305,216 @@ estabelecido na instrução \textit{otherwise}.
 \end{figure} 
 
 
-\subsection{Sintaxe geral de pre e pós-condições}
+\subsection{Sintaxe geral de pré e pós-condições}
 \label{SintaxeGeralDbc}
 
 Entre as subseções \ref{precondicaoBasica} e \ref{Pos-condicao servico} foram
-apresentados exemplos simples de especificação de pre e condições na \neoidl{}
-de modo separado, de modo a facilitar a compreensão. Esta subseção demonstra
+apresentados separadametne exemplos simples de especificação de pre e condições
+na \neoidl{} de modo a facilitar a compreensão. Esta subseção demonstra
 a estruturação sintática das construções de \designbycontract{} agregadas
 \neoidl{} por este trabalho.
 
-Um módulo \neoidl{} possui uma seção para declaração dos serviços  
+\subsubsection{Listas de pré e pós-condições}
 
-\center{\hilight{\texttt{Capacidade [\designbycontract{}]}}}
+Um módulo \neoidl{} possui uma seção para declaração dos serviços (ver Figura
+\ref{fig:moduloNeoIDL}). Cada serviço declarado na \neoidl{} pode ter um mais
+capacidades, as quais correspondem às operações HTTP utilizadas na arquitetura
+REST. Sintaticamente, um serviço possui uma lista de capacidades\footnote{Os
+símbolos ``[`` e ``]'' identificam uma lista.}:
+
+\begin{center}
+\hilight{\{\texttt{Serviço [Capacidade]}\}}
+\end{center}
+
+A sintaxe da \neoidl{} foi extendida para admitir a vinculação de pré e
+pós-condições às capacidades. Essas contruções de \designbycontract{} são
+opcionais, ou seja, uma capacidade pode não ter nenhuma pré ou pós-condição. Por
+outro lado, pode-se incluir nas capacidades mais de uma precondição e mais de
+uma pós-condição ou ainda qualquer combinação delas, simultâneamente.
+
+\begin{center}
+\hilight{\{\texttt{Capacidade \textcolor{red}{[Condição DbC]}}\}}
+\end{center}
+
+É possível ainda, caso uma precondição ou pós-condição se aplique a todas as
+capacidades de um serviço, é possível declará-la para o serviço como um todo,
+logo antes da declaração das capacidades:
+
+\begin{center}
+\hilight{\{\texttt{Serviço \textcolor{red}{[Condição DbC]} [Capacidade]}\}}
+\end{center}
+
+ Assim, generalizando, a \neoidl{} passou a suportar a seguinte sintaxe:
+ 
+\begin{center}
+\hilight{\{\texttt{Serviço \textcolor{red}{[Condição DbC]} [Capacidade
+\textcolor{red}{[Condição DbC]} ]}\}}
+\end{center}
+ 
+
+\subsubsection{Tipos de construções de \designbycontract{}}
+\label{TiposContrDbC}
+
+Conforme exemplificado entre as subseções \ref{precondicaoBasica} e
+\ref{Pos-condicao servico}, as construções de \designbycontract{} possuem as
+seguintes estruturas:
+
+\begin{center}
+\hilight{Condição básica: \textbf{TipoCondição} \{\texttt{[Argumento Comparação
+Valor]}\}}
+\hilight{Condição serviço: \textbf{TipoCondição} \{\texttt{Serviço (Parâmetro)
+Comparação ValorSrv}\}}
+\hilight{Exceção: \textbf{Otherwise} \{\texttt{Valor de Retorno	}\}}
+
+\end{center}
+
+Onde:
+\vspace{-6mm}
+\begin{description}
+\item [TipoCondição] indica se é uma precondição (\emph{require}) ou uma
+pós-condição (\emph{ensure});
+
+\item [Argumento] indica o nome do atributo que será testado;
+
+\item [Comparação] indica o operação de comparação que a ser utilizada. A
+\neoidl{}  admite seis operadores de comparação: igualdade (\literal{==}), 
+diferença (\literal{<>}), maior (\literal{>}), maior ou igual (\literal{>=}), 
+menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados  a
+qualquer tipo de pré ou poscondição.
+
+Mais de um atributo pode ser testado em uma pré ou pós-condição. Na expressão
+acima, essa característica é simbolizada com a indicação de uma lista.
+
+\item [Valor] corresponde ao valor que será comparado com o \textbf{Argumento}.
+As pré e pós-condições básicas admitem algumas combinações com os operadores
+\emph{not}, \emph{and} e \emph{or}, formando expressões booleanas e,
+assim, permitindo estabelecer regras mais abrangentes.
+
+Por exemplo, a precondição apresentada na Figura \ref{lst:DBCPreCondBasica} poderia
+ser escrita como \emph{\textbf{require} (\textbf{not} id \literal{<=} 0)}. Os
+operadores \emph{and} e \emph{or} são infixos (ex.: \emph{\textbf{require}
+((id \literal{>} 0 \textbf{or} id \literal{<=} -1000))}). O uso do operador
+\emph{and} produz o mesmo efeito de se declarar duas precondições.
+
+\item [Serviço] indica o nome do serviço que será acionado. As informações para
+indicação concreta da localização do serviço, ou seja, a URL de acionamento, não
+são indicados nesse atributo de pre e pós-condição. Essas informações dependem
+do local de implantação do serviço e não convém que estejam declaradas no
+contrato, sob pena de que mudanças no ambiente de implantação do serviço gerem
+impacto ao contrato.
+Entretanto, caso se queira fazer essa vinculação, pode ser criada uma anotação
+\neoidl{}, com essa finalidade, para o serviço.
+
+\item [Parâmetro] tem a função de indicar os valores que serão passados para a
+chamada ao serviço da pré ou pós-condição.
+
+ \item [ValorSrv] corresponde a um valor que será comparado com o
+ \textit{Status Code HTTP} retornado pelo serviço. Na \neoidl{}, esses valores
+ são convencionados como o nome do corresponde ao código HTTP, com palavras
+ justapostas (Ex.: "NotFound" tem o valor do código 404, de HTTP \textit{Not
+ Found})
+
+\item [Valor de Retorno] é utilizado na cláusula \emph{otherwise} para indicar o
+valor que o serviço principal deve retornar caso uma precondiçaõ ou pós-condição
+não seja atendida.
+
+\end{description}
 
 
+\subsubsection{Um último exemplo de módulo com \designbycontract{}}
+
+A Figura \ref{lst:ModuloNeoVariosDbC} apresenta um exemplo módulo \neoidl{} de
+um serviço completo, utilizando alguns dos recursos apresentados na subseção
+\ref{TiposContrDbC}. Esse serviço possui três operações, cada uma com duas
+condições de \designbycontract{}.
+
+A operação \method{GET} possui uma precondição em que o valor do atributo \emph{id} deve ser maior que zero (linha 8), caso contrário a operação deve retornar o valor
+correspondente a "NotFound". Uma pós-condição assegura que, se o serviço for
+executado adequadamente, o valor de \emph{quantity} será maior que zero (linha
+9). Se for violada a pós-condição, a operação \method{GET} retorna o valor
+"NoContent".
+
+A operação \method{POST} possui duas precondições (linhas 13 e 14). A primeira,
+básica, valida o valor do atributo \emph{quantity}. A segunda, aciona o serviço
+\emph{store.getOrder} com o parâmetro \emph{id}. Nessa operação, foi
+definido um valor de exceção único para as duas precondições. A \neoidl{}
+associa essa instrução de \emph{otherwise} geral às instruções anteriores que
+não possuem condição e exceção específica (caso da linha 8).
+
+Na operação \method{DELETE} foi utilizado o operador lógico \emph{and} na
+precondição (linha 18). A pós-condição faz a chamada ao serviço
+\emph{store.getOrder}. Tanto a pré como a pós-condição possuem o mesmo valor de
+exceção (linha 20). 
+
+\begin{figure}[htb]
+\begin{small}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_dbc_complete.neo}
+\end{small}
+\caption{Exemplo de módulo \neoidl{} com várias instruções de \designbycontract{}}
+\label{lst:ModuloNeoVariosDbC}
+\end{figure} 	
 
 
-
-% (\texttt{<Type> <Ident> = 0;})
-% \begin{tabbing}\tt
-% ~\char36{}\char46{}\char47{}neoIDL\\
-% \tt
-% ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
-%\tt
-% ~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
-%\tt ~~Couldn\char39{}t~match~expected~type~\char96{}Plugin\char39{}\\
-%\tt
-% ~~~with~actual~type~\char96{}\char91{}GHC\char46{}Types\char46{}Char\char93{}\char39{}
-%\end{tabbing}  
 
 \subsection{Fontes de dados para pré e pós-condições}
 \label{FonteDadosDbc}
+
+Os serviços REST na \neoidl{} seguem uma convenção em relação ao conteúdo
+presente na requisição e na resposta para cada tipo de operação \emph{HTTP},
+conforme descrito na subseção \ref{linguagemNeoIDL}. Por exemplo, o método \method{GET}
+submete os argumentos pelo \emph{path} ou como \textit{query string} da
+requisição e não em seu corpo. Esses aspectos foram considerados para se definir
+a fonte das informações para os argumentos e parâmetros utilizados nas pré e
+pós-condições.
+
+A Figura \ref{Fig:FonteDadosDbcNeoIDL} resume a origem para cada operação. Há
+diferenças também entre os tipos básico e baseado em serviços das construções de
+\designbycontract{}. As operações \method{GET} e \method{DELETE} não possuem
+argumentos encaminhados no corpo da requisição. Para essas operações, os
+argumentos são retirados do \emph{path} ou \emph{query string} para validação
+das precondições, tanto no tipo básico como no tipo baseado em composição. Na
+figura, essa origem é identificada como \textit{Request arguments}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=120mm,trim = 0mm 0mm 0mm
+0mm,clip]{img/FonteDadosDbcNeoIDL.pdf}
+\caption{Diagrama da fonte de dados para acionamento de pré e pós-condições}
+\label{Fig:FonteDadosDbcNeoIDL}
+\end{figure}
+
+
+Por outro lado, as operações \method{POST} e \method{PUT} submetem os dados a
+serem inseridos ou alterados pelo corpo da requisição (\textit{Request body}),
+local de onde as precondições básicas e baseadas em serviços devem extrair os
+parâmetros de validação.
+A \neoidl{} utiliza a notação JSON\cite{JSon} no corpo das requisições. A
+representação dos argumentos utiliza o padrão separado por pontos para indicar
+elementos mais internos (ex. "Pessoa.Nome").
+
+No caso das pós-condições, a origem das informações diverge entre o tipo
+básicos e o tipo por serviços. A única operação que admite pós-condição básica é
+a operação \method{GET}, em que os argumentos de validação são extraídos do
+corpo da resposta (\textit{Response body}). As demais operações não retornam dados
+no corpo da requisição, pois estão voltadas para alteração de informações e não
+para consultas. Além disso, não há utilidade em se validar dados de requisição
+em uma pós-condição.
+
+Já as pós-condições baseadas em serviços não suportam a operação \method{GET}.
+Embora seja tecnicamente possível acionar um serviço com base nos argumentos da
+requisição, como não se tem modificação nos dados por essa operação, a
+validação dessas informações pode meio de serviço deve ser feita nas
+precondições. Ademais, as pós-condições básicas da operação \method{GET} cumprem
+com o objetivo que validar as informações de saída.
+
+A pós-condição da operação \method{DELETE} pode acionar serviços com base nos
+argumentos da requisição (\textit{Request arguments}). Um caso típico é de
+acionar o serviço de consulta para verificar se o dado foi efetivamente
+excluído. As operações \method{POST} e \method{PUT} podem acionam serviços em
+pós-condições utilizando as informações do corpo da requisição (\textit{Request
+body}), uma vez que essas operações não possuem dados no corpo da resposta. 
+
+
 
 \section{ESTUDO DE CASO: PLUGIN TWISTED}
 \label{pluginTwisted}
@@ -354,10 +523,36 @@ Um módulo \neoidl{} possui uma seção para declaração dos serviços
 
 \subsection{Arquitetura}
 
-% Diagrama da estrutura do código gerado
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=120mm,trim = 18mm 4mm 0mm
+0mm,clip]{img/TwistedServer.pdf}
+\caption{Arquitetura do serviço Twisted gerado pela \neoidl{}}
+\label{Fig:TwistedArchtecture}
+\end{figure}
+
+
+\subsection{Modo de funcionamento}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=80mm,trim = 5mm 6mm 0mm 
+3mm,clip]{img/TwistedFilters.pdf}
+\caption{Modo de operação das pré e pós-condições no serviço Twisted}
+\label{Fig:TwistedFiltes}
+\end{figure}
 
 
 \subsection{Geração de código}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=110mm,trim = 0mm 0mm 0mm 
+0mm,clip]{img/PluginTwisted.pdf}
+\caption{Plugin para geração de código Twisted com suporte a \designbycontract{}}
+\label{PluginTwisted}
+\end{figure}
+
 
 \section{ESTUDO EMPÍRICO DA ANÁLISE SUBJETIVA} 
 \vspace{-6mm}
@@ -484,13 +679,24 @@ do que descritos de outra forma
 
 * Distribuição do questionário
 
-* Avaliação dos resultados
+% \subsubsection{Avaliação dos resultados}
+% 
+% \begin{figure*}[h]
+% \begin{center}
+% \includegraphics[scale=0.55,trim=0cm 1.5cm 0cm
+% 0cm]{img/ResultQuestions06a09.pdf}  
+% \end{center}
+% \caption{Módulo \neoidl{}}
+% \label{fig:moduloNeoIDL}
+% \end{figure*}
 
 * Ameaças
 - não foi fornecido nenhum material sobre a NeoIDL, apresentando somente o uma
 descrição de serviço
 - O questionário foi aplicado uma única vez, sem melhorias a partir do primeiro
 conjunto de respostas
+
+
 
 
 * Questionários futuros

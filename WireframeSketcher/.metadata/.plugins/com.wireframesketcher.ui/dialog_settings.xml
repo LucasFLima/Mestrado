@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SaveAsImageDialogSettings">
+		<item value="100" key="scale"/>
+		<item value="false" key="exportSelection"/>
+		<item value="true" key="saveToFile"/>
+		<item value="false" key="hideAnnotations"/>
+		<list key="folderHistory">
+			<item value="/home/lucas/workspace/mestrado/WireframeSketcher/firstUse"/>
+		</list>
+		<list key="fileNameHistory">
+			<item value="ModuloNeoIDL"/>
+		</list>
+	</section>
+	<section name="NewProjectWizard">
+	</section>
+</section>

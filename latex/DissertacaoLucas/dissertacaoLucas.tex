@@ -24,7 +24,7 @@
 
 \usepackage{enumerate}
 %\usepackage{enumitem} 
-\usepackage{graphicx,color, soul}
+\usepackage{graphicx,color}
 \usepackage{booktabs}
 \usepackage{listings}
 
@@ -62,6 +62,7 @@
 \definecolor{dark-yellow}{RGB}{215,167,0}
 
 \newcommand{\hilight}[1]{\colorbox{light-gray}{#1}}
+
 
 
 \hyphenation{NeoIDL}
@@ -103,9 +104,7 @@
     >, <, ==
   },
   keywords = [2]{module, resource, enum, annotation, for, import, entity, path,
-  @get, @post, @put, @delete, require, ensure, otherwise, call},
-  %ndkeywords={int, \char{}  },
-  %ndkeywordstyle=\color{blue}\bfseries,
+  @get, @post, @put, @delete, require, ensure, otherwise, call, and, or, not},
   keywordstyle=[1]\color{dark-yellow}\textbf,
   keywordstyle=[2]\color{black}\textbf,
   numbers=left,

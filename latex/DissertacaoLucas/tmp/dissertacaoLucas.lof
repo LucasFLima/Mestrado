@@ -1,0 +1,27 @@
+\select@language {brazil}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Exemplo de pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es em Eiffel}}{18}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Exemplo de pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es em JML}}{19}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Exemplo de pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es em Spec\#}}{19}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Tipos de dados definidos na NeoIDL}}{22}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sent message service specification in NeoIDL}}{23}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Especifica\IeC {\c c}\IeC {\~a}o de anota\IeC {\c c}\IeC {\~a}o na NeoIDL{}}}{24}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces M\IeC {\'o}dulo NeoIDL{}}}{25}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Gerador de c\IeC {\'o}digo da NeoIDL{}}}{25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Digrama de atividades com verifica\IeC {\c c}\IeC {\~a}o de pr\IeC {\'e} e p\IeC {\'o}s condi\IeC {\c c}\IeC {\~o}es}}{31}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagrama de atividades do processamento da precondi\IeC {\c c}\IeC {\~a}o}}{33}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Diagrama de atividades do processamento da p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o}}{33}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Forma preliminar de precondi\IeC {\c c}\IeC {\~a}o na NeoIDL}}{34}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Exemplo de nota\IeC {\c c}\IeC {\~a}o de precondi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica na NeoIDL{}}}{35}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Exemplo de nota\IeC {\c c}\IeC {\~a}o de p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o b\IeC {\'a}sica na NeoIDL{}}}{36}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Exemplo de nota\IeC {\c c}\IeC {\~a}o de precondi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o na NeoIDL{}}}{37}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Exemplo de nota\IeC {\c c}\IeC {\~a}o de p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o na NeoIDL{}}}{38}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Exemplo de m\IeC {\'o}dulo NeoIDL{} com v\IeC {\'a}rias instru\IeC {\c c}\IeC {\~o}es de \textit {Design-by-Contract}{}}}{41}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Diagrama da fonte de dados para acionamento de pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}}{42}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Arquitetura do servi\IeC {\c c}o Twisted gerado pela NeoIDL{}}}{43}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Modo de opera\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es no servi\IeC {\c c}o Twisted}}{44}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Plugin para gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo Twisted com suporte a \textit {Design-by-Contract}{}}}{44}
+\addvspace {10\p@ }

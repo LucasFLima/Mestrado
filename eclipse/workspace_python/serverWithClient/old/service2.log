@@ -1,0 +1,23 @@
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian) (base=mf 2015.5.22)  11 JUN 2016 09:35
+**service2.py ../old/
+(service2.py
+>> import.json#import.twisted_server
+! Isolated expression.
+<to be read again> 
+                   from
+l.3 from
+         httplib import HTTPConnection
+? 
+! Extra tokens will be flushed.
+<to be read again> 
+                   from
+l.3 from
+         httplib import HTTPConnection
+? quit
+OK, entering batchmode...
+
+! Interruption.
+l.3 from
+         httplib import HTTPConnection
+? exit
+
