@@ -44,16 +44,13 @@
 \contentsline {subsubsection}{\numberline {4.2.5.3}Um \IeC {\'u}ltimo exemplo de m\IeC {\'o}dulo com \textit {Design-by-Contract}{}}{40}
 \contentsline {subsection}{\numberline {4.2.6}Fontes de dados para pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}{41}
 \contentsline {section}{\numberline {4.3}ESTUDO DE CASO: PLUGIN TWISTED}{43}
-\contentsline {subsection}{\numberline {4.3.1}Arquitetura}{43}
-\contentsline {subsection}{\numberline {4.3.2}Modo de funcionamento}{44}
-\contentsline {subsection}{\numberline {4.3.3}Gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo}{44}
-\contentsline {section}{\numberline {4.4}ESTUDO EMP\IeC {\'I}RICO DA AN\IeC {\'A}LISE SUBJETIVA}{44}
-\contentsline {subsection}{\numberline {4.4.1}M\IeC {\'e}todo}{45}
-\contentsline {subsection}{\numberline {4.4.2}GQM}{45}
-\contentsline {subsection}{\numberline {4.4.3}Question\IeC {\'a}rio}{45}
-\contentsline {subsection}{\numberline {4.4.4}An\IeC {\'a}lise dos Resultados}{45}
-\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{48}
-\contentsline {chapter}{AP\IeC {\^E}NDICES}{52}
-\contentsline {chapter}{\numberline {A}ESTRUTURA DA LINGUAGEM NEOIDL}{53}
-\contentsline {section}{\numberline {A.1}ESTRUTURA L\IeC {\'E}XICA DA NEOIDL}{53}
-\contentsline {section}{\numberline {A.2}ESTRUTURA SINT\IeC {\'A}TICA DA NEOIDL}{54}
+\contentsline {subsection}{\numberline {4.3.1}Vis\IeC {\~a}o geral do Python \textit {Twisted}{}}{43}
+\contentsline {subsection}{\numberline {4.3.2}Arquitetura dos servi\IeC {\c c}os \textit {Twisted}{}}{44}
+\contentsline {subsection}{\numberline {4.3.3}Gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo}{46}
+\contentsline {section}{\numberline {4.4}ESTUDO EMP\IeC {\'I}RICO DA AN\IeC {\'A}LISE SUBJETIVA}{47}
+\contentsline {subsection}{\numberline {4.4.1}M\IeC {\'e}todo}{49}
+\contentsline {subsection}{\numberline {4.4.2}GQM}{49}
+\contentsline {subsection}{\numberline {4.4.3}Question\IeC {\'a}rio}{49}
+\contentsline {subsection}{\numberline {4.4.4}An\IeC {\'a}lise dos Resultados}{49}
+\contentsline {chapter}{REFER\IeC {\^E}NCIAS BIBLIOGR\IeC {\'A}FICAS}{52}
+\contentsline {chapter}{AP\IeC {\^E}NDICES}{56}

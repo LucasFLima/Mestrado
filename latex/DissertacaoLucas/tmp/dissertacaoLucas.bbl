@@ -70,17 +70,16 @@ Erl,~T., Karmarkar,~A., Walmsley,~P., Haas,~H., Yalcinalp,~L.~U., Liu,~K.,
 \newblock {\em Web service contract design and versioning for SOA}.
 \newblock Prentice Hall, 2009.
 
+\bibitem{fettig2005twisted}
+Fettig,~A.
+\newblock {\em Twisted network programming essentials}, volume~2.
+\newblock " O'Reilly Media, Inc.", 2013.
+
 \bibitem{fielding2000architectural}
 Fielding,~R.~T.
 \newblock {\em Architectural styles and the design of network-based software
   architectures}.
 \newblock Tese de Doutorado, University of California, Irvine, 2000.
-
-\bibitem{forsberg-bnfc:2004}
-Forsberg,~M. e Ranta,~A.
-\newblock Bnf converter.
-\newblock In {\em Proceedings of the 2004 ACM SIGPLAN Workshop on Haskell},
-  Haskell '04, pages 94--95, New York, NY, USA, 2004. ACM.
 
 \bibitem{hadley2006web}
 Hadley,~M.~J.

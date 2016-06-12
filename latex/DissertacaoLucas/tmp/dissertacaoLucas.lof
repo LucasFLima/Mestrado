@@ -21,7 +21,9 @@
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Exemplo de nota\IeC {\c c}\IeC {\~a}o de p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~a}o com chamada a servi\IeC {\c c}o na NeoIDL{}}}{38}
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Exemplo de m\IeC {\'o}dulo NeoIDL{} com v\IeC {\'a}rias instru\IeC {\c c}\IeC {\~o}es de \textit {Design-by-Contract}{}}}{41}
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Diagrama da fonte de dados para acionamento de pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es}}{42}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Arquitetura do servi\IeC {\c c}o Twisted gerado pela NeoIDL{}}}{43}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Modo de opera\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es no servi\IeC {\c c}o Twisted}}{44}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Plugin para gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo Twisted com suporte a \textit {Design-by-Contract}{}}}{44}
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Arquitetura ass\IeC {\'\i }ncrona do \textit {Twisted}{}}}{44}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Opera\IeC {\c c}\IeC {\~a}o dos servi\IeC {\c c}os na arquitetura \textit {Twisted}{}}}{45}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Arquitetura do servi\IeC {\c c}o Twisted gerado pela NeoIDL{}}}{45}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Modo de opera\IeC {\c c}\IeC {\~a}o das pr\IeC {\'e} e p\IeC {\'o}s-condi\IeC {\c c}\IeC {\~o}es no servi\IeC {\c c}o Twisted}}{46}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Plugin para gera\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo Twisted com suporte a \textit {Design-by-Contract}{}}}{47}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Se\IeC {\c c}\IeC {\~a}o de c\IeC {\'o}digo do filtro de servi\IeC {\c c}os}}{48}

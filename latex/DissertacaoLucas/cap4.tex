@@ -519,20 +519,125 @@ body}), uma vez que essas operações não possuem dados no corpo da resposta.
 \section{ESTUDO DE CASO: PLUGIN TWISTED}
 \label{pluginTwisted}
 
-\ldots
+A incorporação de regras de \designbycontract{} aos contratos para
+serviços REST escritos em \neoidl{} elevam a um novo patamar os níveis de
+garantias com a estabilidade comportamental dos serviços. Nesse sentido, a
+preocupação em garantir ao cliente que o serviço proverá as informações de que
+ele necessita aumenta, reforçando os benefícios observados com a prática
+\CtFirst{}. Ou seja, o desenho do serviço considera ainda mais a perspectiva do
+consumidor do serviço.
 
-\subsection{Arquitetura}
+A seção \ref{extensaoNeoIDL-DbC} tratou do elemento \emph{Contrato}, sobre como
+ele pode ser escrito em \neoidl{} com suporte a construções de
+\designbycontract{}. O contrato, porém, é apenas uma especificação, no
+sentido de descrever regras e não de torná-las executáveis em si. Todavia, a
+\neoidl{} é, além de uma linguagem formal, um \framework{} de geração de
+código poliglota (subseção \ref{histMotivNeoIDL}) por meio de plugins.
+
+Para se comprovar a viabilidade de se conceber serviços com suporte a pré e
+pós-condições, foi desenvolvido, no decorrer da pesquisa de mestrado, um plugin
+da \neoidl{} que cumpre com tal finalidade. As próximas subseções detalham como
+é estruturada a arquitetura do serviço gerado e seu comportamento em relação a
+\designbycontract{}. Ao final, alguns aspectos sobre a implementação do
+próprio plugin são descritos.
+
+\subsection{Visão geral do Python \twisted{}}
+\label{PythonTwisted}
+
+Adotou-se o \framework{} \emph{Python Twisted}\cite{fettig2005twisted} como tecnologia para
+construção dos serviços com pré e pós-condições. A escolha se deu em razão de
+\twisted{} possuir uma arquitetura voltada para processamento de requisições de vários
+tipos de protocolos de rede sobre uma infraestrutura simples e autônoma. 
+
+O \twisted{} é baseado em eventos e adota a estratégia de tratamentos de
+requisições de forma assíncrona, em detrimento ao uso de \textit{threads}. O
+núcleo do \twisted{} é o \textit{loop} do objeto \emph{reactor} responsável por
+aguardar e direcionar o processamento dos eventos (Figura
+\ref{Fig:TwistedReactor}). Uma requisição HTTP, como as das chamadas a serviços REST, são tratados como
+eventos.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=120mm,trim = 18mm 4mm 0mm
+\includegraphics[width=80mm,trim = 0mm 0mm 0mm
+0mm,clip]{img/TwistedReactor.pdf}
+\caption{Arquitetura assíncrona do \twisted{}}
+\label{Fig:TwistedReactor}
+\end{figure}
+
+O \emph{reactor} entrega os eventos para serem tratados para processamentos
+especializados, indicados no lado direito da Figura \ref{Fig:TwistedReactor}.
+Caso o processamento de um evento seja lento, deve-se disparar um
+processamento assíncrono, e registrar no \emph{reactor} uma chamada para quando
+o processamento assíncrono se encerrar, o qual será tratado como um outro
+evento.
+Esse controle é feito por um objeto denominado \emph{Deferred}, que contém uma lista
+de \emph{Callbacks} \cite{fettig2005twisted}.
+
+
+\subsection{Arquitetura dos serviços \twisted{}}
+\label{ArquiteturaTwisted}
+
+Os serviços \twisted{} gerados pela \neoidl{} são estruturados em uma
+arquitetura que extende a arquitetura base do \twisted{} \emph{Reactor},
+incorporando serviços ao processamento das requisições, como ilustrado na Figura
+\ref{Fig:TwistedReactorServices}. Os serviços são autônomos entre si, e
+processam as requisições de acordo com o roteamento realizado pelo servidor.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=80mm,trim = 0mm 0mm 0mm
+0mm,clip]{img/TwistedReactorServices.pdf}
+\caption{Operação dos serviços na arquitetura \twisted{}}
+\label{Fig:TwistedReactorServices}
+\end{figure}
+
+Em termos de classes, a \neoidl{} gera um conjunto de tres módulos base,
+que constituem o pacote do \twisted{} \textit{server}, representados na
+parte superior da Figura \ref{Fig:TwistedArchtecture}. Essas classes são fixas,
+ou seja, não dependem da quantidade nem do conteúdo dos serviços declarados no
+módulo \neoidl{}.
+
+A classe \emph{Server} é o núcleo do \twisted{} \textit{server}. Ela é
+responsável por subir o servidor HTTP, receber as requisições, identificar
+as operações da requisição (\method{GET}, \method{POST}, \method{PUT} ou \method{DELETE}), e
+direcionar a requisição para o serviço específico. A identificação do serviço é
+feita por meio de um arquivo de rota (routes.json), o qual possui uma tradução
+entre os \emph{paths} das requisições e os serviços responsáveis por cada uma
+delas.
+
+A classe \emph{Utils} contém um conjunto de funções utilitárias, como a que
+realiza o \textit{parse} da requisição para extrair os argumentos repassados
+na URI ou \textit{query string}. Ela também define o objeto que trafega a
+resposta dos serviços entre os serviço e o servidor.
+
+Essas duas classes são suficientes para o servidor quando não se utiliza
+\designbycontract{} nos serviços. O pacote
+\emph{DbcConditions} consolida o conjunto de classes responsáveis por processar
+as pré e pós-condições. A principal função de \emph{DbcConditions} é realizar a
+comparação entre o valor real e o valor esperado, efetivando toda a
+lógica corresponde às construções de \designbycontract{} descritas na subseção
+\ref{TiposContrDbC}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=90mm,trim = 18mm 4mm 0mm
 0mm,clip]{img/TwistedServer.pdf}
 \caption{Arquitetura do serviço Twisted gerado pela \neoidl{}}
 \label{Fig:TwistedArchtecture}
 \end{figure}
 
+Em \emph{DbcConditions} estão as funções que carregam a lista de pré e
+pós-condições para cada serviço. A chamada para as pré e pós-condições baseadas
+em serviços também é construída nesse pacote. Essa pacote é fundamental para o
+funcionamento das construções de \designbycontract{} e consta transcrita no
+Apêndice \ref{classesDbcCondition}.
 
-\subsection{Modo de funcionamento}
+Para cada serviço declarado no módulo \neoidl{} são geradas duas classes: os
+filtros do serviço e o serviço em si. A classe \emph{ServiceFilter} recebe a
+requisição; carrega e processa as precondições; aciona o serviço e; ao final,
+carrega e processa as pós-condições. Esse modo de operação dos filtros é
+ilustrado na Figura \ref{Fig:TwistedFiltes}. A classe do serviço, por
+fim, contém apenas a estrutura para implementação da lógica interna do serviço.
 
 \begin{figure}[!htb]
 \centering
@@ -543,19 +648,124 @@ body}), uma vez que essas operações não possuem dados no corpo da resposta.
 \end{figure}
 
 
+
 \subsection{Geração de código}
+
+O plugin \twisted{} é um conjunto de seis módulos Haskell. Para cada tipo de
+arquivo gerado, há um módulo no plugin, conforme Figura \ref{PluginTwisted}. Os
+módulos \emph{PPService}, \emph{PPUtils} e P\emph{PDbcConditions} apenas
+imprimem um código Python fixo, sem qualquer interferência do módulo \neoidl{}
+processado. \emph{PPRoute} é um pequeno módulo (42 linhas) que processa as
+informações contidas nas instruções \emph{path} dos serviços declarados no
+módulo \neoidl{} e mapeia a correspondência entre as URIs e os serviços.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=110mm,trim = 0mm 0mm 0mm 
+\includegraphics[width=100mm,trim = 0mm 0mm 0mm 
 0mm,clip]{img/PluginTwisted.pdf}
 \caption{Plugin para geração de código Twisted com suporte a \designbycontract{}}
 \label{PluginTwisted}
 \end{figure}
 
+O módulo \emph{PPService} gera uma classe com um método para cada operação do
+serviço. Na versão atual do plugin, os métodos são implementados com uma lógica
+de gravação de objetos em um banco em memória, apenas para simplificar o teste
+dos código gerado. Essa implementação não é relevante, uma vez que a lógica
+especializada do serviço real a substituirá.
+
+A parte correspondente ao acionamento das pré e pós-condições é produzido pelo
+módulo \emph{PPServiceFilter}. O código produzido por este módulo é composto de
+duas seções: a declaração das condições de \designbycontract{} e o carregamento
+dessas condições. A Figura \ref{lst:filtrosServicosTwisted} contém um trecho da
+classe \emph{ServiceFilter}. Na linha 10, as precondições são carregadas. O
+acionamento do serviço principal está na linha 13. Por fim, as pós-condições são
+carregadas na linha 16.
+
+\begin{figure}[h]
+\begin{small}
+\lstinputlisting[language=PythonTwisted,firstnumber=1]{trechos_codigo/serviceFilterLoad.py}
+\vspace{-.5cm}
+\end{small}
+\caption{Seção de código do filtro de serviços}
+\label{lst:filtrosServicosTwisted} 
+\end{figure}
+
+A seção de condições \designbycontract{} contém a lista de pré e pos-condições
+do serviço. 
+
+\begin{center}
+\setbox0=\hbox{%
+%\begin{minipage}{1.9in}
+\begin{minipage}{6cm}
+\begin{lstlisting}[
+basicstyle={\tiny\ttfamily},
+identifierstyle={\color{black}},
+tabsize=2,
+language={NeoIDL},
+numbersep=8pt,
+numbers=left,
+xleftmargin=0.5cm,frame=tlbr,framesep=2pt,framerule=0pt,
+morekeywords ={class,run}
+]
+@get    Order getOrder (int id)
+		ensure (
+				quantity
+				>
+				"0"
+		),
+		otherwise "NoContent";
+\end{lstlisting}
+\end{minipage}
+}
+\savestack{\listingA}{\box0}
+
+\setbox0=\hbox{%
+\begin{minipage}{6cm}
+\begin{lstlisting}[
+basicstyle={\tiny\ttfamily},
+identifierstyle={\color{black}},
+tabsize=2,
+language={PythonTwisted},
+numbersep=8pt,
+numbers=left,
+xleftmargin=0.5cm,frame=tlbr,framesep=2pt,framerule=0pt,
+morekeywords ={class,run}
+]
+self.list.append(
+	DbcCheckBasic(
+		'quantity',
+		'>',
+		'0',
+		204,
+		ValuesSource.responseBody,
+		DbcConditionType.PostCondition,
+		OperationType.GET
+	)
+)
+\end{lstlisting}
+\end{minipage}
+}
+\savestack{\listingB}{\box0}
+
+\begin{tabular}{|c|c|c|}
+\hline
+%\stackinset{l}{-5pt}{t}{13\llength}{$\bullet$}{\listingA} &
+%\stackinset{l}{-5pt}{t}{ 7\llength}{$\bullet$}{\listingB} \\
+\stackinset{l}{-5pt}{t}{}{}{\listingA} &
+ &
+\stackinset{l}{-5pt}{t}{}{}{\listingB} \\
+\hline
+\end{tabular}
+\end{center}
+
+
 
 \section{ESTUDO EMPÍRICO DA ANÁLISE SUBJETIVA} 
 \vspace{-6mm}
+
+\ldots
+
+\ldots
 
 \label{analiseSubjetiva}
 \vspace{-6mm}

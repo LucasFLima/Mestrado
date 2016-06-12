@@ -29,6 +29,12 @@
 \usepackage{listings}
 
 
+\usepackage{xcolor}
+\usepackage{stackengine}
+\newlength\llength
+\llength=1.38ex\relax
+
+
 
 \newenvironment{joincode}  {\let\orighscode=\hscode
   \let\origendhscode=\endhscode
@@ -41,6 +47,7 @@
 \newcommand{\neocortex}{NeoCortex}
 \newcommand{\bnfc}{\texttt{BNFConverter}}
 \newcommand{\designbycontract}{\textit{Design-by-Contract}}
+\newcommand{\twisted}{\textit{Twisted}}
 \newcommand{\ws}{\textit{Web Service}}
 \newcommand{\wss}{\textit{Web Services}}
 \newcommand{\CdFirst}{\textit{Code-first}}
@@ -122,6 +129,24 @@
   morestring=[b]"
   }
 
+\lstdefinelanguage{PythonTwisted}{
+  sensitive = true,
+  keywords = {classe, object, def, return},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+  }
+  
 
 \lstdefinelanguage{Haskell}{
   sensitive = true,
@@ -301,8 +326,9 @@ APÊNDICES
 \vfill
 
 \clearpage
-\input{apend_a}
-\input{apend_b}
+% \input{apend_a}
+% \input{apend_b}
+% \input{apend_c}
 % fim do texto
 
 

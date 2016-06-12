@@ -13,43 +13,43 @@ Warning--empty journal in hadley2006web
 Warning--there's a number but no volume in papazoglou2007service
 You've used 41 entries,
             2118 wiz_defined-function locations,
-            724 strings with 9848 characters,
-and the built_in function-call counts, 12002 in all, are:
-= -- 1213
-> -- 463
+            721 strings with 9784 characters,
+and the built_in function-call counts, 11798 in all, are:
+= -- 1184
+> -- 457
 < -- 10
-+ -- 192
-- -- 148
-* -- 719
-:= -- 1955
-add.period$ -- 132
++ -- 190
+- -- 146
+* -- 705
+:= -- 1931
+add.period$ -- 131
 call.type$ -- 41
-change.case$ -- 191
+change.case$ -- 189
 chr.to.int$ -- 0
 cite$ -- 49
-duplicate$ -- 499
-empty$ -- 1033
-format.name$ -- 148
-if$ -- 2581
+duplicate$ -- 490
+empty$ -- 1019
+format.name$ -- 146
+if$ -- 2528
 int.to.chr$ -- 0
 int.to.str$ -- 41
-missing$ -- 37
+missing$ -- 38
 newline$ -- 209
 num.names$ -- 70
-pop$ -- 261
+pop$ -- 263
 preamble$ -- 1
-purify$ -- 155
+purify$ -- 154
 quote$ -- 0
-skip$ -- 337
+skip$ -- 327
 stack$ -- 0
-substring$ -- 648
-swap$ -- 99
+substring$ -- 624
+swap$ -- 93
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 150
+type$ -- 148
 warning$ -- 8
-while$ -- 114
+while$ -- 111
 width$ -- 43
-write$ -- 445
+write$ -- 442
 (There were 8 warnings)
