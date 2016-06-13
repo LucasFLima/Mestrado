@@ -58,7 +58,8 @@ retornar o código de falha definido no contrato correspondente.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm 0mm,clip]{ServiceDbC.png}
+\includegraphics[width=140mm,trim = 0mm 0mm 0mm
+0mm,clip]{img/FluxoDbcCondicoes.pdf}
 \caption{Digrama de atividades com verificação de pré e pós condições}
 \label{FigServiceDbC}
 \end{figure}
@@ -107,8 +108,8 @@ precondições, independentemente do tipo, é o mesmo. O objetivo desta abordage
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm
-0mm,clip]{img/PreconditionValidation.png}
+\includegraphics[width=140mm,trim = 0mm 0mm 0mm
+0mm,clip]{img/FluxoPrecondicoes.pdf}
 \caption{Diagrama de atividades do processamento da precondição}
 \label{FigServicePrecondition}
 \end{figure}
@@ -119,8 +120,8 @@ precondições, independentemente do tipo, é o mesmo. O objetivo desta abordage
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=\textwidth,trim = 0mm 5mm 0mm
-0mm,clip]{img/PostconditionValidation.png} 
+\includegraphics[width=140mm,trim = 0mm 0mm 0mm
+0mm,clip]{img/FluxoPostcondicoes.pdf}
 \vspace{-6mm}
 \caption{Diagrama de atividades do processamento da pós-condição}
 \label{FigServicePostcondition}
@@ -478,7 +479,7 @@ figura, essa origem é identificada como \textit{Request arguments}.
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=120mm,trim = 0mm 0mm 0mm
-0mm,clip]{img/FonteDadosDbcNeoIDL.pdf}
+0mm,clip]{img/FonteDadosDbcNeoIDLIngles.pdf}
 \caption{Diagrama da fonte de dados para acionamento de pré e pós-condições}
 \label{Fig:FonteDadosDbcNeoIDL}
 \end{figure}
@@ -675,25 +676,20 @@ especializada do serviço real a substituirá.
 
 A parte correspondente ao acionamento das pré e pós-condições é produzido pelo
 módulo \emph{PPServiceFilter}. O código produzido por este módulo é composto de
-duas seções: a declaração das condições de \designbycontract{} e o carregamento
-dessas condições. A Figura \ref{lst:filtrosServicosTwisted} contém um trecho da
-classe \emph{ServiceFilter}. Na linha 10, as precondições são carregadas. O
-acionamento do serviço principal está na linha 13. Por fim, as pós-condições são
-carregadas na linha 16.
+duas seções: (i) a declaração das condições de \designbycontract{} e (ii) o
+carregamento dessas condições. A primeira seção, de declaração das condições
+\designbycontract{} contém a lista de pré e pos-condições do serviço. A Figura 
+\ref{Fig:LhsRhsDbcConditions} apresenta um exemplo de condição especificada em
+\neoidl{} transformada em código \emph{Python Twisted}.
 
-\begin{figure}[h]
-\begin{small}
-\lstinputlisting[language=PythonTwisted,firstnumber=1]{trechos_codigo/serviceFilterLoad.py}
-\vspace{-.5cm}
-\end{small}
-\caption{Seção de código do filtro de serviços}
-\label{lst:filtrosServicosTwisted} 
-\end{figure}
+O lado esquerda dessa
+figura contém a especificação de uma pós-condição (\emph{\textbf{ensure}}, na
+linha 2) associada à operação \method{GET} (linha 1). Constitui-se de uma
+pós-condição básica, que testa se o valor de resposta \emph{quantity} é maior que zero
+(linhas 3 a 5). Caso a pós-condição não seja satisfeita, o serviço retorna o
+código \emph{HTTP No Content}.
 
-A seção de condições \designbycontract{} contém a lista de pré e pos-condições
-do serviço. 
 
-\begin{center}
 \setbox0=\hbox{%
 %\begin{minipage}{1.9in}
 \begin{minipage}{6cm}
@@ -747,6 +743,8 @@ self.list.append(
 }
 \savestack{\listingB}{\box0}
 
+\begin{figure}[h]
+\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 %\stackinset{l}{-5pt}{t}{13\llength}{$\bullet$}{\listingA} &
@@ -756,8 +754,42 @@ self.list.append(
 \stackinset{l}{-5pt}{t}{}{}{\listingB} \\
 \hline
 \end{tabular}
-\end{center}
 
+\caption{Transformação de pós-condição \neoidl{} (lado esquerdo) em código
+Python \twisted{} (lado direito)}
+\label{Fig:LhsRhsDbcConditions}
+\end{center}
+\end{figure}
+
+Do lado direito da Figura \ref{Fig:LhsRhsDbcConditions} está o código
+\emph{Python Twisted} correspondente. O motor de transformação identifica que a
+condição especificada é uma pós-condição básica (classe \emph{DbcCheckBasic} na linha 2
+e tipo na linha 8) associada uma operação \method{GET} (linha 9). Conforme
+convenção adotada sobre a fonte de informações (Subseção \ref{FonteDadosDbc}), a
+pós-condição é carregada com a indicação de que os argumentos devem ser lidos do
+corpo da resposta do serviço (linha 7).
+
+Os parâmetros da pós-condição possuem uma correspondência direta, em que as
+linhas 3 a 5 do lado esquerdo correspondem também às linhas 3 a 5 do lado
+direito. O valor de exceção da especificação \neoidl{} é traduzido no código
+HTTP correspondente (linha 6). Ambos os códigos apresentados na Figura
+\ref{Fig:LhsRhsDbcConditions} são, na realidade, escritos em uma única linha.
+O uso de múltiplas linhas foi adotado aqui apenas para efeitos didáticos.
+
+A segunda seção da classe \emph{ServiceFilter} é genérica para
+qualquer serviço. A Figura \ref{lst:filtrosServicosTwisted} contém um trecho
+dessa seção. Cada método se inicia com o carregamento das precondições (linha
+10), seguindo pelo acionamento do serviço principal (linha 12). Por fim,
+as pós-condições são carregadas (linha 14).
+
+\begin{figure}[h]
+\begin{small}
+\lstinputlisting[language=PythonTwisted,firstnumber=1]{trechos_codigo/serviceFilterLoad.py}
+\vspace{-.5cm}
+\end{small} 
+\caption{Seção de código do filtro de serviços}
+\label{lst:filtrosServicosTwisted} 
+\end{figure} 
 
 
 \section{ESTUDO EMPÍRICO DA ANÁLISE SUBJETIVA} 
