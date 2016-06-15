@@ -792,23 +792,146 @@ as pós-condições são carregadas (linha 14).
 \end{figure} 
 
 
-\section{ESTUDO EMPÍRICO DA ANÁLISE SUBJETIVA} 
-\vspace{-6mm}
-
-\ldots
-
-\ldots
-
+\section{ESTUDO EMPÍRICO POR MEIO DE ANÁLISE SUBJETIVA} 
 \label{analiseSubjetiva}
 \vspace{-6mm}
 
+A construção de \textit{softwares} mais confiáveis é um dos grandes objetivos da
+engenharia de \textit{softwares}. O conceito de confiança, porém, não é uma
+característica geral, mas uma noção relativa: um \textit{software} é correto em
+relação a uma determinada especificação \cite{arnout2001net}. Nesse cenário, a
+qualidade da especificação, o que se dá por meio de contratos bem definidos, é
+fundamental.
+
+\textit{Design-by-Contract} surgiu para atender a essa necessidade e tem se
+mostrado como uma abordagem efetiva no contexto de orientação a objetos desde
+suas primeiras experimentações \cite{jazequel1997design} ainda na década de
+90. A ideia é particularmente útil quando se lida com sistemas distribuídos
+\cite{arnout2001net}. 
+
+O objetivo dessa seção é investigar o uso de construções de
+\designbycontract{} no contexto de computação orientada a serviços, um
+subconjunto da vertente de sistemas distribuídos, verificando a viabilidade e
+utilidade de sua adoção na especificação de contratos e implementação de
+serviços REST. Em outras palavras: responder ao objetivo geral desse trabalho de
+pesquisa.
+
+\subsection{Planejamento do estudo empírico}
+
+Há diversas formas e técnicas de se conduzir um estudo empírico, cada uma com
+suas vantagens e desvantagens \cite{shull2008guide}. Nas técnicas diretas, o pesquisador
+atua de forma explícita e perceptível pela equipe do projeto de \textit{software}, interagindo
+com eles em maior ou menos grau. As técnicas indiretas são caracterizadas pelo
+acesso indireto do pesquisador aos participantes, por meio da captura de
+informações do ambiente de trabalho deles. Há ainda a abordagem independente,
+em que se analisa apenas o produtos de trabalho, como documentação e código
+fonte.
+
+As técnicas diretas são divididas em inquisitivas e de observação.
+\textit{Brainstorming}, grupo focais, entrevistas, questionários e modelagem
+conceitual estão entre as técnicas inquisitivas. Essas são, muitas vezes, a
+única forma de obter o engajamento dos envolvidos na realização das atividades.
+Entretanto, elas tem o risco de serem excessivamente subjetivas e de medição de
+resultados pouco precisa.
+
+A abordagem observatória está ligada a técnicas como seções de
+\textit{think-aloud}\footnote{Momentos em que os participantes são
+convidados a expressar seus pensamentos em voz alta ('pensar alto'), a partir de
+questões levantadas pelo investigador}, sombreamento\footnote{acompanhar o
+participante na realização de todas as suas atividades} e
+participante-observador (por meio da realização de atividades chave). As técnicas observatórias permitem
+um estudo em tempo real dos fenômenos. Porém, elas geram uma fase de análise
+difícil, pois geram muitas informações e requerem um elevado conhecimento para
+se ter interpretar corretamente.
+
+No decorrer do trabalho de pesquisa, foram cogitadas algumas estratégias para
+condução da investigação sobre adoção de \designbycontract{} em serviços REST.
+Entre as alternativas estava a realização de experimento com alunos de
+graduação, apresentando especificações textuais com características de
+\designbycontract{} e solicitando e elaboração de especificação correspondente
+em \neoidl{}.
+
+Outra forma hipótese de estudo foi a investigação, a partir da análise do código
+fonte de \textit{softwares} de código aberto que utilizam serviços REST escritos
+em \textit{Swagger}, da existência comentários ou documentação que
+caracterizasse situações em que se aplicaria \designbycontract{}. 
+
+Essas ações foram modeladas conforme a técnica GQM\cite{basili1992software} e,
+após avaliação dos benefícios e riscos, descartadas em razão de demandarem tempo
+excessivo em suas etapas de preparação e execução. Como resultado, adotou-se
+então a técnica da aplicação de questionário, pois, embora exija cuidado e
+reflexão sobre as perguntas e respostas, é mais rápido de se preparar e permite
+a participação de pessoas em tempos e locais distintos.
+
+O modelo GQM -- \textit{Goals-Questions-Metrics} -- é uma abordagem
+estruturada e documentada na qual se estebelece uma meta para medição de
+processos e produtos de \textit{software}. A Tabela \ref{TabelaMetasGQM}
+apresenta como as metas são estruturadas em GQM, com a finalidade de
+caracterizá-la objetivamente em termos de objeto, finalidade, foco, ponto de
+vista e ambiente da análise.
+
+\begin{table}[h]
+\centering
+\vspace{0.5cm}
+\begin{tabular}{r|lr}
+\multicolumn{2}{c}{GQM}\\
+\hline    
+\textbf{Objeto} & O processo ou estudo. \\
+\textbf{Finalidade}  & Motivação por trás da meta (por que). \\
+\textbf{Foco} & A qualidade do objeto em estudo (o quê).\\
+\textbf{Ponto de vista} & Perspectivas da meta (de quem). \\
+\textbf{Ambiente} & Contexto da aplicação da medição.           
+\end{tabular}
+\caption{Estruturação de metas em GQM}
+\label{TabelaMetasGQM}
+\end{table}
+
+A meta de investigar a utilidade do uso de construções de \designbycontract{} na
+\neoidl{} estruturada conforme o método GQM é apresentado na Tabela
+\ref{TabelaMetasGQM}.
+
+\begin{table}[h]
+\centering
+\vspace{0.5cm}
+\begin{tabular}{r|lr}
+\multicolumn{2}{c}{GQM}\\
+\hline    
+Analisar & contratos especificados em NeoIDL \\
+Com o propósito de  & avaliar \\
+Com relação a & facilidade de uso e utilidade das construções \\
+& de \designbycontract{} \\
+Do ponto de vista de & arquitetos e desenvolvedores experientes \\
+No contexto de & um serviço real.           
+\end{tabular}
+\caption{Meta de investigar o uso de Dbc na \neoidl{} estruturado conforme
+método GQM}
+\label{TabelaMetasGQM}
+\end{table}
+
+
+ETAPAS
+GQM é divido em seis etapas onde se deve:
+• Desenvolver um conjunto metas organizacionais e metas de medições associadas para produtividade e da
+qualidade;
+• Gerar perguntas (baseadas em modelos) que definem os objetivos tão completamente quanto possível, em
+uma forma quantificável.;
+• Especificar as medidas necessárias para se obter as respostas a essas questões e acompanhar os processos e
+produtos em conformidade com os objetivos;
+• Desenvolver mecanismos para coleta de dados;
+• Coletar, validar e analisar o dado em tempo real para prover retorno ao projeto para ação corretiva;
+• Analisar o dado para avaliar a conformidade com as metas e formular recomendações para futuras
+melhorias.
+
+
+
+
+
+
+
+
+
+
 %%%%
-A language's expressiveness is the major criterion for choosing a language to
-state a given set of facts: a language that cannot express the facts should not
-be used. However, additional criteria are needed to choose among languages that
-are sufficiently expressive  for a set of facts. Two of these criteria are how
-ease it is to state the facts in the language and how easy is to perceive the
-facts once they are stated.
 
 expressividade de uma linguagem é o principal critério para a escolha de uma
 linguagem para indicar um determinado conjunto de fatos: uma linguagem que não
@@ -859,11 +982,163 @@ programming language.
 \cite{hudak1998modular}
 %%%%
 
+%%%%
+We found that popularity follows a power law, which
+means that most usage is concentrated in a small number
+of languages, but many unpopular languages will still find
+a user base. The popular languages are used across a variety
+of application domains while less popular ones tend to
+be used for niche domains. Even in niche domains, popular
+languages are still more typically used.
 
+We found that developers generally value expressiveness
+and speed of development over language-enforced correctness.
+They see more value in unit tests than types, both for
+debugging and overall. Furthermore, how features are presented
+strongly influences developer feelings about them:
+developers rank class interfaces more highly than static
+types.
+
+We conclude that developer movement
+between languages is driven more by external factors such
+as the developer’s background or technical ecosystem than
+by similarity of the underlying languages. This implies that
+language advocates should focus on a domain and try to
+convince programmers in that domain, instead of trying to
+convince programmers who use languages with semantic
+similarities to the new language
+
+Adoption decisions for domains beyond programming
+languages is studied by social psychologists, management
+science researchers, and other social scientists. Several
+leading models of adoption arose over the years, such
+as the Technology Acceptance Model (TAM) [7] and the
+Unified Theory of Acceptance and Use of Technology
+(UTAUT) [25].
+
+The prominence of domain specific languages
+among other popular languages is surprising.
+
+
+%%%% 
+\cite{meyerovich2013empirical}
 
 
 \subsection{Método}
 \vspace{-6mm}
+
+%%%
+
+%%%%
+
+O modelo TAM (Technology Acceptance Model), de acordo com Hu e outros (2009), é
+amplamente utilizado na área acadêmica para avaliação de aceitação de tecnologias
+pelos usuários e, segundo o autor, possui forte base teórica e vasto apoio empírico. Esse
+modelo foi proposto por Davis [DAVIS et al, 1989][DAVIS, 1993].e é uma evolução do
+modelo TRA [FISHBEIN, AJZEN, 1975].
+O objetivo do modelo TAM (Figura 2), é identificar porque determinada
+tecnologia é aceita ou rejeitada pelos usuários. A avaliação é baseada em dois conceitos:
+(i) percepção sobre utilidade (PE - perceived usefullness) e (ii) percepção sobre
+facilidade de uso (PEU – perceived ease of use). PE é definido como o quanto o usuário
+acredita que usando uma determinada tecnologia ele pode melhorar seu desempenho.
+
+O GQM representa uma abordagem sistemática para a adaptação e integração de
+objetivos para os modelos dos processos de software, produtos e perspectivas de
+interesse de qualidade, com base nas necessidades específicas do projeto e da
+organização [Basili et al, 1994]. Para definir um modelo GQM é necessário identificar
+objetivos, representá-los por meio de perguntas e definir métricas que forneçam os
+dados para responder essas perguntas [Soligen, Berghout, 1999]. O resultado da
+aplicação do GQM é a especificação de um programa de medição, tendo como alvo um
+conjunto específico de problemas e um conjunto de regras para a interpretação dos
+dados.
+
+\cite{hernandes2010avaliaccao}
+
+%%%%
+
+We found TAM a suitable starting point to develop an
+adapted measurement tool for assessing the “ease of use”
+and “usefulness” of LiveNet to support the collaborative
+tasks in the context of software architecture evaluation.
+Figure 1 shows our TAM-based measurement model
+adapted from [17][18]. For each of the three main constructs
+“perceived usefulness” (Ui), “ease of use” (Ei), and
+“self-predicted future use” (Si) there are sets of questions
+that measure the construct. Furthermore, a set of questions
+measures prior experience of subjects that may influence
+TAM results.
+
+Questions regarding “Perceived Usefulness” (U):
+U1: Using a collaborative tool like LiveNet in my job, I would
+be able to accomplish collaborative tasks \emph{more quickly}.
+U2: Using a collaborative tool like LiveNet would \emph{improve my
+performance} on collaborative tasks.
+U3: Using a collaborative tool like LiveNet for collaborative
+tasks would \emph{increase my productivity}.
+U4: Using a collaborative tool like LiveNet would enhance \emph{my
+effectiveness} on collaborative tasks.
+U5: Using a collaborative tool like LiveNet would \emph{make it
+easier} to do collaborative tasks.
+U6: I would find a collaborative tool like LiveNet \emph{useful to
+perform} collaborative tasks.
+
+Questions regarding perceived “Ease of Use” (E):
+E1: Learning to operate a collaborative tool like LiveNet
+would be \emph{easy} for me.
+E2: I would find it \emph{easy} to get a collaborative tool like LiveNet
+to do what I want it to do \emph{to perform} most of the tasks that
+require collaboration.
+E3: My interaction with a collaborative tool like LiveNet would
+be \emph{clear and understandable}.
+E4: It would be \emph{easy to become skillful in using} a collaborative
+tool like LiveNet.
+E5: It would be \emph{easy to remember} how to perform various
+collaborative tasks using a collaborative tool like LiveNet.
+E6: I would find a collaborative tool like LiveNet \emph{easy to use}.
+
+Questions regarding “self-predicted future use” (U):
+S1: Assuming a collaborative tool like LiveNet would be available
+on my job, I predict that \emph{I will use it} on a regular basis
+in the future.
+S2: I would prefer using a collaborative tool like LiveNet to
+face-to-face meeting for {performing collaborative tasks}
+like generating scenarios.
+
+\cite{babar2007evaluating}
+
+%%%%
+
+Perceived usefulness is “the degree to which a person believes that using a particular system would
+enhance his or her job performance.” This follows from the definition of the word useful: “capable
+of being used advantageously.” Hence, a tool high in perceived usefulness is one for which a user
+believes in the existence of a positive use-performance relationship.
+• Perceived ease of use, refers to “the degree to which a person believes that
+using a particular system would be free of effort.” This follows from the definition of “ease”: “freedom from difficulty or
+great effort”. A tool that is easy to use is more likely to be accepted by users.
+
+A score is assigned to each response and the scores belonging to a particular
+concept are combined so that subjects with the most favorable attitude will have the highest concept score while subjects with the least
+favorable attitudes have the lowest concept score. Table 1 presents the scale items that were considered
+for the usefulness and ease of use concept. (We present the complete questionnaire in the Appendix). 
+
+We are interested in how usefulness and ease of use impact user acceptance. According to Davis [6]
+“Perceived usefulness is a strong correlate of user acceptance and should not be ignored by those
+attempting to design or implement successful systems.” In our case, a user accepts WIPS if he or she is
+going to use it in the future (self-predicted future usage). This serves us as
+an indicator whether users prefer WIPS for inspection data collection rather than paper-based forms. For measuring self-predicted
+future usage we captured two additional items presented in Table 2.
+
+Omit the middle alternative (“neither”- value)
+Students or subjects in experiments in general are often not evaluated based on their opinion. Hence,
+they must not fear any consequences of their voting. We therefore recommend to remove the middle
+value from the questionnaire items, i.e., reduce the item scale from 7 to 6 points, since the middle
+value (“neither”-value) often does not provide valuable information about the direction in which
+some subjects lean.
+
+\cite{laitenberger1998evaluating}
+
+
+%%%%
 
 \subsection{GQM}
 \vspace{-6mm}
@@ -880,6 +1155,15 @@ programming language.
 * Inicialmente motivado pelo estudo do Alessandro Garcia
 
 * GQM e Avaliação TAM
+
+Avaliação 3:
+
+
+
+Cenário: Apresentar um contrato hipotético especificado em Swagger para que os participantes possam identificar os elementos da linguagem. Realizar o mesmo procedimento para contrato especificado em NeoIDL. Em seguida, apresentar um questionário, elaborado com base na metodologia TAM, sobre a utilidade e facilidade de uso a partir da comparação entre contratos escritos nas duas linguagens com equivalência semântica.
+Adicionalmente, neste cenário, penso que pode aplicado o questionário NASA TLX para avaliar aspectos cognitivos.
+
+
 
 * Montagem do questionário
 
@@ -912,6 +1196,7 @@ simples para mim.
 gerado  (Controllable)
 5.2 A geração do código de pré e pós-condições aumentará minha produtividade na
 implementação do serviço (Job performance)
+
 5.3 Assumindo ter a disposição a NeoIDL no meu trabalho, para especificação de
 contratos e geração de código, eu presumo que a utilizarei regularmente no futuro.
 5.4 Nesse mesmo contexto, eu vou preferir utilizar contratos escritos em NeoIDL
@@ -960,6 +1245,8 @@ c) Utilidade da especificação formal de contratos
 d) Percepção da NeoIDL sem DbC
 
 
+
+Guide to advanced empirical software engineering
 
 
 
