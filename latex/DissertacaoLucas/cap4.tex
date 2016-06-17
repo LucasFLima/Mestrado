@@ -784,7 +784,7 @@ as pós-condições são carregadas (linha 14).
 
 \begin{figure}[h]
 \begin{small}
-\lstinputlisting[language=PythonTwisted,firstnumber=1]{trechos_codigo/serviceFilterLoad.py}
+\lstinputlisting[language=PythonTwisted,firstnumber=1]{trechos_codigo/serviceFilterLoad.py.tex}
 \vspace{-.5cm}
 \end{small} 
 \caption{Seção de código do filtro de serviços}
@@ -800,8 +800,9 @@ A construção de \textit{softwares} mais confiáveis é um dos grandes objetivo
 engenharia de \textit{softwares}. O conceito de confiança, porém, não é uma
 característica geral, mas uma noção relativa: um \textit{software} é correto em
 relação a uma determinada especificação \cite{arnout2001net}. Nesse cenário, a
-qualidade da especificação, o que se dá por meio de contratos bem definidos, é
-fundamental.
+qualidade da especificação é fundamental. Em particular, no que tange a relação
+de confiança entre elementos de \textit{software}, é essencial a qualidade do
+contrato.
 
 \textit{Design-by-Contract} surgiu para atender a essa necessidade e tem se
 mostrado como uma abordagem efetiva no contexto de orientação a objetos desde
@@ -809,16 +810,16 @@ suas primeiras experimentações \cite{jazequel1997design} ainda na década de
 90. A ideia é particularmente útil quando se lida com sistemas distribuídos
 \cite{arnout2001net}. 
 
-O objetivo dessa seção é investigar o uso de construções de
+O objetivo dessa seção é investigar empiricamente o uso de construções de
 \designbycontract{} no contexto de computação orientada a serviços, um
 subconjunto da vertente de sistemas distribuídos, verificando a viabilidade e
 utilidade de sua adoção na especificação de contratos e implementação de
-serviços REST. Em outras palavras: responder ao objetivo geral desse trabalho de
-pesquisa.
+serviços REST. Em outras palavras: submeter a uma avaliação subjetiva o objetivo
+geral desse trabalho de pesquisa.
 
 \subsection{Planejamento do estudo empírico}
 
-Há diversas formas e técnicas de se conduzir um estudo empírico, cada uma com
+Há diversas formas e técnicas para se conduzir um estudo empírico, cada uma com
 suas vantagens e desvantagens \cite{shull2008guide}. Nas técnicas diretas, o pesquisador
 atua de forma explícita e perceptível pela equipe do projeto de \textit{software}, interagindo
 com eles em maior ou menos grau. As técnicas indiretas são caracterizadas pelo
@@ -840,9 +841,9 @@ convidados a expressar seus pensamentos em voz alta ('pensar alto'), a partir de
 questões levantadas pelo investigador}, sombreamento\footnote{acompanhar o
 participante na realização de todas as suas atividades} e
 participante-observador (por meio da realização de atividades chave). As técnicas observatórias permitem
-um estudo em tempo real dos fenômenos. Porém, elas geram uma fase de análise
+um estudo em tempo real dos fenômenos. Porém, elas levam a uma fase de análise
 difícil, pois geram muitas informações e requerem um elevado conhecimento para
-se ter interpretar corretamente.
+se interpretar corretamente.
 
 No decorrer do trabalho de pesquisa, foram cogitadas algumas estratégias para
 condução da investigação sobre adoção de \designbycontract{} em serviços REST.
@@ -854,20 +855,20 @@ em \neoidl{}.
 Outra forma hipótese de estudo foi a investigação, a partir da análise do código
 fonte de \textit{softwares} de código aberto que utilizam serviços REST escritos
 em \textit{Swagger}, da existência comentários ou documentação que
-caracterizasse situações em que se aplicaria \designbycontract{}. 
+caracterizasse situações típicas de pré e pós-condições. 
 
 Essas ações foram modeladas conforme a técnica GQM\cite{basili1992software} e,
-após avaliação dos benefícios e riscos, descartadas em razão de demandarem tempo
-excessivo em suas etapas de preparação e execução. Como resultado, adotou-se
-então a técnica da aplicação de questionário, pois, embora exija cuidado e
-reflexão sobre as perguntas e respostas, é mais rápido de se preparar e permite
-a participação de pessoas em tempos e locais distintos.
+após avaliação dos benefícios e riscos, elas foram descartadas por
+demandarem tempo excessivo em suas etapas de preparação e execução. Como
+essa conclusão, adotou-se uma terceira alternativa: aplicação
+de questionário, que, embora exija cuidado e reflexão sobre a modelagem das
+perguntas e respostas, é mais rápido de se preparar e permite a participação de pessoas em tempos e locais distintos.
 
 O modelo GQM -- \textit{Goals-Questions-Metrics} -- é uma abordagem
 estruturada e documentada na qual se estebelece uma meta para medição de
 processos e produtos de \textit{software}. A Tabela \ref{TabelaMetasGQM}
-apresenta como as metas são estruturadas em GQM, com a finalidade de
-caracterizá-la objetivamente em termos de objeto, finalidade, foco, ponto de
+apresenta como as metas são descritas em um modelo GQM, com a finalidade de
+caracterizá-las objetivamente em termos de objeto, finalidade, foco, ponto de
 vista e ambiente da análise.
 
 \begin{table}[h]
@@ -887,7 +888,7 @@ vista e ambiente da análise.
 \end{table}
 
 A meta de investigar a utilidade do uso de construções de \designbycontract{} na
-\neoidl{} estruturada conforme o método GQM é apresentado na Tabela
+\neoidl{} estruturada conforme o método GQM é apresentada na Tabela
 \ref{TabelaMetasGQM}.
 
 \begin{table}[h]
@@ -897,7 +898,7 @@ A meta de investigar a utilidade do uso de construções de \designbycontract{} 
 \multicolumn{2}{c}{GQM}\\
 \hline    
 Analisar & contratos especificados em NeoIDL \\
-Com o propósito de  & avaliar \\
+Com o propósito de  & avaliá-los \\
 Com relação a & facilidade de uso e utilidade das construções \\
 & de \designbycontract{} \\
 Do ponto de vista de & arquitetos e desenvolvedores experientes \\
@@ -908,27 +909,172 @@ método GQM}
 \label{TabelaMetasGQM}
 \end{table}
 
+Em termos de processo, a técnica GQM é organizada em seis etapas: (i)
+desenvolver o conjunto de metas de medição associadas; (ii) gerar perguntas,
+baseadas em modelos, que definam os objetivos tão bem quanto possível, de modo
+quantificável; (iii) especificar as respostas necessárias para essas questões;
+(iv) desenvolver os mecanismos para coleta de dados; (v) coletar, validar, e analisar a necessidade de ação corretiva; (vi) analisar
+os dados para avaliar a conformidades com as metas correspondentes.
 
-ETAPAS
-GQM é divido em seis etapas onde se deve:
-• Desenvolver um conjunto metas organizacionais e metas de medições associadas para produtividade e da
-qualidade;
-• Gerar perguntas (baseadas em modelos) que definem os objetivos tão completamente quanto possível, em
-uma forma quantificável.;
-• Especificar as medidas necessárias para se obter as respostas a essas questões e acompanhar os processos e
-produtos em conformidade com os objetivos;
-• Desenvolver mecanismos para coleta de dados;
-• Coletar, validar e analisar o dado em tempo real para prover retorno ao projeto para ação corretiva;
-• Analisar o dado para avaliar a conformidade com as metas e formular recomendações para futuras
-melhorias.
+O modelo escolhido para subsidiar a elaboração das perguntas foi o
+\textit{Technology Acceptance Model} -- TAM, proposto por Davis em 1989
+\cite{davis1989perceived} e que possui uma sólida base teórica e ampla
+utilização.
+O principal objetivo do modelo TAM é identificar os motivos que levam à aceitação
+ou rejeição de uma tecnologia. O modelo está estruturado em dois conceitos:
+percepção da utilidade (\textit{perceived usefullness} - PU) e percepção sobre a
+facilidade de uso (\textit{perceived ease of use} - PEU)
+\cite{hernandes2010avaliaccao}.
+
+Percepção de utilidade é medido com o grau em que uma pessoa acredita que
+utilizar uma determinada tecnologia vai melhorar sua eficiência em suas
+atividades. A percepção de utilidade está relacionada ao grau em que uma pessoa
+acredita que determinada tecnologia será livre de esforço. Adicionamente, alguns
+estudos incluem um outro aspecto, que é a predisposição ao uso
+(\textit{self-predicted future usage}), que está relacionado à indicação sobre a
+preferência de uma determinada tecnologia em detrimento de outras \cite{laitenberger1998evaluating}.
+
+Os questionários baseados em TAM apresentam afirmações indicando que uma
+determinada tecnologia é fácil de se usar e útil. As respostas normalmente são
+escalas que vão desde a discordância total até a concordância total quanto a
+afirmação apresentada. Essa escala é denominada \textit{Likert Scale}
+\cite{allen2007likert}. As respostas são agrupadas para se avaliar se, no
+conjunto, as respostas mais favoráveis indicam uma tendência de aceitação. O
+processo de elaboração do questionário é apresentado na subseção \ref{ModelagemQuestionario}.
+
+A distribuição do questionário foi feita por formulário eletrônico publicado na
+Internet, utilizando a ferramenta \textit{Google Forms}. Essa ferramenta
+simplifica o processo de escrita do questionário e também a consolidação das
+informações. O \textit{link} para acesso ao questionário foi encaminhado a
+grupos de arquitetos e desenvolvedores cujo nível técnico elevado era de
+conhecimento dos pesquisadores. O questionário ficou disponível para respostas
+por um período de três semanas, até que atingisse um volume de respostas satisfatório.
+
+Os resultados obtidos foram consolidados em uma planilha eletrônica e
+manipulados por meio do ferramental estatístico da linguagem R. A análise dos
+dados obtidos é apresentada na subseção \ref{AnaliseQuestionario}.
+
+
+\subsection{Modelagem do questionário}
+\label{ModelagemQuestionario}
+
+Uma vez que a
+\neoidl{} tem como principal objetivo a modelagem de contratos de serviços REST,
+a avaliação da aceitabilidade da \neoidl{} relativamente a outra linguagem com o
+mesmo propósito pode indicar se o projeto da linguagem está alinhado às
+expectativas dos desenvolvedores e arquitetos. Entretanto, é necessário
+avaliar os efeitos da inclusão de construções de \designbycontract{} na
+\neoidl{}, já que não há esse suporte nas outras linguagens para especificação
+de contratos REST (subseção \ref{PropostaServicoDbC}). O método TAM foi
+escolhido para fazer essa avaliação.
+
+O questionário foi organizado em quatro seções. A primeira seção têm cinco
+perguntas para traçar o perfil do respondente, principalmente em relação a sua
+experiência técnica. A segunda seção, com três perguntas, faz uma avaliação
+sobre especificação formal de contratos e a sintaxe da
+\neoidl{} e de Swagger \cite{swaggerSite}.
+Oito questões formam a última seção, a qual dá enfoque ao principal ponto, que é
+a avaliação das utilidade do uso de \designbycontract{} na \neoidl{}. 
+
+A Tabela \ref{Secao1Questionario} contém a lista de perguntas da primeira seção.
+A pergunta sobre o local de prestação de serviços buscou identificar a eliminar
+respostas oriundas de locais para os quais os questionário não foi submetido,
+pois o questionário não exigia autenticação. A segunda e terceira questões visam
+mapear se o respondente possui experiência suficiente para responder ao
+questionário. A questões quatro e cinco servem para indicar o nível de
+especialização em \wss{} REST e na linguagem Swagger.
+
+\begin{table}[h]
+\centering
+\vspace{0.5cm}
+\begin{tabular}{r|p{9cm}|p{4cm}}
+\multicolumn{3}{c}{Perfil técnico-profissional}\\
+\hline    
+\textbf{no.} & \textbf{Questão} & \textbf{Respostas} \\
+\hline    
+1 & Para qual órgão ou empresa você presta serviços atualmente? & Questão aberta
+\\
+2 & A quanto tempo você trabalha com desenvolvimento Web? & Experiência, em
+anos.\\
+3 & A quanto tempo você desenvolve com uso de APIs Web (Web Service)? & Experiência, em
+anos.\\
+4 & Qual o seu nível de experiência com especificação de API REST? & Lista A
+(Tabela \ref{respostasQ4e5}) \\
+5 & Qual o seu nível de experiência com especificação de contratos com Swagger?
+& Lista B (Tabela \ref{respostasQ4e5})\\
+
+\end{tabular}
+\caption{Primeira seção do questionário}
+\label{Secao1Questionario}
+\end{table}
+
+As questões 2 e 3 possuiam uma escala de respostas em que a primeira era
+não ter experiência, as intermediárias agrupadas em dois em dois
+anos, e a última indicava experiência superior a dez anos. As respostas às
+questões 4 e 5 estão listadas na Tabela \ref{respostasQ4e5}.
+
+\begin{table}[!bth]
+\centering
+\vspace{0.5cm}
+\begin{tabular}{p{1.5cm}|p{13cm}}
+\hline    
+\multirow{4}{*}{\textbf{Lista A}} & Nunca desenvolvi com a tecnologia \\
+& Já desenvolvi serviços algumas APIs REST, mas não conheço a
+especificação \\
+& Tenho experiência superior a dois anos em desenvolvimento REST, mas não conheço
+a especificação \\
+& Tenho experiência superior a dois anos em desenvolvimento REST e conheço a
+especificação \\
+\hline
+\multirow{4}{*}{\textbf{Lista B}} & Não sei do que se trata ou apenas ouvi a
+respeito\\
+ & Já tive contato com especificações em Swagger \\
+ & Já especifiquei APIs REST em Swagger\\
+ & Tenho experiência superior a um ano em Swagger \\
+
+\end{tabular}
+\caption{Lista de respostas para as questões 4 e 5}
+\label{respostasQ4e5}
+\end{table}
 
 
 
+* Montagem do questionário
 
+1. Perfil técnico-profissional do respondente
+1.1 Para qual órgão ou empresa você presta serviços atualmente?
+1.2 A quanto tempo você trabalha com desenvolvimento Web
+1.3 A quanto tempo você desenvolve com uso de APIs Web (Web Service)
+1.4 Qual o seu nível de experiência com especificação de API REST
+1.5 Qual o seu nível de experiência com especificação de contratos com Swagger
 
+3 Questões sobre especificação e implementação de APIs Web
+3.1 A especificação do contrato formalmente, seja em Swagger ou NeoIDL, em
+relação a descrição textual, aumentará meu nível de acerto na implementação (efetividade).
+3.2 Identificar e compreender as operações e atributos na especificação Swagger
+é simples para mim.
+3.3 Identificar e compreender as operações e atributos na especificação NeoIDL é
+simples para mim.
 
+4. DbC
+4.1 Conhecer previamente e explicitamente as precondições será útil para mim.
+(Useful)
+4.2 Aprender a identificar as precondições na NeoIDL parece ser simples pra mim
+(Easy to learn)
+4.3 Parece ser fácil para mim declarar uma precondição na NeoIDL
+(Clear and understandable)
+4.4 Me lembrar da sintaxe da precondição na NeoIDL é fácil  (Remember)
 
+5. Geração de código
+5.1 É claro e compreensível para mim o efeito da precondição sobre o código
+gerado  (Controllable)
+5.2 A geração do código de pré e pós-condições aumentará minha produtividade na
+implementação do serviço (Job performance)
 
+5.3 Assumindo ter a disposição a NeoIDL no meu trabalho, para especificação de
+contratos e geração de código, eu presumo que a utilizarei regularmente no futuro.
+5.4 Nesse mesmo contexto, eu vou preferir utilizar contratos escritos em NeoIDL
+do que descritos de outra forma
 
 
 %%%%
@@ -1023,50 +1169,11 @@ among other popular languages is surprising.
 %%%% 
 \cite{meyerovich2013empirical}
 
-
-\subsection{Método}
-\vspace{-6mm}
-
 %%%
 
-%%%%
-
-O modelo TAM (Technology Acceptance Model), de acordo com Hu e outros (2009), é
-amplamente utilizado na área acadêmica para avaliação de aceitação de tecnologias
-pelos usuários e, segundo o autor, possui forte base teórica e vasto apoio empírico. Esse
-modelo foi proposto por Davis [DAVIS et al, 1989][DAVIS, 1993].e é uma evolução do
-modelo TRA [FISHBEIN, AJZEN, 1975].
-O objetivo do modelo TAM (Figura 2), é identificar porque determinada
-tecnologia é aceita ou rejeitada pelos usuários. A avaliação é baseada em dois conceitos:
-(i) percepção sobre utilidade (PE - perceived usefullness) e (ii) percepção sobre
-facilidade de uso (PEU – perceived ease of use). PE é definido como o quanto o usuário
-acredita que usando uma determinada tecnologia ele pode melhorar seu desempenho.
-
-O GQM representa uma abordagem sistemática para a adaptação e integração de
-objetivos para os modelos dos processos de software, produtos e perspectivas de
-interesse de qualidade, com base nas necessidades específicas do projeto e da
-organização [Basili et al, 1994]. Para definir um modelo GQM é necessário identificar
-objetivos, representá-los por meio de perguntas e definir métricas que forneçam os
-dados para responder essas perguntas [Soligen, Berghout, 1999]. O resultado da
-aplicação do GQM é a especificação de um programa de medição, tendo como alvo um
-conjunto específico de problemas e um conjunto de regras para a interpretação dos
-dados.
-
-\cite{hernandes2010avaliaccao}
 
 %%%%
 
-We found TAM a suitable starting point to develop an
-adapted measurement tool for assessing the “ease of use”
-and “usefulness” of LiveNet to support the collaborative
-tasks in the context of software architecture evaluation.
-Figure 1 shows our TAM-based measurement model
-adapted from [17][18]. For each of the three main constructs
-“perceived usefulness” (Ui), “ease of use” (Ei), and
-“self-predicted future use” (Si) there are sets of questions
-that measure the construct. Furthermore, a set of questions
-measures prior experience of subjects that may influence
-TAM results.
 
 Questions regarding “Perceived Usefulness” (U):
 U1: Using a collaborative tool like LiveNet in my job, I would
@@ -1108,45 +1215,14 @@ like generating scenarios.
 
 %%%%
 
-Perceived usefulness is “the degree to which a person believes that using a particular system would
-enhance his or her job performance.” This follows from the definition of the word useful: “capable
-of being used advantageously.” Hence, a tool high in perceived usefulness is one for which a user
-believes in the existence of a positive use-performance relationship.
-• Perceived ease of use, refers to “the degree to which a person believes that
-using a particular system would be free of effort.” This follows from the definition of “ease”: “freedom from difficulty or
-great effort”. A tool that is easy to use is more likely to be accepted by users.
-
-A score is assigned to each response and the scores belonging to a particular
-concept are combined so that subjects with the most favorable attitude will have the highest concept score while subjects with the least
-favorable attitudes have the lowest concept score. Table 1 presents the scale items that were considered
-for the usefulness and ease of use concept. (We present the complete questionnaire in the Appendix). 
-
-We are interested in how usefulness and ease of use impact user acceptance. According to Davis [6]
-“Perceived usefulness is a strong correlate of user acceptance and should not be ignored by those
-attempting to design or implement successful systems.” In our case, a user accepts WIPS if he or she is
-going to use it in the future (self-predicted future usage). This serves us as
-an indicator whether users prefer WIPS for inspection data collection rather than paper-based forms. For measuring self-predicted
-future usage we captured two additional items presented in Table 2.
-
-Omit the middle alternative (“neither”- value)
-Students or subjects in experiments in general are often not evaluated based on their opinion. Hence,
-they must not fear any consequences of their voting. We therefore recommend to remove the middle
-value from the questionnaire items, i.e., reduce the item scale from 7 to 6 points, since the middle
-value (“neither”-value) often does not provide valuable information about the direction in which
-some subjects lean.
-
-\cite{laitenberger1998evaluating}
 
 
 %%%%
 
-\subsection{GQM}
-\vspace{-6mm}
 
-\subsection{Questionário}
-\vspace{-6mm}
 
 \subsection{Análise dos Resultados}
+\label{AnaliseQuestionario}
 \vspace{-6mm}
 
 
@@ -1165,42 +1241,6 @@ Adicionalmente, neste cenário, penso que pode aplicado o questionário NASA TLX
 
 
 
-* Montagem do questionário
-
-1. Perfil técnico-profissional do respondente
-1.1 Para qual órgão ou empresa você presta serviços atualmente?
-1.2 A quanto tempo você trabalha com desenvolvimento Web
-1.3 A quanto tempo você desenvolve com uso de APIs Web (Web Service)
-1.4 Qual o seu nível de experiência com especificação de API REST
-1.5 Qual o seu nível de experiência com especificação de contratos com Swagger
-
-3 Questões sobre especificação e implementação de APIs Web
-3.1 A especificação do contrato formalmente, seja em Swagger ou NeoIDL, em
-relação a descrição textual, aumentará meu nível de acerto na implementação (efetividade).
-3.2 Identificar e compreender as operações e atributos na especificação Swagger
-é simples para mim.
-3.3 Identificar e compreender as operações e atributos na especificação NeoIDL é
-simples para mim.
-
-4. DbC
-4.1 Conhecer previamente e explicitamente as precondições será útil para mim.
-(Useful)
-4.2 Aprender a identificar as precondições na NeoIDL parece ser simples pra mim
-(Easy to learn)
-4.3 Parece ser fácil para mim declarar uma precondição na NeoIDL
-(Clear and understandable)
-4.4 Me lembrar da sintaxe da precondição na NeoIDL é fácil  (Remember)
-
-5. Geração de código
-5.1 É claro e compreensível para mim o efeito da precondição sobre o código
-gerado  (Controllable)
-5.2 A geração do código de pré e pós-condições aumentará minha produtividade na
-implementação do serviço (Job performance)
-
-5.3 Assumindo ter a disposição a NeoIDL no meu trabalho, para especificação de
-contratos e geração de código, eu presumo que a utilizarei regularmente no futuro.
-5.4 Nesse mesmo contexto, eu vou preferir utilizar contratos escritos em NeoIDL
-do que descritos de outra forma
 
 
 
@@ -1243,10 +1283,6 @@ a) Experiência com desenvolvimento com uso de REST
 b) Experiência com Swagger
 c) Utilidade da especificação formal de contratos
 d) Percepção da NeoIDL sem DbC
-
-
-
-Guide to advanced empirical software engineering
 
 
 
