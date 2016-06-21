@@ -801,13 +801,13 @@ engenharia de \textit{softwares}. O conceito de confiança, porém, não é uma
 característica geral, mas uma noção relativa: um \textit{software} é correto em
 relação a uma determinada especificação \cite{arnout2001net}. Nesse cenário, a
 qualidade da especificação é fundamental. Em particular, no que tange a relação
-de confiança entre elementos de \textit{software}, é essencial a qualidade do
-contrato.
+de confiança entre elementos de \textit{software}, a qualidade do
+contrato é essencial.
 
 \textit{Design-by-Contract} surgiu para atender a essa necessidade e tem se
 mostrado como uma abordagem efetiva no contexto de orientação a objetos desde
 suas primeiras experimentações \cite{jazequel1997design} ainda na década de
-90. A ideia é particularmente útil quando se lida com sistemas distribuídos
+90. A proposta é particularmente útil quando se lida com sistemas distribuídos
 \cite{arnout2001net}. 
 
 O objetivo dessa seção é investigar empiricamente o uso de construções de
@@ -838,31 +838,30 @@ resultados pouco precisa.
 A abordagem observatória está ligada a técnicas como seções de
 \textit{think-aloud}\footnote{Momentos em que os participantes são
 convidados a expressar seus pensamentos em voz alta ('pensar alto'), a partir de
-questões levantadas pelo investigador}, sombreamento\footnote{acompanhar o
-participante na realização de todas as suas atividades} e
-participante-observador (por meio da realização de atividades chave). As técnicas observatórias permitem
-um estudo em tempo real dos fenômenos. Porém, elas levam a uma fase de análise
+questões levantadas pelo investigador}, sombreamento\footnote{Consiste
+em acompanhar o participante na realização de todas as suas atividades} e
+participante-observador (em que o pesquisar participa realizando 
+atividades chave para o projeto).
+As técnicas observatórias permitem um estudo em tempo real dos fenômenos. Porém, elas levam a uma fase de análise
 difícil, pois geram muitas informações e requerem um elevado conhecimento para
-se interpretar corretamente.
+se interpretar corretamente os dados.
 
 No decorrer do trabalho de pesquisa, foram cogitadas algumas estratégias para
 condução da investigação sobre adoção de \designbycontract{} em serviços REST.
-Entre as alternativas estava a realização de experimento com alunos de
+Entre as alternativas, estava a realização de experimento com alunos de
 graduação, apresentando especificações textuais com características de
-\designbycontract{} e solicitando e elaboração de especificação correspondente
-em \neoidl{}.
+\designbycontract{} e solicitando a eles a elaboração de especificação
+correspondente em \neoidl{}.
 
-Outra forma hipótese de estudo foi a investigação, a partir da análise do código
-fonte de \textit{softwares} de código aberto que utilizam serviços REST escritos
-em \textit{Swagger}, da existência comentários ou documentação que
-caracterizasse situações típicas de pré e pós-condições. 
+Outra possibilidade de estudo seria, a partir da análise do
+código fonte de \textit{softwares} de código aberto que utilizam serviços REST escritos
+em \textit{Swagger}, investigar a existência de comentários ou documentação que
+caracterizassem situações típicas de pré e pós-condições. 
 
 Essas ações foram modeladas conforme a técnica GQM\cite{basili1992software} e,
 após avaliação dos benefícios e riscos, elas foram descartadas por
-demandarem tempo excessivo em suas etapas de preparação e execução. Como
-essa conclusão, adotou-se uma terceira alternativa: aplicação
-de questionário, que, embora exija cuidado e reflexão sobre a modelagem das
-perguntas e respostas, é mais rápido de se preparar e permite a participação de pessoas em tempos e locais distintos.
+demandarem tempo excessivo em suas etapas de preparação e execução. Dada essa
+conclusão, adotou-se uma terceira alternativa: aplicação de questionário, que, embora exija cuidado e reflexão sobre a modelagem das perguntas e respostas, é mais rápido de se preparar e permite a participação de pessoas em tempos e locais distintos.
 
 O modelo GQM -- \textit{Goals-Questions-Metrics} -- é uma abordagem
 estruturada e documentada na qual se estebelece uma meta para medição de
@@ -911,7 +910,7 @@ método GQM}
 
 Em termos de processo, a técnica GQM é organizada em seis etapas: (i)
 desenvolver o conjunto de metas de medição associadas; (ii) gerar perguntas,
-baseadas em modelos, que definam os objetivos tão bem quanto possível, de modo
+baseadas em modelos, que definam os objetivos tão bem quanto possível e de modo
 quantificável; (iii) especificar as respostas necessárias para essas questões;
 (iv) desenvolver os mecanismos para coleta de dados; (v) coletar, validar, e analisar a necessidade de ação corretiva; (vi) analisar
 os dados para avaliar a conformidades com as metas correspondentes.
@@ -963,32 +962,38 @@ Uma vez que a
 a avaliação da aceitabilidade da \neoidl{} relativamente a outra linguagem com o
 mesmo propósito pode indicar se o projeto da linguagem está alinhado às
 expectativas dos desenvolvedores e arquitetos. Entretanto, é necessário
-avaliar os efeitos da inclusão de construções de \designbycontract{} na
-\neoidl{}, já que não há esse suporte nas outras linguagens para especificação
-de contratos REST (subseção \ref{PropostaServicoDbC}). O método TAM foi
-escolhido para fazer essa avaliação.
+avaliar especificamente os efeitos da inclusão de construções de
+\designbycontract{} na \neoidl{}, já que não há esse suporte nas outras linguagens para especificação
+de contratos REST (subseção \ref{PropostaServicoDbC}).
 
-O questionário foi organizado em quatro seções. A primeira seção têm cinco
+O questionário foi organizado em três seções: a primeira seção têm cinco
 perguntas para traçar o perfil do respondente, principalmente em relação a sua
-experiência técnica. A segunda seção, com três perguntas, faz uma avaliação
+experiência técnica; a segunda seção, com três perguntas, faz uma avaliação
 sobre especificação formal de contratos e a sintaxe da
-\neoidl{} e de Swagger \cite{swaggerSite}.
+\neoidl{} e de Swagger \cite{swaggerSite}; 
 Oito questões formam a última seção, a qual dá enfoque ao principal ponto, que é
-a avaliação das utilidade do uso de \designbycontract{} na \neoidl{}. 
+a avaliação das utilidade do uso de \designbycontract{} na \neoidl{}.
 
-A Tabela \ref{Secao1Questionario} contém a lista de perguntas da primeira seção.
-A pergunta sobre o local de prestação de serviços buscou identificar a eliminar
-respostas oriundas de locais para os quais os questionário não foi submetido,
-pois o questionário não exigia autenticação. A segunda e terceira questões visam
-mapear se o respondente possui experiência suficiente para responder ao
-questionário. A questões quatro e cinco servem para indicar o nível de
-especialização em \wss{} REST e na linguagem Swagger.
+
+\subsubsection{Primeira seção do questionário}
+
+A Tabela \ref{Secao1Questionario} apresenta a lista de perguntas da primeira
+seção.
+A pergunta sobre o local de prestação de serviços tem a finalidade de 
+identificar e, na fase de análise, eliminar respostas oriundas de locais para os quais o questionário
+não foi submetido, pois este não exigia autenticação. A segunda e terceira
+questões visam mapear se o respondente possui experiência e
+conhecimento suficiente para responder adequadamente o questionário. A questões
+quatro e cinco pretendem indicar o nível de especialização em \wss{} REST e
+na linguagem Swagger.
 
 \begin{table}[h]
+\scriptsize
 \centering
 \vspace{0.5cm}
-\begin{tabular}{r|p{9cm}|p{4cm}}
-\multicolumn{3}{c}{Perfil técnico-profissional}\\
+\begin{tabular}{r|p{10cm}|p{3cm}}
+\multicolumn{3}{c}{{\normalsize Perfil técnico-profissional}}\\
+
 \hline    
 \textbf{no.} & \textbf{Questão} & \textbf{Respostas} \\
 \hline    
@@ -1004,285 +1009,496 @@ anos.\\
 & Lista B (Tabela \ref{respostasQ4e5})\\
 
 \end{tabular}
-\caption{Primeira seção do questionário}
+\caption{Questões da primeira seção do questionário que traçam o perfil
+técnico-profissional}
 \label{Secao1Questionario}
 \end{table}
 
 As questões 2 e 3 possuiam uma escala de respostas em que a primeira era
-não ter experiência, as intermediárias agrupadas em dois em dois
+não ter experiência, as intermediárias agrupadas a cada dois
 anos, e a última indicava experiência superior a dez anos. As respostas às
 questões 4 e 5 estão listadas na Tabela \ref{respostasQ4e5}.
 
-\begin{table}[!bth]
+\begin{table}[!bth] 
 \centering
 \vspace{0.5cm}
+
+\scriptsize
 \begin{tabular}{p{1.5cm}|p{13cm}}
-\hline    
-\multirow{4}{*}{\textbf{Lista A}} & Nunca desenvolvi com a tecnologia \\
+\hline   
+
+\multirow{4}{*}{\textbf{Lista A}} & Nunca desenvolvi com a tecnologia
+\\
 & Já desenvolvi serviços algumas APIs REST, mas não conheço a
 especificação \\
 & Tenho experiência superior a dois anos em desenvolvimento REST, mas não conheço
 a especificação \\
-& Tenho experiência superior a dois anos em desenvolvimento REST e conheço a
-especificação \\
+& Tenho experiência superior a dois anos em desenvolvimento REST e
+conheço a especificação \\
 \hline
 \multirow{4}{*}{\textbf{Lista B}} & Não sei do que se trata ou apenas ouvi a
 respeito\\
  & Já tive contato com especificações em Swagger \\
  & Já especifiquei APIs REST em Swagger\\
  & Tenho experiência superior a um ano em Swagger \\
-
 \end{tabular}
+
 \caption{Lista de respostas para as questões 4 e 5}
 \label{respostasQ4e5}
+
 \end{table}
 
 
+\subsubsection{Segunda seção do questionário}
 
-* Montagem do questionário
+A partir da segunda seção do questionário, o
+método TAM foi utilizado para nortear a elaboração das
+perguntas.
+O questionário TAM foi adaptado ao cenário de avaliação da aceitação de uma DSL,
+pois, durante a pesquisa, não foram identificados estudos que utilizam TAM para
+fazer estudo idêntico. Entretanto, a aplicação de TAM abrange um campo vasto
+e as questões pode ser adaptadas ao objeto de estudo \cite{babar2007evaluating},
+desde que os aspectos base do método sejam mantidos.
 
-1. Perfil técnico-profissional do respondente
-1.1 Para qual órgão ou empresa você presta serviços atualmente?
-1.2 A quanto tempo você trabalha com desenvolvimento Web
-1.3 A quanto tempo você desenvolve com uso de APIs Web (Web Service)
-1.4 Qual o seu nível de experiência com especificação de API REST
-1.5 Qual o seu nível de experiência com especificação de contratos com Swagger
+A base da segunda seção do questionário é um conjunto de especificações de
+serviços. Inicialmente, é apresentada em texto
+descritivo, a especificação de um serviço que deve recuperar uma lista de
+informações, desde que atendida uma condição. Em seguida, o mesmo serviço é especificado em Swagger. Na sequência, a
+especificação é feita em \neoidl{}. Ao final, um trecho do código Java que
+implementa o serviço real é apresentado.
 
-3 Questões sobre especificação e implementação de APIs Web
-3.1 A especificação do contrato formalmente, seja em Swagger ou NeoIDL, em
-relação a descrição textual, aumentará meu nível de acerto na implementação (efetividade).
-3.2 Identificar e compreender as operações e atributos na especificação Swagger
-é simples para mim.
-3.3 Identificar e compreender as operações e atributos na especificação NeoIDL é
-simples para mim.
+Como a \neoidl{} é uma DSL muito pouco conhecida, foram acrescentadas questões
+sobre a sua expressividade, pois essa característica é considerada o principal
+critério para a escolha de uma linguagem \cite{mackinlay1985expressiveness}. O
+quão fácil é idenficar os elementos da linguagem e compreender o que eles
+representam é fundamental para se decidir usar uma DSL. Além disso, espera-se de uma DSL, por
+não ter o compromisso de atender a propósitos gerais, que ela seja mais
+acessível \cite{taha2008domain}. 
 
-4. DbC
-4.1 Conhecer previamente e explicitamente as precondições será útil para mim.
-(Useful)
-4.2 Aprender a identificar as precondições na NeoIDL parece ser simples pra mim
-(Easy to learn)
-4.3 Parece ser fácil para mim declarar uma precondição na NeoIDL
-(Clear and understandable)
-4.4 Me lembrar da sintaxe da precondição na NeoIDL é fácil  (Remember)
+\begin{table}[h]
+\scriptsize
+\centering
+\vspace{0.5cm}
+\begin{tabular}{r|p{10cm}|p{3cm}}
+\multicolumn{3}{c}{{\normalsize Comparação de especificações}}\\
 
-5. Geração de código
-5.1 É claro e compreensível para mim o efeito da precondição sobre o código
-gerado  (Controllable)
-5.2 A geração do código de pré e pós-condições aumentará minha produtividade na
-implementação do serviço (Job performance)
+\hline    
+\textbf{no.} &  \textbf{Afirmação} & \textbf{Aspecto TAM} \\
+\hline    
+6 & A especificação do contrato formalmente, seja em Swagger ou NeoIDL, em
+relação a descrição textual, aumentará meu nível de acerto na implementação. &
+Efetividade \\
+7 & Identificar e compreender as operações e atributos na especificação Swagger
+é simples para mim. & Clareza e compreensão \\
+8 & Identificar e compreender as operações e atributos na especificação NeoIDL é
+simples para mim. & Clareza e compreensão \\
+ 
+\end{tabular}
+\caption{Questões da segunda seção do questionário com comparação de
+especificações}
+\label{Secao2Questionario}
+\end{table}
 
-5.3 Assumindo ter a disposição a NeoIDL no meu trabalho, para especificação de
-contratos e geração de código, eu presumo que a utilizarei regularmente no futuro.
-5.4 Nesse mesmo contexto, eu vou preferir utilizar contratos escritos em NeoIDL
-do que descritos de outra forma
-
-
-%%%%
-
-expressividade de uma linguagem é o principal critério para a escolha de uma
-linguagem para indicar um determinado conjunto de fatos: uma linguagem que não
-podem expressar os fatos não devem ser usados. No entanto, os critérios
-adicionais são necessários para escolher entre os idiomas que são
-suficientemente expressivo para um conjunto de fatos. Dois desses critérios são
-quão fácil é expor os fatos na linguagem e como é fácil de perceber os fatos,
-uma vez que são demonstrados.
-
-\cite{mackinlay1985expressiveness}
-
-%%%%
-
-
-%%%
-Instead of aiming to be the best for solving any kind of
-computing problem, DSLs aim to be particularly good for
-solving a specific class of problems, and in doing so they
-are often much more accessible to the general public than tra-
-ditional programming languages.
-\cite{taha2008domain}
-%%%% 
-
-%%%%
-They offer substantial gains in expressiveness and ease of use compared
-with GPLs in their domain of application’. [2] describes the typical costs of a
-DSL, noting that a small extra initial investment in a DSL implementation typ-
-ically leads to long term savings, in comparison to alternative routes.
-\cite{tratt2008evolving}
-%%%%
-
-%%%%
-A domain specific language (DSL) is a program-
-ming language tailored for a particular application do-
-main. Characteristic of an effective DSL is the ability
-to develop complete application programs for a do-
-main quickly and effectively. A DSL is not (neces-
-sarily) “general purpose.” Rather, it should capture
-precisely the semantics of an application domain, no
-more and no less.
-
-There are lots of advantages to using DSLs, start-
-ing with the fact that programs are generally easier to
-write, reason about, and modify compared to equivalent 
-programs written in general purpose languages.
-Indeed, these are the same advantages gained from using any high-level
-programming language.
-\cite{hudak1998modular}
-%%%%
-
-%%%%
-We found that popularity follows a power law, which
-means that most usage is concentrated in a small number
-of languages, but many unpopular languages will still find
-a user base. The popular languages are used across a variety
-of application domains while less popular ones tend to
-be used for niche domains. Even in niche domains, popular
-languages are still more typically used.
-
-We found that developers generally value expressiveness
-and speed of development over language-enforced correctness.
-They see more value in unit tests than types, both for
-debugging and overall. Furthermore, how features are presented
-strongly influences developer feelings about them:
-developers rank class interfaces more highly than static
-types.
-
-We conclude that developer movement
-between languages is driven more by external factors such
-as the developer’s background or technical ecosystem than
-by similarity of the underlying languages. This implies that
-language advocates should focus on a domain and try to
-convince programmers in that domain, instead of trying to
-convince programmers who use languages with semantic
-similarities to the new language
-
-Adoption decisions for domains beyond programming
-languages is studied by social psychologists, management
-science researchers, and other social scientists. Several
-leading models of adoption arose over the years, such
-as the Technology Acceptance Model (TAM) [7] and the
-Unified Theory of Acceptance and Use of Technology
-(UTAUT) [25].
-
-The prominence of domain specific languages
-among other popular languages is surprising.
+As questões da segunda seção são apresentadas na Tabela
+\ref{Secao2Questionario}. Na questão 6, é feita uma afirmação comparando-se a
+especificação textual com especificação formal, com o objetivo de avaliar a
+efetividade em se adotar uma linguagem formal. As questões 7 e 8 avaliam a
+clareza e compreensão das especificações feitas em Swagger e \neoidl{}. O
+objetivo dessas duas questões é fazer uma comparação entre as duas linguagens
+nesses aspectos. As respostas utilizaram a escala Likert \cite{allen2007likert}
+com cinco níveis.
 
 
-%%%% 
-\cite{meyerovich2013empirical}
+\subsubsection{Terceira seção do questionário}
 
-%%%
+A terceira seção é a principal, pois enfoca na utilização de construções de
+\designbycontract{} em contratos REST. Essa seção possui uma parte introdutória
+onde é apresentada uma conceituação de \designbycontract{}. Em seguida, é
+apresentada a especificação de serviço da seção anterior em \neoidl{}
+acrescentando a ela	 as construções de \designbycontract{}. Após essa parte
+introdutória, são feitas quatro questões (9 a 12) sobre a simplicidade e
+utilidade do novo contrato em \neoidl{}.
 
-
-%%%%
-
-
-Questions regarding “Perceived Usefulness” (U):
-U1: Using a collaborative tool like LiveNet in my job, I would
-be able to accomplish collaborative tasks \emph{more quickly}.
-U2: Using a collaborative tool like LiveNet would \emph{improve my
-performance} on collaborative tasks.
-U3: Using a collaborative tool like LiveNet for collaborative
-tasks would \emph{increase my productivity}.
-U4: Using a collaborative tool like LiveNet would enhance \emph{my
-effectiveness} on collaborative tasks.
-U5: Using a collaborative tool like LiveNet would \emph{make it
-easier} to do collaborative tasks.
-U6: I would find a collaborative tool like LiveNet \emph{useful to
-perform} collaborative tasks.
-
-Questions regarding perceived “Ease of Use” (E):
-E1: Learning to operate a collaborative tool like LiveNet
-would be \emph{easy} for me.
-E2: I would find it \emph{easy} to get a collaborative tool like LiveNet
-to do what I want it to do \emph{to perform} most of the tasks that
-require collaboration.
-E3: My interaction with a collaborative tool like LiveNet would
-be \emph{clear and understandable}.
-E4: It would be \emph{easy to become skillful in using} a collaborative
-tool like LiveNet.
-E5: It would be \emph{easy to remember} how to perform various
-collaborative tasks using a collaborative tool like LiveNet.
-E6: I would find a collaborative tool like LiveNet \emph{easy to use}.
-
-Questions regarding “self-predicted future use” (U):
-S1: Assuming a collaborative tool like LiveNet would be available
-on my job, I predict that \emph{I will use it} on a regular basis
-in the future.
-S2: I would prefer using a collaborative tool like LiveNet to
-face-to-face meeting for {performing collaborative tasks}
-like generating scenarios.
-
-\cite{babar2007evaluating}
-
-%%%%
+Na sequência, é apresentado um trecho curto sobre geração automática de código a
+partir de especificações formais. O propósito dessa parte é tratar também da
+utilidade do recurso de geração de código provido pela \neoidl{}. Duas perguntas
+são feitas sobre esse ponto (13 e 14). Por fim, são feitas duas afirmações (15
+e 16) sobre a predisposição ao uso futuro da \neoidl{}.
 
 
+\begin{table}[h]
+\scriptsize
+\centering
+\vspace{0.5cm}
+\begin{tabular}{r|p{10cm}|p{3cm}}
+\multicolumn{3}{c}{{\normalsize Construções de \designbycontract{} na \neoidl{}}}\\
 
-%%%%
-
+\hline    
+\textbf{no.} &  \textbf{Afirmação} & \textbf{Aspecto TAM} \\
+\hline    
+9 & Conhecer previamente e explicitamente as precondições será útil para mim. &
+Util \\
+10 & Aprender a identificar as precondições na NeoIDL parece ser simples pra
+mim. & Facilidade de aprender \\
+11 & Parece ser fácil para mim declarar uma precondição na NeoIDL. & Clareza e compreensão \\
+12 & Me lembrar da sintaxe da precondição na NeoIDL é fácil. & Fácil de
+lembrar \\
+\hline 
+13 & É claro e compreensível para mim o efeito da precondição sobre o código
+gerado. & Controlável \\
+14 & A geração do código de pré e pós-condições aumentará minha produtividade na
+implementação do serviço. & Eficiência \\
+\hline  
+15 & Assumindo ter a disposição a NeoIDL no meu trabalho, para especificação de
+contratos e geração de código, eu presumo que a utilizarei regularmente no
+futuro. & Adoção \\
+16 & Nesse mesmo contexto, eu vou preferir utilizar contratos escritos em NeoIDL
+do que descritos de outra forma. & Preferência \\
+\end{tabular}
+\caption{Questões da terceira seção do questionário sobre \designbycontract{}
+na \neoidl{}}
+\label{Secao3Questionario}
+\end{table}
 
 
 \subsection{Análise dos Resultados}
 \label{AnaliseQuestionario}
 \vspace{-6mm}
 
+Esta subseção apresenta e discute os resultados do questionário aplicado. As
+respostas são avaliadas em grupos, iniciando pela avaliação do perfil de
+respondentes. Em seguida, são avaliadas as questões 6 a 8, sobre a especificação
+formal de contratos e a expressividade de Swagger e \neoidl{}. As respostas às
+questões 9 a 12, sobre a aplicabilidade de \designbycontract{} na especificação
+ de contratos REST, são debatidos na sequência. A penúltimo grupo trata da
+ geração de código com \designbycontract{}, com as questões 13 e 14. Por fim,
+ são discutidas as duas últimas questões, sobre predisposição ao uso.
 
-* Questionário montado para avaliar a utilidade de DbC com NeoIDL
+\subsubsection{Perfil dos respondentes}
 
-* Inicialmente motivado pelo estudo do Alessandro Garcia
+A primeira questão tinha o objetivo de apenas identificar respostas
+submetidas por pessoas fora do público alvo. Cinco instituições das quais se
+conhecia o nível técnico e com as quais se tinha contato com profissionais
+concentraram a maior parte das respostas. As demais respostas são empresas
+relacionas a essas instituições, por indicação de técnicos experientes
+do primeiro grupo. Nenhuma das respostas foi considerada anormal e, portanto,
+todas foram validadas, totalizando 26 respondentes.
 
-* GQM e Avaliação TAM
+A segunda questão levantou o tempo de experiência dos respondentes com
+desenvolvimento de sistemas Web. O resultado foi sumarizado na Tabela
+\ref{quantidadeRespostas2}. Como o público alvo, definido na meta GQM (Tabela
+\ref{TabelaMetasGQM}), é de desenvolvedores experientes, os respondentes que
+apontaram experiência inferior a três anos estão fora do perfil esperado e suas
+respostas foram descartadas (linhas em cinza). Assim, o questionário teve um
+conjunto de 21 respostas válidas.
 
-Avaliação 3:
+\begin{table}[!bth] 
+\centering
+\vspace{0.5cm}
+\scriptsize
+\begin{tabular}{p{3cm}|p{1cm}}
+\hline   
+Experiência com desenvolvimento Web& Q2 \\
+\hline   
+\cellcolor{light-gray}Não tenho experiência &  \cellcolor{light-gray}2  \\
+\cellcolor{light-gray}Entre 1 e 2 anos      &  \cellcolor{light-gray}3  \\
+Entre 3 e 4 anos      &  1  \\
+Entre 5 e 6 anos      &  3  \\
+Entre 7 e 8 anos      &  5  \\
+Entre 9 e 10 anos     &  1  \\
+Há mais de 10 anos    & 11  \\
+\end{tabular}
+\caption{Respostas sobre a experiência com desenvolvimento Web}
+\label{quantidadeRespostas2}
+\end{table}
+
+A terceira questão identificou o conhecimento dos respondentes com
+desenvolvimento de \wss{}. Conforme apresentado na Tabela
+\ref{quantidadeRespostas3}, as respostas estão polarizadas, em que 40\%
+(quarenta por cento) tem nenhuma ou pouca experiência (menos de dois anos). Por
+outro lado, 23\% (vinte e três por cento) dos respondentes possui experiência
+muito alta (mais de 10 anos). Caso o volume de respostas fosse muito grande (mais de
+200 pessoas), poderia ser feita uma análise comparativa da \neoidl{} de acordo
+com a experiência de \ws{}.
 
 
+\begin{table}[!bth] 
+\centering
+\vspace{0.5cm}
+\scriptsize
+\begin{tabular}{p{3cm}|p{1cm}}
+\hline   
+Experiência com \ws{} & Q3 \\
+\hline   
+Não tenho experiência &  3  \\
+Entre 1 e 2 anos      &  5  \\
+Entre 3 e 4 anos      &  6  \\
+Entre 5 e 6 anos      &  2  \\
+Entre 7 e 8 anos      &  0  \\
+Entre 9 e 10 anos     &  0  \\
+Há mais de 10 anos    &  5  \\
+\end{tabular}
+\caption{Respostas sobre experiência com \wss{}}
+\label{quantidadeRespostas3}
+\end{table}        
 
-Cenário: Apresentar um contrato hipotético especificado em Swagger para que os participantes possam identificar os elementos da linguagem. Realizar o mesmo procedimento para contrato especificado em NeoIDL. Em seguida, apresentar um questionário, elaborado com base na metodologia TAM, sobre a utilidade e facilidade de uso a partir da comparação entre contratos escritos nas duas linguagens com equivalência semântica.
-Adicionalmente, neste cenário, penso que pode aplicado o questionário NASA TLX para avaliar aspectos cognitivos.
+A questão quatro identificou o conhecimento e experiência do respondente com o
+modelo arquitetural REST. Apenas dois (menos de 10\%) respondentes não tem
+experiência alguma com desenvolvimento de \wss{} REST, como pode ser verificado na Tabela
+\ref{quantidadeRespostas4}. Outros 42\% (quarenta de dois por cento) dos
+respondentes, porém, tem experiência e conhecimento sobre os padrões arquiteturais que formam
+o modelo REST.
+
+\begin{table}[!bth] 
+\centering
+\vspace{0.5cm}
+\scriptsize
+\begin{tabular}{p{10cm}|p{1cm}}
+\hline   
+Experiência com REST & Q4 \\
+\hline   
+Nunca desenvolvi com a tecnologia &  2  \\
+Já desenvolvi serviços algumas APIs REST, mas não conheço a especificação & 7 \\
+Tenho experiência superior a dois anos em desenvolvimento REST, mas não conheço
+a especificação & 3 \\
+Tenho experiência superior a dois anos em desenvolvimento REST e conheço a
+especificação &  9  \\
+
+\end{tabular}
+\caption{Respostas sobre conhecimento e experiência com REST}
+\label{quantidadeRespostas4}
+\end{table}
+
+A última questão sobre o perfil do respondente tratou do conhecimento e
+experiência com a especificação de contratos em Swagger. O conjunto de respostas
+confirmou a tendência pelo mercado pela uso de Swagger. Mais de 70\% (setenta
+por cento) dos respondentes já tiveram algum contato com especificação de
+contratos em Swagger (Tabela \ref{quantidadeRespostas5}). Esse cenário indica
+que o conjunto de profissionais é qualificado e possui capacidade crítica para
+responder às demais questões.
+
+\begin{table}[!bth] 
+\centering
+\vspace{0.5cm}
+\scriptsize
+\begin{tabular}{p{10cm}|p{1cm}}
+\hline   
+Experiência com Swagger & Q5 \\
+\hline   
+Não sei do que se trata ou apenas ouvi a respeito & 6 \\
+Já tive contato com especificações em Swagger & 8 \\ 
+Já especifiquei APIs REST em Swagger &  5  \\
+Tenho experiência superior a um ano em Swagger & 2 \\
 
 
+\end{tabular}
+\caption{Conhecimento e experiência dos respondentes com Swagger}
+\label{quantidadeRespostas5}
+\end{table}
+
+  
+   
+
+\subsubsection{Análise da especificação de contratos formais e expressividade
+de Swagger e \neoidl{}}
+
+A partir da questão 6, as respostas foram dadas na escala \textit{Likert} sobre
+as afirmações colocadas. Os dados foram processados com utilização do software
+estatístico R, com o objetivo de apresentar os resultados por meio de gráficos
+que facilitam a interpretação de tendência. A cor vermelha é utilizada para
+indicar discordância sobre as afirmações, sendo que o vermelho mais escuro
+corresponde a discordância total. Da mesma forma, a cor azul é utilizada para
+indicar concordância.
+
+Na questão 6 foi apresentada uma afirmação sobre a efetividade de se especificar
+contratos formalmente, em detrimento de especificação textual descritiva.
+Conforme apresentado na primeira barra da Figura \ref{Respostas6a8},
+praticamente todos os respondentes concordaram com a afirmação e nenhum
+discordou. Esse resultado reforça a utilidade de se utilizar contratos para
+especificação de serviços.
 
 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=100mm,trim = 6mm 115mm 6mm 
+10mm,clip]{img/GraficoResultadoQuestoes6a8.pdf}
+
+\includegraphics[width=100mm,trim = 6mm 0mm 6mm 
+170mm,clip]{img/GraficoResultadoQuestoes6a8.pdf}
+
+\caption{Gráfico com o resultado das questões 6 a 8}
+\label{Respostas6a8}
+\end{figure}
+
+A questão 7 consultou a percepção dos respondentes sobre a facilidade de
+identificar as operações e atributos em um contrato especificado em Swagger. A
+questão 8 contém a mesma afirmação sobre um contrato especificado em \neoidl{}.
+O resultado de ambas questões estão na Figura \ref{Respostas6a8} e indicam que
+tanto os contratos em Swagger como em \neoidl{} são claros e fáceis de se compreender. Vale ressaltar que a maior parte dos
+respondentes já possuia contato anterior com Swagger (Tabela
+\ref{quantidadeRespostas5}), o que reforça o resultado positivo para a
+\neoidl{}.
 
 
-* Distribuição do questionário
+\subsubsection{Análise sobre aceitabilidade de construções de \designbycontract{}}
 
-% \subsubsection{Avaliação dos resultados}
-% 
-% \begin{figure*}[h]
-% \begin{center}
-% \includegraphics[scale=0.55,trim=0cm 1.5cm 0cm
-% 0cm]{img/ResultQuestions06a09.pdf}  
-% \end{center}
-% \caption{Módulo \neoidl{}}
-% \label{fig:moduloNeoIDL}
-% \end{figure*}
+Entre as questões 9 e 12 foram feitas afirmações sobre a facilidade de se
+identificar os elementos e a utilidade de se especificar pré e pós-condições em
+contratos de serviços REST com a \neoidl{}. Os resultados são apresentados na
+Figura \ref{Respostas9a12}. 
 
-* Ameaças
-- não foi fornecido nenhum material sobre a NeoIDL, apresentando somente o uma
-descrição de serviço
-- O questionário foi aplicado uma única vez, sem melhorias a partir do primeiro
-conjunto de respostas
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=100mm,trim = 6mm 115mm 6mm 
+10mm,clip]{img/GraficoResultadoQuestoes9a12.pdf}
 
+\includegraphics[width=100mm,trim = 6mm 0mm 6mm 
+170mm,clip]{img/GraficoResultadoQuestoes9a12.pdf}
 
+\caption{Gráfico com o resultado das questões 9 a 12}
+\label{Respostas9a12}
+\end{figure}
 
+A questão 9 tem a afirmação de que o conhecimento explícito de precondição terá
+utilidade para o desenvolvedor responsável por implementar o serviço. Quase
+todos os respondentes concordaram com a afirmação, em maior e menor grau. Um
+pequeno conjunto discordou, indicando que outros elementos podem ser
+necessários para esse conjunto identificar a utilidade. Pode haver influência
+ainda da experiência do respondente com implementação de serviços.
 
-* Questionários futuros
+A afirmação da questão 10 é sobre a facilidade de se identificar pré e
+pós-condições em contrato na \neoidl{}. Na questão 11, o enfoque é sobre a
+facilidade de se declarar pré e pós-condições na \neoidl{}. Nos dois casos,
+nenhum dos respondentes manifestou discordância, sendo que a concordância total foi mais
+intensa para a afirmação da questão 10. Apenas uma pequena parcela informou que
+nem concorda nem discorda da afirmação.
 
-A principal questão de pesquisa a ser avaliada com o uso do questionário é a utilidade em se agregar ao design das especificações de serviços REST as garantias de pré e
-pós-condições. Em segundo momento, pressupondo a utilidade, avaliar se a NeoIDL
-cumpre satisfatoriamente com este propósito, agregando à sintaxe da linguagem
-a possibilidade de se expressar pré e pós-condições.
+A questão 12 afirma que é fácil se lembrar da sintaxe de uma precondição na
+\neoidl{}. Essa questão está relacionada a como se pode associar mentalmente as
+contruções sintáticas ao efeito que elas geram. Muito embora se esperasse um
+resultado mais dividido, pois ser uma construção influenciada por linguagens
+diversas, os resultados indicam que a sintaxe é fácil de ser lembrada.
 
-* Separar os respondentes em faixas de experiência. Verificar se as respostas
-dos menos experientes precisam ser descartadas pela pouca capacidade crítica.
-Separar a análise entre os respondentes que conhecem e os que não conhecem
-Swagger.
+\subsubsection{Análise da geração de código para construções de \designbycontract{}}
 
-* Perspectivas de comparação
-a) Experiência com desenvolvimento com uso de REST
-b) Experiência com Swagger
-c) Utilidade da especificação formal de contratos
-d) Percepção da NeoIDL sem DbC
+Duas questões foram inseridas para tratar da utilidade da geração de código com
+a \neoidl{} para contratos com suporte a \designbycontract{}. A questão 13
+apontava ser claro o efeito da precondição sobre o código gerado. A maior parte
+dos respondentes indicou que a geração do código para a precondição é util
+em relação a produção de efeitos controláveis. A Figura \ref{Respostas13e14}
+apresenta os resultados.
 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=100mm,trim = 6mm 115mm 6mm 
+10mm,clip]{img/GraficoResultadoQuestoes13e14.pdf}
+
+\includegraphics[width=100mm,trim = 6mm 0mm 6mm 
+170mm,clip]{img/GraficoResultadoQuestoes13e14.pdf}
+
+\caption{Gráfico com o resultado das questões 13 e 14}
+\label{Respostas13e14}
+\end{figure}
+
+A questão 14 afirmou que a geração de código sobre precondições ampliará a
+produtividade de implementação do serviço. O resultado apontou que uma parte
+expressiva dos respondentes não concordou nem discordou. Para esses, a
+especificação de precondições não incluencia a produtividade.
+Por outro lado, tem-se que a maior parte concordou com a contribuição positiva
+da geração de código das precondições para a produtividade. Uma parcela muito pequena discordou, ou seja,
+eles acreditam que a geração de código para precondição prejudicará o
+desempenho.
+
+\subsubsection{Análise sobre a predisposição ao uso}
+
+As duas últimas questões tratam de quão inclinado ao uso da \neoidl{} em seu
+ambiente de trabalho estaria o respondente.
+Esta análise é relativa \cite{laitenberger1998evaluating}, ou seja, depende de
+quais os benefícios trazidos pela \neoidl{} em relação aos benefícios trazidos por soluções alternativas, como
+especificação textual de contratos ou ainda por meio de Swagger. Os resultados
+para essas questões são apresentadas na Figura \ref{Respostas15e16}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=100mm,trim = 6mm 115mm 6mm 
+10mm,clip]{img/GraficoResultadoQuestoes15e16.pdf}
+
+\includegraphics[width=100mm,trim = 6mm 0mm 6mm 
+170mm,clip]{img/GraficoResultadoQuestoes15e16.pdf}
+
+\caption{Gráfico com o resultado das questões 15 e 16}
+\label{Respostas15e16}
+\end{figure}
+
+A questão 15 apresenta uma afirmação sobre a predisposição ao uso regular da
+\neoidl{} no futuro. Pelos resultados da pesquisa, verifica-se que a maior
+parcela dos respondentes nem concorda nem discorda. Esse resultado é relevante,
+pois, conforme debatido anteriormente (Tabela \ref{quantidadeRespostas5}), boa
+parte dos respondentes já tem contato com Swagger, que consiste em uma
+alternativa direta à \neoidl{}.
+Se, por um lado os respondentes não concordam prontamente em utilizar \neoidl{}, por
+outro não descartam.
+
+É necessário investigar que fatores influenciariam positivamente a predisposição
+do uso da \neoidl{} e verificar se são fatores internos às empresas em que
+trabalham atualmente os respondentes ou quais pontos podem ser melhorados na
+\neoidl{} a fim de ampliar o nível de aceitação. Em relação às demais respostas,
+nota-se uma tendência mais forte de concordância sobre o uso que regular, que
+a de discordância, o que reforça o potencial de adesão ao uso da \neoidl{}.
+
+A última questão abordou diretamente se haveria preferência de uso pela
+\neoidl{} em detrimento a outras linguagens. O resultado é o mais equilibrado do
+questionário, havendo uma pequena tendência para a preferência pela \neoidl{}.
+O resultado da questão 16 levanta ainda outra hipótese sobre a quantidade de
+respondentes em dúvida na questão 15: fatores individuais, como não lidar
+diretamente com especificação de contratos, podem explicar haver um grande grupo
+que não sabe informar se utilizaria regularmente a \neoidl{}.
+
+Assim, essas questões abrem outras perspectivas de estudo, com um enfoque sobre
+os fatores institucionais e o que mais poderia ser desenvolvido na \neoidl{}
+para atender às necessidades das equipes de desenvolvimento.
+
+\subsection{Ameaças}
+\label{AmeacaoEstudoSubjetivo}
+
+Questionários são instrumentos práticos para se realizar estudos empíricos que
+visam obter a opniões subjetivas. Uma de suas principais vantagens está em
+permitir a participação de várias pessoas, ampliando a abrangência temporal e
+geográfica. Há também mais domínio e facilidade de análise sobre os dados
+coletados.
+
+Entretanto, algumas ameaças podem influenciar a conclusão dos resultados. Para o
+questionário aplicado neste trabalho de pesquisa, podemos destacar alguns pontos
+que podem influenciar ou limitar a qualidade dos dados, bem como direcionar para
+a realização de outros estudos empíricos sobre o tema.
+
+Um primeiro ponto a observar é a quantidade de respondentes. Embora seja um
+número superior a de alguns outros estudos avaliados
+\cite{albuquerque2015quantifying}
+\cite{hernandes2010avaliaccao} \cite{laitenberger1998evaluating}, uma maior
+quantidade de participante ampliaria a qualidade dos dados, pois eliminaria influência de fatores muito
+específicos a um conjunto de respondentes, e possibilitaria análise de 
+cenários, utilizando visões de dados. O nível técnicos dos respondentes,
+contudo, reduz os impactos dessa ameaça.
+
+Outro ponto de melhoria são ações que visem proporcionar um conhecimento mínimo
+sobre a \neoidl{}. Todas as respostas foram dadas apenas pelas informações
+apresentadas no próprio questionário e os resultados poderiam ser diferentes se
+houvesse um treinamento prévio sobre a \neoidl{}. Sob esse aspecto, tem-se que a
+compreensão sobre dos elementos da sintaxe básica na \neoidl{} (questão 6) teve
+resultado inferior que a compreensão dos elementos de \designbycontract{}
+(questão 8). Esse resultado é inesperado, pois pressupõe-se que identificar os
+elementos de \designbycontract{} só seja possível após compreender a sintaxe
+básica.
+
+Ainda, como o questionário foi aplicado apenas uma vez, não foram incluídos
+pontos de melhoria a partir do primeiro conjunto de respostas para uma segunda
+avaliação. Conforme debatido na subseção \ref{AnaliseQuestionario}, algumas
+questões poderiam ser inseridas em uma nova aplicação do questionário, de
+modo produzir informações que permitissem conclusões mais completas.
+
+Em estudos futuros, essas melhorias podem ser aplicadas. Em que pese esses
+pontos de atenção, o estudo realizado por meio do questionário atigiu seus
+resultados e produziu dados de grande relevancia para o objeto em pesquisa.
 
 
