@@ -11,7 +11,7 @@ eficientemente a mudanças impostas por novas regulações, por aumento de
 competição ou ainda para usufruir de novas oportunidades. No contexto atual, em que as
 informações fluem de modo extremamente veloz, o tempo disperdiçado pelas organizações para se
 adaptar a um novo cenário tem um preço elevado, gerando expressiva perda de
-receita e, em um determinados casos, podendo causar a falência.
+receita e, em determinados casos, podendo causar a falência.
 
 No campo das instituições governamentais, a eficiência na condução das ações do
 Estado impõem que a estrutura de troca de informações entre os mais variados
@@ -71,7 +71,7 @@ e uma grande gama de tecnologias de implementações especializadas, em grande
 parte baseadas em \ws{} \cite{erl2009web}.
 
 \item [Orientação a serviço] é um paradígma de projeto cuja intenção é a criação
-de unidades lógicas moldadas individualmente para podem serem utilizadas
+de unidades lógicas moldadas individualmente para poderem ser utilizadas
 conjutamente e repetidamente, atendendo assim a objetivos e
 funções específicos associados com SOA e computação orientada a serviço.
 
@@ -88,8 +88,8 @@ A orientação a serviços é composta principalmente de oito princípios de pro
 
 \item [Arquitetura orientada a serviço - SOA] representa um modelo arquitetural
 cujo objetivo é elevar a agilidade e a redução de custos e ao mesmo tempo
-reduzir o peso da TI para a organização. Isso é feito colocando o serviço
-como elemento central da representação lógica da solução \cite{erl2009web}.
+reduzir o peso da Tecnologia da Informação (TI) para a organização. Isso é feito
+colocando o serviço como elemento central da representação lógica da solução \cite{erl2009web}.
 
 Como uma arquitetura tecnológica, uma implementação SOA consiste da combinação
 de tecnologias, produtos, APIs, extensões da infraestrutura, etc. A implantação
@@ -140,8 +140,8 @@ linguagens formais (para processamento computacional).
 
 No contexto de orientação a serviço, o projeto do contrato do serviço é de suma
 importância de tal forma que o princípio de projeto contrato de serviço
-padronizado é dedicado exclusivamente para cuidar da contratos de serviços
-uniformes e com qualidade \cite{erl2009web}.
+padronizado dedica-se exclusivamente ao cuidado com contratos de serviços
+uniformes e de qualidade \cite{erl2009web}.
 
 \end{description}
 
@@ -166,7 +166,7 @@ flexibilidade de mudanças de implementação sem impacto aos consumidores.
 A arquitetura SOC busca atingir um conjunto de objetivos e benefícios
 \cite{erl2008soaDesigPatterns}:
 \begin{enumerate}[(a)] 
-  \item Ampliar a iterperabilidade intrínseca, de modo a se ter uma rápida
+  \item Ampliar a interoperabilidade intrínseca, de modo a se ter uma rápida
   resposta a mudanças de requisitos de negócio por meio da efetiva
   reconfiguração das composições de serviços;
   \item Ampliar a federação da solução, permitindo que os serviços possam ser
@@ -188,13 +188,13 @@ A arquitetura SOC busca atingir um conjunto de objetivos e benefícios
 
 Para possibilitar que esses benefícios sejam atingidos, quatro características
 são observadas em qualquer plataforma SOA. A primeira é o direcionamento
-efetivo ao negócio, levando-se em conta dos objetivos estratégicos de negócio na
+efetivo ao negócio, levando-se em conta os objetivos estratégicos de negócio na
 concepção do projeto arquitetural. Se isso não ocorrer, é inevitável que o
 desalinhamento com os requisitos de negócio cheguem a níveis muito elevados
 bem rapidamente \cite{erl2008soaDesigPatterns}.
 
 A segunda característica é a independência de fabricante. O projeto arquitetural
-que considere apenas um fabricante específico levará inadvertidamente a
+que considera apenas um fabricante específico levará inadvertidamente a
 implantação dependente de características proprietárias. Essa dependência também
 reduzirá a agilidade na reação às mudanças e tornará a arquitetura inefetiva. A
 arquitetura orientada a serviço deve fazer uso de tecnologias providas pelos
@@ -230,7 +230,7 @@ um módulo. Os contratos de serviços permeiam a maior parte destes princípios.
 \centering
 \includegraphics[width=100mm,trim = 0mm 0mm 0mm 
 0mm,clip]{img/PrincipiosSOA.pdf}
-\caption{Oito princípios da arquitetura orientada a serviços}
+\caption{Oito princípios da arquitetura orientada a serviços \cite{erl2009web}}
 \label{Fig:PrincipiosSoa}
 \end{figure}
 
@@ -354,8 +354,8 @@ As principais vantagens do \CtFirst{} estão no baixo acoplamento do contrato em
 relação a sua implementação, na possibilidade de reuso de esquemas de dados (XML
 ou JSON Schema), na simplificação do versionamento e na facilidade de manutenção
 \cite{karthikeyancontract}. A desvantagem está justamente na complexidade de
-escrita to contrato. Porém várias ferramentas já foram e vem sendo desenvolvidas
-para facilitar essa tarefa.
+escrita do contrato. Porém, várias ferramentas já foram e vem sendo
+desenvolvidas para facilitar essa tarefa.
 
 
 \section{WEB SERVICES}
@@ -388,8 +388,8 @@ protocolo SOAP (seção \ref{secaoSOAP}). Entretanto, a adoção de \ws{} REST
 
 SOAP -- \textit{Simple Object Access Protocol} -- é um protocolo padrão W3C que
 provê uma definição de como trocar informações estruturadas, por meio de XML, entre
-partes em um ambientes descentralizado ou distribuído \cite{WSDLSite}. SOAP é um
-protocolo mais antigo que REST, e foi desenvolvido para troca de informações
+as partes de ambientes descentralizados ou distribuídos \cite{WSDLSite}. SOAP
+é um protocolo mais antigo que REST, e foi desenvolvido para troca de informações
 pela Internet se utilizando de protocolos como HTTP, SMTP, FTP, sendo o primeiro
 o mais comumente utilizado.
 
@@ -412,7 +412,7 @@ documento. Uma segunda seção, dita concreta, estabelece o protocolo de rede e 
 formato das mensagens.
 
 Muitas organizações preferem utilizar SOAP por ele dispor de mais mecanismos de
-segurança e tratamento de erros \cite{serrano2014service}. Além disso a tipagem
+segurança e tratamento de erros \cite{serrano2014service}. Além disso, a tipagem
 de dados é mais forte em SOAP que em REST \cite{mumbaikar2013web}.
 
 
@@ -432,7 +432,7 @@ requisição por um determinado recurso ao servidor e este retorna uma resposta.
 Tanto a requisição como a resposta ocorrem por meio da transferência de
 representações de recursos \cite{mumbaikar2013web}, que podem ser de vários
 formatos, como XML e JSON \cite{serrano2014service}. Toda troca de informações
-ocorre por meio do protocolo HTTP, com uma semântica específica para cara
+ocorre por meio do protocolo HTTP, com uma semântica específica para cada
 operação:
 
 \begin{enumerate}
@@ -444,7 +444,7 @@ operação:
 
 As transações são independentes entre si e com as transações anteriores, pois o
 servidor não guarda qualquer informação de sessão do cliente. Todas as
-informações de estado são trafegadas nas proprias requisições, de modo que as
+informações de estado são trafegadas nas próprias requisições, de modo que as
 respostas também são independentes. Essas características tornam os \wss{} REST
 simples e leves \cite{mumbaikar2013web}.
 
@@ -507,7 +507,7 @@ fornecem, de parte do fornecedor, as garantias ao consumidor, são denominadas
 
 DbC tem o objetivo de aumentar a robustez do sistema e tem na linguagem Eiffel
 \cite{meyer1988eiffel} um de seus precursores. Para os mantenedores do Eiffel, DbC é
-tão importante quanto classes, objetos, herança, etc. O uso de DBC na
+tão importante quanto classes, objetos, herança, etc. O uso de DbC na
 concepção de sistemas é uma abordagem sistemática que produz sistemas com mais
 corretude.
 
@@ -534,7 +534,7 @@ a que cada parte está condicionada e, em contra-ponto, os benefícios garantido
 Nesse contexto, o contrato é um veículo de comunicação, por meio do qual os
 clientes tomam conhecimento das condições de uso, em especial das precondições.
 É fundamental que as precondições estejam disponíveis para todos os clientes
-para os quais as rotinas estão disponvéis, pois, sem que isso ocorra, o cliente
+para os quais as rotinas estão disponíveis, pois, sem que isso ocorra, o cliente
 corre o risco de acionar a rotina fora de suas garantias de funcionamento. 
 
 Segundo Bertrand Meyer \cite{meyer1997object}, \designbycontract{} é um
@@ -591,7 +591,7 @@ concretizada na linguagem por meio das precondições, pós-condições e invari
 \cite{meyer1988eiffel}. Esta abordagem influenciou outras linguagem de programação orientadas a objeto.
 
 A figura \ref{lst:exemploEiffel} apresenta um exemplo de especificação de pré e
-póscondição na linguagem Eiffel.
+pós-condição na linguagem Eiffel.
 
 \vspace{6mm}
 
@@ -617,7 +617,7 @@ expressividade e formalismo de linguagens de especificação orientadas a modelo
 \cite{leavens2006design}. 
 
 A figura \ref{lst:exemploJML} apresenta um exemplo de especificação de pré e
-póscondição na linguagem de extensão JML.
+pós-condição na linguagem de extensão JML.
 
 \begin{figure}[h]
 \begin{small}
@@ -636,7 +636,7 @@ nulos, especificações de pré e pós-condições, um método para gerenciar ex
 entre outros recursos \cite{barnett2004spec}.
 
 A figura \ref{lst:exemploSpec} apresenta um exemplo de especificação de pré e
-póscondição na linguagem de extensão JML.
+pós-condição na linguagem Spec\#.
 
 \vspace{6mm}
 

@@ -35,7 +35,7 @@ voltado para arquitetura orientada a serviço e com suporte
 a implantação de serviços REST em vários linguagens, denominado \neocortex{}.
 
 A particularidade do \neocortex{} de se utilizar serviços implementados em
-vários linguagens motivou o desenvolvimento um programa gerador de serviços
+várias linguagens motivou o desenvolvimento um programa gerador de serviços
 poliglotas -- que produz código de várias linguagens de programação -- a partir da
 descrição do contrato do serviço. A \neoidl{} foi concebida para atender a essa
 finalidade. A primeira decisão de projeto da \neoidl{} foi a linguagem para se
@@ -60,9 +60,9 @@ características da linguagem \neoidl{} são brevemente discutidas na subseção
 \ref{linguagemNeoIDL}.
 
 Em relação à geração de código, para se viabilizar a geração poliglota de
-código, a \neoidl{} foi projetada para possui uma arquitetura modular, de modo que novas linguagens ou características de implementaçao
-pudessem ser incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é
-possível desenvolver um novo \textit{plugin} para geração de serviços em outras
+código, a \neoidl{} foi projetada para possuir uma arquitetura modular, de modo
+que novas linguagens ou características de implementação pudessem ser
+incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é possível desenvolver um novo \textit{plugin} para geração de serviços em outras
 linguagens, por exemplo PHP, sem alterar qualquer outro componente do \framework,
 conforme apresentado na subseção \ref{frameNeoIDL}.
 
@@ -123,10 +123,10 @@ modo que todos os atributos declarados são obrigatórios, a menos que
 seja explicitamente declarado diferente. O atributo \emph{subject} do tipo
 \emph{Message} é um exemplo de atributo opcional (\texttt{<Type> <Ident> = 0;}).
 
-Definido o tipo de dado, o módulo seguinte (figura \ref{lst:sentmessage-neo})
-, na linha proposta pela \neoidl{} para suporte a herança
-e reuso, importa o conjunto de definições de \emph{MessageData} e declara o
-serviço \emph{sendbox} (linha 4). Esse serviço possui duas capacidades:
+Definido o tipo de dado, na linha proposta pela \neoidl{} para
+suporte a herança e reuso, o módulo seguinte -- conforme apresentado na Figura
+\ref{lst:sentmessage-neo} -- importa o conjunto de definições de
+\emph{MessageData} e declara o serviço \emph{sendbox} (linha 4). Esse serviço possui duas capacidades:
 \emph{sendMessage} e \emph{listMessages}.
 A capacidade \emph{sendMessage} (linha 6) utiliza a operação \method{post} para
 submeter uma mensagem (tipo \emph{Message}). A capacidade \emph{listMessages}
@@ -148,7 +148,7 @@ como as requisições serão roteadas entre os serviços.
 \end{figure}
 
 Seguindo a filosofia de \emph{conversão sobre configuração}, a \neoidl{} assume
-que os argumentos das operações do tipos \method{POST} e \method{PUT} são
+que os argumentos das operações dos tipos \method{POST} e \method{PUT} são
 enviadas no corpo da requisição. Nas operações dos tipos \method{GET} e
 \method{DELETE}, por outro lado, presume-se que os agumentos estão contidos no \emph{path} da requisição ou ainda
 como \textit{query string}.
@@ -189,8 +189,8 @@ A declaração da anotação é feita ao final do módulo (linhas 14 a 18).
 Além de serem aplicáveis a \texttt{resources}, as anotações também podem ser
 utilizadas em outros construtores da linguagem: \texttt{module},
 \texttt{enum}, \texttt{entity}. Qualquer anotação na \neoidl{} possui a mesma estrutura: um
-nome, um elemento alvo e uma lista propriedades. Todas estas informações ficam
-disponíveis para utilização pelos \textit{plugins}.
+nome, um elemento alvo e uma lista de propriedades. Todas estas informações
+ficam disponíveis para utilização pelos \textit{plugins}.
 
 
 A estrutura de um módulo \neoidl{}, como pôde ser verificado nos exemplos
@@ -310,8 +310,8 @@ Programas escritos em DSLs costumam ser mais fáceis de escrever e,
 consequentemente, mais fáceis de se manter comparavelmente a programas escritos
 em linguagens de propósito geral \cite{hudak1998modular}. Isso se deve
 justamente ao fato de a DSL tratar apenas um conjunto reduzido de situações e
-problemas, fazendo com ela seja, muitas vezes, mais acessível ao público geral
-\cite{taha2008domain}.
+problemas, fazendo com que ela seja, muitas vezes, mais acessível ao público
+geral \cite{taha2008domain}.
 
 A expressividade é um dos principais critérios para se escolher uma
 linguagem. Entretanto a linguagem que não expressa todas as situações
@@ -374,8 +374,8 @@ A tabela \ref{tab:size-corr} apresenta a correlação entre a
 melhoria na expressividade observada (medida como percentual de redução após a
 transformação da especificação Swagger em especificação \neoidl{}) e algumas
 métricas relacionadas ao tamanho da especificação original em Swagger. Na
-Correlação Pearson, um \emph{p-value} igual a 1 significa correlação
-positiva perfeita. \emph{p-value} igual a -1, significa correlação negativa
+Correlação Pearson \cite{benesty2009pearson}, um \emph{p-value} igual a 1 significa correlação
+positiva perfeita. \emph{p-value} igual a -1 significa correlação negativa
 perfeita, enquanto \emph{p-value} igual a zero indica que as medidas não possuem
 correlação linear.
 
@@ -404,8 +404,6 @@ Número de entidades & 0.20 & 0.18 \\ \bottomrule
 
 
 
-
-
 \subsection{Potencial de reuso}
 
 De forma similar à \neoidl{}, Swagger também possui recursos para reuso de
@@ -417,8 +415,40 @@ se fazer referência em Swagger (baseado na referência a outro arquivo JSON) e 
 dificuldade de se identificar que uma determinada entidade foi declarada em
 outro contrato.
 
-No conjunto dos 44 contratos Swagger analisados foram identificadas 40 entidades
+No conjunto dos 44 contratos Swagger analisados foram identificadas 42 entidades
 especificadas em pelo menos dois contratos. Uma entidade específica, de
 identificação da posição geográfica, muito utilizada no domínio de Comando e Controle, aparece
-declarada 12 vezes em contratos distintos.
+declarada 12 vezes em contratos distintos. A Tabela \ref{estatisticaEntidades}
+mostra a estatística de repetição da especificação de contratos.
+ 
+\begin{table}[!bth] 
+\centering
+\vspace{0.5cm}
+\footnotesize
+\begin{tabular}{|r|r|r|r|r|r|r|r|r|}
+\hline   
+Quantidade de entidades & 420 & 26 & 5 & 7 & 2 & 2 & 1 & 1 \\
+\hline
+Repetição de especificação & 1 & 2 & 3 & 4 & 5 & 6 & 10 & 12 \\
+\hline
 
+\end{tabular}
+\caption{Estatística de entidades declaradas repetidamente entre contratos}
+\label{estatisticaEntidades}
+\end{table}
+
+Os resultados do estudo sobre a expressividade e potencial de reuso em Swagger
+comprovaram, no contexto dos contratos reais avaliados, que a especificação de
+contratos REST nessa linguagem carece de melhorias importantes. Verificou-se,
+ainda, que a \neoidl{} é mais concisa e expressiva que Swagger para representar
+as mesmas informações de contratos REST. Sob a ótica do reuso, a abordagem proposta pela
+\neoidl{}, baseada em importações de especificações de entidades, tende a
+contribuir para a identificação de entidades já declaras, facilitando que
+elas sejam reusadas.
+
+Este capítulo apresentou como foi concebida e como estava estruturada a
+\neoidl{} antes da incorporações de construções de \designbycontract{}. Em
+outras palavras, demonstrou-se o alicerce sobre o qual foram
+desenvolvidas a extensão da linguagem e o \framework{} \neoidl{} com suporte a
+contratos com garantias típicas de \designbycontract{}, contribuições que serão
+detalhadente descritas no próximo capítulo.

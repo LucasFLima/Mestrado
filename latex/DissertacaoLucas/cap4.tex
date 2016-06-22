@@ -30,12 +30,11 @@ seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
 contratos.
 
 A proposta deste trabalho é extender os níveis de garantias, de modo a promover
-um patamar adicional com obrigações mutuas entre os serviços (consumidor e
-provedor). Isso se dá para adoção do conceito de \designbycontract{} (debatido
-na seção \ref{Design-by-Contract}) em que a execução da
-capacidade do serviço garantirá a execução, desde que satisfeitas as condições
-prévias. As próximas subseções detalham o modo de operação dos serviços com as
-construções de \designbycontract{}.
+um patamar adicional com obrigações mútuas entre os serviços (consumidor e
+provedor). Isso se dá pela adoção do conceito de \designbycontract{} (Seção 
+\ref{Design-by-Contract}) em que a execução da capacidade do serviço garantirá 
+a execução, desde que satisfeitas as condições prévias. As próximas subseções 
+detalham o modo de operação dos serviços com as construções de \designbycontract{}.
 
 \vspace{-6mm}
 
@@ -48,8 +47,8 @@ para que o serviço possa ser executado pelo cliente. A etapa de pós-condiçõe
 tem o papel de validar se a mensagem de retorno do serviço possui os resultados
 esperados.
 
-O diagrama da Figura \ref{FigServiceDbC} descreve como ocorre a operação das
-pré e pós-condições. O processo se inicia com a chamada à capacidade do serviço e a
+O diagrama apresentado na Figura \ref{FigServiceDbC} descreve como ocorre a
+operação das pré e pós-condições. O processo se inicia com a chamada à capacidade do serviço e a
 identificação da existência de uma precondição. Caso tenham sido estabelecidas 
 precondições, essas são avaliadas. Caso alguma delas não tenham sido
 satisfeitas, o serviço principal não é processado e o provedor do serviço
@@ -101,7 +100,7 @@ validações de condições complexas sem que a lógica associada seja conhecida
 cliente. Assim, os contratos que estabelecem esse tipo de
 precondição se mantem simples.
 
-A Figura \ref{FigServicePrecondition} detalha as etapas de verificação de cada
+A Figura \ref{FigServicePrecondition} apresenta as etapas de verificação de cada
 precondição. Nota-se que a saída para as situações de desatendimento às
 precondições, independentemente do tipo, é o mesmo. O objetivo desta abordagem
 é simplificar o tratametno de exceção no consumidor.
@@ -251,7 +250,7 @@ fazer a chamada a um serviço (ver Figura \ref{FigServicePrecondition}) por meio
 operação \method{GET}. Em seguida, o código de \textit{status} retornado pelo
 serviço da precondição é comparado com o valor especificado na precondição do contrato.
 
-Após o acionamento do serviço da precondição, o comportamento é mesmo da
+Após o acionamento do serviço da precondição, o comportamento é o mesmo da
 precondição básica (ver \ref{precondicaoBasica}). Caso a precondição seja
 satisfeita, é retornado o valor indicado pela instrução \emph{otherwise}. As
 precondições de serviço na \neoidl{} admitem os mesmos operadores de comparação
@@ -377,7 +376,7 @@ pós-condição (\emph{ensure});
 
 \item [Argumento] indica o nome do atributo que será testado;
 
-\item [Comparação] indica o operação de comparação que a ser utilizada. A
+\item [Comparação] indica a operação de comparação que será utilizada. A
 \neoidl{}  admite seis operadores de comparação: igualdade (\literal{==}), 
 diferença (\literal{<>}), maior (\literal{>}), maior ou igual (\literal{>=}), 
 menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados  a
@@ -422,10 +421,10 @@ não seja atendida.
 \end{description}
 
 
-\subsubsection{Um último exemplo de módulo com \designbycontract{}}
+\subsubsection{Um exemplo completo de módulo com \designbycontract{}}
 
-A Figura \ref{lst:ModuloNeoVariosDbC} apresenta um exemplo módulo \neoidl{} de
-um serviço completo, utilizando alguns dos recursos apresentados na subseção
+A Figura \ref{lst:ModuloNeoVariosDbC} apresenta um exemplo de módulo \neoidl{}
+de um serviço completo, utilizando alguns dos recursos apresentados na subseção
 \ref{TiposContrDbC}. Esse serviço possui três operações, cada uma com duas
 condições de \designbycontract{}.
 
