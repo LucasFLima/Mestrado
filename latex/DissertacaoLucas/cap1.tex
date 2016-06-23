@@ -64,7 +64,7 @@ Thrift}\texttrademark\cite{thrift} e \emph{CORBA}\texttrademark\cite{corba}.
 Por outro lado, a \neoidl{}, da mesma forma que WSDL,
 Swagger e RAML não oferece construções para especificação de contratos formais
 com aspecto comportamental como os presentes em linguagens que
-suportam DBC (\emph{Design by Contract})~\cite{meyer1992applying}, como
+suportam DbC (\emph{Design by Contract})~\cite{meyer1992applying}, como
 Eiffel, JML e Spec\#. Em outras palavras, a \neoidl{}  admite apenas
 contratos fracos (\textit{weak contracts}), sem suporte a construções com pré e
 pós-condições.
@@ -90,7 +90,7 @@ principais contribuições do trabalho.
   contratos em \neoidl{} em comparação com \textit{Swagger}, a partir de contratos
   reais do Exército Brasileiro (Seção \ref{EstudoExpressividadeReuso}); 
   \item Extender a sintaxe da \neoidl{} para admitir construções de 
-  \designbycontract, com pré e pós condições para operações de serviços REST
+  \designbycontract, com pré e pós-condições para operações de serviços REST
   (Seção \ref{extensaoNeoIDL-DbC});
   \item Incorporar à infraestrutura de \textit{Plugins} da
   \neoidl{} a capacidade de geração de código para o \framework{} \textit{Python
@@ -132,7 +132,7 @@ contratos. Linguangens como Swagger, YAML e WADL cumprem com o propósito de
 especificar contratos REST, porém padecem do mesmo problema: são voltados para
 computadores e de escrita e leitura complexa para humanos, o que
 prejudica a prática de \CtFirst{}. A linguagem \neoidl{} foi concebida com o objetivo de ser mais
-expressiva para humanos, além de outros propósitos, como expressividade e
+expressiva para humanos, além de outros propósitos, como extensibilidade e
 modularidade.
 
 Todas essas linguagens tem, entretanto, uma outra limitação em comum: não dão
@@ -153,11 +153,29 @@ contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
 \section{ESTRUTURA}
 \vspace{-6mm}
 
-Este trabalho está organizado em quatro capítulos\ldots
+Este trabalho está organizado em quatro capítulos. O capítulo 2 faz uma revisão
+teórica sobre o tema computação orientada a serviços (SOC), seus propósitos,
+princípios e terminologia. São tratadas estratégias recomendadas para se
+atingir os resultados esperados com SOC, com enfâse na prática de padronização
+do contrato, sobretudo quanto a abordagem \CtFirst{} e ao uso \wss{}. Ao final,
+é feita uma apresentação do conceito de \designbycontract{}, sua finalidade e
+implementações.
 
-% Introdução - Estudos empíricos / DbC para NeoIDL
-% Fundamentação teórica - SOC / REST / Contratos / DbC - 10 páginas
-% NeoIDL - Objetivos / Resultados / Extensão da Linguagem / Avaliação empírica
-% Análise da Aceitação da NeoIDL - Método / GQM / Resultados
-% Conclusão 
+O capítulo 3 descreve a \neoidl{}, uma linguagem e \framework{} de geração de
+código para especificação e geração de serviços REST. É contextualizada a
+motivação para a criação da \neoidl{}, sua estrutura sintática e componentes.
+Esse capítulo inclui um estudo empírico realizado no decorrer da pesquisa
+de mestrado sobre expressividade e reuso da \neoidl{} em comparação a Swagger,
+em um cenário real do Exército Brasileiro.
 
+As principais contribuições desta dissertação estão concentradas no capítulo 4.
+Esse capítulo se inicia com a proposta para incorporação de construções de pré e
+pós-condições à especificação de contratos e qual o modelo de operação do
+serviço em execução. A extensão da linguagem é debatida por etapas, apresentando
+as condições mais simples, seguindo para as mais completas. Um estudo de caso
+com a geração de código para um serviços em \textit{Python Twisted} com suporte
+a DbC é apresentado. A última seção demonstra os resultados de um estudo
+empírico subjetivo sobre a percepção de utilidade e de facilidade de uso da \neoidl{} com DbC.
+
+Por fim, o capítulo 5 apresenta as conclusões do trabalho de pesquisa e sugere a
+realização de trabalhos futuros.

@@ -42,7 +42,7 @@ detalham o modo de operação dos serviços com as construções de \designbycon
 \vspace{-6mm}
 
 As garantias para execução dos serviços são estabelecidas em duas etapas: pré e
-póscondições. Nas precondições o provedor do serviço estabelece os requisitos
+pós-condições. Nas precondições o provedor do serviço estabelece os requisitos
 para que o serviço possa ser executado pelo cliente. A etapa de pós-condições
 tem o papel de validar se a mensagem de retorno do serviço possui os resultados
 esperados.
@@ -143,15 +143,15 @@ programação: Eiffel, JML e Spec\# (exemplificadas na subseção
 \ref{implementDbC}). 
 
 Em Eiffel, as asserções são expressões booleanas, de modo que uma pré e uma
-poscondição podem ter resultado verdadeiro ou falso. As asserções também podem
+pós-condição podem ter resultado verdadeiro ou falso. As asserções também podem
 incluir chamadas a funções, extendendo a validações a lógicas mais sofisticadas
 \cite{meyer1992applying}. Essas caracteríticas, por serem simples e versáteis,
 foram consideradas adequadas e incorporadas à especificação de
 \designbycontract{} em contratos de serviços na \neoidl{}.
 
 A primeira sintaxe de \designbycontract{} na \neoidl{} teve como
-base a sintaxe da JML, especialmente em como se associar as pré e poscondições a
-cada serviço ou capacidade, assemelhando-se a comentários e iniciados pelo
+base a sintaxe da JML, especialmente em como se associar as pré e
+pós-condições a cada serviço ou capacidade, assemelhando-se a comentários e iniciados pelo
 símbolo de arroba (@). A figura \ref{lst:precondicaoJML-neo} apresenta um
 exemplo de especificação de precondição seguindo a linha da JML.
 
@@ -169,19 +169,19 @@ exemplo de especificação de precondição seguindo a linha da JML.
 Essa forma foi apresentada no Workshop de Teses e Dissertações do CBSoft em 2015
 \cite{lima2015contratos}, ainda nos primeiros estágios do trabalho. Os revisores
 apontaram dificuldade de distinguir, na especificação, entre as pré e
-poscondições e as capacidades, pois possuiam prefixos muito
+pós-condições e as capacidades, pois possuiam prefixos muito
 semelhantes (ver linhas 6 a 8).
 Essas críticas impulsionaram a busca por outra sintaxe mais adequada aos elementos textuais já
 existentes na \neoidl{}.
 
 Spec\# possui uma forma de especificação de asserções em que as pré e
-poscondições são declaradas logo após a assinatura do método ou classe, apenas
+pós-condições são declaradas logo após a assinatura do método ou classe, apenas
 com o uso das palavras reservadas \emph{require} e \emph{ensure}, sem uso de
 símbolos. Essa abordagem foi aplicada à \neoidl{} para versão final da sintaxe
 com suporte a \designbycontract{}.
 
 As próximas subseções apresentam alguns exemplos de especificação de pre e
-poscondições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.
+pós-condições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.
 Inicialmente as condições de \designbycontract{} são demonstradas separadamente
 e, ao final, a subseção \ref{SintaxeGeralDbc} consolida o conjunto
 de novos elementos sintáticos e como eles são estruturados.
@@ -380,7 +380,7 @@ pós-condição (\emph{ensure});
 \neoidl{}  admite seis operadores de comparação: igualdade (\literal{==}), 
 diferença (\literal{<>}), maior (\literal{>}), maior ou igual (\literal{>=}), 
 menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados  a
-qualquer tipo de pré ou poscondição.
+qualquer tipo de pré ou pós-condição.
 
 Mais de um atributo pode ser testado em uma pré ou pós-condição. Na expressão
 acima, essa característica é simbolizada com a indicação de uma lista.
@@ -677,7 +677,7 @@ A parte correspondente ao acionamento das pré e pós-condições é produzido p
 módulo \emph{PPServiceFilter}. O código produzido por este módulo é composto de
 duas seções: (i) a declaração das condições de \designbycontract{} e (ii) o
 carregamento dessas condições. A primeira seção, de declaração das condições
-\designbycontract{} contém a lista de pré e pos-condições do serviço. A Figura 
+\designbycontract{} contém a lista de pré e pós-condições do serviço. A Figura 
 \ref{Fig:LhsRhsDbcConditions} apresenta um exemplo de condição especificada em
 \neoidl{} transformada em código \emph{Python Twisted}.
 
