@@ -1,7 +1,7 @@
-\chapter{CONCLUSÕES E TRABALHOS RELACIONADOS}
+\chapter{CONCLUSÕES E TRABALHOS FUTUROS}
 \vspace{-6mm}
 
-\section{CONCLUSÕES GERAIS}
+\section{CONCLUSÕES}
 \vspace{-6mm}
 
 A necessidade de estratégias de integração de sistemas e soluções adaptáveis às
@@ -11,37 +11,49 @@ adotarem o modelo de computação orientada a serviços -- SOC
 serviço por meio de seu contrato é um dos fatores determinantes para o sucesso
 do uso de SOC.
 
+A \neoidl{} foi criada para ser uma alternativa às linguagens de especificação
+de \wss REST, uma vez que estas possuem uma sintaxe pouco expressiva para humanos,
+além de não disporem de mecanismos com suporte a extensibilidade e modularização. O estudo
+empírico da comparação entre especificações Swagger e \neoidl{} demonstrou a capacidade
+expressiva e potencial de reuso da \neoidl{}. 
+Entretanto, nem a \neoidl{}, nem as demais linguagens possibilitavam especificar 
+contratos robustos, como os existentes em linguagens com suporte a \designbycontract{}.
 
-A boa definição dos contratos \ldots 
+Esse trabalho apresentou uma extensão da \neoidl{} para possibilitar a especificação
+de contratos REST com suporte a pré e pós-condições e, a partir do contrato, permitir
+a geração de código de serviços REST com essas garantias, seguindo a abordagem
+\CtFirst{}. A proposta se baseou no paradgima de orientação a objetos, uma das 
+principais influências da orientação a serviços.
+
+Essa proposta foi submetida ao \textit{feedback} de profissionais experientes e também ao 
+\textit{Workshop} de teses de dissertações do WTDSoft 2015. Os elementos sintáticos
+de linguagens com suporte a \designbycontract{} como Eiffel, JML e Spec\# foram avaliados
+e proporcionaram a criação de novas construções sintáticas para a \neoidl{} mantendo a harmonia com 
+a linguagem pre-existente, sem que se perdesse o potencial para criação de regras de validação flexíveis e abrangentes.
+
+A \neoidl{} passou a permitir a validação dos parâmetros de entrada e saída de uma requisição (por meio
+de pré e pós-condições básicas) assim como permitir também fazer requisição a outros serviços para realizar validações mais
+complexas, por meio de pequenas composições de serviços. A construção de um \textit{Plugin Twisted} demonstrou ser
+viável produzir código que realize, em tempo de execução, a validação das regras estabelecidas no contrato, sem que o 
+desenvolvedor tenha que se preocupar com elas e direcione seu esforço para a implementação das regras
+de negócio.
+
+A avaliação subjetiva, realizada por meio de questionário baseado nas técnicas GQM e TAM, apresentou
+resultados satisfatórios à hipótese de pesquisa, em que grande parte dos respondentes indicou que a \neoidl{} com suporte
+a \designbycontract{} é uma ferramenta com potencial de adoção, demonstrando ser uma linguagem e um 
+\framework{} úteis e fáceis de serem utilizados sob a ótica de quem escreve contratos e implementa
+serviços. 
+
+Ficou demonstrado, no contexto de avaliação desse trabalho, que os conceitos de \designbycontract, quais sejam,
+expressar direitos e obrigações entre os clientes e fornecedores de recursos, proporcionando qualidade na
+análise, projeto, implementação e comunicação, são também aplicáveis no paradigma de orientação
+a serviços. Ademais, que serviços baseados em \wss REST podem ser simples e leves sob a ótica
+da especificação mas também serem robustos sobre a ótica da estabilidade e comportamento.
+
+
+\section{TRABALHOS FUTUROS}
 \vspace{-6mm}
 
 
--- Usar na motivação --
-The problem gets aggravated by
-the fact that modern software applications are expected to
-make use of these reusable modules as much as possible,
-in an effort to reduce both the development costs and the
-production time. Unfortunately, this situation opens the door
-for the propagation of security vulnerabilities among several
-applications as a result of the incorrect enforcement of security
-properties in reusable software modules and threatens the
-security and safety of applications as a whole.
-\cite{rubio2013verifying}
-
-Meyerovich e Rabkin \cite{meyerovich2013empirical} analisaram quase 800.000
-projetos de código aberto para tentar identificar o que leva a escolha de uma
-linguagem em detrimento de outra. Eles concluíram que o domínio em que a
-linguagem será aplicada, ou seja, o problema que ela pretende resolver, tem mais
-influência que a similaridade semântica com outras linguagens já utilizadas. 
-\cite{meyerovich2013empirical}
-
-
-
-
-
-\section{TRABALHOS RELACIONADOS E PESQUISAS FUTURAS }
-\vspace{-6mm}
-
-\ldots
 
 - Trabalhos relacionados com hipermedia
