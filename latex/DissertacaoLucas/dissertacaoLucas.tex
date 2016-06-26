@@ -35,7 +35,10 @@
 \newlength\llength
 \llength=1.38ex\relax
 
-
+\hyphenation{NeoIDL a-li-nha-das des-cre-ver re-a-li-za-do MessageType
+cor-res-pon-den-te ge-ra-do do-cu-men-ta-da res-pos-tas mo-de-lo
+a-pre-sen-ta-do cons-tan-tes}
+% u-ti-li-da-de re-a-li-za-\c{c}\~{a}o subs-ti-tu-\'{i}-das}
 
 \newenvironment{joincode}  {\let\orighscode=\hscode
   \let\origendhscode=\endhscode
@@ -64,16 +67,16 @@
 \newcommand{\reserved}[1]{\mbox{{\texttt {#1}}}}
 \newcommand{\literal}[1]{\mbox{{\texttt {#1}}}}
 \newcommand{\symb}[1]{\mbox{{\texttt {#1}}}}
-
+ 
 
 \definecolor{light-gray}{gray}{0.85}
 \definecolor{dark-yellow}{RGB}{215,167,0}
 
 \newcommand{\hilight}[1]{\colorbox{light-gray}{#1}}
+ 
+ 
 
 
-
-\hyphenation{NeoIDL}
 
 \lstdefinelanguage{json}{
   basicstyle=\normalfont\ttfamily,
@@ -179,12 +182,15 @@
   showstringspaces=false,
   breaklines=true,
   frame=top,
+  comment=[l]{--},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
   }
   
 
   \lstdefinelanguage{JML}{
   sensitive = true,
-  keywords = {class, public, static, int, return},
+  keywords = {class, public, static, int, return, requires, ensures},
   numbers=left,
   numberstyle=\scriptsize,
   stepnumber=1,
@@ -204,6 +210,9 @@
   showstringspaces=false,
   breaklines=true,
   frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
   }
   
    \lstdefinelanguage{Perl}{
@@ -327,9 +336,9 @@ APÊNDICES
 \vfill
 
 \clearpage
-% \input{apend_a}
-% \input{apend_b}
-% \input{apend_c}
+ \input{apend_a}
+ \input{apend_b}
+ \input{apend_c}
 % fim do texto
 
 

@@ -22,10 +22,10 @@ aplicada em várias instituições que compõem a máquina pública.
 
 Nessas situações, os sistemas de informação das organizações devem possibilitar
 que a dinâmica de adaptação ocorra sem demora, sob pena de, em vez de serem
-ferramental para apoiar continuamente os processos de negócio, se tornem entrave
-para a ágil incorporação dos novos processos. Por outro lado, a nova
-configuração deve se manter integra e funcional com o cenário de TI existente,
-normalmente complexo.
+ferramentais para apoiar continuamente os processos de negócio, se tornem
+entrave para a ágil incorporação dos novos processos. Por outro lado, a nova
+configuração deve se manter integra e funcional com o cenário de Tecnologia da
+Informação -- TI -- existente, normalmente complexo.
 
 A eficiência na integração entre as soluções de TI é determinante para que se
 consiga alterar uma parte sem comprometer todo o ecossistema. A integração
@@ -36,8 +36,8 @@ interoperabilidade \cite{papazoglou2008service}.
 A computação orientada a serviços -- SOC -- endereça essas necessidades em uma
 plataforma que aumenta a flexibilidade e melhora o alinhamento com o negócio, a
 fim de reagir rapidamente a mudanças nos requisitos de negócio. Para obter esses
-benefícios, os serviços devem cumprir com determinados quesitos, que incluem
-alta autonomia ou baixo acoplamento \cite{erl2008soa}. Assim, o paradigma de SOC
+benefícios, contudo, os serviços devem cumprir com determinados quesitos, que
+incluem alta autonomia ou baixo acoplamento \cite{erl2008soa}. Assim, o paradigma de SOC
 está voltado para o projeto de soluções preparadas para constantes mudanças,
 substituindo-se continuamente pequenas peças -- os serviços -- por outras
 atualizadas.
@@ -100,7 +100,7 @@ resultado é a formação de um ambiente projetado para produzir soluções alin
 aos princípios de projeto de orientação a serviço.
 
 Segundo Thomas Erl \cite{erl2009web}, o termo arquitetura orientada a serviço --
-SOA -- vem sendo amplamente utilizado na mídia e nos produtos de divugação de
+SOA -- vem sendo amplamente utilizado na mídia e nos produtos de divulgação de
 fabricantes e se tornado quase que sinônimo de computação orientada a
 serviço -- SOC.
 
@@ -122,7 +122,7 @@ considerado um conjunto de capacidades descritas em seu contrato.
 
 \item [Contrato de serviço] é o conjunto de documentos que expressam as
 meta-informações do serviço, sendo a parte que descreve a
-sua interface técnica a mais fundamental. Esses documentos compõem o contrato
+sua interface técnica, a mais fundamental. Esses documentos compõem o contrato
 técnico do serviço, cuja essência é estabelecer uma API com as funcionalidades providas pelo serviço por meio de
 suas capacidades \cite{erl2009web}.
 
@@ -210,8 +210,8 @@ compartilhados por várias áreas da empresa ou farão parte de soluções maior
 como serviços compatilhados.
 
 A capacidade de composição é a quarta característica. Os serviços devem ser
-projetados não somente para serem reusados, mas também possuir
-flexibilidade para serem compostos em diferentes estruturas de variadas
+projetados não somente para serem reusados, mas também para possuir
+flexibilidade em serem compostos em diferentes estruturas de variadas
 soluções. Confiabilidade, escalabilidade, troca de dados em tempo de execução
 com integridade são pontos chave para essa característica.
 
@@ -223,7 +223,7 @@ com integridade são pontos chave para essa característica.
 
 O paradigma de orientação a serviço é estruturado em oito princípios
 fundamentais \cite{erl2009web}, ilustrados na Figura \ref{Fig:PrincipiosSoa}. São eles que
-caraterizam a abordagem SOA e a sua aplicação fazem com que um serviço se diferencie de um componente ou de
+caraterizam a abordagem SOA e a sua aplicação faz com que um serviço se diferencie de um componente ou de
 um módulo. Os contratos de serviços permeiam a maior parte destes princípios.
 
 \begin{figure}[!htb]
@@ -272,7 +272,7 @@ implementação do serviço deve ser derivada do contrato, pondendo se ter inclu
 partir do contrato.
 
 
-\item[Abstração] - \textbf{Os constratos de serviços devem conter apenas
+\item[Abstração] - \textbf{Os contratos de serviços devem conter apenas
 informações essenciais e as informações sobre os serviços são limitadas àquelas
 publicadas em seus contratos}. O contrato é a forma oficial a partir da qual o
 consumidor do serviço faz seu projeto e tudo o que está além do contrato deve
@@ -502,7 +502,7 @@ o sucesso da execução.
 O mecanismo que expressa essas condições são chamados de asserções
 (\textit{assertions}, em inglês). As asserções que o consumidor deve respeitar
 para fazer uso da rotina são chamadas de \textbf{precondições}. As asserções que
-fornecem, de parte do fornecedor, as garantias ao consumidor, são denominadas
+asseguram, de parte do fornecedor, as garantias ao consumidor, são denominadas
 \textbf{pós-condições}.
 
 DbC tem o objetivo de aumentar a robustez do sistema e tem na linguagem Eiffel
@@ -527,13 +527,13 @@ que certas propriedades serão respeitadas após a chamada à rotina.
 
 De forma indireta, \designbycontract{} estimula um cuidado maior na análise das
 condições necessárias para, de forma consistente, se ter o funcionamento correto
-da relação de cooperação clinte-fornecedor.
+da relação de cooperação cliente-fornecedor.
 Essas condições são expressas em cada contrato, o qual especifica as obrigações
 a que cada parte está condicionada e, em contra-ponto, os benefícios garantidos.
 
 Nesse contexto, o contrato é um veículo de comunicação, por meio do qual os
 clientes tomam conhecimento das condições de uso, em especial das precondições.
-É fundamental que as precondições estejam disponíveis para todos os clientes
+É fundamental que as precondições estejam acessíveis para todos os clientes
 para os quais as rotinas estão disponíveis, pois, sem que isso ocorra, o cliente
 corre o risco de acionar a rotina fora de suas garantias de funcionamento. 
 
@@ -632,8 +632,8 @@ pós-condição na linguagem de extensão JML.
 
 \item[Spec\#] - é uma extensão da linguagem C\#, à qual agrega o suporte para
 distinguir referência de objetos nulos de referência a objetos possivelmente não
-nulos, especificações de pré e pós-condições, um método para gerenciar exceções
-entre outros recursos \cite{barnett2004spec}.
+nulos, especificações de pré e pós-condições e um método para gerenciar
+exceções entre outros recursos \cite{barnett2004spec}.
 
 A figura \ref{lst:exemploSpec} apresenta um exemplo de especificação de pré e
 pós-condição na linguagem Spec\#.

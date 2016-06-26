@@ -16,7 +16,7 @@ Além de ser uma linguagem, a \neoidl{} é também um \textit{framework} de gera
 de código que permite, a partir de contratos especificados na própria
 linguagem, a produção da implementação da estrutura do serviço. Os serviços
 podem ser construídos em várias linguagens e tecnologias, por meio
-de \textit{pluggins} da \neoidl{}.
+de \textit{plugins} da \neoidl{}.
 
 As próximas subseções apresentam o histórico da \neoidl{}, exemplificam sua
 sintaxe e descrevem sucintamente seu \textit{framework} de geração de código.
@@ -38,8 +38,8 @@ A particularidade do \neocortex{} de se utilizar serviços implementados em
 várias linguagens motivou o desenvolvimento um programa gerador de serviços
 poliglotas -- que produz código de várias linguagens de programação -- a partir da
 descrição do contrato do serviço. A \neoidl{} foi concebida para atender a essa
-finalidade. A primeira decisão de projeto da \neoidl{} foi a linguagem para se
-especificar o contrato de serviço.
+finalidade. A primeira decisão de projeto da \neoidl{} foi a escolha da
+linguagem para se especificar o contrato de serviço.
 
 Porém, as linguagens de programação disponíveis para especificação de
 contratos REST, como Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
@@ -51,7 +51,7 @@ tornando os contratos extensos e de difícil compreensão humana. Além disso,
 elas não possuem mecanismos semânticos de extensibilidade e modularidade.
 
 Partiu-se então para a criação uma nova linguagem, com sintaxe
-inspirada em linguagens mais claras e concisas -- como emph{CORBA
+inspirada em linguagens mais claras e concisas -- como \emph{CORBA
 IDL}\texttrademark \cite{corba} e \emph{Apache
 Thrift}\texttrademark\cite{thrift} --, e que permitisse ainda a declaração de
 tipos de dados definidos pelo usuário e extensibilidade. Ambas, \emph{CORBA} e
@@ -263,20 +263,25 @@ O carregamento e validação dos \textit{plugins} são competências do componen
 tiverem sido atendidas, o \textit{plugin} é carregado e estará pronto para ser
  acionado. Caso contrário, algumas exceções podem ocorrer, como, por exemplo, não haver definição de
 nenhum \textit{plugin} no arquivo:
+\vspace{-6mm}
 
 \begin{tabbing}\tt
 ~\char36{}\char46{}\char47{}neoIDL\\
-\tt ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
+\tt
+~neoIDL\char58{}~panic\char33{}~\char40{}the~\char96{}impossible\char39{}~happened\char41{}\\
 \tt ~~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
 \tt ~~~~Not~in~scope\char58{}~\char96{}Plugins\char46{}Python\char46{}plugin\char39{}
 \end{tabbing}
+\vspace{-6mm}
 
 Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
 \texttt{Plugin}:
 
+\vspace{-6mm}
 \begin{tabbing}\tt
 ~\char36{}\char46{}\char47{}neoIDL\\
-\tt ~neoIDL\char58{}~panic\char33{}~\char40{}the~\char39{}impossible\char39{}~happened\char41{}\\
+\tt
+~neoIDL\char58{}~panic\char33{}~\char40{}the~\char96{}impossible\char39{}~happened\char41{}\\
 \tt ~\char40{}GHC~version~7\char46{}6\char46{}3~for~x86\char95{}64\char45{}darwin\char41{}\char58{}\\
 \tt ~~Couldn\char39{}t~match~expected~type~\char96{}Plugin\char39{}\\
 \tt ~~~with~actual~type~\char96{}\char91{}GHC\char46{}Types\char46{}Char\char93{}\char39{}
@@ -290,7 +295,8 @@ Ou ainda em razão de o \textit{plugin} não ser uma instância do tipo
 A primeira versão da \neoidl{} foi submetida a um estudo empírico de sua expressividade 
 e reuso em um contexto real. As próximas subseções apresentam 
 o resultado da análise comparativa da representação de 44 (quarenta e quatro)
-contratos escritos em Swagger em relação à mesma especificação em \neoidl{}.
+contratos escritos em Swagger v1.2 em relação à mesma especificação em
+\neoidl{}.
 
 Esse estudo é uma das contribuições deste trabalho de mestrado e foi publicado
 no periódico IJSeke \cite{lima2015neoidl}.
@@ -334,17 +340,16 @@ expressividade em termos de quantidade de linhas de código (SLOC - do inglês
 \textit{Source Lines of Code}), uma vez que muitas linhas significam maior
 esforço para escrita, sobretudo na abordagem \CtFirst{}.
 
-Com este propósito, foi obtido um conjunto de 44 contratos do Exército
+Com esse propósito, foi obtido um conjunto de 44 contratos do Exército
 Brasileiro especificados em Swagger. A primeira etapa foi reescrever esses
 contratos em \neoidl{} e então comparar a quantidade de linhas de código
 produzida com a quantidade de linhas de código dos contratos originais.
 
 Para a
 transcrição dos contratos, em razão da \neoidl{} não possuir recursos para
-transcrição bidirecional de Swagger para \neoidl{}, foi desenvolvido
+trans\-crição bidirecional de Swagger para \neoidl{}, foi desenvolvido
 e utilizado um \textit{script} na linguagem \textit{Perl}, 
-o qual consta do Apêndice desta dissertação
-(Apêndice \ref{scriptSwagger2NeoIDL}).
+o qual consta do Apêndice \ref{scriptSwagger2NeoIDL} desta dissertação.
 
 Os quarenta e quatro contratos em Swagger contabilizaram 13.921 linhas de
 especificação. Os mesmos contratos especificados em \neoidl{} somaram 5.140
@@ -375,7 +380,7 @@ melhoria na expressividade observada (medida como percentual de redução após 
 transformação da especificação Swagger em especificação \neoidl{}) e algumas
 métricas relacionadas ao tamanho da especificação original em Swagger. Na
 Correlação Pearson \cite{benesty2009pearson}, um \emph{p-value} igual a 1 significa correlação
-positiva perfeita. \emph{p-value} igual a -1 significa correlação negativa
+positiva perfeita. Um \emph{p-value} igual a -1 significa correlação negativa
 perfeita, enquanto \emph{p-value} igual a zero indica que as medidas não possuem
 correlação linear.
 
@@ -409,7 +414,7 @@ Número de entidades & 0.20 & 0.18 \\ \bottomrule
 De forma similar à \neoidl{}, Swagger também possui recursos para reuso de
 estruturas, por meio de referências (marcação \$ref). Entretanto, esse recurso
 praticamente não foi explorado no conjunto de contratos analisados, o que
-ocasinou na duplicação da declaração de estruturas entre os diferentes arquivos
+ocasinou a duplicação da declaração de estruturas entre os diferentes arquivos
 de especificação Swagger. Isso se deve, provavelmente, ao modo não intuitivo de
 se fazer referência em Swagger (baseado na referência a outro arquivo JSON) e à
 dificuldade de se identificar que uma determinada entidade foi declarada em
@@ -429,7 +434,7 @@ mostra a estatística de repetição da especificação de contratos.
 \hline   
 Quantidade de entidades & 420 & 26 & 5 & 7 & 2 & 2 & 1 & 1 \\
 \hline
-Repetição de especificação & 1 & 2 & 3 & 4 & 5 & 6 & 10 & 12 \\
+Quantidade de especificações & 1 & 2 & 3 & 4 & 5 & 6 & 10 & 12 \\
 \hline
 
 \end{tabular}

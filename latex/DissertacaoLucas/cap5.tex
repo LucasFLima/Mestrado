@@ -41,7 +41,7 @@ de negócio.
 A avaliação subjetiva, realizada por meio de questionário baseado nas técnicas GQM e TAM, apresentou
 resultados satisfatórios à hipótese de pesquisa, em que grande parte dos respondentes indicou que a \neoidl{} com suporte
 a \designbycontract{} é uma ferramenta com potencial de adoção, demonstrando ser uma linguagem e um 
-\framework{} úteis e fáceis de serem utilizados sob a ótica de quem escreve contratos e implementa
+\framework{} úteis e fáceis de serem utilizados sob a perspectiva de quem escreve contratos e implementa
 serviços. 
 
 Ficou demonstrado, no contexto de avaliação desse trabalho, que os conceitos de \designbycontract, quais sejam,
@@ -54,6 +54,39 @@ da especificação mas também serem robustos sobre a ótica da estabilidade e c
 \section{TRABALHOS FUTUROS}
 \vspace{-6mm}
 
+O estudo sobre especificação de contratos para serviços REST é um campo de
+pesquisa aberto, sobretudo pelo fato de não haver um formato oficial,
+estabelecido pelo W3C ou outra entidade de padrões internacionais como o IEEE.
+Este trabalho explorou o aspecto do uso de construções de \designbycontract{}
+em serviços REST que, embora tenha produzido resultados promissores, ainda não
+fecha a questão por completo.
 
+Ainda sobre a proposta apresentada nessa dissertação, a análise dos resultados
+(seção \ref{AnaliseQuestionario}) levanta a possibilidade de exploração de
+algumas respostas, em especial dos fatores que levaram uma parte importante dos
+respondentes a informar que tem dúvida (nem discordam nem concordam) com o
+adoção da \neoidl{} em suas atividades. Um novo questionário poderia ser
+elaborado sobre esse ponto.
 
-- Trabalhos relacionados com hipermedia
+A realização de um experimento que avalie o uso por completo da abordagem de
+pré e pós-condições desde a especificação dos requisitos, a elaboração dos
+contratos, até os testes dos serviços implementados em um cenário hipotético
+poderia trazer mais insumos para a melhoria da \neoidl{}. Ainda mais relevante
+seria a experimentação da \neoidl{} com \designbycontract{} em um cenário de serviços reais.
+
+Sob a perspectiva de implementação, podem ser elaborados \textit{plugins} para
+outras linguagens de programação além de \textit{Python Twisted} com suporte a
+\designbycontract{}, de modo a ampliar o potencial de utilização do
+\framework{}. O projeto da \neoidl{} também pode incorporar mecanismos que
+facilitem a especificação de contratos, como recursos ambientes
+de desenvolvimento (IDEs) e \textit{code complete}. Ainda um portal de onde
+podessem ser gerados os códigos sem a necessidade de instalação local do
+\framework{}.
+
+Um outro ponto é exploração do potencial da \neoidl{} na disponibilização de
+recursos de \textit{hypermedia} \cite{webber2010rest}, fornecendo mecanismos
+em que o cliente possa interagir com o servidor para identificar os serviços
+que deseja seguir. A tranformação bidirecional entre o código gerado e a
+especificação do contrato, útil em cenários de manutenção, também pode ser
+explorada.
+

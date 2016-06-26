@@ -42,7 +42,7 @@ detalham o modo de operação dos serviços com as construções de \designbycon
 \vspace{-6mm}
 
 As garantias para execução dos serviços são estabelecidas em duas etapas: pré e
-pós-condições. Nas precondições o provedor do serviço estabelece os requisitos
+pós-condições. Nas precondições, o provedor do serviço estabelece os requisitos
 para que o serviço possa ser executado pelo cliente. A etapa de pós-condições
 tem o papel de validar se a mensagem de retorno do serviço possui os resultados
 esperados.
@@ -52,13 +52,13 @@ operação das pré e pós-condições. O processo se inicia com a chamada à ca
 identificação da existência de uma precondição. Caso tenham sido estabelecidas 
 precondições, essas são avaliadas. Caso alguma delas não tenham sido
 satisfeitas, o serviço principal não é processado e o provedor do serviço
-retornar o código de falha definido no contrato correspondente.
+retorna o código de falha definido no contrato correspondente.
 
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=140mm,trim = 0mm 0mm 0mm
-0mm,clip]{img/FluxoDbcCondicoes.pdf}
+0mm,clip]{img/FluxoDbcCondicoes.pdf} 
 \caption{Digrama de atividades com verificação de pré e pós condições}
 \label{FigServiceDbC}
 \end{figure}
@@ -145,8 +145,8 @@ programação: Eiffel, JML e Spec\# (exemplificadas na subseção
 Em Eiffel, as asserções são expressões booleanas, de modo que uma pré e uma
 pós-condição podem ter resultado verdadeiro ou falso. As asserções também podem
 incluir chamadas a funções, extendendo a validações a lógicas mais sofisticadas
-\cite{meyer1992applying}. Essas caracteríticas, por serem simples e versáteis,
-foram consideradas adequadas e incorporadas à especificação de
+\cite{meyer1992applying}. Essas ca\-rac\-te\-rís\-ti\-cas, por serem simples e
+versáteis, foram consideradas adequadas e incorporadas à especificação de
 \designbycontract{} em contratos de serviços na \neoidl{}.
 
 A primeira sintaxe de \designbycontract{} na \neoidl{} teve como
@@ -241,7 +241,7 @@ As precondições baseadas em serviços seguem uma sequência que envolve a cham
 a outro serviço antes do processamento do serviço principal, em um tipo simples de
 composição de serviço. Essa abordagem permite que precondições complexas sejam
 validadas por serviços especializados, sem que a especificação do contrato
-de serviço seja complexa. Essa proposta preserva ainda a ideia original de
+de serviço se torne complexa. Essa proposta preserva ainda a ideia original de
 Eiffel\cite{meyer1988eiffel}, de que pré e pós-condições sejam expressões
 \emph{booleanas}.
 
@@ -259,7 +259,7 @@ que as precondições básicas.
 A Figura \ref{lst:DBCPreCondServico} ilustra a especificação de uma precondição
 do tipo serviço (linhas 8 e 9). Assim, antes de executar a operação \method{POST}
 do serviço principal, o serviço \emph{store.getOrder} é acionado. Caso esse
-serviço retorno o código correspondente a \emph{HTTP Not Found}, a operação
+serviço retorne o código correspondente a \emph{HTTP Not Found}, a operação
 \method{POST} é executada. Caso contrário, o serviço principal retorna o valor
 correspondente a \emph{HTTP Invalid Precondition}, em razão do estabelecido no
 \emph{otherwise}.
@@ -281,8 +281,8 @@ correspondente a \emph{HTTP Invalid Precondition}, em razão do estabelecido no
 
 A pós-condição com chamada a serviço seguem a sequência de eventos indicada na
 Figura \ref{FigServicePostcondition}. No caso da pós-condição, a execução do
-serviço principal já ocoreu e a função do serviço na pós-condição é validar se a
-execução do serviço principal ocorreu com sucesso. Algumas pós-condições são
+serviço principal já ocorreu e a função do serviço na pós-condição é validar se
+a execução do serviço principal ocorreu com sucesso. Algumas pós-condições são
 naturais, como as que verificam se um objeto foi inserido após a operação de
 inclusão (método \method{POST}). Ou ainda, a que verifica se o objeto foi excluído
 após uma operação \method{DELETE}.
@@ -309,18 +309,17 @@ estabelecido na instrução \textit{otherwise}.
 \label{SintaxeGeralDbc}
 
 Entre as subseções \ref{precondicaoBasica} e \ref{Pos-condicao servico} foram
-apresentados separadametne exemplos simples de especificação de pre e condições
-na \neoidl{} de modo a facilitar a compreensão. Esta subseção demonstra
-a estruturação sintática das construções de \designbycontract{} agregadas
-\neoidl{} por este trabalho.
+apresentados separadametne exemplos simples de especificação de pré e
+pós-condições na \neoidl{} de modo a facilitar a compreensão. Esta subseção
+demonstra a estruturação sintática das construções de \designbycontract{} agregadas \neoidl{} por este trabalho.
 
 \subsubsection{Listas de pré e pós-condições}
 
 Um módulo \neoidl{} possui uma seção para declaração dos serviços (ver Figura
-\ref{fig:moduloNeoIDL}). Cada serviço declarado na \neoidl{} pode ter um mais
+\ref{fig:moduloNeoIDL}). Cada serviço declarado na \neoidl{} pode ter um ou mais
 capacidades, as quais correspondem às operações HTTP utilizadas na arquitetura
 REST. Sintaticamente, um serviço possui uma lista de capacidades\footnote{Os
-símbolos ``[`` e ``]'' identificam uma lista.}:
+símbolos ``['' e ``]'' identificam uma lista.}:
 
 \begin{center}
 \hilight{\{\texttt{Serviço [Capacidade]}\}}
@@ -471,9 +470,9 @@ A Figura \ref{Fig:FonteDadosDbcNeoIDL} resume a origem para cada operação. Há
 diferenças também entre os tipos básico e baseado em serviços das construções de
 \designbycontract{}. As operações \method{GET} e \method{DELETE} não possuem
 argumentos encaminhados no corpo da requisição. Para essas operações, os
-argumentos são retirados do \emph{path} ou \emph{query string} para validação
-das precondições, tanto no tipo básico como no tipo baseado em composição. Na
-figura, essa origem é identificada como \textit{Request arguments}.
+argumentos são retirados do \emph{path} ou \emph{query string} para
+va\-li\-da\-ção das precondições, tanto no tipo básico como no tipo baseado em
+composição. Na figura, essa origem é identificada como \textit{Request arguments}.
 
 \begin{figure}[!htb]
 \centering
@@ -503,7 +502,7 @@ em uma pós-condição.
 Já as pós-condições baseadas em serviços não suportam a operação \method{GET}.
 Embora seja tecnicamente possível acionar um serviço com base nos argumentos da
 requisição, como não se tem modificação nos dados por essa operação, a
-validação dessas informações pode meio de serviço deve ser feita nas
+validação dessas informações pode se dar por meio de serviço deve ser feita nas
 precondições. Ademais, as pós-condições básicas da operação \method{GET} cumprem
 com o objetivo que validar as informações de saída.
 
@@ -532,14 +531,14 @@ ele pode ser escrito em \neoidl{} com suporte a construções de
 \designbycontract{}. O contrato, porém, é apenas uma especificação, no
 sentido de descrever regras e não de torná-las executáveis em si. Todavia, a
 \neoidl{} é, além de uma linguagem formal, um \framework{} de geração de
-código poliglota (subseção \ref{histMotivNeoIDL}) por meio de plugins.
+código poliglota (subseção \ref{histMotivNeoIDL}) por meio de \textit{plugins}.
 
 Para se comprovar a viabilidade de se conceber serviços com suporte a pré e
-pós-condições, foi desenvolvido, no decorrer da pesquisa de mestrado, um plugin
-da \neoidl{} que cumpre com tal finalidade. As próximas subseções detalham como
-é estruturada a arquitetura do serviço gerado e seu comportamento em relação a
+pós-condições, foi desenvolvido, no decorrer da pesquisa de mestrado, um
+\textit{plugin} da \neoidl{} que cumpre com tal finalidade. As próximas
+subseções detalham como é estruturada a arquitetura do serviço gerado e seu comportamento em relação a
 \designbycontract{}. Ao final, alguns aspectos sobre a implementação do
-próprio plugin são descritos.
+próprio \textit{plugin} são descritos.
 
 \subsection{Visão geral do Python \twisted{}}
 \label{PythonTwisted}
@@ -553,8 +552,8 @@ O \twisted{} é baseado em eventos e adota a estratégia de tratamentos de
 requisições de forma assíncrona, em detrimento ao uso de \textit{threads}. O
 núcleo do \twisted{} é o \textit{loop} do objeto \emph{reactor} responsável por
 aguardar e direcionar o processamento dos eventos (Figura
-\ref{Fig:TwistedReactor}). Uma requisição HTTP, como as das chamadas a serviços REST, são tratados como
-eventos.
+\ref{Fig:TwistedReactor}). Requisições HTTP, como as das chamadas a serviços
+REST, são tratadas como eventos.
 
 \begin{figure}[!htb]
 \centering
@@ -564,7 +563,7 @@ eventos.
 \label{Fig:TwistedReactor}
 \end{figure}
 
-O \emph{reactor} entrega os eventos para serem tratados para processamentos
+O \emph{reactor} entrega os eventos para serem tratados por processamentos
 especializados, indicados no lado direito da Figura \ref{Fig:TwistedReactor}.
 Caso o processamento de um evento seja lento, deve-se disparar um
 processamento assíncrono, e registrar no \emph{reactor} uma chamada para quando
@@ -598,8 +597,8 @@ ou seja, não dependem da quantidade nem do conteúdo dos serviços declarados n
 módulo \neoidl{}.
 
 A classe \emph{Server} é o núcleo do \twisted{} \textit{server}. Ela é
-responsável por subir o servidor HTTP, receber as requisições, identificar
-as operações da requisição (\method{GET}, \method{POST}, \method{PUT} ou \method{DELETE}), e
+responsável por fazer executar o servidor HTTP, receber as requisições,
+identificar as operações da requisição (\method{GET}, \method{POST}, \method{PUT} ou \method{DELETE}), e
 direcionar a requisição para o serviço específico. A identificação do serviço é
 feita por meio de um arquivo de rota (routes.json), o qual possui uma tradução
 entre os \emph{paths} das requisições e os serviços responsáveis por cada uma
@@ -612,8 +611,8 @@ resposta dos serviços entre os serviço e o servidor.
 
 Essas duas classes são suficientes para o servidor quando não se utiliza
 \designbycontract{} nos serviços. O pacote
-\emph{DbcConditions} consolida o conjunto de classes responsáveis por processar
-as pré e pós-condições. A principal função de \emph{DbcConditions} é realizar a
+\emph{DbcConditions} consolida o conjunto de classes res\-pon\-sá\-veis por
+processar as pré e pós-condições. A principal função de \emph{DbcConditions} é realizar a
 comparação entre o valor real e o valor esperado, efetivando toda a
 lógica corresponde às construções de \designbycontract{} descritas na subseção
 \ref{TiposContrDbC}.
@@ -628,8 +627,8 @@ lógica corresponde às construções de \designbycontract{} descritas na subse�
 
 Em \emph{DbcConditions} estão as funções que carregam a lista de pré e
 pós-condições para cada serviço. A chamada para as pré e pós-condições baseadas
-em serviços também é construída nesse pacote. Essa pacote é fundamental para o
-funcionamento das construções de \designbycontract{} e consta transcrita no
+em serviços também é construída nesse pacote. Esse pacote é fundamental para o
+funcionamento das cons\-tru\-ções de \designbycontract{} e consta transcrita no
 Apêndice \ref{classesDbcCondition}.
 
 Para cada serviço declarado no módulo \neoidl{} são geradas duas classes: os
@@ -652,8 +651,9 @@ fim, contém apenas a estrutura para implementação da lógica interna do servi
 \subsection{Geração de código}
 
 O plugin \twisted{} é um conjunto de seis módulos Haskell. Para cada tipo de
-arquivo gerado, há um módulo no plugin, conforme Figura \ref{PluginTwisted}. Os
-módulos \emph{PPService}, \emph{PPUtils} e P\emph{PDbcConditions} apenas
+arquivo gerado, há um módulo no \textit{plugin}, conforme Figura
+\ref{PluginTwisted}.
+Os módulos \emph{PPService}, \emph{PPUtils} e P\emph{PDbcConditions} apenas
 imprimem um código Python fixo, sem qualquer interferência do módulo \neoidl{}
 processado. \emph{PPRoute} é um pequeno módulo (42 linhas) que processa as
 informações contidas nas instruções \emph{path} dos serviços declarados no
@@ -668,8 +668,8 @@ módulo \neoidl{} e mapeia a correspondência entre as URIs e os serviços.
 \end{figure}
 
 O módulo \emph{PPService} gera uma classe com um método para cada operação do
-serviço. Na versão atual do plugin, os métodos são implementados com uma lógica
-de gravação de objetos em um banco em memória, apenas para simplificar o teste
+serviço. Na versão atual do \textit{plugin}, os métodos são implementados com
+uma lógica de gravação de objetos em um banco em memória, apenas para simplificar o teste
 dos código gerado. Essa implementação não é relevante, uma vez que a lógica
 especializada do serviço real a substituirá.
 
@@ -836,7 +836,7 @@ resultados pouco precisa.
 
 A abordagem observatória está ligada a técnicas como seções de
 \textit{think-aloud}\footnote{Momentos em que os participantes são
-convidados a expressar seus pensamentos em voz alta ('pensar alto'), a partir de
+convidados a expressar seus pensamentos em voz alta (`pensar alto'), a partir de
 questões levantadas pelo investigador}, sombreamento\footnote{Consiste
 em acompanhar o participante na realização de todas as suas atividades} e
 participante-observador (em que o pesquisar participa realizando 
@@ -926,10 +926,10 @@ facilidade de uso (\textit{perceived ease of use} - PEU)
 
 Percepção de utilidade é medido com o grau em que uma pessoa acredita que
 utilizar uma determinada tecnologia vai melhorar sua eficiência em suas
-atividades. A percepção de utilidade está relacionada ao grau em que uma pessoa
+atividades. A percepção de facilidade está relacionada ao grau em que uma pessoa
 acredita que determinada tecnologia será livre de esforço. Adicionamente, alguns
 estudos incluem um outro aspecto, que é a predisposição ao uso
-(\textit{self-predicted future usage}), que está relacionado à indicação sobre a
+(\textit{self-predicted future usage}), que está relacionado à indicação da 
 preferência de uma determinada tecnologia em detrimento de outras \cite{laitenberger1998evaluating}.
 
 Os questionários baseados em TAM apresentam afirmações indicando que uma
@@ -1180,8 +1180,8 @@ submetidas por pessoas fora do público alvo. Cinco instituições das quais se
 conhecia o nível técnico e com as quais se tinha contato com profissionais
 concentraram a maior parte das respostas. As demais respostas são empresas
 relacionas a essas instituições, por indicação de técnicos experientes
-do primeiro grupo. Nenhuma das respostas foi considerada anormal e, portanto,
-todas foram validadas, totalizando 26 respondentes.
+do primeiro grupo. Sob este aspecto, nenhuma das respostas foi considerada
+anormal e, portanto, todas foram validadas, totalizando 26 respondentes.
 
 A segunda questão levantou o tempo de experiência dos respondentes com
 desenvolvimento de sistemas Web. O resultado foi sumarizado na Tabela
@@ -1313,8 +1313,8 @@ Na questão 6 foi apresentada uma afirmação sobre a efetividade de se especifi
 contratos formalmente, em detrimento de especificação textual descritiva.
 Conforme apresentado na primeira barra da Figura \ref{Respostas6a8},
 praticamente todos os respondentes concordaram com a afirmação e nenhum
-discordou. Esse resultado reforça a utilidade de se utilizar contratos para
-especificação de serviços.
+discordou. Esse resultado reforça a utilidade de se utilizar contratos
+formais para especificação de serviços.
 
 
 \begin{figure}[!htb]
@@ -1374,8 +1374,8 @@ nem concorda nem discorda da afirmação.
 
 A questão 12 afirma que é fácil se lembrar da sintaxe de uma precondição na
 \neoidl{}. Essa questão está relacionada a como se pode associar mentalmente as
-contruções sintáticas ao efeito que elas geram. Muito embora se esperasse um
-resultado mais dividido, pois ser uma construção influenciada por linguagens
+construções sintáticas ao efeito que elas geram. Muito embora se esperasse um
+resultado mais dividido, por ser uma construção influenciada por linguagens
 diversas, os resultados indicam que a sintaxe é fácil de ser lembrada.
 
 \subsubsection{Análise da geração de código para construções de \designbycontract{}}
@@ -1461,7 +1461,7 @@ para atender às necessidades das equipes de desenvolvimento.
 \label{AmeacaoEstudoSubjetivo}
 
 Questionários são instrumentos práticos para se realizar estudos empíricos que
-visam obter a opniões subjetivas. Uma de suas principais vantagens está em
+visam obter a opiniões subjetivas. Uma de suas principais vantagens está em
 permitir a participação de várias pessoas, ampliando a abrangência temporal e
 geográfica. Há também mais domínio e facilidade de análise sobre os dados
 coletados.
@@ -1469,7 +1469,7 @@ coletados.
 Entretanto, algumas ameaças podem influenciar a conclusão dos resultados. Para o
 questionário aplicado neste trabalho de pesquisa, podemos destacar alguns pontos
 que podem influenciar ou limitar a qualidade dos dados, bem como direcionar para
-a realização de outros estudos empíricos sobre o tema.
+a rea\-li\-za\-ção de outros estudos empíricos sobre o tema.
 
 Um primeiro ponto a observar é a quantidade de respondentes. Embora seja um
 número superior a de alguns outros estudos avaliados
@@ -1498,6 +1498,6 @@ modo produzir informações que permitissem conclusões mais completas.
 
 Em estudos futuros, essas melhorias podem ser aplicadas. Em que pese esses
 pontos de atenção, o estudo realizado por meio do questionário atigiu seus
-resultados e produziu dados de grande relevancia para o objeto em pesquisa.
+resultados e produziu dados de grande relevância para o objeto em pesquisa.
 
 
