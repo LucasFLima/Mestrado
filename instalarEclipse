@@ -1,0 +1,11 @@
+cd ~/workspace
+
+wget http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/mars/R/eclipse-jee-mars-R-linux-gtk-x86_64.tar.gz
+
+tar -zxvf eclipse-jee-mars-R-linux-gtk-x86_64.tar.gz
+
+wget http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-linux-x64.rpm
+# http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+# http://pt.wikihow.com/Instalar-o-Oracle-Java-JDK-no-Linux-Ubuntu
+
+
