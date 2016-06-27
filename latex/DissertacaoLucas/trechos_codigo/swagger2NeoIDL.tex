@@ -1,4 +1,3 @@
-\begin{lstlisting}
 #include
 using namespace std;
 int main()
@@ -24,9 +23,9 @@ my $model_name = ( split '/', $arquivo )[ -2 ];
 $text = decode_json($json_file);
 #$dumped = Dumper($text);
 
-# cabeçalho
+# cabecalho
 print "module ".lc($model_name)." {\n";
-#TODO: Path do modulo não disponível no swagger
+#TODO: Path do modulo nao disponivel no swagger
 print "\n\tpath = \"xxx\";\n\n";
 
 for $models (keys $text->{'models'}){
@@ -60,11 +59,11 @@ for $models (keys $text->{'models'}){
 				print "\t\t".$atributos_propriedade->{'type'}." : ".
         	                      $nome_propriedade.";";
 			}
-		} else #não possui atributo de tipo definido
+		} else #nao possui atributo de tipo definido
 		{
 			print "\t\t".$atributos_propriedade." : ".$nome_propriedade.";";
 		}
-		#verificar se o dado é obrigatório
+		#verificar se o dado eh obrigatorio
 		$comentario = "";
 		if ($atributos_propriedade->{'required'} != "false") {
 			$comentario = "Required.";
@@ -89,7 +88,7 @@ for $models (keys $text->{'models'}){
 
 #imprime a lista de servicos
 foreach $service (@{$text->{'apis'}}){
-	#Obs: Nome do servico nao disponível no swagger
+	#Obs: Nome do servico nao disponivel no swagger
 	print "\tservice <NomeServico> {\n";
 	print "\t\tpath = \"".$service->{'path'}."\";\n";
      	
@@ -139,13 +138,10 @@ foreach $service (@{$text->{'apis'}}){
 		 print $capacidade_doc_pp;
 		 print $capacidade_pp;
 	}
-
 	print "\t}\n\n";
-	
 }
 #=cut
 
 print "\n";
 
- } 
- \end{lstlisting}
+ }

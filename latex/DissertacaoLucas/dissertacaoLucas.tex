@@ -29,6 +29,7 @@
 \usepackage{listings}
 \usepackage{multirow}
 \usepackage[table]{xcolor}
+\usepackage{latexsym}
 
 \usepackage{xcolor}
 \usepackage{stackengine}
@@ -225,6 +226,12 @@ a-pre-sen-ta-do cons-tan-tes}
   showstringspaces=false,
   breaklines=true,
   frame=top,
+  comment=[l]{#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]" 
   }
   
 
@@ -236,7 +243,7 @@ a-pre-sen-ta-do cons-tan-tes}
 
 \input{folha_titulo}
 \input{aprova}
-%\input{folha_catalografica}
+\input{folha_catalografica}
 \input{dedicatoria}
 \input{agradecimento}
 
