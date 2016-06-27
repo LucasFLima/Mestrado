@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Jun 27 09:31:45 BRT 2016
+markTmpDer=true
+builderNum=2
+outputDir=out
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=NeoIDL-DbC-Sbcars2016.tex
+outputFile=NeoIDL-DbC-Sbcars2016.pdf
+langSpell=en
+markDer=true
+srcDir=
