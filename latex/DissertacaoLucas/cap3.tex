@@ -56,7 +56,7 @@ IDL}\texttrademark \cite{corba} e \emph{Apache
 Thrift}\texttrademark\cite{thrift} --, e que permitisse ainda a declaração de
 tipos de dados definidos pelo usuário e extensibilidade. Ambas, \emph{CORBA} e
 \emph{Apache Thrift}, possuem limitações nesses últimos aspectos. A sintaxe e as
-características da linguagem \neoidl{} são brevemente discutidas na subseção
+características da linguagem \neoidl{} são brevemente discutidas na Subseção
 \ref{linguagemNeoIDL}.
 
 Em relação à geração de código, para se viabilizar a geração poliglota de
@@ -64,7 +64,7 @@ código, a \neoidl{} foi projetada para possuir uma arquitetura modular, de modo
 que novas linguagens ou características de implementação pudessem ser
 incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é possível desenvolver um novo \textit{plugin} para geração de serviços em outras
 linguagens, por exemplo PHP, sem alterar qualquer outro componente do \framework,
-conforme apresentado na subseção \ref{frameNeoIDL}.
+conforme apresentado na Subseção \ref{frameNeoIDL}.
 
 A primeira versão da \neoidl{}, ponto de onde partiu este trabalho de mestrado,
 dava suporte à geração de código em Java, Python e Swagger com as
@@ -109,7 +109,7 @@ forma de extender as características da operação.
 \label{lst:messagedata-neo}
 \end{figure}
 
-O trecho ilustrado na figura \ref{lst:messagedata-neo} faz a definição de dois
+O trecho ilustrado na Figura \ref{lst:messagedata-neo} faz a definição de dois
 tipos de dados. \emph{MessageType}, declarado no linha 2, é uma estrutura
 simples do tipo enumeração. No exemplo, \emph{MessageType} pode ter os valores
 \emph{Received} e \emph{Send}.
@@ -160,8 +160,8 @@ linguagem \neoidl{}. Essa versatilidade das anotações é bastante útil, pois 
 alteração da sintaxe da própria \neoidl{} não é um esfoço trivial, por demandar
 a compatibilização de todos os \textit{plugins} já construídos.
 
-O módulo apresentado na figura \ref{lst:annotationNeoIDL} contém, além das
-informações contidas no módulo da figura \ref{lst:sentmessage-neo}, uma anotação
+O módulo apresentado na Figura \ref{lst:annotationNeoIDL} contém, além das
+informações contidas no módulo da Figura \ref{lst:sentmessage-neo}, uma anotação
 denominada \emph{Security Policy} (linhas 4 a 6) que é aplicada ao serviço
 \emph{sentbox}.
 A declaração da anotação é feita ao final do módulo (linhas 14 a 18).
@@ -209,7 +209,7 @@ relativas a \designbycontract{}.
 A parte da \neoidl{} responsável pela geração de código de
 serviço para as várias linguagens é denominado \framework{} \neoidl{}. O
 \framework{} \neoidl{} possui suas partes: o núcleo e os \textit{plugins},
-conforme ilustrado na figura \ref{fig:programGenerator}.
+conforme ilustrado na Figura \ref{fig:programGenerator}.
 O núcleo é composto de módulos responsáveis (a) por fazer o \textit{parse}\footnote{O \textit{parser} da \neoidl{}
 foi construído utilizando \bnfc{} \cite{ranta-bnfc:2012} com a linguagem de
 programação funcional Haskell.}
@@ -248,7 +248,7 @@ transformação de acordo com a assinatura definida.
 
 Além disso, cada instância de  
 \texttt{Plugin} precisa ter o nome do \texttt{plugin} de forma que o
-componenente \texttt{PluginLoader} (subseção \ref{compPluginLoader}) possa obter
+componenente \texttt{PluginLoader} (Subseção \ref{compPluginLoader}) possa obter
 os dados necessários para o seu processamento.
 Resumidamente, a execução de um \textit{plugin} consiste em aplicar sua função
 de transformação a um módulo \neoidl{} e produzir uma lista de
@@ -305,11 +305,11 @@ no periódico IJSeke \cite{lima2015neoidl}.
 \label{estudoExpressividadeNeoIDL}
 \vspace{-6mm}
 
-A \neoidl{} é uma DSL, conforme apresentado na seção \ref{apresentacaoNeoIDL},
+A \neoidl{} é uma DSL, conforme apresentado na Seção \ref{apresentacaoNeoIDL},
 e como tal se destina a atender a um propósito específico, nem mais, nem menos
 \cite{hudak1998modular}. A \neoidl{} foi projetada para permitir a
 especificação de contratos de serviços REST de forma mais expressiva e concisa,
-facilitando-se a escrita e leitura por humanos (mais detalhes na subseção
+facilitando-se a escrita e leitura por humanos (mais detalhes na Subseção
 \ref{histMotivNeoIDL}).
 
 Programas escritos em DSLs costumam ser mais fáceis de escrever e,
@@ -324,7 +324,7 @@ linguagem. Entretanto a linguagem que não expressa todas as situações
 necessárias ao seu contexto de uso, por óbvio, não pode ser usada
 \cite{mackinlay1985expressiveness}. Nesse sentido, o primeiro teste a que a
 \neoidl{} foi submetido constituiu-se na produção de contratos e serviços reais
-no início do projeto com o Exército Brasileiro (vide subseção \ref{histMotivNeoIDL}).
+no início do projeto com o Exército Brasileiro (vide Subseção \ref{histMotivNeoIDL}).
 
 Assim, tendo a \neoidl{} demonstrado sua capacidade de representar contratos
 REST reais, foi realizada uma segunda análise: quão expressiva seria a
@@ -375,7 +375,7 @@ número de capacidades de cada serviço também não possuem correlação com re
 de linha de código maior ou menor após o processo de tranformação para
 \neoidl{}.
 
-A tabela \ref{tab:size-corr} apresenta a correlação entre a
+A Tabela \ref{tab:size-corr} apresenta a correlação entre a
 melhoria na expressividade observada (medida como percentual de redução após a
 transformação da especificação Swagger em especificação \neoidl{}) e algumas
 métricas relacionadas ao tamanho da especificação original em Swagger. Na

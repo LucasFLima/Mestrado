@@ -25,8 +25,8 @@ capacidades (operações) e dos dados das mensagens correspondem aos
 termos do contrato no sentido do que o consumidor deve esperar do serviço
 provedor. Porém identificou-se, após ampla pesquisa realizada sobre o tema, que
 as linguagens disponíves para especificação de contratos atingem apenas esse
-nível de garantias. No contexto de webservices em REST, conforme descrito na
-seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
+nível de garantias. No contexto de \wss{} em REST, conforme descrito na
+Seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
 contratos.
 
 A proposta deste trabalho é extender os níveis de garantias, de modo a promover
@@ -79,7 +79,7 @@ há também a ideia de invariantes\cite{meyer1997object}. Quando aplicadas a uma
 orientação a objetos, as invariantes estabelecem restrições sobre o estado
 armazenado nos objetos instanciados dessa classe. No contexto de orientação a
 serviços, tem-se por princípio a ausência de estados dos serviços, descrito na
-seção \ref{PrincipiosSOA}. Por essa razão, no estudo sobre a incorporação de
+Seção \ref{PrincipiosSOA}. Por essa razão, no estudo sobre a incorporação de
 \designbycontract{} em contratos de serviços, as invariantes não foram
 consideradas.
 
@@ -139,7 +139,7 @@ cada precondição.
 
 A sintaxe escolhida para possibilitar a especificação de pré e pós condições
 na \neoidl{} foi influenciada por três linguagens e extensões de linguagens de
-programação: Eiffel, JML e Spec\# (exemplificadas na subseção
+programação: Eiffel, JML e Spec\# (exemplificadas na Subseção
 \ref{implementDbC}). 
 
 Em Eiffel, as asserções são expressões booleanas, de modo que uma pré e uma
@@ -152,7 +152,7 @@ versáteis, foram consideradas adequadas e incorporadas à especificação de
 A primeira sintaxe de \designbycontract{} na \neoidl{} teve como
 base a sintaxe da JML, especialmente em como se associar as pré e
 pós-condições a cada serviço ou capacidade, assemelhando-se a comentários e iniciados pelo
-símbolo de arroba (@). A figura \ref{lst:precondicaoJML-neo} apresenta um
+símbolo de arroba (@). A Figura \ref{lst:precondicaoJML-neo} apresenta um
 exemplo de especificação de precondição seguindo a linha da JML.
 
 \vspace{6mm}
@@ -183,7 +183,7 @@ com suporte a \designbycontract{}.
 As próximas subseções apresentam alguns exemplos de especificação de pre e
 pós-condições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.
 Inicialmente as condições de \designbycontract{} são demonstradas separadamente
-e, ao final, a subseção \ref{SintaxeGeralDbc} consolida o conjunto
+e, ao final, a Subseção \ref{SintaxeGeralDbc} consolida o conjunto
 de novos elementos sintáticos e como eles são estruturados.
 
 
@@ -196,7 +196,7 @@ requisição, comparando-os com os valores estabelecidos na instrução
 dos atributos recebidos por um método no paradigma de orientação a objetos.
 
 A origem das informações, isto é, onde os valores que serão validados se
-encontram, depende da operação HTTP utilizada. A subseção \ref{FonteDadosDbc} descreve como esses
+encontram, depende da operação HTTP utilizada. A Subseção \ref{FonteDadosDbc} descreve como esses
 dados são obtidos. Para realizar a comparação do valor recebido com o valor
 esperado, a \neoidl{} admite seis operadores de comparação (Subseção
 \ref{TiposContrDbC}).
@@ -423,7 +423,7 @@ não seja atendida.
 \subsubsection{Um exemplo completo de módulo com \designbycontract{}}
 
 A Figura \ref{lst:ModuloNeoVariosDbC} apresenta um exemplo de módulo \neoidl{}
-de um serviço completo, utilizando alguns dos recursos apresentados na subseção
+de um serviço completo, utilizando alguns dos recursos apresentados na Subseção
 \ref{TiposContrDbC}. Esse serviço possui três operações, cada uma com duas
 condições de \designbycontract{}.
 
@@ -460,7 +460,7 @@ exceção (linha 20).
 
 Os serviços REST na \neoidl{} seguem uma convenção em relação ao conteúdo
 presente na requisição e na resposta para cada tipo de operação \emph{HTTP},
-conforme descrito na subseção \ref{linguagemNeoIDL}. Por exemplo, o método \method{GET}
+conforme descrito na Subseção \ref{linguagemNeoIDL}. Por exemplo, o método \method{GET}
 submete os argumentos pelo \emph{path} ou como \textit{query string} da
 requisição e não em seu corpo. Esses aspectos foram considerados para se definir
 a fonte das informações para os argumentos e parâmetros utilizados nas pré e
@@ -526,12 +526,12 @@ ele necessita aumenta, reforçando os benefícios observados com a prática
 \CtFirst{}. Ou seja, o desenho do serviço considera ainda mais a perspectiva do
 consumidor do serviço.
 
-A seção \ref{extensaoNeoIDL-DbC} tratou do elemento \emph{Contrato}, sobre como
+A Seção \ref{extensaoNeoIDL-DbC} tratou do elemento \emph{Contrato}, sobre como
 ele pode ser escrito em \neoidl{} com suporte a construções de
 \designbycontract{}. O contrato, porém, é apenas uma especificação, no
 sentido de descrever regras e não de torná-las executáveis em si. Todavia, a
 \neoidl{} é, além de uma linguagem formal, um \framework{} de geração de
-código poliglota (subseção \ref{histMotivNeoIDL}) por meio de \textit{plugins}.
+código poliglota (Subseção \ref{histMotivNeoIDL}) por meio de \textit{plugins}.
 
 Para se comprovar a viabilidade de se conceber serviços com suporte a pré e
 pós-condições, foi desenvolvido, no decorrer da pesquisa de mestrado, um
@@ -614,7 +614,7 @@ Essas duas classes são suficientes para o servidor quando não se utiliza
 \emph{DbcConditions} consolida o conjunto de classes res\-pon\-sá\-veis por
 processar as pré e pós-condições. A principal função de \emph{DbcConditions} é realizar a
 comparação entre o valor real e o valor esperado, efetivando toda a
-lógica corresponde às construções de \designbycontract{} descritas na subseção
+lógica corresponde às construções de \designbycontract{} descritas na Subseção
 \ref{TiposContrDbC}.
 
 \begin{figure}[htb]
@@ -938,7 +938,7 @@ escalas que vão desde a discordância total até a concordância total quanto a
 afirmação apresentada. Essa escala é denominada \textit{Likert Scale}
 \cite{allen2007likert}. As respostas são agrupadas para se avaliar se, no
 conjunto, as respostas mais favoráveis indicam uma tendência de aceitação. O
-processo de elaboração do questionário é apresentado na subseção \ref{ModelagemQuestionario}.
+processo de elaboração do questionário é apresentado na Subseção \ref{ModelagemQuestionario}.
 
 A distribuição do questionário foi feita por formulário eletrônico publicado na
 Internet, utilizando a ferramenta \textit{Google Forms}. Essa ferramenta
@@ -950,7 +950,7 @@ por um período de três semanas, até que atingisse um volume de respostas sati
 
 Os resultados obtidos foram consolidados em uma planilha eletrônica e
 manipulados por meio do ferramental estatístico da linguagem R. A análise dos
-dados obtidos é apresentada na subseção \ref{AnaliseQuestionario}.
+dados obtidos é apresentada na Subseção \ref{AnaliseQuestionario}.
 
 
 \subsection{Modelagem do questionário}
@@ -963,7 +963,7 @@ mesmo propósito pode indicar se o projeto da linguagem está alinhado às
 expectativas dos desenvolvedores e arquitetos. Entretanto, é necessário
 avaliar especificamente os efeitos da inclusão de construções de
 \designbycontract{} na \neoidl{}, já que não há esse suporte nas outras linguagens para especificação
-de contratos REST (subseção \ref{PropostaServicoDbC}).
+de contratos REST (Subseção \ref{PropostaServicoDbC}).
 
 O questionário foi organizado em três seções: a primeira seção têm cinco
 perguntas para traçar o perfil do respondente, principalmente em relação a sua
@@ -1492,7 +1492,7 @@ básica.
 
 Ainda, como o questionário foi aplicado apenas uma vez, não foram incluídos
 pontos de melhoria a partir do primeiro conjunto de respostas para uma segunda
-avaliação. Conforme debatido na subseção \ref{AnaliseQuestionario}, algumas
+avaliação. Conforme debatido na Subseção \ref{AnaliseQuestionario}, algumas
 questões poderiam ser inseridas em uma nova aplicação do questionário, de
 modo produzir informações que permitissem conclusões mais completas.
 
