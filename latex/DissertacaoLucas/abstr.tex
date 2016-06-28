@@ -16,32 +16,34 @@ Author: Lucas Ferreira de Lima}
 
 \noindent {\bf Brasília, July 11, 2016 }
 
-\emph{Context}. The demand for integration of heterogeneus systems grows up the
+\emph{Context}. The demand for integratin heterogeneus systems grows up the
 adoptions of solutions based on service oriented computing -- SOC, in special
-using Web Services to implement the services, nowadays, with the increasing use
-of the REST architectural style. Nevertheless, REST don't has a standard
-notations for represent its contracts. Swagger, YAML and WADL only provide the
-language to describe services, but both has a relevant limitation: they are made
-for computers and they are hard for humans to write and read, what difficults the
-recommended SOC Contract-First approach. This limitation motivate the creation of NeoIDL
-language, done with the aim to be more expressive for humans, besides
-provides support to modularization and inheritance. \emph{Problem} None of this programming languages, including NeoIDL, gives support to strong contracts how the
-presents in languages that supports Design-by-Contract, tipically found in the
-object oriented paradigm. \emph{Objetives} The main objective of this work is to
-investigate the use of Design-by-Contract constructions in the SOC context,
-checking the viability and utility of its adoption at the REST contracts
-specification and service implementation. \emph{Results and contributions} This
-master thesis contributes technically with the extention of NeoIDL to
-Design-by-Contract support, adding to it two types of pre and post-conditions.
+with the increasing use of the REST architectural style. Nevertheless, there
+is no standard way to represent REST contracts.
+Swagger, YAML and WADL only provide mechanisms to describe services, which
+leads to a relevant limitation: they are made for computers and
+are hard for humans to write and read. This hinders the adoption of the 
+Contract-First approach. This limitation motivated the creation of NeoIDL
+language, designed with the aim to be more expressive for humans, besides
+providing support to modularization and inheritance. \emph{Problem} None of this
+specification languages, including NeoIDL, gives support to strong contracts
+as present in languages that supports Design-by-Contract, tipically found in
+the  object oriented paradigm. \emph{Objetives} The main objective of this work
+is  to investigate the use of Design-by-Contract constructions in the SOC context, 
+checking the viability and utility of its adoption at the REST contracts specification
+and service implementation. \emph{Results and contributions} This
+master thesis contributes technically with the extention of NeoIDL towards
+supporting Design-by-Contract, adding to it two types of pre and
+post-conditions.
 The basic type checks the values of incoming and outgoing atributes. The
-service based type makes a simple service composition by calling another service to
-check if the main service may be executed (or if it was correctly executed, in case of
+service based type makes employes a kind of service composition by
+calling another service to check if the main service may be executed (or if it was correctly executed, in case of
 post-conditions). By the empirical validation perspective, this thesis
 contributes with two studies: the first, verifies the expressiveness and
-reusability requisites of NeoIDL, that was made at the domain of Command and
-Control in association with Brazilian Army. The second study focused on the
-analysis of utility and easy to use perspectives of the use of 
-Design-by-Contract constructions proposed to NeoIDL. It gave us good answers in
+reusability requirements of NeoIDL, whitin the domain of Command
+and Control in colaboration with the Brazilian Army. The second
+study focused on the analysis of utility and easy of use perspectives of the 
+Design-by-Contract constructions proposed. It gave us interesting answers in
 terms of acceptance and easy to use.
 
 \clearpage
