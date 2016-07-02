@@ -66,6 +66,9 @@
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 
+\usepackage[brazil]{babel} % Suporte para o Portugu�s
+\usepackage[utf8]{inputenc} % Suporte para acentua��o sem necessidade dos
+\usepackage{graphicx}
 
 % *** MISC UTILITY PACKAGES ***
 %
@@ -172,7 +175,19 @@
 % http://www.ctan.org/pkg/amsmath
 
 
+\usepackage{enumerate}
+%\usepackage{enumitem} 
+\usepackage{graphicx,color}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{latexsym}
 
+\usepackage{xcolor}
+\usepackage{stackengine}
+% \newlength\llength
+% \llength=1.38ex\relax
 
 
 % *** SPECIALIZED LIST PACKAGES ***
@@ -193,7 +208,10 @@
 % http://www.ctan.org/pkg/algorithmicx
 
 
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{dark-yellow}{RGB}{215,167,0}
 
+\newcommand{\hilight}[1]{\colorbox{light-gray}{#1}}
 
 % *** ALIGNMENT PACKAGES ***
 %
@@ -324,6 +342,52 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
+
+
+\lstdefinelanguage{NeoIDL}{
+  sensitive = true,
+  keywords={},
+  otherkeywords={% Operators
+    >, <, ==
+  },
+  keywords = [2]{module, resource, enum, annotation, for, import, entity, path,
+  @get, @post, @put, @delete, require, ensure, otherwise, call, and, or, not},
+  keywordstyle=[1]\color{dark-yellow}\textbf,
+  keywordstyle=[2]\color{black}\textbf,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+  }
+
+\lstdefinelanguage{PythonTwisted}{
+  sensitive = true,
+  keywords = {classe, object, def, return},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+  }
+  
+
 \begin{document}
 %
 % paper title
@@ -417,9 +481,12 @@ Email: ---}
 
 \input{theoreticalReview}
 
+\input{NeoIDL}
+
+\input{NeoIDL-with-DbC} 
+
 \input{conclusion}
 
-\input{acknowledgment}
 
 
 % conference papers do not normally have an appendix

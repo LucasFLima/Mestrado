@@ -1,5 +1,5 @@
 #TeXlipse project settings
-#Mon Jun 27 09:31:45 BRT 2016
+#Sat Jul 02 15:52:37 BRT 2016
 markTmpDer=true
 builderNum=2
 outputDir=out
@@ -9,6 +9,6 @@ outputFormat=pdf
 tempDir=tmp
 mainTexFile=NeoIDL-DbC-Sbcars2016.tex
 outputFile=NeoIDL-DbC-Sbcars2016.pdf
-langSpell=en
+langSpell=pt
 markDer=true
 srcDir=

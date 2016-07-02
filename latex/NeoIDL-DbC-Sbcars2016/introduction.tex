@@ -1,19 +1,66 @@
-\section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
+\section{Introdução}
+\label{Introducao}
 
-\hfill mds
- 
-\hfill August 26, 2015
+A computação orientada a serviços ( \emph{Service-oriented computing, SOC)} tem
+se mostrado uma solução de \textit{design} de \textit{software} que favorece o
+alinhamento às mudanças constantes e urgentes nas instituições
+\cite{chen2008towards}. 
 
-\subsection{Subsection Heading Here}
-Subsection text here. \cite{lima2015contratos}
+Os benefícios de SOC estão diretamente relacionados ao
+baixo acoplamento dos serviços que compõem a solução, de forma que as partes
+(nesse caso serviços) possam ser subs\-ti\-tu\-í\-das e evoluídas facilmente, ou
+ainda rearranjadas em novas composições. 
+
+Um dos principais benefícios do uso de SOC está na possibilidade de reuso de
+seus componentes. Porém, reuso requer serviços bem construídos e precisos em
+relação a sua especificação \cite{jazequel1997design}. A qualidade e precisão do
+contrato de serviço torna-se claramente um elemento fudamental para se auferir
+os benefícios da abordagem SOC.
+
+A qualidade da especificação do contrato de serviço é fundamental para o
+projeto de software baseado em SOC. Este artigo aborda um aspecto
+importante para a melhoria da robustez de contratos de serviços: a construção de
+garantias mútuas por meio da especificação formal de contratos, agregando o
+conceito de \designbycontract{}.
+
+A seção XXX
 
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+% 
+% Extender a sintaxe da \neoidl{} para admitir construções de 
+% \designbycontract, com pré e pós-condições para operações de serviços REST
+% (Seção \ref{extensaoNeoIDL-DbC});
+% Incorporar à infraestrutura de \textit{Plugins} da
+% \neoidl{} a capacidade de geração de código para o \framework{} \textit{Python
+% Twisted} (Seção \ref{pluginTwisted});
+% Implementar regras de transformação que traduzem construções de DbC
+% \neoidl{} em código de validação para o framework \textit{Python
+% Twisted} (Seção \ref{pluginTwisted});% com suporte a \designbycontract{} a
+%  % partir de contratos especificados em \neoidl;
+% Coletar a percepção de desenvolvedores sobre a aceitação da
+% especificação de contratos REST com \designbycontract{} na \neoidl{} (Seção
+% \ref{analiseSubjetiva}).
+% 
+% 
+% Por outro lado, a \neoidl{}, da mesma forma que WSDL,
+% Swagger e RAML não oferece construções para especificação de contratos formais
+% com aspecto comportamental como os presentes em linguagens que
+% suportam DbC (\emph{Design by Contract})~\cite{meyer1992applying}, como
+% Eiffel, JML e Spec\#. Em outras palavras, a \neoidl{}  admite apenas
+% contratos fracos (\textit{weak contracts}), sem suporte a construções com pré e
+% pós-condições.
+% 
+% 
+% As linguagens de especificação de contratos para SOC apresentam
+% algumas limitações. Por exemplo, a linguagem WSDL (\emph{Web-services
+% description language}) \cite{WSDLSite} é considerada uma solução
+% pouco expressiva que desestimula a abordagem \textit{Contract First}. Por essa
+% razão, especificações WSDL são usualmente derivadas a partir de anotações em código
+% fonte (\textit{Code First}).
+% 
+% Com o objetivo de mitigar esses problemas, a linguagem \neoidl{} foi proposta
+% para simplificar a especificação de serviços REST com mecanismos de modularização,
+% suporte a anotações, herança em tipos de dados definidos pelo desenvolvedor, e
+% uma sintaxe simples e concisa semelhante às IDLs presentes em \emph{Apache
+% Thrift}\texttrademark\cite{thrift} e \emph{CORBA}\texttrademark\cite{corba}.
+
