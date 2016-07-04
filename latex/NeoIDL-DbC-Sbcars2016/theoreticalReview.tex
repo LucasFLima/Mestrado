@@ -3,14 +3,14 @@
 
 \subsection{Computação orientada a serviço}
 
-A eficiência na integração entre as soluções de TI é determinante para que se
-consiga alterar uma parte sem comprometer todo o ecossistema. A integração
-possibilita a combinação de eficiência e flexibilidade de recursos para otimizar
+A eficiência na integração entre as soluções de TI é um fator determinante para
+que se consiga alterar uma parte sem comprometer todo um ecossistema. A
+integração possibilita a combinação de eficiência e flexibilidade de recursos para otimizar
 a operação através e além dos limites de uma organização, proporcionando maior
 interoperabilidade \cite{papazoglou2008service}.
 
 A computação orientada a serviços -- SOC -- endereça essas necessidades em uma
-plataforma que aumenta a flexibilidade e melhora o alinhamento com o negócio, a
+plataforma que aumenta a flexibilidade, a
 fim de reagir rapidamente a mudanças nos requisitos de negócio. Para obter esses
 benefícios, contudo, os serviços devem cumprir com determinados quesitos, que
 incluem alta autonomia ou baixo acoplamento \cite{erl2008soa}. Assim, o paradigma de SOC
@@ -18,7 +18,7 @@ está voltado para o projeto de soluções preparadas para constantes mudanças,
 substituindo-se continuamente pequenas peças -- os serviços -- por outras
 atualizadas.
 
-Portando, o objetivo da SOC é conceber um estilo de projeto, tecnologia e
+Portando, o objetivo da SOC está em conceber um estilo de projeto, tecnologia e
 processos que permitam às empresas desenvolver, interconectar e manter suas
 aplicações e serviços corporativos com eficiência e baixo custo. Embora esses
 objetivos não sejam novos, SOC procura superar os esforços prévios como
@@ -28,10 +28,9 @@ objetos \cite{papazoglou2007serviceApprTechRechIss}.
 De modo diferente de arquiteturas convencionais, ditas monolíticas, em que os
 sistemas são concebidos agregando continuamente funcionalidades a um mesmo pacote de
 \textit{software}, a arquitetura orientada a serviço prega o projeto de pequenas
-aplicações distribuídas que podem ser consumidas tanto por usuários finais como
-por outros serviços \cite{papazoglou2007serviceApprTechRechIss}. 
+aplicações distribuídas -- os serviços -- que podem ser consumidas tanto por
+usuários finais como por outros serviços \cite{papazoglou2007serviceApprTechRechIss}. 
 
-A unidade lógica da arquitetura orientada a serviços é exatamente o serviço.
 Serviços são pequenos \textit{softwares} que provêem funcionalidades específicas
 para serem reutilizadas em várias aplicações. Cada serviço é uma entidade isolada com
 dependências limitadas de outros recursos compartilhados
@@ -43,71 +42,57 @@ flexibilidade de mudanças de implementação sem impacto aos consumidores.
 
 
 O paradigma de orientação a serviço é estruturado em oito princípios
-fundamentais \cite{erl2009web}, ilustrados na Figura \ref{Fig:PrincipiosSoa}. São eles que
+fundamentais \cite{erl2009web}. São eles que
 caraterizam a abordagem SOA e a sua aplicação faz com que um serviço se diferencie de um componente ou de
 um módulo. Os contratos de serviços permeiam a maior parte destes princípios.
 
-Contrato padronizado - \textbf{Serviços dentro de um mesmo inventário
-estão em conformidade com os mesmos padrões de contrato de serviço}.
+O princípio do \textbf{Contrato padronizado} estabelece que serviços
+dentro de um mesmo inventário estejam em conformidade com os mesmos padrões de
+contrato de serviço.
 Os contratos de serviços são elementos fundamentais na arquitetura orientada a
 serviço, pois é por meio deles que os serviços interagem uns com os outros e com
-potenciais consumidores. Este princípio tem como foco principal o contrato de
-serviço e seus requisitos. O padrão de projeto \CtFirst{} é uma
+potenciais consumidores. O padrão de projeto \CtFirst{} é uma
 consequência direta deste princípio \cite{erl2009web}.
 
-Baixo acomplamento - \textbf{Os contratos de serviços impõem aos
-consumidores do serviço requisitos de baixo acoplamento e são, os próprios
-contratos, desacoplados do seu ambiente}. 
-Este princípio também possui forte relação com o contratos de serviço, pois a
-forma como o contrato é projetado e posicionado na arquitetura é que gerará o
-benefício do baixo acoplamento. O projeto deve garantir que o contrato
-possua tão somente as informações necessárias para possibilitar a compreensão e
-o consumo do serviço, bem como não possuir outras características que gerem
-acoplamento.
+Os contratos de serviço devem impor aos seus consumidores requisitos de baixo
+acoplamento. Os contrato também devem ser desacoplados de seu ambiente. Essas
+relações são guiadas pelo princípio do \textbf{Baixo acomplamento}. A forma como
+o contrato é projetado e posicionado na arquitetura é que gerará o
+benefício do baixo acoplamento.  
 
-São considerados negativos, e que devem ser evitados, os acoplamentos  
-\begin{enumerate}[(a)] 
-\item do contrato com as funcionalidades que ele suporta, agregando ao
-contrato características específicas dos processos que o serviço atende;
-\item do contrato com a sua implementação, invertendo a estratégia de conceber
-primeiramente o contrato;
-\item do contrato com a sua lógica interna, expondo aos consumidores
-características que levem os consumidores a inadivertidamente aumentarem o
-acoplamento;
-\item do contrato com a tecnologia do serviço, causando impactos indesejáveis em
-caso de substituição de tecnologia.
-\end{enumerate}
+O projeto do serviço deve considerar como negativos os acoplamentos entre
+o contrato e a funcionalidade suportada pelo serviços, entre o contrato a a sua
+implementação subjacente, entre o contrato com a tecnologia e a lógica interna
+adotada para o serviço. Esses acoplamentos devem ser evitados.
 
-Por outro lado, há um tipo de acoplamento positivo que é o que gera dependência
+Há, porém, um acoplamento desejado, que é o que gera dependência
 da lógica em relação ao contrato \cite{erl2009web}. Ou seja, idealmente a
 implementação do serviço deve ser derivada do contrato, pondendo se ter inclusive a geração de código a
 partir do contrato.
 
-Abstração - \textbf{Os contratos de serviços devem conter apenas
-informações essenciais e as informações sobre os serviços são limitadas àquelas
-publicadas em seus contratos}
-Reusabilidade - \textbf{Serviços contém e expressam lógica agnóstica e
-podem ser disponibilizados como recursos reutilizáveis}
-Autonomia- \textbf{Serviços exercem um elevado nível de controle sobre
-o seu ambiente em tempo de execução}
-Ausência de estado - \textbf{Serviços reduzem o consumo de recursos
-restringindo a gestão de estado das informações apenas a quando for necessário}
-Descoberta de serviço - \textbf{Serviços devem conter metadados por meio
-dos quais os serviços possam ser descobertos e interpretados}
-Composição - \textbf{Serviços são participantes efetivos de composição,
-independentemente do tamanho ou complexidade da composição}
+O princípio da \textbf{Abstração} visa garantir a exposição apenas de
+informações necessárias e essenciais no contrato de serviço. Ou seja, o contrato deve possui tão somente
+as informações necessárias ao consumo e compreensão do serviço. A
+\textbf{Descoberta do serviço}, outro princípio SOA, prega que os contratos de
+serviços contenham informações (metadados) que possibilitem a descoberta e
+interpretação do serviço.
+
+O aspecto do reuso é expresso em alguns princípios SOA. O princípio da
+\textbf{Reusabilidade} estabelece que os serviços que contenham ou expressem
+lógica agnóstica podem ser disponibilizaddos com recursos reusáveis. Nessa mesma
+linha, o princípio da \textbf{Composição} orienta para que serviços sejam
+participantes efetivos de composições, independentemente do tamanho ou
+complexidade da composição.
+
+Por fim, os princípios da \textbf{Autonomia} -- serviços têm controle sobre seu
+ambiente de execlução -- e \textbf{Ausência de estado} -- retringindo o controle
+de estado apenas a quanfo for inevitavelmente necessário -- formam, junto com os
+demais, um conjunto de características que buscam fazer com que o projeto dos serviços 
+alcance os objetivos da abordagem SOA.
 
 \subsection{Contract-First}
 
-
-Duas abordagens podem ser seguidas para se produzir esse efeito. A primeira é a
-geração do contrato a partir da lógica implementada, conhecida como
-\CdFirst{}. A outra propõe um sentido inverso, partindo-se do contrato
-para a geração do código, chamada \CtFirst{}. A abordagem
-\CtFirst{} é recomendada para a arquitetura orientada a serviço
-\cite{erl2009web}.
-
-A abordagem \CtFirst{} preocupa-se principalmente com a clareza, completude e
+A abordagem \CtFirst{} preocupa-se sobretudo com a clareza, completude e
 estabilidade do contrato para os clientes dos serviços. Toda a
 estrutura da informação é definida sem a preocupação sobre restrições ou
 características das implementações subjacentes. Do mesmo modo, as
@@ -120,6 +105,14 @@ ou JSON Schema), na simplificação do versionamento e na facilidade de manuten�
 \cite{karthikeyancontract}. A desvantagem está justamente na complexidade de
 escrita do contrato. Porém, várias ferramentas já foram e vem sendo
 desenvolvidas para facilitar essa tarefa.
+
+A outra forma de se garantir que o contrato expressa o que serviço realiza é a
+abordagem \CdFirst{}, em que o contrato é normalmente gerado a partir de
+anotações no código fonte. Embora muitas vezes preferível pelo desenvolvedor, a desvantagem do uso
+\CdFirst{} está no elevado impacto que alterações na implementação causam ao
+contrato, fazendo com que os clientes dos serviços sejam também afetados.
+Reduz-se ainda a flexibilidade e extensibilidade, de modo que o reuso é
+prejudicado.
 
 \subsection{\wss{}}
 
