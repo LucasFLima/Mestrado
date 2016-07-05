@@ -1,6 +1,5 @@
 \section{\neoidl{}: DSL para constratos REST}
 
-\subsection{Apresentação}
 
 A \neoidl{} é uma linguagem específica de domínio (\textit{Domain Specific
 Language - DSL}) elaborada com o objetivo de possibilitar, em um processo
@@ -15,10 +14,10 @@ linguagem, a produção da implementação da estrutura do serviço. Os serviço
 podem ser construídos em várias linguagens e tecnologias, por meio
 de \textit{plugins} da \neoidl{}.
 
-as linguagens de programação disponíveis para especificação de
+As linguagens de programação disponíveis para especificação de
 contratos REST, como Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
 RAML\cite{RAML}, possuiam (e ainda possuem) limitações importantes para a
-abordagem desejada, qual seja elaborar primeiramente o contrato e, a
+abordagem desejada, qual seja, elaborar primeiramente o contrato e, a
 partir dele, gerar a implementação do serviço. Todas essas linguagens utilizam
 notações de propósito geral (XML\cite{XML}, JSON\cite{JSon}, YAML\cite{YAML}),
 tornando os contratos extensos e de difícil compreensão humana. Além disso,
@@ -29,54 +28,19 @@ inspirada em linguagens mais claras e concisas -- como \emph{CORBA
 IDL}\texttrademark \cite{corba} e \emph{Apache
 Thrift}\texttrademark\cite{thrift} --, e que permitisse ainda a declaração de
 tipos de dados definidos pelo usuário e extensibilidade. Ambas, \emph{CORBA} e
-\emph{Apache Thrift}, possuem limitações nesses últimos aspectos. A sintaxe e as
-características da linguagem \neoidl{} são brevemente discutidas na Subseção
-\ref{linguagemNeoIDL}.
+\emph{Apache Thrift}, possuem contudo limitações nesses últimos aspectos. 
 
-Em relação à geração de código, para se viabilizar a geração poliglota de
-código, a \neoidl{} foi projetada para possuir uma arquitetura modular, de modo
-que novas linguagens ou características de implementação pudessem ser
-incorporadas por meio de \textit{plugins} da \neoidl{}. Assim, é possível desenvolver um novo \textit{plugin} para geração de serviços em outras
-linguagens, por exemplo PHP, sem alterar qualquer outro componente do \framework,
-conforme apresentado na Subseção \ref{frameNeoIDL}.
+A \neoidl{} suporta a geração de código poliglota, por meio da implementação de
+plugins \neoidl{} para cada linguagem alvo. Atualmente, há plugins para Java,
+Python \neocortex{}\footnote{Framework proprietário do Exército Brasileiro},
+e Python Twisted. Detalhes sobre o
+framework de geração de código da \neoidl{} foram publicados em
+\cite{lima2015neoidl}. 
 
-\subsection{Estudo de expressividade e reuso}
-
-A primeira versão da \neoidl{} foi submetida a um estudo empírico de sua expressividade 
-e reuso em um contexto real. As próximas subseções apresentam 
-o resultado da análise comparativa da representação de 44 (quarenta e quatro)
-contratos escritos em Swagger v1.2 em relação à mesma especificação em
-\neoidl{}.
-
-Esse estudo é uma das contribuições deste trabalho de mestrado e foi publicado
-no periódico IJSeke \cite{lima2015neoidl}.
-
-Com esse propósito, foi obtido um conjunto de 44 contratos do Exército
-Brasileiro especificados em Swagger. A primeira etapa foi reescrever esses
-contratos em \neoidl{} e então comparar a quantidade de linhas de código
-produzida com a quantidade de linhas de código dos contratos originais.
-
-Assim, para
-cada 10 linhas de especificação em Swagger são requeridas 4 linhas de
-especificação \neoidl{}. Nessa análise foram consideradas linhas físicas de
-código, ignorando-se linhas em branco ou compostas apenas de delimitadores.
-
-A proporção de redução não se deu de forma igual em todos os contratos. Por
-exemplo, o contrato de um determinado serviço\footnote{Os nomes reais dos
-contratos foram omitidos em razão de acordo de confidencialidade.} requereu 367
-linhas na especificação Swagger e 112 linhas na especificação \neoidl{} --
-redução da ordem de 69\%.
-
-No conjunto dos 44 contratos Swagger analisados foram identificadas 42 entidades
-especificadas em pelo menos dois contratos. Uma entidade específica, de
-identificação da posição geográfica, muito utilizada no domínio de Comando e Controle, aparece
-declarada 12 vezes em contratos distintos. A Tabela \ref{estatisticaEntidades}
-mostra a estatística de repetição da especificação de contratos.
-
-Verificou-se,
-ainda, que a \neoidl{} é mais concisa e expressiva que Swagger para representar
-as mesmas informações de contratos REST. Sob a ótica do reuso, a abordagem proposta pela
-\neoidl{}, baseada em importações de especificações de entidades, tende a
-contribuir para a identificação de entidades já declaradas, facilitando que
-elas sejam reusadas.
+O artigo \cite{lima2015neoidl} também descreve uma estudo empírico sobre a
+expressividade e potencial de reuso da \neoidl{}. A base desse estudo foi a
+análise de contratos reais escritos em Swagger em comparação com os equivalentes
+em \neoidl{}. Em resumo, nesse cenário concreto, identificou-se serem
+necessárias 4 linhas de especificação em \neoidl{} para cada conjunto de 10
+linhas em Swagger.
 
