@@ -15,13 +15,13 @@ termos do contrato no sentido do que o consumidor deve esperar do serviço
 provedor. Porém identificou-se, após ampla pesquisa realizada sobre o tema, que
 as linguagens disponíves para especificação de contratos atingem apenas esse
 nível de garantias. No contexto de \wss{} em REST, conforme descrito na
-Seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
+Seção \ref{Fundamentacao}, há ainda a ausência de padrão para especificação
 contratos.
 
 A proposta deste trabalho é extender os níveis de garantias, de modo a promover
 um patamar adicional com obrigações mútuas entre os serviços (consumidor e
-provedor). Isso se dá pela adoção do conceito de \designbycontract{} (Seção 
-\ref{Design-by-Contract}) em que a execução da capacidade do serviço garantirá 
+provedor). Isso se dá pela adoção do conceito de \designbycontract{} em que a execução da 
+capacidade do serviço garantirá 
 a execução, desde que satisfeitas as condições prévias. As próximas subseções 
 detalham o modo de operação dos serviços com as construções de \designbycontract{}.
 
@@ -65,8 +65,8 @@ Em \designbycontract{}, além dos conceitos de pré e pós-condições,
 há também a ideia de invariantes\cite{meyer1997object}. Quando aplicadas a uma classe na
 orientação a objetos, as invariantes estabelecem restrições sobre o estado
 armazenado nos objetos instanciados dessa classe. No contexto de orientação a
-serviços, tem-se por princípio a ausência de estados dos serviços, descrito na
-Seção \ref{PrincipiosSOA}. Por essa razão, no estudo sobre a incorporação de
+serviços, tem-se por princípio a ausência de estados dos serviços. Por essa razão, 
+no estudo sobre a incorporação de
 \designbycontract{} em contratos de serviços, as invariantes não foram
 consideradas.
 
@@ -75,9 +75,9 @@ consideradas.
 
 
 As precondições podem ser do tipo baseado nos parâmetros da requisição ou do
-tipo baseado na chamada a outro serviço. Denomina-se, no contexto desta
-dissertação, de básica a precondição baseada apenas nos parâmetros da
-requisição (atributos da chamada ao serviço). Essa validação é direta,
+tipo baseado na chamada a outro serviço. Denomina-se, no contexto deste artigo,
+de básica a precondição baseada apenas nos parâmetros da requisição (atributos 
+da chamada ao serviço). Essa validação é direta,
 comparando os valores passados com os valores admitidos. 
 
 No caso das precondições baseadas em serviços, é realizada chamada a outro
@@ -120,89 +120,68 @@ ocorrer a partir dos valores contidos na mensagem de retorno. A Figura
 \ref{FigServicePostcondition} descreve as etapas necessárias para validação de
 cada precondição.
 
-Todas essas linguagens tem, entretanto, uma outra limitação em comum: não dão
-suporte a contratos robustos, com garantias. A estratégia para superar essa
-limitação foi de buscar no paradigma de orientação a objetos, que é uma das
-principais influências de orientação a serviços \cite{erl2009web},
-o conceito de \designbycontract{}. Ambas as abordagens, orientação a serviços e
-a objetos, tem em comum a ênfase no reuso e comunicação entre componentes
-(serviços e classes).
 
-\subsection{EXTENSÃO DA NEOIDL PARA DESIGN-BY-CONTRACT}
-\label{extensaoNeoIDL-DbC}
+% \subsection{Precondição básica}
+% \label{precondicaoBasica}
+% 
+% Uma precondição básica é a que valida os valores recebidos na
+% requisição, comparando-os com os valores estabelecidos na instrução
+% \emph{require} do contrato. Esse tipo de precondição assemelha-se a validação
+% dos atributos recebidos por um método no paradigma de orientação a objetos.
+% 
+% A origem das informações, isto é, onde os valores que serão validados se
+% encontram, depende da operação HTTP utilizada. A Subseção \ref{FonteDadosDbc} descreve como esses
+% dados são obtidos. Para realizar a comparação do valor recebido com o valor
+% esperado, a \neoidl{} admite seis operadores de comparação (Subseção
+% \ref{TiposContrDbC}).
+% 
+% \subsection{Pós-condição básica}
+% 
+% Em termos sintáticos, as pós-condições básicas possuem uma forma muito
+% semelhante às precondições básicas (\ref{precondicaoBasica}), diferindo-se
+% exclusivamente pelo uso da instrução \emph{ensure}. A Figura
+% \ref{lst:DBCPosCondBasica} (linhas 8 e 9) mostra um exemplo de pós-condição
+% básica em que, após a execução da operação \method{GET}, se o valor do atributo
+% \emph{quantity} não for maior que zero, então o serviço não foi executado adequadamente e a exceção
+% (\emph{otherwise}) é retornada.
+% 
+% \subsection{Precondição com chamada a serviço}
+% 
+% As precondições baseadas em serviços seguem uma sequência que envolve a chamada
+% a outro serviço antes do processamento do serviço principal, em um tipo simples de
+% composição de serviço. Essa abordagem permite que precondições complexas sejam
+% validadas por serviços especializados, sem que a especificação do contrato
+% de serviço se torne complexa. Essa proposta preserva ainda a ideia original de
+% Eiffel\cite{meyer1988eiffel}, de que pré e pós-condições sejam expressões
+% \emph{booleanas}.
+% 
+% A primeira etapa do processo de execução da precondição de serviço consiste em
+% fazer a chamada a um serviço (ver Figura \ref{FigServicePrecondition}) por meio de uma
+% operação \method{GET}. Em seguida, o código de \textit{status} retornado pelo
+% serviço da precondição é comparado com o valor especificado na precondição do contrato.
+% 
+% Após o acionamento do serviço da precondição, o comportamento é o mesmo da
+% precondição básica (ver \ref{precondicaoBasica}). Caso a precondição seja
+% satisfeita, é retornado o valor indicado pela instrução \emph{otherwise}. As
+% precondições de serviço na \neoidl{} admitem os mesmos operadores de comparação
+% que as precondições básicas.
+% 
+% \subsection{Pós-condição com chamada a serviço}
+% \label{Pos-condicao servico}
+% 
+% A pós-condição com chamada a serviço seguem a sequência de eventos indicada na
+% Figura \ref{FigServicePostcondition}. No caso da pós-condição, a execução do
+% serviço principal já ocorreu e a função do serviço na pós-condição é validar se
+% a execução do serviço principal ocorreu com sucesso. Algumas pós-condições são
+% naturais, como as que verificam se um objeto foi inserido após a operação de
+% inclusão (método \method{POST}). Ou ainda, a que verifica se o objeto foi excluído
+% após uma operação \method{DELETE}.
 
-A sintaxe escolhida para possibilitar a especificação de pré e pós condições
-na \neoidl{} foi influenciada por três linguagens e extensões de linguagens de
-programação: Eiffel, JML e Spec\# 
-
-\subsection{Precondição básica}
-\label{precondicaoBasica}
-
-Uma precondição básica é a que valida os valores recebidos na
-requisição, comparando-os com os valores estabelecidos na instrução
-\emph{require} do contrato. Esse tipo de precondição assemelha-se a validação
-dos atributos recebidos por um método no paradigma de orientação a objetos.
-
-A origem das informações, isto é, onde os valores que serão validados se
-encontram, depende da operação HTTP utilizada. A Subseção \ref{FonteDadosDbc} descreve como esses
-dados são obtidos. Para realizar a comparação do valor recebido com o valor
-esperado, a \neoidl{} admite seis operadores de comparação (Subseção
-\ref{TiposContrDbC}).
-
-\subsection{Pós-condição básica}
-
-Em termos sintáticos, as pós-condições básicas possuem uma forma muito
-semelhante às precondições básicas (\ref{precondicaoBasica}), diferindo-se
-exclusivamente pelo uso da instrução \emph{ensure}. A Figura
-\ref{lst:DBCPosCondBasica} (linhas 8 e 9) mostra um exemplo de pós-condição
-básica em que, após a execução da operação \method{GET}, se o valor do atributo
-\emph{quantity} não for maior que zero, então o serviço não foi executado adequadamente e a exceção
-(\emph{otherwise}) é retornada.
-
-\subsection{Precondição com chamada a serviço}
-
-As precondições baseadas em serviços seguem uma sequência que envolve a chamada
-a outro serviço antes do processamento do serviço principal, em um tipo simples de
-composição de serviço. Essa abordagem permite que precondições complexas sejam
-validadas por serviços especializados, sem que a especificação do contrato
-de serviço se torne complexa. Essa proposta preserva ainda a ideia original de
-Eiffel\cite{meyer1988eiffel}, de que pré e pós-condições sejam expressões
-\emph{booleanas}.
-
-A primeira etapa do processo de execução da precondição de serviço consiste em
-fazer a chamada a um serviço (ver Figura \ref{FigServicePrecondition}) por meio de uma
-operação \method{GET}. Em seguida, o código de \textit{status} retornado pelo
-serviço da precondição é comparado com o valor especificado na precondição do contrato.
-
-Após o acionamento do serviço da precondição, o comportamento é o mesmo da
-precondição básica (ver \ref{precondicaoBasica}). Caso a precondição seja
-satisfeita, é retornado o valor indicado pela instrução \emph{otherwise}. As
-precondições de serviço na \neoidl{} admitem os mesmos operadores de comparação
-que as precondições básicas.
-
-\subsection{Pós-condição com chamada a serviço}
-\label{Pos-condicao servico}
-
-A pós-condição com chamada a serviço seguem a sequência de eventos indicada na
-Figura \ref{FigServicePostcondition}. No caso da pós-condição, a execução do
-serviço principal já ocorreu e a função do serviço na pós-condição é validar se
-a execução do serviço principal ocorreu com sucesso. Algumas pós-condições são
-naturais, como as que verificam se um objeto foi inserido após a operação de
-inclusão (método \method{POST}). Ou ainda, a que verifica se o objeto foi excluído
-após uma operação \method{DELETE}.
-
-\subsection{Sintaxe geral de pré e pós-condições}
+\subsection{Inclusão de condições de DbC na especificação \neoidl{}}
 \label{SintaxeGeralDbc}
 
-Entre as subseções \ref{precondicaoBasica} e \ref{Pos-condicao servico} foram
-apresentados separadametne exemplos simples de especificação de pré e
-pós-condições na \neoidl{} de modo a facilitar a compreensão. Esta subseção
-demonstra a estruturação sintática das construções de \designbycontract{} agregadas \neoidl{} por este trabalho.
-
-\subsubsection{Listas de pré e pós-condições}
-
-Um módulo \neoidl{} possui uma seção para declaração dos serviços (ver Figura
-\ref{fig:moduloNeoIDL}). Cada serviço declarado na \neoidl{} pode ter um ou mais
+Um módulo \neoidl{} possui uma seção para declaração dos serviços. Cada serviço 
+declarado na \neoidl{} pode ter uma ou mais
 capacidades, as quais correspondem às operações HTTP utilizadas na arquitetura
 REST. Sintaticamente, um serviço possui uma lista de capacidades\footnote{Os
 símbolos ``['' e ``]'' identificam uma lista.}:
@@ -226,7 +205,7 @@ uma pós-condição ou ainda qualquer combinação delas, simultâneamente.
 \end{center}
 
 É possível ainda, caso uma precondição ou pós-condição se aplique a todas as
-capacidades de um serviço, é possível declará-la para o serviço como um todo,
+capacidades de um serviço, declará-la para o serviço como um todo,
 logo antes da declaração das capacidades:
 
 \begin{center}
@@ -245,11 +224,10 @@ logo antes da declaração das capacidades:
 \end{center}
  
 
-\subsubsection{Tipos de construções de \designbycontract{}}
+\subsection{Sintaxe geral de pré e pós-condições}
 \label{TiposContrDbC}
 
-Conforme exemplificado entre as subseções \ref{precondicaoBasica} e
-\ref{Pos-condicao servico}, as construções de \designbycontract{} possuem as
+As construções de \designbycontract{} possuem as
 seguintes estruturas:
 
 \begin{center}
@@ -319,8 +297,12 @@ não seja atendida.
 
 \end{description}
 
+A sintaxe escolhida para possibilitar a especificação de pré e pós condições
+na \neoidl{} foi influenciada por três linguagens e extensões de linguagens de
+programação: Eiffel, JML e Spec\# 
 
-\subsubsection{Um exemplo completo de módulo com \designbycontract{}}
+
+\subsection{Um exemplo de módulo com \designbycontract{}}
 
 A Figura \ref{lst:ModuloNeoVariosDbC} apresenta um exemplo de módulo \neoidl{}
 de um serviço completo, utilizando alguns dos recursos apresentados na Subseção
@@ -359,8 +341,8 @@ exceção (linha 20).
 \label{FonteDadosDbc}
 
 Os serviços REST na \neoidl{} seguem uma convenção em relação ao conteúdo
-presente na requisição e na resposta para cada tipo de operação \emph{HTTP},
-conforme descrito na Subseção \ref{linguagemNeoIDL}. Por exemplo, o método \method{GET}
+presente na requisição e na resposta para cada tipo de operação \emph{HTTP}.
+Por exemplo, o método \method{GET}
 submete os argumentos pelo \emph{path} ou como \textit{query string} da
 requisição e não em seu corpo. Esses aspectos foram considerados para se definir
 a fonte das informações para os argumentos e parâmetros utilizados nas pré e
@@ -376,7 +358,7 @@ composição. Na figura, essa origem é identificada como \textit{Request argume
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=85mm,trim = 0mm 0mm 0mm
+\includegraphics[width=65mm,trim = 0mm 0mm 0mm
 0mm,clip]{img/FonteDadosDbcNeoIDLIngles.pdf}
 \caption{Diagrama da fonte de dados para acionamento de pré e pós-condições}
 \label{Fig:FonteDadosDbcNeoIDL}
