@@ -1,6 +1,6 @@
 \section{Contratos REST robustos}
  
-
+ 
 Os benefícios esperados pela adoção da arquitetura orientada a serviços
 somente serão auferidos com a concepção adequada de cada serviço. 
 Por essa razão, é necessário planejar o projeto dos serviços criteriosamente
@@ -62,9 +62,9 @@ pós-condição violada.
 
 
 Em \designbycontract{}, além dos conceitos de pré e pós-condições,
-há também a ideia de invariantes\cite{meyer1997object}. Quando aplicadas a uma classe na
-orientação a objetos, as invariantes estabelecem restrições sobre o estado
-armazenado nos objetos instanciados dessa classe. No contexto de orientação a
+há também a ideia de invariantes\cite{meyer1997object}. Quando aplicadas a uma
+classe em orientação a objetos, as invariantes estabelecem restrições sobre o
+estado armazenado nos objetos instanciados dessa classe. No contexto de orientação a
 serviços, tem-se por princípio a ausência de estados dos serviços. Por essa razão, 
 no estudo sobre a incorporação de
 \designbycontract{} em contratos de serviços, as invariantes não foram
@@ -76,8 +76,7 @@ consideradas.
 
 As precondições podem ser do tipo baseado nos parâmetros da requisição ou do
 tipo baseado na chamada a outro serviço. Denomina-se, no contexto deste artigo,
-de básica a precondição baseada apenas nos parâmetros da requisição (atributos 
-da chamada ao serviço). Essa validação é direta,
+de básica a precondição baseada apenas nos parâmetros da requisição. Essa validação é direta,
 comparando os valores passados com os valores admitidos. 
 
 No caso das precondições baseadas em serviços, é realizada chamada a outro
@@ -85,12 +84,12 @@ serviço para verificar se uma determinada condição é satisfeita. Este modo d
 funcionamento, que se assemelha a uma composição de serviço, é mais versátil, pois permite
 validações de condições complexas sem que a lógica associada seja conhecida pelo
 cliente. Assim, os contratos que estabelecem esse tipo de
-precondição se mantem simples.
+precondição se mantém simples.
 
 A Figura \ref{FigServicePrecondition} apresenta as etapas de verificação de cada
 precondição. Nota-se que a saída para as situações de desatendimento às
-precondições, independentemente do tipo, é o mesmo. O objetivo desta abordagem
-é simplificar o tratametno de exceção no consumidor.
+precondições, independentemente do tipo, é o mesma. Essa abordagem
+simplifica o tratamento de exceção no consumidor.
 
 \begin{figure}[!htb]
 \centering
@@ -114,7 +113,7 @@ precondições, independentemente do tipo, é o mesmo. O objetivo desta abordage
 \end{figure}
 
 A verificação das pós-condições acontece de modo muito similar a das
-precondições. Há também os dois tipos, baseado em valores e em chamadas a
+precondições. Há também os dois tipos, baseada em valores e em chamadas a
 outros serviços. O diferencial está em que a validação dos valores passa a
 ocorrer a partir dos valores contidos na mensagem de retorno. A Figura
 \ref{FigServicePostcondition} descreve as etapas necessárias para validação de
@@ -196,7 +195,7 @@ A sintaxe da \neoidl{} foi extendida para admitir a vinculação de pré e
 pós-condições às capacidades. Essas contruções de \designbycontract{} são
 opcionais, ou seja, uma capacidade pode não ter nenhuma pré ou pós-condição. Por
 outro lado, pode-se incluir nas capacidades mais de uma precondição e mais de
-uma pós-condição ou ainda qualquer combinação delas, simultâneamente.
+uma pós-condição, simultâneamente.
 
 \begin{center}
 \begin{footnotesize}
@@ -247,34 +246,35 @@ Comparação ValorSrv}\}}\\
 
 Onde:
 
-\begin{description}
-\item [TipoCondição] indica se é uma precondição (\emph{require}) ou uma
+\begin{itemize}
+\item \textbf{TipoCondição} indica se é uma precondição (\emph{require}) ou uma
 pós-condição (\emph{ensure});
 
-\item [Argumento] indica o nome do atributo que será testado;
+\item \textbf{Argumento} indica o nome do atributo que será testado; 
 
-\item [Comparação] indica a operação de comparação que será utilizada. A
+\item \textbf{Comparação} indica a operação de comparação que será utilizada. A
 \neoidl{}  admite seis operadores de comparação: igualdade (\literal{==}), 
-diferença (\literal{<>}), maior (\literal{>}), maior ou igual (\literal{>=}), 
-menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados  a
+diferença (\literal{<>}), maior (\literal{>}), maior ou igual
+(\literal{>=}), menor (\literal{<}) e menor ou igual (\literal{<=}). Eles podem ser aplicados  a
 qualquer tipo de pré ou pós-condição.
 
 Mais de um atributo pode ser testado em uma pré ou pós-condição. Na expressão
 acima, essa característica é simbolizada com a indicação de uma lista.
 
-\item [Valor] corresponde ao valor que será comparado com o \textbf{Argumento}.
+\item \textbf{Valor} corresponde ao valor que será comparado com o
+``Argumento''.
 As pré e pós-condições básicas admitem algumas combinações com os operadores
 \emph{not}, \emph{and} e \emph{or}, formando expressões booleanas e,
 assim, permitindo estabelecer regras mais abrangentes.
 
-Por exemplo, a precondição apresentada na Figura \ref{lst:DBCPreCondBasica} poderia
+Por exemplo, a precondição apresentada na Figura \ref{lst:ModuloNeoVariosDbC} poderia
 ser escrita como \emph{\textbf{require} (\textbf{not} id \literal{<=} 0)}. Os
 operadores \emph{and} e \emph{or} são infixos (ex.: \emph{\textbf{require}
 ((id \literal{>} 0 \textbf{or} id \literal{<=} -1000))}). O uso do operador
 \emph{and} produz o mesmo efeito de se declarar duas precondições.
 
-\item [Serviço] indica o nome do serviço que será acionado. As informações para
-indicação concreta da localização do serviço, ou seja, a URL de acionamento, não
+\item \textbf{Serviço} indica o nome do serviço que será acionado. As
+informações para indicação concreta da localização do serviço, ou seja, a URL de acionamento, não
 são indicados nesse atributo de pre e pós-condição. Essas informações dependem
 do local de implantação do serviço e não convém que estejam declaradas no
 contrato, sob pena de que mudanças no ambiente de implantação do serviço gerem
@@ -282,20 +282,20 @@ impacto ao contrato.
 Entretanto, caso se queira fazer essa vinculação, pode ser criada uma anotação
 \neoidl{}, com essa finalidade, para o serviço.
 
-\item [Parâmetro] tem a função de indicar os valores que serão passados para a
-chamada ao serviço da pré ou pós-condição.
+\item \textbf{Parâmetro} tem a função de indicar os valores que serão passados
+para a chamada ao serviço da pré ou pós-condição.
 
- \item [ValorSrv] corresponde a um valor que será comparado com o
+ \item \textbf{ValorSrv} corresponde a um valor que será comparado com o
  \textit{Status Code HTTP} retornado pelo serviço. Na \neoidl{}, esses valores
- são convencionados como o nome do corresponde ao código HTTP, com palavras
- justapostas (Ex.: "NotFound" tem o valor do código 404, de HTTP \textit{Not
+ são convencionados como o nome do correspondente ao código HTTP, com palavras
+ justapostas (Ex.: ``NotFound'' tem o valor do código 404, de HTTP \textit{Not
  Found})
 
-\item [Valor de Retorno] é utilizado na cláusula \emph{otherwise} para indicar o
-valor que o serviço principal deve retornar caso uma precondiçaõ ou pós-condição
+\item \textbf{Valor de Retorno} é utilizado na cláusula \emph{otherwise} para
+indicar o valor que o serviço principal deve retornar caso uma precondiçaõ ou pós-condição
 não seja atendida.
 
-\end{description}
+\end{itemize}
 
 A sintaxe escolhida para possibilitar a especificação de pré e pós condições
 na \neoidl{} foi influenciada por três linguagens e extensões de linguagens de
@@ -305,15 +305,15 @@ programação: Eiffel, JML e Spec\#
 \subsection{Um exemplo de módulo com \designbycontract{}}
 
 A Figura \ref{lst:ModuloNeoVariosDbC} apresenta um exemplo de módulo \neoidl{}
-de um serviço completo, utilizando alguns dos recursos apresentados na Subseção
-\ref{TiposContrDbC}. Esse serviço possui três operações, cada uma com duas
+de um serviço completo com três operações, cada uma com duas
 condições de \designbycontract{}.
 
-A operação \method{GET} possui uma precondição em que o valor do atributo \emph{id} deve ser maior que zero (linha 8), caso contrário a operação deve retornar o valor
-correspondente a "NotFound". Uma pós-condição assegura que, se o serviço for
+A operação \method{GET} possui uma precondição em que o valor do atributo \emph{id} 
+deve ser maior que zero (linha 8), caso contrário a operação deve retornar o valor
+correspondente a ``NotFound''. Uma pós-condição assegura que, se o serviço for
 executado adequadamente, o valor de \emph{quantity} será maior que zero (linha
 9). Se for violada a pós-condição, a operação \method{GET} retorna o valor
-"NoContent".
+``NoContent''.
 
 A operação \method{POST} possui duas precondições (linhas 13 e 14). A primeira,
 básica, valida o valor do atributo \emph{quantity}. A segunda, aciona o serviço
@@ -344,16 +344,13 @@ Os serviços REST na \neoidl{} seguem uma convenção em relação ao conteúdo
 presente na requisição e na resposta para cada tipo de operação \emph{HTTP}.
 Por exemplo, o método \method{GET}
 submete os argumentos pelo \emph{path} ou como \textit{query string} da
-requisição e não em seu corpo. Esses aspectos foram considerados para se definir
-a fonte das informações para os argumentos e parâmetros utilizados nas pré e
-pós-condições.
+requisição e não em seu corpo. A Figura \ref{Fig:FonteDadosDbcNeoIDL} resume a origem para cada operação.
 
-A Figura \ref{Fig:FonteDadosDbcNeoIDL} resume a origem para cada operação. Há
-diferenças também entre os tipos básico e baseado em serviços das construções de
-\designbycontract{}. As operações \method{GET} e \method{DELETE} não possuem
-argumentos encaminhados no corpo da requisição. Para essas operações, os
-argumentos são retirados do \emph{path} ou \emph{query string} para
-va\-li\-da\-ção das precondições, tanto no tipo básico como no tipo baseado em
+Há diferenças também entre os tipos básico e baseado em serviços das construções
+de \designbycontract{}. As operações \method{GET} e \method{DELETE} não possuem
+argumentos encaminhados no corpo da requisição, de modo que os argumentos são
+retirados do \emph{path} ou \emph{query string} para va\-li\-da\-ção das precondições, 
+tanto no tipo básico como no tipo baseado em
 composição. Na figura, essa origem é identificada como \textit{Request arguments}.
 
 \begin{figure}[!htb]
@@ -371,14 +368,14 @@ local de onde as precondições básicas e baseadas em serviços devem extrair o
 parâmetros de validação.
 A \neoidl{} utiliza a notação JSON\cite{JSon} no corpo das requisições. A
 representação dos argumentos utiliza o padrão separado por pontos para indicar
-elementos mais internos (ex. "Pessoa.Nome").
+elementos mais internos (ex. ``Pessoa.Nome'').
 
 No caso das pós-condições, a origem das informações diverge entre o tipo
 básicos e o tipo por serviços. A única operação que admite pós-condição básica é
 a operação \method{GET}, em que os argumentos de validação são extraídos do
 corpo da resposta (\textit{Response body}). As demais operações não retornam dados
-no corpo da requisição, pois estão voltadas para alteração de informações e não
-para consultas. Além disso, não há utilidade em se validar dados de requisição
+no corpo da requisição, pois estão voltadas para alteração e não consulta de
+informações. Além disso, não há utilidade em se validar dados de requisição
 em uma pós-condição.
 
 Já as pós-condições baseadas em serviços não suportam a operação \method{GET}.
@@ -406,12 +403,10 @@ ele necessita aumenta, reforçando os benefícios observados com a prática
 \CtFirst{}. Ou seja, o desenho do serviço considera ainda mais a perspectiva do
 consumidor do serviço.
 
-A Seção \ref{extensaoNeoIDL-DbC} tratou do elemento \emph{Contrato}, sobre como
-ele pode ser escrito em \neoidl{} com suporte a construções de
-\designbycontract{}. O contrato, porém, é apenas uma especificação, no
+O contrato, porém, é apenas uma especificação, no
 sentido de descrever regras e não de torná-las executáveis em si. Todavia, a
 \neoidl{} é, além de uma linguagem formal, um \framework{} de geração de
-código poliglota (Subseção \ref{histMotivNeoIDL}) por meio de \textit{plugins}.
+código poliglota por meio de \textit{plugins}.
 
 Para se comprovar a viabilidade de se conceber serviços com suporte a pré e
 pós-condições, foi desenvolvido, no decorrer da pesquisa de mestrado, um
@@ -420,30 +415,20 @@ subseções detalham como é estruturada a arquitetura do serviço gerado e seu 
 \designbycontract{}. Ao final, alguns aspectos sobre a implementação do
 próprio \textit{plugin} são descritos.
 
-\subsubsection{Visão geral do Python \twisted{}}
-\label{PythonTwisted}
-
 Adotou-se o \framework{} \emph{Python Twisted}\cite{fettig2005twisted} como tecnologia para
 construção dos serviços com pré e pós-condições. A escolha se deu em razão de
 \twisted{} possuir uma arquitetura voltada para processamento de requisições de vários
 tipos de protocolos de rede sobre uma infraestrutura simples e autônoma. 
-
-O \twisted{} é baseado em eventos e adota a estratégia de tratamentos de
-requisições de forma assíncrona, em detrimento ao uso de \textit{threads}. O
-núcleo do \twisted{} é o \textit{loop} do objeto \emph{reactor} responsável por
-aguardar e direcionar o processamento dos eventos. Requisições HTTP, como as das chamadas a serviços
-REST, são tratadas como eventos.
 
 \subsection{Arquitetura dos serviços \twisted{}}
 \label{ArquiteturaTwisted}
 
 Os serviços \twisted{} gerados pela \neoidl{} são estruturados em uma
 arquitetura que extende a arquitetura base do \twisted{} \emph{Reactor},
-incorporando serviços ao processamento das requisições, como ilustrado na Figura
-\ref{Fig:TwistedReactorServices}. Os serviços são autônomos entre si, e
+incorporando serviços ao processamento das requisições. Os serviços são autônomos entre si, e
 processam as requisições de acordo com o roteamento realizado pelo servidor.
 
-Em termos de classes, a \neoidl{} gera um conjunto de tres módulos base,
+Em termos de classes, a \neoidl{} gera um conjunto de três módulos base,
 que constituem o pacote do \twisted{} \textit{server}, representados na
 parte superior da Figura \ref{Fig:TwistedArchtecture}. Essas classes são fixas,
 ou seja, não dependem da quantidade nem do conteúdo dos serviços declarados no
@@ -481,8 +466,7 @@ lógica corresponde às construções de \designbycontract{} descritas na Subse�
 Em \emph{DbcConditions} estão as funções que carregam a lista de pré e
 pós-condições para cada serviço. A chamada para as pré e pós-condições baseadas
 em serviços também é construída nesse pacote. Esse pacote é fundamental para o
-funcionamento das cons\-tru\-ções de \designbycontract{} e consta transcrita no
-Apêndice \ref{classesDbcCondition}.
+funcionamento das cons\-tru\-ções de \designbycontract{}.
 
 Para cada serviço declarado no módulo \neoidl{} são geradas duas classes: os
 filtros do serviço e o serviço em si. A classe \emph{ServiceFilter} recebe a
@@ -493,7 +477,7 @@ fim, contém apenas a estrutura para implementação da lógica interna do servi
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=50mm,trim = 5mm 6mm 0mm 
+\includegraphics[width=45mm,trim = 5mm 6mm 0mm 
 3mm,clip]{img/TwistedFilters.pdf}
 \caption{Modo de operação das pré e pós-condições no serviço Twisted}
 \label{Fig:TwistedFiltes}
@@ -618,12 +602,12 @@ convenção adotada sobre a fonte de informações (Subseção \ref{FonteDadosDb
 pós-condição é carregada com a indicação de que os argumentos devem ser lidos do
 corpo da resposta do serviço (linha 7).
 
-Os parâmetros da pós-condição possuem uma correspondência direta, em que as
-linhas 3 a 5 do lado esquerdo correspondem também às linhas 3 a 5 do lado
-direito. O valor de exceção da especificação \neoidl{} é traduzido no código
-HTTP correspondente (linha 6). Ambos os códigos apresentados na Figura
-\ref{Fig:LhsRhsDbcConditions} são, na realidade, escritos em uma única linha.
-O uso de múltiplas linhas foi adotado aqui apenas para efeitos didáticos.
+% Os parâmetros da pós-condição possuem uma correspondência direta, em que as
+% linhas 3 a 5 do lado esquerdo correspondem também às linhas 3 a 5 do lado
+% direito. O valor de exceção da especificação \neoidl{} é traduzido no código
+% HTTP correspondente (linha 6). Ambos os códigos apresentados na Figura
+% \ref{Fig:LhsRhsDbcConditions} são, na realidade, escritos em uma única linha.
+% O uso de múltiplas linhas foi adotado aqui apenas para efeitos didáticos.
 
 A segunda seção da classe \emph{ServiceFilter} é genérica para
 qualquer serviço. A Figura \ref{lst:filtrosServicosTwisted} contém um trecho
@@ -634,32 +618,32 @@ as pós-condições são carregadas (linha 14).
 \subsection{ESTUDO EMPÍRICO SUBJETIVO} 
 \label{analiseSubjetiva}
 
-Há diversas formas e técnicas para se conduzir um estudo empírico, cada uma com
-suas vantagens e desvantagens \cite{shull2008guide}. Nas técnicas diretas, o pesquisador
-atua de forma explícita e perceptível pela equipe do projeto de \textit{software}, interagindo
-com eles em maior ou menos grau. As técnicas indiretas são caracterizadas pelo
-acesso indireto do pesquisador aos participantes, por meio da captura de
-informações do ambiente de trabalho deles. Há ainda a abordagem independente,
-em que se analisa apenas o produtos de trabalho, como documentação e código
-fonte.
-
-As técnicas diretas são divididas em inquisitivas e de observação.
-\textit{Brainstorming}, grupo focais, entrevistas, questionários e modelagem
-conceitual estão entre as técnicas inquisitivas. Essas são, muitas vezes, a
-única forma de obter o engajamento dos envolvidos na realização das atividades.
-Entretanto, elas tem o risco de serem excessivamente subjetivas e de medição de
-resultados pouco precisa.
-
-A abordagem observatória está ligada a técnicas como seções de
-\textit{think-aloud}\footnote{Momentos em que os participantes são
-convidados a expressar seus pensamentos em voz alta (`pensar alto'), a partir de
-questões levantadas pelo investigador}, sombreamento\footnote{Consiste
-em acompanhar o participante na realização de todas as suas atividades} e
-participante-observador (em que o pesquisar participa realizando 
-atividades chave para o projeto).
-As técnicas observatórias permitem um estudo em tempo real dos fenômenos. Porém, elas levam a uma fase de análise
-difícil, pois geram muitas informações e requerem um elevado conhecimento para
-se interpretar corretamente os dados.
+% Há diversas formas e técnicas para se conduzir um estudo empírico, cada uma com
+% suas vantagens e desvantagens \cite{shull2008guide}. Nas técnicas diretas, o pesquisador
+% atua de forma explícita e perceptível pela equipe do projeto de \textit{software}, interagindo
+% com eles em maior ou menos grau. As técnicas indiretas são caracterizadas pelo
+% acesso indireto do pesquisador aos participantes, por meio da captura de
+% informações do ambiente de trabalho deles. Há ainda a abordagem independente,
+% em que se analisa apenas o produtos de trabalho, como documentação e código
+% fonte.
+% 
+% As técnicas diretas são divididas em inquisitivas e de observação.
+% \textit{Brainstorming}, grupo focais, entrevistas, questionários e modelagem
+% conceitual estão entre as técnicas inquisitivas. Essas são, muitas vezes, a
+% única forma de obter o engajamento dos envolvidos na realização das atividades.
+% Entretanto, elas tem o risco de serem excessivamente subjetivas e de medição de
+% resultados pouco precisa.
+% 
+% A abordagem observatória está ligada a técnicas como seções de
+% \textit{think-aloud}\footnote{Momentos em que os participantes são
+% convidados a expressar seus pensamentos em voz alta (`pensar alto'), a partir de
+% questões levantadas pelo investigador}, sombreamento\footnote{Consiste
+% em acompanhar o participante na realização de todas as suas atividades} e
+% participante-observador (em que o pesquisar participa realizando 
+% atividades chave para o projeto).
+% As técnicas observatórias permitem um estudo em tempo real dos fenômenos. Porém, elas levam a uma fase de análise
+% difícil, pois geram muitas informações e requerem um elevado conhecimento para
+% se interpretar corretamente os dados.
 
 A meta de investigar a utilidade do uso de construções de \designbycontract{} na
 \neoidl{} estruturada conforme o método GQM é apresentada na Tabela
