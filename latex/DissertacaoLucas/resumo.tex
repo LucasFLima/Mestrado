@@ -25,19 +25,19 @@ Por outro lado, REST ainda não dispõe de uma notação padrão para especifica
 de contratos e linguagens como Swagger, YAML e WADL cumprem com o
 único propósito de descrever serviços, porém apresentam uma significativa
 limitação: são voltadas para computadores, tendo escrita e leitura complexas para
-humanos -- o que prejudica a abordagem \textit{Contract-first}, prática
-estimulada em SOC. Tal limitação motivou a especificação da
-linguagem NeoIDL\footnote{Além de ser uma linguagem (\textit{Domain Specific
+humanos, dificultando a abordagem \textit{Contract-first}\footnote{Descrito
+na Subseção \ref{Contract-First}.} estimulada em SOC. Tal limitação
+motivou a especificação da linguagem NeoIDL\footnote{Além de ser uma linguagem (\textit{Domain Specific
 Language}), a NeoIDL também possui um framework de geração de código para outras linguagens de propósito
 amplo.}, concebida com o objetivo de ser mais expressiva para humanos,
 além de prover suporte a modula\-ri\-za\-ção e herança.
 \emph{Problema.} Nenhuma dessas linguagens, incluindo a NeoIDL, dá
 suporte a contratos robustos, como os possíveis de serem descritos em
-linguagens ou extensões de linguagens com suporte a \designbycontract{},
+linguagens ou extensões de linguagens com suporte a \designbycontract{} -- DbC,
 exploradas tipicamente no paradigma de orientação a objetos.
 \emph{Objetivos.}
 O objetivo geral deste trabalho é investigar o uso de construções de
-\textit{Design-by-Contract} no contexto de SOC,
+DbC no contexto de SOC,
 verificando a viabilidade e utilidade de sua adoção na especificação de
 contratos e implementação de serviços REST.
 % \absdiv{Método}
@@ -59,7 +59,7 @@ atributos e dados de saída; e outra baseada em
 serviços, em que composições de serviços são acionadas para validar se o serviço
 deve ser executado (ou se foi executado adequadamente, em caso de pós-condições). %Essa lógica foi expressa na sintaxe da NeoIDL e possibilitou
 % a transformação para serviços com esse comportamento.
-Sob a perspectiva de validação empírica, esta dissertação contribui com dois estudos.
+Sob a perspectiva de validação empírica, contribui-se com dois estudos.
 Um primeiro, verificou
 os requisitos de expressividade e reuso da NeoIDL, sendo realizado no
 domínio de Comando e Controle em parceria com o Exército Brasileiro. O segundo,

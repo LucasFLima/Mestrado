@@ -321,20 +321,23 @@ considerando a complexidade das composições a serem formadas.
  
 
 \subsection{Contract First}
+\label{Contract-First}
 \vspace{-6mm}
 
 O princípio do baixo acoplamento tem por objetivo principal reduzir o
 acoplamento entre o cliente e o fornecedor do serviço. Há vários tipos de
-acopamentos negativos, como citado na Subseção \ref{PrincipiosSOA}. Porém, um
+acoplamentos negativos, como citado na Subseção \ref{PrincipiosSOA}. Porém, um
 acoplamento é considerado positivo e desejável: da implementação a partir do contrato. Ou seja, a lógica
-do serviço deve corresponder ao que está especificado no contrato.
+do serviço deve corresponder ao que está especificado no contrato, permitindo
+assim que o serviço seja reutilizado exclusivamente com conhecimento do
+contrato.
 
 Duas abordagens podem ser seguidas para se produzir esse efeito. A primeira é a
 geração do contrato a partir da lógica implementada, conhecida como
 \CdFirst{}. A outra propõe um sentido inverso, partindo-se do contrato
-para a geração do código, chamada \CtFirst{}. A abordagem
-\CtFirst{} é recomendada para a arquitetura orientada a serviço
-\cite{erl2009web}.
+para a geração do código, chamada \CtFirst{}. A construção do serviço a
+partir da modelagem do contrato, defendida na abordagem \CtFirst{}, é
+recomendada para a arquitetura orientada a serviço \cite{erl2009web}.
 
 Embora muitas vezes preferível pelo desenvolvedor, a desvantagem do uso
 \CdFirst{} está no elevado impacto que alterações na implementação causam ao
@@ -413,7 +416,9 @@ formato das mensagens.
 
 Muitas organizações preferem utilizar SOAP por ele dispor de mais mecanismos de
 segurança e tratamento de erros \cite{serrano2014service}. Além disso, a tipagem
-de dados é mais forte em SOAP que em REST \cite{mumbaikar2013web}.
+de dados é mais forte em SOAP que em REST \cite{mumbaikar2013web}, uma vez que
+em SOAP se pode fazer uso de restrições e regras de validação providas pelo
+padrão \textit{XML Schema} \cite{XMLSchema}.
 
 
 \subsection{REST (Fielding)}
@@ -570,7 +575,8 @@ asserção além das pré e pós-condições. Em vez de cuidar das propriedades 
 rotina individualmente, elas expressam condições globais para todas as
 instâncias de uma classe \cite{meyer1997object}. Essa categoria de
 asserção é denominada invariante. Uma vez que em orientação a serviço se
-preconiza a ausência de estado, o conceito de invariante não é explorado neste trabalho.
+preconiza a ausência de estado, o conceito de invariante não é explorado neste
+trabalho, sem prejuízo da realização de estudo específico sobre o tema.
 
 
 
@@ -626,7 +632,7 @@ pós-condição na linguagem de extensão JML.
 \end{small}
 \caption{Exemplo de pré e pós-condições em JML}
 \label{lst:exemploJML}
-\end{figure}
+\end{figure} 
  
 \vspace{8mm}
 
@@ -649,6 +655,28 @@ pós-condição na linguagem Spec\#.
 \label{lst:exemploSpec}
 \end{figure}
 
+\vspace{8mm}
+
+\item [Code Contract] - é uma maneira mais moderna que Spec\# para utilização de
+construções de DbC no \textit{framework} .Net. \textit{Code Contract} inclui
+classes para registrar as restrições (pré, pós-condições e invariantes) ao
+código C\# e um analisador estático para análise em tempo de compilação e
+execução \cite{codecontractSite}. 
+
+O uso de \textit{Code Contract} também permite a geração de documentação da API
+com as informações do contrato. Estão disponíveis ainda ferramentas para geração
+de testes unitários para verificação das pré condições.
+
+\vspace{6mm}
+
+\begin{figure}[h]
+\begin{small}
+\lstinputlisting[language=CodeContract,firstnumber=1]{trechos_codigo/exemploCodeContract.tex}
+\vspace{-.5cm}
+\end{small}
+\caption{Exemplo de pré e pós-condições em Code Contract}
+\label{lst:exemploCodeContract}
+\end{figure}
 
 \end{description}
 

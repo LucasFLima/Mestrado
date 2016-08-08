@@ -30,7 +30,7 @@ Nesse contexto, a qualidade da especificação do contrato é fundamental para o
 projeto de software baseado em SOC. Este trabalho de pesquisa aborda um aspecto
 importante para a melhoria da robustez de contratos de serviços: a construção de
 garantias mútuas por meio da especificação formal de contratos, agregando o
-conceito de \designbycontract{}.
+conceito de \designbycontract{} \cite{meyer1992applying}.
 
 \section{PROBLEMA DE PESQUISA}
 \vspace{-6mm}
@@ -38,8 +38,10 @@ conceito de \designbycontract{}.
 As linguagens de especificação de contratos para SOC apresentam
 algumas limitações. Por exemplo, a linguagem WSDL (\emph{Web-services
 description language}) \cite{WSDLSite} é considerada uma solução
-pouco expressiva que desestimula a abordagem \textit{Contract First}. Por essa
-razão, especificações WSDL são usualmente derivadas a partir de anotações em código
+pouco expressiva pois se utiliza da notação XML e muitas marcações
+(\textit{tags}) para descrever um contrato de \ws{}. Essa característica
+desestimula a abordagem \textit{Contract First}.
+Por essa razão, especificações WSDL são usualmente derivadas a partir de anotações em código
 fonte (\textit{Code First}).
 Além disso, os conceitos descritos em contratos na linguagem WSDL não são
 diretamente mapeados aos elementos que compõem as interfaces do estilo
@@ -53,7 +55,9 @@ Ainda que façam uso de contratos mais sucintos que WSDL, essas linguagens não 
 beneficiam da clareza típica das linguagens específicas para esse fim (como
 a IDL\footnote{Interface Description
 Languages.} CORBA\cite{corba}) e não oferecem
-mecanismos semânticos de extensibilidade e modularidade.
+mecanismos semânticos de extensibilidade (capacidade de extender uma
+especificação principal e agregar outros componentes) e modularidade
+(especificação do contrato em partes separadas e reusáveis).
 
 Com o objetivo de mitigar esses problemas, a linguagem \neoidl{} foi proposta
 para simplificar a especificação de serviços REST com mecanismos de modularização,
@@ -65,8 +69,8 @@ Por outro lado, a \neoidl{}, da mesma forma que WSDL,
 Swagger e RAML não oferece construções para especificação de contratos formais
 com aspecto comportamental como os presentes em linguagens que
 suportam DbC (\emph{Design by Contract})~\cite{meyer1992applying}, como
-Eiffel, JML e Spec\#. Em outras palavras, a \neoidl{}  admite apenas
-contratos fracos (\textit{weak contracts}), sem suporte a construções com pré e
+Eiffel\cite{meyer1988eiffel}, JML\cite{leavens2006design} e
+Spec\#\cite{barnett2004spec}. Em outras palavras, a \neoidl{} admite apenas contratos fracos (\textit{weak contracts}), sem suporte a construções com pré e
 pós-condições.
 
 
@@ -148,6 +152,10 @@ pesquisa de mestrado está em incluir garantias na especificação de
 contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
 \designbycontract{}.
 
+
+\section{TRABALHOS RELACIONADOS}
+\vspace{-6mm}
+%TODO Capítulo sobre trabalhos relacionados
 
 
 \section{ESTRUTURA}

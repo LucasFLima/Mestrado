@@ -1,0 +1,23 @@
+class SortedList<T> where T : IComparable
+{
+  private List<T> list = new List<T>();
+  public void add(T item)
+  {
+    Contract.Requires<ArgumentNullException>(item != null, nameof(item));
+    Contract.Ensures(Contract.OldValue<int>(list.Count) + 1 == list.Count);
+    list.Add(item);
+    list.Sort();
+  }
+  public void remove(T item)
+  {
+    Contract.Requires<ArgumentNullException>(item != null, nameof(item));
+    Contract.Ensures(Contract.OldValue<int>(list.Count) <= list.Count);
+    list.Remove(item);
+  }
+  public T get(int i)
+  {
+    Contract.Ensures(Contract.OldValue<int>(list.Count) == list.Count);
+    return list[i];
+  }
+ 
+}

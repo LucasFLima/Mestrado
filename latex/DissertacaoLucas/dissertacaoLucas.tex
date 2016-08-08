@@ -216,6 +216,22 @@ a-pre-sen-ta-do cons-tan-tes}
   commentstyle=\color{purple}\ttfamily,
   }
   
+    
+   \lstdefinelanguage{CodeContract}{
+  sensitive = true,
+  keywords = {class, public, private, require, ensure, true, int,
+  Contract, Requires, Ensures, return}, numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  }
+  
   \lstdefinelanguage{Perl}{
   sensitive = true,
   keywords = {use, my, split, local, undef, open, die, binmode, close, print,
@@ -243,6 +259,7 @@ a-pre-sen-ta-do cons-tan-tes}
 
 \input{folha_titulo}
 \input{aprova}
+% \input{aprova2}
 \input{folha_catalografica}
 \input{dedicatoria}
 \input{agradecimento}

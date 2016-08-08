@@ -16,7 +16,7 @@ Além de ser uma linguagem, a \neoidl{} é também um \textit{framework} de gera
 de código que permite, a partir de contratos especificados na própria
 linguagem, a produção da implementação da estrutura do serviço. Os serviços
 podem ser construídos em várias linguagens e tecnologias, por meio
-de \textit{plugins} da \neoidl{}.
+de \textit{plugins} da \neoidl{}, conforme será apresentado neste capítulo.
 
 As próximas subseções apresentam o histórico da \neoidl{}, exemplificam sua
 sintaxe e descrevem sucintamente seu \textit{framework} de geração de código.
@@ -32,10 +32,10 @@ pelos requisitos de modularidade -- com a lógica distribuída inclusive
 geograficamente -- e de execução em plataformas diversificadas. Diante dessa
 necessidade, o Exército desenvolveu um \textit{framework} proprietário,
 voltado para arquitetura orientada a serviço e com suporte
-a implantação de serviços REST em vários linguagens, denominado \neocortex{}.
+a implantação de serviços REST em várias linguagens, denominado \neocortex{}.
 
 A particularidade do \neocortex{} de se utilizar serviços implementados em
-várias linguagens motivou o desenvolvimento um programa gerador de serviços
+várias linguagens motivou o desenvolvimento de um programa gerador de serviços
 poliglotas -- que produz código de várias linguagens de programação -- a partir da
 descrição do contrato do serviço. A \neoidl{} foi concebida para atender a essa
 finalidade. A primeira decisão de projeto da \neoidl{} foi a escolha da
@@ -49,6 +49,19 @@ partir dele, gerar a implementação do serviço. Todas essas linguagens utiliza
 notações de propósito geral (XML\cite{XML}, JSON\cite{JSon}, YAML\cite{YAML}),
 tornando os contratos extensos e de difícil compreensão humana. Além disso,
 elas não possuem mecanismos semânticos de extensibilidade e modularidade.
+
+% Problema com a formatação
+% \vspace{6mm}
+% 
+% \begin{figure}[h]
+% \begin{small}
+% \lstinputlisting[language=JSON,firstnumber=1]{trechos_codigo/exemploSwagger.tex}
+% \vspace{-.5cm}
+% \end{small}
+% \caption{Exemplo de descrição de Web Service em Swagger e YAML}
+% \label{lst:exemploSwagger}
+% \end{figure}
+
 
 Partiu-se então para a criação uma nova linguagem, com sintaxe
 inspirada em linguagens mais claras e concisas -- como \emph{CORBA
