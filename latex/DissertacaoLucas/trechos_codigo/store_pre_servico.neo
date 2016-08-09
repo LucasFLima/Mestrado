@@ -5,7 +5,7 @@ module store {
      path = "/order/{id}";
 
      @post   int postOrder (Order order)
-	require (call store.getOrder(id) == "NotFound"),
+	require (call store.getOrder(id) = = "NotFound"),
 	otherwise "InvalidPrecondition"
    };
 }

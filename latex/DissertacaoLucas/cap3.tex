@@ -134,7 +134,8 @@ O atributo \emph{type} de \emph{Message} é do tipo \emph{MessageType} recém de
 Na \neoidl{}, é utilizada a abordagem \emph{convenção sobre configuração}, de
 modo que todos os atributos declarados são obrigatórios, a menos que
 seja explicitamente declarado diferente. O atributo \emph{subject} do tipo
-\emph{Message} é um exemplo de atributo opcional (\texttt{<Type> <Ident> = 0;}).
+\emph{Message} é um exemplo de atributo opcional (indicado pelo símbolo de igual
+seguido de zero).
 
 Definido o tipo de dado, na linha proposta pela \neoidl{} para
 suporte a herança e reuso, o módulo seguinte -- conforme apresentado na Figura
@@ -372,9 +373,9 @@ especificação \neoidl{}. Nessa análise foram consideradas linhas físicas de
 código, ignorando-se linhas em branco ou compostas apenas de delimitadores.
 
 A proporção de redução não se deu de forma igual em todos os contratos. Por
-exemplo, o contrato de um determinado serviço\footnote{Os nomes reais dos
-contratos foram omitidos em razão de acordo de confidencialidade.} requereu 367
-linhas na especificação Swagger e 112 linhas na especificação \neoidl{} --
+exemplo, o contrato de um determinado serviço\footnote{Os nomes reais e
+conteúdos dos contratos foram omitidos em razão de acordo de confidencialidade.}
+requereu 367 linhas na especificação Swagger e 112 linhas na especificação \neoidl{} --
 redução da ordem de 69\%.
 Em contraponto, outro serviço especificado em Swagger possuia 81 linhas e o
 correspondente em \neoidl{} 42 linhas -- redução de linhas de código pouco inferior a 50\%.
@@ -443,12 +444,24 @@ mostra a estatística de repetição da especificação de contratos.
 \centering
 \vspace{0.5cm}
 \footnotesize
-\begin{tabular}{|r|r|r|r|r|r|r|r|r|}
+\begin{tabular}{r|r}
+Quantidade de & Quantidade de \\
+entidades &  especificações \\
 \hline   
-Quantidade de entidades & 420 & 26 & 5 & 7 & 2 & 2 & 1 & 1 \\
-\hline
-Quantidade de especificações & 1 & 2 & 3 & 4 & 5 & 6 & 10 & 12 \\
-\hline
+420 & 1 \\
+26 & 2 \\
+5 & 3 \\
+7 & 4 \\
+2 & 5 \\
+2 & 6 \\
+1 & 10 \\
+1 & 12 \\
+%\begin{tabular}{|r|r|r|r|r|r|r|r|r|}
+%\hline   
+%Quantidade de entidades & 420 & 26 & 5 & 7 & 2 & 2 & 1 & 1 \\
+%\hline
+%Quantidade de especificações & 1 & 2 & 3 & 4 & 5 & 6 & 10 & 12 \\
+%\hline
 
 \end{tabular}
 \caption{Estatística de entidades declaradas repetidamente entre contratos}
@@ -469,4 +482,4 @@ Este capítulo apresentou como foi concebida e como estava estruturada a
 outras palavras, demonstrou-se o alicerce sobre o qual foram
 desenvolvidas a extensão da linguagem e o \framework{} \neoidl{} com suporte a
 contratos com garantias típicas de \designbycontract{}, contribuições que serão
-detalhadente descritas no próximo capítulo.
+detalhadamente descritas no próximo capítulo.

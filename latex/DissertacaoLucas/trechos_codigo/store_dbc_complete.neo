@@ -11,12 +11,12 @@ module store {
 
      @post   int postOrder (Order order)
 	require (quantity > "0"),
-	require (call store.getOrder(id) == "NotFound"),
+	require (call store.getOrder(id) = = "NotFound"),
 	otherwise "InvalidPrecondition";
 
      @delete   int deleteOrder (int id)
-	require ((id <> "" and id > 0)),
-	ensure (call store.getOrder(id) == "NotFound"),
+	require ((id < > "" and id > 0)),
+	ensure (call store.getOrder(id) = = "NotFound"),
         otherwise "NotModified";
 
    };
