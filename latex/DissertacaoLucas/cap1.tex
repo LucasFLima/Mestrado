@@ -157,26 +157,32 @@ contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
 \vspace{-6mm}
 %TODO Capítulo sobre trabalhos relacionados
 
+O estudo sobre a importância da qualidade do contrato de serviço é bem
+consolidado na literatura. Como principal referência, destacam-se as publicações
+do autor canadence Thomas Erl. Neste trabalho de pesquisa, foram analisadas com
+mais profundidade as publicações \emph{Soa: principles of service design}
+\cite{erl2008soa} e \emph{Web service contract design and versioning for SOA} \cite{erl2009web}.
 
-The goal is to formally and unambiguously
-specify the service behavior in terms of its underlying data model and data interactions.
- We use the proposed formal contract to
-decrease ambiguity about a service behavior, to fully verify a composition of services, and to
-guarantee correctness and data integrity properties within a transactional composition of services. 
-We also show how formal methods can be useful in
-providing data integrity guarantees within a Web transaction and enable detection of errors in
-service-based implementations.
-Our experiment shows some limitations in
-current languages and formal verification techniques. 
-\cite{moustafa2012formal}
+Sobre a perspectiva principal da avaliação do uso de DbC no contexto de
+computação orientada a serviços, o trabalho de doutorado do pesquisador
+Iman Saleh Moustafa \cite{moustafa2012formal}, na linha de métodos formais,
+apresentou um modelo com aplicação de DbC para prover especificações de contratos de serviços
+interpretáveis por computador, com o objetivo de facilitar a análise e o teste
+automatizado do comportamento do serviço. Seu objetivo principal é aplicar os
+benefícios de DbC na formação de composição de serviços.
 
-\cite{naeem2010incremental}
+O trabalho de Muhammad Naeem \cite{naeem2010incremental} também trabalha a
+descoberta de serviços com auxílio de contruções de DbC. Seu enfoque está em
+descrever um procedimento para que o consumidor de serviços possa identificar,
+entre os provedores o serviço, aquele que atenda a seus requisitos e que ele
+possa satisfazer as precondições. Jinghai Rao também cita em sua pesquisa a
+aplicabilidade de DbC para descoberta de serviços \cite{rao2004survey}.
 
-\cite{rubio2013verifying}
-
-\cite{ferrier2012design}
-
-\cite{poyias2014design}
+De modo geral, embora não tratem especificamente de arquitetura orientada a
+serviços, as publicações de Rubio-Medrano \cite{rubio2013verifying}, Kyriakos
+Poyias \cite{poyias2014design} e Ferrier-Belhaouari \cite{ferrier2012design}
+debatem a aplicabilidade de DbC em projetos de arquitetura também extensíveis
+para SOA.
 
 
 
