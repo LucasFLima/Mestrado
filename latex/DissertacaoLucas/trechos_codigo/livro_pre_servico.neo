@@ -1,0 +1,12 @@
+module  ReservaLivro {
+  // entidades ocultadas para simplificacao
+  (...) 
+
+  // servico de reserva de livros 
+  resource reserva { 
+    path = "/livro/reserva";
+    @post Reserva solicitaReserva(Aluno aluno, Livro livro)
+       require (call reserva.getSituacaoLivro(livro) < > "Unauthorized"),
+	   otherwise "InvalidPrecondition";
+   };
+}

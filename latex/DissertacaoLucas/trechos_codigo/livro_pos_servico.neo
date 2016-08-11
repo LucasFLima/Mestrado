@@ -1,0 +1,11 @@
+module  ReservaLivro {
+  // entidades ocultadas para simplificacao
+  (...) 
+
+  resource reserva { 
+    path = "/livro/reserva";
+    @delete int excluiReserva(Reserva reserva)
+      ensure (call reserva.consultaReserva(reserva) == "NotFound"),
+      otherwise "NotModified";
+  };
+}

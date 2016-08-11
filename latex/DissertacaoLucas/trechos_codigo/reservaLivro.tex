@@ -1,0 +1,19 @@
+module  ReservaLivro {
+ // importacoes de Livro e Aluno declarados em outros modulos
+ import Livro; 
+ import Aluno;
+ 
+ // entidade reserva declarada localmente
+ entity Reserva {
+     string codigo;
+     Livro livro;
+     Aluno aluno; 
+ };  
+
+ // servico de reserva de livros com duas operacoes/capacidades
+ resource reserva { 
+  path = "/livro/reserva";
+  @post Reserva solicitaReserva(Aluno aluno, Livro livro); 
+  @get [Reserva] listaReservas(Aluno aluno); 
+ };
+};

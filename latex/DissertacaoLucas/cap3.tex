@@ -104,87 +104,101 @@ módulos, facilitando a herança e manutenção dos
 contratos. 
 
 Para demonstrar como os módulos são estruturados na
-\neoidl{}, a seguir são apresentados alguns trechos de um serviço hipotético
-de envio de mensagens. Na primeira parte, um módulo faz uma definição de tipo
-de dado; em seguida, um segundo módulo, voltado para especificação do serviço em
-si, importa as definições do primeiro para então declarar as operações do
-serviço. Por fim, ao módulo de serviço é acrescentada uma anotação como
-forma de extender as características da operação.
+\neoidl{} e as colaborações da pesquisa para a linguagem, nesta dissertação os
+trachos de código \neoidl{} são ilustrados considerando um serviço
+hipotético de reserva de livros. Em linhas gerais, o aluno submete um pedido de reserva e, caso todas as condições
+sejam satisfeitas, um código de reserva é gerado pelo serviço.
+
+Na primeira parte, um módulo faz uma definição de
+tipo de dado (Figura \ref{lst:livrodata-neo}); em seguida, um segundo módulo,
+voltado para especificação do serviço em si, importa as definições do primeiro para então declarar as operações do
+serviço (Figura \ref{lst:reservalivro-neo}). Por fim, ao módulo de serviço é acrescentada
+uma anotação como forma de extender as características da operação (Figura
+\ref{lst:annotationNeoIDL}).
+
 
 \vspace{6mm}
 
 \begin{figure}[h]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/mensagemData.tex}
+%\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/mensagemData.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livroData.tex}
 \vspace{-.5cm}
 \end{small} 
-\caption{Tipos de dados definidos na \neoidl}
-\label{lst:messagedata-neo}
+\caption{Tipo de dado Livro definidos na \neoidl}
+\label{lst:livrodata-neo}
 \end{figure}
 
-O trecho ilustrado na Figura \ref{lst:messagedata-neo} faz a definição de dois
-tipos de dados. \emph{MessageType}, declarado no linha 2, é uma estrutura
-simples do tipo enumeração. No exemplo, \emph{MessageType} pode ter os valores
-\emph{Received} e \emph{Send}.
-O outro tipo é \emph{Message}, declarado entre as linhas 4 e 11,
-composto de seis atributos (\emph{id, from, to, subject, content} e
-\emph{type}).
-O atributo \emph{type} de \emph{Message} é do tipo \emph{MessageType} recém declarado.
+O trecho ilustrado na Figura \ref{lst:livrodata-neo} faz a definição de
+dois tipos de dados. \emph{SituacaoLivro}, declarado no linha 2, é uma estrutura
+simples do tipo enumeração. No exemplo, \emph{SituacaoLivro} pode ter os valores
+\emph{Bloqueado}, \emph{Reservado} e \emph{Disponivel}.
+O outro tipo é \emph{Livro}, declarado entre as linhas 4 e 10,
+composto de cinco atributos (\emph{codigo, ISBN, titulo, autor} e
+\emph{situacao}).
+O atributo \emph{situacao} de \emph{Livro} é do tipo \emph{SituacaoLivro} recém
+declarado (linha 2).
 
 Na \neoidl{}, é utilizada a abordagem \emph{convenção sobre configuração}, de
 modo que todos os atributos declarados são obrigatórios, a menos que
-seja explicitamente declarado diferente. O atributo \emph{subject} do tipo
-\emph{Message} é um exemplo de atributo opcional (indicado pelo símbolo de igual
-seguido de zero).
+seja explicitamente declarado diferente. Os atributos \emph{ISBN} e
+\emph{autor} do tipo \emph{Livro} são exemplos de atributos opcionais (indicado
+pelo símbolo de igual seguido de zero).
 
 Definido o tipo de dado, na linha proposta pela \neoidl{} para
 suporte a herança e reuso, o módulo seguinte -- conforme apresentado na Figura
-\ref{lst:sentmessage-neo} -- importa o conjunto de definições de
-\emph{MessageData} e declara o serviço \emph{sendbox} (linha 4). Esse serviço possui duas capacidades:
-\emph{sendMessage} e \emph{listMessages}.
-A capacidade \emph{sendMessage} (linha 6) utiliza a operação \method{post} para
-submeter uma mensagem (tipo \emph{Message}). A capacidade \emph{listMessages}
-(linha 7) tem a finalidade de listar as mensagens com um determinado sequecial,
-por meio da operação \method{get}.
+\ref{lst:reservalivro-neo} -- importa o conjunto de definições de
+\emph{Livro} e declara a entidade \emph{Reserva} (linha 7) e o serviço
+\emph{reservaLivro} (linha 14).
+Esse serviço possui duas capacidades:
+\emph{solicitaReserva} e \emph{listaReservas}.
+A capacidade \emph{solicitaReserva} (linha 16) utiliza a operação \method{post}
+para submeter um pedido de reserva (utilizando os tipos \emph{Aluno} e
+\emph{Livro}).
+A capacidade \emph{listaReservas} (linha 17) tem a finalidade de listar as reservas de um
+determinado aluno, por meio da operação
+\method{get}.
 
-A instrução \emph{path} (linha 5) completa a especificação do serviço, indicando
-o caminho (URI) onde as operações serão disponibilizadas. Esse atribuito é importante para se definir
+A instrução \emph{path} (linha 15) completa a especificação do serviço,
+indicando o caminho (URI) onde as operações serão disponibilizadas. Esse atribuito é importante para se definir
 como as requisições serão roteadas entre os serviços.
 
 \vspace{6mm}
 
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/mensagem.tex}
+%\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/mensagem.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/reservaLivro.tex}
 \end{small}
-\caption{Sent message service specification in \neoidl}
-\label{lst:sentmessage-neo}
+\caption{Especificação do serviço de reserva de livros em \neoidl}
+\label{lst:reservalivro-neo}
 \end{figure}
 
-Seguindo a filosofia de \emph{conversão sobre configuração}, a \neoidl{} assume
+Seguindo a filosofia de \emph{convenção sobre configuração}, a \neoidl{} assume
 que os argumentos das operações dos tipos \method{POST} e \method{PUT} são
 enviadas no corpo da requisição. Nas operações dos tipos \method{GET} e
-\method{DELETE}, por outro lado, presume-se que os agumentos estão contidos no \emph{path} da requisição ou ainda
-como \textit{query string}.
+\method{DELETE}, por outro lado, presume-se que os argumentos estão contidos no
+\emph{path} da requisição ou ainda como \textit{query string}.
 
 A especificação dos contratos na \neoidl{} pode ser enriquecida de forma simples
-com o uso de anotações, pois elas possibilitam extender a semântica
+com o uso de anotações, pois elas possibilitam estender a semântica
 de uma especificação sem que seja necessário alterar a sintaxe da
 linguagem \neoidl{}. Essa versatilidade das anotações é bastante útil, pois a
 alteração da sintaxe da própria \neoidl{} não é um esfoço trivial, por demandar
 a compatibilização de todos os \textit{plugins} já construídos.
 
 O módulo apresentado na Figura \ref{lst:annotationNeoIDL} contém, além das
-informações contidas no módulo da Figura \ref{lst:sentmessage-neo}, uma anotação
-denominada \emph{Security Policy} (linhas 4 a 6) que é aplicada ao serviço
-\emph{sentbox}.
-A declaração da anotação é feita ao final do módulo (linhas 14 a 18).
+informações contidas no módulo da Figura \ref{lst:reservalivro-neo}, uma anotação
+denominada \emph{SecurityPolicy} (linha 6) que é aplicada ao serviço
+\emph{reservaLivro}.
+A declaração da anotação é feita ao final do módulo (linhas 14 a 17).
 
 \vspace{6mm}
  
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/messageSendAnnotation.tex}
+%\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/messageSendAnnotation.tex}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/reservaLivroAnotacao.tex}
 \vspace{-.5cm}
 \end{small}
 \caption{Especificação de anotação na \neoidl{}}
@@ -207,9 +221,8 @@ nome, um elemento alvo e uma lista de propriedades. Todas estas informações
 ficam disponíveis para utilização pelos \textit{plugins}.
 
 
-A estrutura de um módulo \neoidl{}, como pôde ser verificado nos exemplos
-acima e ilustrada na Figura \ref{fig:moduloNeoIDL}, é composta pelas seguintes
-seções: assinatura do módulo, seção de importação, enumerações e estruturas,
+A estrutura de um módulo \neoidl{}, como pôde ser verificado nesta subseção e
+ilustrada na Figura \ref{fig:moduloNeoIDL}, é composta pelas seguintes seções: assinatura do módulo, seção de importação, enumerações e estruturas,
 serviços e anotações. O apêndice \ref{apend:estruturaLexicaNeoIDL} apresenta a
 estrutura sintática e léxica da \neoidl{} antes de terem sido incorporadas as construções
 relativas a \designbycontract{}.
@@ -337,7 +350,7 @@ A expressividade é um dos principais critérios para se escolher uma
 linguagem. Entretanto a linguagem que não expressa todas as situações
 necessárias ao seu contexto de uso, por óbvio, não pode ser usada
 \cite{mackinlay1985expressiveness}. Nesse sentido, o primeiro teste a que a
-\neoidl{} foi submetido constituiu-se na produção de contratos e serviços reais
+\neoidl{} foi submetida constituiu-se na produção de contratos e serviços reais
 no início do projeto com o Exército Brasileiro (vide Subseção \ref{histMotivNeoIDL}).
 
 Assim, tendo a \neoidl{} demonstrado sua capacidade de representar contratos
@@ -349,8 +362,8 @@ Em Swagger, os contratos são escritos em JSON\cite{JSon} ou YAML\cite{YAML},
 ambos com uma estrutura geral de chave-valor.
 
 Sendo a facilidade de compreensão e manipulação por humanos um dos pilares
-de desenvolvimento da \neoidl{}, foi adotada a estratégia de comparar a
-expressividade em termos de quantidade de linhas de código (SLOC - do inglês
+de desenvolvimento da \neoidl{}, foi adotado o critério de comparar
+a expressividade em termos de quantidade de linhas de código (SLOC - do inglês
 \textit{Source Lines of Code}), uma vez que muitas linhas significam maior
 esforço para escrita, sobretudo na abordagem \CtFirst{}.
 
@@ -477,9 +490,9 @@ as mesmas informações de contratos REST. Sob a ótica do reuso, a abordagem pr
 contribuir para a identificação de entidades já declaradas, facilitando que
 elas sejam reusadas.
 
-Este capítulo apresentou como foi concebida e como estava estruturada a
+Este capítulo tratou de como foi concebida e como estava estruturada a
 \neoidl{} antes da incorporações de construções de \designbycontract{}. Em
-outras palavras, demonstrou-se o alicerce sobre o qual foram
+outras palavras, apresentou-se o alicerce sobre o qual foram
 desenvolvidas a extensão da linguagem e o \framework{} \neoidl{} com suporte a
 contratos com garantias típicas de \designbycontract{}, contribuições que serão
 detalhadamente descritas no próximo capítulo.

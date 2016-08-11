@@ -89,7 +89,7 @@ consideradas.
 
 As precondições podem ser do tipo baseado nos parâmetros da requisição ou do
 tipo baseado na chamada a outro serviço. Denomina-se, no contexto desta
-dissertação, de básica a precondição baseada apenas nos parâmetros da
+dissertação, básica a precondição baseada apenas nos parâmetros da
 requisição (atributos da chamada ao serviço). Essa validação é direta,
 comparando os valores passados com os valores admitidos. 
 
@@ -150,8 +150,8 @@ versáteis, foram consideradas adequadas e incorporadas à especificação de
 \designbycontract{} em contratos de serviços na \neoidl{}.
 
 A primeira sintaxe de \designbycontract{} na \neoidl{} teve como
-base a sintaxe da JML, especialmente em como se associar as pré e
-pós-condições a cada serviço ou capacidade, assemelhando-se a comentários e iniciados pelo
+principal influência a sintaxe da JML, especialmente em como se associar as pré
+e pós-condições a cada serviço ou capacidade, assemelhando-se a comentários e iniciados pelo
 símbolo de arroba (@). A Figura \ref{lst:precondicaoJML-neo} apresenta um
 exemplo de especificação de precondição seguindo a linha da JML.
 
@@ -160,9 +160,9 @@ exemplo de especificação de precondição seguindo a linha da JML.
 \begin{figure}[h]
 \begin{small}
 \lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/DBCsimple.neo}
-\vspace{-.5cm}
+\vspace{-.5cm} 
 \end{small} 
-\caption{Forma preliminar de precondição na \neoidl}
+\caption{Forma preliminar de precondição na \neoidl{}}
 \label{lst:precondicaoJML-neo}
 \end{figure}
 
@@ -180,10 +180,10 @@ com o uso das palavras reservadas \emph{require} e \emph{ensure}, sem uso de
 símbolos. Essa abordagem foi aplicada à \neoidl{} para versão final da sintaxe
 com suporte a \designbycontract{}.
 
-As próximas subseções apresentam alguns exemplos de especificação de pre e
-pós-condições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.
-Inicialmente as condições de \designbycontract{} são demonstradas separadamente
-e, ao final, a Subseção \ref{SintaxeGeralDbc} consolida o conjunto
+Utilizando-se o mesmo serviço hipotético descrito na subseção
+\ref{linguagemNeoIDL}, as próximas subseções apresentam alguns
+exemplos de especificação de pre e pós-condições na \neoidl{} e as mudanças introduzidas na sintaxe da linguagem.
+Inicialmente as condições de \designbycontract{} são demonstradas separadamente e, ao final, a Subseção \ref{SintaxeGeralDbc} consolida o conjunto
 de novos elementos sintáticos e como eles são estruturados.
 
 
@@ -202,13 +202,15 @@ esperado, a \neoidl{} admite seis operadores de comparação (Subseção
 \ref{TiposContrDbC}).
 
 A Figura \ref{lst:DBCPreCondBasica} (linhas 7 e 8) apresenta um exemplo de
-precondição básica em uma forma simples, em que apenas um valor é testado (id)
-e, caso a condição não seja satisfeita, a instrução \emph{otherwise} indica o
-valor a ser retornado (código HTTP Not Found). 	
+precondição básica em uma forma simples, em que apenas um valor é testado
+(livro.codigo -- linha 9) e, caso a condição não seja satisfeita, a instrução
+\emph{otherwise} indica o valor a ser retornado (código HTTP Not Found). A
+semântica desta precondição é de garantir que seja informado um livro com
+código.
 
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pre_basica.neo}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livro_pre_basica.neo}
 \end{small}
 \caption{Exemplo de notação de precondição básica na \neoidl{}}
 \label{lst:DBCPreCondBasica}
@@ -223,12 +225,12 @@ semelhante às precondições básicas (\ref{precondicaoBasica}), diferindo-se
 exclusivamente pelo uso da instrução \emph{ensure}. A Figura
 \ref{lst:DBCPosCondBasica} (linhas 8 e 9) mostra um exemplo de pós-condição
 básica em que, após a execução da operação \method{GET}, se o valor do atributo
-\emph{quantity} não for maior que zero, então o serviço não foi executado adequadamente e a exceção
-(\emph{otherwise}) é retornada.
+\emph{reserva.codigo} for um valor igual a vazio, então o serviço não
+foi executado adequadamente e a exceção (\emph{otherwise}) é retornada.
 
 \begin{figure}[htb]
 \begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pos_basica.neo}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livro_pos_basica.neo}
 \end{small}
 \caption{Exemplo de notação de pós-condição básica na \neoidl{}}
 \label{lst:DBCPosCondBasica}
@@ -257,17 +259,17 @@ precondições de serviço na \neoidl{} admitem os mesmos operadores de compara�
 que as precondições básicas.
 
 A Figura \ref{lst:DBCPreCondServico} ilustra a especificação de uma precondição
-do tipo serviço (linhas 8 e 9). Assim, antes de executar a operação \method{POST}
-do serviço principal, o serviço \emph{store.getOrder} é acionado. Caso esse
-serviço retorne o código correspondente a \emph{HTTP Not Found}, a operação
-\method{POST} é executada. Caso contrário, o serviço principal retorna o valor
+do tipo serviço (linhas 9 e 10). Assim, antes de executar a operação
+\method{POST} do serviço principal, o serviço \emph{reserva.getSituacaoLivro} é acionado. Caso
+esse serviço retorne o código diferente de \emph{HTTP
+Unauthorized}, a operação \method{POST} é executada. Caso contrário, o serviço principal retorna o valor
 correspondente a \emph{HTTP Invalid Precondition}, em razão do estabelecido no
 \emph{otherwise}.
 
 
-\begin{figure}[htb]
+\begin{figure}[htb] 
 \begin{small} 
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pre_servico.neo}
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livro_pre_servico.neo}
 \end{small}
 \caption{Exemplo de notação de precondição com chamada a serviço na
 \neoidl{}} 
@@ -288,20 +290,20 @@ inclusão (método \method{POST}). Ou ainda, a que verifica se o objeto foi excl
 após uma operação \method{DELETE}.
 
 No exemplo da Figura \ref{lst:DBCPosCondServico}, o serviço principal faz a
-exclusão de um objeto \textit{Order}. A pós-condição (linha 8) verifica, após o
-processamento do \method{DELETE}, se o objeto foi efetivamente apagado por meio do
-serviço \emph{store.getOrder}. Se o serviço da pós-condição retornar o valor
-\emph{HTTP Not Found}, o objeto foi adequadamente excluído. Caso contrário, o
-serviço principal retornará o valor \emph{HTTP Not Modified}, o qual foi
+exclusão de uma \textit{Reserva}. A pós-condição (linha 8) verifica, após
+o processamento do \method{DELETE}, se a reserva foi efetivamente apagada por
+meio do serviço \emph{reserva.consultaReserva}. Se o serviço da pós-condição retornar o valor
+\emph{HTTP Not Found}, a reserva de livro foi adequadamente excluída. Caso
+contrário, o serviço principal retornará o valor \emph{HTTP Not Modified}, o qual foi
 estabelecido na instrução \textit{otherwise}.
 
-\begin{figure}[htb]
-\begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_pos_servico.neo}
+\begin{figure}[htb] 
+\begin{small} 
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livro_pos_servico.neo}
 \end{small}
 \caption{Exemplo de notação de pós-condição com chamada a serviço na
 \neoidl{}}
-\label{lst:DBCPosCondServico}
+\label{lst:DBCPosCondServico}  	
 \end{figure} 
 
 
@@ -410,7 +412,7 @@ chamada ao serviço da pré ou pós-condição.
  \item [ValorSrv] corresponde a um valor que será comparado com o
  \textit{Status Code HTTP} retornado pelo serviço. Na \neoidl{}, esses valores
  são convencionados como o nome do corresponde ao código HTTP, com palavras
- justapostas (Ex.: "NotFound" tem o valor do código 404, de HTTP \textit{Not
+ justapostas (Ex.: ``NotFound'' tem o valor do código 404, de HTTP \textit{Not
  Found})
 
 \item [Valor de Retorno] é utilizado na cláusula \emph{otherwise} para indicar o
@@ -427,27 +429,28 @@ de um serviço completo, utilizando alguns dos recursos apresentados na Subseç�
 \ref{TiposContrDbC}. Esse serviço possui três operações, cada uma com duas
 condições de \designbycontract{}.
 
-A operação \method{GET} possui uma precondição em que o valor do atributo \emph{id} deve ser maior que zero (linha 8), caso contrário a operação deve retornar o valor
-correspondente a "NotFound". Uma pós-condição assegura que, se o serviço for
-executado adequadamente, o valor de \emph{quantity} será maior que zero (linha
-9). Se for violada a pós-condição, a operação \method{GET} retorna o valor
-"NoContent".
+A operação \method{GET} possui uma precondição em que o valor do atributo
+\emph{reserva.codigo} deve ser não vazio (linha 10), caso contrário a
+operação deve retornar o valor correspondente a ``NoContent''.
 
-A operação \method{POST} possui duas precondições (linhas 13 e 14). A primeira,
-básica, valida o valor do atributo \emph{quantity}. A segunda, aciona o serviço
-\emph{store.getOrder} com o parâmetro \emph{id}. Nessa operação, foi
-definido um valor de exceção único para as duas precondições. A \neoidl{}
-associa essa instrução de \emph{otherwise} geral às instruções anteriores que
-não possuem condição e exceção específica (caso da linha 8).
+A operação \method{POST} possui duas precondições (linhas 14 e 15). A primeira,
+básica, valida o valor do atributo \emph{aluno.situacao}. A segunda, aciona o
+serviço \emph{reserva.getSituacaoLivro} com o parâmetro \emph{livro}. Há ainda
+uma pós-condição que assegura que o código da reserva é não vazio (linha 16).
+Nessa operação, foi definido um valor de exceção único para as duas precondições
+e para a pós-condição (linha 17).
+A \neoidl{} associa essa instrução de \emph{otherwise} geral às instruções anteriores que
+não possuem condição e exceção específica.
 
-Na operação \method{DELETE} foi utilizado o operador lógico \emph{and} na
-precondição (linha 18). A pós-condição faz a chamada ao serviço
-\emph{store.getOrder}. Tanto a pré como a pós-condição possuem o mesmo valor de
-exceção (linha 20). 
+Na operação \method{DELETE}, a pós-condição faz a chamada ao serviço
+\emph{reserva.consultaReserva}. Ou seja, se a operação \method{delete} executou
+adequadamente, a reserva não deve ser mais localizada na consulta. Caso a
+pós-condição não seja satisfeita, o serviço retorna o valor correspondente a
+``NotModified''.
 
 \begin{figure}[htb]
-\begin{small}
-\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/store_dbc_complete.neo}
+\begin{small} 
+\lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livro_dbc_complete.neo}
 \end{small}
 \caption{Exemplo de módulo \neoidl{} com várias instruções de \designbycontract{}}
 \label{lst:ModuloNeoVariosDbC}
@@ -684,14 +687,14 @@ carregamento dessas condições. A primeira seção, de declaração das condiç
 O lado esquerda dessa
 figura contém a especificação de uma pós-condição (\emph{\textbf{ensure}}, na
 linha 2) associada à operação \method{GET} (linha 1). Constitui-se de uma
-pós-condição básica, que testa se o valor de resposta \emph{quantity} é maior que zero
-(linhas 3 a 5). Caso a pós-condição não seja satisfeita, o serviço retorna o
-código \emph{HTTP No Content}.
+pós-condição básica, que testa se o valor de resposta \emph{reserva.codigo} é
+diferente de vazio (linhas 3 a 5). Caso a pós-condição não seja satisfeita, o
+serviço retorna o código \emph{HTTP No Content}.
 
 
 \setbox0=\hbox{%
 %\begin{minipage}{1.9in}
-\begin{minipage}{6cm}
+\begin{minipage}{6.8cm}
 \begin{lstlisting}[
 basicstyle={\tiny\ttfamily},
 identifierstyle={\color{black}},
@@ -702,11 +705,11 @@ numbers=left,
 xleftmargin=0.5cm,frame=tlbr,framesep=2pt,framerule=0pt,
 morekeywords ={class,run}
 ]
-@get    Order getOrder (int id)
+@get Reserva consultaReserva (Reserva reserva)
 		ensure (
-				quantity
-				>
-				"0"
+				reserva.codigo
+				<>
+				null
 		),
 		otherwise "NoContent";
 \end{lstlisting}
@@ -715,7 +718,7 @@ morekeywords ={class,run}
 \savestack{\listingA}{\box0}
 
 \setbox0=\hbox{%
-\begin{minipage}{6cm}
+\begin{minipage}{5.5cm}
 \begin{lstlisting}[
 basicstyle={\tiny\ttfamily},
 identifierstyle={\color{black}},
@@ -728,9 +731,9 @@ morekeywords ={class,run}
 ]
 self.list.append(
 	DbcCheckBasic(
-		'quantity',
-		'>',
-		'0',
+		'reserva.codigo',
+		'<>',
+		null,
 		204,
 		ValuesSource.responseBody,
 		DbcConditionType.PostCondition,

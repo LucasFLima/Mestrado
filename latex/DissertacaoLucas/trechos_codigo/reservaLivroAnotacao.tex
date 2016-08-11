@@ -1,0 +1,19 @@
+module  ReservaLivro {
+ // entidades ocultadas para simplificacao
+ (...) 
+
+ // anotacao de seguranca aplicada ao servico
+ @SecurityPolicy (role = "aluno");
+ // servico de reserva de livros com duas operacoes/capacidades
+ resource reservaLivro { 
+  path = "/livro/reserva";
+  @post Reserva solicitaReserva(Aluno aluno, Livro livro); 
+  @get [Reserva] listaReservas(Aluno aluno); 
+ };
+ 
+ // declaracao da anotacao de seguranca
+  annotation SecurityPolicy for resource {
+   string role;
+ };
+ 
+};

@@ -1,0 +1,11 @@
+module Livro {
+   enum SituacaoLivro { Bloqueado, Reservado, Disponivel }; 
+ 
+   entity Livro {
+     string codigo;
+     string ISBN = 0; 
+     string titulo;
+     string autor = 0;
+     SituacaoLivro situacao;
+   }; 
+}

@@ -1,11 +1,11 @@
-module Catalogo {
-    (...)
-    service Catalogo {
-	    path = "/catalogo";
+module ReservaLivro {
+   (...)
+   resource reservaLivro {
+      path = "/livro/reserva";
 	
-	    /@require descricao != null
-	    /@otherwise HTTP_Precondition_Failed
-	    @post Catalogo incluirItem (string id, string descricao, float valor);
-    }
-    (...)
-}
+      /@require livro.codigo != null
+      /@otherwise HTTP_Precondition_Failed
+      @post Reserva solicitaReserva(Aluno aluno, Livro livro);
+   }
+   (...)
+} 

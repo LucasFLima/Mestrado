@@ -1,0 +1,11 @@
+module  ReservaLivro {
+   // entidades ocultadas para simplificacao
+   (...) 
+
+   resource reservaLivro { 
+      path = "/livro/reserva";
+      @get Reserva consultaReserva(Reserva reserva)
+	     ensure (reserva.codigo < > null),
+	     otherwise "NoContent";
+   };
+}
