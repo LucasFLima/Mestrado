@@ -29,7 +29,7 @@ nível de garantias. No contexto de \wss{} em REST, conforme descrito na
 Seção \ref{secaoREST}, há ainda a ausência de padrão para especificação
 contratos.
 
-A proposta deste trabalho é extender os níveis de garantias, de modo a promover
+A proposta deste trabalho é estender os níveis de garantias, de modo a promover
 um patamar adicional com obrigações mútuas entre os serviços (consumidor e
 provedor). Isso se dá pela adoção do conceito de \designbycontract{} (Seção 
 \ref{Design-by-Contract}) em que a execução da capacidade do serviço garantirá 
@@ -144,7 +144,7 @@ programação: Eiffel, JML e Spec\# (exemplificadas na Subseção
 
 Em Eiffel, as asserções são expressões booleanas, de modo que uma pré e uma
 pós-condição podem ter resultado verdadeiro ou falso. As asserções também podem
-incluir chamadas a funções, extendendo a validações a lógicas mais sofisticadas
+incluir chamadas a funções, estendendo a validações a lógicas mais sofisticadas
 \cite{meyer1992applying}. Essas ca\-rac\-te\-rís\-ti\-cas, por serem simples e
 versáteis, foram consideradas adequadas e incorporadas à especificação de
 \designbycontract{} em contratos de serviços na \neoidl{}.
@@ -327,7 +327,7 @@ símbolos ``['' e ``]'' identificam uma lista.}:
 \hilight{\{\texttt{Serviço [Capacidade]}\}}
 \end{center}
 
-A sintaxe da \neoidl{} foi extendida para admitir a vinculação de pré e
+A sintaxe da \neoidl{} foi estendida para admitir a vinculação de pré e
 pós-condições às capacidades. Essas contruções de \designbycontract{} são
 opcionais, ou seja, uma capacidade pode não ter nenhuma pré ou pós-condição. Por
 outro lado, pode-se incluir nas capacidades mais de uma precondição e mais de
@@ -580,7 +580,7 @@ de \emph{Callbacks} \cite{fettig2005twisted}.
 \label{ArquiteturaTwisted}
 
 Os serviços \twisted{} gerados pela \neoidl{} são estruturados em uma
-arquitetura que extende a arquitetura base do \twisted{} \emph{Reactor},
+arquitetura que estende a arquitetura base do \twisted{} \emph{Reactor},
 incorporando serviços ao processamento das requisições, como ilustrado na Figura
 \ref{Fig:TwistedReactorServices}. Os serviços são autônomos entre si, e
 processam as requisições de acordo com o roteamento realizado pelo servidor.
@@ -905,7 +905,7 @@ Com relação a & facilidade de uso e utilidade das construções \\
 Do ponto de vista de & arquitetos e desenvolvedores experientes \\
 No contexto de & um serviço real.           
 \end{tabular}
-\caption{Meta de investigar o uso de Dbc na \neoidl{} estruturado conforme
+\caption{Meta de investigar o uso de Dbc na \neoidl{} conforme
 método GQM}
 \label{TabelaMetasGQM}
 \end{table}

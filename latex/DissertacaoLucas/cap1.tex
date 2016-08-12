@@ -55,7 +55,7 @@ Ainda que façam uso de contratos mais sucintos que WSDL, essas linguagens não 
 beneficiam da clareza típica das linguagens específicas para esse fim (como
 a IDL\footnote{Interface Description
 Languages.} CORBA\cite{corba}) e não oferecem
-mecanismos semânticos de extensibilidade (capacidade de extender uma
+mecanismos semânticos de extensibilidade (capacidade de estender uma
 especificação principal e agregar outros componentes) e modularidade
 (especificação do contrato em partes separadas e reusáveis).
 
@@ -93,7 +93,7 @@ principais contribuições do trabalho.
   \item Realizar análise empírica de expressividade e reuso da especificação de
   contratos em \neoidl{} em comparação com \textit{Swagger}, a partir de contratos
   reais do Exército Brasileiro (Seção \ref{EstudoExpressividadeReuso}); 
-  \item Extender a sintaxe da \neoidl{} para admitir construções de 
+  \item Estender a sintaxe da \neoidl{} para admitir construções de 
   \designbycontract, com pré e pós-condições para operações de serviços REST
   (Seção \ref{extensaoNeoIDL-DbC});
   \item Incorporar à infraestrutura de \textit{Plugins} da
@@ -103,7 +103,7 @@ principais contribuições do trabalho.
  \neoidl{} em código de validação para o framework \textit{Python
  Twisted} (Seção \ref{pluginTwisted});% com suporte a \designbycontract{} a
  % partir de contratos especificados em \neoidl;
-  \item Coletar a percepção de desenvolvedores sobre a aceitação da
+  \item Coletar e analisar a percepção de desenvolvedores sobre a aceitação da
   especificação de contratos REST com \designbycontract{} na \neoidl{} (Seção
   \ref{analiseSubjetiva}).
 \end{enumerate}
@@ -127,7 +127,7 @@ se intensificado no sentido da utilização de REST\cite{fielding2000architectur
 
 Um dos principais benefícios do uso de SOC está na possibilidade de reuso de
 seus componentes. Porém, reuso requer serviços bem construídos e precisos em
-relação a sua especificação \cite{jazequel1997design}. A qualidade e precisão do
+relação à sua especificação \cite{jazequel1997design}. A qualidade e precisão do
 contrato de serviço torna-se claramente um elemento fudamental para se auferir
 os benefícios da abordagem SOC.
 
@@ -144,12 +144,12 @@ suporte a contratos robustos, com garantias. A estratégia para superar essa
 limitação foi de buscar no paradigma de orientação a objetos, que é uma das
 principais influências de orientação a serviços \cite{erl2009web},
 o conceito de \designbycontract{}. Ambas as abordagens, orientação a serviços e
-a objetos, tem em comum a ênfase no reuso e comunicação entre componentes
+a objetos, têm em comum a ênfase no reuso e comunicação entre componentes
 (serviços e classes).
 
 A principal contribuição deste trabalho de
 pesquisa de mestrado está em incluir garantias na especificação de
-contratos REST, extendendo a linguagem \neoidl{} para suportar construções de
+contratos REST, estendendo a linguagem \neoidl{} para suportar construções de
 \designbycontract{}.
 
 

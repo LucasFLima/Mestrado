@@ -113,7 +113,7 @@ Na primeira parte, um módulo faz uma definição de
 tipo de dado (Figura \ref{lst:livrodata-neo}); em seguida, um segundo módulo,
 voltado para especificação do serviço em si, importa as definições do primeiro para então declarar as operações do
 serviço (Figura \ref{lst:reservalivro-neo}). Por fim, ao módulo de serviço é acrescentada
-uma anotação como forma de extender as características da operação (Figura
+uma anotação como forma de estender as características da operação (Figura
 \ref{lst:annotationNeoIDL}).
 
 
@@ -125,7 +125,7 @@ uma anotação como forma de extender as características da operação (Figura
 \lstinputlisting[language=NeoIDL,firstnumber=1]{trechos_codigo/livroData.tex}
 \vspace{-.5cm}
 \end{small} 
-\caption{Tipo de dado Livro definidos na \neoidl}
+\caption{Tipo de dado Livro definido em \neoidl}
 \label{lst:livrodata-neo}
 \end{figure}
 
@@ -419,9 +419,9 @@ correlação linear.
 % metrics related to the size of the original Swagger specifications.
 
 \begin{table}[htb]
-\caption{Correlação da melhoria de expressividade com o tamanho da especificação
-em Swagger}
-\begin{center}
+\caption{Correlação entre o aumento do grau de expressividade com o tamanho da
+especificação em Swagger}
+\begin{center} 
 \begin{tabular}{lrr} 
 \toprule
 Métrica & Correlação Pearson's & \emph{p-value} \\ \hline \hline 
