@@ -1,0 +1,81 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: NeoIDLElsevier2016.aux
+The style file: elsarticle-num.bst
+Database file #1: sample.bib
+Warning--I didn't find a database entry for "chen2008towards"
+Warning--I didn't find a database entry for "jazequel1997design"
+Warning--I didn't find a database entry for "papazoglou2008service"
+Warning--I didn't find a database entry for "erl2008soa"
+Warning--I didn't find a database entry for "papazoglou2007serviceApprTechRechIss"
+Warning--I didn't find a database entry for "serrano2014service"
+Warning--I didn't find a database entry for "erl2009web"
+Warning--I didn't find a database entry for "karthikeyancontract"
+Warning--I didn't find a database entry for "alonso2004web"
+Warning--I didn't find a database entry for "fielding2000architectural"
+Warning--I didn't find a database entry for "mumbaikar2013web"
+Warning--I didn't find a database entry for "meyer1992applying"
+Warning--I didn't find a database entry for "meyer1997object"
+Warning--I didn't find a database entry for "meyer1988eiffel"
+Warning--I didn't find a database entry for "barnett2004spec"
+Warning--I didn't find a database entry for "swaggerSite"
+Warning--I didn't find a database entry for "hadley2006web"
+Warning--I didn't find a database entry for "RAML"
+Warning--I didn't find a database entry for "XML"
+Warning--I didn't find a database entry for "JSon"
+Warning--I didn't find a database entry for "YAML"
+Warning--I didn't find a database entry for "corba"
+Warning--I didn't find a database entry for "thrift"
+Warning--I didn't find a database entry for "lima2015neoidl"
+Warning--I didn't find a database entry for "fettig2005twisted"
+Warning--I didn't find a database entry for "davis1989perceived"
+Warning--I didn't find a database entry for "hernandes2010avaliaccao"
+Warning--I didn't find a database entry for "laitenberger1998evaluating"
+Warning--I didn't find a database entry for "allen2007likert"
+Warning--I didn't find a database entry for "babar2007evaluating"
+Warning--I didn't find a database entry for "mackinlay1985expressiveness"
+Warning--I didn't find a database entry for "taha2008domain"
+Warning--I didn't find a database entry for "albuquerque2015quantifying"
+Warning--I didn't find a database entry for "webber2010rest"
+You've used 0 entries,
+            2937 wiz_defined-function locations,
+            708 strings with 5685 characters,
+and the built_in function-call counts, 44 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 2
+:= -- 23
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 1
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 8
+num.names$ -- 0
+pop$ -- 0
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1
+stack$ -- 0
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 7
+(There were 34 warnings)

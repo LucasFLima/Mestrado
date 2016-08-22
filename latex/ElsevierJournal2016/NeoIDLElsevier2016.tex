@@ -1,0 +1,264 @@
+%%
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%%
+%%
+%%
+%% $Id: elsarticle-template-num.tex 4 2009-10-24 08:22:58Z rishi $
+%%
+%%
+\documentclass[preprint,12pt,3p]{elsarticle} 
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+
+\usepackage[brazil]{babel} % Suporte para o Portugu�s
+\usepackage[utf8]{inputenc} % Suporte para acentua��o sem necessidade dos
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+%\usepackage{enumitem} 
+\usepackage{graphicx,color}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{latexsym}
+
+\usepackage{xcolor}
+\usepackage{stackengine}
+
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{dark-yellow}{RGB}{215,167,0}
+
+\newcommand{\hilight}[1]{\colorbox{light-gray}{#1}}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+ 
+% \biboptions{}
+
+\newcommand{\neoidl}{NeoIDL}
+\newcommand{\neocortex}{NeoCortex}
+\newcommand{\bnfc}{\texttt{BNFConverter}}
+\newcommand{\designbycontract}{\textit{Design-by-Contract}}
+\newcommand{\twisted}{\textit{Twisted}}
+\newcommand{\ws}{\textit{Web Service}}
+\newcommand{\wss}{\textit{Web Services}}
+\newcommand{\CdFirst}{\textit{Code-first}}
+\newcommand{\CtFirst}{\textit{Contract-first}}
+\newcommand{\framework}{\textit{framework}}
+\newcommand{\method}[1]{\texttt{#1}}
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor NeoIDL}
+
+
+
+
+\lstdefinelanguage{NeoIDL}{
+  sensitive = true,
+  keywords={},
+  otherkeywords={% Operators
+    >, <, ==
+  },
+  keywords = [2]{module, resource, enum, annotation, for, import, entity, path,
+  @get, @post, @put, @delete, require, ensure, otherwise, call, and, or, not},
+  keywordstyle=[1]\color{dark-yellow}\textbf,
+  keywordstyle=[2]\color{black}\textbf,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+  }
+
+\lstdefinelanguage{PythonTwisted}{
+  sensitive = true,
+  keywords = {classe, object, def, return},
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+  }
+
+
+\journal{Journal of Systems and Softwares}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{\designbycontract{} meets the REST architectural style:
+A case study using \neoidl{}}
+% \tnotetext[label0]{This is only an example}
+
+
+\author[label1,label2]{Lucas F. Lima}
+\address[label1]{Brasilia, Brazil, Campus Darci Ribeiro}
+\address[label2]{University of Brasilia - UnB}
+
+% \cortext[cor1]{I am corresponding author}
+% \fntext[label3]{I also want to inform about\ldots}
+% \fntext[label4]{Small city}
+
+\ead{unb.lucaslima@gmail.com}
+%\ead[url]{author-one-homepage.com}
+
+\author[label5]{Rodrigo Bonifácio}
+\address[label5]{University of Brasilia - UnB}
+\ead{author.two@mail.com}
+
+\author[label1,label5]{Edna Dias Canedo}
+\ead{author.three@mail.com}
+
+\begin{abstract}
+\input{abstr}
+\end{abstract}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+example \sep \LaTeX \sep template
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+\end{keyword}
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
+
+%% main text
+\input{introduction}
+
+\input{theoreticalReview} 
+
+\input{NeoIDL}
+
+\input{NeoIDL-with-DbC} 
+
+\input{conclusion}
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+\appendix
+
+\section{Section in Appendix}
+\label{appendix-sec1}
+
+Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. 
+Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. 
+Sample text. 
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}         ==>>  [#]
+%%   \cite[chap. 2]{key} ==>> [#, chap. 2]
+%%
+
+%% References with bibTeX database:
+
+\bibliographystyle{elsarticle-num}
+% \bibliographystyle{elsarticle-harv}
+% \bibliographystyle{elsarticle-num-names}
+% \bibliographystyle{model1a-num-names}
+% \bibliographystyle{model1b-num-names}
+% \bibliographystyle{model1c-num-names}
+% \bibliographystyle{model1-num-names}
+% \bibliographystyle{model2-names}
+% \bibliographystyle{model3a-num-names}
+% \bibliographystyle{model3-num-names}
+% \bibliographystyle{model4-names}
+% \bibliographystyle{model5-names}
+% \bibliographystyle{model6-num-names}
+
+\bibliography{sample}
+
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-num.tex'.

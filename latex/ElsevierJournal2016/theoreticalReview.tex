@@ -1,0 +1,298 @@
+\section{Fundamentação}
+\label{Fundamentacao}
+
+\subsection{Computação orientada a serviço}
+
+A eficiência na integração entre as soluções de TI é um fator determinante para
+que se consiga alterar uma parte sem comprometer todo um ecossistema. A
+integração possibilita a combinação de eficiência e flexibilidade de recursos para otimizar
+a operação através e além dos limites de uma organização, proporcionando maior
+interoperabilidade \cite{papazoglou2008service}.
+
+A computação orientada a serviços -- SOC -- endereça essas necessidades em uma
+plataforma que aumenta a flexibilidade, a
+fim de reagir rapidamente a mudanças nos requisitos de negócio. Para obter esses
+benefícios, contudo, os serviços devem cumprir com determinados quesitos, que
+incluem alta autonomia ou baixo acoplamento \cite{erl2008soa}. Assim, o paradigma de SOC
+está voltado para o projeto de soluções preparadas para constantes mudanças,
+substituindo-se continuamente pequenas peças -- os serviços -- por outras
+atualizadas.
+
+Portando, o objetivo da SOC está em conceber um estilo de projeto, tecnologia e
+processos que permitam às empresas desenvolver, interconectar e manter suas
+aplicações e serviços corporativos com eficiência e baixo custo. Embora esses
+objetivos não sejam novos, SOC procura superar os esforços prévios como
+programação modular, reuso de código e técnicas de desenvolvimento orientadas a
+objetos \cite{papazoglou2007serviceApprTechRechIss}.
+
+De modo diferente de arquiteturas convencionais, ditas monolíticas, em que os
+sistemas são concebidos agregando continuamente funcionalidades a um mesmo pacote de
+\textit{software}, a arquitetura orientada a serviço prega o projeto de pequenas
+aplicações distribuídas -- os serviços -- que podem ser consumidas tanto por
+usuários finais como por outros serviços \cite{papazoglou2007serviceApprTechRechIss}. 
+
+Serviços são pequenos \textit{softwares} que provêem funcionalidades específicas
+para serem reutilizadas em várias aplicações. Cada serviço é uma entidade isolada com
+dependências limitadas de outros recursos compartilhados
+\cite{serrano2014service}. Assim, é formada uma abstração entre os fornecedores
+e consumidores dos serviços, por meio de baixo acoplamento, e promovendo a
+flexibilidade de mudanças de implementação sem impacto aos consumidores.
+
+\subsection{Princípios SOA}
+
+
+O paradigma de orientação a serviço é estruturado em oito princípios
+fundamentais \cite{erl2009web}. São eles que
+caraterizam a abordagem SOA e a sua aplicação faz com que um serviço se diferencie de um componente ou de
+um módulo. Os contratos de serviços permeiam a maior parte destes princípios.
+
+O princípio do \textbf{Contrato padronizado} estabelece que serviços
+dentro de um mesmo inventário estejam em conformidade com os mesmos padrões de
+contrato de serviço.
+Os contratos de serviços são elementos fundamentais na arquitetura orientada a
+serviço, pois é por meio deles que os serviços interagem uns com os outros e com
+potenciais consumidores. O padrão de projeto \CtFirst{} é uma
+consequência direta deste princípio \cite{erl2009web}.
+
+Os contratos de serviço devem impor aos seus consumidores requisitos de baixo
+acoplamento. Os contrato também devem ser desacoplados de seu ambiente. Essas
+relações são guiadas pelo princípio do \textbf{Baixo acomplamento}. A forma como
+o contrato é projetado e posicionado na arquitetura é que gerará o
+benefício do baixo acoplamento.  
+
+O projeto do serviço deve considerar como negativos os acoplamentos entre
+o contrato e a funcionalidade suportada pelo serviços, entre o contrato a a sua
+implementação subjacente, entre o contrato com a tecnologia e a lógica interna
+adotada para o serviço. Esses acoplamentos devem ser evitados.
+
+Há, porém, um acoplamento desejado, que é o que gera dependência
+da lógica em relação ao contrato \cite{erl2009web}. Ou seja, idealmente a
+implementação do serviço deve ser derivada do contrato, pondendo se ter inclusive a geração de código a
+partir do contrato.
+
+O princípio da \textbf{Abstração} visa garantir a exposição apenas de
+informações necessárias e essenciais no contrato de serviço. Ou seja, o contrato deve possui tão somente
+as informações necessárias ao consumo e compreensão do serviço. A
+\textbf{Descoberta do serviço}, outro princípio SOA, prega que os contratos de
+serviços contenham informações (metadados) que possibilitem a descoberta e
+interpretação do serviço.
+
+O aspecto do reuso é expresso em alguns princípios SOA. O princípio da
+\textbf{Reusabilidade} estabelece que os serviços que contenham ou expressem
+lógica agnóstica podem ser disponibilizaddos com recursos reusáveis. Nessa mesma
+linha, o princípio da \textbf{Composição} orienta para que serviços sejam
+participantes efetivos de composições, independentemente do tamanho ou
+complexidade da composição.
+
+Por fim, os princípios da \textbf{Autonomia} -- serviços têm controle sobre seu
+ambiente de execlução -- e \textbf{Ausência de estado} -- retringindo o controle
+de estado apenas a quanfo for inevitavelmente necessário -- formam, junto com os
+demais, um conjunto de características que buscam fazer com que o projeto dos serviços 
+alcance os objetivos da abordagem SOA.
+
+\subsection{Contract-First}
+
+A abordagem \CtFirst{} preocupa-se sobretudo com a clareza, completude e
+estabilidade do contrato para os clientes dos serviços. Toda a
+estrutura da informação é definida sem a preocupação sobre restrições ou
+características das implementações subjacentes. Do mesmo modo, as
+capacidades são definidas para atenderem a funcionalidades a que se destinam,
+porém com a preocupação em se promover estabilidade e reuso.
+
+As principais vantagens do \CtFirst{} estão no baixo acoplamento do contrato em
+relação a sua implementação, na possibilidade de reuso de esquemas de dados (XML
+ou JSON Schema), na simplificação do versionamento e na facilidade de manutenção
+\cite{karthikeyancontract}. A desvantagem está justamente na complexidade de
+escrita do contrato. Porém, várias ferramentas já foram e vem sendo
+desenvolvidas para facilitar essa tarefa.
+
+A outra forma de se garantir que o contrato expressa o que serviço realiza é a
+abordagem \CdFirst{}, em que o contrato é normalmente gerado a partir de
+anotações no código fonte. Embora muitas vezes preferível pelo desenvolvedor, a desvantagem do uso
+\CdFirst{} está no elevado impacto que alterações na implementação causam ao
+contrato, fazendo com que os clientes dos serviços sejam também afetados.
+Reduz-se ainda a flexibilidade e extensibilidade, de modo que o reuso é
+prejudicado.
+
+\subsection{\wss{}}
+
+\ws{} são aplicações modulares e autocontidas que podem ser publicadas,
+localizadas a acessadas pela \textit{Web} \cite{alonso2004web}. A diferença
+entre o \ws{} e a aplicação \textit{Web} propriamente dita é que o primeiro se
+preocupa apenas com o dado gravado ou fornecido, deixando para o cliente a atribuição de apresentar a
+informação \cite{serrano2014service}.
+
+SOAP -- \textit{Simple Object Access Protocol} -- é um protocolo padrão W3C
+para troca de mensagens em sistemas distribuídos, normalmente sobre o
+protocolo HTTP e acessível pela Internet. As mensagens em SOAP são codificadas
+XML e seus contratos especificados no padrão WSDL -- \textit{Web Services
+Description Language} -- que define uma gramática XML para descrever os serviços
+como uma coleção de \textit{endpoints} capazes de atuar na troca de mensagens.
+As mensagens e operações são descritas abstratamente na primeira seção do
+documento. Uma segunda seção, dita concreta, estabelece o protocolo de rede e o
+formato das mensagens.
+
+O estilo arquitetural REST foi projetado por Roy Fielding, em sua tese de
+doutorado \cite{fielding2000architectural}, para descrever um modelo 
+distribuído de sistemas hipermedia sobre o protocolo HTTP, com uma semântica
+específica para cada operação.
+Tanto a requisição como a resposta ocorrem por meio da transferência de
+representações de recursos \cite{mumbaikar2013web}, que podem ser de vários
+formatos, como XML e JSON \cite{serrano2014service}. 
+
+O uso de REST tem se tornado popular por conta de sua flexibilidade e
+performance em comparação com SOAP, o qual precisa envelopar suas informações em
+um pacote XML \cite{mumbaikar2013web}, de armazenamento, transmissão e
+processamento onerosos. Ao contrário de SOAP, REST não dispõe de um padrão para
+especificação de contratos. Essa carência, que no início não era considerada um problema, foi se
+tornando uma necessidade cada vez mais evidente a medida em que se amplia o
+conjunto de \wss{} implantados. Atualmente, existem algumas linguagens com o
+propósito de documentar o contrato REST, sendo \textit{Swagger} a mais
+popular.
+
+\subsection{Design-by-Contract}
+
+\designbycontract{} \cite{meyer1992applying} - DbC - é um conceito
+oriundo da orientação a objetos, no qual consumidor e fornecedor firmam entre si garantias para
+o uso de métodos ou classes. De um lado o consumidor deve garantir que, antes da
+chamada a um método, algumas condições sejam por ele satisfeitas.
+Do outro lado o fornecedor deve garantir, se respeitadas suas exigências,
+o sucesso da execução.
+
+O mecanismo que expressa essas condições são chamados de asserções
+(\textit{assertions}, em inglês). As asserções que o consumidor deve respeitar
+para fazer uso da rotina são chamadas de \textbf{precondições}. As asserções que
+asseguram, de parte do fornecedor, as garantias ao consumidor, são denominadas
+\textbf{pós-condições}.
+
+O conceito chave de \designbycontract{} é ver a relação entre a classe e
+seus clientes como uma relação formal, que expressa os direitos e as
+obrigações de cada parte \cite{meyer1997object}. Se, por um lado, o
+cliente tem a obrigação de respeitar as condições impostas pelo fornecedor para fazer uso do módulo, por
+outro, o fornecedor deve garantir que o retorno ocorra como esperado. De forma
+indireta, \designbycontract{} estimula um cuidado maior na análise das condições necessárias para um funcionamento correto do recurso.
+
+Com o uso de \designbycontract{}, cada rotina é levada a realizar o trabalho
+para o qual foi projetada e fazer isso bem: com corretude, eficiência e
+genericamente suficiente para ser reusada. Por outro lado, especifica de forma
+clara o que a rotina não trata. Esse paradigma é coerente, pois para que a
+rotina realize seu trabalho bem, é esperado que se estabeleça bem as
+circunstâncias de execução.
+
+Outra característica da aplicação de \designbycontract{} é que o recurso tem sua
+lógica concentrada em efetivamente cumprir com sua função principal, deixando
+para as precondições o encargo de validar as entradas de dados. Essa abordagem
+é o oposto à ideia de programação defensiva, pois vai de encontro à realização
+de checagens redundantes. Se os contratos são precisos e explícitos, não há
+necessidade de testes redundantes \cite{meyer1992applying}.
+
+Eiffel, JML e Spec\# são exemplos de linguagem e extensões de linguagens que dão
+suporte a \designbycontract{}. A linguagem \textbf{Eiffel} foi desenvolvida 
+em meados dos anos 80 por
+Bertrand Meyer \cite{meyer1988eiffel} com o objetivo de criar ferramentas que
+garantissem mais qualidade aos \textit{softwares}. A ênfase do projeto de
+Eiffel foi promover reusabilidade, extensibilidade e compatibilidade.
+
+
+\textbf{JML} -- \textit{Java Modeling Language} -- é uma extensão da linguagem
+Java para suporte a especificação comportamental de interfaces, ou seja, controlar o
+comportamento de classes em tempo de execução, com amplo suporte a \designbycontract{}.
+\textbf{Spec\#} é uma extensão da linguagem C\#, à qual agrega o suporte para
+distinguir referência de objetos nulos de referência a objetos possivelmente não
+nulos, especificações de pré e pós-condições e um método para gerenciar
+exceções entre outros recursos \cite{barnett2004spec}.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.

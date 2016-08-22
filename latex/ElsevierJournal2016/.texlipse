@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Aug 22 09:18:22 BRT 2016
+markTmpDer=true
+builderNum=2
+outputDir=out
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=NeoIDLElsevier2016.tex
+outputFile=NeoIDLElsevier2016.pdf
+langSpell=en
+markDer=true
+srcDir=

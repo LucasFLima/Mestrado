@@ -1,0 +1,23 @@
+module store {
+   (...)
+
+   resource order  {
+     path = "/order/{id}";
+
+     @get    Order getOrder (int id)
+	require (id > "0") otherwise "NotFound",
+	ensure (quantity > "0"),
+	otherwise "NoContent";
+
+     @post   int postOrder (Order order)
+	require (quantity > "0"),
+	require (call store.getOrder(id) == "NotFound"),
+	otherwise "InvalidPrecondition";
+
+     @delete   int deleteOrder (int id)
+	require ((id <> "" and id > 0)),
+	ensure (call store.getOrder(id) == "NotFound"),
+        otherwise "NotModified";
+
+   };
+}
