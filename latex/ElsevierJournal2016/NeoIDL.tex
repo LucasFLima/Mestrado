@@ -3,19 +3,13 @@
 
 A \neoidl{} é uma linguagem específica de domínio (\textit{Domain Specific
 Language - DSL}) elaborada com o objetivo de possibilitar, em um processo
-simples, a elaboração de contratos para serviços REST. Em seu projeto, 
+simples, a especificação de contratos para serviços REST. Em seu projeto, 
 foram considerados os requisitos de concisão, facilidade de compreensão humana,
 extensibilidade e suporte à herança simples dos tipos de dados definidos pelo
 usuário.
 
-Além de ser uma linguagem, a \neoidl{} é também um \textit{framework} de geração
-de código que permite, a partir de contratos especificados na própria
-linguagem, a produção da implementação da estrutura do serviço. Os serviços
-podem ser construídos em várias linguagens e tecnologias, por meio
-de \textit{plugins} da \neoidl{}.
-
-As linguagens de programação disponíveis para especificação de
-contratos REST, como Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
+Outras opções disponíveis para
+especificação de contratos REST, como Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
 RAML\cite{RAML}, possuiam (e ainda possuem) limitações importantes para a
 abordagem desejada, qual seja, elaborar primeiramente o contrato e, a
 partir dele, gerar a implementação do serviço. Todas essas linguagens utilizam
@@ -29,6 +23,12 @@ IDL}\texttrademark \cite{corba} e \emph{Apache
 Thrift}\texttrademark\cite{thrift} --, e que permitisse ainda a declaração de
 tipos de dados definidos pelo usuário e extensibilidade. Ambas, \emph{CORBA} e
 \emph{Apache Thrift}, possuem contudo limitações nesses últimos aspectos. 
+
+Além de ser uma linguagem, a \neoidl{} é também um \textit{framework} de geração
+de código que permite, a partir de contratos especificados na própria
+linguagem, a produção da implementação da estrutura do serviço. Os serviços
+podem ser gerados em várias linguagens e tecnologias, por meio
+de \textit{plugins} da \neoidl{}.
 
 A \neoidl{} suporta a geração de código poliglota, por meio da implementação de
 plugins \neoidl{} para cada linguagem alvo. Atualmente, há plugins para Java,

@@ -1,8 +1,162 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{chen2008towards}
+H.-M. Chen, Towards service engineering: service orientation and business-it
+  alignment, in: Hawaii International Conference on System Sciences,
+  Proceedings of the 41st Annual, IEEE, 2008, pp. 114--114.
+
+\bibitem{jazequel1997design}
+J.-M. Jazequel, B.~Meyer, Design by contract: The lessons of ariane, Computer
+  30~(1) (1997) 129--130.
+
+\bibitem{papazoglou2008service}
+M.~P. Papazoglou, P.~Traverso, S.~Dustdar, F.~Leymann, Service-oriented
+  computing: a research roadmap, International Journal of Cooperative
+  Information Systems 17~(02) (2008) 223--255.
+
+\bibitem{erl2008soa}
+T.~Erl, Soa: principles of service design, Vol.~1, Prentice Hall Upper Saddle
+  River, 2008.
+
+\bibitem{papazoglou2007serviceApprTechRechIss}
+M.~P. Papazoglou, W.-J. Van Den~Heuvel, Service oriented architectures:
+  approaches, technologies and research issues, The VLDB journal 16~(3) (2007)
+  389--415.
+
+\bibitem{serrano2014service}
+N.~Serrano, J.~Hernantes, G.~Gallardo, Service-oriented architecture and legacy
+  systems, Software, IEEE 31~(5) (2014) 15--19.
+
+\bibitem{erl2009web}
+T.~Erl, A.~Karmarkar, P.~Walmsley, H.~Haas, L.~U. Yalcinalp, K.~Liu,
+  D.~Orchard, A.~Tost, J.~Pasley, Web service contract design and versioning
+  for SOA, Prentice Hall, 2009.
+
+\bibitem{karthikeyancontract}
+T.~Karthikeyan, J.~Geetha, Contract first design: The best approach to design
+  of web services, (IJCSIT) International Journal of Computer Science and
+  Information Technologies 5 (2014) 338--339.
+
+\bibitem{alonso2004web}
+G.~Alonso, F.~Casati, H.~Kuno, V.~Machiraju, Web services, Springer, 2004.
+
+\bibitem{fielding2000architectural}
+R.~T. Fielding, Architectural styles and the design of network-based software
+  architectures, Ph.D. thesis, University of California, Irvine (2000).
+
+\bibitem{mumbaikar2013web}
+S.~Mumbaikar, P.~Padiya, et~al., Web services based on soap and rest
+  principles, International Journal of Scientific and Research Publications
+  3~(5).
+
+\bibitem{meyer1992applying}
+B.~Meyer, Applying'design by contract', Computer 25~(10) (1992) 40--51.
+
+\bibitem{meyer1997object}
+B.~Meyer, Object-oriented software construction, Vol.~2, Prentice hall New
+  York, 1997.
+
+\bibitem{meyer1988eiffel}
+B.~Meyer, Eiffel: A language and environment for software engineering, Journal
+  of Systems and Software 8~(3) (1988) 199--246.
+
+\bibitem{barnett2004spec}
+M.~Barnett, K.~R.~M. Leino, W.~Schulte, The spec\# programming system: An
+  overview, in: Construction and analysis of safe, secure, and interoperable
+  smart devices, Springer, 2004, pp. 49--69.
+
+\bibitem{codecontractSite}
+Code contracts,
+  \url{https://msdn.microsoft.com/en-us/library/dd264808(v=vs.110).aspx}, code
+  Contract MSDN site.
+
+\bibitem{swaggerSite}
+Swagger - the world's most popular framework for apis.,
+  \url{http://swagger.io/}, swagger project official site.
+
+\bibitem{hadley2006web}
+M.~J. Hadley, Web application description language (wadl).
+
+\bibitem{RAML}
+Raml - the simplest way to design apis, \url{http://raml.org}, the Official
+  RAML web site.
+
+\bibitem{XML}
+World wide web consortium (w3c) - extensible markup language (xml),
+  \url{https://www.w3.org/XML}, xML W3C official site.
+
+\bibitem{JSon}
+Javascript object notation, \url{http://www.json.org}, jSON official site.
+
+\bibitem{YAML}
+Yaml ain't markup language, \url{http://yaml.org}, the Official YAML web site.
+
+\bibitem{corba}
+O.~M.~G. (OMG), Interface definition language 3.5, Tech. rep., Object
+  Management Group, http://www.omg.org/spec/IDL35/3.5/PDF/ (2014).
+
+\bibitem{thrift}
+M.~Slee, A.~Agarwal, M.~Kwiatkowski, Thrift: Scalable cross-language services
+  implementation, Tech. rep., Facebook,
+  http://thrift.apache.org/static/files/thrift-20070401.pdf (2012).
+
+\bibitem{lima2015neoidl}
+L.~Lima, R.~Bonif{\'a}cio, E.~Canedo, T.~M. de~Castro, R.~Fernandes,
+  A.~Palmeira, U.~Kulesza, Neoidl: A domain specific language for specifying
+  rest contracts detailed design and extended evaluation, International Journal
+  of Software Engineering and Knowledge Engineering 25~(09n10) (2015)
+  1653--1675.
+
+\bibitem{fettig2005twisted}
+A.~Fettig, Twisted network programming essentials, Vol.~2, " O'Reilly Media,
+  Inc.", 2013.
+
+\bibitem{davis1989perceived}
+F.~D. Davis, Perceived usefulness, perceived ease of use, and user acceptance
+  of information technology, MIS quarterly (1989) 319--340.
+
+\bibitem{hernandes2010avaliaccao}
+E.~Hernandes, A.~Zamboni, A.~Di~Thommazo, S.~Fabbri, Avalia{\c{c}}{\~a}o da
+  ferramenta start utilizando o modelo tam e o paradigma gqm, in: Proceedings
+  of 7th Experimental Software Engineering Latin American Workshop (ESELAW
+  2010), 2010, p.~30.
+
+\bibitem{laitenberger1998evaluating}
+O.~Laitenberger, H.~M. Dreyer, Evaluating the usefulness and the ease of use of
+  a web-based inspection data collection tool, in: Software Metrics Symposium,
+  1998. Metrics 1998. Proceedings. Fifth International, IEEE, 1998, pp.
+  122--132.
+
+\bibitem{allen2007likert}
+I.~E. Allen, C.~A. Seaman, Likert scales and data analyses, Quality Progress
+  40~(7) (2007) 64.
+
+\bibitem{babar2007evaluating}
+M.~A. Babar, D.~Winkler, S.~Biffl, Evaluating the usefulness and ease of use of
+  a groupware tool for the software architecture evaluation process, in:
+  Empirical Software Engineering and Measurement, 2007. ESEM 2007. First
+  International Symposium on, IEEE, 2007, pp. 430--439.
+
+\bibitem{mackinlay1985expressiveness}
+J.~Mackinlay, M.~R. Genesereth, Expressiveness and language choice, Data \&
+  Knowledge Engineering 1~(1) (1985) 17--29.
+
+\bibitem{taha2008domain}
+W.~Taha, Domain-specific languages, in: International Conference on Computer
+  Engineering Systems (ICCES), Springer, 2008.
+
+\bibitem{albuquerque2015quantifying}
+D.~Albuquerque, B.~Cafeo, A.~Garcia, S.~Barbosa, S.~Abrahao, A.~Ribeiro,
+  Quantifying usability of domain-specific languages: An empirical study on
+  software maintenance, Journal of Systems and Software 101 (2015) 245--259.
+
+\bibitem{webber2010rest}
+J.~Webber, S.~Parastatidis, I.~Robinson, REST in practice: Hypermedia and
+  systems architecture, " O'Reilly Media, Inc.", 2010.
 
 \end{thebibliography}

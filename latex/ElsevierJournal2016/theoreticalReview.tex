@@ -18,7 +18,7 @@ está voltado para o projeto de soluções preparadas para constantes mudanças,
 substituindo-se continuamente pequenas peças -- os serviços -- por outras
 atualizadas.
 
-Portando, o objetivo da SOC está em conceber um estilo de projeto, tecnologia e
+Portanto, o objetivo da SOC está em conceber um estilo de projeto, tecnologia e
 processos que permitam às empresas desenvolver, interconectar e manter suas
 aplicações e serviços corporativos com eficiência e baixo custo. Embora esses
 objetivos não sejam novos, SOC procura superar os esforços prévios como
@@ -55,20 +55,21 @@ potenciais consumidores. O padrão de projeto \CtFirst{} é uma
 consequência direta deste princípio \cite{erl2009web}.
 
 Os contratos de serviço devem impor aos seus consumidores requisitos de baixo
-acoplamento. Os contrato também devem ser desacoplados de seu ambiente. Essas
-relações são guiadas pelo princípio do \textbf{Baixo acomplamento}. A forma como
-o contrato é projetado e posicionado na arquitetura é que gerará o
-benefício do baixo acoplamento.  
+acoplamento. Os contrato também devem ser desacoplados de seu ambiente e da
+implementação subjacente.
+Essas relações são guiadas pelo princípio do \textbf{Baixo acomplamento}. A
+qualidade do projeto do contrato e do desenho arquitetural do serviço que
+permitirá produzir os benefícios derivados do baixo acoplamento.
 
-O projeto do serviço deve considerar como negativos os acoplamentos entre
-o contrato e a funcionalidade suportada pelo serviços, entre o contrato a a sua
-implementação subjacente, entre o contrato com a tecnologia e a lógica interna
-adotada para o serviço. Esses acoplamentos devem ser evitados.
-
-Há, porém, um acoplamento desejado, que é o que gera dependência
-da lógica em relação ao contrato \cite{erl2009web}. Ou seja, idealmente a
-implementação do serviço deve ser derivada do contrato, pondendo se ter inclusive a geração de código a
-partir do contrato.
+% O projeto do serviço deve considerar como negativos os acoplamentos entre
+% o contrato e a funcionalidade suportada pelo serviços, entre o contrato a a sua
+% implementação subjacente, entre o contrato com a tecnologia e a lógica interna
+% adotada para o serviço. Esses acoplamentos devem ser evitados.
+% 
+% Há, porém, um acoplamento desejado, que é o que gera dependência
+% da lógica em relação ao contrato \cite{erl2009web}. Ou seja, idealmente a
+% implementação do serviço deve ser derivada do contrato, pondendo se ter inclusive a geração de código a
+% partir do contrato.
 
 O princípio da \textbf{Abstração} visa garantir a exposição apenas de
 informações necessárias e essenciais no contrato de serviço. Ou seja, o contrato deve possui tão somente
@@ -79,13 +80,13 @@ interpretação do serviço.
 
 O aspecto do reuso é expresso em alguns princípios SOA. O princípio da
 \textbf{Reusabilidade} estabelece que os serviços que contenham ou expressem
-lógica agnóstica podem ser disponibilizaddos com recursos reusáveis. Nessa mesma
+lógica agnóstica podem ser disponibilizados com recursos reusáveis. Nessa mesma
 linha, o princípio da \textbf{Composição} orienta para que serviços sejam
 participantes efetivos de composições, independentemente do tamanho ou
 complexidade da composição.
 
 Por fim, os princípios da \textbf{Autonomia} -- serviços têm controle sobre seu
-ambiente de execlução -- e \textbf{Ausência de estado} -- retringindo o controle
+ambiente de execução -- e \textbf{Ausência de estado} -- retringindo o controle
 de estado apenas a quanfo for inevitavelmente necessário -- formam, junto com os
 demais, um conjunto de características que buscam fazer com que o projeto dos serviços 
 alcance os objetivos da abordagem SOA.
@@ -94,10 +95,10 @@ alcance os objetivos da abordagem SOA.
 
 A abordagem \CtFirst{} preocupa-se sobretudo com a clareza, completude e
 estabilidade do contrato para os clientes dos serviços. Toda a
-estrutura da informação é definida sem a preocupação sobre restrições ou
+estrutura da informação é definida sem se ater às restrições ou
 características das implementações subjacentes. Do mesmo modo, as
 capacidades são definidas para atenderem a funcionalidades a que se destinam,
-porém com a preocupação em se promover estabilidade e reuso.
+porém preocupando-se em se promover estabilidade e reuso.
 
 As principais vantagens do \CtFirst{} estão no baixo acoplamento do contrato em
 relação a sua implementação, na possibilidade de reuso de esquemas de dados (XML
@@ -117,7 +118,7 @@ prejudicado.
 \subsection{\wss{}}
 
 \ws{} são aplicações modulares e autocontidas que podem ser publicadas,
-localizadas a acessadas pela \textit{Web} \cite{alonso2004web}. A diferença
+localizadas e acessadas pela \textit{Web} \cite{alonso2004web}. A diferença
 entre o \ws{} e a aplicação \textit{Web} propriamente dita é que o primeiro se
 preocupa apenas com o dado gravado ou fornecido, deixando para o cliente a atribuição de apresentar a
 informação \cite{serrano2014service}.
@@ -186,21 +187,27 @@ para as precondições o encargo de validar as entradas de dados. Essa abordagem
 de checagens redundantes. Se os contratos são precisos e explícitos, não há
 necessidade de testes redundantes \cite{meyer1992applying}.
 
-Eiffel, JML e Spec\# são exemplos de linguagem e extensões de linguagens que dão
-suporte a \designbycontract{}. A linguagem \textbf{Eiffel} foi desenvolvida 
+Eiffel, JML, Spec\# e Code Contract são exemplos de linguagem e extensões de
+linguagens que dão suporte a \designbycontract{}. A linguagem \textbf{Eiffel} foi desenvolvida 
 em meados dos anos 80 por
 Bertrand Meyer \cite{meyer1988eiffel} com o objetivo de criar ferramentas que
 garantissem mais qualidade aos \textit{softwares}. A ênfase do projeto de
 Eiffel foi promover reusabilidade, extensibilidade e compatibilidade.
-
-
 \textbf{JML} -- \textit{Java Modeling Language} -- é uma extensão da linguagem
 Java para suporte a especificação comportamental de interfaces, ou seja, controlar o
 comportamento de classes em tempo de execução, com amplo suporte a \designbycontract{}.
+
+
 \textbf{Spec\#} é uma extensão da linguagem C\#, à qual agrega o suporte para
 distinguir referência de objetos nulos de referência a objetos possivelmente não
 nulos, especificações de pré e pós-condições e um método para gerenciar
-exceções entre outros recursos \cite{barnett2004spec}.
+exceções entre outros recursos \cite{barnett2004spec}. \textbf{Code Contract} é
+uma maneira mais moderna que Spec\# para utilização de construções de DbC no 
+\textit{framework} .Net. \textit{Code Contract} inclui classes para registrar as
+restrições (pré, pós-condições e invariantes) ao código C\#, um analisador
+estático em tempo de compilação e execução e, ainda, ferramentas pra
+geração de testes unitários para verificação de précondições 
+\cite{codecontractSite}.
 
 
 % An example of a floating figure using the graphicx package.
