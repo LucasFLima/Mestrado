@@ -4,7 +4,7 @@
 Os benefícios esperados pela adoção da arquitetura orientada a serviços
 somente serão auferidos com a concepção adequada de cada serviço. 
 Por essa razão, é necessário planejar o projeto dos serviços criteriosamente
-antes de lançar mão do desenvolvimento, com preocupação especial em garantir
+antes de desenvolvê-los, com vistas a garantir
 um nível aceitável de estabilidade aos consumidores de cada serviço.
 Nessa etapa do projeto de desenho da solução, a especificação do contrato do
 serviço (Web API) exerce uma função fundamental.  
@@ -14,15 +14,13 @@ capacidades (operações) e dos dados das mensagens correspondem aos
 termos do contrato no sentido do que o consumidor deve esperar do serviço
 provedor. Porém identificou-se, após ampla pesquisa realizada sobre o tema, que
 as linguagens disponíves para especificação de contratos atingem apenas esse
-nível de garantias. No contexto de \wss{} em REST, conforme descrito na
-Seção \ref{Fundamentacao}, há ainda a ausência de padrão para especificação
-contratos.
+nível de garantias. No contexto de \wss{} em REST há ainda a carência de padrão
+para especificação contratos.
 
-A proposta deste trabalho é extender os níveis de garantias, de modo a promover
-um patamar adicional com obrigações mútuas entre os serviços (consumidor e
+Este trabalho apresenta uma proposta para extensão dos níveis de garantia, 
+promovendo-se obrigações mútuas em relação aos serviços (consumidor e
 provedor). Isso se dá pela adoção do conceito de \designbycontract{} em que a execução da 
-capacidade do serviço garantirá 
-a execução, desde que satisfeitas as condições prévias. As próximas subseções 
+capacidade do serviço será garantida, desde que satisfeitas as condições prévias. As próximas subseções 
 detalham o modo de operação dos serviços com as construções de \designbycontract{}.
 
 \subsection{Modelo de operação}
@@ -337,7 +335,7 @@ exceção (linha 20).
 
 
 
-\subsection{Fontes de dados para pré e pós-condições}
+\subsection{Parâmetros utilizados nas pré e pós-condições}
 \label{FonteDadosDbc}
 
 Os serviços REST na \neoidl{} seguem uma convenção em relação ao conteúdo
