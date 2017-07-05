@@ -1,4 +1,4 @@
-\section{\neoidl{}: DSL para constratos REST}
+\subsection{\neoidl{}: DSL para constratos REST}
  
 
 A \neoidl{} é uma linguagem específica de domínio (\textit{Domain Specific
@@ -8,39 +8,36 @@ foram considerados os requisitos de concisão, facilidade de compreensão humana
 extensibilidade e suporte à herança simples dos tipos de dados definidos pelo
 usuário.
 
-Outras opções disponíveis para
-especificação de contratos REST, como Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
-RAML\cite{RAML}, possuiam (e ainda possuem) limitações importantes para a
+As opções disponíveis para especificação de constratos REST (Swagger\cite{swaggerSite}, WADL\cite{hadley2006web} e
+RAML\cite{RAML}) possuiam (e ainda possuem) limitações importantes para a
 abordagem desejada, qual seja, elaborar primeiramente o contrato e, a
 partir dele, gerar a implementação do serviço. Todas essas linguagens utilizam
 notações de propósito geral (XML\cite{XML}, JSON\cite{JSon}, YAML\cite{YAML}),
-tornando os contratos extensos e de difícil compreensão humana. Além disso,
-elas não possuem mecanismos semânticos de extensibilidade e modularidade.
-
-Partiu-se então para a criação uma nova linguagem, com sintaxe
-inspirada em linguagens mais claras e concisas -- como \emph{CORBA
-IDL}\texttrademark \cite{corba} e \emph{Apache
+tornando os contratos extensos e de difícil compreensão humana. A nova
+linguagem (\neoidl{}) foi inspirada em linguagens mais claras e
+concisas -- como \emph{CORBA IDL}\texttrademark \cite{corba} e \emph{Apache
 Thrift}\texttrademark\cite{thrift} --, e que permitisse ainda a declaração de
-tipos de dados definidos pelo usuário e extensibilidade. Ambas, \emph{CORBA} e
-\emph{Apache Thrift}, possuem contudo limitações nesses últimos aspectos. 
+tipos de dados definidos pelo usuário e extensibilidade. 
 
 Além de ser uma linguagem, a \neoidl{} é também um \textit{framework} de geração
 de código que permite, a partir de contratos especificados na própria
 linguagem, a produção da implementação da estrutura do serviço. Os serviços
 podem ser gerados em várias linguagens e tecnologias, por meio
-de \textit{plugins} da \neoidl{}.
-
-A \neoidl{} suporta a geração de código poliglota, por meio da implementação de
-plugins \neoidl{} para cada linguagem alvo. Atualmente, há plugins para Java,
-Python \neocortex{}\footnote{Framework proprietário do Exército Brasileiro},
-e Python Twisted. Detalhes sobre o
+de \textit{plugins} da \neoidl{}. Detalhes sobre o
 framework de geração de código da \neoidl{} foram publicados em
 \cite{lima2015neoidl}. 
 
-O artigo \cite{lima2015neoidl} também descreve uma estudo empírico sobre a
-expressividade e potencial de reuso da \neoidl{}. A base desse estudo foi a
-análise de contratos reais escritos em Swagger em comparação com os equivalentes
-em \neoidl{}. Em resumo, nesse cenário concreto, identificou-se serem
-necessárias 4 linhas de especificação em \neoidl{} para cada conjunto de 10
-linhas em Swagger.
+% A \neoidl{} suporta a geração de código poliglota, por meio da implementação de
+% plugins \neoidl{} para cada linguagem alvo. Atualmente, há plugins para Java,
+% Python \neocortex{}\footnote{Framework proprietário do Exército Brasileiro},
+% e Python Twisted. Detalhes sobre o
+% framework de geração de código da \neoidl{} foram publicados em
+% \cite{lima2015neoidl}. 
+% 
+% O artigo \cite{lima2015neoidl} também descreve uma estudo empírico sobre a
+% expressividade e potencial de reuso da \neoidl{}. A base desse estudo foi a
+% análise de contratos reais escritos em Swagger em comparação com os equivalentes
+% em \neoidl{}. Em resumo, nesse cenário concreto, identificou-se serem
+% necessárias 4 linhas de especificação em \neoidl{} para cada conjunto de 10
+% linhas em Swagger.
 

@@ -1,0 +1,58 @@
+
+\subsection{Design-by-Contract}
+
+\designbycontract{} \cite{meyer1992applying} - DbC - é um conceito
+oriundo da orientação a objetos, no qual consumidor e fornecedor firmam entre si garantias para
+o uso de métodos ou classes. De um lado o consumidor deve garantir que, antes da
+chamada a um método, algumas condições sejam por ele satisfeitas.
+Do outro lado o fornecedor deve garantir, se respeitadas suas exigências,
+o sucesso da execução.
+
+O mecanismo que expressa essas condições são chamados de asserções
+(\textit{assertions}, em inglês). As asserções que o consumidor deve respeitar
+para fazer uso da rotina são chamadas de \textbf{precondições}. As asserções que
+asseguram, de parte do fornecedor, as garantias ao consumidor, são denominadas
+\textbf{pós-condições}.
+
+O conceito chave de \designbycontract{} é ver a relação entre a classe e
+seus clientes como uma relação formal, que expressa os direitos e as
+obrigações de cada parte \cite{meyer1997object}. Se, por um lado, o
+cliente tem a obrigação de respeitar as condições impostas pelo fornecedor para fazer uso do módulo, por
+outro, o fornecedor deve garantir que o retorno ocorra como esperado. De forma
+indireta, \designbycontract{} estimula um cuidado maior na análise das condições necessárias para um funcionamento correto do recurso.
+
+Com o uso de \designbycontract{}, cada rotina é levada a realizar o trabalho
+para o qual foi projetada e fazer isso bem: com corretude, eficiência e
+genericamente suficiente para ser reusada. Por outro lado, especifica de forma
+clara o que a rotina não trata. Esse paradigma é coerente, pois para que a
+rotina realize seu trabalho bem, é esperado que se estabeleça bem as
+circunstâncias de execução.
+
+Outra característica da aplicação de \designbycontract{} é que o recurso tem sua
+lógica concentrada em efetivamente cumprir com sua função principal, deixando
+para as precondições o encargo de validar as entradas de dados. Essa abordagem
+é o oposto à ideia de programação defensiva, pois vai de encontro à realização
+de checagens redundantes. Se os contratos são precisos e explícitos, não há
+necessidade de testes redundantes \cite{meyer1992applying}.
+
+Eiffel, JML, Spec\# e Code Contract são exemplos de linguagem e extensões de
+linguagens que dão suporte a \designbycontract{}. A linguagem \textbf{Eiffel} foi desenvolvida 
+em meados dos anos 80 por
+Bertrand Meyer \cite{meyer1988eiffel} com o objetivo de criar ferramentas que
+garantissem mais qualidade aos \textit{softwares}. A ênfase do projeto de
+Eiffel foi promover reusabilidade, extensibilidade e compatibilidade.
+\textbf{JML} -- \textit{Java Modeling Language} -- é uma extensão da linguagem
+Java para suporte a especificação comportamental de interfaces, ou seja, controlar o
+comportamento de classes em tempo de execução, com amplo suporte a \designbycontract{}.
+
+
+\textbf{Spec\#} é uma extensão da linguagem C\#, à qual agrega o suporte para
+distinguir referência de objetos nulos de referência a objetos possivelmente não
+nulos, especificações de pré e pós-condições e um método para gerenciar
+exceções entre outros recursos \cite{barnett2004spec}. \textbf{Code Contract} é
+uma maneira mais moderna que Spec\# para utilização de construções de DbC no 
+\textit{framework} .Net. \textit{Code Contract} inclui classes para registrar as
+restrições (pré, pós-condições e invariantes) ao código C\#, um analisador
+estático em tempo de compilação e execução e, ainda, ferramentas pra
+geração de testes unitários para verificação de précondições 
+\cite{codecontractSite}.

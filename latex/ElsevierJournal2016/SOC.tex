@@ -1,0 +1,177 @@
+\section{Fundamentação}
+\label{Fundamentacao}
+
+\subsection{Computação orientada a serviço}
+
+A computação orientada a serviços -- SOC -- visa aumentar a flexibilidade da
+arquitetura, a fim de possibilitar rápida reação a mudanças nos requisitos de
+negócio.
+Para obter esses benefícios, contudo, os serviços devem cumprir com determinados quesitos, que
+incluem alta autonomia ou baixo acoplamento \cite{erl2008soa}. Assim, o paradigma de SOC
+está voltado para o projeto de soluções preparadas para constantes mudanças,
+substituindo-se continuamente pequenas peças -- os serviços -- por outras
+atualizadas.
+
+Serviços são pequenos \textit{softwares} que provêem funcionalidades específicas
+para serem reutilizadas em várias aplicações. Cada serviço é uma entidade isolada com
+dependências limitadas de outros recursos compartilhados
+\cite{serrano2014service}. Assim, é formada uma abstração entre os fornecedores
+e consumidores dos serviços, por meio de baixo acoplamento, e promovendo a
+flexibilidade de mudanças de implementação sem impacto aos consumidores.
+
+O objetivo da SOC está portanto em conceber um estilo de projeto, tecnologia e
+processos que permita às empresas desenvolver, interconectar e manter suas
+aplicações e serviços corporativos com eficiência e baixo custo. Embora esses
+objetivos não sejam novos, SOC procura superar os resultados de esforços
+prévios como programação modular, reuso de código e técnicas de desenvolvimento orientadas a
+objetos \cite{papazoglou2007serviceApprTechRechIss}.
+% 
+% De modo diferente de arquiteturas convencionais, ditas monolíticas, em que os
+% sistemas são concebidos agregando continuamente funcionalidades a um mesmo pacote de
+% \textit{software}, a arquitetura orientada a serviço prega o projeto de pequenas
+% aplicações distribuídas -- os serviços -- que podem ser consumidas tanto por
+% usuários finais como por outros serviços \cite{papazoglou2007serviceApprTechRechIss}. 
+
+Segundo T. Erl \cite{erl2009web}, a orientação a serviços é estruturada em oito
+princípios fundamentais, que caracterizam o modelo: \textit{Contrato
+padronizado}, \textit{Baixo acomplamento}, \textit{Abstração},
+\textit{Descoberta do serviço}, \textit{Reusabilidade}, \textit{Composição},
+\textit{Autonomia} e \textit{Ausência de estado}. Quanto à padronização do
+contrato, a abordagem \CtFirst{} preocupa-se sobretudo com a clareza, completude e
+estabilidade do contrato para os clientes dos serviços, sem expor ou se ater às
+caracteríscas da implementação subjacente. As principais vantagens do \CtFirst{} 
+estão no baixo acoplamento do contrato em
+relação a sua implementação, na possibilidade de reuso de esquemas de dados (XML
+ou JSON Schema), na simplificação do versionamento e na facilidade de manutenção
+\cite{karthikeyancontract}.
+
+% \subsection{Princípios SOA}
+% 
+% 
+% O paradigma de orientação a serviço é estruturado em oito princípios
+% fundamentais \cite{erl2009web}. São eles que
+% caraterizam a abordagem SOA e a sua aplicação faz com que um serviço se diferencie de um componente ou de
+% um módulo. Os contratos de serviços permeiam a maior parte destes princípios.
+% 
+% O princípio do \textbf{Contrato padronizado} estabelece que serviços
+% dentro de um mesmo inventário estejam em conformidade com os mesmos padrões de
+% contrato de serviço.
+% Os contratos de serviços são elementos fundamentais na arquitetura orientada a
+% serviço, pois é por meio deles que os serviços interagem uns com os outros e com
+% potenciais consumidores. O padrão de projeto \CtFirst{} é uma
+% consequência direta deste princípio \cite{erl2009web}.
+% 
+% Os contratos de serviço devem impor aos seus consumidores requisitos de baixo
+% acoplamento. Os contrato também devem ser desacoplados de seu ambiente e da
+% implementação subjacente.
+% Essas relações são guiadas pelo princípio do \textbf{Baixo acomplamento}. A
+% qualidade do projeto do contrato e do desenho arquitetural do serviço que
+% permitirá produzir os benefícios derivados do baixo acoplamento.
+% 
+% % O projeto do serviço deve considerar como negativos os acoplamentos entre
+% % o contrato e a funcionalidade suportada pelo serviços, entre o contrato a a sua
+% % implementação subjacente, entre o contrato com a tecnologia e a lógica interna
+% % adotada para o serviço. Esses acoplamentos devem ser evitados.
+% % 
+% % Há, porém, um acoplamento desejado, que é o que gera dependência
+% % da lógica em relação ao contrato \cite{erl2009web}. Ou seja, idealmente a
+% % implementação do serviço deve ser derivada do contrato, pondendo se ter inclusive a geração de código a
+% % partir do contrato.
+% 
+% O princípio da \textbf{Abstração} visa garantir a exposição apenas de
+% informações necessárias e essenciais no contrato de serviço. Ou seja, o contrato deve possui tão somente
+% as informações necessárias ao consumo e compreensão do serviço. A
+% \textbf{Descoberta do serviço}, outro princípio SOA, prega que os contratos de
+% serviços contenham informações (metadados) que possibilitem a descoberta e
+% interpretação do serviço.
+% 
+% O aspecto do reuso é expresso em alguns princípios SOA. O princípio da
+% \textbf{Reusabilidade} estabelece que os serviços que contenham ou expressem
+% lógica agnóstica podem ser disponibilizados com recursos reusáveis. Nessa mesma
+% linha, o princípio da \textbf{Composição} orienta para que serviços sejam
+% participantes efetivos de composições, independentemente do tamanho ou
+% complexidade da composição.
+% 
+% Por fim, os princípios da \textbf{Autonomia} -- serviços têm controle sobre seu
+% ambiente de execução -- e \textbf{Ausência de estado} -- retringindo o controle
+% de estado apenas a quanfo for inevitavelmente necessário -- formam, junto com os
+% demais, um conjunto de características que buscam fazer com que o projeto dos serviços 
+% alcance os objetivos da abordagem SOA.
+% 
+% \subsection{Contract-First}
+% 
+% A abordagem \CtFirst{} preocupa-se sobretudo com a clareza, completude e
+% estabilidade do contrato para os clientes dos serviços. Toda a
+% estrutura da informação é definida sem se ater às restrições ou
+% características das implementações subjacentes. Do mesmo modo, as
+% capacidades são definidas para atenderem a funcionalidades a que se destinam,
+% porém preocupando-se em se promover estabilidade e reuso.
+% 
+% As principais vantagens do \CtFirst{} estão no baixo acoplamento do contrato em
+% relação a sua implementação, na possibilidade de reuso de esquemas de dados (XML
+% ou JSON Schema), na simplificação do versionamento e na facilidade de manutenção
+% \cite{karthikeyancontract}. A desvantagem está justamente na complexidade de
+% escrita do contrato. Porém, várias ferramentas já foram e vem sendo
+% desenvolvidas para facilitar essa tarefa.
+% 
+% A outra forma de se garantir que o contrato expressa o que serviço realiza é a
+% abordagem \CdFirst{}, em que o contrato é normalmente gerado a partir de
+% anotações no código fonte. Embora muitas vezes preferível pelo desenvolvedor, a desvantagem do uso
+% \CdFirst{} está no elevado impacto que alterações na implementação causam ao
+% contrato, fazendo com que os clientes dos serviços sejam também afetados.
+% Reduz-se ainda a flexibilidade e extensibilidade, de modo que o reuso é
+% prejudicado.
+
+%\subsection{\wss{}}
+
+\wss{} são formas típicas de construção de serviços sobre o protocolo HTTP.
+Dois padrões de \wss{} são mais populares: SOAP -- \textit{Simple Object Access
+Protocol}, protocolo padrão W3C para troca de mensagens em sistemas
+distribuídos -- e REST -- \textit{Representational State Transfer}, projetado
+por Roy Fielding, em sua tese de doutorado \cite{fielding2000architectural}, para descrever um modelo distribuído de sistemas hipermedia sobre o protocolo HTTP, com uma semântica
+específica para cada operação.
+
+Ao contrário de SOAP, REST não dispõe de um padrão para
+especificação de contratos. Essa carência, que no início não era considerada um problema, foi se
+tornando uma necessidade cada vez mais evidente a medida em que se amplia o
+conjunto de \wss{} implantados. Atualmente, existem algumas linguagens com o
+propósito de documentar o contrato REST, sendo \textit{Swagger} a mais
+popular.
+
+% 
+% são
+% aplicações modulares e autocontidas que podem ser publicadas, localizadas e acessadas pela \textit{Web} \cite{alonso2004web}. A diferença
+% entre o \ws{} e a aplicação \textit{Web} propriamente dita é que o primeiro se
+% preocupa apenas com o dado gravado ou fornecido, deixando para o cliente a atribuição de apresentar a
+% informação \cite{serrano2014service}.
+% 
+% SOAP -- \textit{Simple Object Access Protocol} -- é um protocolo padrão W3C
+% para troca de mensagens em sistemas distribuídos, normalmente sobre o
+% protocolo HTTP e acessível pela Internet. As mensagens em SOAP são codificadas
+% XML e seus contratos especificados no padrão WSDL -- \textit{Web Services
+% Description Language} -- que define uma gramática XML para descrever os serviços
+% como uma coleção de \textit{endpoints} capazes de atuar na troca de mensagens.
+% As mensagens e operações são descritas abstratamente na primeira seção do
+% documento. Uma segunda seção, dita concreta, estabelece o protocolo de rede e o
+% formato das mensagens.
+% 
+% O estilo arquitetural REST foi projetado por Roy Fielding, em sua tese de
+% doutorado \cite{fielding2000architectural}, para descrever um modelo 
+% distribuído de sistemas hipermedia sobre o protocolo HTTP, com uma semântica
+% específica para cada operação.
+% Tanto a requisição como a resposta ocorrem por meio da transferência de
+% representações de recursos \cite{mumbaikar2013web}, que podem ser de vários
+% formatos, como XML e JSON \cite{serrano2014service}. 
+% 
+% O uso de REST tem se tornado popular por conta de sua flexibilidade e
+% performance em comparação com SOAP, o qual precisa envelopar suas informações em
+% um pacote XML \cite{mumbaikar2013web}, de armazenamento, transmissão e
+% processamento onerosos. Ao contrário de SOAP, REST não dispõe de um padrão para
+% especificação de contratos. Essa carência, que no início não era considerada um problema, foi se
+% tornando uma necessidade cada vez mais evidente a medida em que se amplia o
+% conjunto de \wss{} implantados. Atualmente, existem algumas linguagens com o
+% propósito de documentar o contrato REST, sendo \textit{Swagger} a mais
+% popular.
+
+
+
